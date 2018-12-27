@@ -1,0 +1,49 @@
+{
+  "name": "inspirum/php-balikobot",
+  "description": "",
+  "keywords": [
+    "inspirum",
+    "inspishop",
+    "balikobot"
+  ],
+  "homepage": "https://github.com/tomas-novotny/php-balikobot",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Tomáš Novotný",
+      "email": "tomas.novotny@inspirum.cz",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "psr/http-message": "^1.0",
+    "guzzlehttp/psr7": "^1.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~7.0",
+    "squizlabs/php_codesniffer": "^3.3",
+    "mockery/mockery": "^1.2",
+    "phpstan/phpstan": "^0.10.6",
+    "phpstan/phpstan-mockery": "^0.10.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Inspirum\\Balikobot\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Inspirum\\Balikobot\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html=./build/coverage",
+    "check-style": "vendor/bin/phpcs -p -s --extensions=php --standard=./ruleset.xml --colors --report-width=140 --runtime-set ignore_errors_on_exit 1 src tests && vendor/bin/phpstan analyse -l 7 -c phpstan.neon.dist src",
+    "fix-style": "vendor/bin/phpcbf -p --standard=./ruleset.xml --runtime-set ignore_errors_on_exit 1 src tests"
+  }
+}

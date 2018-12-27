@@ -1,0 +1,11 @@
+preset: psr2
+
+enabled:
+  - blank_line_before_try
+  - blank_line_before_catch
+  - blank_line_before_return
+  - no_spaces_after_function_name
+
+finder:
+  name:
+    - "*.sphp"
