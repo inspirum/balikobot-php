@@ -32,7 +32,7 @@ class DropRequestTest extends AbstractClientTestCase
         
         $client = new Client($requester);
         
-        $client->dropPackages('cp', []);
+        $client->dropPackages('cp', [1]);
     }
     
     public function testThrowsExceptionOnBadStatusCode()
@@ -45,7 +45,7 @@ class DropRequestTest extends AbstractClientTestCase
         
         $client = new Client($requester);
         
-        $client->dropPackages('cp', []);
+        $client->dropPackages('cp', [2]);
     }
     
     public function testRequestShouldHaveStatus()
@@ -56,7 +56,7 @@ class DropRequestTest extends AbstractClientTestCase
         
         $client = new Client($requester);
         
-        $client->dropPackages('cp', []);
+        $client->dropPackages('cp', [3]);
     }
     
     public function testMakeRequest()
@@ -77,7 +77,7 @@ class DropRequestTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
     
-    public function testDesNotMakeRequestWithNoData()
+    public function testDoesNotMakeRequestWithNoData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(404, []);
         
