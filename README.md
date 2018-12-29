@@ -160,12 +160,12 @@ If you discover any security related issues, please email tomas.novotny@inspirum
 The MIT License (MIT). Please see [License File][link-licence] for more information.
 
 
-[ico-license]:              https://img.shields.io/github/license/tomas-novotny/php-balikobot.svg?style=flat-square&color=6EC83F
+[ico-license]:              https://img.shields.io/github/license/tomas-novotny/php-balikobot.svg?style=flat-square&colorB=blue
 [ico-travis]:               https://img.shields.io/travis/tomas-novotny/php-balikobot/master.svg?branch=master&style=flat-square
 [ico-scrutinizer]:          https://img.shields.io/scrutinizer/coverage/g/tomas-novotny/php-balikobot/master.svg?style=flat-square
 [ico-code-quality]:         https://img.shields.io/scrutinizer/g/tomas-novotny/php-balikobot.svg?style=flat-square
-[ico-packagist-stable]:     https://img.shields.io/packagist/v/inspirum/php-balikobot.svg?style=flat-square&colorB=007EC6
-[ico-packagist-download]:   https://img.shields.io/packagist/dt/inspirum/php-balikobot.svg?style=flat-square&colorB=007EC6
+[ico-packagist-stable]:     https://img.shields.io/packagist/v/inspirum/php-balikobot.svg?style=flat-square&colorB=blue
+[ico-packagist-download]:   https://img.shields.io/packagist/dt/inspirum/php-balikobot.svg?style=flat-square&colorB=blue
 [ico-phpstan]:              https://img.shields.io/badge/style-level%207-brightgreen.svg?style=flat-square&label=phpstan
 
 [link-author]:              https://github.com/tomas-novotny
