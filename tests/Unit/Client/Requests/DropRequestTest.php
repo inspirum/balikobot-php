@@ -76,4 +76,17 @@ class DropRequestTest extends AbstractClientTestCase
         
         $this->assertTrue(true);
     }
+    
+    public function testDesNotMakeRequestWithNoData()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(404, []);
+        
+        $client = new Client($requester);
+        
+        $client->dropPackages('cp', []);
+        
+        $requester->shouldNotHaveReceived('request');
+        
+        $this->assertTrue(true);
+    }
 }

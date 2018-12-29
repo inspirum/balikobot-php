@@ -84,6 +84,10 @@ class Client
             $data[] = ['id' => $packageId];
         }
         
+        if (count($data) === 0) {
+            return;
+        }
+        
         $this->requester->call('v1', $shipper, Request::DROP, $data);
     }
     
@@ -341,7 +345,7 @@ class Client
      */
     public function getBranches(string $shipper, string $service = null, bool $fullData = false): array
     {
-        $request  = $fullData ? Request::FULL_BRANCHES : Request::BRANCHES;
+        $request = $fullData ? Request::FULL_BRANCHES : Request::BRANCHES;
         
         $response = $this->requester->call('v1', $shipper, $request . '/' . $service);
         
