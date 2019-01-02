@@ -10,8 +10,8 @@ These credentials can be found in the Balikobot administration (section *"Profil
 ```php
 use Inspirum\Balikobot\Services\Client;
 
-$user = getenv("BALIKOBOT_API_USER");
-$key  = getenv("BALIKOBOT_API_KEY");
+$user = getenv('BALIKOBOT_API_USER');
+$key  = getenv('BALIKOBOT_API_KEY');
 
 $client = new Client($user, $key);
 ```
@@ -29,11 +29,11 @@ $client->getOverview(Shipper::CP);
 
 /*
 PHP Fatal error: Uncaught Inspirum\Balikobot\Exceptions\UnauthorizedException: 
-"Unauthorized - nejspíš chyba na straně Balikobotu"
+'Unauthorized - nejspíš chyba na straně Balikobotu'
 
-"statusCode" => 401
-"errors"     => []
-"response"   => []
+'statusCode' => 401
+'errors'     => []
+'response'   => []
 */
 ```
 
@@ -45,27 +45,27 @@ $orderedPackages = $client->addPackages(Shipper::CP, $packages);
 
 /*
 PHP Fatal error: Uncaught Inspirum\Balikobot\Exceptions\BadRequestException: 
-"Operace neproběhla v pořádku, zkontrolujte konkrétní data"
+'Operace neproběhla v pořádku, zkontrolujte konkrétní data'
 
-"statusCode" => 400
-"errors"     => [
+'statusCode' => 400
+'errors'     => [
    0 => [
-     "rec_email" => "Nedorazil email příjemce."
-     "rec_phone" => "Nedorazilo telefonní číslo příjemce."
+     'rec_email' => 'Nedorazil email příjemce.'
+     'rec_phone' => 'Nedorazilo telefonní číslo příjemce.'
    ]
    1 => [
-     "service_type" => "Neznámé ID služby přepravce."
+     'service_type' => 'Neznámé ID služby přepravce.'
    ]
 ]
-"response"   => [
+'response'   => [
   0 => [
-    "rec_email" => "406"
-    "rec_phone" => "406"
+    'rec_email' => '406'
+    'rec_phone' => '406'
   ]
   1 => [
-    "service_type" => "413"
+    'service_type' => '413'
   ]
-  "status" => "400"
+  'status' => '400'
 ]
 */
 ```
@@ -104,17 +104,17 @@ use Inspirum\Balikobot\Definitions\Shipper;
 $orderedPackages = $client->addPackages(Shipper::CP, [
   [
     Options::SERVICE_TYPE  => ServiceType::CP_NP,
-    Options::ORDER_ID      => "180001",
+    Options::ORDER_ID      => '180001',
     Options::ORDER_NUMBER  => 1,
-    Options::CUSTOMER_NAME => "Josef Novák",
+    Options::CUSTOMER_NAME => 'Josef Novák',
     Options::PRICE         => 1500,
     // ...
   ],
   [
     Options::SERVICE_TYPE  => ServiceType::CP_NP,
-    Options::ORDER_ID      => "180001",
+    Options::ORDER_ID      => '180001',
     Options::ORDER_NUMBER  => 2,
-    Options::CUSTOMER_NAME => "Josef Novák",
+    Options::CUSTOMER_NAME => 'Josef Novák',
     Options::PRICE         => 2000,
     // ...
   ],
@@ -125,16 +125,16 @@ $orderedPackages = $client->addPackages(Shipper::CP, [
 var_dump($orderedPackages);
 [
   0 => [
-    "carrier_id" => "NP1504102246M"
-    "package_id" => 42719
-    "label_url"  => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA."
-    "status"     => "200"
+    'carrier_id' => 'NP1504102246M'
+    'package_id' => 42719
+    'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.'
+    'status'     => '200'
   ]
   1 => [
-    "carrier_id" => "NP1504102247M"
-    "package_id" => 42720
-    "label_url"  => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB."
-    "status"     => "200"
+    'carrier_id' => 'NP1504102247M'
+    'package_id' => 42720
+    'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.'
+    'status'     => '200'
   ]
 ]
 */
@@ -172,25 +172,25 @@ Older version (**TRACK V1**) is not longer available via this client.
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$statuses = $client->trackPackage(Shipper::CP, "NP1504102246M");
+$statuses = $client->trackPackage(Shipper::CP, 'NP1504102246M');
 
 /*
 var_dump($statuses);
 [
   0 => [
-    "date"      => "2018-07-02 00:00:00"
-    "name"      => "Dodání zásilky. 10003 Depo Praha 701"
-    "status_id" => 2
+    'date'      => '2018-07-02 00:00:00'
+    'name'      => 'Dodání zásilky. 10003 Depo Praha 701'
+    'status_id' => 2
   ]
   1 => [
-    "date"      => "2018-07-02 00:00:00"
-    "name"      => "Doručování zásilky. 10003 Depo Praha 701"
-    "status_id" => 1
+    'date'      => '2018-07-02 00:00:00'
+    'name'      => 'Doručování zásilky. 10003 Depo Praha 701'
+    'status_id' => 1
   ]
   2 => [
-    "date"      => "2018-07-02 00:00:00"
-    "name"      => "Příprava zásilky k doručení. 10003 Depo Praha 701"
-    "status_id" => 1
+    'date'      => '2018-07-02 00:00:00'
+    'name'      => 'Příprava zásilky k doručení. 10003 Depo Praha 701'
+    'status_id' => 1
   ]
   ...
 ]
@@ -204,14 +204,14 @@ Use the **trackPackageLastStatus** method to get last package status.
 Client normalize response format to match new [**TRACK V2**](#track) response.
 
 ```php
-$status = $client->trackPackageLastStatus(Shipper::CP, "NP1504102246M");
+$status = $client->trackPackageLastStatus(Shipper::CP, 'NP1504102246M');
 
 /*
 var_dump($status);
 [
-  "date"      => "2018-07-02 00:00:00"
-  "name"      => "Zásilka zatím nebyla předána přepravci."
-  "status_id" => -1
+  'date'      => '2018-07-02 00:00:00'
+  'name'      => 'Zásilka zatím nebyla předána přepravci.'
+  'status_id' => -1
 ]
 */
 ```
@@ -230,16 +230,16 @@ $orderedPackages = $client->getOverview(Shipper::CP);
 var_dump($orderedPackages);
 [
   0 => [
-    "eshop_id"   => "567A2889"
-    "carrier_id" => "NP1504102246M"
-    "package_id" => 42719
-    "label_url"  => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA."
+    'eshop_id'   => '567A2889'
+    'carrier_id' => 'NP1504102246M'
+    'package_id' => 42719
+    'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.'
   ]
   1 => [
-    "eshop_id"   => "567A2890"
-    "carrier_id" => "NP1504102247M"
-    "package_id" => 42720
-    "label_url"  => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB."
+    'eshop_id'   => '567A2890'
+    'carrier_id' => 'NP1504102247M'
+    'package_id' => 42720
+    'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.'
   ]
   ...
 ]
@@ -258,7 +258,7 @@ $labelsUrl = $client->getLabels(Shipper::CP, [42717, 42719]);
 
 /*
 var_dump($labelsUrl);
-"https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawNAdcMBAfAoM."
+'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawNAdcMBAfAoM.'
 */
 ```
 
@@ -275,19 +275,19 @@ $package = $client->getPackageInfo(Shipper::CP, 42717);
 /*
 var_dump($package);
 [
-  "service_type" => "NP"
-  "vs"           => ""
-  "cod_price"    => 0.00
-  "rec_firm"     => ""
-  "rec_zip"      => "17000"
-  "rec_phone"    => "777555666"
+  'service_type' => 'NP'
+  'vs'           => ''
+  'cod_price'    => 0.00
+  'rec_firm'     => ''
+  'rec_zip'      => '17000'
+  'rec_phone'    => '777555666'
   
   ...
   
-  "eshop_id"     => "15431025445bf9e0509a87d"
-  "carrier_id"   => "NP1504102229M"
-  "package_id"   => 42717
-  "label_url"    => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwZcMBAVAnw."
+  'eshop_id'     => '15431025445bf9e0509a87d'
+  'carrier_id'   => 'NP1504102229M'
+  'package_id'   => 42717
+  'label_url'    => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwZcMBAVAnw.'
 ]
 */
 ```
@@ -305,10 +305,10 @@ $orderedShipment = $client->orderShipment(Shipper::CP, [42717, 42718]);
 /*
 var_dump($orderedShipment);
 [
-  "order_id"     => 2757
-  "file_url"     => "https://csv.balikobot.cz/cp/eNorMTIwt9A1MjczAlwwDZECRA.."
-  "handover_url" => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtARcMBAhAoU."
-  "labels_url"   => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtFwwXDAQIAKE"
+  'order_id'     => 2757
+  'file_url'     => 'https://csv.balikobot.cz/cp/eNorMTIwt9A1MjczAlwwDZECRA..'
+  'handover_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtARcMBAhAoU.'
+  'labels_url'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtFwwXDAQIAKE'
 ]
 */
 ```
@@ -327,11 +327,11 @@ $orderedShipment = $client->getOrder(Shipper::CP, 2757);
 /*
 var_dump($orderedShipment);
 [
-  "order_id"     => 2757
-  "file_url"     => "https://csv.balikobot.cz/cp/eNorMTIwt9A1MjczAlwwDZECRA.."
-  "handover_url" => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtARcMBAhAoU."
-  "labels_url"   => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtFwwXDAQIAKE"
-  "package_ids"  => [
+  'order_id'     => 2757
+  'file_url'     => 'https://csv.balikobot.cz/cp/eNorMTIwt9A1MjczAlwwDZECRA..'
+  'handover_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtARcMBAhAoU.'
+  'labels_url'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtFwwXDAQIAKE'
+  'package_ids'  => [
     0 => 42717
     1 => 42718
   ]
@@ -347,8 +347,8 @@ To order pickup for packages use **orderPickup** method.
 ```php
 $orderedPickup = $client->orderPickup(
   Shipper::CP,
-  new \DateTime("2018-12-01 14:00"),
-  new \DateTime("2018-12-01 18:00"),
+  new \DateTime('2018-12-01 14:00'),
+  new \DateTime('2018-12-01 18:00'),
   5.2,
   3
 );
@@ -362,16 +362,16 @@ Method **getServices** returns a list of services that can be used by the shippe
 The client normalizes the response by returning only **service_type** array.
 
 ```php
-$services = $client->getServices("cp");
+$services = $client->getServices('cp');
 
 /*
 var_dump($services);
 [
-  "DR" => "DR - Balík Do ruky"
-  "RR" => "RR - Doporučená zásilka"
-  "SR" => "RR - Doporučená zásilka - standard"
-  "NP" => "NP - Balík Na poštu"
-  "VL" => "VL - Cenné psaní"
+  'DR' => 'DR - Balík Do ruky'
+  'RR' => 'RR - Doporučená zásilka'
+  'SR' => 'RR - Doporučená zásilka - standard'
+  'NP' => 'NP - Balík Na poštu'
+  'VL' => 'VL - Cenné psaní'
   ...
 ]
 */
@@ -392,13 +392,13 @@ $units = $client->getManipulationUnits(Shipper::TOP_TRANS);
 /*
 var_dump($units);
 [
-  "KARTON" => "KARTON"
-  "KUS"    => "KUS"
-  "PALETA" => "PALETA"
-  "EPAL"   => "EPAL"
-  "SKLPAL" => "SKLPAL"
-  "OBALKA" => "OBALKA"
-  "PYTEL"  => "PYTEL"
+  'KARTON' => 'KARTON'
+  'KUS'    => 'KUS'
+  'PALETA' => 'PALETA'
+  'EPAL'   => 'EPAL'
+  'SKLPAL' => 'SKLPAL'
+  'OBALKA' => 'OBALKA'
+  'PYTEL'  => 'PYTEL'
   ...
 ]
 */
@@ -418,12 +418,12 @@ $branches = $client->getBranches(Shipper::CP, ServiceType::CP_NP);
 var_dump($shippers);
 [
   0 => [
-    "name"    => "Kojetice u Prahy"
-    "city"    => "Kojetice"
-    "street"  => "Lipová 75"
-    "zip"     => "25072"
-    "country" => "CZ"
-    "type"    => "branch"
+    'name'    => 'Kojetice u Prahy'
+    'city'    => 'Kojetice'
+    'street'  => 'Lipová 75'
+    'zip'     => '25072'
+    'country' => 'CZ'
+    'type'    => 'branch'
   ]
   1 => [
     ...
@@ -447,21 +447,21 @@ $branches = $client->getBranches(Shipper::ZASILKOVNA, null, true);
 var_dump($shippers);
 [
   0 => [
-    "id"          => "2859"
-    "name"        => "OMURTAG,ZAVODSKA OMURTAG"
-    "city"        => "OMURTAG"
-    "street"      => "ul. ZAVODSKA 1"
-    "zip"         => "7900"
-    "district"    => ""
-    "region"      => "България"
-    "country"     => "BG"
-    "currency"    => "BGN"
-    "type"        => "branch"
-    "photo_small" => "https://www.zasilkovna.cz/images/branch/thumb/stub.jpg"
-    "photo_big"   => "https://www.zasilkovna.cz/images/branch/normal/stub.jpg"
-    "url"         => "https://www.zasilkovna.cz/pobocky/omurtag-zavodska"
-    "latitude"    => 43.11715
-    "longitude"   => 26.42129
+    'id'          => '2859'
+    'name'        => 'OMURTAG,ZAVODSKA OMURTAG'
+    'city'        => 'OMURTAG'
+    'street'      => 'ul. ZAVODSKA 1'
+    'zip'         => '7900'
+    'district'    => ''
+    'region'      => 'България'
+    'country'     => 'BG'
+    'currency'    => 'BGN'
+    'type'        => 'branch'
+    'photo_small' => 'https://www.zasilkovna.cz/images/branch/thumb/stub.jpg'
+    'photo_big'   => 'https://www.zasilkovna.cz/images/branch/normal/stub.jpg'
+    'url'         => 'https://www.zasilkovna.cz/pobocky/omurtag-zavodska'
+    'latitude'    => 43.11715
+    'longitude'   => 26.42129
     ...
   ]
   1 => [
@@ -485,24 +485,24 @@ $countries = $client->getCountries(Shipper::PBH);
 /*
 var_dump($countries);
 [
-  "1" => [
-    0 => "SE"
-    1 => "FI"
-    2 => "PT"
-    3 => "DK"
-    4 => "BG"
-    5 => "LT"
-    6 => "LV"
+  '1' => [
+    0 => 'SE'
+    1 => 'FI'
+    2 => 'PT'
+    3 => 'DK'
+    4 => 'BG'
+    5 => 'LT'
+    6 => 'LV'
     ...
   ]
   ...
   
-  "4" => [
-    0 => "SK"
+  '4' => [
+    0 => 'SK'
   ]
-  "5" => [
-    0 => "HU"
-    1 => "DE"
+  '5' => [
+    0 => 'HU'
+    1 => 'DE'
   ]
   ...
 ]
@@ -524,18 +524,18 @@ $postcodes = $client->getPostCodes(Shipper::PPL, ServiceType::PPL_BUSINESS);
 var_dump($postcodes);
 [
   0 => [
-    "postcode"     => "10000"
-    "postcode_end' => NULL
-    "city"         => NULL
-    "county"       => "CZ"
-    "1B"           => false
+    'postcode'     => '10000'
+    'postcode_end' => NULL
+    'city'         => NULL
+    'county'       => 'CZ'
+    '1B'           => false
   ]
   1 => [
-    "postcode"     => "10003"
-    "postcode_end' => NULL
-    "city"         => NULL
-    "county"       => "CZ"
-    "1B"           => false
+    'postcode'     => '10003'
+    'postcode_end' => NULL
+    'city'         => NULL
+    'county'       => 'CZ'
+    '1B'           => false
   ]
   ...
 ]
@@ -549,18 +549,18 @@ $postcodes = $client->getPostCodes(Shipper::GEIS, ServiceType::GEIS_PARCEL_PRIVA
 var_dump($postcodes);
 [
   0 => [
-    "postcode"     => "50755"
-    "postcode_end' => "50773"
-    "city"         => NULL
-    "county"       => "CZ"
-    "1B"           => false
+    'postcode'     => '50755'
+    'postcode_end' => '50773'
+    'city'         => NULL
+    'county'       => 'CZ'
+    '1B'           => false
   ]
   1 => [
-    "postcode"     => "50781"
-    "postcode_end' => "50792
-    "city"         => NULL
-    "county"       => "CZ"
-    "1B"           => false
+    'postcode'     => '50781'
+    'postcode_end' => '50792
+    'city'         => NULL
+    'county'       => 'CZ'
+    '1B'           => false
   ]
   ...
 ]
@@ -574,10 +574,10 @@ $postcodes = $client->getPostCodes(Shipper::DHL, ServiceType::DHL_WORLDWIDE, Cou
 var_dump($postcodes);
 [
   0 => [
-    "postcode"     => "25999"
-    "postcode_end' => "25999"
-    "city"         => "AIXIRIVALL"
-    "county"       => "AD"
+    'postcode'     => '25999'
+    'postcode_end' => '25999'
+    'city'         => 'AIXIRIVALL'
+    'county'       => 'AD'
   ]
   ...
 ]
@@ -596,8 +596,8 @@ This method has no return value if give data is valid, and it throws exception o
 $client->checkPackages(Shipper::CP, [
   [
     Options::SERVICE_TYPE  => ServiceType::CP_NP,
-    Options::ORDER_ID      => "180001",
-    Options::CUSTOMER_NAME => "Josef Novák",
+    Options::ORDER_ID      => '180001',
+    Options::CUSTOMER_NAME => 'Josef Novák',
     Options::PRICE         => 1500,
     ...
   ],
@@ -608,8 +608,8 @@ $client->checkPackages(Shipper::CP, [
 $client->checkPackages(Shipper::CP, [
   [
     // Options::SERVICE_TYPE  => ServiceType::CP_NP,
-    Options::ORDER_ID      => "180001",
-    Options::CUSTOMER_NAME => "Josef Novák",
+    Options::ORDER_ID      => '180001',
+    Options::CUSTOMER_NAME => 'Josef Novák',
     Options::PRICE         => 1500,
     ...
   ]
@@ -617,12 +617,12 @@ $client->checkPackages(Shipper::CP, [
 
 /*
 PHP Fatal error: Uncaught Inspirum\Balikobot\Exceptions\BadRequestException: 
-"Operace neproběhla v pořádku, zkontrolujte konkrétní data"
+'Operace neproběhla v pořádku, zkontrolujte konkrétní data'
 
-"statusCode" => 400
-"errors => [
+'statusCode' => 400
+'errors => [
   0 => [ 
-    "service_type" => "Nedorazilo ID vybrané služby přepravce."
+    'service_type' => 'Nedorazilo ID vybrané služby přepravce.'
   ]
 ]
 */
@@ -643,14 +643,14 @@ $units = $client->getAdrUnits(Shipper::TOP_TRANS, ServiceType::TOP_TRANS_STANDAR
 /*
 var_dump($units);
 [
-  432  => "PŘEDMĚTY PYROTECHNICKÉ pro technické účely"
-  1001 => "ACETYLÉN, ROZPUŠTĚNÝ"
-  1002 => "VZDUCH, STLAČENÝ"
-  1003 => "VZDUCH, HLUBOCE ZCHLAZENÝ, KAPALNÝ"
-  1005 => "AMONIAK (ČPAVEK), BEZVODÝ"
-  1006 => "ARGON, STLAČENÝ"
-  1008 => "FLUORID BORITÝ"
-  1009 => "BROMTRIFLUORMETHAN (PLYN JAKO CHLADICÍ PROSTŘEDEK R 13B1)"
+  432  => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely'
+  1001 => 'ACETYLÉN, ROZPUŠTĚNÝ'
+  1002 => 'VZDUCH, STLAČENÝ'
+  1003 => 'VZDUCH, HLUBOCE ZCHLAZENÝ, KAPALNÝ'
+  1005 => 'AMONIAK (ČPAVEK), BEZVODÝ'
+  1006 => 'ARGON, STLAČENÝ'
+  1008 => 'FLUORID BORITÝ'
+  1009 => 'BROMTRIFLUORMETHAN (PLYN JAKO CHLADICÍ PROSTŘEDEK R 13B1)'
   ...
 ]
 */

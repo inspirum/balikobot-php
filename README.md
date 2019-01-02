@@ -35,10 +35,10 @@ $packages = new PackageCollection(Shipper::CP);
 // create new package
 $package = new Package();
 $package->setServiceType(ServiceType::CP_NP);
-$package->setRecName("Josef Novák");
-$package->setRecZip("11000");
+$package->setRecName('Josef Novák');
+$package->setRecZip('11000');
 $package->setRecCountry(Country::CZECH_REPUBLIC);
-$package->setRecPhone("776555888");
+$package->setRecPhone('776555888');
 $package->setCodPrice(1399.00);
 $package->setCodCurrency(Currency::CZK);
 
@@ -49,35 +49,35 @@ $packages->add($package);
 $orderedPackages = $balikobot->addPackages($packages);
 
 // save package IDs
-$data["packages"] = $orderedPackages->getPackageIds();
+$data['packages'] = $orderedPackages->getPackageIds();
 
 // save track URL for each package
 foreach($orderedPackages as $orderedPackage) {
-  $data["trackUrl"][] = $orderedPackage->getTrackUrl();
+  $data['trackUrl'][] = $orderedPackage->getTrackUrl();
 }
 
 // order shipment for packages
 $orderedShipment = $balikobot->orderShipment($orderedPackages);
 
 // save order ID and labels URL
-$data["orderId"]     = $orderedShipment->getOrderId();
-$data["labelsUrl"]   = $orderedShipment->getLabelsUrl();
-$data["handoverUrl"] = $orderedShipment->getHandoverUrl();
+$data['orderId']     = $orderedShipment->getOrderId();
+$data['labelsUrl']   = $orderedShipment->getLabelsUrl();
+$data['handoverUrl'] = $orderedShipment->getHandoverUrl();
 
 /*
 var_dump($data);
 [
-  "packages"    => [
+  'packages'    => [
     0 => 42719
     1 => 42720
   ]
-  "trackUrl"    => [
-    0 => "https://www.postaonline.cz/trackandtrace/-/zasilka/cislo?parcelNumbers=DR00112233M"
-    1 => "https://www.postaonline.cz/trackandtrace/-/zasilka/cislo?parcelNumbers=DR00112234M" 
+  'trackUrl'    => [
+    0 => 'https://www.postaonline.cz/trackandtrace/-/zasilka/cislo?parcelNumbers=DR00112233M'
+    1 => 'https://www.postaonline.cz/trackandtrace/-/zasilka/cislo?parcelNumbers=DR00112234M' 
   ]
-  "orderId"     => 2757
-  "labelsUrl"   => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwM76cMBAXAn4."
-  "handoverUrl" => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtARcMBAhAoU."
+  'orderId'     => 2757
+  'labelsUrl'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwM76cMBAXAn4.'
+  'handoverUrl' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtARcMBAhAoU.'
 ]
 */
 ```

@@ -41,11 +41,11 @@ $packages = new PackageCollection(Shipper::CP);
 
 $package = new Package();
 $package->setServiceType(ServiceType::CP_NP);
-$package->setRecName("Josef Novák");
+$package->setRecName('Josef Novák');
 $package->setPrice(1500);
-$package->setRecStreet("Ulice 123");
-$package->setRecCity("Praha");
-$package->setRecZip("11000");
+$package->setRecStreet('Ulice 123');
+$package->setRecCity('Praha');
+$package->setRecZip('11000');
 $package->setRecCountry(Country::CZECH_REPUBLIC);
 $package->setReturnFullErrors();
 
@@ -56,14 +56,14 @@ $orderedPackages = $balikobot->addPackages($packages);
 /*
 var_dump($orderedPackages);
 Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection {
-  private $shipper  => "cp"
+  private $shipper  => 'cp'
   private $packages => [
     0 => Inspirum\Balikobot\Model\Values\OrderedPackage {
-      private $shipper   => "cp"
-      private $packageId => "42718"
-      private $carrierId => "NP1504102232M"
+      private $shipper   => 'cp'
+      private $packageId => '42718'
+      private $carrierId => 'NP1504102232M'
       private $trackUrl  => NULL
-      private $labelUrl  => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwVcMBAXAn4."
+      private $labelUrl  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwVcMBAXAn4.'
       ...
     }
   ]
@@ -103,14 +103,14 @@ $orderedShipment = $balikobot->orderShipment($orderedPackages);
 /*
 var_dump($orderedPackages);
 Inspirum\Balikobot\Model\Values\OrderedShipment {
-  private $orderId     => "42718"
-  private $handoverUrl => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NTW1MAVcMBAaAn4."
-  private $labelsUrl   => "https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwVcMBAXAn4."
-  private $fileUrl     => "https://csv.balikobot.cz/cp/eNorMTIwt9A1sjAyB1wwDZECRr.."
+  private $orderId     => '42718'
+  private $handoverUrl => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NTW1MAVcMBAaAn4.'
+  private $labelsUrl   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwVcMBAXAn4.'
+  private $fileUrl     => 'https://csv.balikobot.cz/cp/eNorMTIwt9A1sjAyB1wwDZECRr..'
   private $date        => NULL
-  private $shipper     => "cp"
+  private $shipper     => 'cp'
   private $packageIds  => [
-    "43619"
+    '43619'
   ]
 }
 */
@@ -131,17 +131,17 @@ var_dump($statuses);
 [
   0 => Inspirum\Balikobot\Model\Values\PackageStatus {
     private $date => DateTime {
-      public $date => "2018-07-02 00:00:00.000000"
+      public $date => '2018-07-02 00:00:00.000000'
     }
     private $id   => 2
-    private $name => "Dodání zásilky. 10003 Depo Praha 701"
+    private $name => 'Dodání zásilky. 10003 Depo Praha 701'
   }
   1 => Inspirum\Balikobot\Model\Values\PackageStatus {
     private $date => DateTime {
-      public $date => "2018-07-02 00:00:00.000000"
+      public $date => '2018-07-02 00:00:00.000000'
     }
     private $id   => 1
-    private $name => "Doručování zásilky. 10003 Depo Praha 701"
+    private $name => 'Doručování zásilky. 10003 Depo Praha 701'
   }
   ...
 ]
@@ -181,19 +181,19 @@ foreach($shippers as $shipper) {
   /*
   var_dump($shipper);
   Inspirum\Balikobot\Model\Values\Branch {
-    private $shipper  => "cp"
-    private $service  => "NB"
-    private $branchId => "10003"
+    private $shipper  => 'cp'
+    private $service  => 'NB'
+    private $branchId => '10003'
     private $id       => NULL
-    private $type     => "branch"
-    private $name     => "Depo Praha 701"
-    private $city     => ""
-    private $street   => "Sazečská 598/7, Malešice, 10003, Praha"
-    private $zip      => "10003"
+    private $type     => 'branch'
+    private $name     => 'Depo Praha 701'
+    private $city     => ''
+    private $street   => 'Sazečská 598/7, Malešice, 10003, Praha'
+    private $zip      => '10003'
     private $cityPart => NULL
     private $district => NULL
     private $region   => NULL
-    private $country  => "CZ"
+    private $country  => 'CZ'
     ...
   }
   */
