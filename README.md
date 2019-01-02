@@ -164,8 +164,8 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 [ico-travis]:               https://img.shields.io/travis/tomas-novotny/php-balikobot/master.svg?branch=master&style=flat-square
 [ico-scrutinizer]:          https://img.shields.io/scrutinizer/coverage/g/tomas-novotny/php-balikobot/master.svg?style=flat-square
 [ico-code-quality]:         https://img.shields.io/scrutinizer/g/tomas-novotny/php-balikobot.svg?style=flat-square
-[ico-packagist-stable]:     https://img.shields.io/packagist/v/inspirum/php-balikobot.svg?style=flat-square&colorB=blue
-[ico-packagist-download]:   https://img.shields.io/packagist/dt/inspirum/php-balikobot.svg?style=flat-square&colorB=blue
+[ico-packagist-stable]:     https://img.shields.io/packagist/v/inspirum/balikobot.svg?style=flat-square&colorB=blue
+[ico-packagist-download]:   https://img.shields.io/packagist/dt/inspirum/balikobot.svg?style=flat-square&colorB=blue
 [ico-phpstan]:              https://img.shields.io/badge/style-level%207-brightgreen.svg?style=flat-square&label=phpstan
 
 [link-author]:              https://github.com/tomas-novotny
@@ -174,14 +174,12 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 [link-changelog]:           ./CHANGELOG.md
 [link-contributing]:        ./docs/CONTRIBUTING.md
 [link-code-of-conduct]:     ./docs/CODE_OF_CONDUCT.md
-[link-packagist]:           https://packagist.org/packages/tomas-novotny/php-balikobot
 [link-travis]:              https://travis-ci.org/tomas-novotny/php-balikobot
 [link-scrutinizer]:         https://scrutinizer-ci.com/g/tomas-novotny/php-balikobot/code-structure
 [link-code-quality]:        https://scrutinizer-ci.com/g/tomas-novotny/php-balikobot
-[link-downloads]:           https://packagist.org/packages/tomas-novotny/php-balikobot
 [link-api]:                 https://www.balikobot.cz/dokumentace/Balikobot-dokumentace-API.pdf
 [link-inspishop]:           https://www.inspishop.cz/
 [link-inspirum]:            https://www.inspirum.cz/
-[link-packagist-stable]:    https://packagist.org/packages/inspirum/php-balikobot
-[link-packagist-download]:  https://packagist.org/packages/inspirum/php-balikobot
+[link-packagist-stable]:    https://packagist.org/packages/inspirum/balikobot
+[link-packagist-download]:  https://packagist.org/packages/inspirum/balikobot
 [link-phpstan]:             https://github.com/phpstan/phpstan
