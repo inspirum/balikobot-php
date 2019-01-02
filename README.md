@@ -93,7 +93,7 @@ var_dump($data);
 ## Installation
 
 ```bash
-$ composer require inspirum/php-balikobot
+$ composer require inspirum/balikobot
 ```
 
 
