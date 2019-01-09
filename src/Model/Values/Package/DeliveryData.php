@@ -236,4 +236,54 @@ trait DeliveryData
     {
         $this->offsetSet(Option::NOTE, $note);
     }
+    
+    /**
+     * @param string $recHouseNumber
+     *
+     * @return void
+     */
+    public function setRecHouseNumber(string $recHouseNumber): void
+    {
+        $this->offsetSet(Option::REC_HOUSE_NUMBER, $recHouseNumber);
+    }
+    
+    /**
+     * @param string $recBlock
+     *
+     * @return void
+     */
+    public function setRecBlock(string $recBlock): void
+    {
+        $this->offsetSet(Option::REC_BLOCK, $recBlock);
+    }
+    
+    /**
+     * @param string $recEnteracne
+     *
+     * @return void
+     */
+    public function setRecEnterance(string $recEnteracne): void
+    {
+        $this->offsetSet(Option::REC_ENTERANCE, $recEnteracne);
+    }
+    
+    /**
+     * @param string $recFloor
+     *
+     * @return void
+     */
+    public function setFloor(string $recFloor): void
+    {
+        $this->offsetSet(Option::REC_FLOOR, $recFloor);
+    }
+    
+    /**
+     * @param string $recFlatNumber
+     *
+     * @return void
+     */
+    public function setFlatNumber(string $recFlatNumber): void
+    {
+        $this->offsetSet(Option::REC_FLAT_NUMBER, $recFlatNumber);
+    }
 }

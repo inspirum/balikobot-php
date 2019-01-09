@@ -99,7 +99,7 @@ $ composer require inspirum/balikobot
 
 ## Version
 
-Support all options for Balikobot API described in the [documentation][link-api] (v1.845, 2018-11-29).
+Support all options for Balikobot API described in the [documentation][link-api] (v1.846, 2019-01-08).
 
 
 ## Usage

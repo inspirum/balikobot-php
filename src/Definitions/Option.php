@@ -633,4 +633,40 @@ class Option
      * @var string
      */
     public const ADR_CONTENT = 'adr_content';
+    
+    /**
+     * Číslo popisné, pokud pro danou adresu neexistuje doplňte "0"
+     *
+     * @var string
+     */
+    public const REC_HOUSE_NUMBER = 'rec_house_number';
+    
+    /**
+     * Identifikátor bloku (přenáší se jen u přepravce BG Speedy).
+     *
+     * @var string
+     */
+    public const REC_BLOCK = 'rec_block';
+    
+    /**
+     * Číslo vchodu (přenáší se jen u přepravce BG Speedy).
+     *
+     * @var string
+     */
+    public const REC_ENTERANCE = 'rec_enterance';
+    
+    /**
+     *
+     *  Číslo podlaží (přenáší se jen u přepravce BG Speedy).
+     *
+     * @var string
+     */
+    public const REC_FLOOR = 'rec_floor';
+    
+    /**
+     * Číslo bytu / apartmánu (přenáší se jen u přepravce BG Speedy).
+     *
+     * @var string
+     */
+    public const REC_FLAT_NUMBER = 'rec_flat_number';
 }

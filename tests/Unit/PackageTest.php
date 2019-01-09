@@ -128,6 +128,11 @@ class PackageTest extends AbstractTestCase
         $package->setTestBeforePayment(false);
         $package->setAdrService(true);
         $package->setAdrContent(['b' => '6']);
+        $package->setRecHouseNumber('18/B');
+        $package->setRecBlock('15');
+        $package->setRecEnterance('189-12');
+        $package->setFloor('4');
+        $package->setFlatNumber('1900');
         
         $this->assertEquals(
             [
@@ -211,6 +216,11 @@ class PackageTest extends AbstractTestCase
                 Option::TEST_BEFORE_PAYMENT         => 0,
                 Option::ADR_SERVICE                 => 1,
                 Option::ADR_CONTENT                 => ['b' => '6'],
+                Option::REC_HOUSE_NUMBER            => '18/B',
+                Option::REC_BLOCK                   => '15',
+                Option::REC_ENTERANCE               => '189-12',
+                Option::REC_FLOOR                   => '4',
+                Option::REC_FLAT_NUMBER             => '1900',
             ],
             $package->toArray()
         );
