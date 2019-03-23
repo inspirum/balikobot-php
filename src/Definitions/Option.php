@@ -669,4 +669,18 @@ class Option
      * @var string
      */
     public const REC_FLAT_NUMBER = 'rec_flat_number';
+    
+    /**
+     * Patronymum - otčestvo (povinný pro přepravce Nova Poshta).
+     *
+     * @var string
+     */
+    public const REC_NAME_PATRONYMUM = 'rec_name_patronymum';
+    
+    /**
+     * ID lokality.
+     *
+     * @var string
+     */
+    public const REC_LOCALE_ID = 'rec_locale_id';
 }

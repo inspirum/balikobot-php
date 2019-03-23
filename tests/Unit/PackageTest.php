@@ -63,11 +63,13 @@ class PackageTest extends AbstractTestCase
         $package->setVS('67890');
         $package->setRecName('Name');
         $package->setRecFirm('Firm');
+        $package->setRecNamePatronymum('Patronymum');
         $package->setRecStreet('Street');
         $package->setRecCity('City');
         $package->setRecZip('18900');
         $package->setRecRegion('Region');
         $package->setRecCountry('Czech');
+        $package->setRecLocaleId('15');
         $package->setRecEmail('email@email.com');
         $package->setRecPhone('777666555');
         $package->setWeight(4.3);
@@ -151,11 +153,13 @@ class PackageTest extends AbstractTestCase
                 Option::VS                          => '67890',
                 Option::REC_NAME                    => 'Name',
                 Option::REC_FIRM                    => 'Firm',
+                Option::REC_NAME_PATRONYMUM         => 'Patronymum',
                 Option::REC_STREET                  => 'Street',
                 Option::REC_CITY                    => 'City',
                 Option::REC_ZIP                     => '18900',
                 Option::REC_REGION                  => 'Region',
                 Option::REC_COUNTRY                 => 'Czech',
+                Option::REC_LOCALE_ID               => '15',
                 Option::REC_EMAIL                   => 'email@email.com',
                 Option::REC_PHONE                   => '777666555',
                 Option::WEIGHT                      => 4.3,

@@ -87,6 +87,16 @@ trait CustomerData
     }
     
     /**
+     * @param string $localeId
+     *
+     * @return void
+     */
+    public function setRecLocaleId(string $localeId): void
+    {
+        $this->offsetSet(Option::REC_LOCALE_ID, $localeId);
+    }
+    
+    /**
      * @param string $email
      *
      * @return void
@@ -114,5 +124,15 @@ trait CustomerData
     public function setBankAccountNumber(string $bankAccount): void
     {
         $this->offsetSet(Option::BANK_ACCOUNT_NUMBER, $bankAccount);
+    }
+    
+    /**
+     * @param string $recNamePatronymum
+     *
+     * @return void
+     */
+    public function setRecNamePatronymum(string $recNamePatronymum): void
+    {
+        $this->offsetSet(Option::REC_NAME_PATRONYMUM, $recNamePatronymum);
     }
 }

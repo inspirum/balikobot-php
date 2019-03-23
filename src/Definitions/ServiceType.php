@@ -729,6 +729,13 @@ class ServiceType
     public const PBH_MEEST = '19';
     
     /**
+     * Nova Poshta
+     *
+     * @var string
+     */
+    public const PBH_NOBA_POSHTA = '20';
+    
+    /**
      * Worlwide zásilky
      *
      * @var string
@@ -942,6 +949,7 @@ class ServiceType
             self::PBH_SPEEDY,
             self::PBH_COLISSIMO,
             self::PBH_MEEST,
+            self::PBH_NOBA_POSHTA,
         ];
     }
     
