@@ -785,6 +785,27 @@ class ServiceType
     public const DHL_DOMESTIC_EXPRESS = '7';
 
     /**
+     * Parcel
+     *
+     * @var string
+     */
+    public const DHLSK_PARCEL = '1';
+
+    /**
+     * Parcel International
+     *
+     * @var string
+     */
+    public const DHLSK_PARCEL_INTERNATIONAL = '2';
+
+    /**
+     * Parcel Business
+     *
+     * @var string
+     */
+    public const DHLSK_PARCEL_BUSSINESS = '3';
+
+    /**
      * Express
      *
      * @var string
@@ -957,6 +978,18 @@ class ServiceType
             self::DHL_ECONOMY,
             self::DHL_DOMESTIC_12,
             self::DHL_DOMESTIC_EXPRESS,
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public static function dhlsk(): array
+    {
+        return [
+            self::DHLSK_PARCEL,
+            self::DHLSK_PARCEL_INTERNATIONAL,
+            self::DHLSK_PARCEL_BUSSINESS,
         ];
     }
 
@@ -1160,6 +1193,7 @@ class ServiceType
             Shipper::CP         => self::cp(),
             Shipper::DPD        => self::dpd(),
             Shipper::DHL        => self::dhl(),
+            Shipper::DHLSK      => self::dhlsk(),
             Shipper::GEIS       => self::geis(),
             Shipper::GLS        => self::gls(),
             Shipper::INTIME     => self::intime(),

@@ -28,6 +28,13 @@ class Shipper
     public const DHL = 'dhl';
 
     /**
+     * DHL Parcel Slovensko
+     *
+     * @var string
+     */
+    public const DHLSK = 'dhlsk';
+
+    /**
      * Geis CZ s.r.o.
      *
      * @var string
@@ -114,6 +121,7 @@ class Shipper
         return [
             self::CP,
             self::DHL,
+            self::DHLSK,
             self::DPD,
             self::GEIS,
             self::GLS,
