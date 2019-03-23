@@ -403,6 +403,32 @@ class Client
     }
 
     /**
+     * Returns list of countries where service with cash-on-delivery payment type is available in
+     *
+     * @param string $shipper
+     *
+     * @return array[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getCodCountries(string $shipper): array
+    {
+        $response = $this->requester->call('v1', $shipper, Request::CASH_ON_DELIVERY_COUNTRIES);
+
+        if ($response['service_types'] === null) {
+            return [];
+        }
+
+        $services = [];
+
+        foreach ($response['service_types'] as $item) {
+            $services[$item['service_type']] = $item['cod_countries'];
+        }
+
+        return $services;
+    }
+
+    /**
      * Returns list of countries where service is available in
      *
      * @param string $shipper

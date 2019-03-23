@@ -110,6 +110,13 @@ class Request
     public const BRANCH_LOCATOR = 'branchlocator';
 
     /**
+     * List of services with countries which support cash-on-delivery payment type.
+     *
+     * @var string
+     */
+    public const CASH_ON_DELIVERY_COUNTRIES = 'cod4services';
+
+    /**
      * List of available countries
      *
      * @var string

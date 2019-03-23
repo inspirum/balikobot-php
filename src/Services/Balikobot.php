@@ -388,6 +388,22 @@ class Balikobot
     }
 
     /**
+     * Returns list of countries where service with cash-on-delivery payment type is available in
+     *
+     * @param string $shipper
+     *
+     * @return array[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getCodCountries(string $shipper): array
+    {
+        $countries = $this->client->getCodCountries($shipper);
+
+        return $countries;
+    }
+
+    /**
      * Returns list of countries where service is available in
      *
      * @param string $shipper

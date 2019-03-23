@@ -6,7 +6,7 @@ use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class CountriesRequestTest extends AbstractClientTestCase
+class CodCountriesRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,7 +18,7 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getCountries('cp');
+        $client->getCodCountries('cp');
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +29,7 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getCountries('cp');
+        $client->getCodCountries('cp');
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -42,7 +42,7 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getCountries('cp');
+        $client->getCodCountries('cp');
     }
 
     public function testMakeRequest()
@@ -54,11 +54,11 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getCountries('cp');
+        $client->getCodCountries('cp');
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/countries4service', []]
+            ['https://api.balikobot.cz/cp/cod4services', []]
         );
 
         $this->assertTrue(true);
@@ -73,7 +73,7 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $countries = $client->getCountries('cp');
+        $countries = $client->getCodCountries('cp');
 
         $this->assertEquals([], $countries);
     }
@@ -84,18 +84,33 @@ class CountriesRequestTest extends AbstractClientTestCase
             'status'        => 200,
             'service_types' => [
                 [
-                    'service_type' => 1,
-                    'countries'    => [
-                        'CZ',
-                        'UK',
-                        'DE',
+                    'service_type'  => 'DR',
+                    'cod_countries' => [
+                        'CZ' => [
+                            'max_price' => 10000,
+                            'currency'  => 'CZK',
+                        ],
                     ],
                 ],
                 [
-                    'service_type' => 4,
-                    'countries'    => [
-                        'CZ',
-                        'SK',
+                    'service_type'  => 'VZP',
+                    'cod_countries' => [
+                        'UA' => [
+                            'max_price' => 36000,
+                            'currency'  => 'UAH',
+                        ],
+                        'LV' => [
+                            'max_price' => 2000,
+                            'currency'  => 'USD',
+                        ],
+                        'HU' => [
+                            'max_price' => 2500,
+                            'currency'  => 'EUR',
+                        ],
+                        'SK' => [
+                            'max_price' => 500000,
+                            'currency'  => 'CZK',
+                        ],
                     ],
                 ],
             ],
@@ -103,18 +118,33 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $countries = $client->getCountries('cp');
+        $countries = $client->getCodCountries('cp');
 
         $this->assertEquals(
             [
-                1 => [
-                    'CZ',
-                    'UK',
-                    'DE',
+                'DR'  => [
+                    'CZ' => [
+                        'max_price' => 10000,
+                        'currency'  => 'CZK',
+                    ],
                 ],
-                4 => [
-                    'CZ',
-                    'SK',
+                'VZP' => [
+                    'UA' => [
+                        'max_price' => 36000,
+                        'currency'  => 'UAH',
+                    ],
+                    'LV' => [
+                        'max_price' => 2000,
+                        'currency'  => 'USD',
+                    ],
+                    'HU' => [
+                        'max_price' => 2500,
+                        'currency'  => 'EUR',
+                    ],
+                    'SK' => [
+                        'max_price' => 500000,
+                        'currency'  => 'CZK',
+                    ],
                 ],
             ],
             $countries
