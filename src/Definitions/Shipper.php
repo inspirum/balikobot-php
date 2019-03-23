@@ -98,6 +98,13 @@ class Shipper
     public const ZASILKOVNA = 'zasilkovna';
     
     /**
+     * TNT
+     *
+     * @var string
+     */
+    public const TNT = 'tnt';
+    
+    /**
      * All supported shipper services.
      *
      * @return array
@@ -117,7 +124,8 @@ class Shipper
             self::TOP_TRANS,
             self::ULOZENKA,
             self::UPS,
-            self::ZASILKOVNA
+            self::ZASILKOVNA,
+            self::TNT,
         ];
     }
     

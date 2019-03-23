@@ -813,6 +813,90 @@ class ServiceType
     public const UPS_EXPEDITED = '4';
     
     /**
+     * Express
+     *
+     * @var string
+     */
+    public const TNT_EXPRESS = '1';
+    
+    /**
+     * Express 9:00
+     *
+     * @var string
+     */
+    public const TNT_EXPRESS_9 = '2';
+    
+    /**
+     * Express 12:00
+     *
+     * @var string
+     */
+    public const TNT_EXPRESS_12 = '3';
+    
+    /**
+     * Economy Express
+     *
+     * @var string
+     */
+    public const TNT_ECONOMY_EXPRESS = '4';
+    
+    /**
+     * Night Express 8:00
+     *
+     * @var string
+     */
+    public const TNT_NIGHT_EXPRESS_8 = '5';
+    
+    /**
+     * Economy Express 12:00
+     *
+     * @var string
+     */
+    public const TNT_ECONOMY_EXPRESS_12 = '6';
+    
+    /**
+     * Express 10:00
+     *
+     * @var string
+     */
+    public const TNT_EXPRESS_10 = '7';
+    
+    /**
+     * Express (Documents)
+     *
+     * @var string
+     */
+    public const TNT_EXPRESS_DOCUMENTS = '8';
+    
+    /**
+     * Express 9:00 (Documents)
+     *
+     * @var string
+     */
+    public const TNT_EXPRESS_DOCUMENTS_9 = '9';
+    
+    /**
+     * Express 10:00 (Documents)
+     *
+     * @var string
+     */
+    public const TNT_EXPRESS_DOCUMENTS_10 = '10';
+    
+    /**
+     * Express 12:00 (Documents)
+     *
+     * @var string
+     */
+    public const TNT_EXPRESS_DOCUMENTS_12 = '11';
+    
+    /**
+     * Night Express 12:00
+     *
+     * @var string
+     */
+    public const TNT_NIGHT_EXPRESS_12 = '12';
+    
+    /**
      * @return array
      */
     public static function cp(): array
@@ -1045,6 +1129,27 @@ class ServiceType
     }
     
     /**
+     * @return array
+     */
+    public static function tnt(): array
+    {
+        return [
+            SELF::TNT_EXPRESS,
+            SELF::TNT_EXPRESS_9,
+            SELF::TNT_EXPRESS_12,
+            SELF::TNT_ECONOMY_EXPRESS,
+            SELF::TNT_NIGHT_EXPRESS_8,
+            SELF::TNT_ECONOMY_EXPRESS_12,
+            SELF::TNT_EXPRESS_10,
+            SELF::TNT_EXPRESS_DOCUMENTS,
+            SELF::TNT_EXPRESS_DOCUMENTS_9,
+            SELF::TNT_EXPRESS_DOCUMENTS_10,
+            SELF::TNT_EXPRESS_DOCUMENTS_12,
+            SELF::TNT_NIGHT_EXPRESS_12,
+        ];
+    }
+    
+    /**
      * All supported shipper services.
      *
      * @return array
@@ -1065,6 +1170,7 @@ class ServiceType
             Shipper::ULOZENKA   => self::ulozenka(),
             Shipper::UPS        => self::ups(),
             Shipper::ZASILKOVNA => self::zasilkovna(),
+            Shipper::TNT        => self::tnt(),
         ];
     }
 }

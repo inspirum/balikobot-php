@@ -13,7 +13,27 @@ class ShipperTest extends AbstractBalikobotTestCase
         
         $shippers = $service->getShippers();
         
-        $this->assertEquals(Shipper::all(), $shippers);
+        $supportedShippers = [
+            'cp',
+            'dpd',
+            'ppl',
+            'zasilkovna',
+            'geis',
+            'ulozenka',
+            'intime',
+            'gls',
+            'toptrans',
+            'pbh',
+            'sp',
+            'ups',
+            'tnt',
+            'dhl',
+        ];
+        
+        sort($shippers);
+        sort($supportedShippers);
+        
+        $this->assertEquals($supportedShippers, $shippers);
     }
     
     public function testPackageSupportAllShippersServices()
