@@ -5,9 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.0.4] - 2018-01-09
+## [1.0.5] - 2019-03-23
 ### Added
-- Add support for new options from documentation **v1.846** (2018-01-08)
+- Add support for new options from documentation **v1.855** (2019-03-19)
+    - Add **DHLSK** shipper
+- Add support for new options from documentation **v1.854** (2019-03-13)
+    - Add **COD4SERVICES** request
+- Add support for new options from documentation **v1.853** (2019-02-28)
+    - Add **BRANCHLOCATOR** request
+- Add support for new options from documentation **v1.852** (2019-02-26)
+    - Add **TNT** shipper
+- Add support for new options from documentation **v1.851** (2019-02-19)
+    - Add new definitons for regions
+- Add support for new options from documentation **v1.847** (2019-01-22)
+    - Add **PBH_NOBA_POSHTA** service type (Nova Poshta (UA) for PbH)
+    - Add **rec_name_patronymum** attribute
+    - Add **rec_locale_id** attribute
+
+
+## [1.0.4] - 2019-01-09
+### Added
+- Add support for new options from documentation **v1.846** (2019-01-08)
     - Add **rec_house_number** attribute
     - Add **rec_block** attribute
     - Add **rec_enterance** attribute
@@ -17,12 +35,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Move repo to [**@inspirum**](https://github.com/inspirum) account
 
 
-## [1.0.3] - 2018-01-02
+## [1.0.3] - 2019-01-02
 ### Fixed
 - Fix links url
 
 
-## [1.0.2] - 2018-01-02
+## [1.0.2] - 2019-01-02
 ### Changed
 - Change composer package name to `inspirum/balikobot`
 

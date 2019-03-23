@@ -473,6 +473,75 @@ var_dump($shippers);
 ```
 
 
+### **BRANCHLOCATOR**
+
+Method **getBranchesForLocation** returns available branches for given shipper in given location (city, postcode, street).
+
+The client normalizes the response by returning only **branches** array.
+
+```php
+$branches = $client->getBranchesForLocation(Shipper::UPS, Country::CZECH_REPUBLIC, 'Praha');
+
+/*
+var_dump($shippers);
+[
+  0 => [
+    'id'          => 'U25943513'
+    'name'        => 'Večerka'
+    'city'        => 'Praha'
+    'street'      => 'Mánesova 64'
+    'zip'         => '12000'
+    'region'      => ''
+    'country'     => 'CZ'
+    'type'        => 'branch'
+    'photo_large' => 'https://www.ups.com/rms/image?id=BB11B7EB-3225-4994-9FD7-B2BE72D8D2E7'
+    'latitude'    => 50.07759857
+    'longitude'   => 14.44414043
+    ...
+  ]
+  1 => [
+    ...
+  ]
+  ...
+]
+*/
+```
+
+
+### **COD4SERVICES**
+
+Method **getCodCountries** returns available countries where service with cash-on-delivery payment type for service types from given shipper.
+
+The client normalizes the response by returning only countries for service type as associative array `[service_type => cod_countries]`.
+
+```php
+$countries = $client->getCodCountries(Shipper::PPL)
+
+/*
+var_dump($countries);
+[
+  '2' => [
+    'SK' => [
+      'max_price' => 3000
+      'currency'  => 'EUR'
+    ]
+    'PL' => [
+      'max_price' => 6400
+      'currency'  => 'PLN'
+    ]
+  ]
+  '3' => [
+    'CZ' => [
+      'max_price' => 200000
+      'currency'  => 'CZK'
+    ]
+  ]
+  ...
+]
+*/
+```
+
+
 ### **COUNTRIES4SERVICE**
 
 Method **getCountries** returns available countries for service types from given shipper.
