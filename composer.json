@@ -6,7 +6,7 @@
     "inspishop",
     "balikobot"
   ],
-  "homepage": "https://github.com/tomas-novotny/php-balikobot",
+  "homepage": "https://github.com/inspirum/balikobot-php",
   "license": "MIT",
   "type": "library",
   "authors": [
