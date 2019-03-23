@@ -13,7 +13,7 @@ abstract class AbstractPackage implements ArrayAccess
      * @var array
      */
     private $data;
-    
+
     /**
      * Package constructor.
      *
@@ -23,9 +23,9 @@ abstract class AbstractPackage implements ArrayAccess
     {
         $this->data = $data;
     }
-    
+
     use CommonData;
-    
+
     /**
      * Determine if an item exists at an offset.
      *
@@ -37,7 +37,7 @@ abstract class AbstractPackage implements ArrayAccess
     {
         return array_key_exists($key, $this->data);
     }
-    
+
     /**
      * Get an item at a given offset.
      *
@@ -49,7 +49,7 @@ abstract class AbstractPackage implements ArrayAccess
     {
         return $this->data[$key];
     }
-    
+
     /**
      * Set the item at a given offset.
      *
@@ -62,7 +62,7 @@ abstract class AbstractPackage implements ArrayAccess
     {
         $this->data[$key] = $value;
     }
-    
+
     /**
      * Unset the item at a given offset.
      *
@@ -74,7 +74,7 @@ abstract class AbstractPackage implements ArrayAccess
     {
         unset($this->data[$key]);
     }
-    
+
     /**
      * Get the collection of packages as a plain array.
      *

@@ -18,7 +18,7 @@ abstract class AbstractTestCase extends PHPUnitTestCase
     {
         parent::setUp();
     }
-    
+
     /**
      * Clean up the testing environment before the next test.
      *
@@ -27,10 +27,10 @@ abstract class AbstractTestCase extends PHPUnitTestCase
     protected function tearDown()
     {
         parent::tearDown();
-        
+
         Mockery::close();
     }
-    
+
     /**
      * Get partial mocked API requester instance with overrided call method.
      *
@@ -43,13 +43,13 @@ abstract class AbstractTestCase extends PHPUnitTestCase
     {
         /* @var \Inspirum\Balikobot\Services\Requester|\Mockery\MockInterface $client */
         $requester = Mockery::mock(Requester::class . '[request]', ['test', 'test']);
-        
+
         if (is_array($data)) {
             $data = json_encode($data);
         }
-        
+
         $requester->shouldReceive('request')->andReturn(new Response($statusCode, [], (string) $data));
-        
+
         return $requester;
     }
 }

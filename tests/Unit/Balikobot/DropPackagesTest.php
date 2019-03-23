@@ -13,16 +13,16 @@ class DropPackagesTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $packages = new OrderedPackageCollection();
-        
+
         $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
         $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
-        
+
         $service->dropPackages($packages);
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -37,22 +37,22 @@ class DropPackagesTest extends AbstractBalikobotTestCase
                 ],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testMakeRequestForSinglePackage()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $package = new OrderedPackage(1, 'ppl', '0001', '1234');
-        
+
         $service->dropPackage($package);
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -64,7 +64,7 @@ class DropPackagesTest extends AbstractBalikobotTestCase
                 ],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
 }

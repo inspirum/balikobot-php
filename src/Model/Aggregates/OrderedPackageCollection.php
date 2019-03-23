@@ -18,14 +18,14 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
      * @var \Inspirum\Balikobot\Model\Values\OrderedPackage[]
      */
     private $packages = [];
-    
+
     /**
      * Shipper code.
      *
      * @var string|null
      */
     private $shipper;
-    
+
     /**
      * OrderedPackageCollection constructor.
      *
@@ -35,7 +35,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     {
         $this->shipper = $shipper;
     }
-    
+
     /**
      * Add package.
      *
@@ -47,11 +47,11 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     {
         //validate package shipper
         $this->validateShipper($package);
-        
+
         // add package to collection
         $this->packages[] = $package;
     }
-    
+
     /**
      * Get shipper.
      *
@@ -62,10 +62,10 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
         if ($this->shipper === null) {
             throw new RuntimeException('No shipper is set.');
         }
-        
+
         return $this->shipper;
     }
-    
+
     /**
      * Get package IDs.
      *
@@ -77,7 +77,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
             return $package->getPackageId();
         }, $this->packages);
     }
-    
+
     /**
      * Get carrier IDs.
      *
@@ -89,7 +89,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
             return $package->getCarrierId();
         }, $this->packages);
     }
-    
+
     /**
      * Validate shipper
      *
@@ -105,7 +105,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
         if ($this->shipper === null) {
             $this->shipper = $package->getShipper();
         }
-        
+
         // validate shipper
         if ($this->shipper !== $package->getShipper()) {
             throw new InvalidArgumentException(
@@ -117,7 +117,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
             );
         }
     }
-    
+
     /**
      * Get an iterator for the items.
      *
@@ -127,7 +127,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     {
         return new ArrayIterator($this->packages);
     }
-    
+
     /**
      * Determine if an item exists at an offset.
      *
@@ -139,7 +139,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     {
         return array_key_exists($key, $this->packages);
     }
-    
+
     /**
      * Get an item at a given offset.
      *
@@ -151,7 +151,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     {
         return $this->packages[$key];
     }
-    
+
     /**
      * Set the item at a given offset.
      *
@@ -163,10 +163,10 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     public function offsetSet($key, $value)
     {
         $this->validateShipper($value);
-        
+
         $this->packages[$key] = $value;
     }
-    
+
     /**
      * Unset the item at a given offset.
      *
@@ -178,7 +178,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     {
         unset($this->packages[$key]);
     }
-    
+
     /**
      * Count elements of an object
      *

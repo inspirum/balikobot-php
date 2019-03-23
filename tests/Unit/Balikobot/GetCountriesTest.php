@@ -12,22 +12,22 @@ class GetCountriesTest extends AbstractBalikobotTestCase
             'status'        => 200,
             'service_types' => [],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $service->getCountries('cp');
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
                 'https://api.balikobot.cz/cp/countries4service',
-                []
+                [],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -38,7 +38,7 @@ class GetCountriesTest extends AbstractBalikobotTestCase
                     'countries'    => [
                         'CZ',
                         'UK',
-                        'DE'
+                        'DE',
                     ],
                 ],
                 [
@@ -50,22 +50,22 @@ class GetCountriesTest extends AbstractBalikobotTestCase
                 ],
             ],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $units = $service->getCountries('cp');
-        
+
         $this->assertEquals(
             [
                 1 => [
                     'CZ',
                     'UK',
-                    'DE'
+                    'DE',
                 ],
                 4 => [
                     'CZ',
                     'SK',
-                ]
+                ],
             ],
             $units
         );

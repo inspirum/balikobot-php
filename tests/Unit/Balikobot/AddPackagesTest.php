@@ -19,16 +19,16 @@ class AddPackagesTest extends AbstractBalikobotTestCase
                 'status'     => '200',
             ],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $packages = new PackageCollection('ppl', '0001');
-        
+
         $packages->add(new Package(['vs' => '0001', 'rec_name' => 'Name']));
         $packages->add(new Package(['vs' => '0002', 'price' => 2000]));
-        
+
         $service->addPackages($packages);
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -37,20 +37,20 @@ class AddPackagesTest extends AbstractBalikobotTestCase
                     0 => [
                         'eid'      => '0001',
                         'vs'       => '0001',
-                        'rec_name' => 'Name'
+                        'rec_name' => 'Name',
                     ],
                     1 => [
                         'eid'   => '0001',
                         'vs'    => '0002',
-                        'price' => 2000
+                        'price' => 2000,
                     ],
                 ],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -67,15 +67,15 @@ class AddPackagesTest extends AbstractBalikobotTestCase
                 'package_id' => 42720,
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                 'status'     => '200',
-            ]
+            ],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $packages = new PackageCollection('cp', '0001');
-        
+
         $orderedPackages = $service->addPackages($packages);
-        
+
         $this->assertEquals(2, $orderedPackages->count());
         $this->assertEquals([42719, 42720], $orderedPackages->getPackageIds());
         $this->assertEquals('NP1504102247M', $orderedPackages[1]->getCarrierId());

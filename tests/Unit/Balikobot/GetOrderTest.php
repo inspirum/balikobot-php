@@ -16,11 +16,11 @@ class GetOrderTest extends AbstractBalikobotTestCase
             'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
             'package_ids'  => [1, 4, 65],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $service->getOrder('cp', 1);
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -28,10 +28,10 @@ class GetOrderTest extends AbstractBalikobotTestCase
                 [],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -42,11 +42,11 @@ class GetOrderTest extends AbstractBalikobotTestCase
             'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
             'package_ids'  => [1, 4, 65],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $orderedShipment = $service->getOrder('ppl', 29);
-        
+
         $this->assertEquals(29, $orderedShipment->getOrderId());
         $this->assertEquals('http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..', $orderedShipment->getFileUrl());
         $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.', $orderedShipment->getHandoverUrl());

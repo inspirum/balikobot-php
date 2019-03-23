@@ -22,10 +22,10 @@ class BadRequestException extends AbstractException
         string $message = null
     ) {
         $this->setErrors($response);
-        
+
         parent::__construct($response, $statusCode, $previous, $message);
     }
-    
+
     /**
      * Set errors from response.
      *
@@ -36,17 +36,17 @@ class BadRequestException extends AbstractException
     private function setErrors(array $response): void
     {
         $i = 0;
-        
+
         // add erros from all packages
         while (isset($response[$i])) {
             // set errors for package
             $this->setErrorsForPackage($i, $response[$i]);
-            
+
             // try next package
             $i++;
         }
     }
-    
+
     /**
      * @param int   $number
      * @param array $response
@@ -59,16 +59,16 @@ class BadRequestException extends AbstractException
         if (isset($response['errors']) === false) {
             // try to resolve errors from codes
             $this->setErrorsFromResponseCodes($number, $response);
-            
+
             return;
         }
-        
+
         // set erros for given package
         foreach ($response['errors'] as $error) {
             $this->setError($number, $error['attribute'], $error['message']);
         }
     }
-    
+
     /**
      * @param int   $number
      * @param array $response
@@ -82,15 +82,15 @@ class BadRequestException extends AbstractException
             if (is_numeric($code) === false || $code < 400) {
                 continue;
             }
-            
+
             // get error message from code
             $error = $this->getErrorMessage($key, (int) $code);
-            
+
             // set erros fro given package from response codes
             $this->setError($number, $key, $error);
         }
     }
-    
+
     /**
      * @param string $key
      * @param int    $code
@@ -103,14 +103,14 @@ class BadRequestException extends AbstractException
         if ($key === 'status') {
             return Response::$statusCodesErrors[$code] ?? Response::$statusCodesErrors[500];
         }
-        
+
         if (isset(Response::$packageDataKeyErrors[$code][$key])) {
             return Response::$packageDataKeyErrors[$code][$key];
         }
-        
+
         return Response::$packageDataErrors[$code] ?? 'Nespecifikovaná chyba.';
     }
-    
+
     /**
      * @param int    $number
      * @param string $key

@@ -15,7 +15,7 @@ trait NotificationData
      * @return void
      */
     abstract public function offsetSet($key, $value);
-    
+
     /**
      * @param bool $notification
      *
@@ -25,7 +25,7 @@ trait NotificationData
     {
         $this->offsetSet(Option::SMS_NOTIFICATION, (int) $notification);
     }
-    
+
     /**
      * @param bool $phoneDeliveryNotification
      *
@@ -35,7 +35,7 @@ trait NotificationData
     {
         $this->offsetSet(Option::PHONE_DELIVERY_NOTIFICATION, (int) $phoneDeliveryNotification);
     }
-    
+
     /**
      * @param bool $phoneOrderNotification
      *
@@ -45,7 +45,7 @@ trait NotificationData
     {
         $this->offsetSet(Option::PHONE_ORDER_NOTIFICATION, (int) $phoneOrderNotification);
     }
-    
+
     /**
      * @param bool $emailNotification
      *
@@ -55,7 +55,7 @@ trait NotificationData
     {
         $this->offsetSet(Option::EMAIL_NOTIFICATION, (int) $emailNotification);
     }
-    
+
     /**
      * @param bool $phoneNotification
      *
@@ -65,7 +65,7 @@ trait NotificationData
     {
         $this->offsetSet(Option::PHONE_NOTIFICATION, (int) $phoneNotification);
     }
-    
+
     /**
      * @param bool $b2cNotification
      *

@@ -12,24 +12,24 @@ class GetPackageInfoTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $orderedPackage = new OrderedPackage(1, 'ppl', '0001', '1234');
-        
+
         $service->getPackageInfo($orderedPackage);
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
                 'https://api.balikobot.cz/ppl/package/1',
-                []
+                [],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -42,15 +42,15 @@ class GetPackageInfoTest extends AbstractBalikobotTestCase
             'pieces'          => [1, 3],
             'real_order_id'   => '180001',
             'order_number'    => 2,
-            'eid'             => '0002'
+            'eid'             => '0002',
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $orderedPackage = new OrderedPackage(1, 'ppl', '0001', '1234');
-        
+
         $package = $service->getPackageInfo($orderedPackage);
-        
+
         $this->assertArrayNotHasKey('package_id', $package->toArray());
         $this->assertArrayNotHasKey('eshop_id', $package->toArray());
         $this->assertArrayNotHasKey('carrier_id', $package->toArray());

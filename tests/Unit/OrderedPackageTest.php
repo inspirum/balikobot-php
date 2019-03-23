@@ -17,7 +17,7 @@ class OrderedPackageTest extends AbstractTestCase
             'carrier_id_swap' => 23,
             'pieces'          => [1, 2],
         ]);
-        
+
         $this->assertEquals('cp', $orderedPackage->getShipper());
         $this->assertEquals('0001', $orderedPackage->getBatchId());
         $this->assertEquals(1234, $orderedPackage->getPackageId());
@@ -27,7 +27,7 @@ class OrderedPackageTest extends AbstractTestCase
         $this->assertEquals(23, $orderedPackage->getCarrierIdSwap());
         $this->assertEquals([1, 2], $orderedPackage->getPieces());
     }
-    
+
     public function testStaticConstructorWithMissingData()
     {
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', '0001', [
@@ -35,7 +35,7 @@ class OrderedPackageTest extends AbstractTestCase
             'carrier_id' => "02IID",
             'label_url'  => "/labels",
         ]);
-        
+
         $this->assertEquals('cp', $orderedPackage->getShipper());
         $this->assertEquals('0001', $orderedPackage->getBatchId());
         $this->assertEquals(1234, $orderedPackage->getPackageId());

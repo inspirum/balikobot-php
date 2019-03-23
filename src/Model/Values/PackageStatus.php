@@ -11,17 +11,17 @@ class PackageStatus
      * @var int
      */
     private $id;
-    
+
     /**
      * @var string
      */
     private $name;
-    
+
     /**
      * @var \DateTime|null
      */
     private $date;
-    
+
     /**
      * PackageStatus constructor.
      *
@@ -35,7 +35,7 @@ class PackageStatus
         $this->name = $name;
         $this->date = $date;
     }
-    
+
     /**
      * @return int
      */
@@ -43,7 +43,7 @@ class PackageStatus
     {
         return $this->id;
     }
-    
+
     /**
      * @return string
      */
@@ -51,7 +51,7 @@ class PackageStatus
     {
         return $this->name;
     }
-    
+
     /**
      * @return \DateTime|null
      */
@@ -59,7 +59,7 @@ class PackageStatus
     {
         return $this->date;
     }
-    
+
     /**
      * @param array $data
      *
@@ -72,7 +72,7 @@ class PackageStatus
         } catch (Throwable $exception) {
             $date = null;
         }
-        
+
         return new self($data['status_id'], $data['name'], $date);
     }
 }

@@ -17,7 +17,7 @@ class PackageTest extends AbstractTestCase
                 'test' => false,
             ]
         );
-        
+
         $this->assertEquals(
             [
                 'a'    => 1,
@@ -27,27 +27,27 @@ class PackageTest extends AbstractTestCase
             $package->toArray()
         );
     }
-    
+
     public function testSupportArrayAccess()
     {
         $package = new Package();
-        
+
         $package->offsetSet('a', 2);
         $package->offsetSet('b', false);
-        
+
         $this->assertEquals(2, $package->offsetGet('a'));
         $this->assertEquals(false, $package->offsetGet('b'));
         $this->assertTrue($package->offsetExists('b'));
-        
+
         $package->offsetUnset('b');
-        
+
         $this->assertFalse($package->offsetExists('b'));
     }
-    
+
     public function testPackageSetters()
     {
         $package = new Package();
-        
+
         $package->setEID('eid');
         $package->setOrderNumber(1);
         $package->setRealOrderId('RealOrderID');
@@ -135,7 +135,7 @@ class PackageTest extends AbstractTestCase
         $package->setRecEnterance('189-12');
         $package->setFloor('4');
         $package->setFlatNumber('1900');
-        
+
         $this->assertEquals(
             [
                 Option::EID                         => 'eid',

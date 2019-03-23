@@ -11,51 +11,51 @@ class PostcodeRequestTest extends AbstractClientTestCase
     public function testThrowsExceptionOnError()
     {
         $this->expectException(BadRequestException::class);
-        
+
         $requester = $this->newRequesterWithMockedRequestMethod(400, [
             'status' => 200,
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $client->getPostCodes('cp', 'NP');
     }
-    
+
     public function testRequestShouldHaveStatus()
     {
         $this->expectException(BadRequestException::class);
-        
+
         $requester = $this->newRequesterWithMockedRequestMethod(200, []);
-        
+
         $client = new Client($requester);
-        
+
         $client->getPostCodes('cp', 'NP');
     }
-    
+
     public function testThrowsExceptionOnBadStatusCode()
     {
         $this->expectException(BadRequestException::class);
-        
+
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 400,
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $client->getPostCodes('cp', 'NP');
     }
-    
+
     public function testMakeRequest()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'    => 200,
             'zip_codes' => [],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $client->getPostCodes('cp', 'NP');
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -63,21 +63,21 @@ class PostcodeRequestTest extends AbstractClientTestCase
                 [],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testMakeRequestWithCountry()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'    => 200,
             'zip_codes' => [],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $client->getPostCodes('cp', 'NP', 'CZ');
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -85,24 +85,24 @@ class PostcodeRequestTest extends AbstractClientTestCase
                 [],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testEmptyArrayIsReturnedIfPostCodesMissing()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'    => 200,
             'zip_codes' => null,
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $postcodes = $client->getPostCodes('cp', 'NP');
-        
+
         $this->assertEquals([], $postcodes);
     }
-    
+
     public function testDataAreReturnedFromResponseType1()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -122,11 +122,11 @@ class PostcodeRequestTest extends AbstractClientTestCase
                 ],
             ],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $postcodes = $client->getPostCodes('cp', 'NP');
-        
+
         $this->assertEquals(
             [
                 [
@@ -134,20 +134,20 @@ class PostcodeRequestTest extends AbstractClientTestCase
                     'postcode_end' => null,
                     'city'         => null,
                     'country'      => 'CZ',
-                    '1B'           => false
+                    '1B'           => false,
                 ],
                 [
                     'postcode'     => '19000',
                     'postcode_end' => null,
                     'city'         => null,
                     'country'      => 'CZ',
-                    '1B'           => true
+                    '1B'           => true,
                 ],
             ],
             $postcodes
         );
     }
-    
+
     public function testDataAreReturnedFromResponseType2()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -167,11 +167,11 @@ class PostcodeRequestTest extends AbstractClientTestCase
                 ],
             ],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $postcodes = $client->getPostCodes('cp', 'NP');
-        
+
         $this->assertEquals(
             [
                 [
@@ -179,20 +179,20 @@ class PostcodeRequestTest extends AbstractClientTestCase
                     'postcode_end' => '10199',
                     'city'         => null,
                     'country'      => 'CZ',
-                    '1B'           => false
+                    '1B'           => false,
                 ],
                 [
                     'postcode'     => '35000',
                     'postcode_end' => '35299',
                     'city'         => null,
                     'country'      => 'CZ',
-                    '1B'           => false
+                    '1B'           => false,
                 ],
             ],
             $postcodes
         );
     }
-    
+
     public function testDataAreReturnedFromResponseType4()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -208,11 +208,11 @@ class PostcodeRequestTest extends AbstractClientTestCase
                 ],
             ],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $postcodes = $client->getPostCodes('cp', 'NP');
-        
+
         $this->assertEquals(
             [
                 [
@@ -220,13 +220,13 @@ class PostcodeRequestTest extends AbstractClientTestCase
                     'postcode_end' => '25999',
                     'city'         => 'AIXIRIVALL',
                     'country'      => 'AD',
-                    '1B'           => false
+                    '1B'           => false,
                 ],
             ],
             $postcodes
         );
     }
-    
+
     public function testDataAreReturnedFromResponseType5()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -243,11 +243,11 @@ class PostcodeRequestTest extends AbstractClientTestCase
                 ],
             ],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $postcodes = $client->getPostCodes('cp', 'NP');
-        
+
         $this->assertEquals(
             [
                 [
@@ -255,14 +255,14 @@ class PostcodeRequestTest extends AbstractClientTestCase
                     'postcode_end' => null,
                     'city'         => 'ABU DHABI',
                     'country'      => 'AE',
-                    '1B'           => false
+                    '1B'           => false,
                 ],
                 [
                     'postcode'     => null,
                     'postcode_end' => null,
                     'city'         => 'AJMAN CITY',
                     'country'      => 'AE',
-                    '1B'           => false
+                    '1B'           => false,
                 ],
             ],
             $postcodes

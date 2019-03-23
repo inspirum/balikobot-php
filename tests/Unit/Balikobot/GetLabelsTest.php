@@ -12,18 +12,18 @@ class GetLabelsTest extends AbstractBalikobotTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'     => 200,
-            'labels_url' => "http://pdf.balikobot.cz/dpd/eNorMdY1NFwwXDAELgE2"
+            'labels_url' => "http://pdf.balikobot.cz/dpd/eNorMdY1NFwwXDAELgE2",
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $packages = new OrderedPackageCollection();
-        
+
         $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
         $packages->add(new OrderedPackage(7, 'ppl', '0001', '5678'));
-        
+
         $service->getLabels($packages);
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -33,25 +33,25 @@ class GetLabelsTest extends AbstractBalikobotTestCase
                 ],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'     => 200,
             'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $packages = new OrderedPackageCollection();
-        
+
         $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
-        
+
         $labelsUrl = $service->getLabels($packages);
-        
+
         $this->assertEquals('https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.', $labelsUrl);
     }
 }

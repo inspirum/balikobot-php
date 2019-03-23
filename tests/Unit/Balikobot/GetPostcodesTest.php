@@ -14,13 +14,13 @@ class GetPostcodesTest extends AbstractBalikobotTestCase
             'status'    => 200,
             'zip_codes' => [],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $postCodes = $service->getPostCodes('ppl', '7');
-        
+
         $postCodes->valid();
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -28,10 +28,10 @@ class GetPostcodesTest extends AbstractBalikobotTestCase
                 [],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -51,28 +51,28 @@ class GetPostcodesTest extends AbstractBalikobotTestCase
                 ],
             ],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $postCodes = $service->getPostCodes('cp', 'NP');
-        
+
         $this->assertInstanceOf(Generator::class, $postCodes);
-        
+
         /* @var \Inspirum\Balikobot\Model\Values\PostCode $postCode */
         $postCode = $postCodes->current();
-        
+
         $this->assertInstanceOf(PostCode::class, $postCode);
         $this->assertEquals('35002', $postCode->getPostcode());
-        
+
         $postCodes->next();
         $postCode = $postCodes->current();
-        
+
         $this->assertInstanceOf(PostCode::class, $postCode);
         $this->assertEquals('19000', $postCode->getPostcode());
-        
+
         $postCodes->next();
         $postCode = $postCodes->current();
-        
+
         $this->assertEquals(null, $postCode);
     }
 }

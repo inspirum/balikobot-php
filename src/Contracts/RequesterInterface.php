@@ -26,7 +26,7 @@ interface RequesterInterface
         array $data = [],
         bool $shouldHaveStatus = true
     ): array;
-    
+
     /**
      * Get API response.
      *

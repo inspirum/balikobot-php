@@ -21,7 +21,7 @@ class OrderedShipmentTest extends AbstractTestCase
             ],
             new DateTime('2018-10-10 14:00:00')
         );
-        
+
         $this->assertEquals('cp', $orderedShipment->getShipper());
         $this->assertEquals(1234, $orderedShipment->getOrderId());
         $this->assertEquals("/handover", $orderedShipment->getHandoverUrl());
@@ -30,7 +30,7 @@ class OrderedShipmentTest extends AbstractTestCase
         $this->assertEquals([1, 67], $orderedShipment->getPackageIds());
         $this->assertEquals(new \DateTime('2018-10-10 14:00:00'), $orderedShipment->getDate());
     }
-    
+
     public function testStaticConstructorWithMissingData()
     {
         $orderedShipment = OrderedShipment::newInstanceFromData(
@@ -42,7 +42,7 @@ class OrderedShipmentTest extends AbstractTestCase
                 'labels_url'   => "/labels",
             ]
         );
-        
+
         $this->assertEquals('cp', $orderedShipment->getShipper());
         $this->assertEquals(1234, $orderedShipment->getOrderId());
         $this->assertEquals("/handover", $orderedShipment->getHandoverUrl());

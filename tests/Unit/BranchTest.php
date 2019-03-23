@@ -40,7 +40,7 @@ class BranchTest extends AbstractTestCase
             'opening_saturday'      => 'opening_saturday',
             'opening_sunday'        => 'opening_sunday',
         ]);
-        
+
         $this->assertEquals('cp', $branch->getShipper());
         $this->assertEquals('NP', $branch->getServiceType());
         $this->assertEquals('1234', $branch->getId());
@@ -73,13 +73,13 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('opening_saturday', $branch->getOpeningSaturday());
         $this->assertEquals('opening_sunday', $branch->getOpeningSunday());
     }
-    
+
     public function testStaticConstructorWithMissingData()
     {
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip' => 'zip',
         ]);
-        
+
         $this->assertEquals('cp', $branch->getShipper());
         $this->assertEquals('NP', $branch->getServiceType());
         $this->assertEquals(null, $branch->getId());
@@ -112,19 +112,19 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals(null, $branch->getOpeningSaturday());
         $this->assertEquals(null, $branch->getOpeningSunday());
     }
-    
+
     public function testStaticConstructorFallbackName()
     {
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'     => 'zip',
             'address' => 'address',
         ]);
-        
+
         $this->assertEquals('zip', $branch->getName());
         $this->assertEquals('branch', $branch->getType());
         $this->assertEquals('address', $branch->getStreet());
     }
-    
+
     public function testBranchIdResolver()
     {
         $branch = Branch::newInstanceFromData('cp', 'NP', [
@@ -132,55 +132,55 @@ class BranchTest extends AbstractTestCase
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
-        
+
         $this->assertEquals('11000', $branch->getBranchId());
-        
+
         $branch = Branch::newInstanceFromData('sp', 'NP', [
             'id'   => 11,
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
-        
+
         $this->assertEquals('11000', $branch->getBranchId());
-        
+
         $branch = Branch::newInstanceFromData('ulozenka', '7', [
             'id'   => 11,
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
-        
+
         $this->assertEquals('11000', $branch->getBranchId());
-        
+
         $branch = Branch::newInstanceFromData('ppl', 'NP', [
             'id'   => 'KM1234',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
-        
+
         $this->assertEquals('1234', $branch->getBranchId());
-        
+
         $branch = Branch::newInstanceFromData('ppl', 'NP', [
             'id'   => 'K1M234',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
-        
+
         $this->assertEquals('K1M234', $branch->getBranchId());
-        
+
         $branch = Branch::newInstanceFromData('intime', 'NP', [
             'id'   => 11,
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
-        
+
         $this->assertEquals('Branch Name', $branch->getBranchId());
-        
+
         $branch = Branch::newInstanceFromData('zasilkovna', null, [
             'id'   => 167,
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
-        
+
         $this->assertEquals('167', $branch->getBranchId());
     }
 }

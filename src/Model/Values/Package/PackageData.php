@@ -15,7 +15,7 @@ trait PackageData
      * @return void
      */
     abstract public function offsetSet($key, $value);
-    
+
     /**
      * @param float $width
      *
@@ -25,7 +25,7 @@ trait PackageData
     {
         $this->offsetSet(Option::WIDTH, $width);
     }
-    
+
     /**
      * @param float $length
      *
@@ -35,7 +35,7 @@ trait PackageData
     {
         $this->offsetSet(Option::LENGTH, $length);
     }
-    
+
     /**
      * @param float $height
      *
@@ -45,7 +45,7 @@ trait PackageData
     {
         $this->offsetSet(Option::HEIGHT, $height);
     }
-    
+
     /**
      * @param float $weight
      *
@@ -55,7 +55,7 @@ trait PackageData
     {
         $this->offsetSet(Option::WEIGHT, $weight);
     }
-    
+
     /**
      * @param float $price
      *
@@ -65,7 +65,7 @@ trait PackageData
     {
         $this->offsetSet(Option::PRICE, $price);
     }
-    
+
     /**
      * @param float $volume
      *
@@ -75,7 +75,7 @@ trait PackageData
     {
         $this->offsetSet(Option::VOLUME, $volume);
     }
-    
+
     /**
      * @param bool $overDimension
      *

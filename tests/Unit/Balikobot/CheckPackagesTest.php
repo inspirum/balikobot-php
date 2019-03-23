@@ -13,16 +13,16 @@ class CheckPackagesTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $packages = new PackageCollection('ppl', '0001');
-        
+
         $packages->add(new Package(['vs' => '0001', 'rec_name' => 'Name']));
         $packages->add(new Package(['vs' => '0002', 'price' => 2000]));
-        
+
         $service->checkPackages($packages);
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -31,17 +31,17 @@ class CheckPackagesTest extends AbstractBalikobotTestCase
                     0 => [
                         'eid'      => '0001',
                         'vs'       => '0001',
-                        'rec_name' => 'Name'
+                        'rec_name' => 'Name',
                     ],
                     1 => [
                         'eid'   => '0001',
                         'vs'    => '0002',
-                        'price' => 2000
+                        'price' => 2000,
                     ],
                 ],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
 }

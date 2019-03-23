@@ -16,7 +16,7 @@ trait DeliveryData
      * @return void
      */
     abstract public function offsetSet($key, $value);
-    
+
     /**
      * @param string $noteDriver
      *
@@ -26,7 +26,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::NOTE_DRIVER, $noteDriver);
     }
-    
+
     /**
      * @param string $noteCustomer
      *
@@ -36,7 +36,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::NOTE_CUSTOMER, $noteCustomer);
     }
-    
+
     /**
      * @param bool $comfortExclusiveService
      *
@@ -46,7 +46,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::COMFORT_EXCLUSIVE_SERVICE, (int) $comfortExclusiveService);
     }
-    
+
     /**
      * @param bool $persDeliveryFloor
      *
@@ -56,7 +56,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::PERS_DELIVERY_FLOOR, (int) $persDeliveryFloor);
     }
-    
+
     /**
      * @param bool $persDeliveryBuilding
      *
@@ -66,7 +66,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::PERS_DELIVERY_BUILDING, (int) $persDeliveryBuilding);
     }
-    
+
     /**
      * @param bool $persDeliveryDepartment
      *
@@ -76,7 +76,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::PERS_DELIVERY_DEPARTMENT, (int) $persDeliveryDepartment);
     }
-    
+
     /**
      * @param string $pin
      *
@@ -86,7 +86,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::PIN, $pin);
     }
-    
+
     /**
      * @param bool $satDelivery
      *
@@ -96,7 +96,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::SAT_DELIVERY, (int) $satDelivery);
     }
-    
+
     /**
      * @param bool $requireFullAge
      *
@@ -106,7 +106,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::REQUIRE_FULL_AGE, (int) $requireFullAge);
     }
-    
+
     /**
      * @param string $fullAgeData
      *
@@ -116,7 +116,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::FULL_AGE_DATA, $fullAgeData);
     }
-    
+
     /**
      * @param string $password
      *
@@ -126,7 +126,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::PASSWORD, $password);
     }
-    
+
     /**
      * @param bool $delInsurance
      *
@@ -136,7 +136,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::DEL_INSURANCE, (int) $delInsurance);
     }
-    
+
     /**
      * @param bool $delEvening
      *
@@ -146,7 +146,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::DEL_EVENING, (int) $delEvening);
     }
-    
+
     /**
      * @param bool $delExworks
      *
@@ -156,7 +156,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::DEL_EXWORKS, (int) $delExworks);
     }
-    
+
     /**
      * @param bool $comfort
      *
@@ -166,7 +166,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::COMFORT_SERVICE, (int) $comfort);
     }
-    
+
     /**
      * @param bool $comfort
      *
@@ -176,7 +176,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::COMFORT_SERVICE_PLUS, (int) $comfort);
     }
-    
+
     /**
      * @param \DateTime $deliveryDate
      *
@@ -186,7 +186,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::DELIVERY_DATE, $deliveryDate->format('Y-m-d'));
     }
-    
+
     /**
      * @param bool $swap
      *
@@ -196,7 +196,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::SWAP, (int) $swap);
     }
-    
+
     /**
      * @param string $swapOption
      *
@@ -206,7 +206,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::SWAP_OPTION, $swapOption);
     }
-    
+
     /**
      * @param bool $openBeforePayment
      *
@@ -216,7 +216,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::OPEN_BEFORE_PAYMENT, (int) $openBeforePayment);
     }
-    
+
     /**
      * @param bool $testBeforePayment
      *
@@ -226,7 +226,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::TEST_BEFORE_PAYMENT, (int) $testBeforePayment);
     }
-    
+
     /**
      * @param string $note
      *
@@ -236,7 +236,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::NOTE, $note);
     }
-    
+
     /**
      * @param string $recHouseNumber
      *
@@ -246,7 +246,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::REC_HOUSE_NUMBER, $recHouseNumber);
     }
-    
+
     /**
      * @param string $recBlock
      *
@@ -256,7 +256,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::REC_BLOCK, $recBlock);
     }
-    
+
     /**
      * @param string $recEnteracne
      *
@@ -266,7 +266,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::REC_ENTERANCE, $recEnteracne);
     }
-    
+
     /**
      * @param string $recFloor
      *
@@ -276,7 +276,7 @@ trait DeliveryData
     {
         $this->offsetSet(Option::REC_FLOOR, $recFloor);
     }
-    
+
     /**
      * @param string $recFlatNumber
      *

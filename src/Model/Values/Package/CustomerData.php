@@ -15,7 +15,7 @@ trait CustomerData
      * @return void
      */
     abstract public function offsetSet($key, $value);
-    
+
     /**
      * @param string $name
      *
@@ -25,7 +25,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_NAME, $name);
     }
-    
+
     /**
      * @param string $firm
      *
@@ -35,7 +35,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_FIRM, $firm);
     }
-    
+
     /**
      * @param string $street
      *
@@ -45,7 +45,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_STREET, $street);
     }
-    
+
     /**
      * @param string $city
      *
@@ -55,7 +55,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_CITY, $city);
     }
-    
+
     /**
      * @param string $zip
      *
@@ -65,7 +65,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_ZIP, $zip);
     }
-    
+
     /**
      * @param string $recRegion
      *
@@ -75,7 +75,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_REGION, $recRegion);
     }
-    
+
     /**
      * @param string $country
      *
@@ -85,7 +85,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_COUNTRY, $country);
     }
-    
+
     /**
      * @param string $localeId
      *
@@ -95,7 +95,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_LOCALE_ID, $localeId);
     }
-    
+
     /**
      * @param string $email
      *
@@ -105,7 +105,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_EMAIL, $email);
     }
-    
+
     /**
      * @param string $phone
      *
@@ -115,7 +115,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_PHONE, $phone);
     }
-    
+
     /**
      * @param string $bankAccount
      *
@@ -125,7 +125,7 @@ trait CustomerData
     {
         $this->offsetSet(Option::BANK_ACCOUNT_NUMBER, $bankAccount);
     }
-    
+
     /**
      * @param string $recNamePatronymum
      *

@@ -15,7 +15,7 @@ trait ParcelPackageData
      * @return void
      */
     abstract public function offsetSet($key, $value);
-    
+
     /**
      * @param string $muType
      *
@@ -25,7 +25,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::MU_TYPE, $muType);
     }
-    
+
     /**
      * @param int $piecesCount
      *
@@ -35,7 +35,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::PIECES_COUNT, $piecesCount);
     }
-    
+
     /**
      * @param string $muType
      *
@@ -45,7 +45,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::MU_TYPE_ONE, $muType);
     }
-    
+
     /**
      * @param int $piecesCount
      *
@@ -55,7 +55,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::PIECES_COUNT_ONE, $piecesCount);
     }
-    
+
     /**
      * @param string $muType
      *
@@ -65,7 +65,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::MU_TYPE_TWO, $muType);
     }
-    
+
     /**
      * @param int $piecesCount
      *
@@ -75,7 +75,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::PIECES_COUNT_TWO, $piecesCount);
     }
-    
+
     /**
      * @param string $muType
      *
@@ -85,7 +85,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::MU_TYPE_THREE, $muType);
     }
-    
+
     /**
      * @param int $piecesCount
      *
@@ -95,7 +95,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::PIECES_COUNT_THREE, $piecesCount);
     }
-    
+
     /**
      * @param int $wrapBackCount
      *
@@ -105,7 +105,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::WRAP_BACK_COUNT, $wrapBackCount);
     }
-    
+
     /**
      * @param string $wrapBackNote
      *
@@ -115,7 +115,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::WRAP_BACK_NOTE, $wrapBackNote);
     }
-    
+
     /**
      * @param bool $appDisp
      *
@@ -125,7 +125,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::APP_DISP, (int) $appDisp);
     }
-    
+
     /**
      * @param string $content
      *
@@ -135,7 +135,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::CONTENT, $content);
     }
-    
+
     /**
      * @param bool $getPiecesNumbers
      *
@@ -145,7 +145,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::GET_PIECES_NUMBERS, (int) $getPiecesNumbers);
     }
-    
+
     /**
      * @param string $contentOne
      *
@@ -155,7 +155,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::CONTENT_ONE, $contentOne);
     }
-    
+
     /**
      * @param string $contentTwo
      *
@@ -165,7 +165,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::CONTENT_TWO, $contentTwo);
     }
-    
+
     /**
      * @param string $contentThree
      *
@@ -175,7 +175,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::CONTENT_THREE, $contentThree);
     }
-    
+
     /**
      * @param bool $adrService
      *
@@ -185,7 +185,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::ADR_SERVICE, (int) $adrService);
     }
-    
+
     /**
      * @param array $adrContent
      *
@@ -195,7 +195,7 @@ trait ParcelPackageData
     {
         $this->offsetSet(Option::ADR_CONTENT, $adrContent);
     }
-    
+
     /**
      * @param bool $vdlService
      *

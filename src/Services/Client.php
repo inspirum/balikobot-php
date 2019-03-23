@@ -16,7 +16,7 @@ class Client
      * @var \Inspirum\Balikobot\Contracts\RequesterInterface
      */
     private $requester;
-    
+
     /**
      * Balikobot API client.
      *
@@ -26,7 +26,7 @@ class Client
     {
         $this->requester = $requester;
     }
-    
+
     /**
      * Add package(s) to the Balikobot.
      *
@@ -40,17 +40,17 @@ class Client
     public function addPackages(string $shipper, array $packages): array
     {
         $response = $this->requester->call('v1', $shipper, Request::ADD, $packages);
-        
+
         if (isset($response[0]['package_id']) === false) {
             throw new BadRequestException($response);
         }
-        
+
         unset($response['labels_url']);
         unset($response['status']);
-        
+
         return $response;
     }
-    
+
     /**
      * Drops a package from the Balikobot. The package must be not ordered.
      *
@@ -65,7 +65,7 @@ class Client
     {
         $this->dropPackages($shipper, [$packageId]);
     }
-    
+
     /**
      * Drops a package from the Balikobot. The package must be not ordered.
      *
@@ -79,18 +79,18 @@ class Client
     public function dropPackages(string $shipper, array $packageIds): void
     {
         $data = [];
-        
+
         foreach ($packageIds as $packageId) {
             $data[] = ['id' => $packageId];
         }
-        
+
         if (count($data) === 0) {
             return;
         }
-        
+
         $this->requester->call('v1', $shipper, Request::DROP, $data);
     }
-    
+
     /**
      * Tracks a package
      *
@@ -105,19 +105,19 @@ class Client
     {
         $data = [
             0 => [
-                'id' => $carrierId
+                'id' => $carrierId,
             ],
         ];
-        
+
         $response = $this->requester->call('v2', $shipper, Request::TRACK, $data);
-        
+
         if (empty($response[0])) {
             throw new BadRequestException($response);
         }
-        
+
         return $response[0];
     }
-    
+
     /**
      * Tracks a package, get the last info
      *
@@ -132,25 +132,25 @@ class Client
     {
         $data = [
             0 => [
-                'id' => $carrierId
+                'id' => $carrierId,
             ],
         ];
-        
+
         $response = $this->requester->call('v1', $shipper, Request::TRACK_STATUS, $data, false);
-        
+
         if (empty($response[0])) {
             throw new BadRequestException($response);
         }
-        
+
         $status = [
             'name'      => $response[0]['status_text'],
             'status_id' => $response[0]['status_id'],
             'date'      => null,
         ];
-        
+
         return $status;
     }
-    
+
     /**
      * Returns packages from the front (not ordered) for given shipper
      *
@@ -163,10 +163,10 @@ class Client
     public function getOverview(string $shipper): array
     {
         $response = $this->requester->call('v1', $shipper, Request::OVERVIEW, [], false);
-        
+
         return $response;
     }
-    
+
     /**
      * Gets labels
      *
@@ -182,12 +182,12 @@ class Client
         $data = [
             'package_ids' => $packageIds,
         ];
-        
+
         $response = $this->requester->call('v1', $shipper, Request::LABELS, $data);
-        
+
         return $response['labels_url'];
     }
-    
+
     /**
      * Gets complete information about a package
      *
@@ -201,10 +201,10 @@ class Client
     public function getPackageInfo(string $shipper, int $packageId): array
     {
         $response = $this->requester->call('v1', $shipper, Request::PACKAGE . '/' . $packageId, [], false);
-        
+
         return $response;
     }
-    
+
     /**
      * Order shipment for packages.
      *
@@ -224,14 +224,14 @@ class Client
             'date'        => $date ? $date->format('Y-m-d') : null,
             'note'        => $note,
         ];
-        
+
         $response = $this->requester->call('v1', $shipper, Request::ORDER, $data);
-        
+
         unset($response['status']);
-        
+
         return $response;
     }
-    
+
     /**
      * Get order details.
      *
@@ -245,12 +245,12 @@ class Client
     public function getOrder(string $shipper, int $orderId): array
     {
         $response = $this->requester->call('v1', $shipper, Request::ORDER_VIEW . '/' . $orderId, [], false);
-        
+
         unset($response['status']);
-        
+
         return $response;
     }
-    
+
     /**
      * Order pickup for packages.
      *
@@ -281,10 +281,10 @@ class Client
             'package_count' => $packageCount,
             'message'       => $message,
         ];
-        
+
         $this->requester->call('v1', $shipper, Request::ORDER_PICKUP, $data);
     }
-    
+
     /**
      * Returns available services for the given shipper
      *
@@ -297,14 +297,14 @@ class Client
     public function getServices(string $shipper): array
     {
         $response = $this->requester->call('v1', $shipper, Request::SERVICES);
-        
+
         if (isset($response['service_types']) === false) {
             return [];
         }
-        
+
         return $response['service_types'];
     }
-    
+
     /**
      * Returns available manipulation units for the given shipper
      *
@@ -317,20 +317,20 @@ class Client
     public function getManipulationUnits(string $shipper): array
     {
         $response = $this->requester->call('v1', $shipper, Request::MANIPULATION_UNITS);
-        
+
         if ($response['units'] === null) {
             return [];
         }
-        
+
         $units = [];
-        
+
         foreach ($response['units'] as $item) {
             $units[$item['code']] = $item['name'];
         }
-        
+
         return $units;
     }
-    
+
     /**
      * Returns available branches for the given shipper and its service
      * Full branches instead branches request.
@@ -346,16 +346,62 @@ class Client
     public function getBranches(string $shipper, string $service = null, bool $fullData = false): array
     {
         $request = $fullData ? Request::FULL_BRANCHES : Request::BRANCHES;
-        
+
         $response = $this->requester->call('v1', $shipper, $request . '/' . $service);
-        
+
         if ($response['branches'] === null) {
             return [];
         }
-        
+
         return $response['branches'];
     }
-    
+
+    /**
+     * Returns available branches for the given shipper in given location
+     *
+     * @param string      $shipper
+     * @param string      $country
+     * @param string      $city
+     * @param string|null $postcode
+     * @param string|null $street
+     * @param int|null    $maxResults
+     * @param float|null  $radius
+     *
+     * @return array[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getBranchesForLocation(
+        string $shipper,
+        string $country,
+        string $city,
+        string $postcode = null,
+        string $street = null,
+        int $maxResults = null,
+        float $radius = null
+    ): array {
+        Country::validateCode($country);
+
+        $data = [
+            'country'     => $country,
+            'city'        => $city,
+            'zip'         => $postcode,
+            'street'      => $street,
+            'max_results' => $maxResults,
+            'radius'      => $radius,
+        ];
+
+        $data = array_filter($data);
+
+        $response = $this->requester->call('v1', $shipper, Request::BRANCH_LOCATOR, $data);
+
+        if ($response['branches'] === null) {
+            return [];
+        }
+
+        return $response['branches'];
+    }
+
     /**
      * Returns list of countries where service is available in
      *
@@ -368,20 +414,20 @@ class Client
     public function getCountries(string $shipper): array
     {
         $response = $this->requester->call('v1', $shipper, Request::COUNTRIES);
-        
+
         if ($response['service_types'] === null) {
             return [];
         }
-        
+
         $services = [];
-        
+
         foreach ($response['service_types'] as $item) {
             $services[$item['service_type']] = $item['countries'];
         }
-        
+
         return $services;
     }
-    
+
     /**
      * Returns available branches for the given shipper and its service
      *
@@ -397,21 +443,21 @@ class Client
     {
         if ($country !== null) {
             Country::validateCode($country);
-            
+
             $urlPath = $service . '/' . $country;
         } else {
             $urlPath = $service;
         }
-        
+
         $response = $this->requester->call('v1', $shipper, Request::ZIP_CODES . '/' . $urlPath);
-        
+
         if ($response['zip_codes'] === null) {
             return [];
         }
-        
+
         $country   = $response['country'] ?? $country;
         $postCodes = [];
-        
+
         foreach ($response['zip_codes'] as $postCode) {
             $postCodes[] = [
                 'postcode'     => $postCode['zip'] ?? ($postCode['zip_start'] ?? null),
@@ -421,10 +467,10 @@ class Client
                 '1B'           => (bool) ($postCode['1B'] ?? false),
             ];
         }
-        
+
         return $postCodes;
     }
-    
+
     /**
      * Check package(s) data.
      *
@@ -439,7 +485,7 @@ class Client
     {
         $this->requester->call('v1', $shipper, Request::CHECK, $packages);
     }
-    
+
     /**
      * Returns available manipulation units for the given shipper
      *
@@ -452,17 +498,17 @@ class Client
     public function getAdrUnits(string $shipper): array
     {
         $response = $this->requester->call('v1', $shipper, Request::ADR_UNITS);
-        
+
         if ($response['units'] === null) {
             return [];
         }
-        
+
         $units = [];
-        
+
         foreach ($response['units'] as $item) {
             $units[$item['code']] = $item['name'];
         }
-        
+
         return $units;
     }
 }

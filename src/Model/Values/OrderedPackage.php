@@ -10,56 +10,56 @@ class OrderedPackage
      * @var int
      */
     private $packageId;
-    
+
     /**
      * Package batch ID (EID).
      *
      * @var string
      */
     private $batchId;
-    
+
     /**
      * Shipper.
      *
      * @var string
      */
     private $shipper;
-    
+
     /**
      * Carrier ID (for package tracking)
      *
      * @var string
      */
     private $carrierId;
-    
+
     /**
      * Track URL.
      *
      * @var string|null
      */
     private $trackUrl;
-    
+
     /**
      * Label URL
      *
      * @var string|null
      */
     private $labelUrl;
-    
+
     /**
      * Carrier ID Swap.
      *
      * @var string|null
      */
     private $carrierIdSwap;
-    
+
     /**
      * Pieces.
      *
      * @var array
      */
     private $pieces;
-    
+
     /**
      * OrderedPackage constructor.
      *
@@ -91,7 +91,7 @@ class OrderedPackage
         $this->carrierIdSwap = $carrierIdSwap;
         $this->pieces        = $pieces;
     }
-    
+
     /**
      * @return int
      */
@@ -99,7 +99,7 @@ class OrderedPackage
     {
         return $this->packageId;
     }
-    
+
     /**
      * @return string
      */
@@ -107,7 +107,7 @@ class OrderedPackage
     {
         return $this->batchId;
     }
-    
+
     /**
      * @return string
      */
@@ -115,7 +115,7 @@ class OrderedPackage
     {
         return $this->carrierId;
     }
-    
+
     /**
      * @return string|null
      */
@@ -123,7 +123,7 @@ class OrderedPackage
     {
         return $this->trackUrl;
     }
-    
+
     /**
      * @return string|null
      */
@@ -131,7 +131,7 @@ class OrderedPackage
     {
         return $this->labelUrl;
     }
-    
+
     /**
      * @return string|null
      */
@@ -139,7 +139,7 @@ class OrderedPackage
     {
         return $this->carrierIdSwap;
     }
-    
+
     /**
      * @return array
      */
@@ -147,7 +147,7 @@ class OrderedPackage
     {
         return $this->pieces;
     }
-    
+
     /**
      * @return string
      */
@@ -155,7 +155,7 @@ class OrderedPackage
     {
         return $this->shipper;
     }
-    
+
     /**
      * @param string $shipper
      * @param string $eid

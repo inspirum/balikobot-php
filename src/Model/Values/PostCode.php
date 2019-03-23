@@ -8,37 +8,37 @@ class PostCode
      * @var string
      */
     private $shipper;
-    
+
     /**
      * @var string|null
      */
     private $service;
-    
+
     /**
      * @var string
      */
     private $postcode;
-    
+
     /**
      * @var string|null
      */
     private $postcodeEnd;
-    
+
     /**
      * @var string|null
      */
     private $city;
-    
+
     /**
      * @var string|null
      */
     private $country;
-    
+
     /**
      * @var bool
      */
     private $morningDelivery;
-    
+
     /**
      * Postcode constructor.
      *
@@ -67,7 +67,7 @@ class PostCode
         $this->country         = $country;
         $this->morningDelivery = $morningDelivery;
     }
-    
+
     /**
      * @return string
      */
@@ -75,7 +75,7 @@ class PostCode
     {
         return $this->shipper;
     }
-    
+
     /**
      * @return string|null
      */
@@ -83,7 +83,7 @@ class PostCode
     {
         return $this->service;
     }
-    
+
     /**
      * @return string
      */
@@ -91,7 +91,7 @@ class PostCode
     {
         return $this->postcode;
     }
-    
+
     /**
      * @return string|null
      */
@@ -99,7 +99,7 @@ class PostCode
     {
         return $this->postcodeEnd;
     }
-    
+
     /**
      * @return string|null
      */
@@ -107,7 +107,7 @@ class PostCode
     {
         return $this->city;
     }
-    
+
     /**
      * @return string|null
      */
@@ -115,7 +115,7 @@ class PostCode
     {
         return $this->country;
     }
-    
+
     /**
      * @return bool
      */
@@ -123,7 +123,7 @@ class PostCode
     {
         return $this->morningDelivery;
     }
-    
+
     /**
      * New instance from data
      *

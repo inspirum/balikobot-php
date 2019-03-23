@@ -11,164 +11,164 @@ class Branch
      * @var string
      */
     private $shipper;
-    
+
     /**
      * @var string|null
      */
     private $service;
-    
+
     /**
      * @var string
      */
     private $branchId;
-    
+
     /**
      * @var string|null
      */
     private $id;
-    
+
     /**
      * @var string
      */
     private $type;
-    
+
     /**
      * @var string
      */
     private $name;
-    
+
     /**
      * @var string
      */
     private $city;
-    
+
     /**
      * @var string
      */
     private $street;
-    
+
     /**
      * @var string
      */
     private $zip;
-    
+
     /**
      * @var string|null
      */
     private $cityPart;
-    
+
     /**
      * @var string|null
      */
     private $district;
-    
+
     /**
      * @var string|null
      */
     private $region;
-    
+
     /**
      * ISO 3166-1 alpha-2 http://cs.wikipedia.org/wiki/ISO_3166-1
      *
      * @var string|null
      */
     private $country;
-    
+
     /**
      * @var string|null
      */
     private $currency;
-    
+
     /**
      * @var string|null
      */
     private $photoSmall;
-    
+
     /**
      * @var string|null
      */
     private $photoBig;
-    
+
     /**
      * @var string|null
      */
     private $url;
-    
+
     /**
      * @var float|null
      */
     private $latitude;
-    
+
     /**
      * @var float|null
      */
     private $longitude;
-    
+
     /**
      * @var string|null
      */
     private $directionsGlobal;
-    
+
     /**
      * @var string|null
      */
     private $directionsCar;
-    
+
     /**
      * @var string|null
      */
     private $directionsPublic;
-    
+
     /**
      * @var bool|null
      */
     private $wheelchairAccessible;
-    
+
     /**
      * @var bool|null
      */
     private $claimAssistant;
-    
+
     /**
      * @var bool|null
      */
     private $dressingRoom;
-    
+
     /**
      * @var string|null
      */
     private $openingMonday;
-    
+
     /**
      * @var string|null
      */
     private $openingTuesday;
-    
+
     /**
      * @var string|null
      */
     private $openingWednesday;
-    
+
     /**
      * @var string|null
      */
     private $openingThursday;
-    
+
     /**
      * @var string|null
      */
     private $openingFriday;
-    
+
     /**
      * @var string|null null
      */
     private $openingSaturday = null;
-    
+
     /**
      * @var string|null null
      */
     private $openingSunday = null;
-    
+
     /**
      * Branch constructor.
      *
@@ -268,10 +268,10 @@ class Branch
         $this->openingFriday        = $openingFriday;
         $this->openingSaturday      = $openingSaturday;
         $this->openingSunday        = $openingSunday;
-        
+
         $this->setBranchId();
     }
-    
+
     /**
      * @return string
      */
@@ -279,7 +279,7 @@ class Branch
     {
         return $this->shipper;
     }
-    
+
     /**
      * @return string|null
      */
@@ -287,7 +287,7 @@ class Branch
     {
         return $this->service;
     }
-    
+
     /**
      * @return string
      */
@@ -295,7 +295,7 @@ class Branch
     {
         return $this->branchId;
     }
-    
+
     /**
      * @return string|null
      */
@@ -303,7 +303,7 @@ class Branch
     {
         return $this->id;
     }
-    
+
     /**
      * @return string
      */
@@ -311,7 +311,7 @@ class Branch
     {
         return $this->type;
     }
-    
+
     /**
      * @return string
      */
@@ -319,7 +319,7 @@ class Branch
     {
         return $this->name;
     }
-    
+
     /**
      * @return string
      */
@@ -327,7 +327,7 @@ class Branch
     {
         return $this->city;
     }
-    
+
     /**
      * @return string
      */
@@ -335,7 +335,7 @@ class Branch
     {
         return $this->street;
     }
-    
+
     /**
      * @return string
      */
@@ -343,7 +343,7 @@ class Branch
     {
         return $this->zip;
     }
-    
+
     /**
      * @return string|null
      */
@@ -351,7 +351,7 @@ class Branch
     {
         return $this->cityPart;
     }
-    
+
     /**
      * @return string|null
      */
@@ -359,7 +359,7 @@ class Branch
     {
         return $this->district;
     }
-    
+
     /**
      * @return string|null
      */
@@ -367,7 +367,7 @@ class Branch
     {
         return $this->region;
     }
-    
+
     /**
      * @return string|null
      */
@@ -375,7 +375,7 @@ class Branch
     {
         return $this->country;
     }
-    
+
     /**
      * @return string|null
      */
@@ -383,7 +383,7 @@ class Branch
     {
         return $this->currency;
     }
-    
+
     /**
      * @return string|null
      */
@@ -391,7 +391,7 @@ class Branch
     {
         return $this->photoSmall;
     }
-    
+
     /**
      * @return string|null
      */
@@ -399,7 +399,7 @@ class Branch
     {
         return $this->photoBig;
     }
-    
+
     /**
      * @return string|null
      */
@@ -407,7 +407,7 @@ class Branch
     {
         return $this->url;
     }
-    
+
     /**
      * @return float|null
      */
@@ -415,7 +415,7 @@ class Branch
     {
         return $this->latitude;
     }
-    
+
     /**
      * @return float|null
      */
@@ -423,7 +423,7 @@ class Branch
     {
         return $this->longitude;
     }
-    
+
     /**
      * @return string|null
      */
@@ -431,7 +431,7 @@ class Branch
     {
         return $this->directionsGlobal;
     }
-    
+
     /**
      * @return string|null
      */
@@ -439,7 +439,7 @@ class Branch
     {
         return $this->directionsCar;
     }
-    
+
     /**
      * @return string|null
      */
@@ -447,7 +447,7 @@ class Branch
     {
         return $this->directionsPublic;
     }
-    
+
     /**
      * @return bool|null
      */
@@ -455,7 +455,7 @@ class Branch
     {
         return $this->wheelchairAccessible;
     }
-    
+
     /**
      * @return bool|null
      */
@@ -463,7 +463,7 @@ class Branch
     {
         return $this->claimAssistant;
     }
-    
+
     /**
      * @return bool|null
      */
@@ -471,7 +471,7 @@ class Branch
     {
         return $this->dressingRoom;
     }
-    
+
     /**
      * @return string|null
      */
@@ -479,7 +479,7 @@ class Branch
     {
         return $this->openingMonday;
     }
-    
+
     /**
      * @return string|null
      */
@@ -487,7 +487,7 @@ class Branch
     {
         return $this->openingTuesday;
     }
-    
+
     /**
      * @return string|null
      */
@@ -495,7 +495,7 @@ class Branch
     {
         return $this->openingWednesday;
     }
-    
+
     /**
      * @return string|null
      */
@@ -503,7 +503,7 @@ class Branch
     {
         return $this->openingThursday;
     }
-    
+
     /**
      * @return string|null
      */
@@ -511,7 +511,7 @@ class Branch
     {
         return $this->openingFriday;
     }
-    
+
     /**
      * @return string|null
      */
@@ -519,7 +519,7 @@ class Branch
     {
         return $this->openingSaturday;
     }
-    
+
     /**
      * @return string|null
      */
@@ -527,7 +527,7 @@ class Branch
     {
         return $this->openingSunday;
     }
-    
+
     /**
      * Set branch ID.
      *
@@ -537,7 +537,7 @@ class Branch
     {
         $this->branchId = $this->resolveBranchId();
     }
-    
+
     /**
      * Resolve branch ID.
      *
@@ -552,18 +552,18 @@ class Branch
         ) {
             return str_replace(' ', '', $this->zip);
         }
-        
+
         if ($this->shipper === Shipper::PPL) {
             return str_replace('KM', '', (string) $this->id);
         }
-        
+
         if ($this->shipper === Shipper::INTIME) {
             return $this->name;
         }
-        
+
         return (string) $this->id;
     }
-    
+
     /**
      * New instance from data
      *

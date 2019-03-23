@@ -20,7 +20,7 @@ class PostcodeTest extends AbstractTestCase
                 '1B'           => true,
             ]
         );
-        
+
         $this->assertEquals('cp', $postcode->getShipper());
         $this->assertEquals('NP', $postcode->getService());
         $this->assertEquals('17000', $postcode->getPostcode());
@@ -29,7 +29,7 @@ class PostcodeTest extends AbstractTestCase
         $this->assertEquals('Prague', $postcode->getCity());
         $this->assertTrue($postcode->isMorningDelivery());
     }
-    
+
     public function testStaticConstructorWithMissingData()
     {
         $postcode = PostCode::newInstanceFromData(
@@ -39,7 +39,7 @@ class PostcodeTest extends AbstractTestCase
                 'postcode' => '17000',
             ]
         );
-        
+
         $this->assertEquals('cp', $postcode->getShipper());
         $this->assertEquals(null, $postcode->getService());
         $this->assertEquals('17000', $postcode->getPostcode());

@@ -16,13 +16,13 @@ class TrackLastPackageTest extends AbstractBalikobotTestCase
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $package = new OrderedPackage(1, 'ppl', '0001', '1234');
-        
+
         $service->trackPackageLastStatus($package);
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -34,10 +34,10 @@ class TrackLastPackageTest extends AbstractBalikobotTestCase
                 ],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -47,13 +47,13 @@ class TrackLastPackageTest extends AbstractBalikobotTestCase
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $package = new OrderedPackage(1, 'ppl', '0001', '1234');
-        
+
         $status = $service->trackPackageLastStatus($package);
-        
+
         $this->assertEquals(1, $status->getId());
         $this->assertEquals(null, $status->getDate());
         $this->assertEquals('Zásilka byla doručena příjemci.', $status->getName());

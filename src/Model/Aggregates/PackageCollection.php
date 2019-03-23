@@ -15,21 +15,21 @@ class PackageCollection implements IteratorAggregate, Countable
      * @var \Inspirum\Balikobot\Model\Values\Package[]
      */
     private $packages = [];
-    
+
     /**
      * Shipper code.
      *
      * @var string
      */
     private $shipper;
-    
+
     /**
      * EID.
      *
      * @var string
      */
     private $eid;
-    
+
     /**
      * PackageCollection constructor.
      *
@@ -41,7 +41,7 @@ class PackageCollection implements IteratorAggregate, Countable
         $this->shipper = $shipper;
         $this->eid     = $eid ?: $this->newEID();
     }
-    
+
     /**
      * Add package to collection.
      *
@@ -51,14 +51,14 @@ class PackageCollection implements IteratorAggregate, Countable
     {
         // clone package
         $package = clone $package;
-        
+
         // set collection EID
         $package->setEID($this->eid);
-        
+
         // add package to collection
         $this->packages[] = $package;
     }
-    
+
     /**
      * Get packages shipper.
      *
@@ -68,7 +68,7 @@ class PackageCollection implements IteratorAggregate, Countable
     {
         return $this->shipper;
     }
-    
+
     /**
      * Get packages EID.
      *
@@ -78,7 +78,7 @@ class PackageCollection implements IteratorAggregate, Countable
     {
         return $this->eid;
     }
-    
+
     /**
      * Get an iterator for the items.
      *
@@ -88,7 +88,7 @@ class PackageCollection implements IteratorAggregate, Countable
     {
         return new ArrayIterator($this->packages);
     }
-    
+
     /**
      * Get the collection of packages as a plain array.
      *
@@ -100,7 +100,7 @@ class PackageCollection implements IteratorAggregate, Countable
             return $package->toArray();
         }, $this->packages);
     }
-    
+
     /**
      * Count elements of an object
      *
@@ -110,7 +110,7 @@ class PackageCollection implements IteratorAggregate, Countable
     {
         return count($this->packages);
     }
-    
+
     /**
      * Get new EID for package batch.
      *

@@ -19,21 +19,21 @@ class Requester implements RequesterInterface
         'v1' => 'https://api.balikobot.cz/',
         'v2' => 'https://api.balikobot.cz/v2/',
     ];
-    
+
     /**
      * API User.
      *
      * @var string
      */
     private $apiUser;
-    
+
     /**
      * API key.
      *
      * @var string
      */
     private $apiKey;
-    
+
     /**
      * Balikobot API client.
      *
@@ -45,7 +45,7 @@ class Requester implements RequesterInterface
         $this->apiUser = $apiUser;
         $this->apiKey  = $apiKey;
     }
-    
+
     /**
      * Call API.
      *
@@ -69,29 +69,29 @@ class Requester implements RequesterInterface
         // resolve url
         $path = trim($shipper . '/' . $request, '/');
         $host = $this->resolveHostName($version);
-        
+
         // call API server and get response
         $response = $this->request($host . $path, $data);
-        
+
         // get status code and content
         $statusCode = $response->getStatusCode();
         $content    = $response->getBody()->getContents();
-        
+
         // parse response content to assoc array
         $content = json_decode($content, true);
-        
+
         // return empty array when json_decode fails
         if ($content === null) {
             $content = [];
         }
-        
+
         // validate response status code
         $this->validateResponse($statusCode, $content, $shouldHaveStatus);
-        
+
         // return response
         return $content;
     }
-    
+
     /**
      * Get API response.
      *
@@ -104,34 +104,34 @@ class Requester implements RequesterInterface
     {
         // init curl
         $ch = curl_init();
-        
+
         // set headers
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
-        
+
         // set data
         if (count($data) > 0) {
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         }
-        
+
         // set auth
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Authorization: Basic ' . base64_encode($this->apiUser . ':' . $this->apiKey),
             'Content-Type: application/json',
         ]);
-        
+
         // execute curl
         $response   = (string) curl_exec($ch);
         $statusCode = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        
+
         // close curl
         curl_close($ch);
-        
+
         return new Response($statusCode, [], $response);
     }
-    
+
     /**
      * Get API url for given version.
      *
@@ -143,7 +143,7 @@ class Requester implements RequesterInterface
     {
         return isset(self::API_URL[$version]) ? self::API_URL[$version] : self::API_URL['v1'];
     }
-    
+
     /**
      * Validate response.
      *
@@ -156,10 +156,10 @@ class Requester implements RequesterInterface
     private function validateResponse(int $statusCode, array $response, bool $shouldHaveStatus): void
     {
         $this->validateStatus($statusCode, $response);
-        
+
         $this->validateResponseStatus($response, $shouldHaveStatus);
     }
-    
+
     /**
      * Validate status code
      *
@@ -174,13 +174,13 @@ class Requester implements RequesterInterface
         if ($statusCode === 401) {
             throw new UnauthorizedException();
         }
-        
+
         // request error
         if ($statusCode !== 200) {
             throw new BadRequestException($response, $statusCode);
         }
     }
-    
+
     /**
      * Validate response status.
      *
@@ -197,9 +197,9 @@ class Requester implements RequesterInterface
         if (isset($response['status']) === false && $shouldHaveStatus === false) {
             return;
         }
-        
+
         $statusCode = (int) ($response['status'] ?? 500);
-        
+
         if ($statusCode !== 200) {
             throw new BadRequestException($response, $statusCode);
         }

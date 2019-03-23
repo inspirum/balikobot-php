@@ -15,7 +15,7 @@ trait CommonData
      * @return void
      */
     abstract public function offsetSet($key, $value);
-    
+
     /**
      * Get an item at a given offset.
      *
@@ -24,7 +24,7 @@ trait CommonData
      * @return mixed
      */
     abstract public function offsetGet($key);
-    
+
     /**
      * Set EID.
      *
@@ -36,7 +36,7 @@ trait CommonData
     {
         $this->offsetSet(Option::EID, $id);
     }
-    
+
     /**
      * Get EID.
      *
@@ -46,7 +46,7 @@ trait CommonData
     {
         return $this->offsetGet(Option::EID);
     }
-    
+
     /**
      * @param int $orderNumber
      *
@@ -56,7 +56,7 @@ trait CommonData
     {
         $this->offsetSet(Option::ORDER_NUMBER, $orderNumber);
     }
-    
+
     /**
      * @param string $realOrderId
      *
@@ -66,7 +66,7 @@ trait CommonData
     {
         $this->offsetSet(Option::REAL_ORDER_ID, $realOrderId);
     }
-    
+
     /**
      * @param string $serviceType
      *
@@ -76,7 +76,7 @@ trait CommonData
     {
         $this->offsetSet(Option::SERVICE_TYPE, $serviceType);
     }
-    
+
     /**
      * @param array $services
      *
@@ -85,10 +85,10 @@ trait CommonData
     public function setServices(array $services): void
     {
         // TODO: add validation
-        
+
         $this->offsetSet(Option::SERVICES, implode('+', $services));
     }
-    
+
     /**
      * @param string $branchId
      *
@@ -98,7 +98,7 @@ trait CommonData
     {
         $this->offsetSet(Option::BRANCH_ID, $branchId);
     }
-    
+
     /**
      * @param bool $fullErrors
      *
@@ -108,7 +108,7 @@ trait CommonData
     {
         $this->offsetSet(Option::RETURN_FULL_ERRORS, (int) $fullErrors);
     }
-    
+
     /**
      * @param bool $returnTrack
      *

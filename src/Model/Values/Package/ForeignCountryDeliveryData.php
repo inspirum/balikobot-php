@@ -15,7 +15,7 @@ trait ForeignCountryDeliveryData
      * @return void
      */
     abstract public function offsetSet($key, $value);
-    
+
     /**
      * @param string $invoiceNumber
      *
@@ -25,7 +25,7 @@ trait ForeignCountryDeliveryData
     {
         $this->offsetSet(Option::INVOICE_NUMBER, $invoiceNumber);
     }
-    
+
     /**
      * @param string $pdf
      *
@@ -35,7 +35,7 @@ trait ForeignCountryDeliveryData
     {
         $this->offsetSet(Option::INVOICE_PDF, $pdf);
     }
-    
+
     /**
      * @param string $terms
      *
@@ -45,7 +45,7 @@ trait ForeignCountryDeliveryData
     {
         $this->offsetSet(Option::TERMS_OF_TRADE, $terms);
     }
-    
+
     /**
      * @param array $contentData
      *

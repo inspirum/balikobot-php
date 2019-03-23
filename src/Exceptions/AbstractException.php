@@ -15,21 +15,21 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
      * @var array
      */
     protected $response;
-    
+
     /**
      * Response HTTP status code.
      *
      * @var int
      */
     protected $statusCode;
-    
+
     /**
      * API response errors.
      *
      * @var array
      */
     protected $errors = [];
-    
+
     /**
      * AbstractException constructor.
      *
@@ -46,19 +46,19 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
     ) {
         // set response data
         $this->response = $response;
-        
+
         // overwrite default HTTP status code
         $this->statusCode = $statusCode;
-        
+
         // overwrite default message
         if ($message === null) {
             $message = Response::$statusCodesErrors[$statusCode] ?? 'Operace neproběhla v pořádku.';
         }
-        
+
         // construct exception
         parent::__construct($message, $statusCode, $previous);
     }
-    
+
     /**
      * Get response HTTP status code.
      *
@@ -68,7 +68,7 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
     {
         return $this->statusCode;
     }
-    
+
     /**
      * Get response as array.
      *
@@ -78,7 +78,7 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
     {
         return $this->response;
     }
-    
+
     /**
      * Get response as string.
      *
@@ -88,7 +88,7 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
     {
         return (string) json_encode($this->response);
     }
-    
+
     /**
      * Get response errors.
      *

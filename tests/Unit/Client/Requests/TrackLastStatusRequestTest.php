@@ -11,16 +11,16 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
     public function testThrowsExceptionOnError()
     {
         $this->expectException(BadRequestException::class);
-        
+
         $requester = $this->newRequesterWithMockedRequestMethod(400, [
             'status' => 200,
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $client->trackPackageLastStatus('cp', 1);
     }
-    
+
     public function testRequestDoesNotHaveStatus()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -29,40 +29,40 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $status = $client->trackPackageLastStatus('cp', 1);
-        
+
         $this->assertNotEmpty($status);
     }
-    
+
     public function testThrowsExceptionOnBadStatusCode()
     {
         $this->expectException(BadRequestException::class);
-        
+
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 400,
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $client->trackPackageLastStatus('cp', 1);
     }
-    
+
     public function testThrowsExceptionWhenNoReturnStatus()
     {
         $this->expectException(BadRequestException::class);
-        
+
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $client->trackPackageLastStatus('cp', 1);
     }
-    
+
     public function testMakeRequest()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -72,11 +72,11 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $client->trackPackageLastStatus('cp', 1);
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -88,10 +88,10 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
                 ],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testDataAreReturnedInV2Format()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -101,11 +101,11 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         $status = $client->trackPackageLastStatus('cp', 1);
-        
+
         $this->assertEquals(
             [
                 'name'      => 'Zásilka byla doručena příjemci.',

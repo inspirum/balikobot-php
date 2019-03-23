@@ -10,37 +10,37 @@ class OrderedShipment
      * @var string
      */
     private $orderId;
-    
+
     /**
      * @var string
      */
     private $handoverUrl;
-    
+
     /**
      * @var string
      */
     private $labelsUrl;
-    
+
     /**
      * @var string|null
      */
     private $fileUrl;
-    
+
     /**
      * @var \DateTime|null
      */
     private $date;
-    
+
     /**
      * @var string
      */
     private $shipper;
-    
+
     /**
      * @var int[]
      */
     private $packageIds;
-    
+
     /**
      * OrderedShipment constructor.
      *
@@ -69,7 +69,7 @@ class OrderedShipment
         $this->date        = $date;
         $this->fileUrl     = $fileUrl;
     }
-    
+
     /**
      * @return string
      */
@@ -77,7 +77,7 @@ class OrderedShipment
     {
         return $this->orderId;
     }
-    
+
     /**
      * @return string
      */
@@ -85,7 +85,7 @@ class OrderedShipment
     {
         return $this->handoverUrl;
     }
-    
+
     /**
      * @return string
      */
@@ -93,7 +93,7 @@ class OrderedShipment
     {
         return $this->labelsUrl;
     }
-    
+
     /**
      * @return string|null
      */
@@ -101,7 +101,7 @@ class OrderedShipment
     {
         return $this->fileUrl;
     }
-    
+
     /**
      * @return \DateTime|null
      */
@@ -109,7 +109,7 @@ class OrderedShipment
     {
         return $this->date;
     }
-    
+
     /**
      * @return string
      */
@@ -117,7 +117,7 @@ class OrderedShipment
     {
         return $this->shipper;
     }
-    
+
     /**
      * Get package IDs.
      *
@@ -127,7 +127,7 @@ class OrderedShipment
     {
         return $this->packageIds;
     }
-    
+
     /**
      * @param string         $shipper
      * @param array          $packageIds

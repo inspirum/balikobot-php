@@ -15,7 +15,7 @@ trait CashOnDeliveryData
      * @return void
      */
     abstract public function offsetSet($key, $value);
-    
+
     /**
      * @param float $codPrice
      *
@@ -25,7 +25,7 @@ trait CashOnDeliveryData
     {
         $this->offsetSet(Option::COD_PRICE, $codPrice);
     }
-    
+
     /**
      * @param string $codCurrency
      *
@@ -35,7 +35,7 @@ trait CashOnDeliveryData
     {
         $this->offsetSet(Option::COD_CURRENCY, $codCurrency);
     }
-    
+
     /**
      * @param string $vs
      *
@@ -45,7 +45,7 @@ trait CashOnDeliveryData
     {
         $this->offsetSet(Option::VS, $vs);
     }
-    
+
     /**
      * @param bool $creditCard
      *

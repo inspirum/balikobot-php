@@ -12,98 +12,98 @@ class Shipper
      * @var string
      */
     public const CP = 'cp';
-    
+
     /**
      * Direct Parcel Distribution CZ s.r.o.
      *
      * @var string
      */
     public const DPD = 'dpd';
-    
+
     /**
      * DHL Express
      *
      * @var string
      */
     public const DHL = 'dhl';
-    
+
     /**
      * Geis CZ s.r.o.
      *
      * @var string
      */
     public const GEIS = 'geis';
-    
+
     /**
      * General Logistics Systems Czech Republic s.r.o.
      *
      * @var string
      */
     public const GLS = 'gls';
-    
+
     /**
      * IN TIME SPEDICE s.r.o.
      *
      * @var string
      */
     public const INTIME = 'intime';
-    
+
     /**
      * Pošta bez hranic (Frogman s.r.o.)
      *
      * @var string
      */
     public const PBH = 'pbh';
-    
+
     /**
      * PPL CZ s.r.o.
      *
      * @var string
      */
     public const PPL = 'ppl';
-    
+
     /**
      * Slovenská pošta a.s.,
      *
      * @var string
      */
     public const SP = 'sp';
-    
+
     /**
      * TOPTRANS EU a.s.
      *
      * @var string
      */
     public const TOP_TRANS = 'toptrans';
-    
+
     /**
      * Uloženka s.r.o.
      *
      * @var string
      */
     public const ULOZENKA = 'ulozenka';
-    
+
     /**
      * UPS SCS Czech Republic s.r.o.
      *
      * @var string
      */
     public const UPS = 'ups';
-    
+
     /**
      * Zásilkovna s.r.o.
      *
      * @var string
      */
     public const ZASILKOVNA = 'zasilkovna';
-    
+
     /**
      * TNT
      *
      * @var string
      */
     public const TNT = 'tnt';
-    
+
     /**
      * All supported shipper services.
      *
@@ -128,7 +128,7 @@ class Shipper
             self::TNT,
         ];
     }
-    
+
     /**
      * Validate shipper code.
      *
@@ -144,7 +144,7 @@ class Shipper
             throw new InvalidArgumentException('Unknown shipper "' . $code . '".');
         }
     }
-    
+
     /**
      * Determine if shipper service support full branch API
      *
@@ -158,16 +158,16 @@ class Shipper
         if ($shipperCode == Shipper::ZASILKOVNA) {
             return true;
         }
-        
+
         if ($shipperCode == Shipper::CP && $serviceCode === ServiceType::CP_NP) {
             return true;
         }
-        
+
         $services = [ServiceType::PBH_MP, ServiceType::PBH_FAN_KURIER];
         if ($shipperCode == Shipper::PBH && in_array($serviceCode, $services)) {
             return true;
         }
-        
+
         return false;
     }
 }

@@ -20,13 +20,13 @@ class TrackPackageTest extends AbstractBalikobotTestCase
                 ],
             ],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $package = new OrderedPackage(1, 'ppl', '0001', '1234');
-        
+
         $service->trackPackage($package);
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -38,10 +38,10 @@ class TrackPackageTest extends AbstractBalikobotTestCase
                 ],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -64,13 +64,13 @@ class TrackPackageTest extends AbstractBalikobotTestCase
                 ],
             ],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $package = new OrderedPackage(1, 'ppl', '0001', '1234');
-        
+
         $statuses = $service->trackPackage($package);
-        
+
         $this->assertEquals(3, count($statuses));
         $this->assertEquals(2, $statuses[0]->getId());
         $this->assertEquals(new DateTime('2018-11-08 18:00:00'), $statuses[1]->getDate());

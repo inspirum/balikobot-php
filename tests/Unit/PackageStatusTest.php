@@ -17,12 +17,12 @@ class PackageStatusTest extends AbstractTestCase
                 'status_id' => 2,
             ]
         );
-        
+
         $this->assertEquals(new DateTime('2018-11-07 14:15:01'), $status->getDate());
         $this->assertEquals(2, $status->getId());
         $this->assertEquals('Doručení', $status->getName());
     }
-    
+
     public function testStaticConstructorWithMissingData()
     {
         $status = PackageStatus::newInstanceFromData(
@@ -31,7 +31,7 @@ class PackageStatusTest extends AbstractTestCase
                 'status_id' => 2,
             ]
         );
-        
+
         $this->assertEquals(null, $status->getDate());
         $this->assertEquals(2, $status->getId());
         $this->assertEquals('Doručení', $status->getName());

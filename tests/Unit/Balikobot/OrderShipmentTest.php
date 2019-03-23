@@ -19,16 +19,16 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
             'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
             'package_ids'  => [1, 2],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $packages = new OrderedPackageCollection();
-        
+
         $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
         $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
-        
+
         $service->orderShipment($packages, new DateTime('2018-10-10 10:00:00'));
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -40,10 +40,10 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
                 ],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -54,16 +54,16 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
             'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
             'package_ids'  => [1, 2],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $packages = new OrderedPackageCollection();
-        
+
         $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
         $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
-        
+
         $orderedShipment = $service->orderShipment($packages, new DateTime('2018-10-10 10:00:00'));
-        
+
         $this->assertEquals('ppl', $orderedShipment->getShipper());
         $this->assertEquals([1, 2], $orderedShipment->getPackageIds());
         $this->assertEquals(new DateTime('2018-10-10 00:00:00'), $orderedShipment->getDate());

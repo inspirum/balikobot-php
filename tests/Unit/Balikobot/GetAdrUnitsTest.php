@@ -12,22 +12,22 @@ class GetAdrUnitsTest extends AbstractBalikobotTestCase
             'status' => 200,
             'units'  => [],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $service->getAdrUnits('ppl');
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
                 'https://api.balikobot.cz/ppl/adrunits',
-                []
+                [],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -36,19 +36,19 @@ class GetAdrUnitsTest extends AbstractBalikobotTestCase
                 [
                     'code' => 1,
                     'name' => "KM",
-                    'attr' => 4
+                    'attr' => 4,
                 ],
                 [
                     'code' => 876,
                     'name' => "M",
-                ]
+                ],
             ],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $units = $service->getAdrUnits('cp');
-        
+
         $this->assertEquals(
             [
                 1   => "KM",

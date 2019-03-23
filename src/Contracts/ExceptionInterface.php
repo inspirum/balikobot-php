@@ -12,21 +12,21 @@ interface ExceptionInterface extends Throwable
      * @return int
      */
     public function getStatusCode(): int;
-    
+
     /**
      * Get response as array.
      *
      * @return array
      */
     public function getResponse(): array;
-    
+
     /**
      * Get response as string.
      *
      * @return string
      */
     public function getResponseAsString(): string;
-    
+
     /**
      * Get response errors.
      *

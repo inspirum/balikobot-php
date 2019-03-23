@@ -11,40 +11,40 @@ class ExceptionsTest extends AbstractClientTestCase
     public function testThrowsExceptionOnError()
     {
         $this->expectException(UnauthorizedException::class);
-        
+
         $requester = $this->newRequesterWithMockedRequestMethod(401, []);
-        
+
         $client = new Client($requester);
-        
+
         $client->addPackages('cp', []);
     }
-    
+
     public function testThrowsExceptionMatchStatusCode()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(409, []);
-        
+
         $client = new Client($requester);
-        
+
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
             $this->assertEquals(409, $exception->getStatusCode());
         }
     }
-    
+
     public function testThrowsExceptionMatchStatusCodeFromResponse()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, ['status' => 419]);
-        
+
         $client = new Client($requester);
-        
+
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
             $this->assertEquals(419, $exception->getStatusCode());
         }
     }
-    
+
     public function testThrowsExceptionMatchResponse()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(409, [
@@ -53,9 +53,9 @@ class ExceptionsTest extends AbstractClientTestCase
                 'id' => 404,
             ],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
@@ -63,7 +63,7 @@ class ExceptionsTest extends AbstractClientTestCase
             $this->assertEquals('{"test":1,"errors":{"id":404}}', $exception->getResponseAsString());
         }
     }
-    
+
     public function testThrowsExceptionMatchSimpleErrors()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -78,9 +78,9 @@ class ExceptionsTest extends AbstractClientTestCase
                 'aa' => 406,
             ],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
@@ -93,13 +93,13 @@ class ExceptionsTest extends AbstractClientTestCase
                     ],
                     1 => [
                         'aa' => 'Nedorazila žádná data ke zpracování.',
-                    ]
+                    ],
                 ],
                 $exception->getErrors()
             );
         }
     }
-    
+
     public function testThrowsExceptionMatchErrors()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -123,14 +123,14 @@ class ExceptionsTest extends AbstractClientTestCase
                     [
                         'type'      => '406',
                         'attribute' => 'service_type',
-                        'message'   => 'Nedorazilo ID vybrané služby přepravce.'
+                        'message'   => 'Nedorazilo ID vybrané služby přepravce.',
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
-        
+
         $client = new Client($requester);
-        
+
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {

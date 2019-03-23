@@ -22,7 +22,7 @@ class Response
         503 => 'Technologie dopravce není dostupná, požadavek bude vyřízen později.',
         500 => 'Nepodařilo se rozeznat chybový stav.',
     ];
-    
+
     /**
      * @var array
      */
@@ -32,7 +32,7 @@ class Response
         413 => 'Špatný formát dat.',
         416 => 'Datum má špatný formát nebo není povoleno.',
     ];
-    
+
     /**
      * @var array
      */
@@ -77,7 +77,7 @@ class Response
             'service_range' => 'Balíček nelze přidat, protože číselná řada v klientské zóně je již přečerpaná.',
         ],
         416 => [
-            'delivery_date' => 'Datum má špatný formát nebo není povoleno.'
+            'delivery_date' => 'Datum má špatný formát nebo není povoleno.',
         ],
     ];
 }

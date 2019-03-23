@@ -11,11 +11,11 @@ class GetServicesTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $service->getServices('ppl');
-        
+
         $requester->shouldHaveReceived(
             'request',
             [
@@ -23,10 +23,10 @@ class GetServicesTest extends AbstractBalikobotTestCase
                 [],
             ]
         );
-        
+
         $this->assertTrue(true);
     }
-    
+
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
@@ -36,11 +36,11 @@ class GetServicesTest extends AbstractBalikobotTestCase
                 'RR',
             ],
         ]);
-        
+
         $service = new Balikobot($requester);
-        
+
         $services = $service->getServices('ppl');
-        
+
         $this->assertEquals(['NP', 'RR'], $services);
     }
 }
