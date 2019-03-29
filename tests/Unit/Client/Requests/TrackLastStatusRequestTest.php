@@ -50,6 +50,21 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $client->trackPackageLastStatus('cp', 1);
     }
 
+    public function testThrowsExceptionOnBadStatusCodeForPackage()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            0 => [
+                'status' => 404,
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->trackPackageLastStatus('cp', 1);
+    }
+
     public function testThrowsExceptionWhenNoReturnStatus()
     {
         $this->expectException(BadRequestException::class);

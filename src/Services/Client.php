@@ -142,6 +142,10 @@ class Client
             throw new BadRequestException($response);
         }
 
+        if (isset($response[0]['status']) && ((int) $response[0]['status']) !== 200) {
+            throw new BadRequestException($response);
+        }
+
         $status = [
             'name'      => $response[0]['status_text'],
             'status_id' => $response[0]['status_id'],
