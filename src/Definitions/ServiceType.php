@@ -610,6 +610,34 @@ class ServiceType
     public const ULOZENKA_D1 = '17';
 
     /**
+     * Expres Kurýr SK
+     *
+     * @var string
+     */
+    public const ULOZENKA_EXPRESS_COURRIER = '19';
+
+    /**
+     * Expres na poštu SK
+     *
+     * @var string
+     */
+    public const ULOZENKA_EXPRESS_SK = '20';
+
+    /**
+     * BalíkoBOX SK
+     *
+     * @var string
+     */
+    public const ULOZENKA_BALIKOBOX_SK = '21';
+
+    /**
+     * Depo SK
+     *
+     * @var string
+     */
+    public const ULOZENKA_DEPO_SK = '22';
+
+    /**
      * Zasilkovna
      *
      * @var string|null
@@ -1168,6 +1196,10 @@ class ServiceType
             self::ULOZENKA_CP_NP,
             self::ULOZENKA_PARTNER,
             self::ULOZENKA_D1,
+            self::ULOZENKA_EXPRESS_COURRIER,
+            self::ULOZENKA_EXPRESS_SK,
+            self::ULOZENKA_BALIKOBOX_SK,
+            self::ULOZENKA_DEPO_SK,
         ];
     }
 
