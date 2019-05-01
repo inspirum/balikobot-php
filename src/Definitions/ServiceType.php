@@ -526,6 +526,27 @@ class ServiceType
     public const SP_RRA = 'RRA';
 
     /**
+     * Expres (vnitrostátní zásilky)
+     *
+     * @var string
+     */
+    public const SPS_EXPRESS = '1';
+
+    /**
+     * Expres do 12:00 (vnitrostátní zásilky)
+     *
+     * @var string
+     */
+    public const SPS_EXPRESS_12 = '2';
+
+    /**
+     * Expres do 09:00 (vnitrostátní zásilky)
+     *
+     * @var string
+     */
+    public const SPS_EXPRESS_9 = '3';
+
+    /**
      * Uloženka
      *
      * @var string
@@ -1108,6 +1129,18 @@ class ServiceType
     /**
      * @return array
      */
+    public static function sps(): array
+    {
+        return [
+            self::SPS_EXPRESS,
+            self::SPS_EXPRESS_12,
+            self::SPS_EXPRESS_9,
+        ];
+    }
+
+    /**
+     * @return array
+     */
     public static function topTrans(): array
     {
         return [
@@ -1200,6 +1233,7 @@ class ServiceType
             Shipper::PBH        => self::pbh(),
             Shipper::PPL        => self::ppl(),
             Shipper::SP         => self::sp(),
+            Shipper::SPS        => self::sps(),
             Shipper::TOP_TRANS  => self::topTrans(),
             Shipper::ULOZENKA   => self::ulozenka(),
             Shipper::UPS        => self::ups(),

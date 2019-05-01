@@ -77,6 +77,13 @@ class Shipper
     public const SP = 'sp';
 
     /**
+     * Slovak Parcel Service s.r.o.
+     *
+     * @var string
+     */
+    public const SPS = 'sps';
+
+    /**
      * TOPTRANS EU a.s.
      *
      * @var string
@@ -129,6 +136,7 @@ class Shipper
             self::PBH,
             self::PPL,
             self::SP,
+            self::SPS,
             self::TOP_TRANS,
             self::ULOZENKA,
             self::UPS,

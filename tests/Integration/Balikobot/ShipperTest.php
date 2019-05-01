@@ -25,6 +25,7 @@ class ShipperTest extends AbstractBalikobotTestCase
             'toptrans',
             'pbh',
             'sp',
+            'sps',
             'ups',
             'tnt',
             'dhl',
