@@ -99,7 +99,7 @@ $ composer require inspirum/balikobot
 
 ## Version
 
-Support all options for Balikobot API described in the [documentation][link-api] (v1.855, 2019-03-19).
+Support all options for Balikobot API described in the [documentation][link-api] (v1.857, 2019-04-26).
 
 
 ## Usage
@@ -151,7 +151,7 @@ If you discover any security related issues, please email tomas.novotny@inspirum
 
 ## Credits
 
-- [Tomáš Novotný][link-author]
+- [Tomáš Novotný](https://github.com/tomas-novotny)
 - [All Contributors][link-contributors]
 
 

@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2019-05-01
+### Added
+- Add support for new options from documentation **v1.857** (2019-04-26)
+    - Add **delivery_costs** attribute
+    - Add **delivery_costs_eur** attribute
+- Add support for new options from documentation **v1.856** (2019-04-10)
+    - Add **SPS** (Slovak Parcel Service) shipper
+    - Add **ULOZENKA_EXPRESS_COURRIER** service type (Expres Kurýr SK for Ulozenka)
+    - Add **ULOZENKA_EXPRESS_SK** service type (Expres na poštu SK for Ulozenka)
+    - Add **ULOZENKA_BALIKOBOX_SK** service type (BalíkoBOX SK for Ulozenka)
+    - Add **ULOZENKA_DEPO_SK** service type (Depo SK for Ulozenka)
+
+
 ## [1.1.0] - 2019-03-23
 ### Added
 - Add support for new options from documentation **v1.855** (2019-03-19)
