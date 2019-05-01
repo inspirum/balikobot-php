@@ -683,4 +683,18 @@ class Option
      * @var string
      */
     public const REC_LOCALE_ID = 'rec_locale_id';
+
+    /**
+     * Ceny přepravy v měně cílové země.
+     *
+     * @var string
+     */
+    public const DELIVERY_COSTS = 'delivery_costs';
+
+    /**
+     * Ceny přepravy v EUR.
+     *
+     * @var string
+     */
+    public const DELIVERY_COSTS_EUR = 'delivery_costs_eur';
 }

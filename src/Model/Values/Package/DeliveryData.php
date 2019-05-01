@@ -286,4 +286,24 @@ trait DeliveryData
     {
         $this->offsetSet(Option::REC_FLAT_NUMBER, $recFlatNumber);
     }
+
+    /**
+     * @param float $deliveryCosts
+     *
+     * @return void
+     */
+    public function setDeliveryCosts(float $deliveryCosts): void
+    {
+        $this->offsetSet(Option::DELIVERY_COSTS, $deliveryCosts);
+    }
+
+    /**
+     * @param float $deliveryCosts
+     *
+     * @return void
+     */
+    public function setDeliveryCostsEUR(float $deliveryCosts): void
+    {
+        $this->offsetSet(Option::DELIVERY_COSTS_EUR, $deliveryCosts);
+    }
 }

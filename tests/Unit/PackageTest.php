@@ -135,6 +135,8 @@ class PackageTest extends AbstractTestCase
         $package->setRecEnterance('189-12');
         $package->setFloor('4');
         $package->setFlatNumber('1900');
+        $package->setDeliveryCosts(15.1);
+        $package->setDeliveryCostsEUR(5.31);
 
         $this->assertEquals(
             [
@@ -225,6 +227,8 @@ class PackageTest extends AbstractTestCase
                 Option::REC_ENTERANCE               => '189-12',
                 Option::REC_FLOOR                   => '4',
                 Option::REC_FLAT_NUMBER             => '1900',
+                Option::DELIVERY_COSTS              => 15.1,
+                Option::DELIVERY_COSTS_EUR          => 5.31,
             ],
             $package->toArray()
         );
