@@ -109,7 +109,7 @@ class Client
             ],
         ];
 
-        $response = $this->requester->call('v2', $shipper, Request::TRACK, $data);
+        $response = $this->requester->call('v2', $shipper, Request::TRACK, $data, false);
 
         if (empty($response[0])) {
             throw new BadRequestException($response);

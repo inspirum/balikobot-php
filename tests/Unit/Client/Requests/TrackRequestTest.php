@@ -23,13 +23,26 @@ class TrackRequestTest extends AbstractClientTestCase
 
     public function testRequestShouldHaveStatus()
     {
-        $this->expectException(BadRequestException::class);
-
-        $requester = $this->newRequesterWithMockedRequestMethod(200, []);
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            0 => [
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 2,
+                    'name'      => 'Dodání zásilky. 10003 Depo Praha 701',
+                ],
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 1,
+                    'name'      => '"Doručování zásilky. 10003 Depo Praha 701',
+                ],
+            ],
+        ]);
 
         $client = new Client($requester);
 
-        $client->trackPackage('cp', 1);
+        $status = $client->trackPackage('cp', 1);
+
+        $this->assertNotEmpty($status);
     }
 
     public function testThrowsExceptionOnBadStatusCode()
