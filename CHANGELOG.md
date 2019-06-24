@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2019-06-24
+### Added
+- Add support for new options from documentation **v1.861** (2019-05-28)
+    - Add **ACTIVATEDSERVICES** request
+- Add support for new options from documentation **v1.859** (2019-05-07)
+    - Add **SPS_INTERNATIONAL** service type (Export (mezinárodní zásilky))
+
+
 ## [1.1.1] - 2019-05-01
 ### Added
 - Add support for new options from documentation **v1.857** (2019-04-26)
