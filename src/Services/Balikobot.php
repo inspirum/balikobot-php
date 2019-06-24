@@ -468,4 +468,20 @@ class Balikobot
 
         return $units;
     }
+
+    /**
+     * Returns available activated services for the given shipper
+     *
+     * @param string $shipper
+     *
+     * @return array
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getActivatedServices(string $shipper): array
+    {
+        $units = $this->client->getActivatedServices($shipper);
+
+        return $units;
+    }
 }

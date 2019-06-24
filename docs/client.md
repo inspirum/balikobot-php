@@ -725,6 +725,33 @@ var_dump($units);
 */
 ```
 
+
+### **ACTIVATEDSERVICES**
+
+Method **getActivatedServices** returns a list of activated services that can be used by the shipper.
+
+The client normalizes the response by removing the status code (drop **status** attribute).
+
+```php
+$services = $client->getServices('cp');
+
+/*
+var_dump($services);
+[
+  'active_parcel' => true
+  'active_cargo'  => false
+  'service_types' => [
+    'DR' => 'DR - Balík Do ruky'
+    'RR' => 'RR - Doporučená zásilka'
+    'SR' => 'RR - Doporučená zásilka - standard'
+    'NP' => 'NP - Balík Na poštu'
+    'VL' => 'VL - Cenné psaní'
+    ...
+  ]
+]
+*/
+```
+
 ***
 
 

@@ -541,4 +541,22 @@ class Client
 
         return $units;
     }
+
+    /**
+     * Returns available activated services for the given shipper
+     *
+     * @param string $shipper
+     *
+     * @return array
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getActivatedServices(string $shipper): array
+    {
+        $response = $this->requester->call('v1', $shipper, Request::ACTIVATEDSERVICES);
+
+        unset($response['status']);
+
+        return $response;
+    }
 }

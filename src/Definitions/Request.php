@@ -143,4 +143,11 @@ class Request
      * @var string
      */
     public const ADR_UNITS = 'adrunits';
+
+    /**
+     * List of activated services for production API keys
+     *
+     * @var string
+     */
+    public const ACTIVATEDSERVICES = 'activatedservices';
 }
