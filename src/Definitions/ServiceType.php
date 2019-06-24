@@ -547,6 +547,13 @@ class ServiceType
     public const SPS_EXPRESS_9 = '3';
 
     /**
+     * Export (mezinárodní zásilky)
+     *
+     * @var string
+     */
+    public const SPS_INTERNATIONAL = '4';
+
+    /**
      * Uloženka
      *
      * @var string
@@ -1163,6 +1170,7 @@ class ServiceType
             self::SPS_EXPRESS,
             self::SPS_EXPRESS_12,
             self::SPS_EXPRESS_9,
+            self::SPS_INTERNATIONAL,
         ];
     }
 
