@@ -323,21 +323,21 @@ class ServiceType
     public const GEIS_PARCEL_12 = '8';
 
     /**
-     * Mezinárodní zásilka (B2C) do SK / PL
+     * Mezinárodní zásilka (B2C)
      *
      * @var string
      */
     public const GEIS_PARCEL_PRIVATE_INTERNATIONAL = '9';
 
     /**
-     * – Vnitrostátní paletová zásilka B2C
+     * Vnitrostátní paletová zásilka B2C
      *
      * @var string
      */
     public const GEIS_CARGO_PRIVATE_NATIONAL = '10';
 
     /**
-     * Mezinárodní paletová zásilka B2C do SK
+     * Mezinárodní paletová zásilka B2C
      *
      * @var string
      */
