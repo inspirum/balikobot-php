@@ -5,21 +5,21 @@ namespace Inspirum\Balikobot\Model\Values;
 class OrderedPackage
 {
     /**
-     * Package ID.
+     * Package ID
      *
      * @var int
      */
     private $packageId;
 
     /**
-     * Package batch ID (EID).
+     * Package batch ID (EID)
      *
      * @var string
      */
     private $batchId;
 
     /**
-     * Shipper.
+     * Shipper
      *
      * @var string
      */
@@ -33,7 +33,7 @@ class OrderedPackage
     private $carrierId;
 
     /**
-     * Track URL.
+     * Track URL
      *
      * @var string|null
      */
@@ -47,21 +47,21 @@ class OrderedPackage
     private $labelUrl;
 
     /**
-     * Carrier ID Swap.
+     * Carrier ID Swap
      *
      * @var string|null
      */
     private $carrierIdSwap;
 
     /**
-     * Pieces.
+     * Pieces
      *
      * @var array
      */
     private $pieces;
 
     /**
-     * OrderedPackage constructor.
+     * OrderedPackage constructor
      *
      * @param int         $packageId
      * @param string      $shipper

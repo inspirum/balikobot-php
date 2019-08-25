@@ -41,9 +41,22 @@
     }
   },
   "scripts": {
-    "test": "vendor/bin/phpunit",
-    "test-coverage": "vendor/bin/phpunit --coverage-html=./build/coverage",
-    "check-style": "vendor/bin/phpcs -p -s --extensions=php --standard=./ruleset.xml --colors --report-width=140 --runtime-set ignore_errors_on_exit 1 src tests && vendor/bin/phpstan analyse -l 7 -c phpstan.neon.dist src",
-    "fix-style": "vendor/bin/phpcbf -p --standard=./ruleset.xml --runtime-set ignore_errors_on_exit 1 src tests"
+    "test:test": [
+      "@phpunit"
+    ],
+    "test:coverage": [
+      "@phpunit --coverage-html=./build/coverage"
+    ],
+    "style:check": [
+      "@phpcs src tests",
+      "@phpstan -l 7 src"
+    ],
+    "style:fix": [
+      "@phpcbf src tests"
+    ],
+    "phpunit": "./vendor/bin/phpunit",
+    "phpcs": "./vendor/bin/phpcs -p -s --standard=./ruleset.xml --extensions=php --colors --report-width=140 --runtime-set ignore_errors_on_exit 1",
+    "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon.dist",
+    "phpcbf": "./vendor/bin/phpcbf -p --standard=./ruleset.xml --extensions=php --runtime-set ignore_errors_on_exit 1"
   }
 }

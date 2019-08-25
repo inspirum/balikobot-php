@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 interface RequesterInterface
 {
     /**
-     * Call API.
+     * Call API
      *
      * @param string $version
      * @param string $request
@@ -28,7 +28,7 @@ interface RequesterInterface
     ): array;
 
     /**
-     * Get API response.
+     * Get API response
      *
      * @param string $url
      * @param array  $data

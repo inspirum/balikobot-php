@@ -124,13 +124,13 @@ Extension over Client that uses custom DTO classes as an input and output for it
 To run unit tests, run:
 
 ```bash
-$ composer test
+$ composer test:test
 ```
 
 To show coverage, run:
 
 ```bash
-$ composer test-coverage
+$ composer test:coverage
 ```
 
 For testing purposes, you can use these credentials:

@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 class Requester implements RequesterInterface
 {
     /**
-     * API URL.
+     * API URL
      *
      * @var string[]
      */
@@ -21,21 +21,21 @@ class Requester implements RequesterInterface
     ];
 
     /**
-     * API User.
+     * API User
      *
      * @var string
      */
     private $apiUser;
 
     /**
-     * API key.
+     * API key
      *
      * @var string
      */
     private $apiKey;
 
     /**
-     * Balikobot API client.
+     * Balikobot API client
      *
      * @param string $apiUser
      * @param string $apiKey
@@ -47,7 +47,7 @@ class Requester implements RequesterInterface
     }
 
     /**
-     * Call API.
+     * Call API
      *
      * @param string $version
      * @param string $request
@@ -93,7 +93,7 @@ class Requester implements RequesterInterface
     }
 
     /**
-     * Get API response.
+     * Get API response
      *
      * @param string $url
      * @param array  $data
@@ -133,7 +133,7 @@ class Requester implements RequesterInterface
     }
 
     /**
-     * Get API url for given version.
+     * Get API url for given version
      *
      * @param string $version
      *
@@ -145,7 +145,7 @@ class Requester implements RequesterInterface
     }
 
     /**
-     * Validate response.
+     * Validate response
      *
      * @param int   $statusCode
      * @param array $response
@@ -182,7 +182,7 @@ class Requester implements RequesterInterface
     }
 
     /**
-     * Validate response status.
+     * Validate response status
      *
      * @param array $response
      * @param bool  $shouldHaveStatus

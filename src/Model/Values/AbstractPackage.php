@@ -8,14 +8,14 @@ use Inspirum\Balikobot\Model\Values\Package\CommonData;
 abstract class AbstractPackage implements ArrayAccess
 {
     /**
-     * Package data.
+     * Package data
      *
      * @var array
      */
     private $data;
 
     /**
-     * Package constructor.
+     * Package constructor
      *
      * @param array $data
      */
@@ -27,7 +27,7 @@ abstract class AbstractPackage implements ArrayAccess
     use CommonData;
 
     /**
-     * Determine if an item exists at an offset.
+     * Determine if an item exists at an offset
      *
      * @param string $key
      *
@@ -39,7 +39,7 @@ abstract class AbstractPackage implements ArrayAccess
     }
 
     /**
-     * Get an item at a given offset.
+     * Get an item at a given offset
      *
      * @param string $key
      *
@@ -51,7 +51,7 @@ abstract class AbstractPackage implements ArrayAccess
     }
 
     /**
-     * Set the item at a given offset.
+     * Set the item at a given offset
      *
      * @param string $key
      * @param mixed  $value
@@ -64,7 +64,7 @@ abstract class AbstractPackage implements ArrayAccess
     }
 
     /**
-     * Unset the item at a given offset.
+     * Unset the item at a given offset
      *
      * @param string $key
      *
@@ -76,7 +76,7 @@ abstract class AbstractPackage implements ArrayAccess
     }
 
     /**
-     * Get the collection of packages as a plain array.
+     * Get the collection of packages as a plain array
      *
      * @return array
      */

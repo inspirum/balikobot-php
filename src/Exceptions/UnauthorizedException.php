@@ -7,7 +7,7 @@ use Throwable;
 class UnauthorizedException extends AbstractException
 {
     /**
-     * UnauthorizedException constructor.
+     * UnauthorizedException constructor
      *
      * @param string|null     $message
      * @param int             $statusCode

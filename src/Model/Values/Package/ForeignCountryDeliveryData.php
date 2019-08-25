@@ -7,7 +7,7 @@ use Inspirum\Balikobot\Definitions\Option;
 trait ForeignCountryDeliveryData
 {
     /**
-     * Set the item at a given offset.
+     * Set the item at a given offset
      *
      * @param string $key
      * @param mixed  $value

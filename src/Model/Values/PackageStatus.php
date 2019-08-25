@@ -23,7 +23,7 @@ class PackageStatus
     private $date;
 
     /**
-     * PackageStatus constructor.
+     * PackageStatus constructor
      *
      * @param int            $id
      * @param string         $name

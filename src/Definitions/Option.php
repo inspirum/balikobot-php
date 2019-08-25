@@ -117,7 +117,7 @@ class Option
     public const REC_NAME = 'rec_name';
 
     /**
-     * Customer company name.
+     * Customer company name
      *
      * @var string
      */
@@ -145,7 +145,7 @@ class Option
     public const REC_ZIP = 'rec_zip';
 
     /**
-     * Delivery address region (HU)
+     * Delivery address region (HU,RO)
      *
      * @var string
      */
@@ -267,7 +267,7 @@ class Option
     public const VDL_SERVICE = 'vdl_service';
 
     /**
-     * Total volume of shipment in m3.
+     * Total volume of shipment in m3
      *
      * @var string
      */
@@ -461,7 +461,7 @@ class Option
     public const GET_PIECES_NUMBERS = 'get_piece_numbers';
 
     /**
-     * Return erros as messages.
+     * Return erros as messages
      *
      * @var string
      */
@@ -594,7 +594,7 @@ class Option
     public const CONTENT_DATA = 'content_data';
 
     /**
-     * Invoice number.
+     * Invoice number
      *
      * string
      *
@@ -642,14 +642,14 @@ class Option
     public const REC_HOUSE_NUMBER = 'rec_house_number';
 
     /**
-     * Identifikátor bloku (přenáší se jen u přepravce BG Speedy).
+     * Identifikátor bloku (přenáší se jen u přepravce BG Speedy)
      *
      * @var string
      */
     public const REC_BLOCK = 'rec_block';
 
     /**
-     * Číslo vchodu (přenáší se jen u přepravce BG Speedy).
+     * Číslo vchodu (přenáší se jen u přepravce BG Speedy)
      *
      * @var string
      */
@@ -657,42 +657,42 @@ class Option
 
     /**
      *
-     *  Číslo podlaží (přenáší se jen u přepravce BG Speedy).
+     *  Číslo podlaží (přenáší se jen u přepravce BG Speedy)
      *
      * @var string
      */
     public const REC_FLOOR = 'rec_floor';
 
     /**
-     * Číslo bytu / apartmánu (přenáší se jen u přepravce BG Speedy).
+     * Číslo bytu / apartmánu (přenáší se jen u přepravce BG Speedy)
      *
      * @var string
      */
     public const REC_FLAT_NUMBER = 'rec_flat_number';
 
     /**
-     * Patronymum - otčestvo (povinný pro přepravce Nova Poshta).
+     * Patronymum - otčestvo (povinný pro přepravce Nova Poshta)
      *
      * @var string
      */
     public const REC_NAME_PATRONYMUM = 'rec_name_patronymum';
 
     /**
-     * ID lokality.
+     * ID lokality
      *
      * @var string
      */
     public const REC_LOCALE_ID = 'rec_locale_id';
 
     /**
-     * Ceny přepravy v měně cílové země.
+     * Ceny přepravy v měně cílové země
      *
      * @var string
      */
     public const DELIVERY_COSTS = 'delivery_costs';
 
     /**
-     * Ceny přepravy v EUR.
+     * Ceny přepravy v EUR
      *
      * @var string
      */

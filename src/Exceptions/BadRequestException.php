@@ -8,7 +8,7 @@ use Throwable;
 class BadRequestException extends AbstractException
 {
     /**
-     * BadRequestException constructor.
+     * BadRequestException constructor
      *
      * @param array           $response
      * @param int             $statusCode
@@ -27,7 +27,7 @@ class BadRequestException extends AbstractException
     }
 
     /**
-     * Set errors from response.
+     * Set errors from response
      *
      * @param array $response
      *

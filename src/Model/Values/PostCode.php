@@ -40,7 +40,7 @@ class PostCode
     private $morningDelivery;
 
     /**
-     * Postcode constructor.
+     * Postcode constructor
      *
      * @param string      $shipper
      * @param string|null $service

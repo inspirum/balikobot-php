@@ -7,7 +7,7 @@ use Inspirum\Balikobot\Definitions\Option;
 trait CommonData
 {
     /**
-     * Set the item at a given offset.
+     * Set the item at a given offset
      *
      * @param string $key
      * @param mixed  $value
@@ -17,7 +17,7 @@ trait CommonData
     abstract public function offsetSet($key, $value);
 
     /**
-     * Get an item at a given offset.
+     * Get an item at a given offset
      *
      * @param string $key
      *
@@ -26,7 +26,7 @@ trait CommonData
     abstract public function offsetGet($key);
 
     /**
-     * Set EID.
+     * Set EID
      *
      * @param string $id
      *
@@ -38,7 +38,7 @@ trait CommonData
     }
 
     /**
-     * Get EID.
+     * Get EID
      *
      * @return string|null
      */

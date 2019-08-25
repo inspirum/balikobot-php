@@ -170,7 +170,7 @@ class Branch
     private $openingSunday = null;
 
     /**
-     * Branch constructor.
+     * Branch constructor
      *
      * @param string      $shipper
      * @param string|null $service
@@ -529,7 +529,7 @@ class Branch
     }
 
     /**
-     * Set branch ID.
+     * Set branch ID
      *
      * @return void
      */
@@ -539,7 +539,7 @@ class Branch
     }
 
     /**
-     * Resolve branch ID.
+     * Resolve branch ID
      *
      * @return string
      */

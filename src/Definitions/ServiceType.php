@@ -316,7 +316,7 @@ class ServiceType
     public const GEIS_PARCEL_GARANTED = '7';
 
     /**
-     *  Doručení do 12. hodin (D12)
+     * Doručení do 12. hodin (D12)
      *
      * @var string
      */
@@ -1256,7 +1256,7 @@ class ServiceType
     }
 
     /**
-     * All supported shipper services.
+     * All supported shipper services
      *
      * @return array
      */

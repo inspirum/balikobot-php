@@ -2006,7 +2006,7 @@ class Country
     }
 
     /**
-     * Validate country code.
+     * Validate country code
      *
      * @param string $code
      *

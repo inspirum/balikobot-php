@@ -25,7 +25,7 @@ class Balikobot
     private $client;
 
     /**
-     * Balikobot constructor.
+     * Balikobot constructor
      *
      * @param \Inspirum\Balikobot\Contracts\RequesterInterface $requester
      */
@@ -35,7 +35,7 @@ class Balikobot
     }
 
     /**
-     * All supported shipper services.
+     * All supported shipper services
      *
      * @return string[]
      */
@@ -45,7 +45,7 @@ class Balikobot
     }
 
     /**
-     * Add packages.
+     * Add packages
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\PackageCollection $packages
      *
@@ -72,7 +72,7 @@ class Balikobot
     }
 
     /**
-     * Exports Order into Balikobot system
+     * Exports order into Balikobot system
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      *
@@ -86,7 +86,7 @@ class Balikobot
     }
 
     /**
-     * Exports Order into Balikobot system
+     * Exports order into Balikobot system
      *
      * @param \Inspirum\Balikobot\Model\Values\OrderedPackage $package
      *
@@ -100,7 +100,7 @@ class Balikobot
     }
 
     /**
-     * Order shipment.
+     * Order shipment
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      * @param \DateTime|null                                                $date
@@ -128,6 +128,8 @@ class Balikobot
     }
 
     /**
+     * Track package
+     *
      * @param \Inspirum\Balikobot\Model\Values\OrderedPackage $package
      *
      * @return \Inspirum\Balikobot\Model\Values\PackageStatus[]
@@ -148,6 +150,8 @@ class Balikobot
     }
 
     /**
+     * Track package last status
+     *
      * @param \Inspirum\Balikobot\Model\Values\OrderedPackage $package
      *
      * @return \Inspirum\Balikobot\Model\Values\PackageStatus
@@ -164,6 +168,8 @@ class Balikobot
     }
 
     /**
+     * Get overview for given shipper
+     *
      * @param string $shipper
      *
      * @return \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection
@@ -189,6 +195,8 @@ class Balikobot
     }
 
     /**
+     * Get labels for orders
+     *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      *
      * @return string
@@ -287,7 +295,7 @@ class Balikobot
     }
 
     /**
-     * Get all available branches.
+     * Get all available branches
      *
      * @return \Generator|\Inspirum\Balikobot\Model\Values\Branch[]
      *
@@ -304,7 +312,7 @@ class Balikobot
     }
 
     /**
-     * Get all available branches for given shipper.
+     * Get all available branches for given shipper
      *
      * @param string $shipper
      *
@@ -329,7 +337,7 @@ class Balikobot
     }
 
     /**
-     * Get all available branches for given shipper and service type.
+     * Get all available branches for given shipper and service type
      *
      * @param string      $shipper
      * @param string|null $service
@@ -349,7 +357,7 @@ class Balikobot
     }
 
     /**
-     * Get all available branches for given shipper.
+     * Get all available branches for given shipper
      *
      * @param string      $shipper
      * @param string      $country
@@ -440,7 +448,7 @@ class Balikobot
     }
 
     /**
-     * Check package(s) data.
+     * Check package(s) data
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\PackageCollection $packages
      *

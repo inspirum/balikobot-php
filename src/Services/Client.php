@@ -11,14 +11,14 @@ use Inspirum\Balikobot\Exceptions\BadRequestException;
 class Client
 {
     /**
-     * API requester.
+     * API requester
      *
      * @var \Inspirum\Balikobot\Contracts\RequesterInterface
      */
     private $requester;
 
     /**
-     * Balikobot API client.
+     * Balikobot API client
      *
      * @param \Inspirum\Balikobot\Contracts\RequesterInterface $requester
      */
@@ -28,7 +28,7 @@ class Client
     }
 
     /**
-     * Add package(s) to the Balikobot.
+     * Add package(s) to the Balikobot
      *
      * @param string $shipper
      * @param array  $packages
@@ -52,7 +52,7 @@ class Client
     }
 
     /**
-     * Drops a package from the Balikobot. The package must be not ordered.
+     * Drops a package from the Balikobot – the package must be not ordered
      *
      * @param string $shipper
      * @param int    $packageId
@@ -67,7 +67,7 @@ class Client
     }
 
     /**
-     * Drops a package from the Balikobot. The package must be not ordered.
+     * Drops a package from the Balikobot – the package must be not ordered
      *
      * @param string $shipper
      * @param array  $packageIds
@@ -210,7 +210,7 @@ class Client
     }
 
     /**
-     * Order shipment for packages.
+     * Order shipment for packages
      *
      * @param string         $shipper
      * @param array          $packageIds
@@ -237,7 +237,7 @@ class Client
     }
 
     /**
-     * Get order details.
+     * Get order details
      *
      * @param string $shipper
      * @param int    $orderId
@@ -256,7 +256,7 @@ class Client
     }
 
     /**
-     * Order pickup for packages.
+     * Order pickup for packages
      *
      * @param string      $shipper
      * @param \DateTime   $dateFrom
@@ -337,7 +337,7 @@ class Client
 
     /**
      * Returns available branches for the given shipper and its service
-     * Full branches instead branches request.
+     * Full branches instead branches request
      *
      * @param string $shipper
      * @param string $service
@@ -502,7 +502,7 @@ class Client
     }
 
     /**
-     * Check package(s) data.
+     * Check package(s) data
      *
      * @param string $shipper
      * @param array  $packages

@@ -42,7 +42,7 @@ class OrderedShipment
     private $packageIds;
 
     /**
-     * OrderedShipment constructor.
+     * OrderedShipment constructor
      *
      * @param string         $orderId
      * @param string         $shipper
@@ -119,7 +119,7 @@ class OrderedShipment
     }
 
     /**
-     * Get package IDs.
+     * Get package IDs
      *
      * @return int[]
      */

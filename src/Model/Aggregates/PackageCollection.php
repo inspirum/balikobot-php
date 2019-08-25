@@ -10,28 +10,28 @@ use IteratorAggregate;
 class PackageCollection implements IteratorAggregate, Countable
 {
     /**
-     * Packages.
+     * Packages
      *
      * @var \Inspirum\Balikobot\Model\Values\Package[]
      */
     private $packages = [];
 
     /**
-     * Shipper code.
+     * Shipper code
      *
      * @var string
      */
     private $shipper;
 
     /**
-     * EID.
+     * EID
      *
      * @var string
      */
     private $eid;
 
     /**
-     * PackageCollection constructor.
+     * PackageCollection constructor
      *
      * @param string      $shipper
      * @param string|null $eid
@@ -43,7 +43,7 @@ class PackageCollection implements IteratorAggregate, Countable
     }
 
     /**
-     * Add package to collection.
+     * Add package to collection
      *
      * @param \Inspirum\Balikobot\Model\Values\Package $package
      */
@@ -60,7 +60,7 @@ class PackageCollection implements IteratorAggregate, Countable
     }
 
     /**
-     * Get packages shipper.
+     * Get packages shipper
      *
      * @return string
      */
@@ -70,7 +70,7 @@ class PackageCollection implements IteratorAggregate, Countable
     }
 
     /**
-     * Get packages EID.
+     * Get packages EID
      *
      * @return string
      */
@@ -80,7 +80,7 @@ class PackageCollection implements IteratorAggregate, Countable
     }
 
     /**
-     * Get an iterator for the items.
+     * Get an iterator for the items
      *
      * @return \ArrayIterator
      */
@@ -90,7 +90,7 @@ class PackageCollection implements IteratorAggregate, Countable
     }
 
     /**
-     * Get the collection of packages as a plain array.
+     * Get the collection of packages as a plain array
      *
      * @return array[]
      */
@@ -112,7 +112,7 @@ class PackageCollection implements IteratorAggregate, Countable
     }
 
     /**
-     * Get new EID for package batch.
+     * Get new EID for package batch
      *
      * @return string
      */
