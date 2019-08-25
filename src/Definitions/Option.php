@@ -174,6 +174,13 @@ class Option
     public const REC_PHONE = 'rec_phone';
 
     /**
+     * Customer ID
+     *
+     * @var string
+     */
+    public const REC_ID = 'rec_id';
+
+    /**
      * Weight in kg
      * float
      *

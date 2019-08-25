@@ -135,4 +135,14 @@ trait CustomerData
     {
         $this->offsetSet(Option::REC_NAME_PATRONYMUM, $recNamePatronymum);
     }
+
+    /**
+     * @param string $id
+     *
+     * @return void
+     */
+    public function setRecId(string $id): void
+    {
+        $this->offsetSet(Option::REC_ID, $id);
+    }
 }
