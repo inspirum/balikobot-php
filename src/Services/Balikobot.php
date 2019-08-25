@@ -366,6 +366,7 @@ class Balikobot
      * @param string|null $street
      * @param int|null    $maxResults
      * @param float|null  $radius
+     * @param string|null $type
      *
      * @return \Generator|\Inspirum\Balikobot\Model\Values\Branch[]
      *
@@ -378,7 +379,8 @@ class Balikobot
         string $postcode = null,
         string $street = null,
         int $maxResults = null,
-        float $radius = null
+        float $radius = null,
+        string $type = null
     ): iterable {
         $branches = $this->client->getBranchesForLocation(
             $shipper,
@@ -387,7 +389,8 @@ class Balikobot
             $postcode,
             $street,
             $maxResults,
-            $radius
+            $radius,
+            $type
         );
 
         foreach ($branches as $branch) {

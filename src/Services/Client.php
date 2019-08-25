@@ -370,6 +370,7 @@ class Client
      * @param string|null $street
      * @param int|null    $maxResults
      * @param float|null  $radius
+     * @param string|null $type
      *
      * @return array[]
      *
@@ -382,7 +383,8 @@ class Client
         string $postcode = null,
         string $street = null,
         int $maxResults = null,
-        float $radius = null
+        float $radius = null,
+        string $type = null
     ): array {
         Country::validateCode($country);
 
@@ -393,6 +395,7 @@ class Client
             'street'      => $street,
             'max_results' => $maxResults,
             'radius'      => $radius,
+            'type'        => $type,
         ];
 
         $data = array_filter($data);
