@@ -1,6 +1,8 @@
-build
+/.idea/
+/build/
+/vendor/
+*.env
 composer.lock
-vendor
 coverage.clover
 phpunit.xml
-.idea
+

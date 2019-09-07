@@ -5,13 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.1.3] - 2019-09-07
+### Added
+- Add support for new options from documentation **v1.870** (2019-09-05)    
+    - Add **GW** (Gebrüder Weiss) shipper
+- Add support for new options from documentation **v1.869** (2019-08-19)    
+    - Add **del_exworks_account_number** attribute
+    - Add **del_exworks_zip** attribute
+- Add support for new options from documentation **v1.867** (2019-07-23)    
+    - Add **INTIME_PARCEL_EU** service type
+    - Add **INTIME_PARCEL_EU_PLUS** service type
+    - Add **ins_currency** attribute
+- Add support for new options from documentation **v1.866** (2019-07-10)    
+    – Add **B2A** request
+- Add support for new options from documentation **v1.865** (2019-07-01)    
+    – Add **rec_id** attribute
+- Add support for new options from documentation **v1.864** (2019-06-26)
+    - Add **type** parameter to **BRANCHLOCATOR** request
+
+
 ## [1.1.2] - 2019-06-24
 ### Added
 - Add support for new options from documentation **v1.861** (2019-05-28)
     - Add **ACTIVATEDSERVICES** request
 - Add support for new options from documentation **v1.859** (2019-05-07)
     - Add **SPS_INTERNATIONAL** service type (Export (mezinárodní zásilky))
-
+### Fixes
+- Fix bug: "track" request does not require "status" in response data
 
 ## [1.1.1] - 2019-05-01
 ### Added

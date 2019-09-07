@@ -47,7 +47,16 @@ class GetBranchesForLocationTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $branches = $service->getBranchesForLocation('pbh', 'DE', 'Berlin', null, 'Schönwalder', null, null, 'postfiliale');
+        $branches = $service->getBranchesForLocation(
+            'pbh',
+            'DE',
+            'Berlin',
+            null,
+            'Schönwalder',
+            null,
+            null,
+            'postfiliale'
+        );
 
         $branches->valid();
 
