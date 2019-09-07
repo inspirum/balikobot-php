@@ -119,6 +119,13 @@ class Shipper
     public const TNT = 'tnt';
 
     /**
+     * Gebrüder Weiss
+     *
+     * @var string
+     */
+    public const GW = 'gw';
+
+    /**
      * All supported shipper services.
      *
      * @return array
@@ -142,6 +149,7 @@ class Shipper
             self::UPS,
             self::ZASILKOVNA,
             self::TNT,
+            self::GW,
         ];
     }
 

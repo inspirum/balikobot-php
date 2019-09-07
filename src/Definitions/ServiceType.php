@@ -1286,6 +1286,21 @@ class ServiceType
     }
 
     /**
+     * @return array
+     */
+    public static function gw(): array
+    {
+        return [
+            self::GW_PRIORITY_9,
+            self::GW_PRIORITY_12,
+            self::GW_PRIORITY_16,
+            self::GW_DIRECT_GOODS,
+            self::GW_PICKUP,
+            self::GW_PICKUP_BY_CONSIGNEE,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array
@@ -1309,6 +1324,7 @@ class ServiceType
             Shipper::UPS        => self::ups(),
             Shipper::ZASILKOVNA => self::zasilkovna(),
             Shipper::TNT        => self::tnt(),
+            Shipper::GW         => self::gw(),
         ];
     }
 }

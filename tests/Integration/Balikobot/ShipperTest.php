@@ -30,6 +30,7 @@ class ShipperTest extends AbstractBalikobotTestCase
             'tnt',
             'dhl',
             'dhlsk',
+            'gw',
         ];
 
         sort($shippers);
