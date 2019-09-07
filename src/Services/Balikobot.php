@@ -495,4 +495,31 @@ class Balikobot
 
         return $units;
     }
+
+    /**
+     * Order shipments from place B (typically supplier / previous consignee) to place A (shipping point)
+     *
+     * @param \Inspirum\Balikobot\Model\Aggregates\PackageCollection $packages
+     *
+     * @return \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection|\Inspirum\Balikobot\Model\Values\OrderedPackage[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function orderB2AShipment(PackageCollection $packages): OrderedPackageCollection
+    {
+        $response = $this->client->orderB2AShipment($packages->getShipper(), $packages->toArray());
+
+        // create return value object
+        $orderedPackages = new OrderedPackageCollection();
+
+        foreach ($response as $i => $package) {
+            $orderedPackages->add(OrderedPackage::newInstanceFromData(
+                $packages->getShipper(),
+                $packages->getEID(),
+                $package
+            ));
+        }
+
+        return $orderedPackages;
+    }
 }

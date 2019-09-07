@@ -704,4 +704,25 @@ class Option
      * @var string
      */
     public const DELIVERY_COSTS_EUR = 'delivery_costs_eur';
+
+    /**
+     * Datum (formát YYYY-MM-DD) plánované reallizace přepravy
+     *
+     * @var string
+     */
+    public const PICKUP_DATE = 'pickup_date';
+
+    /**
+     * Preferovaný čas přepravy OD. Formát HH:mm
+     *
+     * @var string
+     */
+    public const PICKUP_TIME_FROM = 'pickup_time_from';
+
+    /**
+     * Preferovaný čas přepravy DO. Formát HH:mm
+     *
+     * @var string
+     */
+    public const PICKUP_TIME_TO = 'pickup_time_to';
 }

@@ -2,6 +2,7 @@
 
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
+use DateTime;
 use Inspirum\Balikobot\Definitions\Option;
 use Inspirum\Balikobot\Model\Values\Package;
 use Inspirum\Balikobot\Tests\AbstractTestCase;
@@ -99,7 +100,7 @@ class PackageTest extends AbstractTestCase
         $package->setWrapBackCount(6);
         $package->setWrapBackNote('WNote');
         $package->setAppDisp(true);
-        $package->setDeliveryDate(new \DateTime('2018-10-10 10:00:01'));
+        $package->setDeliveryDate(new DateTime('2018-10-10 10:00:01'));
         $package->setReturnTrack(true);
         $package->setBankAccountNumber('56789/0900');
         $package->setContent('content');
@@ -138,6 +139,9 @@ class PackageTest extends AbstractTestCase
         $package->setDeliveryCosts(15.1);
         $package->setDeliveryCostsEUR(5.31);
         $package->setRecId('567890');
+        $package->setPickupDate(new DateTime('2019-11-11 10:00:01'));
+        $package->setPickupTimeFrom(new DateTime('2019-11-11 10:00:01'));
+        $package->setPickupTimeTo(new DateTime('2019-11-11 18:10:59'));
 
         $this->assertEquals(
             [
@@ -231,6 +235,9 @@ class PackageTest extends AbstractTestCase
                 Option::DELIVERY_COSTS              => 15.1,
                 Option::DELIVERY_COSTS_EUR          => 5.31,
                 Option::REC_ID                      => '567890',
+                Option::PICKUP_DATE                 => '2019-11-11',
+                Option::PICKUP_TIME_FROM            => '10:00',
+                Option::PICKUP_TIME_TO              => '18:10',
             ],
             $package->toArray()
         );

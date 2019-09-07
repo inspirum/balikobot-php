@@ -150,4 +150,11 @@ class Request
      * @var string
      */
     public const ACTIVATEDSERVICES = 'activatedservices';
+
+    /**
+     * order shipments from place B (typically supplier / previous consignee) to place A (shipping point)
+     *
+     * @var string
+     */
+    public const B2A = 'b2a';
 }

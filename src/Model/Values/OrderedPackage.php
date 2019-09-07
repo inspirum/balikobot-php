@@ -169,9 +169,9 @@ class OrderedPackage
             $data['package_id'],
             $shipper,
             $eid,
-            $data['carrier_id'],
+            $data['carrier_id'] ?? '',
             $data['track_url'] ?? null,
-            $data['label_url'],
+            $data['label_url'] ?? null,
             $data['carrier_id_swap'] ?? null,
             $data['pieces'] ?? []
         );

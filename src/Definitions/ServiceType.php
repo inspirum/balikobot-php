@@ -159,6 +159,13 @@ class ServiceType
     public const CP_CE = 'CE';
 
     /**
+     * PPL Parcel Business CZ
+     *
+     * @var string
+     */
+    public const PPL_PARCEL_BUSSINESS_CZ = '1';
+
+    /**
      * PPL Parcel Connect (exportní balík)
      *
      * @var string
@@ -192,6 +199,13 @@ class ServiceType
      * @var string
      */
     public const PPL_PRIVATE_EVENING = '9';
+
+    /**
+     * PPl Parcel Import
+     *
+     * @var string
+     */
+    public const PPL_PARCEL_IMPORT = '11';
 
     /**
      * PPL Firemní paleta

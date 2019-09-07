@@ -562,4 +562,27 @@ class Client
 
         return $response;
     }
+
+    /**
+     * Order shipments from place B (typically supplier / previous consignee) to place A (shipping point)
+     *
+     * @param string $shipper
+     * @param array  $packages
+     *
+     * @return array
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function orderB2AShipment(string $shipper, array $packages): array
+    {
+        $response = $this->requester->call('v1', $shipper, Request::B2A, $packages);
+
+        if (isset($response[0]['package_id']) === false) {
+            throw new BadRequestException($response);
+        }
+
+        unset($response['status']);
+
+        return $response;
+    }
 }

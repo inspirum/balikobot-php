@@ -306,4 +306,34 @@ trait DeliveryData
     {
         $this->offsetSet(Option::DELIVERY_COSTS_EUR, $deliveryCosts);
     }
+
+    /**
+     * @param \DateTime $pickupDate
+     *
+     * @return void
+     */
+    public function setPickupDate(DateTime $pickupDate): void
+    {
+        $this->offsetSet(Option::PICKUP_DATE, $pickupDate->format('Y-m-d'));
+    }
+
+    /**
+     * @param \DateTime $pickupTimeFrom
+     *
+     * @return void
+     */
+    public function setPickupTimeFrom(DateTime $pickupTimeFrom): void
+    {
+        $this->offsetSet(Option::PICKUP_TIME_FROM, $pickupTimeFrom->format('H:i'));
+    }
+
+    /**
+     * @param \DateTime $pickupTimeTo
+     *
+     * @return void
+     */
+    public function setPickupTimeTo(DateTime $pickupTimeTo): void
+    {
+        $this->offsetSet(Option::PICKUP_TIME_TO, $pickupTimeTo->format('H:i'));
+    }
 }
