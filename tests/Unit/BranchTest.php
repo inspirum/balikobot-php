@@ -11,9 +11,9 @@ class BranchTest extends AbstractTestCase
     {
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'id'                    => '1234',
-            'type'                  => "type",
-            'name'                  => "name",
-            'city'                  => "city",
+            'type'                  => 'type',
+            'name'                  => 'name',
+            'city'                  => 'city',
             'street'                => 'street',
             'zip'                   => 'zip',
             'country'               => 'country',

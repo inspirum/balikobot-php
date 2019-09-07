@@ -85,12 +85,12 @@ class AdrUnitsRequestTest extends AbstractClientTestCase
             'units'  => [
                 [
                     'code' => 1,
-                    'name' => "KM",
+                    'name' => 'KM',
                     'attr' => 4,
                 ],
                 [
                     'code' => 876,
-                    'name' => "M",
+                    'name' => 'M',
                 ],
             ],
         ]);
@@ -101,8 +101,8 @@ class AdrUnitsRequestTest extends AbstractClientTestCase
 
         $this->assertEquals(
             [
-                1   => "KM",
-                876 => "M",
+                1   => 'KM',
+                876 => 'M',
             ],
             $units
         );

@@ -49,7 +49,7 @@ class LabelsRequestTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'     => 200,
-            'labels_url' => "http://pdf.balikobot.cz/dpd/eNorMdY1NFwwXDAELgE2",
+            'labels_url' => 'http://pdf.balikobot.cz/dpd/eNorMdY1NFwwXDAELgE2',
         ]);
 
         $client = new Client($requester);

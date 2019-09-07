@@ -33,7 +33,7 @@ class TrackRequestTest extends AbstractClientTestCase
                 [
                     'date'      => '2018-07-02 00:00:00',
                     'status_id' => 1,
-                    'name'      => '"Doručování zásilky. 10003 Depo Praha 701',
+                    'name'      => 'Doručování zásilky. 10003 Depo Praha 701',
                 ],
             ],
         ]);

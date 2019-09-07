@@ -85,12 +85,12 @@ class ManipulationUnitsRequestTest extends AbstractClientTestCase
             'units'  => [
                 [
                     'code' => 1,
-                    'name' => "KM",
+                    'name' => 'KM',
                     'attr' => 4,
                 ],
                 [
                     'code' => 876,
-                    'name' => "M",
+                    'name' => 'M',
                 ],
             ],
         ]);
@@ -99,6 +99,6 @@ class ManipulationUnitsRequestTest extends AbstractClientTestCase
 
         $units = $client->getManipulationUnits('cp');
 
-        $this->assertEquals([1 => "KM", 876 => "M"], $units);
+        $this->assertEquals([1 => 'KM', 876 => 'M'], $units);
     }
 }

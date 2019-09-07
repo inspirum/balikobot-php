@@ -83,11 +83,11 @@ class GetBranchesForLocationTest extends AbstractBalikobotTestCase
             'branches' => [
                 [
                     'id'  => 1,
-                    'zip' => "11000",
+                    'zip' => '11000',
                 ],
                 [
                     'id'  => 876,
-                    'zip' => "12000",
+                    'zip' => '12000',
                 ],
             ],
         ]);

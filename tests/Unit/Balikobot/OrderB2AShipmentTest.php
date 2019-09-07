@@ -15,8 +15,8 @@ class OrderB2AShipmentTest extends AbstractBalikobotTestCase
             0        => [
                 'carrier_id'     => 'NP1504102246M',
                 'package_id'     => 21,
-                'track_url'      => 'https://www.geis-group.cz/cs/sledovani-zasilky/?p=NP1504102246M"',
-                'status_message' => 'OK, přeprava byla objednána."',
+                'track_url'      => 'https://www.geis-group.cz/cs/sledovani-zasilky/?p=NP1504102246M',
+                'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
         ]);
@@ -61,15 +61,15 @@ class OrderB2AShipmentTest extends AbstractBalikobotTestCase
             0            => [
                 'carrier_id'     => 'NP1504102246M',
                 'package_id'     => 21,
-                'track_url'      => 'https://www.geis-group.cz/cs/sledovani-zasilky/?p=NP1504102246M"',
-                'status_message' => 'OK, přeprava byla objednána."',
+                'track_url'      => 'https://www.geis-group.cz/cs/sledovani-zasilky/?p=NP1504102246M',
+                'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
             1            => [
                 'carrier_id'     => 'NP1504102247M',
                 'package_id'     => 22,
-                'track_url'      => 'https://www.geis-group.cz/cs/sledovani-zasilky/?p=NP1504102247M"',
-                'status_message' => 'OK, přeprava byla objednána."',
+                'track_url'      => 'https://www.geis-group.cz/cs/sledovani-zasilky/?p=NP1504102247M',
+                'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
         ]);
@@ -92,12 +92,12 @@ class OrderB2AShipmentTest extends AbstractBalikobotTestCase
             'status'     => 200,
             0            => [
                 'package_id'     => 21,
-                'status_message' => 'OK, přeprava byla objednána."',
+                'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
             1            => [
                 'package_id'     => 22,
-                'status_message' => 'OK, přeprava byla objednána."',
+                'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
         ]);

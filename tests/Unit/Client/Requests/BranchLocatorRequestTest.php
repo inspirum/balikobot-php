@@ -94,11 +94,11 @@ class BranchLocatorRequestTest extends AbstractClientTestCase
             'branches' => [
                 [
                     'code' => 1,
-                    'name' => "AAA",
+                    'name' => 'AAA',
                 ],
                 [
                     'code' => 876,
-                    'name' => "BBB",
+                    'name' => 'BBB',
                 ],
             ],
         ]);
@@ -111,11 +111,11 @@ class BranchLocatorRequestTest extends AbstractClientTestCase
             [
                 [
                     'code' => 1,
-                    'name' => "AAA",
+                    'name' => 'AAA',
                 ],
                 [
                     'code' => 876,
-                    'name' => "BBB",
+                    'name' => 'BBB',
                 ],
             ],
             $branches
