@@ -85,6 +85,22 @@ class Option
      */
     public const DEL_EXWORKS = 'del_exworks';
 
+    /**
+     * Pay by customer
+     * bool
+     *
+     * @var string
+     */
+    public const DEL_EXWORKS_ACCOUNT_NUMBER = 'del_exworks_account_number';
+
+    /**
+     * Pay by customer
+     * bool
+     *
+     * @var string
+     */
+    public const DEL_EXWORKS_ZIP = 'del_exworks_zip';
+
     /***
      * Ppackage COD price
      * float

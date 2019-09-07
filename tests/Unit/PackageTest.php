@@ -144,6 +144,8 @@ class PackageTest extends AbstractTestCase
         $package->setPickupTimeTo(new DateTime('2019-11-11 18:10:59'));
         $package->setPickupTimeTo(new DateTime('2019-11-11 18:10:59'));
         $package->setInsCurrency('EUR');
+        $package->setDelAccountNumber('456789/0987');
+        $package->setDelZip('17000');
 
         $this->assertEquals(
             [
@@ -241,6 +243,8 @@ class PackageTest extends AbstractTestCase
                 Option::PICKUP_TIME_FROM            => '10:00',
                 Option::PICKUP_TIME_TO              => '18:10',
                 Option::INS_CURRENCY                => 'EUR',
+                Option::DEL_EXWORKS_ACCOUNT_NUMBER  => '456789/0987',
+                Option::DEL_EXWORKS_ZIP             => '17000',
             ],
             $package->toArray()
         );

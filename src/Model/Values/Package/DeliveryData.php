@@ -158,6 +158,26 @@ trait DeliveryData
     }
 
     /**
+     * @param string $delAccountNumber
+     *
+     * @return void
+     */
+    public function setDelAccountNumber(string $delAccountNumber): void
+    {
+        $this->offsetSet(Option::DEL_EXWORKS_ACCOUNT_NUMBER, $delAccountNumber);
+    }
+
+    /**
+     * @param string $delZip
+     *
+     * @return void
+     */
+    public function setDelZip(string $delZip): void
+    {
+        $this->offsetSet(Option::DEL_EXWORKS_ZIP, $delZip);
+    }
+
+    /**
      * @param bool $comfort
      *
      * @return void
