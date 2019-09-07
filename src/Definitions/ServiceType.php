@@ -1002,6 +1002,76 @@ class ServiceType
     public const TNT_NIGHT_EXPRESS_12 = '12';
 
     /**
+     * Night Express 06:00
+     *
+     * @var string
+     */
+    public const TNT_NIGHT_EXPRESS_6 = '13';
+
+    /**
+     * Night Express 07:00
+     *
+     * @var string
+     */
+    public const TNT_NIGHT_EXPRESS_7 = '14';
+
+    /**
+     * Night Express 14:00
+     *
+     * @var string
+     */
+    public const TNT_NIGHT_EXPRESS_14 = '15';
+
+    /**
+     * Special economy express
+     *
+     * @var string
+     */
+    public const TNT_SPECIAL_ECONOMY_EXPRESS = '16';
+
+    /**
+     * Priority Goods 9:00
+     *
+     * @var string
+     */
+    public const GW_PRIORITY_9 = 'P9';
+
+    /**
+     * Priority Goods 12:00
+     *
+     * @var string
+     */
+    public const GW_PRIORITY_12 = 'P12';
+
+    /**
+     * Priority Goods 16:00
+     *
+     * @var string
+     */
+    public const GW_PRIORITY_16 = 'P16';
+
+    /**
+     * Direct Goods
+     *
+     * @var string
+     */
+    public const GW_DIRECT_GOODS = 'WDG';
+
+    /**
+     * Pick Up
+     *
+     * @var string
+     */
+    public const GW_PICKUP = 'BES';
+
+    /**
+     * Pickup by Consignee
+     *
+     * @var string
+     */
+    public const GW_PICKUP_BY_CONSIGNEE = 'SA';
+
+    /**
      * @return array
      */
     public static function cp(): array
@@ -1134,7 +1204,7 @@ class ServiceType
     {
         return [
             self::PBH_DHL,
-            self::PBH_GLS,
+            // self::PBH_GLS,
             self::PBH_UPS,
             self::PBH_SP,
             self::PBH_TRANSOFLEX,
@@ -1282,6 +1352,10 @@ class ServiceType
             self::TNT_EXPRESS_DOCUMENTS_10,
             self::TNT_EXPRESS_DOCUMENTS_12,
             self::TNT_NIGHT_EXPRESS_12,
+            self::TNT_NIGHT_EXPRESS_6,
+            self::TNT_NIGHT_EXPRESS_7,
+            self::TNT_NIGHT_EXPRESS_14,
+            self::TNT_SPECIAL_ECONOMY_EXPRESS,
         ];
     }
 
