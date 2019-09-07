@@ -428,6 +428,20 @@ class ServiceType
     public const INTIME_EXTRA_CZ = '7';
 
     /**
+     * Parcel EU
+     *
+     * @var string
+     */
+    public const INTIME_PARCEL_EU = '8';
+
+    /**
+     * Parcel EU+
+     *
+     * @var string
+     */
+    public const INTIME_PARCEL_EU_PLUS = '9';
+
+    /**
      * 24 hodin (Standard)
      *
      * @var string
@@ -1108,6 +1122,8 @@ class ServiceType
             // self::INTIME_POSTOMAT_SK,
             self::INTIME_LARGE_SK,
             self::INTIME_EXTRA_CZ,
+            self::INTIME_PARCEL_EU,
+            self::INTIME_PARCEL_EU_PLUS,
         ];
     }
 

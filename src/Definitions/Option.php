@@ -189,6 +189,13 @@ class Option
     public const WEIGHT = 'weight';
 
     /**
+     * Currency
+     *
+     * @var string
+     */
+    public const INS_CURRENCY = 'ins_currency';
+
+    /**
      * Taking delivery requires full age
      * bool
      *
