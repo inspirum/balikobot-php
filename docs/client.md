@@ -752,6 +752,43 @@ var_dump($services);
 */
 ```
 
+
+### **B2A**
+
+Method **B2A** order shipments from place **B** (typically supplier / previous consignee) to place **A** (shipping point)
+
+The client normalizes the response by removing the status code (drop **status** attribute).
+
+
+```php
+use Inspirum\Balikobot\Definitions\Option;
+use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$orderedPackages = $client->orderB2AShipment(Shipper::PPL, [
+  [
+    Options::SERVICE_TYPE     => ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+    Options::EID              => '1900710001',
+    Options::PICKUP_DATE      => '2019-11-11',
+    Options::PICKUP_TIME_FROM => '13:30',
+    Options::PICKUP_TIME_TO   => '15:30',
+    // ...
+  ],
+  // ...
+]);
+
+/*
+var_dump($orderedPackages);
+[
+  0 => [
+    'package_id'     => 24
+    'status_message' => 'OK, přeprava byla objednána-'
+    'status'         => '200'
+  ]
+]
+*/
+```
+
 ***
 
 

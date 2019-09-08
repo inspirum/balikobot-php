@@ -17,9 +17,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Add **INTIME_PARCEL_EU_PLUS** service type
     - Add **ins_currency** attribute
 - Add support for new options from documentation **v1.866** (2019-07-10)    
-    – Add **B2A** request
+    - Add **B2A** request
 - Add support for new options from documentation **v1.865** (2019-07-01)    
-    – Add **rec_id** attribute
+    - Add **rec_id** attribute
 - Add support for new options from documentation **v1.864** (2019-06-26)
     - Add **type** parameter to **BRANCHLOCATOR** request
 

@@ -152,7 +152,7 @@ class Request
     public const ACTIVATEDSERVICES = 'activatedservices';
 
     /**
-     * order shipments from place B (typically supplier / previous consignee) to place A (shipping point)
+     * Order shipments from place B (typically supplier / previous consignee) to place A (shipping point)
      *
      * @var string
      */
