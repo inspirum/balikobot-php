@@ -748,4 +748,32 @@ class Option
      * @var string
      */
     public const PICKUP_TIME_TO = 'pickup_time_to';
+
+    /**
+     * Zákaznická reference, maximální délka 20 alfanumerických znaků.
+     *
+     * @var string
+     */
+    public const REFERENCE = 'reference';
+
+    /**
+     * SMS Service (SM1) – SMS avizace s možností zaslání vlastního textu
+     *
+     * @var string
+     */
+    public const SM1_SERVICE = 'sm1_service';
+
+    /**
+     * Text SMS pro avizaci skrze sm1_service. Max délka 160 znaků.
+     *
+     * @var string
+     */
+    public const SM1_TEXT = 'sm1_text';
+
+    /**
+     * PreAdvice Service (SM2). SMS avizace před doručením zásilky.
+     *
+     * @var string
+     */
+    public const SM2_SERVICE = 'sm2_service';
 }

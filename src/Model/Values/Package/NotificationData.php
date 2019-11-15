@@ -75,4 +75,44 @@ trait NotificationData
     {
         $this->offsetSet(Option::B2C_NOTIFICATION, (int) $b2cNotification);
     }
+
+    /**
+     * @param string $reference
+     *
+     * @return void
+     */
+    public function setReference(string $reference): void
+    {
+        $this->offsetSet(Option::REFERENCE, $reference);
+    }
+
+    /**
+     * @param bool $service
+     *
+     * @return void
+     */
+    public function setSM1Service(bool $service = true): void
+    {
+        $this->offsetSet(Option::SM1_SERVICE, (int) $service);
+    }
+
+    /**
+     * @param string $text
+     *
+     * @return void
+     */
+    public function setSM1Text(string $text): void
+    {
+        $this->offsetSet(Option::SM1_TEXT, $text);
+    }
+
+    /**
+     * @param bool $service
+     *
+     * @return void
+     */
+    public function setSM2Service(bool $service = true): void
+    {
+        $this->offsetSet(Option::SM2_SERVICE, (int) $service);
+    }
 }

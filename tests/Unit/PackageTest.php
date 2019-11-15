@@ -146,6 +146,10 @@ class PackageTest extends AbstractTestCase
         $package->setInsCurrency('EUR');
         $package->setDelAccountNumber('456789/0987');
         $package->setDelZip('17000');
+        $package->setReference('REFEREBCE');
+        $package->setSM1Service(true);
+        $package->setSM1Text('TEST');
+        $package->setSM2Service(false);
 
         $this->assertEquals(
             [
@@ -245,6 +249,10 @@ class PackageTest extends AbstractTestCase
                 Option::INS_CURRENCY                => 'EUR',
                 Option::DEL_EXWORKS_ACCOUNT_NUMBER  => '456789/0987',
                 Option::DEL_EXWORKS_ZIP             => '17000',
+                Option::REFERENCE                   => 'REFEREBCE',
+                Option::SM1_SERVICE                 => true,
+                Option::SM1_TEXT                    => 'TEST',
+                Option::SM2_SERVICE                 => false,
             ],
             $package->toArray()
         );
