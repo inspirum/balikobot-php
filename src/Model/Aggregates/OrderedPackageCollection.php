@@ -45,7 +45,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
      */
     public function add(OrderedPackage $package): void
     {
-        //validate package shipper
+        // validate package shipper
         $this->validateShipper($package);
 
         // add package to collection
@@ -60,7 +60,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     public function getShipper(): string
     {
         if ($this->shipper === null) {
-            throw new RuntimeException('No shipper is set.');
+            throw new RuntimeException('Collection is empty');
         }
 
         return $this->shipper;
