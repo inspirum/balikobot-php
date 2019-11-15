@@ -379,6 +379,27 @@ class ServiceType
     public const GLS_EXPRESS = '3';
 
     /**
+     * Guaranteed 24 Service Business Parcel
+     *
+     * @var string
+     */
+    public const GLS_GUARANTEED24 = '4';
+
+    /**
+     * "Guaranteed 24 Service Express Parcel
+     *
+     * @var string
+     */
+    public const GLS_GUARANTEED24_EXPRESS = '5';
+
+    /**
+     * Guaranteed 24 Service ShopDelivery
+     *
+     * @var string
+     */
+    public const GLS_GUARANTEED24_SHOP = '6';
+
+    /**
      * Small Colli 24-CZ
      *
      * @var string
@@ -1072,6 +1093,20 @@ class ServiceType
     public const GW_PICKUP_BY_CONSIGNEE = 'SA';
 
     /**
+     * Domestic PRON
+     *
+     * @var string
+     */
+    public const GW_DOMESTIC = 'W24';
+
+    /**
+     * Export PROI
+     *
+     * @var string
+     */
+    public const GW_EXPORT = 'EUR';
+
+    /**
      * @return array
      */
     public static function cp(): array
@@ -1176,6 +1211,9 @@ class ServiceType
             self::GLS_BUSINESS,
             self::GLS_SHOP,
             self::GLS_EXPRESS,
+            self::GLS_GUARANTEED24,
+            self::GLS_GUARANTEED24_EXPRESS,
+            self::GLS_GUARANTEED24_SHOP,
         ];
     }
 
@@ -1365,10 +1403,12 @@ class ServiceType
     public static function gw(): array
     {
         return [
+            self::GW_DOMESTIC,
             self::GW_PRIORITY_9,
             self::GW_PRIORITY_12,
             self::GW_PRIORITY_16,
             self::GW_DIRECT_GOODS,
+            self::GW_EXPORT,
             self::GW_PICKUP,
             self::GW_PICKUP_BY_CONSIGNEE,
         ];
