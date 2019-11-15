@@ -78,11 +78,7 @@ class Client
      */
     public function dropPackages(string $shipper, array $packageIds): void
     {
-        $data = [];
-
-        foreach ($packageIds as $packageId) {
-            $data[] = ['id' => $packageId];
-        }
+        $data = $this->encapsulateIds($packageIds);
 
         if (count($data) === 0) {
             return;
@@ -120,7 +116,7 @@ class Client
      */
     public function trackPackages(string $shipper, array $carrierIds): array
     {
-        $data = $this->encapsulateCarrierIds($carrierIds);
+        $data = $this->encapsulateIds($carrierIds);
 
         $response = $this->requester->call('v2', $shipper, Request::TRACK, $data, false);
 
@@ -166,7 +162,7 @@ class Client
      */
     public function trackPackageLastStatuses(string $shipper, array $carrierIds): array
     {
-        $data = $this->encapsulateCarrierIds($carrierIds);
+        $data = $this->encapsulateIds($carrierIds);
 
         $response = $this->requester->call('v1', $shipper, Request::TRACK_STATUS, $data, false);
 
@@ -640,7 +636,7 @@ class Client
      */
     public function getProofOfDelivery(string $shipper, array $carrierIds): array
     {
-        $data = $this->encapsulateCarrierIds($carrierIds);
+        $data = $this->encapsulateIds($carrierIds);
 
         $response = $this->requester->call('v1', $shipper, Request::PROOF_OF_DELIVERY, $data, false);
 
@@ -674,7 +670,7 @@ class Client
      *
      * @return array
      */
-    private function encapsulateCarrierIds(array $carrierIds): array
+    private function encapsulateIds(array $carrierIds): array
     {
         return array_map(function ($carrierId) {
             return [
