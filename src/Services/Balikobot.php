@@ -138,12 +138,35 @@ class Balikobot
      */
     public function trackPackage(OrderedPackage $package): array
     {
-        $response = $this->client->trackPackage($package->getShipper(), $package->getCarrierId());
+        $packages = new OrderedPackageCollection();
+        $packages->add($package);
+
+        $response = $this->trackPackages($packages);
+
+        return $response[0];
+    }
+
+    /**
+     * Track packages
+     *
+     * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
+     *
+     * @return \Inspirum\Balikobot\Model\Values\PackageStatus[][]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function trackPackages(OrderedPackageCollection $packages): array
+    {
+        $response = $this->client->trackPackages($packages->getShipper(), $packages->getCarrierIds());
 
         $statuses = [];
 
-        foreach ($response as $status) {
-            $statuses[] = PackageStatus::newInstanceFromData($status);
+        foreach ($response as $i => $responseStatuses) {
+            $statuses[$i] = [];
+
+            foreach ($responseStatuses as $status) {
+                $statuses[$i][] = PackageStatus::newInstanceFromData($status);
+            }
         }
 
         return $statuses;
@@ -160,11 +183,34 @@ class Balikobot
      */
     public function trackPackageLastStatus(OrderedPackage $package): PackageStatus
     {
-        $response = $this->client->trackPackageLastStatus($package->getShipper(), $package->getCarrierId());
+        $packages = new OrderedPackageCollection();
+        $packages->add($package);
 
-        $status = PackageStatus::newInstanceFromData($response);
+        $response = $this->trackPackagesLastStatus($packages);
 
-        return $status;
+        return $response[0];
+    }
+
+    /**
+     * Track package last status
+     *
+     * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $package
+     *
+     * @return \Inspirum\Balikobot\Model\Values\PackageStatus[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function trackPackagesLastStatus(OrderedPackageCollection $packages): array
+    {
+        $response = $this->client->trackPackagesLastStatus($packages->getShipper(), $packages->getCarrierIds());
+
+        $statuses = [];
+
+        foreach ($response as $status) {
+            $statuses[] = PackageStatus::newInstanceFromData($status);
+        }
+
+        return $statuses;
     }
 
     /**
@@ -521,5 +567,40 @@ class Balikobot
         }
 
         return $orderedPackages;
+    }
+
+    /**
+     * Get PDF link with signed consignment delivery document by the recipient
+     *
+     * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
+     *
+     * @return string
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getProofOfDelivery(OrderedPackage $package): string
+    {
+        $packages = new OrderedPackageCollection();
+        $packages->add($package);
+
+        $response = $this->getProofOfDeliveries($packages);
+
+        return $response[0];
+    }
+
+    /**
+     * Get array of PDF links with signed consignment delivery document by the recipient
+     *
+     * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
+     *
+     * @return string[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getProofOfDeliveries(OrderedPackageCollection $packages): array
+    {
+        $response = $this->client->getProofOfDeliveries($packages->getShipper(), $packages->getCarrierIds());
+
+        return $response;
     }
 }

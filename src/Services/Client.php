@@ -146,7 +146,7 @@ class Client
      */
     public function trackPackageLastStatus(string $shipper, string $carrierId): array
     {
-        $response = $this->trackPackageLastStatuses($shipper, [$carrierId]);
+        $response = $this->trackPackagesLastStatus($shipper, [$carrierId]);
 
         return $response[0];
     }
@@ -161,7 +161,7 @@ class Client
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function trackPackageLastStatuses(string $shipper, array $carrierIds): array
+    public function trackPackagesLastStatus(string $shipper, array $carrierIds): array
     {
         $data = $this->encapsulateIds($carrierIds);
 
@@ -626,16 +626,33 @@ class Client
     }
 
     /**
-     * Order shipments from place B (typically supplier / previous consignee) to place A (shipping point)
+     * Get PDF link with signed consignment delivery document by the recipient
+     *
+     * @param string $shipper
+     * @param string $carrierId
+     *
+     * @return string
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getProofOfDelivery(string $shipper, string $carrierId): string
+    {
+        $response = $this->getProofOfDeliveries($shipper, [$carrierId]);
+
+        return $response[0];
+    }
+
+    /**
+     * Get array of PDF links with signed consignment delivery document by the recipient
      *
      * @param string $shipper
      * @param array  $carrierIds
      *
-     * @return array
+     * @return string[]
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getProofOfDelivery(string $shipper, array $carrierIds): array
+    public function getProofOfDeliveries(string $shipper, array $carrierIds): array
     {
         $data = $this->encapsulateIds($carrierIds);
 
@@ -665,18 +682,18 @@ class Client
     }
 
     /**
-     * Encapsulate carrier ids
+     * Encapsulate ids
      *
-     * @param array $carrierIds
+     * @param array $ids
      *
-     * @return array
+     * @return array[]
      */
-    private function encapsulateIds(array $carrierIds): array
+    private function encapsulateIds(array $ids): array
     {
         return array_map(function ($carrierId) {
             return [
                 'id' => $carrierId,
             ];
-        }, $carrierIds);
+        }, $ids);
     }
 }

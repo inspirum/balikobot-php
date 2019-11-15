@@ -141,7 +141,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackageLastStatuses('cp', [1, 3, 4]);
+        $client->trackPackagesLastStatus('cp', [1, 3, 4]);
     }
 
     public function testRequestDoesNotHaveStatusWithMultiplePackages()
@@ -163,7 +163,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $status = $client->trackPackageLastStatuses('cp', [1, 5, 6]);
+        $status = $client->trackPackagesLastStatus('cp', [1, 5, 6]);
 
         $this->assertNotEmpty($status);
     }
@@ -178,7 +178,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackageLastStatuses('cp', [1, 4]);
+        $client->trackPackagesLastStatus('cp', [1, 4]);
     }
 
     public function testThrowsExceptionOnBadStatusCodeForPackageWithMultiplePackages()
@@ -198,7 +198,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackageLastStatuses('cp', [1, 4]);
+        $client->trackPackagesLastStatus('cp', [1, 4]);
     }
 
     public function testThrowsExceptionWhenNoReturnWithMultiplePackages()
@@ -211,7 +211,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackageLastStatuses('cp', [1, 2]);
+        $client->trackPackagesLastStatus('cp', [1, 2]);
     }
 
     public function testThrowsExceptionWhenNotAllDataReturnWithMultiplePackages()
@@ -228,7 +228,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackageLastStatuses('cp', [1, 2]);
+        $client->trackPackagesLastStatus('cp', [1, 2]);
     }
 
     public function testMakeRequestWithMultiplePackages()
@@ -247,7 +247,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackageLastStatuses('cp', [1, 6]);
+        $client->trackPackagesLastStatus('cp', [1, 6]);
 
         $requester->shouldHaveReceived(
             'request',
@@ -287,7 +287,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $status = $client->trackPackageLastStatuses('cp', [1, 6, 5]);
+        $status = $client->trackPackagesLastStatus('cp', [1, 6, 5]);
 
         $this->assertEquals(
             [
