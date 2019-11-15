@@ -789,6 +789,30 @@ var_dump($orderedPackages);
 */
 ```
 
+
+### **POD**
+
+Method **POD** returns PDF links with signed consignment delivery document by the recipient.
+
+The client normalizes the response by returning only **file_url** attribute as plain array.
+
+
+```php
+use Inspirum\Balikobot\Definitions\Option;
+use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$fileUrls = $client->getProofOfDelivery(Shipper::TNT, ['GE502878792CZ', 'GE502878794CZ']);
+
+/*
+var_dump($fileUrls);
+[
+  '0' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+  '1' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwRE',
+]
+*/
+```
+
 ***
 
 

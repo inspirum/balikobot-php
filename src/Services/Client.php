@@ -629,6 +629,45 @@ class Client
     }
 
     /**
+     * Order shipments from place B (typically supplier / previous consignee) to place A (shipping point)
+     *
+     * @param string $shipper
+     * @param array  $carrierIds
+     *
+     * @return array
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getProofOfDelivery(string $shipper, array $carrierIds): array
+    {
+        $data = $this->encapsulateCarrierIds($carrierIds);
+
+        $response = $this->requester->call('v1', $shipper, Request::PROOF_OF_DELIVERY, $data, false);
+
+        if (empty($response[0])) {
+            throw new BadRequestException($response);
+        }
+
+        unset($response['status']);
+
+        if (count($response) !== count($carrierIds)) {
+            throw new BadRequestException($response);
+        }
+
+        $formatedLinks = [];
+
+        foreach ($response as $statusResponse) {
+            if (isset($statusResponse['status']) && ((int) $statusResponse['status']) !== 200) {
+                throw new BadRequestException($response);
+            }
+
+            $formatedLinks[] = $statusResponse['file_url'];
+        }
+
+        return $formatedLinks;
+    }
+
+    /**
      * Encapsulate carrier ids
      *
      * @param array $carrierIds

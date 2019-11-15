@@ -157,4 +157,11 @@ class Request
      * @var string
      */
     public const B2A = 'b2a';
+
+    /**
+     * Get PDF with signed consignment delivery document by the recipient
+     *
+     * @var string
+     */
+    public const PROOF_OF_DELIVERY = 'pod';
 }
