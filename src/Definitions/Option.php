@@ -2,7 +2,7 @@
 
 namespace Inspirum\Balikobot\Definitions;
 
-class Option
+final class Option
 {
     /**
      * Eshop ID

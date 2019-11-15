@@ -4,7 +4,7 @@ namespace Inspirum\Balikobot\Definitions;
 
 use InvalidArgumentException;
 
-class Shipper
+final class Shipper
 {
     /**
      * Česká pošta s.p.

@@ -2,7 +2,7 @@
 
 namespace Inspirum\Balikobot\Definitions;
 
-class Region
+final class Region
 {
     /**
      * Alabama

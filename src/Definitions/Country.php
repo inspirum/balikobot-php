@@ -4,7 +4,7 @@ namespace Inspirum\Balikobot\Definitions;
 
 use InvalidArgumentException;
 
-class Country
+final class Country
 {
     /**
      * Afghanistan

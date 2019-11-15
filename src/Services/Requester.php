@@ -4,22 +4,13 @@ namespace Inspirum\Balikobot\Services;
 
 use GuzzleHttp\Psr7\Response;
 use Inspirum\Balikobot\Contracts\RequesterInterface;
+use Inspirum\Balikobot\Definitions\API;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Exceptions\UnauthorizedException;
 use Psr\Http\Message\ResponseInterface;
 
 class Requester implements RequesterInterface
 {
-    /**
-     * API URL
-     *
-     * @var string[]
-     */
-    private const API_URL = [
-        'v1' => 'https://api.balikobot.cz/',
-        'v2' => 'https://api.balikobot.cz/v2/',
-    ];
-
     /**
      * API User
      *
@@ -141,7 +132,7 @@ class Requester implements RequesterInterface
      */
     private function resolveHostName(string $version): string
     {
-        return isset(self::API_URL[$version]) ? self::API_URL[$version] : self::API_URL['v1'];
+        return API::URL[$version] ?? API::URL[API::V1];
     }
 
     /**

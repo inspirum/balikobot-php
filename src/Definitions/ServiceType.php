@@ -2,7 +2,7 @@
 
 namespace Inspirum\Balikobot\Definitions;
 
-class ServiceType
+final class ServiceType
 {
     /**
      * Balík do ruky

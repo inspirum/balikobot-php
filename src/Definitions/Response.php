@@ -2,7 +2,7 @@
 
 namespace Inspirum\Balikobot\Definitions;
 
-class Response
+final class Response
 {
     /**
      * @var array

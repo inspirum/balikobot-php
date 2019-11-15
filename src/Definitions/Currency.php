@@ -7,7 +7,7 @@ use InvalidArgumentException;
 /**
  * Currencies in ISO 4217 format
  */
-class Currency
+final class Currency
 {
     /**
      * Dolar

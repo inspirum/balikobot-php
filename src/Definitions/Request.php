@@ -2,7 +2,7 @@
 
 namespace Inspirum\Balikobot\Definitions;
 
-class Request
+final class Request
 {
     /**
      * Add a package
