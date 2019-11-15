@@ -103,11 +103,24 @@ class Client
      */
     public function trackPackage(string $shipper, string $carrierId): array
     {
-        $data = [
-            0 => [
-                'id' => $carrierId,
-            ],
-        ];
+        $response = $this->trackPackages($shipper, [$carrierId]);
+
+        return $response[0];
+    }
+
+    /**
+     * Tracks a packages
+     *
+     * @param string $shipper
+     * @param array  $carrierIds
+     *
+     * @return array[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function trackPackages(string $shipper, array $carrierIds): array
+    {
+        $data = $this->encapsulateCarrierIds($carrierIds);
 
         $response = $this->requester->call('v2', $shipper, Request::TRACK, $data, false);
 
@@ -115,7 +128,13 @@ class Client
             throw new BadRequestException($response);
         }
 
-        return $response[0];
+        unset($response['status']);
+
+        if (count($response) !== count($carrierIds)) {
+            throw new BadRequestException($response);
+        }
+
+        return $response;
     }
 
     /**
@@ -130,11 +149,24 @@ class Client
      */
     public function trackPackageLastStatus(string $shipper, string $carrierId): array
     {
-        $data = [
-            0 => [
-                'id' => $carrierId,
-            ],
-        ];
+        $response = $this->trackPackageLastStatuses($shipper, [$carrierId]);
+
+        return $response[0];
+    }
+
+    /**
+     * Tracks a package, get the last info
+     *
+     * @param string $shipper
+     * @param array  $carrierIds
+     *
+     * @return array[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function trackPackageLastStatuses(string $shipper, array $carrierIds): array
+    {
+        $data = $this->encapsulateCarrierIds($carrierIds);
 
         $response = $this->requester->call('v1', $shipper, Request::TRACK_STATUS, $data, false);
 
@@ -142,17 +174,27 @@ class Client
             throw new BadRequestException($response);
         }
 
-        if (isset($response[0]['status']) && ((int) $response[0]['status']) !== 200) {
+        unset($response['status']);
+
+        if (count($response) !== count($carrierIds)) {
             throw new BadRequestException($response);
         }
 
-        $status = [
-            'name'      => $response[0]['status_text'],
-            'status_id' => $response[0]['status_id'],
-            'date'      => null,
-        ];
+        $formatedStatuses = [];
 
-        return $status;
+        foreach ($response as $statusResponse) {
+            if (isset($statusResponse['status']) && ((int) $statusResponse['status']) !== 200) {
+                throw new BadRequestException($response);
+            }
+
+            $formatedStatuses[] = [
+                'name'      => $statusResponse['status_text'],
+                'status_id' => $statusResponse['status_id'],
+                'date'      => null,
+            ];
+        }
+
+        return $formatedStatuses;
     }
 
     /**
@@ -488,11 +530,11 @@ class Client
             return [];
         }
 
-        $country   = $response['country'] ?? $country;
-        $postCodes = [];
+        $country            = $response['country'] ?? $country;
+        $formattedPostCodes = [];
 
         foreach ($response['zip_codes'] as $postCode) {
-            $postCodes[] = [
+            $formattedPostCodes[] = [
                 'postcode'     => $postCode['zip'] ?? ($postCode['zip_start'] ?? null),
                 'postcode_end' => $postCode['zip_end'] ?? null,
                 'city'         => $postCode['city'] ?? null,
@@ -501,7 +543,7 @@ class Client
             ];
         }
 
-        return $postCodes;
+        return $formattedPostCodes;
     }
 
     /**
@@ -584,5 +626,21 @@ class Client
         unset($response['status']);
 
         return $response;
+    }
+
+    /**
+     * Encapsulate carrier ids
+     *
+     * @param array $carrierIds
+     *
+     * @return array
+     */
+    private function encapsulateCarrierIds(array $carrierIds): array
+    {
+        return array_map(function ($carrierId) {
+            return [
+                'id' => $carrierId,
+            ];
+        }, $carrierIds);
     }
 }

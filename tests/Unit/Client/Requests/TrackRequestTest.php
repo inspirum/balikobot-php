@@ -58,7 +58,7 @@ class TrackRequestTest extends AbstractClientTestCase
         $client->trackPackage('cp', 1);
     }
 
-    public function testThrowsExceptionWhenNoReturnStatus()
+    public function testThrowsExceptionWhenNoDataReturn()
     {
         $this->expectException(BadRequestException::class);
 
@@ -76,9 +76,11 @@ class TrackRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'date'      => '2018-11-07 14:15:01',
-                'name'      => 'Doručení',
-                'status_id' => 2,
+                [
+                    'date'      => '2018-11-07 14:15:01',
+                    'name'      => 'Doručení',
+                    'status_id' => 2,
+                ],
             ],
         ]);
 
@@ -128,5 +130,154 @@ class TrackRequestTest extends AbstractClientTestCase
             ],
             $status
         );
+    }
+
+    public function testThrowsExceptionOnErrorWithMultiplePackages()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(400, [
+            'status' => 200,
+        ]);
+
+        $client = new Client($requester);
+
+        $client->trackPackages('cp', [1, 2, 4]);
+    }
+
+    public function testRequestShouldHaveStatusWithMultiplePackages()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            0 => [
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 2,
+                    'name'      => 'Dodání zásilky. 10003 Depo Praha 701',
+                ],
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 1,
+                    'name'      => 'Doručování zásilky. 10003 Depo Praha 701',
+                ],
+            ],
+            1 => [
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 2,
+                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                ],
+            ],
+            2 => [
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 1,
+                    'name'      => 'Doručování zásilky. 10003 Depo Praha 701',
+                ],
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $status = $client->trackPackages('cp', [3, 4, 5]);
+
+        $this->assertNotEmpty($status);
+    }
+
+    public function testThrowsExceptionOnBadStatusCodeWithMultiplePackages()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 400,
+        ]);
+
+        $client = new Client($requester);
+
+        $client->trackPackages('cp', [4, 2]);
+    }
+
+    public function testThrowsExceptionWhenNoDataReturnWithMultiplePackages()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+        ]);
+
+        $client = new Client($requester);
+
+        $client->trackPackages('cp', [1, 3]);
+    }
+
+    public function testThrowsExceptionWhenNotAllDataReturnWithMultiplePackages()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            0        => [
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 2,
+                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                ],
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->trackPackages('cp', [1, 3]);
+    }
+
+    public function testMakeRequestWithMultiplePackages()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            0        => [
+                [
+                    'date'      => '2018-11-07 14:15:01',
+                    'name'      => 'Doručení',
+                    'status_id' => 2,
+                ],
+            ],
+            1        => [
+                [
+                    'date'      => '2018-11-07 14:15:01',
+                    'name'      => 'Doručení',
+                    'status_id' => 2,
+                ],
+            ],
+            2        => [
+                [
+                    'date'      => '2018-11-07 14:15:01',
+                    'name'      => 'Doručení',
+                    'status_id' => 2,
+                ],
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->trackPackages('cp', [1, 33, 4]);
+
+        $requester->shouldHaveReceived(
+            'request',
+            [
+                'https://api.balikobot.cz/v2/cp/track',
+                [
+                    0 => [
+                        'id' => 1,
+                    ],
+                    1 => [
+                        'id' => 33,
+                    ],
+                    2 => [
+                        'id' => 4,
+                    ],
+                ],
+            ]
+        );
+
+        $this->assertTrue(true);
     }
 }
