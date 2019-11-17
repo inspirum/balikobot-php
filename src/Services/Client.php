@@ -168,10 +168,6 @@ class Client
 
         $response = $this->requester->call(API::V1, $shipper, Request::TRACK_STATUS, $data, false);
 
-        if (empty($response[0])) {
-            throw new BadRequestException($response);
-        }
-
         unset($response['status']);
 
         if (count($response) !== count($carrierIds)) {
@@ -342,11 +338,7 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::SERVICES);
 
-        if (isset($response['service_types']) === false) {
-            return [];
-        }
-
-        return $response['service_types'];
+        return $response['service_types'] ?? [];
     }
 
     /**
@@ -366,13 +358,7 @@ class Client
             return [];
         }
 
-        $units = [];
-
-        foreach ($response['units'] as $item) {
-            $units[$item['code']] = $item['name'];
-        }
-
-        return $units;
+        return $this->normalizeResponseItems($response['units'], 'code', 'name');
     }
 
     /**
@@ -398,11 +384,7 @@ class Client
 
         $response = $this->requester->call(API::V1, $shipper, $request . '/' . $service . '/' . $country);
 
-        if ($response['branches'] === null) {
-            return [];
-        }
-
-        return $response['branches'];
+        return $response['branches'] ?? [];
     }
 
     /**
@@ -447,11 +429,7 @@ class Client
 
         $response = $this->requester->call(API::V1, $shipper, Request::BRANCH_LOCATOR, $data);
 
-        if ($response['branches'] === null) {
-            return [];
-        }
-
-        return $response['branches'];
+        return $response['branches'] ?? [];
     }
 
     /**
@@ -467,17 +445,7 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::CASH_ON_DELIVERY_COUNTRIES);
 
-        if ($response['service_types'] === null) {
-            return [];
-        }
-
-        $services = [];
-
-        foreach ($response['service_types'] as $item) {
-            $services[$item['service_type']] = $item['cod_countries'];
-        }
-
-        return $services;
+        return $this->normalizeResponseItems($response['service_types'] ?? [], 'service_type', 'cod_countries');
     }
 
     /**
@@ -493,17 +461,7 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::COUNTRIES);
 
-        if ($response['service_types'] === null) {
-            return [];
-        }
-
-        $services = [];
-
-        foreach ($response['service_types'] as $item) {
-            $services[$item['service_type']] = $item['countries'];
-        }
-
-        return $services;
+        return $this->normalizeResponseItems($response['service_types'] ?? [], 'service_type', 'countries');
     }
 
     /**
@@ -529,14 +487,10 @@ class Client
 
         $response = $this->requester->call(API::V1, $shipper, Request::ZIP_CODES . '/' . $urlPath);
 
-        if ($response['zip_codes'] === null) {
-            return [];
-        }
-
         $country            = $response['country'] ?? $country;
         $formattedPostCodes = [];
 
-        foreach ($response['zip_codes'] as $postCode) {
+        foreach ($response['zip_codes'] ?? [] as $postCode) {
             $formattedPostCodes[] = [
                 'postcode'     => $postCode['zip'] ?? ($postCode['zip_start'] ?? null),
                 'postcode_end' => $postCode['zip_end'] ?? null,
@@ -577,17 +531,7 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::ADR_UNITS);
 
-        if ($response['units'] === null) {
-            return [];
-        }
-
-        $units = [];
-
-        foreach ($response['units'] as $item) {
-            $units[$item['code']] = $item['name'];
-        }
-
-        return $units;
+        return $this->normalizeResponseItems($response['units'] ?? [], 'code', 'name');
     }
 
     /**
@@ -664,10 +608,6 @@ class Client
 
         $response = $this->requester->call(API::V1, $shipper, Request::PROOF_OF_DELIVERY, $data, false);
 
-        if (empty($response[0])) {
-            throw new BadRequestException($response);
-        }
-
         unset($response['status']);
 
         if (count($response) !== count($carrierIds)) {
@@ -685,6 +625,26 @@ class Client
         }
 
         return $formatedLinks;
+    }
+
+    /**
+     * Normalize response items
+     *
+     * @param array  $items
+     * @param string $keyName
+     * @param string $valueName
+     *
+     * @return array
+     */
+    private function normalizeResponseItems(array $items, string $keyName, string $valueName): array
+    {
+        $services = [];
+
+        foreach ($items as $item) {
+            $services[$item[$keyName]] = $item[$valueName];
+        }
+
+        return $services;
     }
 
     /**

@@ -85,7 +85,7 @@ var_dump($data);
 
 ## System requirements
 
-* [PHP 7.1](http://php.net/releases/7_1_0.php)
+* [PHP 7.1+](http://php.net/releases/7_1_0.php)
 * [ext-curl](http://php.net/curl)
 * [ext-json](http://php.net/json)
 

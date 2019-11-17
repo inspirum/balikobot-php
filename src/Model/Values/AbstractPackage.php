@@ -7,6 +7,8 @@ use Inspirum\Balikobot\Model\Values\Package\CommonData;
 
 abstract class AbstractPackage implements ArrayAccess
 {
+    use CommonData;
+
     /**
      * Package data
      *
@@ -23,8 +25,6 @@ abstract class AbstractPackage implements ArrayAccess
     {
         $this->data = $data;
     }
-
-    use CommonData;
 
     /**
      * Determine if an item exists at an offset

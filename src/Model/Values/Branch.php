@@ -546,7 +546,8 @@ class Branch
     private function resolveBranchId(): string
     {
         // get key used in branch_id when calling add request
-        if ($this->shipper === Shipper::CP
+        if (
+            $this->shipper === Shipper::CP
             || $this->shipper === Shipper::SP
             || ($this->shipper === Shipper::ULOZENKA && $this->service === ServiceType::ULOZENKA_CP_NP)
         ) {
