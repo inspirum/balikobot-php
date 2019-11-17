@@ -118,4 +118,14 @@ trait CommonData
     {
         $this->offsetSet(Option::RETURN_TRACK, (int) $returnTrack);
     }
+
+    /**
+     * @param bool $returnCarrierId
+     *
+     * @return void
+     */
+    public function setReturnFinalCarrierId(bool $returnCarrierId = true): void
+    {
+        $this->offsetSet(Option::RETURN_FINAL_CARRIER_ID, (int) $returnCarrierId);
+    }
 }

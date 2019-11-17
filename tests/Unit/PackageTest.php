@@ -150,6 +150,7 @@ class PackageTest extends AbstractTestCase
         $package->setSM1Service(true);
         $package->setSM1Text('TEST');
         $package->setSM2Service(false);
+        $package->setReturnFinalCarrierId(true);
 
         $this->assertEquals(
             [
@@ -253,6 +254,7 @@ class PackageTest extends AbstractTestCase
                 Option::SM1_SERVICE                 => true,
                 Option::SM1_TEXT                    => 'TEST',
                 Option::SM2_SERVICE                 => false,
+                Option::RETURN_FINAL_CARRIER_ID     => 1,
             ],
             $package->toArray()
         );

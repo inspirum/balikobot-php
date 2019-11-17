@@ -776,4 +776,11 @@ final class Option
      * @var string
      */
     public const SM2_SERVICE = 'sm2_service';
+
+    /**
+     * Navrácení trackovacího linku na web cílového přepravce.
+     *
+     * @var string
+     */
+    public const RETURN_FINAL_CARRIER_ID = 'return_final_carrier_id';
 }

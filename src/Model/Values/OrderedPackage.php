@@ -61,6 +61,20 @@ class OrderedPackage
     private $pieces;
 
     /**
+     * Final carrier ID
+     *
+     * @var string|null
+     */
+    private $finalCarrierId;
+
+    /**
+     * Final track URL
+     *
+     * @var string|null
+     */
+    private $finalTrackUrl;
+
+    /**
      * OrderedPackage constructor
      *
      * @param int         $packageId
@@ -71,6 +85,8 @@ class OrderedPackage
      * @param string|null $labelUrl
      * @param string|null $carrierIdSwap
      * @param array       $pieces
+     * @param string|null $finalCarrierId
+     * @param string|null $finalTrackUrl
      */
     public function __construct(
         int $packageId,
@@ -80,16 +96,20 @@ class OrderedPackage
         string $trackUrl = null,
         string $labelUrl = null,
         string $carrierIdSwap = null,
-        array $pieces = []
+        array $pieces = [],
+        string $finalCarrierId = null,
+        string $finalTrackUrl = null
     ) {
-        $this->packageId     = $packageId;
-        $this->shipper       = $shipper;
-        $this->batchId       = $batchId;
-        $this->carrierId     = $carrierId;
-        $this->trackUrl      = $trackUrl;
-        $this->labelUrl      = $labelUrl;
-        $this->carrierIdSwap = $carrierIdSwap;
-        $this->pieces        = $pieces;
+        $this->packageId      = $packageId;
+        $this->shipper        = $shipper;
+        $this->batchId        = $batchId;
+        $this->carrierId      = $carrierId;
+        $this->trackUrl       = $trackUrl;
+        $this->labelUrl       = $labelUrl;
+        $this->carrierIdSwap  = $carrierIdSwap;
+        $this->pieces         = $pieces;
+        $this->finalCarrierId = $finalCarrierId;
+        $this->finalTrackUrl  = $finalTrackUrl;
     }
 
     /**
@@ -157,6 +177,22 @@ class OrderedPackage
     }
 
     /**
+     * @return string|null
+     */
+    public function getFinalCarrierId(): ?string
+    {
+        return $this->finalCarrierId;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFinalTrackUrl(): ?string
+    {
+        return $this->finalTrackUrl;
+    }
+
+    /**
      * @param string $shipper
      * @param string $eid
      * @param array  $data
@@ -173,7 +209,9 @@ class OrderedPackage
             $data['track_url'] ?? null,
             $data['label_url'] ?? null,
             $data['carrier_id_swap'] ?? null,
-            $data['pieces'] ?? []
+            $data['pieces'] ?? [],
+            $data['carrier_id_final'] ?? null,
+            $data['track_url_final'] ?? null
         );
     }
 }
