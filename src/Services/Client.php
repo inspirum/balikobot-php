@@ -382,16 +382,17 @@ class Client
      * @param string $shipper
      * @param string $service
      * @param bool   $fullData
+     * @param string $country
      *
      * @return array[]
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getBranches(string $shipper, string $service = null, bool $fullData = false): array
+    public function getBranches(string $shipper, string $service = null, bool $fullData = false, string $country = null): array
     {
         $request = $fullData ? Request::FULL_BRANCHES : Request::BRANCHES;
 
-        $response = $this->requester->call(API::V1, $shipper, $request . '/' . $service);
+        $response = $this->requester->call(API::V1, $shipper, $request . '/' . $service . '/' . $country);
 
         if ($response['branches'] === null) {
             return [];

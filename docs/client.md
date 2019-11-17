@@ -847,7 +847,7 @@ getServices(string $shipper): array
 
 getManipulationUnits(string $shipper): array
 
-getBranches(string $shipper, string $service = null, bool $fullData = false): array
+getBranches(string $shipper, string $service = null, bool $fullData = false, string $country = null): array
 
 getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): array
 

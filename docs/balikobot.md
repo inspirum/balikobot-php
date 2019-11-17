@@ -159,10 +159,20 @@ Several methods can be used to obtain branches for supported shippers.
 These methods return a large amount of data, therefore, these methods use [Generator](http://php.net/manual/en/class.generator.php) via [`yield`](http://php.net/manual/en/language.generators.syntax.php) keyword for returned data.
 It saves a lot of memory and allows you to iterate all branches at one time in one cycle.
 
+All methods allow filter branches by country.
+
 ```php
 $shippers = $balikobot->getBranches():
 $shippers = $balikobot->getBranchesForShipper(Shipper::CP);
 $shippers = $balikobot->getBranchesForShipperService(Shipper::CP, ServiceType::CP_NP);
+
+$shippers = $balikobot->getBranches(Country::CZECH_REPUBLIC):
+$shippers = $balikobot->getBranchesForShipper(Shipper::ZASILKOVNA, Country::CZECH_REPUBLIC);
+$shippers = $balikobot->getBranchesForShipperService(Shipper::ZASILKOVNA, null, Country::CZECH_REPUBLIC);
+
+$shippers = $balikobot->getBranchesForCountries([Country::CZECH_REPUBLIC, Country::SLOVAKIA]):
+$shippers = $balikobot->getBranchesForShipperForCountries(Shipper::ZASILKOVNA, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
+$shippers = $balikobot->getBranchesForShipperServiceForCountries(Shipper::ZASILKOVNA, null, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
 
 /*
 var_dump($shippers);
@@ -175,7 +185,7 @@ Different shippers use different attribute as **branch_id** in [**ADD**](./clien
 
 ```php
 $shippers = $balikobot->getBranchesForShipper(Shipper::CP):
-í
+
 foreach($shippers as $shipper) {
   
   /*
@@ -234,11 +244,17 @@ getServices(string $shipper): array
 
 getManipulationUnits(string $shipper): array
 
-getBranches(): iterable
+getBranches(string $country = null): iterable
 
-getBranchesForShipper(string $shipper): iterable
+getBranchesForCountries(array $countries): iterable
 
-getBranchesForShipperService(string $shipper, ?string $service): iterable
+getBranchesForShipper(string $shipper, string $country = null): iterable
+
+getBranchesForShipperForCountries(string $shipper, array $countries): iterable
+
+getBranchesForShipperService(string $shipper, ?string $service, string $country = null): iterable
+
+getBranchesForShipperServiceForCountries(string $shipper, ?string $service, array $countries): iterable
 
 getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): iterable
 

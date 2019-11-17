@@ -59,6 +59,7 @@ class Requester implements RequesterInterface
     ): array {
         // resolve url
         $path = trim($shipper . '/' . $request, '/');
+        $path = str_replace('//', '/', $path);
         $host = $this->resolveHostName($version);
 
         // call API server and get response

@@ -102,6 +102,44 @@ class BranchesRequestTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
+    public function testMakeRequestWithCountry()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'   => 200,
+            'branches' => [],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->getBranches('cp', 'NP', false, 'DE');
+
+        $requester->shouldHaveReceived(
+            'request',
+            ['https://api.balikobot.cz/cp/branches/NP/DE', []]
+        );
+
+        $this->assertTrue(true);
+    }
+
+    public function testMakeRequestWithCountryWithoutService()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'   => 200,
+            'branches' => [],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->getBranches('zasilkovna', null, false, 'DE');
+
+        $requester->shouldHaveReceived(
+            'request',
+            ['https://api.balikobot.cz/zasilkovna/branches/DE', []]
+        );
+
+        $this->assertTrue(true);
+    }
+
     public function testEmptyArrayIsReturnedIfUnitsMissing()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
