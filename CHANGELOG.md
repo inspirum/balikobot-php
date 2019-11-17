@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2019-11-17
+### Added
+- Add methods for track multiple packages
+- Add methods filter branches by countries
+- Add support for new options from documentation **v1.873** (2019-11-15)    
+    - Add **country** parameter to **BRANCHES** request
+    - Add **ADD** **v2** request for **DHL** shipper
+    - Add **ADD** **v2** request for **TNT** shipper
+    - Add **bank_code** attribute
+- Add support for new options from documentation **v1.872** (2019-10-24)    
+    - Add **ADD** **v2** request for **UPS** shipper
+- Add support for new options from documentation **v1.872** (2019-10-22)    
+    - Add **POD** request
+    - Add **GLS_GUARANTEED24** service type
+    - Add **GLS_GUARANTEED24_EXPRESS** service type
+    - Add **GLS_GUARANTEED24_SHOP** service type
+    - Add **GW_DOMESTIC** service type
+    - Add **GW_EXPORT** service type
+    - Add **reference** attribute
+    - Add **sm1_service** attribute
+    - Add **sm1_text** attribute
+    - Add **sm1_text** attribute
+    - Add **sm2_service** attribute
+
+
 ## [1.2.0] - 2019-09-07
 ### Added
 - Add support for new options from documentation **v1.870** (2019-09-05)    
