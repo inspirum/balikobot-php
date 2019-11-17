@@ -388,8 +388,12 @@ class Client
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getBranches(string $shipper, string $service = null, bool $fullData = false, string $country = null): array
-    {
+    public function getBranches(
+        string $shipper,
+        string $service = null,
+        bool $fullData = false,
+        string $country = null
+    ): array {
         $request = $fullData ? Request::FULL_BRANCHES : Request::BRANCHES;
 
         $response = $this->requester->call(API::V1, $shipper, $request . '/' . $service . '/' . $country);

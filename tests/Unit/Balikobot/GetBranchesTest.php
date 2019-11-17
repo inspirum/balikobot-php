@@ -155,9 +155,11 @@ class GetBranchesTest extends AbstractBalikobotTestCase
         );
 
         $service->shouldReceive('getServices')->with('zasilkovna')->andReturn([]);
-        $service->shouldReceive('getBranchesForShipperService')->with('zasilkovna', null, null)->andReturnUsing(function () {
-            yield from $this->branchesGenerator(2);
-        });
+        $service->shouldReceive('getBranchesForShipperService')
+                ->with('zasilkovna', null, null)
+                ->andReturnUsing(function () {
+                    yield from $this->branchesGenerator(2);
+                });
 
         $count = 0;
         foreach ($service->getBranchesForShipper('zasilkovna') as $branch) {

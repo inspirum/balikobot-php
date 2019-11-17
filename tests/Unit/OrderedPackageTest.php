@@ -67,7 +67,7 @@ class OrderedPackageTest extends AbstractTestCase
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', '0001', [
             'package_id'       => 1234,
             'carrier_id_final' => '00605444103',
-            'track_url_final'  => 'https://online.gls-slovakia.sk/tt_page.php?tt_value=00605444103',
+            'track_url_final'  => 'https://online.gls-slovakia.sk/tt_page.php',
         ]);
 
         $this->assertEquals('cp', $orderedPackage->getShipper());
@@ -78,7 +78,7 @@ class OrderedPackageTest extends AbstractTestCase
         $this->assertEquals(null, $orderedPackage->getLabelUrl());
         $this->assertEquals(null, $orderedPackage->getCarrierIdSwap());
         $this->assertEquals('00605444103', $orderedPackage->getFinalCarrierId());
-        $this->assertEquals('https://online.gls-slovakia.sk/tt_page.php?tt_value=00605444103', $orderedPackage->getFinalTrackUrl());
+        $this->assertEquals('https://online.gls-slovakia.sk/tt_page.php', $orderedPackage->getFinalTrackUrl());
         $this->assertEquals([], $orderedPackage->getPieces());
     }
 }

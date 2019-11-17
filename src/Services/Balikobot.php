@@ -195,7 +195,7 @@ class Balikobot
     /**
      * Track package last status
      *
-     * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $package
+     * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      *
      * @return \Inspirum\Balikobot\Model\Values\PackageStatus[]
      *
@@ -451,8 +451,11 @@ class Balikobot
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getBranchesForShipperServiceForCountries(string $shipper, ?string $service, array $countries): iterable
-    {
+    public function getBranchesForShipperServiceForCountries(
+        string $shipper,
+        ?string $service,
+        array $countries
+    ): iterable {
         foreach ($countries as $country) {
             yield from $this->getBranchesForShipperService($shipper, $service, $country);
         }
@@ -628,7 +631,7 @@ class Balikobot
     /**
      * Get PDF link with signed consignment delivery document by the recipient
      *
-     * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
+     * @param \Inspirum\Balikobot\Model\Values\OrderedPackage $package
      *
      * @return string
      *
