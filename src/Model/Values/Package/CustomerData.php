@@ -127,6 +127,16 @@ trait CustomerData
     }
 
     /**
+     * @param string $bankCode
+     *
+     * @return void
+     */
+    public function setBankCode(string $bankCode): void
+    {
+        $this->offsetSet(Option::BANK_CODE, $bankCode);
+    }
+
+    /**
      * @param string $recNamePatronymum
      *
      * @return void

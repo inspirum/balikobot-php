@@ -750,7 +750,7 @@ final class Option
     public const PICKUP_TIME_TO = 'pickup_time_to';
 
     /**
-     * Zákaznická reference, maximální délka 20 alfanumerických znaků.
+     * Zákaznická reference, maximální délka 40 alfanumerických znaků.
      *
      * @var string
      */
@@ -783,4 +783,12 @@ final class Option
      * @var string
      */
     public const RETURN_FINAL_CARRIER_ID = 'return_final_carrier_id';
+
+    /**
+     * Bank code
+     * string
+     *
+     * @var string
+     */
+    public const BANK_CODE = 'bank_code';
 }
