@@ -200,6 +200,68 @@ foreach($shippers as $shipper) {
 }
 ```
 
+
+## All available methods
+
+```php
+getShippers(): array
+
+addPackages(PackageCollection $packages): OrderedPackageCollection
+
+dropPackages(OrderedPackageCollection $packages): void
+
+dropPackage(OrderedPackage $package): void
+
+orderShipment(OrderedPackageCollection $packages, DateTime $date = null): OrderedShipment
+
+trackPackage(OrderedPackage $package): array
+
+trackPackages(OrderedPackageCollection $packages): array
+
+trackPackageLastStatus(OrderedPackage $package): PackageStatus
+
+trackPackagesLastStatus(OrderedPackageCollection $packages): array
+
+getOverview(string $shipper): OrderedPackageCollection
+
+getLabels(OrderedPackageCollection $packages): string
+
+getPackageInfo(OrderedPackage $package): Package
+
+getOrder(string $shipper, int $orderId): OrderedShipment
+
+getServices(string $shipper): array
+
+getManipulationUnits(string $shipper): array
+
+getBranches(): iterable
+
+getBranchesForShipper(string $shipper): iterable
+
+getBranchesForShipperService(string $shipper, ?string $service): iterable
+
+getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): iterable
+
+getCodCountries(string $shipper): array
+
+getCountries(string $shipper): array
+
+getPostCodes(string $shipper, string $service, string $country = null): iterable
+
+checkPackages(PackageCollection $packages): void
+
+getAdrUnits(string $shipper): array
+
+getActivatedServices(string $shipper): array
+
+orderB2AShipment(PackageCollection $packages): OrderedPackageCollection
+
+getProofOfDelivery(OrderedPackage $package): string
+
+getProofOfDeliveries(OrderedPackageCollection $packages): array
+```
+
+
 ***
 
 

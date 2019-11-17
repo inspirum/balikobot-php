@@ -782,7 +782,7 @@ var_dump($orderedPackages);
 [
   0 => [
     'package_id'     => 24
-    'status_message' => 'OK, přeprava byla objednána-'
+    'status_message' => 'OK, přeprava byla objednána'
     'status'         => '200'
   ]
 ]
@@ -812,6 +812,64 @@ var_dump($fileUrls);
 ]
 */
 ```
+
+
+## All available methods
+
+```php
+addPackages(string $shipper, array $packages): array
+
+dropPackage(string $shipper, int $packageId): void
+
+dropPackages(string $shipper, array $packageIds): void
+
+trackPackage(string $shipper, string $carrierId): array
+
+trackPackages(string $shipper, array $carrierIds): array
+
+trackPackageLastStatus(string $shipper, string $carrierId): array
+
+trackPackagesLastStatus(string $shipper, array $carrierIds): array
+
+getOverview(string $shipper): array
+
+getLabels(string $shipper, array $packageIds): string
+
+getPackageInfo(string $shipper, int $packageId): array
+
+orderShipment(string $shipper, array $packageIds, DateTime $date = null, string $note = null): array
+
+getOrder(string $shipper, int $orderId): array
+
+orderPickup(string $shipper, DateTime $dateFrom, DateTime $dateTo, float $weight, int $packageCount, string $message = null): void
+
+getServices(string $shipper): array
+
+getManipulationUnits(string $shipper): array
+
+getBranches(string $shipper, string $service = null, bool $fullData = false): array
+
+getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): array
+
+getCodCountries(string $shipper): array
+
+getCountries(string $shipper): array
+
+getPostCodes(string $shipper, string $service, string $country = null): array
+
+checkPackages(string $shipper, array $packages): void
+
+getAdrUnits(string $shipper): array
+
+getActivatedServices(string $shipper): array
+
+orderB2AShipment(string $shipper, array $packages): array
+
+getProofOfDelivery(string $shipper, string $carrierId): string
+
+getProofOfDeliveries(string $shipper, array $carrierIds): array
+```
+
 
 ***
 
