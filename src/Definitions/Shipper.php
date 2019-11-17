@@ -194,4 +194,21 @@ final class Shipper
 
         return false;
     }
+
+    /**
+     * Resolve ADD request version
+     *
+     * @param string $shipperCode
+     * @param array  $data
+     *
+     * @return string
+     */
+    public static function resolveAddRequestVersion(string $shipperCode, array $data): string
+    {
+        if (in_array($shipperCode, [Shipper::UPS]) && isset($data[0]['order_number'])) {
+            return API::V2;
+        }
+
+        return API::V1;
+    }
 }

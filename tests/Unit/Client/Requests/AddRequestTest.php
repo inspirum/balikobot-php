@@ -132,4 +132,52 @@ class AddRequestTest extends AbstractClientTestCase
             $packages
         );
     }
+
+    public function testMakeV2Request()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            0        => [
+                'carrier_id' => 'NP1504102246M',
+                'package_id' => 42719,
+                'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                'status'     => '200',
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->addPackages('ups', ['data' => [1, 2, 3], 'test' => false], 'v2');
+
+        $requester->shouldHaveReceived(
+            'request',
+            ['https://api.balikobot.cz/v2/ups/add', ['data' => [1, 2, 3], 'test' => false]]
+        );
+
+        $this->assertTrue(true);
+    }
+
+    public function testMakeRequestWithUnsopportedVersion()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            0        => [
+                'carrier_id' => 'NP1504102246M',
+                'package_id' => 42719,
+                'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                'status'     => '200',
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->addPackages('cp', ['data' => [1, 2, 3], 'test' => false], 'v3');
+
+        $requester->shouldHaveReceived(
+            'request',
+            ['https://api.balikobot.cz/cp/add', ['data' => [1, 2, 3], 'test' => false]]
+        );
+
+        $this->assertTrue(true);
+    }
 }

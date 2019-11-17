@@ -55,7 +55,8 @@ class Balikobot
      */
     public function addPackages(PackageCollection $packages): OrderedPackageCollection
     {
-        $response = $this->client->addPackages($packages->getShipper(), $packages->toArray());
+        $version  = Shipper::resolveAddRequestVersion($packages->getShipper(), $packages->toArray());
+        $response = $this->client->addPackages($packages->getShipper(), $packages->toArray(), $version);
 
         // create return value object
         $orderedPackages = new OrderedPackageCollection();

@@ -33,14 +33,15 @@ class Client
      *
      * @param string $shipper
      * @param array  $packages
+     * @param string $version
      *
      * @return array[]
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function addPackages(string $shipper, array $packages): array
+    public function addPackages(string $shipper, array $packages, string $version = API::V1): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::ADD, $packages);
+        $response = $this->requester->call($version, $shipper, Request::ADD, $packages);
 
         if (isset($response[0]['package_id']) === false) {
             throw new BadRequestException($response);
