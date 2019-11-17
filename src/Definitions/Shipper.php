@@ -205,7 +205,9 @@ final class Shipper
      */
     public static function resolveAddRequestVersion(string $shipperCode, array $data): string
     {
-        if (in_array($shipperCode, [Shipper::UPS]) && isset($data[0]['order_number'])) {
+        $supportedShippers = [Shipper::UPS, Shipper::DHL, Shipper::TNT];
+
+        if (in_array($shipperCode, $supportedShippers) && isset($data[0]['order_number'])) {
             return API::V2;
         }
 
