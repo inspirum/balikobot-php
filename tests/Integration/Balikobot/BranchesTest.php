@@ -7,30 +7,6 @@ use Inspirum\Balikobot\Exceptions\BadRequestException;
 
 class BranchesTest extends AbstractBalikobotTestCase
 {
-    public function testBranchesFilterByCountryCode()
-    {
-        $service  = $this->newBalikobot();
-        $shippers = Shipper::all();
-
-        try {
-            foreach ($shippers as $shipper) {
-                $shipperService = array_keys($service->getServices($shipper))[0] ?? null;
-                $branches       = $service->getBranchesForShipperServiceForCountry($shipper, $shipperService, 'DE');
-                foreach ($branches as $branch) {
-                    $this->assertEquals(
-                        'DE',
-                        $branch->getCountry(),
-                        'Country ' . ($branch->getCountry() ?? '[null]') . ' code should be DE'
-                    );
-
-                    break;
-                }
-            }
-        } catch (BadRequestException $exception) {
-            $this->assertFalse(true, $exception->getMessage());
-        }
-    }
-
     public function testBranchesFilterByCountryCodes()
     {
         $service  = $this->newBalikobot();
