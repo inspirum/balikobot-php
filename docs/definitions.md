@@ -7,6 +7,7 @@ There are classes for country codes, currency codes, package options, shipper co
 - [**Inspirum\Balikobot\Definitions\Country**](../src/Definitions/Country.php)
 - [**Inspirum\Balikobot\Definitions\Currency**](../src/Definitions/Currency.php)
 - [**Inspirum\Balikobot\Definitions\Option**](../src/Definitions/Option.php)
+- [**Inspirum\Balikobot\Definitions\Region**](../src/Definitions/Region.php)
 - [**Inspirum\Balikobot\Definitions\ServiceType**](../src/Definitions/ServiceType.php)
 - [**Inspirum\Balikobot\Definitions\Shipper**](../src/Definitions/Shipper.php)
 

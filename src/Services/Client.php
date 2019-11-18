@@ -376,7 +376,7 @@ class Client
      */
     public function getBranches(
         string $shipper,
-        string $service = null,
+        ?string $service,
         bool $fullData = false,
         string $country = null
     ): array {

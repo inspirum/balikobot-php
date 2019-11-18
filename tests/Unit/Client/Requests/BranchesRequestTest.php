@@ -18,7 +18,7 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getBranches('cp');
+        $client->getBranches('cp', 'NP');
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +29,7 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getBranches('cp');
+        $client->getBranches('cp', 'NP');
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -42,7 +42,7 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getBranches('cp');
+        $client->getBranches('cp', 'NP');
     }
 
     public function testMakeRequest()
@@ -54,11 +54,11 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getBranches('cp');
+        $client->getBranches('cp', 'NP');
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/branches', []]
+            ['https://api.balikobot.cz/cp/branches/NP', []]
         );
 
         $this->assertTrue(true);
@@ -149,7 +149,7 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $branches = $client->getBranches('cp');
+        $branches = $client->getBranches('cp', 'NP');
 
         $this->assertEquals([], $branches);
     }
@@ -172,7 +172,7 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $branches = $client->getBranches('cp');
+        $branches = $client->getBranches('cp', 'NP');
 
         $this->assertEquals(
             [

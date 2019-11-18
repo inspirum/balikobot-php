@@ -213,4 +213,23 @@ final class Shipper
 
         return API::V1;
     }
+
+    /**
+     * Determine if shipper has support to filter branches by country code.
+     *
+     * @param string $shipperCode
+     *
+     * @return bool
+     */
+    public static function hasBranchCountryFilterSupport(string $shipperCode): bool
+    {
+        $supportedShippers = [
+            Shipper::DPD,
+            Shipper::GLS,
+            Shipper::PPL,
+            Shipper::ZASILKOVNA,
+        ];
+
+        return in_array($shipperCode, $supportedShippers);
+    }
 }
