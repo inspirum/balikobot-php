@@ -344,19 +344,17 @@ class Balikobot
     /**
      * Get all available branches
      *
-     * @param string|null $country
-     *
      * @return \Generator|\Inspirum\Balikobot\Model\Values\Branch[]
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getBranches(string $country = null): iterable
+    public function getBranches(): iterable
     {
         // get all shipper service codes
         $shippers = $this->getShippers();
 
         foreach ($shippers as $shipper) {
-            yield from $this->getBranchesForShipper($shipper, $country);
+            yield from $this->getBranchesForShipper($shipper);
         }
     }
 
@@ -371,34 +369,31 @@ class Balikobot
      */
     public function getBranchesForCountries(array $countries): iterable
     {
-        foreach ($countries as $country) {
-            yield from $this->getBranches($country);
+        // get all shipper service codes
+        $shippers = $this->getShippers();
+
+        foreach ($shippers as $shipper) {
+            yield from $this->getBranchesForShipperForCountries($shipper, $countries);
         }
     }
 
     /**
      * Get all available branches for given shipper
      *
-     * @param string      $shipper
-     * @param string|null $country
+     * @param string $shipper
      *
      * @return \Generator|\Inspirum\Balikobot\Model\Values\Branch[]
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getBranchesForShipper(string $shipper, string $country = null): iterable
+    public function getBranchesForShipper(string $shipper): iterable
     {
         // get all services for shipper service
-        $services = array_keys($this->getServices($shipper));
-
-        // support shipper withou service type
-        if (empty($services)) {
-            $services = [null];
-        }
+        $services = $this->getServicesForShipper($shipper);
 
         // get branches for all services
         foreach ($services as $service) {
-            yield from $this->getBranchesForShipperService($shipper, $service, $country);
+            yield from $this->getBranchesForShipperService($shipper, $service);
         }
     }
 
@@ -414,9 +409,35 @@ class Balikobot
      */
     public function getBranchesForShipperForCountries(string $shipper, array $countries): iterable
     {
-        foreach ($countries as $country) {
-            yield from $this->getBranchesForShipper($shipper, $country);
+        // get all services for shipper service
+        $services = $this->getServicesForShipper($shipper);
+
+        // get branches for all services
+        foreach ($services as $service) {
+            yield from $this->getBranchesForShipperServiceForCountries($shipper, $service, $countries);
         }
+    }
+
+    /**
+     * Get services for shipper
+     *
+     * @param string $shipper
+     *
+     * @return array
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    private function getServicesForShipper(string $shipper): array
+    {
+        // get all services for shipper service
+        $services = array_keys($this->getServices($shipper));
+
+        // support shipper withou service type
+        if (empty($services)) {
+            $services = [null];
+        }
+
+        return $services;
     }
 
     /**
@@ -441,6 +462,32 @@ class Balikobot
     }
 
     /**
+     * Get all available branches for given shipper, service type and country code
+     *
+     * @param string      $shipper
+     * @param string|null $service
+     * @param string|null $country
+     *
+     * @return \Generator|\Inspirum\Balikobot\Model\Values\Branch[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getBranchesForShipperServiceForCountry(
+        string $shipper,
+        ?string $service,
+        ?string $country
+    ): iterable {
+        $usedCountry = Shipper::hasBranchCountryFilterSupport($shipper) ? $country : null;
+        $branches    = $this->getBranchesForShipperService($shipper, $service, $usedCountry);
+
+        foreach ($branches as $branch) {
+            if ($country === null || $branch->getCountry() === $country) {
+                yield $branch;
+            }
+        }
+    }
+
+    /**
      * Get all available branches for given shipper and service type for countries
      *
      * @param string      $shipper
@@ -456,8 +503,20 @@ class Balikobot
         ?string $service,
         array $countries
     ): iterable {
-        foreach ($countries as $country) {
-            yield from $this->getBranchesForShipperService($shipper, $service, $country);
+        if (Shipper::hasBranchCountryFilterSupport($shipper)) {
+            foreach ($countries as $country) {
+                yield from $this->getBranchesForShipperServiceForCountry($shipper, $service, $country);
+            }
+
+            return;
+        }
+
+        $branches = $this->getBranchesForShipperService($shipper, $service);
+
+        foreach ($branches as $branch) {
+            if (in_array($branch->getCountry(), $countries)) {
+                yield $branch;
+            }
         }
     }
 

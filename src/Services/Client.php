@@ -365,10 +365,10 @@ class Client
      * Returns available branches for the given shipper and its service
      * Full branches instead branches request
      *
-     * @param string $shipper
-     * @param string $service
-     * @param bool   $fullData
-     * @param string $country
+     * @param string      $shipper
+     * @param string|null $service
+     * @param bool        $fullData
+     * @param string|null $country
      *
      * @return array[]
      *

@@ -244,15 +244,17 @@ getServices(string $shipper): array
 
 getManipulationUnits(string $shipper): array
 
-getBranches(string $country = null): iterable
+getBranches(): iterable
 
 getBranchesForCountries(array $countries): iterable
 
-getBranchesForShipper(string $shipper, string $country = null): iterable
+getBranchesForShipper(string $shipper): iterable
 
 getBranchesForShipperForCountries(string $shipper, array $countries): iterable
 
 getBranchesForShipperService(string $shipper, ?string $service, string $country = null): iterable
+
+getBranchesForShipperServiceForCountry(string $shipper, ?string $service, ?string $country): iterable
 
 getBranchesForShipperServiceForCountries(string $shipper, ?string $service, array $countries): iterable
 

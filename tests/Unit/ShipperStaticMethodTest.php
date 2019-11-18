@@ -7,6 +7,33 @@ use Inspirum\Balikobot\Tests\AbstractTestCase;
 
 class ShipperStaticMethodTest extends AbstractTestCase
 {
+    public function testFullBranchesSupport()
+    {
+        $fullbranches = Shipper::hasFullBranchesSupport('cp', 'NP');
+
+        $this->assertTrue($fullbranches);
+
+        $fullbranches = Shipper::hasFullBranchesSupport('zasilkovna', null);
+
+        $this->assertTrue($fullbranches);
+
+        $fullbranches = Shipper::hasFullBranchesSupport('pbh', '6');
+
+        $this->assertTrue($fullbranches);
+
+        $fullbranches = Shipper::hasFullBranchesSupport('pbh', '15');
+
+        $this->assertTrue($fullbranches);
+
+        $fullbranches = Shipper::hasFullBranchesSupport('cp', 'RR');
+
+        $this->assertFalse($fullbranches);
+
+        $fullbranches = Shipper::hasFullBranchesSupport('ulozenka', null);
+
+        $this->assertFalse($fullbranches);
+    }
+
     public function testUseV1WithoutPiecesCountOption()
     {
         $version = Shipper::resolveAddRequestVersion(
