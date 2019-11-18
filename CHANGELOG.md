@@ -5,10 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2019-11-18
+### Added
+- Add helper method for information if shipper support filtering branches by country code
+### Fixed
+- Fix branch filtering by country code(s)
+### Removed
+- Remove **country** parameter from method that list branches
+
+
 ## [1.3.0] - 2019-11-17
 ### Added
 - Add methods for track multiple packages
-- Add methods filter branches by countries
+- Add methods to get branches filtered by country codes
 - Add support for new options from documentation **v1.873** (2019-11-15)    
     - Add **country** parameter to **BRANCHES** request
     - Add **ADD** **v2** request for **DHL** shipper
@@ -55,7 +64,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Add **ACTIVATEDSERVICES** request
 - Add support for new options from documentation **v1.859** (2019-05-07)
     - Add **SPS_INTERNATIONAL** service type (Export (mezinárodní zásilky))
-### Fixes
+### Fixed
 - Fix bug: "track" request does not require "status" in response data
 
 ## [1.1.1] - 2019-05-01
