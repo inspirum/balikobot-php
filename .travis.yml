@@ -5,6 +5,7 @@ php:
   - 7.1
   - 7.2
   - 7.3
+  - 7.4
 
 sudo: false
 
@@ -22,7 +23,7 @@ script:
 
 after_script:
   - |
-    if [[ "$TRAVIS_PHP_VERSION" != '7.3' ]]; then
+    if [[ "$TRAVIS_PHP_VERSION" != '7.4' ]]; then
       wget https://scrutinizer-ci.com/ocular.phar
       php ocular.phar code-coverage:upload --format=php-clover coverage.clover
     fi
