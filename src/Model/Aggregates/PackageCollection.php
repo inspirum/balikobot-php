@@ -46,6 +46,8 @@ class PackageCollection implements IteratorAggregate, Countable
      * Add package to collection
      *
      * @param \Inspirum\Balikobot\Model\Values\Package $package
+     *
+     * @return void
      */
     public function add(Package $package): void
     {

@@ -41,6 +41,8 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
      *
      * @param \Inspirum\Balikobot\Model\Values\OrderedPackage $package
      *
+     * @return void
+     *
      * @throws \InvalidArgumentException
      */
     public function add(OrderedPackage $package): void

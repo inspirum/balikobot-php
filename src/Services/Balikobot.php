@@ -55,18 +55,15 @@ class Balikobot
      */
     public function addPackages(PackageCollection $packages): OrderedPackageCollection
     {
-        $version  = Shipper::resolveAddRequestVersion($packages->getShipper(), $packages->toArray());
-        $response = $this->client->addPackages($packages->getShipper(), $packages->toArray(), $version);
+        $usedRequestVersion = Shipper::resolveAddRequestVersion($packages->getShipper(), $packages->toArray());
 
-        // create return value object
+        $response = $this->client->addPackages($packages->getShipper(), $packages->toArray(), $usedRequestVersion);
+
         $orderedPackages = new OrderedPackageCollection();
 
-        foreach ($response as $i => $package) {
-            $orderedPackages->add(OrderedPackage::newInstanceFromData(
-                $packages->getShipper(),
-                $packages->getEID(),
-                $package
-            ));
+        foreach ($response as $package) {
+            $orderedPackage = OrderedPackage::newInstanceFromData($packages->getShipper(), $packages->getEID(), $package);
+            $orderedPackages->add($orderedPackage);
         }
 
         return $orderedPackages;
@@ -227,15 +224,15 @@ class Balikobot
     {
         $response = $this->client->getOverview($shipper);
 
-        // create return value object
         $orderedPackages = new OrderedPackageCollection();
 
-        foreach ($response as $i => $package) {
-            $orderedPackages->add(OrderedPackage::newInstanceFromData(
+        foreach ($response as $package) {
+            $orderedPackage = OrderedPackage::newInstanceFromData(
                 $shipper,
                 $package['eshop_id'],
                 $package
-            ));
+            );
+            $orderedPackages->add($orderedPackage);
         }
 
         return $orderedPackages;
@@ -252,9 +249,9 @@ class Balikobot
      */
     public function getLabels(OrderedPackageCollection $packages): string
     {
-        $response = $this->client->getLabels($packages->getShipper(), $packages->getPackageIds());
+        $labelUrl = $this->client->getLabels($packages->getShipper(), $packages->getPackageIds());
 
-        return $response;
+        return $labelUrl;
     }
 
     /**
@@ -270,16 +267,16 @@ class Balikobot
     {
         $response = $this->client->getPackageInfo($package->getShipper(), $package->getPackageId());
 
+        unset($response['package_id']);
+        unset($response['eshop_id']);
+        unset($response['carrier_id']);
+        unset($response['track_url']);
+        unset($response['label_url']);
+        unset($response['carrier_id_swap']);
+        unset($response['pieces']);
+
         $options              = $response;
         $options[Option::EID] = $package->getBatchId();
-
-        unset($options['package_id']);
-        unset($options['eshop_id']);
-        unset($options['carrier_id']);
-        unset($options['track_url']);
-        unset($options['label_url']);
-        unset($options['carrier_id_swap']);
-        unset($options['pieces']);
 
         $package = new Package($options);
 
@@ -350,7 +347,6 @@ class Balikobot
      */
     public function getBranches(): iterable
     {
-        // get all shipper service codes
         $shippers = $this->getShippers();
 
         foreach ($shippers as $shipper) {
@@ -369,7 +365,6 @@ class Balikobot
      */
     public function getBranchesForCountries(array $countries): iterable
     {
-        // get all shipper service codes
         $shippers = $this->getShippers();
 
         foreach ($shippers as $shipper) {
@@ -388,10 +383,8 @@ class Balikobot
      */
     public function getBranchesForShipper(string $shipper): iterable
     {
-        // get all services for shipper service
         $services = $this->getServicesForShipper($shipper);
 
-        // get branches for all services
         foreach ($services as $service) {
             yield from $this->getBranchesForShipperService($shipper, $service);
         }
@@ -409,10 +402,8 @@ class Balikobot
      */
     public function getBranchesForShipperForCountries(string $shipper, array $countries): iterable
     {
-        // get all services for shipper service
         $services = $this->getServicesForShipper($shipper);
 
-        // get branches for all services
         foreach ($services as $service) {
             yield from $this->getBranchesForShipperServiceForCountries($shipper, $service, $countries);
         }
@@ -429,13 +420,7 @@ class Balikobot
      */
     private function getServicesForShipper(string $shipper): array
     {
-        // get all services for shipper service
-        $services = array_keys($this->getServices($shipper));
-
-        // support shipper withou service type
-        if (empty($services)) {
-            $services = [null];
-        }
+        $services = array_keys($this->getServices($shipper)) ?: [null];
 
         return $services;
     }
@@ -453,8 +438,9 @@ class Balikobot
      */
     public function getBranchesForShipperService(string $shipper, ?string $service, string $country = null): iterable
     {
-        $fullData = Shipper::hasFullBranchesSupport($shipper, $service);
-        $branches = $this->client->getBranches($shipper, $service, $fullData, $country);
+        $useFullbranchRequest = Shipper::hasFullBranchesSupport($shipper, $service);
+
+        $branches = $this->client->getBranches($shipper, $service, $useFullbranchRequest, $country);
 
         foreach ($branches as $branch) {
             yield Branch::newInstanceFromData($shipper, $service, $branch);
@@ -504,6 +490,7 @@ class Balikobot
     ): iterable {
         if (Shipper::hasBranchCountryFilterSupport($shipper) === false) {
             yield from $this->getBranchesForShipperService($shipper, $service);
+
             return;
         }
 
@@ -599,9 +586,9 @@ class Balikobot
      */
     public function getPostCodes(string $shipper, string $service, string $country = null): iterable
     {
-        $postcodes = $this->client->getPostCodes($shipper, $service, $country);
+        $postCodes = $this->client->getPostCodes($shipper, $service, $country);
 
-        foreach ($postcodes as $postcode) {
+        foreach ($postCodes as $postcode) {
             yield PostCode::newInstanceFromData($shipper, $service, $postcode);
         }
     }
@@ -647,9 +634,9 @@ class Balikobot
      */
     public function getActivatedServices(string $shipper): array
     {
-        $units = $this->client->getActivatedServices($shipper);
+        $services = $this->client->getActivatedServices($shipper);
 
-        return $units;
+        return $services;
     }
 
     /**
@@ -665,15 +652,15 @@ class Balikobot
     {
         $response = $this->client->orderB2AShipment($packages->getShipper(), $packages->toArray());
 
-        // create return value object
         $orderedPackages = new OrderedPackageCollection();
 
-        foreach ($response as $i => $package) {
-            $orderedPackages->add(OrderedPackage::newInstanceFromData(
+        foreach ($response as $package) {
+            $orderedPackage = OrderedPackage::newInstanceFromData(
                 $packages->getShipper(),
                 $packages->getEID(),
                 $package
-            ));
+            );
+            $orderedPackages->add($orderedPackage);
         }
 
         return $orderedPackages;
@@ -693,9 +680,9 @@ class Balikobot
         $packages = new OrderedPackageCollection();
         $packages->add($package);
 
-        $response = $this->getProofOfDeliveries($packages);
+        $linkUrls = $this->getProofOfDeliveries($packages);
 
-        return $response[0];
+        return $linkUrls[0];
     }
 
     /**
@@ -709,8 +696,8 @@ class Balikobot
      */
     public function getProofOfDeliveries(OrderedPackageCollection $packages): array
     {
-        $response = $this->client->getProofOfDeliveries($packages->getShipper(), $packages->getCarrierIds());
+        $linkUrls = $this->client->getProofOfDeliveries($packages->getShipper(), $packages->getCarrierIds());
 
-        return $response;
+        return $linkUrls;
     }
 }

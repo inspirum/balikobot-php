@@ -5,7 +5,6 @@ namespace Inspirum\Balikobot\Services;
 use DateTime;
 use Inspirum\Balikobot\Contracts\RequesterInterface;
 use Inspirum\Balikobot\Definitions\API;
-use Inspirum\Balikobot\Definitions\Country;
 use Inspirum\Balikobot\Definitions\Request;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 
@@ -176,14 +175,12 @@ class Client
 
         $formatedStatuses = [];
 
-        foreach ($response as $statusResponse) {
-            if (isset($statusResponse['status']) && ((int) $statusResponse['status']) !== 200) {
-                throw new BadRequestException($response);
-            }
+        foreach ($response as $responseItem) {
+            $this->validateStatus($responseItem, $response);
 
             $formatedStatuses[] = [
-                'name'      => $statusResponse['status_text'],
-                'status_id' => $statusResponse['status_id'],
+                'name'      => $responseItem['status_text'],
+                'status_id' => $responseItem['status_id'],
                 'date'      => null,
             ];
         }
@@ -225,7 +222,9 @@ class Client
 
         $response = $this->requester->call(API::V1, $shipper, Request::LABELS, $data);
 
-        return $response['labels_url'];
+        $formattedResponse = $response['labels_url'];
+
+        return $formattedResponse;
     }
 
     /**
@@ -338,7 +337,9 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::SERVICES);
 
-        return $response['service_types'] ?? [];
+        $formattedResponse = $response['service_types'] ?? [];
+
+        return $formattedResponse;
     }
 
     /**
@@ -354,11 +355,9 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::MANIPULATION_UNITS);
 
-        if ($response['units'] === null) {
-            return [];
-        }
+        $formattedResponse = $this->normalizeResponseItems($response['units'] ?? [], 'code', 'name');
 
-        return $this->normalizeResponseItems($response['units'], 'code', 'name');
+        return $formattedResponse;
     }
 
     /**
@@ -367,7 +366,7 @@ class Client
      *
      * @param string      $shipper
      * @param string|null $service
-     * @param bool        $fullData
+     * @param bool        $fullBranchRequest
      * @param string|null $country
      *
      * @return array[]
@@ -377,14 +376,16 @@ class Client
     public function getBranches(
         string $shipper,
         ?string $service,
-        bool $fullData = false,
+        bool $fullBranchRequest = false,
         string $country = null
     ): array {
-        $request = $fullData ? Request::FULL_BRANCHES : Request::BRANCHES;
+        $usedRequest = $fullBranchRequest ? Request::FULL_BRANCHES : Request::BRANCHES;
 
-        $response = $this->requester->call(API::V1, $shipper, $request . '/' . $service . '/' . $country);
+        $response = $this->requester->call(API::V1, $shipper, $usedRequest . '/' . $service . '/' . $country);
 
-        return $response['branches'] ?? [];
+        $formattedResponse = $response['branches'] ?? [];
+
+        return $formattedResponse;
     }
 
     /**
@@ -413,8 +414,6 @@ class Client
         float $radius = null,
         string $type = null
     ): array {
-        Country::validateCode($country);
-
         $data = [
             'country'     => $country,
             'city'        => $city,
@@ -425,11 +424,11 @@ class Client
             'type'        => $type,
         ];
 
-        $data = array_filter($data);
+        $response = $this->requester->call(API::V1, $shipper, Request::BRANCH_LOCATOR, array_filter($data));
 
-        $response = $this->requester->call(API::V1, $shipper, Request::BRANCH_LOCATOR, $data);
+        $formattedResponse = $response['branches'] ?? [];
 
-        return $response['branches'] ?? [];
+        return $formattedResponse;
     }
 
     /**
@@ -445,7 +444,9 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::CASH_ON_DELIVERY_COUNTRIES);
 
-        return $this->normalizeResponseItems($response['service_types'] ?? [], 'service_type', 'cod_countries');
+        $formattedResponse = $this->normalizeResponseItems($response['service_types'] ?? [], 'service_type', 'cod_countries');
+
+        return $formattedResponse;
     }
 
     /**
@@ -461,7 +462,9 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::COUNTRIES);
 
-        return $this->normalizeResponseItems($response['service_types'] ?? [], 'service_type', 'countries');
+        $formattedResponse = $this->normalizeResponseItems($response['service_types'] ?? [], 'service_type', 'countries');
+
+        return $formattedResponse;
     }
 
     /**
@@ -477,30 +480,23 @@ class Client
      */
     public function getPostCodes(string $shipper, string $service, string $country = null): array
     {
-        if ($country !== null) {
-            Country::validateCode($country);
+        $response = $this->requester->call(API::V1, $shipper, Request::ZIP_CODES . '/' . $service . '/' . $country);
 
-            $urlPath = $service . '/' . $country;
-        } else {
-            $urlPath = $service;
-        }
+        $country = $response['country'] ?? $country;
 
-        $response = $this->requester->call(API::V1, $shipper, Request::ZIP_CODES . '/' . $urlPath);
+        $formattedResponse = [];
 
-        $country            = $response['country'] ?? $country;
-        $formattedPostCodes = [];
-
-        foreach ($response['zip_codes'] ?? [] as $postCode) {
-            $formattedPostCodes[] = [
-                'postcode'     => $postCode['zip'] ?? ($postCode['zip_start'] ?? null),
-                'postcode_end' => $postCode['zip_end'] ?? null,
-                'city'         => $postCode['city'] ?? null,
-                'country'      => $postCode['country'] ?? $country,
-                '1B'           => (bool) ($postCode['1B'] ?? false),
+        foreach ($response['zip_codes'] ?? [] as $responseItem) {
+            $formattedResponse[] = [
+                'postcode'     => $responseItem['zip'] ?? ($responseItem['zip_start'] ?? null),
+                'postcode_end' => $responseItem['zip_end'] ?? null,
+                'city'         => $responseItem['city'] ?? null,
+                'country'      => $responseItem['country'] ?? $country,
+                '1B'           => (bool) ($responseItem['1B'] ?? false),
             ];
         }
 
-        return $formattedPostCodes;
+        return $formattedResponse;
     }
 
     /**
@@ -531,7 +527,9 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::ADR_UNITS);
 
-        return $this->normalizeResponseItems($response['units'] ?? [], 'code', 'name');
+        $formattedResponse = $this->normalizeResponseItems($response['units'] ?? [], 'code', 'name');
+
+        return $formattedResponse;
     }
 
     /**
@@ -616,15 +614,28 @@ class Client
 
         $formatedLinks = [];
 
-        foreach ($response as $statusResponse) {
-            if (isset($statusResponse['status']) && ((int) $statusResponse['status']) !== 200) {
-                throw new BadRequestException($response);
-            }
+        foreach ($response as $responseItem) {
+            $this->validateStatus($responseItem, $response);
 
-            $formatedLinks[] = $statusResponse['file_url'];
+            $formatedLinks[] = $responseItem['file_url'];
         }
 
         return $formatedLinks;
+    }
+
+    /**
+     * Validate response item status
+     *
+     * @param array $responseItem
+     * @param array $response
+     *
+     * @return void
+     */
+    private function validateStatus(array $responseItem, array $response): void
+    {
+        if (isset($responseItem['status']) && ((int) $responseItem['status']) !== 200) {
+            throw new BadRequestException($response);
+        }
     }
 
     /**
@@ -638,13 +649,13 @@ class Client
      */
     private function normalizeResponseItems(array $items, string $keyName, string $valueName): array
     {
-        $services = [];
+        $formattedResponse = [];
 
         foreach ($items as $item) {
-            $services[$item[$keyName]] = $item[$valueName];
+            $formattedResponse[$item[$keyName]] = $item[$valueName];
         }
 
-        return $services;
+        return $formattedResponse;
     }
 
     /**
