@@ -1100,6 +1100,13 @@ final class ServiceType
     public const GW_DOMESTIC = 'W24';
 
     /**
+     * HDS - Home Delivery Services
+     *
+     * @var string
+     */
+    public const GW_HOME_DELIVERY = 'HDS';
+
+    /**
      * Export PROI
      *
      * @var string
@@ -1226,7 +1233,7 @@ final class ServiceType
             self::INTIME_SMALL_CZ,
             self::INTIME_MEDIUM_CZ,
             self::INTIME_LARGE_CZ,
-            // self::INTIME_POSTOMAT_CZ,
+            self::INTIME_POSTOMAT_CZ,
             // self::INTIME_POSTOMAT_SK,
             self::INTIME_LARGE_SK,
             self::INTIME_EXTRA_CZ,
@@ -1404,6 +1411,7 @@ final class ServiceType
     {
         return [
             self::GW_DOMESTIC,
+            self::GW_HOME_DELIVERY,
             self::GW_PRIORITY_9,
             self::GW_PRIORITY_12,
             self::GW_PRIORITY_16,
