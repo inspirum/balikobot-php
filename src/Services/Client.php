@@ -444,7 +444,11 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::CASH_ON_DELIVERY_COUNTRIES);
 
-        $formattedResponse = $this->normalizeResponseItems($response['service_types'] ?? [], 'service_type', 'cod_countries');
+        $formattedResponse = $this->normalizeResponseItems(
+            $response['service_types'] ?? [],
+            'service_type',
+            'cod_countries'
+        );
 
         return $formattedResponse;
     }
@@ -462,7 +466,11 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::COUNTRIES);
 
-        $formattedResponse = $this->normalizeResponseItems($response['service_types'] ?? [], 'service_type', 'countries');
+        $formattedResponse = $this->normalizeResponseItems(
+            $response['service_types'] ?? [],
+            'service_type',
+            'countries'
+        );
 
         return $formattedResponse;
     }

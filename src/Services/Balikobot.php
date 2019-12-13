@@ -62,7 +62,11 @@ class Balikobot
         $orderedPackages = new OrderedPackageCollection();
 
         foreach ($response as $package) {
-            $orderedPackage = OrderedPackage::newInstanceFromData($packages->getShipper(), $packages->getEID(), $package);
+            $orderedPackage = OrderedPackage::newInstanceFromData(
+                $packages->getShipper(),
+                $packages->getEID(),
+                $package
+            );
             $orderedPackages->add($orderedPackage);
         }
 
