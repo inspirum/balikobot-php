@@ -18,14 +18,14 @@ class BranchesTest extends AbstractBalikobotTestCase
                 foreach ($branches as $branch) {
                     $this->assertTrue(
                         in_array($branch->getCountry(), ['SK', 'DE']),
-                        'Country ' . ($branch->getCountry() ?? '[null]') . ' code should be DE/SK'
+                        sprintf('Country %s code should be DE/SK', $branch->getCountry() ?? '[null]')
                     );
 
                     break;
                 }
             }
         } catch (BadRequestException $exception) {
-            $this->assertFalse(true, $exception->getMessage());
+            $this->fail($exception->getMessage());
         }
     }
 }

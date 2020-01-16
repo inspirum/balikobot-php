@@ -135,7 +135,7 @@ final class Shipper
         return [
             self::CP,
             self::DHL,
-            self::DHLSK,
+            // self::DHLSK,
             self::DPD,
             self::GEIS,
             self::GLS,

@@ -1433,7 +1433,7 @@ final class ServiceType
             Shipper::CP         => self::cp(),
             Shipper::DPD        => self::dpd(),
             Shipper::DHL        => self::dhl(),
-            Shipper::DHLSK      => self::dhlsk(),
+            // Shipper::DHLSK      => self::dhlsk(),
             Shipper::GEIS       => self::geis(),
             Shipper::GLS        => self::gls(),
             Shipper::INTIME     => self::intime(),
