@@ -16,12 +16,12 @@ use Inspirum\Balikobot\Definitions\Shipper;
 
 var_dump(Shipper::CP);
 /*
-  'cp'
+'cp'
 */
 
 var_dump(Shipper::TOP_TRANS);
 /*
-  'toptrans'
+'toptrans'
 */
 
 ```
@@ -31,17 +31,17 @@ use Inspirum\Balikobot\Definitions\ServiceType;
 
 var_dump(ServiceType::DHL_EXPRESS_WORLDWIDE_12);
 /*
-  '4'
+'4'
 */
 
 var_dump(ServiceType::CP_NP);
 /*
-  'NP'
+'NP'
 */
 
 var_dump(ServiceType::DPD_PRIVATE_SATURDAY);
 /*
-  '8'
+'8'
 */
 ```
 
@@ -50,12 +50,12 @@ use Inspirum\Balikobot\Definitions\Option;
 
 var_dump(Option::REAL_ORDER_ID);
 /*
-  'real_order_id'
+'real_order_id'
 */
 
 var_dump(Option::REC_NAME);
 /*
-  'rec_name'
+'rec_name'
 */
 ```
 
@@ -64,7 +64,7 @@ use Inspirum\Balikobot\Definitions\Country;
 
 var_dump(Country::AUSTRIA);
 /*
-  'AT'
+'AT'
 */
 ```
 
@@ -73,7 +73,7 @@ use Inspirum\Balikobot\Definitions\Currency;
 
 var_dump(Currency::PLN);
 /*
-  'PLN'
+'PLN'
 */
 ```
 

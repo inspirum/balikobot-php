@@ -869,7 +869,7 @@ var_dump($fileUrls);
 
 ## All available methods
 
-```php
+```
 addPackages(string $shipper, array $packages, string $version = API::V1): array
 
 dropPackage(string $shipper, int $packageId): void

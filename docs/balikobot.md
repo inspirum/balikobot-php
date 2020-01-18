@@ -215,7 +215,7 @@ foreach($shippers as $shipper) {
 
 ## All available methods
 
-```php
+```
 getShippers(): array
 
 addPackages(PackageCollection $packages): OrderedPackageCollection
