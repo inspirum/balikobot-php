@@ -78,7 +78,7 @@ trait CommonData
     }
 
     /**
-     * @param array $services
+     * @param array<string> $services
      *
      * @return void
      */

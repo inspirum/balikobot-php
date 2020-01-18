@@ -7,12 +7,15 @@ use Countable;
 use Inspirum\Balikobot\Model\Values\Package;
 use IteratorAggregate;
 
+/**
+ * @implements \IteratorAggregate<int,\Inspirum\Balikobot\Model\Values\Package>
+ */
 class PackageCollection implements IteratorAggregate, Countable
 {
     /**
      * Packages
      *
-     * @var \Inspirum\Balikobot\Model\Values\Package[]
+     * @var array<int,\Inspirum\Balikobot\Model\Values\Package>
      */
     private $packages = [];
 
@@ -84,7 +87,7 @@ class PackageCollection implements IteratorAggregate, Countable
     /**
      * Get an iterator for the items
      *
-     * @return \ArrayIterator
+     * @return \ArrayIterator<int,\Inspirum\Balikobot\Model\Values\Package>
      */
     public function getIterator(): ArrayIterator
     {
@@ -94,7 +97,7 @@ class PackageCollection implements IteratorAggregate, Countable
     /**
      * Get the collection of packages as a plain array
      *
-     * @return array[]
+     * @return array<array<string,mixed>>
      */
     public function toArray(): array
     {

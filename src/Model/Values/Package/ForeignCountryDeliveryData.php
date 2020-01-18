@@ -47,7 +47,7 @@ trait ForeignCountryDeliveryData
     }
 
     /**
-     * @param array $contentData
+     * @param array<string,string> $contentData
      *
      * @return void
      */

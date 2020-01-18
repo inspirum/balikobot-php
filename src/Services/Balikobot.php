@@ -37,7 +37,7 @@ class Balikobot
     /**
      * All supported shipper services
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getShippers(): array
     {
@@ -134,7 +134,7 @@ class Balikobot
      *
      * @param \Inspirum\Balikobot\Model\Values\OrderedPackage $package
      *
-     * @return \Inspirum\Balikobot\Model\Values\PackageStatus[]
+     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>|\Inspirum\Balikobot\Model\Values\PackageStatus[]
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -153,7 +153,7 @@ class Balikobot
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      *
-     * @return \Inspirum\Balikobot\Model\Values\PackageStatus[][]
+     * @return array<array<\Inspirum\Balikobot\Model\Values\PackageStatus>>|\Inspirum\Balikobot\Model\Values\PackageStatus[][]
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -198,7 +198,7 @@ class Balikobot
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      *
-     * @return \Inspirum\Balikobot\Model\Values\PackageStatus[]
+     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>|\Inspirum\Balikobot\Model\Values\PackageStatus[]
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -220,7 +220,7 @@ class Balikobot
      *
      * @param string $shipper
      *
-     * @return \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection
+     * @return \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection|\Inspirum\Balikobot\Model\Values\OrderedPackage[]
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -233,7 +233,7 @@ class Balikobot
         foreach ($response as $package) {
             $orderedPackage = OrderedPackage::newInstanceFromData(
                 $shipper,
-                $package['eshop_id'],
+                (string) $package['eshop_id'],
                 $package
             );
             $orderedPackages->add($orderedPackage);
@@ -315,7 +315,7 @@ class Balikobot
      *
      * @param string $shipper
      *
-     * @return string[]
+     * @return array<string,string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -331,7 +331,7 @@ class Balikobot
      *
      * @param string $shipper
      *
-     * @return string[]
+     * @return array<string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -361,7 +361,7 @@ class Balikobot
     /**
      * Get all available branches for countries
      *
-     * @param array $countries
+     * @param array<string> $countries
      *
      * @return \Generator|\Inspirum\Balikobot\Model\Values\Branch[]
      *
@@ -397,8 +397,8 @@ class Balikobot
     /**
      * Get all available branches for given shipper for countries
      *
-     * @param string $shipper
-     * @param array  $countries
+     * @param string        $shipper
+     * @param array<string> $countries
      *
      * @return \Generator|\Inspirum\Balikobot\Model\Values\Branch[]
      *
@@ -418,7 +418,7 @@ class Balikobot
      *
      * @param string $shipper
      *
-     * @return array
+     * @return array<string|null>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -454,9 +454,9 @@ class Balikobot
     /**
      * Get all available branches for given shipper and service type for countries
      *
-     * @param string      $shipper
-     * @param string|null $service
-     * @param array       $countries
+     * @param string        $shipper
+     * @param string|null   $service
+     * @param array<string> $countries
      *
      * @return \Generator|\Inspirum\Balikobot\Model\Values\Branch[]
      *
@@ -479,9 +479,9 @@ class Balikobot
     /**
      * Get all available branches for given shipper and service type filtered by countries if possible
      *
-     * @param string      $shipper
-     * @param string|null $service
-     * @param array       $countries
+     * @param string        $shipper
+     * @param string|null   $service
+     * @param array<string> $countries
      *
      * @return \Generator|\Inspirum\Balikobot\Model\Values\Branch[]
      *
@@ -550,7 +550,7 @@ class Balikobot
      *
      * @param string $shipper
      *
-     * @return array[]
+     * @return array<array<int|string,array<string,array>>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -566,7 +566,7 @@ class Balikobot
      *
      * @param string $shipper
      *
-     * @return array[]
+     * @return array<array<int|string,string>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -616,7 +616,7 @@ class Balikobot
      *
      * @param string $shipper
      *
-     * @return string[]
+     * @return array<string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -632,7 +632,7 @@ class Balikobot
      *
      * @param string $shipper
      *
-     * @return array
+     * @return array<string,mixed>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -694,7 +694,7 @@ class Balikobot
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      *
-     * @return string[]
+     * @return array<string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */

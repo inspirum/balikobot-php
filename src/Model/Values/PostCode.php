@@ -127,9 +127,9 @@ class PostCode
     /**
      * New instance from data
      *
-     * @param string      $shipper
-     * @param string|null $service
-     * @param array       $data
+     * @param string              $shipper
+     * @param string|null         $service
+     * @param array<string,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Values\PostCode
      */

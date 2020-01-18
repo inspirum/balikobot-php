@@ -56,7 +56,7 @@ class OrderedPackage
     /**
      * Pieces
      *
-     * @var array
+     * @var array<string>
      */
     private $pieces;
 
@@ -77,16 +77,16 @@ class OrderedPackage
     /**
      * OrderedPackage constructor
      *
-     * @param int         $packageId
-     * @param string      $shipper
-     * @param string      $batchId
-     * @param string      $carrierId
-     * @param string|null $trackUrl
-     * @param string|null $labelUrl
-     * @param string|null $carrierIdSwap
-     * @param array       $pieces
-     * @param string|null $finalCarrierId
-     * @param string|null $finalTrackUrl
+     * @param int           $packageId
+     * @param string        $shipper
+     * @param string        $batchId
+     * @param string        $carrierId
+     * @param string|null   $trackUrl
+     * @param string|null   $labelUrl
+     * @param string|null   $carrierIdSwap
+     * @param array<string> $pieces
+     * @param string|null   $finalCarrierId
+     * @param string|null   $finalTrackUrl
      */
     public function __construct(
         int $packageId,
@@ -161,7 +161,7 @@ class OrderedPackage
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public function getPieces(): array
     {
@@ -193,9 +193,9 @@ class OrderedPackage
     }
 
     /**
-     * @param string $shipper
-     * @param string $eid
-     * @param array  $data
+     * @param string              $shipper
+     * @param string              $eid
+     * @param array<string,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Values\OrderedPackage
      */

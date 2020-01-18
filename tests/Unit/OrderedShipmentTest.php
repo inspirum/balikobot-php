@@ -28,7 +28,7 @@ class OrderedShipmentTest extends AbstractTestCase
         $this->assertEquals('/labels', $orderedShipment->getLabelsUrl());
         $this->assertEquals('/file', $orderedShipment->getFileUrl());
         $this->assertEquals([1, 67], $orderedShipment->getPackageIds());
-        $this->assertEquals(new \DateTime('2018-10-10 14:00:00'), $orderedShipment->getDate());
+        $this->assertEquals(new DateTime('2018-10-10 14:00:00'), $orderedShipment->getDate());
     }
 
     public function testStaticConstructorWithMissingData()

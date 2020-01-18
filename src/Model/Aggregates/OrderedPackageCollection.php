@@ -10,12 +10,16 @@ use InvalidArgumentException;
 use IteratorAggregate;
 use RuntimeException;
 
+/**
+ * @implements \ArrayAccess<int,\Inspirum\Balikobot\Model\Values\OrderedPackage>
+ * @implements \IteratorAggregate<int,\Inspirum\Balikobot\Model\Values\OrderedPackage>
+ */
 class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAccess
 {
     /**
      * Packages
      *
-     * @var \Inspirum\Balikobot\Model\Values\OrderedPackage[]
+     * @var array<int,\Inspirum\Balikobot\Model\Values\OrderedPackage>
      */
     private $packages = [];
 
@@ -71,7 +75,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Get package IDs
      *
-     * @return int[]
+     * @return array<int>
      */
     public function getPackageIds(): array
     {
@@ -83,7 +87,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Get carrier IDs
      *
-     * @return int[]
+     * @return array<string>
      */
     public function getCarrierIds(): array
     {
@@ -123,7 +127,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Get an iterator for the items
      *
-     * @return \ArrayIterator
+     * @return \ArrayIterator<int,\Inspirum\Balikobot\Model\Values\OrderedPackage>
      */
     public function getIterator(): ArrayIterator
     {
@@ -133,7 +137,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Determine if an item exists at an offset
      *
-     * @param string $key
+     * @param int $key
      *
      * @return bool
      */
@@ -145,7 +149,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Get an item at a given offset
      *
-     * @param string $key
+     * @param int $key
      *
      * @return \Inspirum\Balikobot\Model\Values\OrderedPackage
      */
@@ -157,7 +161,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Set the item at a given offset
      *
-     * @param string                                          $key
+     * @param int                                             $key
      * @param \Inspirum\Balikobot\Model\Values\OrderedPackage $value
      *
      * @return void
@@ -172,7 +176,7 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Unset the item at a given offset
      *
-     * @param string $key
+     * @param int $key
      *
      * @return void
      */

@@ -30,11 +30,11 @@ class Client
     /**
      * Add package(s) to the Balikobot
      *
-     * @param string $shipper
-     * @param array  $packages
-     * @param string $version
+     * @param string                     $shipper
+     * @param array<array<string,mixed>> $packages
+     * @param string                     $version
      *
-     * @return array[]
+     * @return array<array<string,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -70,8 +70,8 @@ class Client
     /**
      * Drops a package from the Balikobot – the package must be not ordered
      *
-     * @param string $shipper
-     * @param array  $packageIds
+     * @param string     $shipper
+     * @param array<int> $packageIds
      *
      * @return void
      *
@@ -94,7 +94,7 @@ class Client
      * @param string $shipper
      * @param string $carrierId
      *
-     * @return array[]
+     * @return array<array<string,int|string>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -108,10 +108,10 @@ class Client
     /**
      * Tracks a packages
      *
-     * @param string $shipper
-     * @param array  $carrierIds
+     * @param string        $shipper
+     * @param array<string> $carrierIds
      *
-     * @return array[]
+     * @return array<array<array<string,int|string>>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -140,7 +140,7 @@ class Client
      * @param string $shipper
      * @param string $carrierId
      *
-     * @return array
+     * @return array<string,int|string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -154,10 +154,10 @@ class Client
     /**
      * Tracks a package, get the last info
      *
-     * @param string $shipper
-     * @param array  $carrierIds
+     * @param string        $shipper
+     * @param array<string> $carrierIds
      *
-     * @return array[]
+     * @return array<array<string,int|string|null>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -193,7 +193,7 @@ class Client
      *
      * @param string $shipper
      *
-     * @return array[]
+     * @return array<array<string,int|string>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -207,8 +207,8 @@ class Client
     /**
      * Gets labels
      *
-     * @param string $shipper
-     * @param array  $packageIds
+     * @param string     $shipper
+     * @param array<int> $packageIds
      *
      * @return string
      *
@@ -233,7 +233,7 @@ class Client
      * @param string $shipper
      * @param int    $packageId
      *
-     * @return array
+     * @return array<string,int|string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -248,11 +248,11 @@ class Client
      * Order shipment for packages
      *
      * @param string         $shipper
-     * @param array          $packageIds
+     * @param array<int>     $packageIds
      * @param \DateTime|null $date
      * @param string|null    $note
      *
-     * @return array
+     * @return array<string,int|string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -277,7 +277,7 @@ class Client
      * @param string $shipper
      * @param int    $orderId
      *
-     * @return array
+     * @return array<string,int|string|array>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -329,7 +329,7 @@ class Client
      *
      * @param string $shipper
      *
-     * @return string[]
+     * @return array<string,string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -347,7 +347,7 @@ class Client
      *
      * @param string $shipper
      *
-     * @return string[]
+     * @return array<string,string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -369,7 +369,7 @@ class Client
      * @param bool        $fullBranchRequest
      * @param string|null $country
      *
-     * @return array[]
+     * @return array<array<string,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -400,7 +400,7 @@ class Client
      * @param float|null  $radius
      * @param string|null $type
      *
-     * @return array[]
+     * @return array<array<string,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -436,7 +436,7 @@ class Client
      *
      * @param string $shipper
      *
-     * @return array[]
+     * @return array<array<int|string,array<string,array>>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -458,7 +458,7 @@ class Client
      *
      * @param string $shipper
      *
-     * @return array[]
+     * @return array<array<int|string,string>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -482,7 +482,7 @@ class Client
      * @param string      $service
      * @param string|null $country
      *
-     * @return array[]
+     * @return array<array<string,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -510,8 +510,8 @@ class Client
     /**
      * Check package(s) data
      *
-     * @param string $shipper
-     * @param array  $packages
+     * @param string               $shipper
+     * @param array<array<string>> $packages
      *
      * @return void
      *
@@ -527,7 +527,7 @@ class Client
      *
      * @param string $shipper
      *
-     * @return string[]
+     * @return array<string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -545,7 +545,7 @@ class Client
      *
      * @param string $shipper
      *
-     * @return array
+     * @return array<string,mixed>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -561,10 +561,10 @@ class Client
     /**
      * Order shipments from place B (typically supplier / previous consignee) to place A (shipping point)
      *
-     * @param string $shipper
-     * @param array  $packages
+     * @param string                     $shipper
+     * @param array<array<string,mixed>> $packages
      *
-     * @return array
+     * @return array<array<string,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -601,10 +601,10 @@ class Client
     /**
      * Get array of PDF links with signed consignment delivery document by the recipient
      *
-     * @param string $shipper
-     * @param array  $carrierIds
+     * @param string        $shipper
+     * @param array<string> $carrierIds
      *
-     * @return string[]
+     * @return array<string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -634,8 +634,8 @@ class Client
     /**
      * Validate response item status
      *
-     * @param array $responseItem
-     * @param array $response
+     * @param array<mixed,mixed> $responseItem
+     * @param array<mixed,mixed> $response
      *
      * @return void
      */
@@ -649,11 +649,11 @@ class Client
     /**
      * Normalize response items
      *
-     * @param array  $items
-     * @param string $keyName
-     * @param string $valueName
+     * @param array<array<string,string>> $items
+     * @param string                      $keyName
+     * @param string                      $valueName
      *
-     * @return array
+     * @return array<string,mixed>
      */
     private function normalizeResponseItems(array $items, string $keyName, string $valueName): array
     {
@@ -669,9 +669,9 @@ class Client
     /**
      * Encapsulate ids
      *
-     * @param array $ids
+     * @param array<int|string> $ids
      *
-     * @return array[]
+     * @return array<array<int|string>>
      */
     private function encapsulateIds(array $ids): array
     {

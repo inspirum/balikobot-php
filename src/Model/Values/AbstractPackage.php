@@ -5,6 +5,9 @@ namespace Inspirum\Balikobot\Model\Values;
 use ArrayAccess;
 use Inspirum\Balikobot\Model\Values\Package\CommonData;
 
+/**
+ * @implements \ArrayAccess<string,mixed>
+ */
 abstract class AbstractPackage implements ArrayAccess
 {
     use CommonData;
@@ -12,14 +15,14 @@ abstract class AbstractPackage implements ArrayAccess
     /**
      * Package data
      *
-     * @var array
+     * @var array<string,mixed>
      */
     private $data;
 
     /**
      * Package constructor
      *
-     * @param array $data
+     * @param array<string,mixed> $data
      */
     public function __construct(array $data = [])
     {
@@ -78,7 +81,7 @@ abstract class AbstractPackage implements ArrayAccess
     /**
      * Get the collection of packages as a plain array
      *
-     * @return array
+     * @return array<string,mixed>
      */
     public function toArray(): array
     {

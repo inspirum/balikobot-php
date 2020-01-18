@@ -34,8 +34,9 @@ use Inspirum\Balikobot\Definitions\Shipper;
 use Inspirum\Balikobot\Model\Aggregates\PackageCollection;
 use Inspirum\Balikobot\Model\Values\Package;
 use Inspirum\Balikobot\Services\Balikobot;
+use Inspirum\Balikobot\Services\Requester;
 
-$balikobot = new Balikobot($user, $key);
+$balikobot = new Balikobot(new Requester($apiUser, $apiKey));
 
 $packages = new PackageCollection(Shipper::CP);
 
@@ -162,20 +163,20 @@ It saves a lot of memory and allows you to iterate all branches at one time in o
 All methods allow filter branches by country.
 
 ```php
-$shippers = $balikobot->getBranches():
-$shippers = $balikobot->getBranchesForShipper(Shipper::CP);
-$shippers = $balikobot->getBranchesForShipperService(Shipper::CP, ServiceType::CP_NP);
+use Inspirum\Balikobot\Definitions\Country;
+use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Shipper;
 
-$shippers = $balikobot->getBranches(Country::CZECH_REPUBLIC):
-$shippers = $balikobot->getBranchesForShipper(Shipper::ZASILKOVNA, Country::CZECH_REPUBLIC);
-$shippers = $balikobot->getBranchesForShipperService(Shipper::ZASILKOVNA, null, Country::CZECH_REPUBLIC);
+$branches = $balikobot->getBranches();
+$branches = $balikobot->getBranchesForShipper(Shipper::CP);
+$branches = $balikobot->getBranchesForShipperService(Shipper::CP, ServiceType::CP_NP);
 
-$shippers = $balikobot->getBranchesForCountries([Country::CZECH_REPUBLIC, Country::SLOVAKIA]):
-$shippers = $balikobot->getBranchesForShipperForCountries(Shipper::ZASILKOVNA, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
-$shippers = $balikobot->getBranchesForShipperServiceForCountries(Shipper::ZASILKOVNA, null, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
+$branches = $balikobot->getBranchesForCountries([Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
+$branches = $balikobot->getBranchesForShipperForCountries(Shipper::ZASILKOVNA, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
+$branches = $balikobot->getBranchesForShipperServiceForCountries(Shipper::ZASILKOVNA, null, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
 
 /*
-var_dump($shippers);
+var_dump($branches);
 Generator {}
 */
 ```
@@ -184,10 +185,11 @@ Branch contains all possible attributes from [**FULLBRANCH**](./client.md#fullbr
 Different shippers use different attribute as **branch_id** in [**ADD**](./client.md#add) request, therefore [**Branch**](../src/Model/Values/Branch.php) class already set proper **branch_id** for given shipper type.
 
 ```php
-$shippers = $balikobot->getBranchesForShipper(Shipper::CP):
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$shippers = $balikobot->getBranchesForShipper(Shipper::CP);
 
 foreach($shippers as $shipper) {
-  
   /*
   var_dump($shipper);
   Inspirum\Balikobot\Model\Values\Branch {

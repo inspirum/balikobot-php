@@ -18,7 +18,7 @@ class ActivatedServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getActivatedServices('cp', 1);
+        $client->getActivatedServices('cp');
     }
 
     public function testRequestShouldHaveStatus()
@@ -36,7 +36,7 @@ class ActivatedServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getActivatedServices('cp', 1);
+        $client->getActivatedServices('cp');
     }
 
     public function testMakeRequest()
@@ -53,7 +53,7 @@ class ActivatedServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getActivatedServices('cp', 1);
+        $client->getActivatedServices('cp');
 
         $requester->shouldHaveReceived(
             'request',

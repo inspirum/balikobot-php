@@ -30,7 +30,7 @@ final class API
      *
      * @internal
      *
-     * @var string[]
+     * @var array<string,string>
      */
     public const URL = [
         self::V1 => 'https://api.balikobot.cz/',

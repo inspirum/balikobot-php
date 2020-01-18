@@ -40,13 +40,13 @@ class Requester implements RequesterInterface
     /**
      * Call API
      *
-     * @param string $version
-     * @param string $request
-     * @param string $shipper
-     * @param array  $data
-     * @param bool   $shouldHaveStatus
+     * @param string             $version
+     * @param string             $request
+     * @param string             $shipper
+     * @param array<mixed,mixed> $data
+     * @param bool               $shouldHaveStatus
      *
-     * @return array
+     * @return array<mixed,mixed>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -87,8 +87,8 @@ class Requester implements RequesterInterface
     /**
      * Get API response
      *
-     * @param string $url
-     * @param array  $data
+     * @param string             $url
+     * @param array<mixed,mixed> $data
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
@@ -139,9 +139,9 @@ class Requester implements RequesterInterface
     /**
      * Validate response
      *
-     * @param int   $statusCode
-     * @param array $response
-     * @param bool  $shouldHaveStatus
+     * @param int                $statusCode
+     * @param array<mixed,mixed> $response
+     * @param bool               $shouldHaveStatus
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -155,8 +155,8 @@ class Requester implements RequesterInterface
     /**
      * Validate status code
      *
-     * @param int   $statusCode
-     * @param array $response
+     * @param int                $statusCode
+     * @param array<mixed,mixed> $response
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -176,8 +176,8 @@ class Requester implements RequesterInterface
     /**
      * Validate response status
      *
-     * @param array $response
-     * @param bool  $shouldHaveStatus
+     * @param array<mixed,mixed> $response
+     * @param bool               $shouldHaveStatus
      *
      * @return void
      *

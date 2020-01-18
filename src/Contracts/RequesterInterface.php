@@ -9,13 +9,13 @@ interface RequesterInterface
     /**
      * Call API
      *
-     * @param string $version
-     * @param string $request
-     * @param string $shipper
-     * @param array  $data
-     * @param bool   $shouldHaveStatus
+     * @param string             $version
+     * @param string             $request
+     * @param string             $shipper
+     * @param array<mixed,mixed> $data
+     * @param bool               $shouldHaveStatus
      *
-     * @return array
+     * @return array<mixed,mixed>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -30,8 +30,8 @@ interface RequesterInterface
     /**
      * Get API response
      *
-     * @param string $url
-     * @param array  $data
+     * @param string             $url
+     * @param array<mixed,mixed> $data
      *
      * @return \Psr\Http\Message\ResponseInterface
      */

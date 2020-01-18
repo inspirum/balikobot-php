@@ -25,7 +25,7 @@ Offers implementation of Balikobot API described in the [documentation](#version
 
 ```php
 // init balikobot class
-$requester = new Requester($user, $key);
+$requester = new Requester($apiUser, $apiKey);
 $balikobot = new Balikobot($requester);
 $data      = [];
 

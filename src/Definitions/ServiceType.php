@@ -1114,7 +1114,7 @@ final class ServiceType
     public const GW_EXPORT = 'EUR';
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function cp(): array
     {
@@ -1145,7 +1145,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function dpd(): array
     {
@@ -1162,7 +1162,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function dhl(): array
     {
@@ -1178,7 +1178,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function dhlsk(): array
     {
@@ -1190,7 +1190,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function geis(): array
     {
@@ -1210,7 +1210,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function gls(): array
     {
@@ -1225,7 +1225,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function intime(): array
     {
@@ -1243,7 +1243,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function pbh(): array
     {
@@ -1272,7 +1272,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function ppl(): array
     {
@@ -1288,7 +1288,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function sp(): array
     {
@@ -1307,7 +1307,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function sps(): array
     {
@@ -1320,7 +1320,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function topTrans(): array
     {
@@ -1335,7 +1335,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function ulozenka(): array
     {
@@ -1357,7 +1357,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function ups(): array
     {
@@ -1370,7 +1370,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public static function zasilkovna(): array
     {
@@ -1380,7 +1380,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function tnt(): array
     {
@@ -1405,7 +1405,7 @@ final class ServiceType
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function gw(): array
     {
@@ -1425,7 +1425,7 @@ final class ServiceType
     /**
      * All supported shipper services
      *
-     * @return array
+     * @return array<string,array<string>>
      */
     public static function all(): array
     {

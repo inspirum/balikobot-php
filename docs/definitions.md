@@ -48,12 +48,12 @@ var_dump(ServiceType::DPD_PRIVATE_SATURDAY);
 ```php
 use Inspirum\Balikobot\Definitions\Option;
 
-var_dump(Option::ORDER_ID);
+var_dump(Option::REAL_ORDER_ID);
 /*
   'real_order_id'
 */
 
-var_dump(Option::CUSTOMER_NAME);
+var_dump(Option::REC_NAME);
 /*
   'rec_name'
 */
@@ -154,12 +154,17 @@ var_dump($services);
 Other, less used available methods:
 
 ```php
+use Inspirum\Balikobot\Definitions\Country;
+use Inspirum\Balikobot\Definitions\Currency;
+use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Shipper;
+
 Country::all();
 Country::validateCode('CZE');
 Currency::all();
 Currency::validateCode('RUB');
 Shipper::validateCode('dpd');
-Shipper::hasFullBranchesSupport('cp');
+Shipper::hasFullBranchesSupport('cp', 'NP');
 ServiceType::cp();
 ServiceType::intime();
 

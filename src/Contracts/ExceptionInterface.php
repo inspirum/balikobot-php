@@ -16,7 +16,7 @@ interface ExceptionInterface extends Throwable
     /**
      * Get response as array
      *
-     * @return array
+     * @return array<array>
      */
     public function getResponse(): array;
 
@@ -30,7 +30,7 @@ interface ExceptionInterface extends Throwable
     /**
      * Get response errors
      *
-     * @return array
+     * @return array<array<string,string>>
      */
     public function getErrors(): array;
 }

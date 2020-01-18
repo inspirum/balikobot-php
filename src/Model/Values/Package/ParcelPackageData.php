@@ -187,7 +187,7 @@ trait ParcelPackageData
     }
 
     /**
-     * @param array $adrContent
+     * @param array<string,string> $adrContent
      *
      * @return void
      */

@@ -82,7 +82,6 @@ class OrderViewRequestTest extends AbstractClientTestCase
 
         $this->assertEquals(
             [
-                'labels_url'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'order_id'     => 29,
                 'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
                 'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',

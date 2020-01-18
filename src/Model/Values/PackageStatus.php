@@ -61,7 +61,7 @@ class PackageStatus
     }
 
     /**
-     * @param array $data
+     * @param array<string,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Values\PackageStatus
      */

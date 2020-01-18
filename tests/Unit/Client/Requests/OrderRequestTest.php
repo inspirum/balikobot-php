@@ -79,7 +79,6 @@ class OrderRequestTest extends AbstractClientTestCase
             'order_id'     => 29,
             'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
             'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
-            'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
             'package_ids'  => [1],
         ]);
 
@@ -93,7 +92,6 @@ class OrderRequestTest extends AbstractClientTestCase
                 'order_id'     => 29,
                 'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
                 'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
-                'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
                 'package_ids'  => [1],
             ],
             $order

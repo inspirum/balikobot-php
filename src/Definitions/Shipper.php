@@ -128,7 +128,7 @@ final class Shipper
     /**
      * All supported shipper services.
      *
-     * @return array
+     * @return array<string>
      */
     public static function all(): array
     {
@@ -198,8 +198,8 @@ final class Shipper
     /**
      * Resolve ADD request version
      *
-     * @param string $shipperCode
-     * @param array  $data
+     * @param string                     $shipperCode
+     * @param array<array<string,mixed>> $data
      *
      * @return string
      */

@@ -241,7 +241,7 @@ final class Currency
     public const GBP = 'GBP';
 
     /**
-     * @return array
+     * @return array<string>
      */
     public static function all(): array
     {
