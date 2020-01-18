@@ -16,7 +16,7 @@ interface ExceptionInterface extends Throwable
     /**
      * Get response as array
      *
-     * @return array<array>
+     * @return array<mixed>
      */
     public function getResponse(): array;
 

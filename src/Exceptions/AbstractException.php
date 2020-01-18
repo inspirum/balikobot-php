@@ -12,7 +12,7 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
     /**
      * Response data
      *
-     * @var array<array>
+     * @var array<mixed>
      */
     protected $response;
 
@@ -72,7 +72,7 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
     /**
      * Get response as array
      *
-     * @return array<array>
+     * @return array<mixed>
      */
     public function getResponse(): array
     {
