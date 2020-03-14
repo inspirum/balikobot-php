@@ -343,6 +343,24 @@ class Client
     }
 
     /**
+     * Returns available B2A services for the given shipper
+     *
+     * @param string $shipper
+     *
+     * @return array<string,string>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getB2AServices(string $shipper): array
+    {
+        $response = $this->requester->call(API::V1, $shipper, Request::B2A . '/' . Request::SERVICES);
+
+        $formattedResponse = $response['service_types'] ?? [];
+
+        return $formattedResponse;
+    }
+
+    /**
      * Returns available manipulation units for the given shipper
      *
      * @param string $shipper

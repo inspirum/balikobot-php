@@ -327,6 +327,22 @@ class Balikobot
     }
 
     /**
+     * Returns available B2A services for the given shipper
+     *
+     * @param string $shipper
+     *
+     * @return array<string,string>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getB2AServices(string $shipper): array
+    {
+        $services = $this->client->getB2AServices($shipper);
+
+        return $services;
+    }
+
+    /**
      * Returns available manipulation units for the given shipper
      *
      * @param string $shipper

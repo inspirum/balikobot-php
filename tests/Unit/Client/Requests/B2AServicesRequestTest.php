@@ -6,7 +6,7 @@ use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class ServicesRequestTest extends AbstractClientTestCase
+class B2AServicesRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,7 +18,7 @@ class ServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getServices('cp');
+        $client->getB2AServices('ppl');
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +29,7 @@ class ServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getServices('cp');
+        $client->getB2AServices('ppl');
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -42,7 +42,7 @@ class ServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getServices('cp');
+        $client->getB2AServices('ppl');
     }
 
     public function testMakeRequest()
@@ -53,12 +53,12 @@ class ServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getServices('cp');
+        $client->getB2AServices('ppl');
 
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/services',
+                'https://api.balikobot.cz/ppl/b2a/services',
                 [],
             ]
         );
@@ -74,7 +74,7 @@ class ServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $services = $client->getServices('cp');
+        $services = $client->getB2AServices('ppl');
 
         $this->assertEquals([], $services);
     }
@@ -84,19 +84,19 @@ class ServicesRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'        => 200,
             'service_types' => [
-                'NP' => 'NP - Balík Na poštu',
-                'RR' => 'RR - Doporučená zásilka Ekonomická',
+                '1'  => 'PPL Parcel Business CZ',
+                '11' => 'PPL Parcel Import SK',
             ],
         ]);
 
         $client = new Client($requester);
 
-        $services = $client->getServices('cp');
+        $services = $client->getB2AServices('ppl');
 
         $this->assertEquals(
             [
-                'NP' => 'NP - Balík Na poštu',
-                'RR' => 'RR - Doporučená zásilka Ekonomická',
+                '1'  => 'PPL Parcel Business CZ',
+                '11' => 'PPL Parcel Import SK',
             ],
             $services
         );

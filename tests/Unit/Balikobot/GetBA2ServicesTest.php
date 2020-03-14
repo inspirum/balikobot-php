@@ -4,7 +4,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Inspirum\Balikobot\Services\Balikobot;
 
-class GetServicesTest extends AbstractBalikobotTestCase
+class GetBA2ServicesTest extends AbstractBalikobotTestCase
 {
     public function testMakeRequest()
     {
@@ -14,12 +14,12 @@ class GetServicesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $service->getServices('ppl');
+        $service->getB2AServices('ppl');
 
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/services',
+                'https://api.balikobot.cz/ppl/b2a/services',
                 [],
             ]
         );
@@ -32,19 +32,19 @@ class GetServicesTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'        => 200,
             'service_types' => [
-                'NP' => 'NP - Balík Na poštu',
-                'RR' => 'RR - Doporučená zásilka Ekonomická',
+                '1'  => 'PPL Parcel Business CZ',
+                '11' => 'PPL Parcel Import SK',
             ],
         ]);
 
         $service = new Balikobot($requester);
 
-        $services = $service->getServices('ppl');
+        $services = $service->getB2AServices('ppl');
 
         $this->assertEquals(
             [
-                'NP' => 'NP - Balík Na poštu',
-                'RR' => 'RR - Doporučená zásilka Ekonomická',
+                '1'  => 'PPL Parcel Business CZ',
+                '11' => 'PPL Parcel Import SK',
             ],
             $services
         );

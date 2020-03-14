@@ -918,6 +918,8 @@ getActivatedServices(string $shipper): array
 
 orderB2AShipment(string $shipper, array $packages): array
 
+getB2AServices(string $shipper): array
+
 getProofOfDelivery(string $shipper, string $carrierId): string
 
 getProofOfDeliveries(string $shipper, array $carrierIds): array

@@ -276,6 +276,8 @@ getActivatedServices(string $shipper): array
 
 orderB2AShipment(PackageCollection $packages): OrderedPackageCollection
 
+getB2AServices(string $shipper): array
+
 getProofOfDelivery(OrderedPackage $package): string
 
 getProofOfDeliveries(OrderedPackageCollection $packages): array
