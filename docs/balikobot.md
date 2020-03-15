@@ -108,7 +108,6 @@ Inspirum\Balikobot\Model\Values\OrderedShipment {
   private $handoverUrl => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NTW1MAVcMBAaAn4.'
   private $labelsUrl   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwVcMBAXAn4.'
   private $fileUrl     => 'https://csv.balikobot.cz/cp/eNorMTIwt9A1sjAyB1wwDZECRr..'
-  private $date        => NULL
   private $shipper     => 'cp'
   private $packageIds  => [
     '43619'
@@ -224,7 +223,7 @@ dropPackages(OrderedPackageCollection $packages): void
 
 dropPackage(OrderedPackage $package): void
 
-orderShipment(OrderedPackageCollection $packages, DateTime $date = null): OrderedShipment
+orderShipment(OrderedPackageCollection $packages): OrderedShipment
 
 trackPackage(OrderedPackage $package): array
 

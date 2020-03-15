@@ -2,11 +2,9 @@
 
 namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
 
-use DateTime;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
-use PHPUnit\Framework\Error\Deprecated;
 
 class OrderRequestTest extends AbstractClientTestCase
 {
@@ -63,46 +61,6 @@ class OrderRequestTest extends AbstractClientTestCase
                 'https://api.balikobot.cz/cp/order',
                 [
                     'package_ids' => [1, 4],
-                    'date'        => null,
-                    'note'        => null,
-                ],
-            ]
-        );
-
-        $this->assertTrue(true);
-    }
-
-    public function testMakeRequestWithDeprecatedParameters()
-    {
-        $this->expectException(Deprecated::class);
-
-        $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status' => 200,
-        ]);
-
-        $client = new Client($requester);
-
-        $client->orderShipment('cp', [1, 4], new DateTime('2018-10-10 14:00:00'), 'TEST');
-    }
-
-    public function testMakeRequestWithDeprecatedParametersWorks()
-    {
-        $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status' => 200,
-        ]);
-
-        $client = new Client($requester);
-
-        @$client->orderShipment('cp', [1, 4], new DateTime('2018-10-10 14:00:00'), 'TEST');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/cp/order',
-                [
-                    'package_ids' => [1, 4],
-                    'date'        => '2018-10-10',
-                    'note'        => 'TEST',
                 ],
             ]
         );

@@ -105,30 +105,19 @@ class Balikobot
      * Order shipment
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
-     * @param \DateTime|null                                                $date
      *
      * @return \Inspirum\Balikobot\Model\Values\OrderedShipment
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function orderShipment(OrderedPackageCollection $packages, DateTime $date = null): OrderedShipment
+    public function orderShipment(OrderedPackageCollection $packages): OrderedShipment
     {
-        if ($date !== null) {
-            trigger_error(
-                'Parameters "$date" will be removed in v2.0 (removed in Balikobot API v1.879)',
-                E_USER_DEPRECATED
-            );
-
-            $date->setTime(0, 0, 0);
-        }
-
-        $response = $this->client->orderShipment($packages->getShipper(), $packages->getPackageIds(), $date);
+        $response = $this->client->orderShipment($packages->getShipper(), $packages->getPackageIds());
 
         $orderedShipment = OrderedShipment::newInstanceFromData(
             $packages->getShipper(),
             $packages->getPackageIds(),
-            $response,
-            $date
+            $response
         );
 
         return $orderedShipment;

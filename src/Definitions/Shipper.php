@@ -28,15 +28,6 @@ final class Shipper
     public const DHL = 'dhl';
 
     /**
-     * DHL Parcel Slovensko
-     *
-     * @deprecated Removed from API in v1.878
-     *
-     * @var string
-     */
-    public const DHLSK = 'dhlsk';
-
-    /**
      * Geis CZ s.r.o.
      *
      * @var string

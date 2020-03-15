@@ -890,7 +890,7 @@ getLabels(string $shipper, array $packageIds): string
 
 getPackageInfo(string $shipper, int $packageId): array
 
-orderShipment(string $shipper, array $packageIds, DateTime $date = null, string $note = null): array
+orderShipment(string $shipper, array $packageIds): array
 
 getOrder(string $shipper, int $orderId): array
 

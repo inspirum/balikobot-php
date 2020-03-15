@@ -247,28 +247,17 @@ class Client
     /**
      * Order shipment for packages
      *
-     * @param string         $shipper
-     * @param array<int>     $packageIds
-     * @param \DateTime|null $date
-     * @param string|null    $note
+     * @param string     $shipper
+     * @param array<int> $packageIds
      *
      * @return array<string,int|string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function orderShipment(string $shipper, array $packageIds, DateTime $date = null, string $note = null): array
+    public function orderShipment(string $shipper, array $packageIds): array
     {
-        if ($date !== null || $note !== null) {
-            trigger_error(
-                'Parameters "$date" and "$note" will be removed in v2.0 (removed in Balikobot API v1.879)',
-                E_USER_DEPRECATED
-            );
-        }
-
         $data = [
             'package_ids' => $packageIds,
-            'date'        => $date ? $date->format('Y-m-d') : null,
-            'note'        => $note,
         ];
 
         $response = $this->requester->call(API::V1, $shipper, Request::ORDER, $data);

@@ -904,33 +904,6 @@ final class ServiceType
     public const DHL_DOMESTIC_EXPRESS = '7';
 
     /**
-     * Parcel
-     *
-     * @deprecated Removed from API in v1.878
-     *
-     * @var string
-     */
-    public const DHLSK_PARCEL = '1';
-
-    /**
-     * Parcel International
-     *
-     * @deprecated Removed from API in v1.878
-     *
-     * @var string
-     */
-    public const DHLSK_PARCEL_INTERNATIONAL = '2';
-
-    /**
-     * Parcel Business
-     *
-     * @deprecated Removed from API in v1.878
-     *
-     * @var string
-     */
-    public const DHLSK_PARCEL_BUSSINESS = '3';
-
-    /**
      * Express
      *
      * @var string
