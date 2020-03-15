@@ -87,16 +87,13 @@ class OrderRequestTest extends AbstractClientTestCase
 
     public function testMakeRequestWithDeprecatedParametersWorks()
     {
-        $depracatedEnabled   = Deprecated::$enabled;
-        Deprecated::$enabled = false;
-
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
         ]);
 
         $client = new Client($requester);
 
-        $client->orderShipment('cp', [1, 4], new DateTime('2018-10-10 14:00:00'), 'TEST');
+        @$client->orderShipment('cp', [1, 4], new DateTime('2018-10-10 14:00:00'), 'TEST');
 
         $requester->shouldHaveReceived(
             'request',
@@ -111,8 +108,6 @@ class OrderRequestTest extends AbstractClientTestCase
         );
 
         $this->assertTrue(true);
-
-        Deprecated::$enabled = $depracatedEnabled;
     }
 
     public function testOnlyOrderDataAreReturned()

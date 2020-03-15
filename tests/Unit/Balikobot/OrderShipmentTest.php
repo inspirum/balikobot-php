@@ -70,9 +70,6 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
 
     public function testMakeRequestWithDeprecatedParameterWorks()
     {
-        $depracatedEnabled   = Deprecated::$enabled;
-        Deprecated::$enabled = false;
-
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'       => 200,
             'order_id'     => 29,
@@ -89,7 +86,7 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
         $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
         $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
 
-        $service->orderShipment($packages, new DateTime('2018-10-10 10:00:00'));
+        @$service->orderShipment($packages, new DateTime('2018-10-10 10:00:00'));
 
         $requester->shouldHaveReceived(
             'request',
@@ -104,8 +101,6 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
         );
 
         $this->assertTrue(true);
-
-        Deprecated::$enabled = $depracatedEnabled;
     }
 
     public function testResponseData()
@@ -138,9 +133,6 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
 
     public function testResponseDataWithDepractedParameter()
     {
-        $depracatedEnabled   = Deprecated::$enabled;
-        Deprecated::$enabled = false;
-
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'       => 200,
             'order_id'     => 29,
@@ -157,7 +149,7 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
         $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
         $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
 
-        $orderedShipment = $service->orderShipment($packages, new DateTime('2018-10-10 10:00:00'));
+        @$orderedShipment = $service->orderShipment($packages, new DateTime('2018-10-10 10:00:00'));
 
         $this->assertEquals('ppl', $orderedShipment->getShipper());
         $this->assertEquals([1, 2], $orderedShipment->getPackageIds());
@@ -166,7 +158,5 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
         $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ', $orderedShipment->getLabelsUrl());
         $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.', $orderedShipment->getHandoverUrl());
         $this->assertEquals(29, $orderedShipment->getOrderId());
-
-        Deprecated::$enabled = $depracatedEnabled;
     }
 }
