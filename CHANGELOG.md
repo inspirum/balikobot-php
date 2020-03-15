@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [2.0.0] - 2020-03-15
 ### Added
 - Add options to get **labelsUrL** from **ADD** request
-- Add **labelsUrL** attribute to [**OrderedPackageCollection.php**](./src/Model/Aggregates/OrderedPackageCollection.php)
--  [**PackageCollection.php**](./src/Model/Aggregates/PackageCollection.php) implements **\ArrayAccess** interface
+- Add **labelsUrL** attribute to [**OrderedPackageCollection**](./src/Model/Aggregates/OrderedPackageCollection.php)
+-  [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php) implements **\ArrayAccess** interface
 ### Changed
 - Support multiple **EID** in [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php)
 ### Removed
