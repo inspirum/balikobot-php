@@ -18,8 +18,7 @@ class OrderedShipmentTest extends AbstractTestCase
                 'handover_url' => '/handover',
                 'labels_url'   => '/labels',
                 'file_url'     => '/file',
-            ],
-            new DateTime('2018-10-10 14:00:00')
+            ]
         );
 
         $this->assertEquals('cp', $orderedShipment->getShipper());
@@ -28,7 +27,6 @@ class OrderedShipmentTest extends AbstractTestCase
         $this->assertEquals('/labels', $orderedShipment->getLabelsUrl());
         $this->assertEquals('/file', $orderedShipment->getFileUrl());
         $this->assertEquals([1, 67], $orderedShipment->getPackageIds());
-        $this->assertEquals(new DateTime('2018-10-10 14:00:00'), $orderedShipment->getDate());
     }
 
     public function testStaticConstructorWithMissingData()
@@ -49,6 +47,5 @@ class OrderedShipmentTest extends AbstractTestCase
         $this->assertEquals('/labels', $orderedShipment->getLabelsUrl());
         $this->assertEquals(null, $orderedShipment->getFileUrl());
         $this->assertEquals([1, 67], $orderedShipment->getPackageIds());
-        $this->assertEquals(null, $orderedShipment->getDate());
     }
 }

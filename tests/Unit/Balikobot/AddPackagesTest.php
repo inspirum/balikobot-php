@@ -55,7 +55,7 @@ class AddPackagesTest extends AbstractBalikobotTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'     => 200,
-            'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+            'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.',
             0            => [
                 'carrier_id' => 'NP1504102246M',
                 'package_id' => 42719,
@@ -80,6 +80,10 @@ class AddPackagesTest extends AbstractBalikobotTestCase
         $this->assertEquals([42719, 42720], $orderedPackages->getPackageIds());
         $this->assertEquals('NP1504102247M', $orderedPackages[1]->getCarrierId());
         $this->assertEquals('0001', $orderedPackages[0]->getBatchId());
+        $this->assertEquals(
+            'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.',
+            $orderedPackages->getLabelsUrl()
+        );
     }
 
     public function testMakeV1RequestForUPSShipper()

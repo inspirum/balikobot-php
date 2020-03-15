@@ -631,15 +631,15 @@ var_dump($postcodes);
 [
   0 => [
     'postcode'     => '10000'
-    'postcode_end' => NULL
-    'city'         => NULL
+    'postcode_end' => null
+    'city'         => null
     'county'       => 'CZ'
     '1B'           => false
   ]
   1 => [
     'postcode'     => '10003'
-    'postcode_end' => NULL
-    'city'         => NULL
+    'postcode_end' => null
+    'city'         => null
     'county'       => 'CZ'
     '1B'           => false
   ]
@@ -660,14 +660,14 @@ var_dump($postcodes);
   0 => [
     'postcode'     => '50755'
     'postcode_end' => '50773'
-    'city'         => NULL
+    'city'         => null
     'county'       => 'CZ'
     '1B'           => false
   ]
   1 => [
     'postcode'     => '50781'
     'postcode_end' => '50792
-    'city'         => NULL
+    'city'         => null
     'county'       => 'CZ'
     '1B'           => false
   ]

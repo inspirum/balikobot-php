@@ -91,4 +91,15 @@ class OrderedPackageCollectionTest extends AbstractTestCase
         $this->assertEquals(2, $iterator->count());
         $this->assertEquals(6, $iterator->current()->getPackageId());
     }
+
+    public function testLabelsUrl()
+    {
+        $packages = new OrderedPackageCollection();
+
+        $this->assertNull($packages->getLabelsUrl());
+
+        $packages->setLabelsUrl('https://pdf.balikobot.cz/ups/eNorMTIwt9A1NbYwMwdcMBAZAoC.');
+
+        $this->assertEquals('https://pdf.balikobot.cz/ups/eNorMTIwt9A1NbYwMwdcMBAZAoC.', $packages->getLabelsUrl());
+    }
 }

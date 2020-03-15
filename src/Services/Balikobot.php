@@ -2,7 +2,6 @@
 
 namespace Inspirum\Balikobot\Services;
 
-use DateTime;
 use Inspirum\Balikobot\Contracts\RequesterInterface;
 use Inspirum\Balikobot\Definitions\Option;
 use Inspirum\Balikobot\Definitions\Shipper;
@@ -56,10 +55,17 @@ class Balikobot
     public function addPackages(PackageCollection $packages): OrderedPackageCollection
     {
         $usedRequestVersion = Shipper::resolveAddRequestVersion($packages->getShipper(), $packages->toArray());
+        $labelsUrl          = null;
 
-        $response = $this->client->addPackages($packages->getShipper(), $packages->toArray(), $usedRequestVersion);
+        $response = $this->client->addPackages(
+            $packages->getShipper(),
+            $packages->toArray(),
+            $usedRequestVersion,
+            $labelsUrl
+        );
 
         $orderedPackages = new OrderedPackageCollection();
+        $orderedPackages->setLabelsUrl($labelsUrl);
 
         foreach ($response as $package) {
             $orderedPackage = OrderedPackage::newInstanceFromData(

@@ -133,6 +133,33 @@ class AddRequestTest extends AbstractClientTestCase
         );
     }
 
+    public function testLabelsUrl()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'     => 200,
+            'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.',
+            0            => [
+                'carrier_id' => 'NP1504102246M',
+                'package_id' => 42719,
+                'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                'status'     => '200',
+            ],
+            1            => [
+                'carrier_id' => 'NP1504102247M',
+                'package_id' => 42720,
+                'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
+                'status'     => '200',
+            ],
+        ]);
+
+        $client    = new Client($requester);
+        $labelsUrl = null;
+
+        $client->addPackages('cp', [], null, $labelsUrl);
+
+        $this->assertEquals('https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.', $labelsUrl);
+    }
+
     public function testMakeV2Request()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [

@@ -32,18 +32,23 @@ class Client
      *
      * @param string                     $shipper
      * @param array<array<string,mixed>> $packages
-     * @param string                     $version
+     * @param string|null                $version
+     * @param mixed|null                 $labelsUrl
      *
      * @return array<array<string,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function addPackages(string $shipper, array $packages, string $version = API::V1): array
+    public function addPackages(string $shipper, array $packages, string $version = null, &$labelsUrl = null): array
     {
-        $response = $this->requester->call($version, $shipper, Request::ADD, $packages);
+        $response = $this->requester->call($version ?: API::V1, $shipper, Request::ADD, $packages);
 
         if (isset($response[0]['package_id']) === false) {
             throw new BadRequestException($response);
+        }
+
+        if (isset($response['labels_url'])) {
+            $labelsUrl = $response['labels_url'];
         }
 
         unset($response['labels_url']);

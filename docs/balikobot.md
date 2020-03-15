@@ -57,13 +57,14 @@ $orderedPackages = $balikobot->addPackages($packages);
 /*
 var_dump($orderedPackages);
 Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection {
-  private $shipper  => 'cp'
-  private $packages => [
+  private $shipper   => 'cp'
+  private $labelsUrl => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwVcMBAXAC9.'
+  private $packages  => [
     0 => Inspirum\Balikobot\Model\Values\OrderedPackage {
       private $shipper   => 'cp'
       private $packageId => '42718'
       private $carrierId => 'NP1504102232M'
-      private $trackUrl  => NULL
+      private $trackUrl  => null
       private $labelUrl  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwVcMBAXAn4.'
       ...
     }
@@ -195,15 +196,15 @@ foreach($shippers as $shipper) {
     private $shipper  => 'cp'
     private $service  => 'NB'
     private $branchId => '10003'
-    private $id       => NULL
+    private $id       => null
     private $type     => 'branch'
     private $name     => 'Depo Praha 701'
     private $city     => ''
     private $street   => 'Sazečská 598/7, Malešice, 10003, Praha'
     private $zip      => '10003'
-    private $cityPart => NULL
-    private $district => NULL
-    private $region   => NULL
+    private $cityPart => null
+    private $district => null
+    private $region   => null
     private $country  => 'CZ'
     ...
   }

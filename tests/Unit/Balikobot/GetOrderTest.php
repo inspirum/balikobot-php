@@ -52,7 +52,6 @@ class GetOrderTest extends AbstractBalikobotTestCase
         $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.', $orderedShipment->getHandoverUrl());
         $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ', $orderedShipment->getLabelsUrl());
         $this->assertEquals([1, 4, 65], $orderedShipment->getPackageIds());
-        $this->assertEquals(null, $orderedShipment->getDate());
         $this->assertEquals('ppl', $orderedShipment->getShipper());
     }
 }

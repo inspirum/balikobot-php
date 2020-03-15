@@ -31,6 +31,13 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     private $shipper;
 
     /**
+     * Labels URL
+     *
+     * @var string|null
+     */
+    private $labelsUrl;
+
+    /**
      * OrderedPackageCollection constructor
      *
      * @param string|null $shipper
@@ -94,6 +101,24 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
         return array_map(function (OrderedPackage $package) {
             return $package->getCarrierId();
         }, $this->packages);
+    }
+
+    /**
+     * @param string|null $labelsUrl
+     *
+     * @return void
+     */
+    public function setLabelsUrl(?string $labelsUrl): void
+    {
+        $this->labelsUrl = $labelsUrl;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLabelsUrl(): ?string
+    {
+        return $this->labelsUrl;
     }
 
     /**
