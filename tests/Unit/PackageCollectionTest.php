@@ -98,4 +98,33 @@ class PackageCollectionTest extends AbstractTestCase
             $packages->toArray()
         );
     }
+
+    public function testSupportArrayAccess()
+    {
+        $packages = new PackageCollection('cp');
+
+        $packages->add(new Package(['test' => 1, 'eid' => '0001']));
+        $packages->add(new Package(['test' => 2, 'eid' => '0002']));
+
+        $this->assertEquals('0002', $packages->offsetGet(1)->getEID());
+        $this->assertEquals(2, $packages->count());
+        $this->assertTrue($packages->offsetExists(1));
+
+        $packages->offsetUnset(1);
+
+        $this->assertFalse($packages->offsetExists(1));
+    }
+
+    public function testSupportIteratorAggregate()
+    {
+        $packages = new PackageCollection('cp');
+
+        $packages->add(new Package(['test' => 1, 'eid' => '0001']));
+        $packages->add(new Package(['test' => 2, 'eid' => '0002']));
+
+        $iterator = $packages->getIterator();
+
+        $this->assertEquals(2, $iterator->count());
+        $this->assertEquals('0001', $iterator->current()->getEID());
+    }
 }

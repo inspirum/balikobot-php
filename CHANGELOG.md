@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove **DHLSK** shipper support
 
 
-## [1.3.3] - 2020-03-15
+## [1.4.0] - 2020-03-15
 ### Added
 - Add support for new options from documentation **v1.879** (2020-03-13)
     - Add **GWCZ** (Gebrüder Weiss Česká republika) shipper

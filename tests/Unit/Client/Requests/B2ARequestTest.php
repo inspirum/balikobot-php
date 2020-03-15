@@ -66,6 +66,29 @@ class B2ARequestTest extends AbstractClientTestCase
         $client->orderB2AShipment('ppl', []);
     }
 
+    public function testThrowsExceptionWhenWrongNumberOfPackages()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            0        => [
+                'package_id'     => 24,
+                'status_message' => 'OK, přeprava byla objednána.',
+                'status'         => '200',
+            ],
+            1        => [
+                'package_id'     => 24,
+                'status_message' => 'OK, přeprava byla objednána.',
+                'status'         => '200',
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->orderB2AShipment('ppl', [['test' => 1]]);
+    }
+
     public function testMakeRequest()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [

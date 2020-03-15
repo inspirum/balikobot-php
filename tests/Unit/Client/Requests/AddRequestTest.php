@@ -67,6 +67,31 @@ class AddRequestTest extends AbstractClientTestCase
         $client->addPackages('cp', []);
     }
 
+    public function testThrowsExceptionWhenWrongNumberOfPackages()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            0        => [
+                'carrier_id' => 'NP1504102246M',
+                'package_id' => 42719,
+                'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                'status'     => '200',
+            ],
+            1        => [
+                'carrier_id' => 'NP1504102247M',
+                'package_id' => 42720,
+                'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                'status'     => '200',
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->addPackages('cp', [['eid' => 1]]);
+    }
+
     public function testMakeRequest()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [

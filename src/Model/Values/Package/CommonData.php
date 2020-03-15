@@ -26,6 +26,15 @@ trait CommonData
     abstract public function offsetGet($key);
 
     /**
+     * Determine if an item exists at an offset
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
+    abstract public function offsetExists($key);
+
+    /**
      * Set EID
      *
      * @param string $id
