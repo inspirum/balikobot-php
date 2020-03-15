@@ -1235,18 +1235,6 @@ final class ServiceType
     /**
      * @return array<string>
      */
-    public static function dhlsk(): array
-    {
-        return [
-            self::DHLSK_PARCEL,
-            self::DHLSK_PARCEL_INTERNATIONAL,
-            self::DHLSK_PARCEL_BUSSINESS,
-        ];
-    }
-
-    /**
-     * @return array<string>
-     */
     public static function geis(): array
     {
         return [
