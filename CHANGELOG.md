@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [2.0.0] - 2020-03-15
+### Added
+- Add options to get **labelsUrL** from **ADD** request
+- Add **labelsUrL** attribute to [**OrderedPackageCollection.php**](./src/Model/Aggregates/OrderedPackageCollection.php)
+-  [**PackageCollection.php**](./src/Model/Aggregates/PackageCollection.php) implements **\ArrayAccess** interface
+### Changed
+- Support multiple **EID** in [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php)
+### Removed
+- Deprecated **date** and **note** parameters from **ORDER** request
+- Remove **DHLSK** shipper support
+
+
 ## [1.3.3] - 2020-03-15
 ### Added
 - Add support for new options from documentation **v1.879** (2020-03-13)
@@ -14,8 +26,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Add **B2A/SERVICES** request
 ### Fixed
 - Fix bug with bad formatted latitude/longitude in branch import
-### Removed
-- Remove **DHLSK** shipper support
+### Deprecated
+- Deprecated **date** and **note** parameters from **ORDER** request
+- Deprecated **DHLSK** shipper support
 
 
 ## [1.3.2] - 2020-01-06
