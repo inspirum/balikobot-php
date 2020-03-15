@@ -258,6 +258,13 @@ class Client
      */
     public function orderShipment(string $shipper, array $packageIds, DateTime $date = null, string $note = null): array
     {
+        if ($date !== null || $note !== null) {
+            trigger_error(
+                'Parameters "$date" and "$note" will be removed in v2.0 (removed in Balikobot API v1.879)',
+                E_USER_DEPRECATED
+            );
+        }
+
         $data = [
             'package_ids' => $packageIds,
             'date'        => $date ? $date->format('Y-m-d') : null,

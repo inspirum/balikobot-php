@@ -6,11 +6,73 @@ use DateTime;
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
 use Inspirum\Balikobot\Services\Balikobot;
+use PHPUnit\Framework\Error\Deprecated;
 
 class OrderShipmentTest extends AbstractBalikobotTestCase
 {
     public function testMakeRequest()
     {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'       => 200,
+            'order_id'     => 29,
+            'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
+            'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
+            'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
+            'package_ids'  => [1, 2],
+        ]);
+
+        $service = new Balikobot($requester);
+
+        $packages = new OrderedPackageCollection();
+
+        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
+
+        $service->orderShipment($packages);
+
+        $requester->shouldHaveReceived(
+            'request',
+            [
+                'https://api.balikobot.cz/ppl/order',
+                [
+                    'package_ids' => [1, 2],
+                    'date'        => null,
+                    'note'        => null,
+                ],
+            ]
+        );
+
+        $this->assertTrue(true);
+    }
+
+    public function testMakeRequestWithDeprecatedParameter()
+    {
+        $this->expectException(Deprecated::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'       => 200,
+            'order_id'     => 29,
+            'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
+            'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
+            'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
+            'package_ids'  => [1, 2],
+        ]);
+
+        $service = new Balikobot($requester);
+
+        $packages = new OrderedPackageCollection();
+
+        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
+
+        $service->orderShipment($packages, new DateTime('2018-10-10 10:00:00'));
+    }
+
+    public function testMakeRequestWithDeprecatedParameterWorks()
+    {
+        $depracatedEnabled   = Deprecated::$enabled;
+        Deprecated::$enabled = false;
+
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'       => 200,
             'order_id'     => 29,
@@ -42,10 +104,43 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
         );
 
         $this->assertTrue(true);
+
+        Deprecated::$enabled = $depracatedEnabled;
     }
 
     public function testResponseData()
     {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'       => 200,
+            'order_id'     => 29,
+            'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
+            'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
+            'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
+            'package_ids'  => [1, 2],
+        ]);
+
+        $service = new Balikobot($requester);
+
+        $packages = new OrderedPackageCollection();
+
+        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
+
+        $orderedShipment = $service->orderShipment($packages);
+
+        $this->assertEquals('ppl', $orderedShipment->getShipper());
+        $this->assertEquals([1, 2], $orderedShipment->getPackageIds());
+        $this->assertEquals('http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..', $orderedShipment->getFileUrl());
+        $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ', $orderedShipment->getLabelsUrl());
+        $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.', $orderedShipment->getHandoverUrl());
+        $this->assertEquals(29, $orderedShipment->getOrderId());
+    }
+
+    public function testResponseDataWithDepractedParameter()
+    {
+        $depracatedEnabled   = Deprecated::$enabled;
+        Deprecated::$enabled = false;
+
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'       => 200,
             'order_id'     => 29,
@@ -71,5 +166,7 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
         $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ', $orderedShipment->getLabelsUrl());
         $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.', $orderedShipment->getHandoverUrl());
         $this->assertEquals(29, $orderedShipment->getOrderId());
+
+        Deprecated::$enabled = $depracatedEnabled;
     }
 }

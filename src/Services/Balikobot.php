@@ -114,6 +114,11 @@ class Balikobot
     public function orderShipment(OrderedPackageCollection $packages, DateTime $date = null): OrderedShipment
     {
         if ($date !== null) {
+            trigger_error(
+                'Parameters "$date" will be removed in v2.0 (removed in Balikobot API v1.879)',
+                E_USER_DEPRECATED
+            );
+
             $date->setTime(0, 0, 0);
         }
 
