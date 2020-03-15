@@ -126,6 +126,13 @@ final class Shipper
     public const GW = 'gw';
 
     /**
+     * Gebrüder Weiss Česká republika
+     *
+     * @var string
+     */
+    public const GWCZ = 'gwcz';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -150,6 +157,7 @@ final class Shipper
             self::ZASILKOVNA,
             self::TNT,
             self::GW,
+            self::GWCZ,
         ];
     }
 

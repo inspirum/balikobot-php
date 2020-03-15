@@ -12,63 +12,77 @@ final class ServiceType
     public const CP_DR = 'DR';
 
     /**
-     * Doporučená zásilka
+     * Doporučená zásilka Ekonomická
      *
      * @var string
      */
     public const CP_RR = 'RR';
 
     /**
-     * na poštu
+     * Balík Na poštu
      *
      * @var string
      */
     public const CP_NP = 'NP';
 
     /**
-     * balík do ruky pro vybrané podavatele
+     * Balík do ruky pro vybrané podavatele
      *
      * @var string
      */
     public const CP_DV = 'DV';
 
     /**
-     * cenné psaní
+     * Cenné psaní
      *
      * @var string
      */
     public const CP_VL = 'VL';
 
     /**
-     * doporučená zásilka standard
+     * Doporučená zásilka Ekonomická - standard
      *
      * @var string
      */
     public const CP_SR = 'SR';
 
     /**
-     * doporučený balíček
+     * Doporučená zásilka Prioritní
+     *
+     * @var string
+     */
+    public const CP_RRP = 'RRP';
+
+    /**
+     * Doporučená zásilka Prioritní - standard
+     *
+     * @var string
+     */
+    public const CP_SRP = 'SRP';
+
+    /**
+     * Doporučený balíček
      *
      * @var string
      */
     public const CP_BA = 'BA';
 
     /**
-     * cenný balík
+     * Cenný balík
      *
      * @var string
      */
     public const CP_BB = 'BB';
 
     /**
-     * balík nadrozměr
+     * Balík nadrozměr
      *
      * @var string
      */
     public const CP_BN = 'BN';
 
     /**
-     * balík do balíkovny
+     * Balík do balíkovny
      *
      * @var string
      */
@@ -82,7 +96,7 @@ final class ServiceType
     public const CP_DT = 'DT';
 
     /**
-     * balík Do ruky s garantovaným časem dodání v neděli nebo svátek
+     * Balík Do ruky s garantovaným časem dodání v neděli nebo svátek
      *
      * @var string
      */
@@ -1114,6 +1128,39 @@ final class ServiceType
     public const GW_EXPORT = 'EUR';
 
     /**
+     * Domestic PRON
+     *
+     * @var string
+     */
+    public const GW_W24 = 'W24';
+
+    /**
+     * Domestic 8:00 - 12:00
+     *
+     * @var string
+     */
+    public const GW_D8 = 'D8';
+
+    /**
+     * Domestic 12:00 - 14:00
+     *
+     * @var string
+     */
+    public const GW_D12 = 'D12';
+    /**
+     * Domestic 14:00 - 18:00
+     *
+     * @var string
+     */
+    public const GW_D14 = 'D14';
+    /**
+     * Export PROI
+     *
+     * @var string
+     */
+    public const GW_EUR = 'EUR';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -1122,6 +1169,8 @@ final class ServiceType
             self::CP_DR,
             self::CP_RR,
             self::CP_SR,
+            self::CP_RRP,
+            self::CP_SRP,
             self::CP_NP,
             self::CP_VL,
             self::CP_DV,
@@ -1423,6 +1472,20 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function gwcz(): array
+    {
+        return [
+            self::GW_W24,
+            self::GW_D8,
+            self::GW_D12,
+            self::GW_D14,
+            self::GW_EUR,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -1447,6 +1510,7 @@ final class ServiceType
             Shipper::ZASILKOVNA => self::zasilkovna(),
             Shipper::TNT        => self::tnt(),
             Shipper::GW         => self::gw(),
+            Shipper::GWCZ       => self::gwcz(),
         ];
     }
 }

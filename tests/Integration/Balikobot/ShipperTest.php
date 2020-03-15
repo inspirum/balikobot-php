@@ -31,6 +31,7 @@ class ShipperTest extends AbstractBalikobotTestCase
             'ups',
             'zasilkovna',
             'gw',
+            'gwcz',
         ];
 
         $this->assertEqualsCanonicalizing($supportedShippers, $shippers);
@@ -53,6 +54,6 @@ class ShipperTest extends AbstractBalikobotTestCase
             return array_filter($data);
         }, $supportedServices);
 
-        $this->assertEquals($services, $supportedServices);
+        $this->assertEquals($supportedServices, $services);
     }
 }
