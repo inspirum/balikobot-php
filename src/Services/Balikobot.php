@@ -67,10 +67,10 @@ class Balikobot
         $orderedPackages = new OrderedPackageCollection();
         $orderedPackages->setLabelsUrl($labelsUrl);
 
-        foreach ($response as $package) {
+        foreach ($response as $i => $package) {
             $orderedPackage = OrderedPackage::newInstanceFromData(
                 $packages->getShipper(),
-                $packages->getEID(),
+                $packages->offsetGet($i)->getEID(),
                 $package
             );
             $orderedPackages->add($orderedPackage);
@@ -674,10 +674,10 @@ class Balikobot
 
         $orderedPackages = new OrderedPackageCollection();
 
-        foreach ($response as $package) {
+        foreach ($response as $i => $package) {
             $orderedPackage = OrderedPackage::newInstanceFromData(
                 $packages->getShipper(),
-                $packages->getEID(),
+                $packages->offsetGet($i)->getEID(),
                 $package
             );
             $orderedPackages->add($orderedPackage);

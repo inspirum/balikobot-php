@@ -54,6 +54,10 @@ class Client
         unset($response['labels_url']);
         unset($response['status']);
 
+        if (count($response) !== count($packages)) {
+            throw new BadRequestException($response);
+        }
+
         return $response;
     }
 
@@ -596,6 +600,10 @@ class Client
         }
 
         unset($response['status']);
+
+        if (count($response) !== count($packages)) {
+            throw new BadRequestException($response);
+        }
 
         return $response;
     }

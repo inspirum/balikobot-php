@@ -79,11 +79,11 @@ class B2ARequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->orderB2AShipment('ppl', ['data' => [1, 2, 3], 'test' => false]);
+        $client->orderB2AShipment('ppl', [['data' => [1, 2, 3], 'test' => false]]);
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/ppl/b2a', ['data' => [1, 2, 3], 'test' => false]]
+            ['https://api.balikobot.cz/ppl/b2a', [['data' => [1, 2, 3], 'test' => false]]]
         );
 
         $this->assertTrue(true);
@@ -108,7 +108,7 @@ class B2ARequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $packages = $client->orderB2AShipment('ppl', []);
+        $packages = $client->orderB2AShipment('ppl', [['eid' => '0001'], ['eid' => '0002']]);
 
         $this->assertEquals(
             [

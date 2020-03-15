@@ -12,7 +12,9 @@ class PackageCollectionTest extends AbstractTestCase
     {
         $packages = new PackageCollection('cp');
 
-        $this->assertNotEmpty($packages->getEid());
+        $packages->add(new Package(['test' => 1]));
+
+        $this->assertNotEmpty($packages->offsetGet(0)->getEid());
     }
 
     public function testCreateUniqueEid()
@@ -21,9 +23,15 @@ class PackageCollectionTest extends AbstractTestCase
         $packages2 = new PackageCollection('cp');
         $packages3 = new PackageCollection('cp');
 
-        $this->assertTrue($packages1->getEid() !== $packages2->getEid());
-        $this->assertTrue($packages1->getEid() !== $packages3->getEid());
-        $this->assertTrue($packages2->getEid() !== $packages3->getEid());
+        $package = new Package(['test' => 1]);
+
+        $packages1->add($package);
+        $packages2->add($package);
+        $packages3->add($package);
+
+        $this->assertTrue($packages1->offsetGet(0)->getEid() !== $packages2->offsetGet(0)->getEid());
+        $this->assertTrue($packages1->offsetGet(0)->getEid() !== $packages3->offsetGet(0)->getEid());
+        $this->assertTrue($packages2->offsetGet(0)->getEid() !== $packages3->offsetGet(0)->getEid());
     }
 
     public function testAddedPackagesHasCollectionEid()
@@ -58,6 +66,28 @@ class PackageCollectionTest extends AbstractTestCase
             [
                 0 => [
                     'eid'  => '0001',
+                    'test' => 1,
+                ],
+                1 => [
+                    'eid'  => '0001',
+                    'test' => 2,
+                ],
+            ],
+            $packages->toArray()
+        );
+    }
+
+    public function testSupportCustomEIDForPackage()
+    {
+        $packages = new PackageCollection('cp', '0001');
+
+        $packages->add(new Package(['test' => 1, 'eid' => '0002']));
+        $packages->add(new Package(['test' => 2]));
+
+        $this->assertEquals(
+            [
+                0 => [
+                    'eid'  => '0002',
                     'test' => 1,
                 ],
                 1 => [

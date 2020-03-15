@@ -14,7 +14,7 @@ use RuntimeException;
  * @implements \ArrayAccess<int,\Inspirum\Balikobot\Model\Values\OrderedPackage>
  * @implements \IteratorAggregate<int,\Inspirum\Balikobot\Model\Values\OrderedPackage>
  */
-class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAccess
+class OrderedPackageCollection implements ArrayAccess, Countable, IteratorAggregate
 {
     /**
      * Packages
@@ -150,16 +150,6 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     }
 
     /**
-     * Get an iterator for the items
-     *
-     * @return \ArrayIterator<int,\Inspirum\Balikobot\Model\Values\OrderedPackage>
-     */
-    public function getIterator(): ArrayIterator
-    {
-        return new ArrayIterator($this->packages);
-    }
-
-    /**
      * Determine if an item exists at an offset
      *
      * @param int $key
@@ -218,5 +208,15 @@ class OrderedPackageCollection implements IteratorAggregate, Countable, ArrayAcc
     public function count(): int
     {
         return count($this->packages);
+    }
+
+    /**
+     * Get an iterator for the items
+     *
+     * @return \ArrayIterator<int,\Inspirum\Balikobot\Model\Values\OrderedPackage>
+     */
+    public function getIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->packages);
     }
 }

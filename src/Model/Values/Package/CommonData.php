@@ -48,6 +48,16 @@ trait CommonData
     }
 
     /**
+     * Get EID
+     *
+     * @return bool
+     */
+    public function hasEID(): bool
+    {
+        return $this->offsetExists(Option::EID);
+    }
+
+    /**
      * @param int $orderNumber
      *
      * @return void

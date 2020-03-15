@@ -18,6 +18,12 @@ class AddPackagesTest extends AbstractBalikobotTestCase
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
+            1        => [
+                'carrier_id' => 'NP1504102247M',
+                'package_id' => 42720,
+                'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
+                'status'     => '200',
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -74,16 +80,52 @@ class AddPackagesTest extends AbstractBalikobotTestCase
 
         $packages = new PackageCollection('cp', '0001');
 
+        $packages->add(new Package(['eid' => '0001']));
+        $packages->add(new Package(['eid' => '0002']));
+
         $orderedPackages = $service->addPackages($packages);
 
         $this->assertEquals(2, $orderedPackages->count());
         $this->assertEquals([42719, 42720], $orderedPackages->getPackageIds());
         $this->assertEquals('NP1504102247M', $orderedPackages[1]->getCarrierId());
         $this->assertEquals('0001', $orderedPackages[0]->getBatchId());
+        $this->assertEquals('0002', $orderedPackages[1]->getBatchId());
         $this->assertEquals(
             'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.',
             $orderedPackages->getLabelsUrl()
         );
+    }
+
+    public function testResponseDataWithoudEID()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'     => 200,
+            'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.',
+            0            => [
+                'carrier_id' => 'NP1504102246M',
+                'package_id' => 42719,
+                'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                'status'     => '200',
+            ],
+            1            => [
+                'carrier_id' => 'NP1504102247M',
+                'package_id' => 42720,
+                'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
+                'status'     => '200',
+            ],
+        ]);
+
+        $service = new Balikobot($requester);
+
+        $packages = new PackageCollection('cp', '0003');
+
+        $packages->add(new Package(['test' => '1']));
+        $packages->add(new Package(['test' => '2']));
+
+        $orderedPackages = $service->addPackages($packages);
+
+        $this->assertEquals('0003', $orderedPackages[0]->getBatchId());
+        $this->assertEquals('0003', $orderedPackages[1]->getBatchId());
     }
 
     public function testMakeV1RequestForUPSShipper()
@@ -134,6 +176,12 @@ class AddPackagesTest extends AbstractBalikobotTestCase
                 'label_url'  => 'https://pdf.balikobot.cz/ups/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
+            1        => [
+                'carrier_id' => 'NP1504102247M',
+                'package_id' => 42720,
+                'label_url'  => 'https://pdf.balikobot.cz/ups/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
+                'status'     => '200',
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -179,6 +227,12 @@ class AddPackagesTest extends AbstractBalikobotTestCase
                 'label_url'  => 'https://pdf.balikobot.cz/dhl/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
+            1        => [
+                'carrier_id' => 'NP1504102247M',
+                'package_id' => 42720,
+                'label_url'  => 'https://pdf.balikobot.cz/dhl/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
+                'status'     => '200',
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -222,6 +276,12 @@ class AddPackagesTest extends AbstractBalikobotTestCase
                 'carrier_id' => 'NP1504102246M',
                 'package_id' => 42719,
                 'label_url'  => 'https://pdf.balikobot.cz/tnt/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                'status'     => '200',
+            ],
+            1        => [
+                'carrier_id' => 'NP1504102247M',
+                'package_id' => 42720,
+                'label_url'  => 'https://pdf.balikobot.cz/dhl/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                 'status'     => '200',
             ],
         ]);
