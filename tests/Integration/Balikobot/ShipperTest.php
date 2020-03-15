@@ -16,7 +16,6 @@ class ShipperTest extends AbstractBalikobotTestCase
         $supportedShippers = [
             'cp',
             'dhl',
-            // 'dhlsk',
             'dpd',
             'geis',
             'gls',

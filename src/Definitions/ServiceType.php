@@ -906,6 +906,8 @@ final class ServiceType
     /**
      * Parcel
      *
+     * @deprecated Removed from API in v1.878
+     *
      * @var string
      */
     public const DHLSK_PARCEL = '1';
@@ -913,12 +915,16 @@ final class ServiceType
     /**
      * Parcel International
      *
+     * @deprecated Removed from API in v1.878
+     *
      * @var string
      */
     public const DHLSK_PARCEL_INTERNATIONAL = '2';
 
     /**
      * Parcel Business
+     *
+     * @deprecated Removed from API in v1.878
      *
      * @var string
      */
@@ -1496,7 +1502,6 @@ final class ServiceType
             Shipper::CP         => self::cp(),
             Shipper::DPD        => self::dpd(),
             Shipper::DHL        => self::dhl(),
-            // Shipper::DHLSK      => self::dhlsk(),
             Shipper::GEIS       => self::geis(),
             Shipper::GLS        => self::gls(),
             Shipper::INTIME     => self::intime(),

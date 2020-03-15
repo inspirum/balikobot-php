@@ -30,6 +30,8 @@ final class Shipper
     /**
      * DHL Parcel Slovensko
      *
+     * @deprecated Removed from API in v1.878
+     *
      * @var string
      */
     public const DHLSK = 'dhlsk';
@@ -142,7 +144,6 @@ final class Shipper
         return [
             self::CP,
             self::DHL,
-            // self::DHLSK,
             self::DPD,
             self::GEIS,
             self::GLS,
