@@ -29,22 +29,13 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
     private $shipper;
 
     /**
-     * EID
-     *
-     * @var string
-     */
-    private $eid;
-
-    /**
      * PackageCollection constructor
      *
-     * @param string      $shipper
-     * @param string|null $eid
+     * @param string $shipper
      */
-    public function __construct(string $shipper, string $eid = null)
+    public function __construct(string $shipper)
     {
         $this->shipper = $shipper;
-        $this->eid     = $eid ?: $this->newEID();
     }
 
     /**
@@ -61,7 +52,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
 
         // set collection EID
         if ($package->hasEID() === false) {
-            $package->setEID($this->eid);
+            $package->setEID($this->newEID());
         }
 
         // add package to collection

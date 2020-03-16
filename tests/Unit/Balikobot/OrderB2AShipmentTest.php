@@ -30,10 +30,10 @@ class OrderB2AShipmentTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('geis', '0001');
+        $packages = new PackageCollection('geis');
 
-        $packages->add(new Package(['service_type' => '10', 'mu_type' => 'EP', 'pickup_date' => '2019-07-12']));
-        $packages->add(new Package(['service_type' => '10', 'mu_type' => 'UV', 'pickup_date' => '2019-07-12']));
+        $packages->add(new Package(['eid' => '0001', 'mu_type' => 'EP', 'pickup_date' => '2019-07-12']));
+        $packages->add(new Package(['eid' => '0001', 'mu_type' => 'UV', 'pickup_date' => '2019-07-12']));
 
         $service->orderB2AShipment($packages);
 
@@ -43,16 +43,14 @@ class OrderB2AShipmentTest extends AbstractBalikobotTestCase
                 'https://api.balikobot.cz/geis/b2a',
                 [
                     0 => [
-                        'eid'          => '0001',
-                        'service_type' => '10',
-                        'mu_type'      => 'EP',
-                        'pickup_date'  => '2019-07-12',
+                        'eid'         => '0001',
+                        'mu_type'     => 'EP',
+                        'pickup_date' => '2019-07-12',
                     ],
                     1 => [
-                        'eid'          => '0001',
-                        'service_type' => '10',
-                        'mu_type'      => 'UV',
-                        'pickup_date'  => '2019-07-12',
+                        'eid'         => '0001',
+                        'mu_type'     => 'UV',
+                        'pickup_date' => '2019-07-12',
                     ],
                 ],
             ]
@@ -83,7 +81,7 @@ class OrderB2AShipmentTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('geis', '0001');
+        $packages = new PackageCollection('geis');
 
         $packages->add(new Package(['eid' => '0001']));
         $packages->add(new Package(['eid' => '0002']));
@@ -115,7 +113,7 @@ class OrderB2AShipmentTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('ppl', '0001');
+        $packages = new PackageCollection('ppl');
 
         $packages->add(new Package(['eid' => '0001']));
         $packages->add(new Package(['eid' => '0002']));

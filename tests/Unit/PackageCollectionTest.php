@@ -34,17 +34,16 @@ class PackageCollectionTest extends AbstractTestCase
         $this->assertTrue($packages2->offsetGet(0)->getEid() !== $packages3->offsetGet(0)->getEid());
     }
 
-    public function testAddedPackagesHasCollectionEid()
+    public function testAddedPackagesHasUniqueEid()
     {
-        $packages = new PackageCollection('cp', '0001');
+        $packages = new PackageCollection('cp');
 
         $packages->add(new Package(['test' => 1]));
         $packages->add(new Package(['test' => 2]));
 
-        /* @var \Inspirum\Balikobot\Model\Values\Package[] $packages */
-        foreach ($packages as $package) {
-            $this->assertEquals('0001', $package->getEID());
-        }
+        $this->assertNotEmpty($packages->offsetGet(0)->getEID());
+        $this->assertNotEmpty($packages->offsetGet(1)->getEID());
+        $this->assertTrue($packages->offsetGet(0)->getEID() !== $packages->offsetGet(1)->getEID());
 
         $this->assertEquals('cp', $packages->getShipper());
         $this->assertEquals(2, $packages->count());
@@ -52,9 +51,9 @@ class PackageCollectionTest extends AbstractTestCase
 
     public function testAddedPackagesAreClones()
     {
-        $packages = new PackageCollection('cp', '0001');
+        $packages = new PackageCollection('cp');
 
-        $package = new Package(['test' => 1]);
+        $package = new Package(['test' => 1, 'eid' => '0001']);
 
         $packages->add($package);
 
@@ -79,10 +78,10 @@ class PackageCollectionTest extends AbstractTestCase
 
     public function testSupportCustomEIDForPackage()
     {
-        $packages = new PackageCollection('cp', '0001');
+        $packages = new PackageCollection('cp');
 
         $packages->add(new Package(['test' => 1, 'eid' => '0002']));
-        $packages->add(new Package(['test' => 2]));
+        $packages->add(new Package(['test' => 2, 'eid' => '0001']));
 
         $this->assertEquals(
             [

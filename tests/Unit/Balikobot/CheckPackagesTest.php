@@ -16,10 +16,10 @@ class CheckPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('ppl', '0001');
+        $packages = new PackageCollection('ppl');
 
-        $packages->add(new Package(['vs' => '0001', 'rec_name' => 'Name']));
-        $packages->add(new Package(['vs' => '0002', 'price' => 2000]));
+        $packages->add(new Package(['vs' => '0001', 'eid' => '0001', 'rec_name' => 'Name']));
+        $packages->add(new Package(['vs' => '0002', 'eid' => '0001', 'price' => 2000]));
 
         $service->checkPackages($packages);
 

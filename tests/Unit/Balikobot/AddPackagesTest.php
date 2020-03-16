@@ -28,10 +28,10 @@ class AddPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('ppl', '0001');
+        $packages = new PackageCollection('ppl');
 
-        $packages->add(new Package(['vs' => '0001', 'rec_name' => 'Name']));
-        $packages->add(new Package(['vs' => '0002', 'price' => 2000]));
+        $packages->add(new Package(['vs' => '0001', 'eid' => '0001', 'rec_name' => 'Name']));
+        $packages->add(new Package(['vs' => '0002', 'eid' => '0001', 'price' => 2000]));
 
         $service->addPackages($packages);
 
@@ -78,7 +78,7 @@ class AddPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('cp', '0001');
+        $packages = new PackageCollection('cp');
 
         $packages->add(new Package(['eid' => '0001']));
         $packages->add(new Package(['eid' => '0002']));
@@ -117,15 +117,15 @@ class AddPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('cp', '0003');
+        $packages = new PackageCollection('cp');
 
         $packages->add(new Package(['test' => '1']));
         $packages->add(new Package(['test' => '2']));
 
         $orderedPackages = $service->addPackages($packages);
 
-        $this->assertEquals('0003', $orderedPackages[0]->getBatchId());
-        $this->assertEquals('0003', $orderedPackages[1]->getBatchId());
+        $this->assertNotEmpty($orderedPackages[0]->getBatchId());
+        $this->assertNotEmpty($orderedPackages[1]->getBatchId());
     }
 
     public function testMakeV1RequestForUPSShipper()
@@ -142,9 +142,9 @@ class AddPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('ups', '0001');
+        $packages = new PackageCollection('ups');
 
-        $packages->add(new Package(['vs' => '0001', 'pieces_count' => 2, 'rec_name' => 'Name']));
+        $packages->add(new Package(['vs' => '0001', 'eid' => '0001', 'pieces_count' => 2, 'rec_name' => 'Name']));
 
         $service->addPackages($packages);
 
@@ -186,10 +186,10 @@ class AddPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('ups', '0001');
+        $packages = new PackageCollection('ups');
 
-        $packages->add(new Package(['vs' => '0001', 'order_number' => 1, 'rec_name' => 'Name']));
-        $packages->add(new Package(['vs' => '0001', 'order_number' => 2, 'rec_name' => 'Name2']));
+        $packages->add(new Package(['vs' => '0001', 'eid' => '0001', 'order_number' => 1, 'rec_name' => 'Name']));
+        $packages->add(new Package(['vs' => '0001', 'eid' => '0001', 'order_number' => 2, 'rec_name' => 'Name2']));
 
         $service->addPackages($packages);
 
@@ -237,10 +237,10 @@ class AddPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('dhl', '0001');
+        $packages = new PackageCollection('dhl');
 
-        $packages->add(new Package(['vs' => '0001', 'order_number' => 1, 'rec_name' => 'Name']));
-        $packages->add(new Package(['vs' => '0001', 'order_number' => 2, 'rec_name' => 'Name2']));
+        $packages->add(new Package(['vs' => '0001', 'eid' => '0001', 'order_number' => 1, 'rec_name' => 'Name']));
+        $packages->add(new Package(['vs' => '0001', 'eid' => '0001', 'order_number' => 2, 'rec_name' => 'Name2']));
 
         $service->addPackages($packages);
 
@@ -288,10 +288,10 @@ class AddPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $packages = new PackageCollection('tnt', '0001');
+        $packages = new PackageCollection('tnt');
 
-        $packages->add(new Package(['vs' => '0001', 'order_number' => 1, 'rec_name' => 'Name']));
-        $packages->add(new Package(['vs' => '0001', 'order_number' => 2, 'rec_name' => 'Name2']));
+        $packages->add(new Package(['vs' => '0001', 'eid' => '0001', 'order_number' => 1, 'rec_name' => 'Name']));
+        $packages->add(new Package(['vs' => '0001', 'eid' => '0001', 'order_number' => 2, 'rec_name' => 'Name2']));
 
         $service->addPackages($packages);
 
