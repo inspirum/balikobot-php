@@ -576,6 +576,10 @@ class Branch
      */
     public static function newInstanceFromData(string $shipper, ?string $service, array $data): self
     {
+        if ($shipper === Shipper::CP && $service === ServiceType::CP_NP) {
+            $data['country'] = $data['country'] ?? 'CZ';
+        }
+
         return new self(
             $shipper,
             $service,

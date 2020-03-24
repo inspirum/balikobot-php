@@ -76,6 +76,45 @@ class BranchTest extends AbstractTestCase
 
     public function testStaticConstructorWithMissingData()
     {
+        $branch = Branch::newInstanceFromData('ppl', '1', [
+            'zip' => 'zip',
+        ]);
+
+        $this->assertEquals('ppl', $branch->getShipper());
+        $this->assertEquals('1', $branch->getServiceType());
+        $this->assertEquals(null, $branch->getId());
+        $this->assertEquals('branch', $branch->getType());
+        $this->assertEquals('zip', $branch->getName());
+        $this->assertEquals(null, $branch->getCity());
+        $this->assertEquals(null, $branch->getStreet());
+        $this->assertEquals('zip', $branch->getZip());
+        $this->assertEquals(null, $branch->getCountry());
+        $this->assertEquals(null, $branch->getCityPart());
+        $this->assertEquals(null, $branch->getDistrict());
+        $this->assertEquals(null, $branch->getRegion());
+        $this->assertEquals(null, $branch->getCurrency());
+        $this->assertEquals(null, $branch->getPhotoSmall());
+        $this->assertEquals(null, $branch->getPhotoBig());
+        $this->assertEquals(null, $branch->getUrl());
+        $this->assertEquals(null, $branch->getLatitude());
+        $this->assertEquals(null, $branch->getLongitude());
+        $this->assertEquals(null, $branch->getDirectionsGlobal());
+        $this->assertEquals(null, $branch->getDirectionsCar());
+        $this->assertEquals(null, $branch->getDirectionsPublic());
+        $this->assertEquals(null, $branch->getWheelchairAccessible());
+        $this->assertEquals(null, $branch->getClaimAssistant());
+        $this->assertEquals(null, $branch->getDressingRoom());
+        $this->assertEquals(null, $branch->getOpeningMonday());
+        $this->assertEquals(null, $branch->getOpeningTuesday());
+        $this->assertEquals(null, $branch->getOpeningWednesday());
+        $this->assertEquals(null, $branch->getOpeningThursday());
+        $this->assertEquals(null, $branch->getOpeningFriday());
+        $this->assertEquals(null, $branch->getOpeningSaturday());
+        $this->assertEquals(null, $branch->getOpeningSunday());
+    }
+
+    public function testStaticConstructorWithMissingDataForCPNP()
+    {
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip' => 'zip',
         ]);
@@ -88,7 +127,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals(null, $branch->getCity());
         $this->assertEquals(null, $branch->getStreet());
         $this->assertEquals('zip', $branch->getZip());
-        $this->assertEquals(null, $branch->getCountry());
+        $this->assertEquals('CZ', $branch->getCountry());
         $this->assertEquals(null, $branch->getCityPart());
         $this->assertEquals(null, $branch->getDistrict());
         $this->assertEquals(null, $branch->getRegion());

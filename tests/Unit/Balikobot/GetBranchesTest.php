@@ -21,18 +21,18 @@ class GetBranchesTest extends AbstractBalikobotTestCase
         $service->shouldReceive('getBranchesForShipperService')
                 ->with('ppl', '1', 'DE')
                 ->andReturnUsing(function () {
-                    yield from $this->branchesGenerator(5, 'DE');
+                    yield from $this->branchesGenerator(5, 'DE', 'ppl', '1');
                 });
         $service->shouldReceive('getBranchesForShipperService')
                 ->with('ppl', '1', 'CZ')
                 ->andReturnUsing(function () {
-                    yield from $this->branchesGenerator(1, null);
-                    yield from $this->branchesGenerator(2, 'CZ');
+                    yield from $this->branchesGenerator(1, null, 'ppl', '1');
+                    yield from $this->branchesGenerator(2, 'CZ', 'ppl', '1');
                 });
         $service->shouldReceive('getBranchesForShipperService')
                 ->with('ppl', '1', 'SK')
                 ->andReturnUsing(function () {
-                    yield from $this->branchesGenerator(1, 'SK');
+                    yield from $this->branchesGenerator(1, 'SK', 'ppl', '1');
                 });
 
         $count = 0;
@@ -53,9 +53,9 @@ class GetBranchesTest extends AbstractBalikobotTestCase
         );
 
         $service->shouldReceive('getBranchesForShipperService')->with('cp', 'NP')->andReturnUsing(function () {
-            yield from $this->branchesGenerator(2, 'DE');
-            yield from $this->branchesGenerator(2);
-            yield from $this->branchesGenerator(2, 'CZ');
+            yield from $this->branchesGenerator(2, 'DE', 'cp', 'NP');
+            yield from $this->branchesGenerator(2, 'HU', 'cp', 'NP');
+            yield from $this->branchesGenerator(2, 'CZ', 'cp', 'NP');
         });
 
         $count = 0;
@@ -77,10 +77,10 @@ class GetBranchesTest extends AbstractBalikobotTestCase
 
         $service->shouldReceive('getServices')->with('cp')->andReturn(['NP' => 'NP', 'RR' => 'RR']);
         $service->shouldReceive('getBranchesForShipperService')->with('cp', 'NP')->andReturnUsing(function () {
-            yield from $this->branchesGenerator(2);
+            yield from $this->branchesGenerator(2, null, 'cp', 'NP');
         });
         $service->shouldReceive('getBranchesForShipperService')->with('cp', 'RR')->andReturnUsing(function () {
-            yield from $this->branchesGenerator(3);
+            yield from $this->branchesGenerator(3, null, 'cp', 'NP');
         });
 
         $count = 0;
@@ -104,12 +104,12 @@ class GetBranchesTest extends AbstractBalikobotTestCase
         $service->shouldReceive('getBranchesForShipperServiceForCountries')
                 ->with('cp', 'NP', ['DE', 'SK'])
                 ->andReturnUsing(function () {
-                    yield from $this->branchesGenerator(2);
+                    yield from $this->branchesGenerator(2, null, 'cp', 'NP');
                 });
         $service->shouldReceive('getBranchesForShipperServiceForCountries')
                 ->with('cp', 'RR', ['DE', 'SK'])
                 ->andReturnUsing(function () {
-                    yield from $this->branchesGenerator(3);
+                    yield from $this->branchesGenerator(3, null, 'cp', 'NP');
                 });
 
         $count = 0;
@@ -133,7 +133,7 @@ class GetBranchesTest extends AbstractBalikobotTestCase
         $service->shouldReceive('getBranchesForShipperService')
                 ->with('zasilkovna', null)
                 ->andReturnUsing(function () {
-                    yield from $this->branchesGenerator(2);
+                    yield from $this->branchesGenerator(2, null, 'zasilkovna', null);
                 });
 
         $count = 0;
@@ -155,10 +155,10 @@ class GetBranchesTest extends AbstractBalikobotTestCase
 
         $service->shouldReceive('getShippers')->andReturn(['cp', 'ppl']);
         $service->shouldReceive('getBranchesForShipper')->with('cp')->andReturnUsing(function () {
-            yield from $this->branchesGenerator(0);
+            yield from $this->branchesGenerator(0, null, 'cp', null);
         });
         $service->shouldReceive('getBranchesForShipper')->with('ppl')->andReturnUsing(function () {
-            yield from $this->branchesGenerator(2);
+            yield from $this->branchesGenerator(2, null, 'ppl', null);
         });
 
         $count = 0;
@@ -182,12 +182,12 @@ class GetBranchesTest extends AbstractBalikobotTestCase
         $service->shouldReceive('getBranchesForShipperForCountries')
                 ->with('cp', ['SK', 'CZ'])
                 ->andReturnUsing(function () {
-                    yield from $this->branchesGenerator(1);
+                    yield from $this->branchesGenerator(1, null, 'cp', null);
                 });
         $service->shouldReceive('getBranchesForShipperForCountries')
                 ->with('ppl', ['SK', 'CZ'])
                 ->andReturnUsing(function () {
-                    yield from $this->branchesGenerator(2);
+                    yield from $this->branchesGenerator(2, null, 'ppl', null);
                 });
 
         $count = 0;
@@ -287,10 +287,10 @@ class GetBranchesTest extends AbstractBalikobotTestCase
         $this->assertEquals(null, $branch);
     }
 
-    private function branchesGenerator(int $limit, string $country = null): iterable
+    private function branchesGenerator(int $limit, ?string $country, string $shipper, ?string $service): iterable
     {
         for ($i = 0; $i < $limit; $i++) {
-            yield Branch::newInstanceFromData('cp', 'NP', [
+            yield Branch::newInstanceFromData($shipper, $service, [
                 'zip'     => '11000',
                 'country' => $country,
             ]);
