@@ -6,12 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [2.0.1] - 2020-03-24
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v2.0.1...master)
+
+
+## [v2.0.1 (2020-03-24)](https://github.com/inspirum/balikobot-php/compare/v2.0.0...v2.0.1)
 ### Fixed
 - Set branch country to **CZ** if missing (for **CP** shipper with **NP** service)
 
 
-## [2.0.0] - 2020-03-15
+## [v2.0.0 (2020-03-15)](https://github.com/inspirum/balikobot-php/compare/v1.4.0...v2.0.0)
 ### Added
 - Add options to get **labelsUrL** from **ADD** request
 - Add **labelsUrL** attribute to [**OrderedPackageCollection**](./src/Model/Aggregates/OrderedPackageCollection.php)
@@ -23,7 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove **DHLSK** shipper support
 
 
-## [1.4.0] - 2020-03-15
+## [v1.4.0 (2020-03-15)](https://github.com/inspirum/balikobot-php/compare/v1.3.2...v1.4.0)
 ### Added
 - Add support for new options from documentation **v1.879** (2020-03-13)
     - Add **GWCZ** (Gebrüder Weiss Česká republika) shipper
@@ -36,12 +39,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Deprecated **DHLSK** shipper support
 
 
-## [1.3.2] - 2020-01-06
+## [v1.3.2 (2020-01-06)](https://github.com/inspirum/balikobot-php/compare/v1.3.1...v1.3.2)
 ### Fixed
 - Fix bug with empty string in latitude/longitude in branch import
 
 
-## [1.3.1] - 2019-11-18
+## [v1.3.1 (2019-11-18)](https://github.com/inspirum/balikobot-php/compare/v1.3.0...v1.3.1)
 ### Added
 - Add helper method for information if shipper support filtering branches by country code
 ### Fixed
@@ -50,7 +53,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove **country** parameter from method that list branches
 
 
-## [1.3.0] - 2019-11-17
+## [v1.3.0 (2019-11-17)](https://github.com/inspirum/balikobot-php/compare/v1.2.0...v1.3.0)
 ### Added
 - Add methods for track multiple packages
 - Add methods to get branches filtered by country codes
@@ -75,7 +78,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Add **sm2_service** attribute
 
 
-## [1.2.0] - 2019-09-07
+## [v1.2.0 (2019-09-07)](https://github.com/inspirum/balikobot-php/compare/v1.1.2...v1.2.0)
 ### Added
 - Add support for new options from documentation **v1.870** (2019-09-05)
     - Add **GW** (Gebrüder Weiss) shipper
@@ -94,7 +97,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Add **type** parameter to **BRANCHLOCATOR** request
 
 
-## [1.1.2] - 2019-06-24
+## [v1.1.2 (2019-06-24)](https://github.com/inspirum/balikobot-php/compare/v1.1.1...v1.1.2)
 ### Added
 - Add support for new options from documentation **v1.861** (2019-05-28)
     - Add **ACTIVATEDSERVICES** request
@@ -104,7 +107,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fix bug: "track" request does not require "status" in response data
 
 
-## [1.1.1] - 2019-05-01
+## [v1.1.1 (2019-05-01)](https://github.com/inspirum/balikobot-php/compare/v1.1.0...v1.1.1)
 ### Added
 - Add support for new options from documentation **v1.857** (2019-04-26)
     - Add **delivery_costs** attribute
@@ -117,7 +120,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Add **ULOZENKA_DEPO_SK** service type (Depo SK for Ulozenka)
 
 
-## [1.1.0] - 2019-03-23
+## [v1.1.0 (2019-03-23)](https://github.com/inspirum/balikobot-php/compare/v1.0.4...v1.1.0)
 ### Added
 - Add support for new options from documentation **v1.855** (2019-03-19)
     - Add **DHLSK** shipper
@@ -135,7 +138,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Add **rec_locale_id** attribute
 
 
-## [1.0.4] - 2019-01-09
+## [v1.0.4 (2019-01-09)](https://github.com/inspirum/balikobot-php/compare/v1.0.3...v1.0.4)
 ### Added
 - Add support for new options from documentation **v1.846** (2019-01-08)
     - Add **rec_house_number** attribute
@@ -147,21 +150,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Move repo to [**@inspirum**](https://github.com/inspirum) account
 
 
-## [1.0.3] - 2019-01-02
+## [v1.0.3 (2019-01-02)](https://github.com/inspirum/balikobot-php/compare/v1.0.2...v1.0.3)
 ### Fixed
 - Fix links url
 
 
-## [1.0.2] - 2019-01-02
+## [v1.0.2 (2019-01-02)](https://github.com/inspirum/balikobot-php/compare/v1.0.1...v1.0.2)
 ### Changed
 - Change composer package name to `inspirum/balikobot`
 
 
-## [1.0.1] - 2018-12-30
+## [v1.0.1 (2018-12-30)](https://github.com/inspirum/balikobot-php/compare/v1.0.0...v1.0.1)
 ### Fixed
 - Fixed tests
 
 
-## [1.0.0] - 2018-12-27
+## v1.0.0 (2018-12-27)
 ### Added
 - Full support for all requests and options in documentation **v1.845** (2018-11-29)
