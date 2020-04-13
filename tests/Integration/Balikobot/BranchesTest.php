@@ -12,8 +12,8 @@ class BranchesTest extends AbstractBalikobotTestCase
         $service  = $this->newBalikobot();
         $shippers = Shipper::all();
 
-        try {
-            foreach ($shippers as $shipper) {
+        foreach ($shippers as $shipper) {
+            try {
                 $branches = $service->getBranchesForShipperForCountries($shipper, ['DE', 'SK']);
                 foreach ($branches as $branch) {
                     $this->assertTrue(
@@ -23,9 +23,12 @@ class BranchesTest extends AbstractBalikobotTestCase
 
                     break;
                 }
+            } catch (BadRequestException $exception) {
+                $errorMessage = $exception->getResponse()['status_message'] ?? '';
+                if (strpos($errorMessage, 'Neznámý kód služby') === false) {
+                    $this->fail($exception->getMessage());
+                }
             }
-        } catch (BadRequestException $exception) {
-            $this->fail($exception->getMessage());
         }
     }
 }
