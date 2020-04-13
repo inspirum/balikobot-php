@@ -75,6 +75,7 @@ class PackageTest extends AbstractTestCase
         $package->setRecPhone('777666555');
         $package->setWeight(4.3);
         $package->setRequireFullAge(true);
+        $package->setFullAgeMinimum('15');
         $package->setPassword('123456');
         $package->setCreditCard(true);
         $package->setSmsNotification(false);
@@ -181,6 +182,7 @@ class PackageTest extends AbstractTestCase
                 Option::REC_PHONE                   => '777666555',
                 Option::WEIGHT                      => 4.3,
                 Option::REQUIRE_FULL_AGE            => 1,
+                Option::FULL_AGE_MINIMUM            => '15',
                 Option::PASSWORD                    => '123456',
                 Option::CREDIT_CARD                 => 1,
                 Option::SMS_NOTIFICATION            => 0,

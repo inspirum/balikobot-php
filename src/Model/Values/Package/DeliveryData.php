@@ -108,6 +108,16 @@ trait DeliveryData
     }
 
     /**
+     * @param string $fullAgeMinimum
+     *
+     * @return void
+     */
+    public function setFullAgeMinimum(string $fullAgeMinimum): void
+    {
+        $this->offsetSet(Option::FULL_AGE_MINIMUM, $fullAgeMinimum);
+    }
+
+    /**
      * @param string $fullAgeData
      *
      * @return void

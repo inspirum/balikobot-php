@@ -220,6 +220,14 @@ final class Option
     public const REQUIRE_FULL_AGE = 'require_full_age';
 
     /**
+     * Variation of age verification - send value "15" for 15+, send value "18" for 18+
+     * string
+     *
+     * @var string
+     */
+    public const FULL_AGE_MINIMUM = 'full_age_minimum';
+
+    /**
      * Taking delivery requires password
      *
      * @var string
