@@ -112,6 +112,10 @@ class PackageCollectionTest extends AbstractTestCase
         $packages->offsetUnset(1);
 
         $this->assertFalse($packages->offsetExists(1));
+
+        $packages->offsetSet(2, new Package(['test' => 3, 'eid' => '0003']));
+        $this->assertFalse($packages->offsetExists(1));
+        $this->assertTrue($packages->offsetExists(2));
     }
 
     public function testSupportIteratorAggregate()
