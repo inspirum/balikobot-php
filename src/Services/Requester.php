@@ -8,6 +8,7 @@ use Inspirum\Balikobot\Definitions\API;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Exceptions\UnauthorizedException;
 use Psr\Http\Message\ResponseInterface;
+use RuntimeException;
 
 class Requester implements RequesterInterface
 {
@@ -101,6 +102,8 @@ class Requester implements RequesterInterface
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
         // set data
         if (count($data) > 0) {
@@ -115,13 +118,18 @@ class Requester implements RequesterInterface
         ]);
 
         // execute curl
-        $response   = (string) curl_exec($ch);
-        $statusCode = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $response   = curl_exec($ch);
+        $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        // check for errors.
+        if ($response === false) {
+            throw new RuntimeException(curl_error($ch), curl_errno($ch));
+        }
 
         // close curl
         curl_close($ch);
 
-        return new Response($statusCode, [], $response);
+        return new Response((int) $statusCode, [], (string) $response);
     }
 
     /**
