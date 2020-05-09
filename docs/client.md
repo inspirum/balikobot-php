@@ -870,7 +870,7 @@ var_dump($fileUrls);
 ## All available methods
 
 ```
-addPackages(string $shipper, array $packages, string $version = API::V1): array
+addPackages(string $shipper, array $packages, string $version = null, &$labelsUrl = null): array
 
 dropPackage(string $shipper, int $packageId): void
 
@@ -896,11 +896,11 @@ getOrder(string $shipper, int $orderId): array
 
 orderPickup(string $shipper, DateTime $dateFrom, DateTime $dateTo, float $weight, int $packageCount, string $message = null): void
 
-getServices(string $shipper): array
+getServices(string $shipper, string $country = null, string $version = null): array
 
 getManipulationUnits(string $shipper): array
 
-getBranches(string $shipper, string $service = null, bool $fullData = false, string $country = null): array
+getBranches( string $shipper, ?string $service, bool $fullBranchRequest = false, string $country = null, string $version = null): array
 
 getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): array
 

@@ -36,6 +36,9 @@ use Inspirum\Balikobot\Model\Values\Package;
 use Inspirum\Balikobot\Services\Balikobot;
 use Inspirum\Balikobot\Services\Requester;
 
+$apiUser = getenv('BALIKOBOT_API_USER');
+$apiKey  = getenv('BALIKOBOT_API_KEY');
+
 $balikobot = new Balikobot(new Requester($apiUser, $apiKey));
 
 $packages = new PackageCollection(Shipper::CP);
@@ -242,7 +245,7 @@ getPackageInfo(OrderedPackage $package): Package
 
 getOrder(string $shipper, int $orderId): OrderedShipment
 
-getServices(string $shipper): array
+getServices(string $shipper, string $country = null): array
 
 getManipulationUnits(string $shipper): array
 

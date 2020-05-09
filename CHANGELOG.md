@@ -6,7 +6,22 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v2.0.1...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v3.0.0...master)
+
+
+## [v3.0.0 (2020-05-09)](https://github.com/inspirum/balikobot-php/compare/v2.0.1...v3.0.0)
+### Added
+- Add support for new options from documentation **v1.882** (2020-04-15)
+    - Add **ADD** **v2** request for **TOPTRANS** shipper
+- Add support for new options from documentation **v1.881** (2020-04-09)
+    - Add **country** parameter to **SERVICES** **v2** request
+    - Add **ADD** **v2** request for **ZASILKOVNA** shipper
+    - Add **BRANCHES** **v2** request for **ZASILKOVNA** shipper
+    - Add **SERVICES** **v2** request for **ZASILKOVNA** shipper
+    - Add **ZASILKOVNA** services type
+    - Add **full_age_minimum** attribute
+### Changed
+- Normalize shipper constants, change **TOP_TRANS** to **TOPTRANS**
 
 
 ## [v2.0.1 (2020-03-24)](https://github.com/inspirum/balikobot-php/compare/v2.0.0...v2.0.1)
