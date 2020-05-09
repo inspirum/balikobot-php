@@ -17,6 +17,10 @@ class ShipperStaticMethodTest extends AbstractTestCase
 
         $this->assertTrue($fullbranches);
 
+        $fullbranches = Shipper::hasFullBranchesSupport('zasilkovna', 'VMCZ');
+
+        $this->assertTrue($fullbranches);
+
         $fullbranches = Shipper::hasFullBranchesSupport('pbh', '6');
 
         $this->assertTrue($fullbranches);
@@ -104,6 +108,55 @@ class ShipperStaticMethodTest extends AbstractTestCase
                 ],
             ]
         );
+
+        $this->assertEquals('v2', $version);
+    }
+
+    public function testZasilkovnaSupportV2AddRequest()
+    {
+        $version = Shipper::resolveAddRequestVersion(
+            'zasilkovna',
+            [
+                [
+                    'service_type' => 149,
+                ],
+            ]
+        );
+
+        $this->assertEquals('v2', $version);
+    }
+
+    public function testUseV1WithoutServiceTypeOption()
+    {
+        $version = Shipper::resolveAddRequestVersion(
+            'zasilkovna',
+            [
+                [
+                    'branch_id' => 149,
+                ],
+            ]
+        );
+
+        $this->assertEquals('v1', $version);
+    }
+
+    public function testZasilkovnaSupportV2ServicesRequest()
+    {
+        $version = Shipper::resolveServicesRequestVersion('zasilkovna');
+
+        $this->assertEquals('v2', $version);
+    }
+
+    public function testZasilkovnaSupportV2BranchesRequest()
+    {
+        $version = Shipper::resolveBranchesRequestVersion('zasilkovna', null);
+
+        $this->assertEquals('v1', $version);
+    }
+
+    public function testZasilkovnaWithServiceTypeSupportV2BranchesRequest()
+    {
+        $version = Shipper::resolveBranchesRequestVersion('zasilkovna', 'VMCZ');
 
         $this->assertEquals('v2', $version);
     }

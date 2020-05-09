@@ -313,15 +313,18 @@ class Balikobot
     /**
      * Returns available services for the given shipper
      *
-     * @param string $shipper
+     * @param string      $shipper
+     * @param string|null $country
      *
      * @return array<string,string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getServices(string $shipper): array
+    public function getServices(string $shipper, string $country = null): array
     {
-        $services = $this->client->getServices($shipper);
+        $usedRequestVersion = Shipper::resolveServicesRequestVersion($shipper);
+
+        $services = $this->client->getServices($shipper, $country, $usedRequestVersion);
 
         return $services;
     }
@@ -459,8 +462,15 @@ class Balikobot
     public function getBranchesForShipperService(string $shipper, ?string $service, string $country = null): iterable
     {
         $useFullbranchRequest = Shipper::hasFullBranchesSupport($shipper, $service);
+        $usedRequestVersion   = Shipper::resolveBranchesRequestVersion($shipper, $service);
 
-        $branches = $this->client->getBranches($shipper, $service, $useFullbranchRequest, $country);
+        $branches = $this->client->getBranches(
+            $shipper,
+            $service,
+            $useFullbranchRequest,
+            $country,
+            $usedRequestVersion
+        );
 
         foreach ($branches as $branch) {
             yield Branch::newInstanceFromData($shipper, $service, $branch);

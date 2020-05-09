@@ -332,15 +332,17 @@ class Client
     /**
      * Returns available services for the given shipper
      *
-     * @param string $shipper
+     * @param string      $shipper
+     * @param string|null $country
+     * @param string|null $version
      *
      * @return array<string,string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getServices(string $shipper): array
+    public function getServices(string $shipper, string $country = null, string $version = null): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::SERVICES);
+        $response = $this->requester->call($version ?: API::V1, $shipper, Request::SERVICES . '/' . $country);
 
         $formattedResponse = $response['service_types'] ?? [];
 
@@ -391,6 +393,7 @@ class Client
      * @param string|null $service
      * @param bool        $fullBranchRequest
      * @param string|null $country
+     * @param string|null $version
      *
      * @return array<array<string,mixed>>
      *
@@ -400,11 +403,16 @@ class Client
         string $shipper,
         ?string $service,
         bool $fullBranchRequest = false,
-        string $country = null
+        string $country = null,
+        string $version = null
     ): array {
         $usedRequest = $fullBranchRequest ? Request::FULL_BRANCHES : Request::BRANCHES;
 
-        $response = $this->requester->call(API::V1, $shipper, $usedRequest . '/' . $service . '/' . $country);
+        $response = $this->requester->call(
+            $version ?: API::V1,
+            $shipper,
+            $usedRequest . '/' . $service . '/' . $country
+        );
 
         $formattedResponse = $response['branches'] ?? [];
 

@@ -710,9 +710,523 @@ final class ServiceType
     /**
      * Zasilkovna
      *
+     * @deprecated
+     *
      * @var string|null
      */
     public const ZASILKOVNA = null;
+
+    /**
+     * Výdejní místa Česká republika
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_VMCZ = 'VMCZ';
+
+    /**
+     * Výdejní místa Slovenská republika
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_VMSK = 'VMSK';
+
+    /**
+     * Výdejní místa Maďarsko
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_VMHU = 'VMHU';
+
+    /**
+     * Výdejní místa Polsko
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_VMPL = 'VMPL';
+
+    /**
+     * Výdejní místa Rumunsko
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_VMRO = 'VMRO';
+
+    /**
+     * Rakouská pošta
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_AT_POST = '80';
+
+    /**
+     * BE Post
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BE_POST = '4832';
+
+    /**
+     * Bulharsko Speedy Office
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BG_SPEEDY_OFFICE = '4017';
+
+    /**
+     * Bulharsko Speedy Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BG_SPEEDY_HOME = '4015';
+
+    /**
+     * Česká pošta
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_POST = '13';
+
+    /**
+     *
+     * CZ - Nejvýhodnější doručení na adresu
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_COURIER = '106';
+
+    /**
+     * Expresní doručení Ostrava
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_EXPRESS_OSTRAVA = '134';
+
+    /**
+     * Expresní doručení Brno
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_EXPRESS_BRNO = '136';
+
+    /**
+     * Česká republika InTime
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_INTIME = '153';
+
+    /**
+     * Expresní doručení Praha
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_EXPRESS_PRAHA = '257';
+
+    /**
+     * Česká republika DPD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_DPD = '633';
+
+    /**
+     * Německá pošta
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DE_POST = '111';
+
+    /**
+     * Německo Hermes
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DE_HERMES = '3946';
+
+    /**
+     * DK Post Nord Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DK_HOME = '4993';
+
+    /**
+     * DK Post Nord pp
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DK_PICKUP = '4994';
+
+    /**
+     * EE Omniva Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_EE_HOME = '5060';
+
+    /**
+     * EE Omniva pickup
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_EE_PICKUP = '5061';
+
+    /**
+     * EE Omniva Box
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_EE_BOX = '5062';
+
+    /**
+     * ES MRW Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_ES_HOME = '4653';
+
+    /**
+     * Španělsko Correos
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_ES_CORREOS = '4638';
+
+    /**
+     * FI Post Nord Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_FI_HOME = '4830';
+
+    /**
+     * FI Post Nord Pickup Point
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_FI_PICKUP = '4828';
+
+    /**
+     * Francie Colissimo Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_FR_HOME = '4309';
+
+    /**
+     * Spojené království Royal Mail 48
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GB_ROYAL_MAIL_48 = '4857';
+
+    /**
+     * Spojené království Hermes
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GB_HERMES = '3885';
+
+    /**
+     * Spojené království Royal Mail
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GB_ROYAL_MAIL = '1120';
+
+    /**
+     * Spojené království Royal Mail 24
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GB_ROYAL_MAIL_24 = '4856';
+
+    /**
+     * Recko Speedy Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GR_HOME = '4738';
+
+    /**
+     * Chorvatská Pošta - Výdejní místo
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HR_POST = '4635';
+
+    /**
+     * Chorvatská Pošta - doručení na adresu
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HR_ADDRESS = '4634';
+
+    /**
+     * Chorvatsko DPD Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HR_HDPD = '4646';
+
+    /**
+     * HU - best delivery solution
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HU_COURIER = '4159';
+
+    /**
+     * Maďarsko Express One (Transoflex)
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HU_EXPRESS = '151';
+
+    /**
+     * Maďarsko DPD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HU_DPD = '805';
+
+    /**
+     * Maďarská pošta
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HU_POST = '763';
+
+    /**
+     * Švýcarsko-Lichtenštejnská Pošta - prioritní
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CH_POST_PRIORITY = '3870';
+
+    /**
+     * Švýcarsko-Lichtejnštejnská Pošta
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CH_POST = '3294';
+
+    /**
+     * Irsko Hermes
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_IE_HERMES = '4524';
+
+    /**
+     * Itálie GLS
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_IT_GLS = '2726';
+
+    /**
+     * LT Omniva Box
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LT_BOX = '5066';
+
+    /**
+     * LU DPD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LU_DPD = '4834';
+
+    /**
+     * LV Omniva Box
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LV_BOX = '5064';
+
+    /**
+     * LV Omniva Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LV_HOME = '5063';
+
+    /**
+     * NL Post
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_NL_POST = '4329';
+
+    /**
+     * Polsko Paczkomaty
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_PACZKOMATY = '3060';
+
+    /**
+     * Polsko DPD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_DPD = '1406';
+
+    /**
+     * PL - best delivery solution
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_COURIER = '4162';
+
+    /**
+     * Polská pošta
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_POST = '272';
+
+    /**
+     * Polská pošta 24h
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_POST_24 = '1438';
+
+    /**
+     * Polsko InPost
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_INPOST = '3603';
+
+    /**
+     * PT MRW Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PT_HOME = '4655';
+
+    /**
+     * Rumunsko FAN
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RO_FAN = '762';
+
+    /**
+     * RO - best delivery solution
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RO_COUTIER = '4161';
+
+    /**
+     * Rumunsko DPD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RO_DPD = '836';
+
+    /**
+     * Rumunsko Cargus
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RO_CARGUS = '590';
+
+    /**
+     * RU Post EMS
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RU_EMS = '5101';
+
+    /**
+     * RU Post Registered Packet
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RU_POST_PACKET = '5102';
+
+    /**
+     * Ruská pošta
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RU_POST = '4559';
+
+    /**
+     * SE Post Nord Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SE_HOME = '4827';
+
+    /**
+     * SE Post Nord pp
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SE_PICKUP = '4826';
+
+    /**
+     * SI DPD Pickup
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SI_DPD_PICKUP = '4950';
+
+    /**
+     * SI DPD Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SI_DPD_HOME = '4949';
+
+    /**
+     * Slovensko GLS
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SK_GLS = '149';
+
+    /**
+     * Expresné doručenie Bratislava
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SK_EXPRESS_BRATISLAVA = '132';
+
+    /**
+     * SK - Best delivery solution
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SK_COURIER = '131';
+
+    /**
+     * Slovenská pošta
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SK_POST = '16';
+
+    /**
+     * Ukrajina Nova Poshta
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_UK_POST = '3616';
+
+    /**
+     * Ukrajina Rosan
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_UK_ROSAN = '1160';
 
     /**
      * DHL
@@ -1391,7 +1905,79 @@ final class ServiceType
     public static function zasilkovna(): array
     {
         return [
-            self::ZASILKOVNA,
+            self::ZASILKOVNA_VMCZ,
+            self::ZASILKOVNA_VMSK,
+            self::ZASILKOVNA_VMHU,
+            self::ZASILKOVNA_VMPL,
+            self::ZASILKOVNA_VMRO,
+            self::ZASILKOVNA_AT_POST,
+            self::ZASILKOVNA_BE_POST,
+            self::ZASILKOVNA_BG_SPEEDY_OFFICE,
+            self::ZASILKOVNA_BG_SPEEDY_HOME,
+            self::ZASILKOVNA_CZ_POST,
+            self::ZASILKOVNA_CZ_COURIER,
+            self::ZASILKOVNA_CZ_EXPRESS_OSTRAVA,
+            self::ZASILKOVNA_CZ_EXPRESS_BRNO,
+            self::ZASILKOVNA_CZ_INTIME,
+            self::ZASILKOVNA_CZ_EXPRESS_PRAHA,
+            self::ZASILKOVNA_CZ_DPD,
+            self::ZASILKOVNA_DE_POST,
+            self::ZASILKOVNA_DE_HERMES,
+            self::ZASILKOVNA_DK_HOME,
+            self::ZASILKOVNA_DK_PICKUP,
+            self::ZASILKOVNA_EE_HOME,
+            self::ZASILKOVNA_EE_PICKUP,
+            self::ZASILKOVNA_EE_BOX,
+            self::ZASILKOVNA_ES_HOME,
+            self::ZASILKOVNA_ES_CORREOS,
+            self::ZASILKOVNA_FI_HOME,
+            self::ZASILKOVNA_FI_PICKUP,
+            self::ZASILKOVNA_FR_HOME,
+            self::ZASILKOVNA_GB_ROYAL_MAIL_48,
+            self::ZASILKOVNA_GB_HERMES,
+            self::ZASILKOVNA_GB_ROYAL_MAIL,
+            self::ZASILKOVNA_GB_ROYAL_MAIL_24,
+            self::ZASILKOVNA_GR_HOME,
+            self::ZASILKOVNA_HR_POST,
+            self::ZASILKOVNA_HR_ADDRESS,
+            self::ZASILKOVNA_HR_HDPD,
+            self::ZASILKOVNA_HU_COURIER,
+            self::ZASILKOVNA_HU_EXPRESS,
+            self::ZASILKOVNA_HU_DPD,
+            self::ZASILKOVNA_HU_POST,
+            self::ZASILKOVNA_CH_POST_PRIORITY,
+            self::ZASILKOVNA_CH_POST,
+            self::ZASILKOVNA_IE_HERMES,
+            self::ZASILKOVNA_IT_GLS,
+            self::ZASILKOVNA_LT_BOX,
+            self::ZASILKOVNA_LU_DPD,
+            self::ZASILKOVNA_LV_BOX,
+            self::ZASILKOVNA_LV_HOME,
+            self::ZASILKOVNA_NL_POST,
+            self::ZASILKOVNA_PL_PACZKOMATY,
+            self::ZASILKOVNA_PL_DPD,
+            self::ZASILKOVNA_PL_COURIER,
+            self::ZASILKOVNA_PL_POST,
+            self::ZASILKOVNA_PL_POST_24,
+            self::ZASILKOVNA_PL_INPOST,
+            self::ZASILKOVNA_PT_HOME,
+            self::ZASILKOVNA_RO_FAN,
+            self::ZASILKOVNA_RO_COUTIER,
+            self::ZASILKOVNA_RO_DPD,
+            self::ZASILKOVNA_RO_CARGUS,
+            self::ZASILKOVNA_RU_EMS,
+            self::ZASILKOVNA_RU_POST_PACKET,
+            self::ZASILKOVNA_RU_POST,
+            self::ZASILKOVNA_SE_HOME,
+            self::ZASILKOVNA_SE_PICKUP,
+            self::ZASILKOVNA_SI_DPD_PICKUP,
+            self::ZASILKOVNA_SI_DPD_HOME,
+            self::ZASILKOVNA_SK_GLS,
+            self::ZASILKOVNA_SK_EXPRESS_BRATISLAVA,
+            self::ZASILKOVNA_SK_COURIER,
+            self::ZASILKOVNA_SK_POST,
+            self::ZASILKOVNA_UK_POST,
+            self::ZASILKOVNA_UK_ROSAN,
         ];
     }
 

@@ -16,13 +16,26 @@ class ShipperTest extends AbstractClientTestCase
 
         foreach ($shippers as $shipper) {
             try {
-                $shipperServices = array_keys($service->getServices($shipper));
-                $service->getBranches($shipper, $shipperServices[0] ?? null, false, 'CZ');
-                $this->assertTrue(Shipper::hasBranchCountryFilterSupport($shipper), strtoupper($shipper));
+                $shipperServices = array_keys($service->getServices($shipper, null, Shipper::resolveServicesRequestVersion($shipper)));
+                $shipperService  = $shipperServices[0] ?? null;
+                $service->getBranches($shipper, $shipperService, false, 'CZ');
+                $this->assertTrue(
+                    Shipper::hasBranchCountryFilterSupport($shipper),
+                    sprintf(
+                        '%s/%s',
+                        strtoupper($shipper),
+                        $shipperService !== null ? $shipperService : 'NULL'
+                    )
+                );
             } catch (BadRequestException $exception) {
                 $this->assertFalse(
                     Shipper::hasBranchCountryFilterSupport($shipper),
-                    strtoupper($shipper) . ' ' . $exception->getMessage()
+                    sprintf(
+                        '%s/%s: %s',
+                        strtoupper($shipper),
+                        $shipperService !== null ? $shipperService : 'NULL',
+                        $exception->getMessage()
+                    )
                 );
             }
         }

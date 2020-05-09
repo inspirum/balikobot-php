@@ -26,7 +26,7 @@ class BranchesTest extends AbstractBalikobotTestCase
             } catch (BadRequestException $exception) {
                 $errorMessage = $exception->getResponse()['status_message'] ?? '';
                 if (strpos($errorMessage, 'Neznámý kód služby') === false) {
-                    $this->fail($exception->getMessage());
+                    $this->fail(sprintf('%s: %s', $shipper, $exception->getMessage()));
                 }
             }
         }

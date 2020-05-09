@@ -199,15 +199,56 @@ final class Shipper
      * Resolve ADD request version
      *
      * @param string                     $shipperCode
-     * @param array<array<string,mixed>> $data
+     * @param array<array<string,mixed>> $packagesData
      *
      * @return string
      */
-    public static function resolveAddRequestVersion(string $shipperCode, array $data): string
+    public static function resolveAddRequestVersion(string $shipperCode, array $packagesData): string
     {
-        $supportedShippers = [Shipper::UPS, Shipper::DHL, Shipper::TNT];
+        $supportedShippers = [Shipper::ZASILKOVNA];
+        if (in_array($shipperCode, $supportedShippers) && isset($packagesData[0][Option::SERVICE_TYPE])) {
+            return API::V2;
+        }
 
-        if (in_array($shipperCode, $supportedShippers) && isset($data[0]['order_number'])) {
+        $supportedShippers = [Shipper::UPS, Shipper::DHL, Shipper::TNT];
+        if (in_array($shipperCode, $supportedShippers) && isset($packagesData[0][Option::ORDER_NUMBER])) {
+            return API::V2;
+        }
+
+        return API::V1;
+    }
+
+    /**
+     * Resolve SERVICES request version
+     *
+     * @param string $shipperCode
+     *
+     * @return string
+     */
+    public static function resolveServicesRequestVersion(string $shipperCode): string
+    {
+        $supportedShippers = [Shipper::ZASILKOVNA];
+
+        if (in_array($shipperCode, $supportedShippers)) {
+            return API::V2;
+        }
+
+        return API::V1;
+    }
+
+    /**
+     * Resolve BRANCHES request version
+     *
+     * @param string      $shipperCode
+     * @param string|null $serviceCode
+     *
+     * @return string
+     */
+    public static function resolveBranchesRequestVersion(string $shipperCode, ?string $serviceCode): string
+    {
+        $supportedShippers = [Shipper::ZASILKOVNA];
+
+        if (in_array($shipperCode, $supportedShippers) && $serviceCode !== null) {
             return API::V2;
         }
 
@@ -227,7 +268,6 @@ final class Shipper
             Shipper::DPD,
             Shipper::GLS,
             Shipper::PPL,
-            Shipper::ZASILKOVNA,
         ];
 
         return in_array($shipperCode, $supportedShippers);
