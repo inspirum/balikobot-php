@@ -112,6 +112,21 @@ class ShipperStaticMethodTest extends AbstractTestCase
         $this->assertEquals('v2', $version);
     }
 
+    public function testTopTransSupportV2AddRequest()
+    {
+        $version = Shipper::resolveAddRequestVersion(
+            'toptrans',
+            [
+                [
+                    'order_number' => 1,
+                    'pieces_count' => 3,
+                ],
+            ]
+        );
+
+        $this->assertEquals('v2', $version);
+    }
+
     public function testZasilkovnaSupportV2AddRequest()
     {
         $version = Shipper::resolveAddRequestVersion(

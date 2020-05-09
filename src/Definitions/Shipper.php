@@ -210,7 +210,7 @@ final class Shipper
             return API::V2;
         }
 
-        $supportedShippers = [Shipper::UPS, Shipper::DHL, Shipper::TNT];
+        $supportedShippers = [Shipper::UPS, Shipper::DHL, Shipper::TNT, Shipper::TOP_TRANS];
         if (in_array($shipperCode, $supportedShippers) && isset($packagesData[0][Option::ORDER_NUMBER])) {
             return API::V2;
         }
