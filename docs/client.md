@@ -409,7 +409,7 @@ This units are used as **mu_type** option in [**ADD**](#add) request.
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$units = $client->getManipulationUnits(Shipper::TOP_TRANS);
+$units = $client->getManipulationUnits(Shipper::TOPTRANS);
 
 /*
 var_dump($units);
@@ -760,7 +760,7 @@ This units are used as **adr_un** option in [**ADD**](#add) request.
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$units = $client->getAdrUnits(Shipper::TOP_TRANS);
+$units = $client->getAdrUnits(Shipper::TOPTRANS);
 
 /*
 var_dump($units);

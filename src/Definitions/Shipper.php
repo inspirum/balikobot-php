@@ -81,7 +81,7 @@ final class Shipper
      *
      * @var string
      */
-    public const TOP_TRANS = 'toptrans';
+    public const TOPTRANS = 'toptrans';
 
     /**
      * Uloženka s.r.o.
@@ -143,7 +143,7 @@ final class Shipper
             self::PPL,
             self::SP,
             self::SPS,
-            self::TOP_TRANS,
+            self::TOPTRANS,
             self::ULOZENKA,
             self::UPS,
             self::ZASILKOVNA,
@@ -210,7 +210,7 @@ final class Shipper
             return API::V2;
         }
 
-        $supportedShippers = [Shipper::UPS, Shipper::DHL, Shipper::TNT, Shipper::TOP_TRANS];
+        $supportedShippers = [Shipper::UPS, Shipper::DHL, Shipper::TNT, Shipper::TOPTRANS];
         if (in_array($shipperCode, $supportedShippers) && isset($packagesData[0][Option::ORDER_NUMBER])) {
             return API::V2;
         }

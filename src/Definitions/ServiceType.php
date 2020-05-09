@@ -2056,7 +2056,7 @@ final class ServiceType
             Shipper::PPL        => self::ppl(),
             Shipper::SP         => self::sp(),
             Shipper::SPS        => self::sps(),
-            Shipper::TOP_TRANS  => self::topTrans(),
+            Shipper::TOPTRANS   => self::topTrans(),
             Shipper::ULOZENKA   => self::ulozenka(),
             Shipper::UPS        => self::ups(),
             Shipper::ZASILKOVNA => self::zasilkovna(),

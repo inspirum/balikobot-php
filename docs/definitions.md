@@ -19,7 +19,7 @@ var_dump(Shipper::CP);
 'cp'
 */
 
-var_dump(Shipper::TOP_TRANS);
+var_dump(Shipper::TOPTRANS);
 /*
 'toptrans'
 */
