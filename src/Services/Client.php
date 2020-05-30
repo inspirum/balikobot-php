@@ -368,7 +368,7 @@ class Client
     }
 
     /**
-     * Returns available manipulation units for the given shipper
+     * Returns all manipulation units for the given shipper
      *
      * @param string $shipper
      *

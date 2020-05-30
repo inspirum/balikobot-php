@@ -346,7 +346,7 @@ class Balikobot
     }
 
     /**
-     * Returns available manipulation units for the given shipper
+     * Returns all manipulation units for the given shipper
      *
      * @param string $shipper
      *
@@ -357,6 +357,22 @@ class Balikobot
     public function getManipulationUnits(string $shipper): array
     {
         $units = $this->client->getManipulationUnits($shipper);
+
+        return $units;
+    }
+
+    /**
+     * Returns available manipulation units for the given shipper
+     *
+     * @param string $shipper
+     *
+     * @return array<string>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getActivatedManipulationUnits(string $shipper): array
+    {
+        $units = $this->client->getActivatedManipulationUnits($shipper);
 
         return $units;
     }
