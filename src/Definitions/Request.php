@@ -156,6 +156,15 @@ final class Request
      *
      * @var string
      */
+    public const ACTIVATED_SERVICES = 'activatedservices';
+
+    /**
+     * List of activated services for production API keys
+     *
+     * @deprecated
+     *
+     * @var string
+     */
     public const ACTIVATEDSERVICES = 'activatedservices';
 
     /**
