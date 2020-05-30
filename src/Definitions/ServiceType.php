@@ -1369,6 +1369,13 @@ final class ServiceType
     public const PBH_NOBA_POSHTA = '20';
 
     /**
+     * Econt
+     *
+     * @var string
+     */
+    public const PBH_ECONT = '21';
+
+    /**
      * Worlwide zásilky
      *
      * @var string
@@ -1798,6 +1805,7 @@ final class ServiceType
             self::PBH_COLISSIMO,
             self::PBH_MEEST,
             self::PBH_NOBA_POSHTA,
+            self::PBH_ECONT,
         ];
     }
 
