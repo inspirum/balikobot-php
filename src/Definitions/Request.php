@@ -89,6 +89,13 @@ final class Request
     public const MANIPULATION_UNITS = 'manipulationunits';
 
     /**
+     * List of activated units for palette shipping
+     *
+     * @var string
+     */
+    public const ACTIVATED_MANIPULATION_UNITS = 'activatedmanipulationunits';
+
+    /**
      * List of available branches
      *
      * @var string

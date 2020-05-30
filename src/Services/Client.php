@@ -386,6 +386,24 @@ class Client
     }
 
     /**
+     * Returns available manipulation units for the given shipper
+     *
+     * @param string $shipper
+     *
+     * @return array<string,string>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getActivatedManipulationUnits(string $shipper): array
+    {
+        $response = $this->requester->call(API::V1, $shipper, Request::ACTIVATED_MANIPULATION_UNITS);
+
+        $formattedResponse = $this->normalizeResponseItems($response['units'] ?? [], 'code', 'name');
+
+        return $formattedResponse;
+    }
+
+    /**
      * Returns available branches for the given shipper and its service
      * Full branches instead branches request
      *
@@ -582,7 +600,7 @@ class Client
      */
     public function getActivatedServices(string $shipper): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::ACTIVATEDSERVICES);
+        $response = $this->requester->call(API::V1, $shipper, Request::ACTIVATED_SERVICES);
 
         unset($response['status']);
 
