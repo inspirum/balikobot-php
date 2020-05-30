@@ -10,7 +10,7 @@
 [![Total Downloads][ico-packagist-download]][link-packagist-download]
 [![Software License][ico-license]][link-licence]
 
-Offers implementation of Balikobot API described in the [documentation](#version)
+Offers implementation of Balikobot API described in the [documentation ](#version)
 
 - Support for all API [requests](./src/Services/Client.php)
 - Simple add/track/drop package [methods](./src/Services/Balikobot.php)
@@ -24,6 +24,10 @@ Offers implementation of Balikobot API described in the [documentation](#version
 *All the code snippets shown here are modified for clarity, so they may not be executable.*
 
 ```php
+// get credentials
+$apiUser = getenv('BALIKOBOT_API_USER');
+$apiKey  = getenv('BALIKOBOT_API_KEY');
+
 // init balikobot class
 $requester = new Requester($apiUser, $apiKey);
 $balikobot = new Balikobot($requester);
@@ -92,14 +96,19 @@ var_dump($data);
 
 ## Installation
 
+Run composer require command
 ```bash
 $ composer require inspirum/balikobot
+```
+or add requirement to your `composer.json`
+```json
+"inspirum/balikobot": "^3.0"
 ```
 
 
 ## Version
 
-Support all options for Balikobot API described in the [documentation][link-api] (v1.883, 2020-04-24).
+Support all options for Balikobot API described in the [documentation][link-api] (**v1.885**, 2020-05-14).
 
 
 ## Usage

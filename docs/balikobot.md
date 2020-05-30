@@ -249,6 +249,8 @@ getServices(string $shipper, string $country = null): array
 
 getManipulationUnits(string $shipper): array
 
+getActivatedManipulationUnits(string $shipper): array
+
 getBranches(): iterable
 
 getBranchesForCountries(array $countries): iterable

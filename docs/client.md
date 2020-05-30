@@ -900,6 +900,8 @@ getServices(string $shipper, string $country = null, string $version = null): ar
 
 getManipulationUnits(string $shipper): array
 
+getActivatedManipulationUnits(string $shipper): array
+
 getBranches( string $shipper, ?string $service, bool $fullBranchRequest = false, string $country = null, string $version = null): array
 
 getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): array
