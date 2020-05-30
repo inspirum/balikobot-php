@@ -4,7 +4,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Inspirum\Balikobot\Services\Balikobot;
 
-class getActivatedManipulationUnitsTest extends AbstractBalikobotTestCase
+class GetActivatedManipulationUnitsTest extends AbstractBalikobotTestCase
 {
     public function testMakeRequest()
     {

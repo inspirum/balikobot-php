@@ -6,6 +6,7 @@ use DateTime;
 use Inspirum\Balikobot\Contracts\RequesterInterface;
 use Inspirum\Balikobot\Definitions\API;
 use Inspirum\Balikobot\Definitions\Request;
+use Inspirum\Balikobot\Definitions\Shipper;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 
 class Client
@@ -130,11 +131,24 @@ class Client
 
         $response = $this->requester->call(API::V2, $shipper, Request::TRACK, $data, false);
 
-        if (empty($response[0])) {
-            throw new BadRequestException($response);
+        unset($response['status']);
+
+        // fixes that API return only last package statuses for GLS shipper
+        if (
+            $shipper === Shipper::GLS
+            && count($carrierIds) > 1
+            && count($response) === 1
+            && isset($response[count($carrierIds) - 1])
+        ) {
+            for ($i = 0; $i < count($carrierIds) - 1; $i++) {
+                $response[$i] = [];
+            }
+            sort($response);
         }
 
-        unset($response['status']);
+        if (isset($response[0]) === false) {
+            throw new BadRequestException($response);
+        }
 
         if (count($response) !== count($carrierIds)) {
             throw new BadRequestException($response);

@@ -215,7 +215,7 @@ class TrackRequestTest extends AbstractClientTestCase
 
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
-            0        => [
+            1        => [
                 [
                     'date'      => '2018-07-02 00:00:00',
                     'status_id' => 2,
@@ -226,7 +226,7 @@ class TrackRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackages('cp', [1, 3]);
+        $client->trackPackages('ppl', [1, 3]);
     }
 
     public function testMakeRequestWithMultiplePackages()
@@ -279,5 +279,45 @@ class TrackRequestTest extends AbstractClientTestCase
         );
 
         $this->assertTrue(true);
+    }
+
+    public function testGlsOnlyReturnsLastPackageStatusesWithMultiplePackages()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            1        => [
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 2,
+                    'name'      => 'Doručení',
+                ],
+                [
+                    'date'      => '2018-07-01 00:00:00',
+                    'status_id' => 1,
+                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                ],
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $statuses = $client->trackPackages('gls', [1, 3]);
+
+        $this->assertEquals([], $statuses[0]);
+        $this->assertEquals(
+            [
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 2,
+                    'name'      => 'Doručení',
+                ],
+                [
+                    'date'      => '2018-07-01 00:00:00',
+                    'status_id' => 1,
+                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                ],
+            ],
+            $statuses[1]
+        );
     }
 }
