@@ -44,7 +44,7 @@ class ShipperTest extends AbstractBalikobotTestCase
         $services = [];
 
         foreach ($shippers as $shipper) {
-            $services[$shipper] = array_keys($service->getServices($shipper));
+            $services[$shipper] = array_map('strval', array_keys($service->getServices($shipper)));
         }
 
         $supportedServices = ServiceType::all();
@@ -53,6 +53,6 @@ class ShipperTest extends AbstractBalikobotTestCase
             return array_filter($data);
         }, $supportedServices);
 
-        $this->assertEquals($supportedServices, $services);
+        $this->assertEqualsCanonicalizing($supportedServices, $services);
     }
 }

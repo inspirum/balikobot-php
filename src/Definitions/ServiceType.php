@@ -844,6 +844,20 @@ final class ServiceType
     public const ZASILKOVNA_DE_HERMES = '3946';
 
     /**
+     * DE Hermes Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DE_HERMES_HOME = '6373';
+
+    /**
+     * DE Hermes Pickup
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DE_HERMES_PICKUP = '6828';
+
+    /**
      * DK Post Nord Home
      *
      * @var string
@@ -1024,6 +1038,13 @@ final class ServiceType
      * @var string
      */
     public const ZASILKOVNA_IT_GLS = '2726';
+
+    /**
+     * LT Omniva Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LT_HOME = '5065';
 
     /**
      * LT Omniva Box
@@ -1930,7 +1951,9 @@ final class ServiceType
             self::ZASILKOVNA_CZ_EXPRESS_PRAHA,
             self::ZASILKOVNA_CZ_DPD,
             self::ZASILKOVNA_DE_POST,
+            self::ZASILKOVNA_DE_HERMES_PICKUP,
             self::ZASILKOVNA_DE_HERMES,
+            self::ZASILKOVNA_DE_HERMES_HOME,
             self::ZASILKOVNA_DK_HOME,
             self::ZASILKOVNA_DK_PICKUP,
             self::ZASILKOVNA_EE_HOME,
@@ -1957,6 +1980,7 @@ final class ServiceType
             self::ZASILKOVNA_CH_POST,
             self::ZASILKOVNA_IE_HERMES,
             self::ZASILKOVNA_IT_GLS,
+            self::ZASILKOVNA_LT_HOME,
             self::ZASILKOVNA_LT_BOX,
             self::ZASILKOVNA_LU_DPD,
             self::ZASILKOVNA_LV_BOX,
