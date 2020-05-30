@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Normalize request constants, change **ACTIVATEDSERVICES** to **ACTIVATED_SERVICES**
 ### Fixed
-- Fixed bug that API returns only last package statuses for GLS shipper ([#7](https://github.com/inspirum/balikobot-php/issues/3))
+- Fixed bug that API returns only last package statuses for GLS shipper ([#3](https://github.com/inspirum/balikobot-php/issues/3))
 ### Deprecated
 - Deprecated **ACTIVATEDSERVICES** request constant
 
