@@ -55,9 +55,7 @@ class Client
         unset($response['labels_url']);
         unset($response['status']);
 
-        if (count($response) !== count($packages)) {
-            throw new BadRequestException($response);
-        }
+        $this->validateIndexes($response, $packages);
 
         return $response;
     }
@@ -134,25 +132,14 @@ class Client
         unset($response['status']);
 
         // fixes that API return only last package statuses for GLS shipper
-        if (
-            $shipper === Shipper::GLS
-            && count($carrierIds) > 1
-            && count($response) === 1
-            && isset($response[count($carrierIds) - 1])
-        ) {
+        if ($shipper === Shipper::GLS && count($carrierIds) !== count($response)) {
             for ($i = 0; $i < count($carrierIds) - 1; $i++) {
-                $response[$i] = [];
+                $response[$i] = $response[$i] ?? [];
             }
             sort($response);
         }
 
-        if (isset($response[0]) === false) {
-            throw new BadRequestException($response);
-        }
-
-        if (count($response) !== count($carrierIds)) {
-            throw new BadRequestException($response);
-        }
+        $this->validateIndexes($response, $carrierIds);
 
         return $response;
     }
@@ -192,9 +179,7 @@ class Client
 
         unset($response['status']);
 
-        if (count($response) !== count($carrierIds)) {
-            throw new BadRequestException($response);
-        }
+        $this->validateIndexes($response, $carrierIds);
 
         $formatedStatuses = [];
 
@@ -641,9 +626,7 @@ class Client
 
         unset($response['status']);
 
-        if (count($response) !== count($packages)) {
-            throw new BadRequestException($response);
-        }
+        $this->validateIndexes($response, $packages);
 
         return $response;
     }
@@ -683,9 +666,7 @@ class Client
 
         unset($response['status']);
 
-        if (count($response) !== count($carrierIds)) {
-            throw new BadRequestException($response);
-        }
+        $this->validateIndexes($response, $carrierIds);
 
         $formatedLinks = [];
 
@@ -709,6 +690,23 @@ class Client
     private function validateStatus(array $responseItem, array $response): void
     {
         if (isset($responseItem['status']) && ((int) $responseItem['status']) !== 200) {
+            throw new BadRequestException($response);
+        }
+    }
+
+    /**
+     * Validate indexes
+     *
+     * @param array<mixed,mixed> $response
+     * @param array<mixed,mixed> $request
+     *
+     * @return void
+     *
+     * @throws \Inspirum\Balikobot\Exceptions\BadRequestException
+     */
+    private function validateIndexes(array $response, array $request): void
+    {
+        if (array_keys($response) !== range(0, count($request) - 1)) {
             throw new BadRequestException($response);
         }
     }

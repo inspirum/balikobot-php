@@ -145,7 +145,7 @@ class TrackRequestTest extends AbstractClientTestCase
         $client->trackPackages('cp', [1, 2, 4]);
     }
 
-    public function testRequestShouldHaveStatusWithMultiplePackages()
+    public function testRequestShouldNotHaveStatusWithMultiplePackages()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             0 => [
@@ -181,6 +181,44 @@ class TrackRequestTest extends AbstractClientTestCase
         $status = $client->trackPackages('cp', [3, 4, 5]);
 
         $this->assertNotEmpty($status);
+    }
+
+    public function testThrowsExceptionOnBadPackageIndexes()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            0 => [
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 2,
+                    'name'      => 'Dodání zásilky. 10003 Depo Praha 701',
+                ],
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 1,
+                    'name'      => 'Doručování zásilky. 10003 Depo Praha 701',
+                ],
+            ],
+            2 => [
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 2,
+                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                ],
+            ],
+            3 => [
+                [
+                    'date'      => '2018-07-02 00:00:00',
+                    'status_id' => 1,
+                    'name'      => 'Doručování zásilky. 10003 Depo Praha 701',
+                ],
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->trackPackages('cp', [3, 4, 5]);
     }
 
     public function testThrowsExceptionOnBadStatusCodeWithMultiplePackages()
