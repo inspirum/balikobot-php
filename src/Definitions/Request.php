@@ -161,7 +161,7 @@ final class Request
     /**
      * List of activated services for production API keys
      *
-     * @deprecated
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */

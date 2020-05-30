@@ -6,7 +6,22 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v3.0.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v3.1.0...master)
+
+
+## [v3.1.0 (2020-05-30)](https://github.com/inspirum/balikobot-php/compare/v3.0.0...v3.1.0)
+### Added
+- Add support for new options from documentation **v1.885** (2020-05-14)
+    - Add **PBH_ECONT** service type
+- Add support for new options from documentation **v1.884** (2020-05-07)
+    - Add **ACTIVATEDMANIPULATIONUNITS** request
+- Add **ZASILKOVNA_DE_HERMES_HOME** service type 
+- Add **ZASILKOVNA_DE_HERMES_PICKUP** service type 
+- Add **ZASILKOVNA_LT_HOME** service type 
+### Changed
+- Normalize request constants, change **ACTIVATEDSERVICES** to **ACTIVATED_SERVICES**
+### Deprecated
+- Deprecated **ACTIVATEDSERVICES** request constant
 
 
 ## [v3.0.0 (2020-05-09)](https://github.com/inspirum/balikobot-php/compare/v2.0.1...v3.0.0)
