@@ -7,11 +7,13 @@ use Inspirum\Balikobot\Definitions\Option;
 use Inspirum\Balikobot\Definitions\Shipper;
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
 use Inspirum\Balikobot\Model\Aggregates\PackageCollection;
+use Inspirum\Balikobot\Model\Aggregates\PackageTransportCostCollection;
 use Inspirum\Balikobot\Model\Values\Branch;
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
 use Inspirum\Balikobot\Model\Values\OrderedShipment;
 use Inspirum\Balikobot\Model\Values\Package;
 use Inspirum\Balikobot\Model\Values\PackageStatus;
+use Inspirum\Balikobot\Model\Values\PackageTransportCost;
 use Inspirum\Balikobot\Model\Values\PostCode;
 
 class Balikobot
@@ -745,5 +747,28 @@ class Balikobot
         $linkUrls = $this->client->getProofOfDeliveries($packages->getShipper(), $packages->getCarrierIds());
 
         return $linkUrls;
+    }
+
+    /**
+     * Obtain the price of carriage at consignment level
+     *
+     * @param \Inspirum\Balikobot\Model\Aggregates\PackageCollection $packages
+     *
+     * @return \Inspirum\Balikobot\Model\Aggregates\PackageTransportCostCollection|\Inspirum\Balikobot\Model\Values\PackageTransportCost[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getTransportCosts(PackageCollection $packages): PackageTransportCostCollection
+    {
+        $response = $this->client->getTransportCosts($packages->getShipper(), $packages->toArray());
+
+        $transportCosts = new PackageTransportCostCollection($packages->getShipper());
+
+        foreach ($response as $i => $package) {
+            $transportCost = PackageTransportCost::newInstanceFromData($packages->getShipper(), $package);
+            $transportCosts->add($transportCost);
+        }
+
+        return $transportCosts;
     }
 }

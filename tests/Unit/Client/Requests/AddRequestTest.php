@@ -58,7 +58,7 @@ class AddRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'eid' => 200,
+                'status' => 200,
             ],
         ]);
 

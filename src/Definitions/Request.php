@@ -180,4 +180,11 @@ final class Request
      * @var string
      */
     public const PROOF_OF_DELIVERY = 'pod';
+
+    /**
+     * Method for obtaining the price of carriage at consignment level
+     *
+     * @var string
+     */
+    public const TRANSPORT_COSTS = 'transportcosts';
 }

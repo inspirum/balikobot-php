@@ -680,6 +680,31 @@ class Client
     }
 
     /**
+     * Obtain the price of carriage at consignment level
+     *
+     * @param string                     $shipper
+     * @param array<array<string,mixed>> $packages
+     *
+     * @return array<array<string,mixed>>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getTransportCosts(string $shipper, array $packages): array
+    {
+        $response = $this->requester->call(API::V1, $shipper, Request::TRANSPORT_COSTS, $packages);
+
+        if (isset($response[0]['eid']) === false) {
+            throw new BadRequestException($response);
+        }
+
+        unset($response['status']);
+
+        $this->validateIndexes($response, $packages);
+
+        return $response;
+    }
+
+    /**
      * Validate response item status
      *
      * @param array<mixed,mixed> $responseItem
