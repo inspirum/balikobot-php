@@ -1668,18 +1668,69 @@ final class ServiceType
      * @var string
      */
     public const GW_D12 = 'D12';
+
     /**
      * Domestic 14:00 - 18:00
      *
      * @var string
      */
     public const GW_D14 = 'D14';
+
     /**
      * Export PROI
      *
      * @var string
      */
     public const GW_EUR = 'EUR';
+
+    /**
+     * Standard
+     *
+     * @var string
+     */
+    public const MESSENGER_STANDARD = '100';
+
+    /**
+     * Extreme
+     *
+     * @var string
+     */
+    public const MESSENGER_EXTREME = '102';
+
+    /**
+     * Express
+     *
+     * @var string
+     */
+    public const MESSENGER_EXPRESS = '103';
+
+    /**
+     * Same day
+     *
+     * @var string
+     */
+    public const MESSENGER_SAME_DAY = '104';
+
+    /**
+     * Overnight Economy
+     *
+     * @var string
+     */
+    public const MESSENGER_OVERNIGHT_ECONOMY = '106';
+
+    /**
+     * Overnight Express
+     *
+     * @var string
+     */
+    public const MESSENGER_OVERNIGHT_EXPRESS = '107';
+
+    /**
+     * Direct
+     *
+     * @var string
+     */
+    public const MESSENGER_DIRECT = '108';
 
     /**
      * @return array<string>
@@ -2071,6 +2122,22 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function messenger(): array
+    {
+        return [
+            self::MESSENGER_STANDARD,
+            self::MESSENGER_EXTREME,
+            self::MESSENGER_EXPRESS,
+            self::MESSENGER_SAME_DAY,
+            self::MESSENGER_OVERNIGHT_ECONOMY,
+            self::MESSENGER_OVERNIGHT_EXPRESS,
+            self::MESSENGER_DIRECT,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2095,6 +2162,7 @@ final class ServiceType
             Shipper::TNT        => self::tnt(),
             Shipper::GW         => self::gw(),
             Shipper::GWCZ       => self::gwcz(),
+            Shipper::MESSENGER  => self::messenger(),
         ];
     }
 }

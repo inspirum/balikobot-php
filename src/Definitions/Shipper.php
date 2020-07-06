@@ -126,6 +126,13 @@ final class Shipper
     public const GWCZ = 'gwcz';
 
     /**
+     * Messenger
+     *
+     * @var string
+     */
+    public const MESSENGER = 'messenger';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -150,6 +157,7 @@ final class Shipper
             self::TNT,
             self::GW,
             self::GWCZ,
+            self::MESSENGER,
         ];
     }
 
