@@ -139,6 +139,10 @@ class Client
             sort($response);
         }
 
+        if (isset($response[0][0]['status_id']) === false) {
+            throw new BadRequestException($response);
+        }
+
         $this->validateIndexes($response, $carrierIds);
 
         return $response;

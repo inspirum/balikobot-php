@@ -3,6 +3,7 @@
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use DateTime;
+use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
 use Inspirum\Balikobot\Services\Balikobot;
@@ -171,5 +172,22 @@ class TrackPackageTest extends AbstractBalikobotTestCase
         $this->assertEquals(1, $statuses[0][1]->getId());
         $this->assertEquals(2, $statuses[1][0]->getId());
         $this->assertEquals(new DateTime('2018-11-08 14:18:06'), $statuses[1][0]->getDate());
+    }
+
+    public function testasdResponseData()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            0 => [
+                '503',
+            ],
+        ]);
+
+        $service = new Balikobot($requester);
+
+        $package = new OrderedPackage(1, 'ppl', '0001', '1234');
+
+        $service->trackPackage($package);
     }
 }
