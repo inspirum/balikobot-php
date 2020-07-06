@@ -860,9 +860,55 @@ $fileUrls = $client->getProofOfDeliveries(Shipper::TNT, ['GE502878792CZ', 'GE502
 /*
 var_dump($fileUrls);
 [
-  '0' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
-  '1' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwRE',
+  0 => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs'
+  1 => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwRE'
 ]
+*/
+```
+
+
+### **TRANSPORTCOSTS**
+
+Method **TRANSPORTCOSTS** obtain the price of carriage at consignment level.
+
+The client normalizes the response by returning only transport cost data (drop **status** attribute).
+
+
+```php
+use Inspirum\Balikobot\Definitions\Option;
+use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$transportCosts = $client->getTransportCosts(Shipper::TOPTRANS, [
+  [
+    Option::SERVICE_TYPE  => ServiceType::TOP_TRANS_STANDARD,
+    Option::EID           => '12345678',
+    Option::REAL_ORDER_ID => '180001',
+    Option::ORDER_NUMBER  => 1,
+    Option::REC_NAME      => 'Josef Novák',
+    Option::MU_TYPE       => 'KUS',
+    Option::WEIGHT        => 20.1,
+    // ...
+  ],
+  // ...
+]);
+
+/*
+var_dump($transportCosts);
+[
+  0 => [
+    'eid'             => '12345678'
+    'costs_total'     => 336.0
+    'currency'        => 'CZK'
+    'costs_breakdown' => [
+      0 => [
+        'name' => 'Base price'
+        'cost' => 336.0
+      ]
+    ]
+    'status'          => '200'
+  ]
+],
 */
 ```
 
@@ -925,6 +971,8 @@ getB2AServices(string $shipper): array
 getProofOfDelivery(string $shipper, string $carrierId): string
 
 getProofOfDeliveries(string $shipper, array $carrierIds): array
+
+getTransportCosts(string $shipper, array $packages): array
 ```
 
 

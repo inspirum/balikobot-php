@@ -286,6 +286,8 @@ getB2AServices(string $shipper): array
 getProofOfDelivery(OrderedPackage $package): string
 
 getProofOfDeliveries(OrderedPackageCollection $packages): array
+
+getTransportCosts(PackageCollection $packages): PackageTransportCostCollection
 ```
 
 
