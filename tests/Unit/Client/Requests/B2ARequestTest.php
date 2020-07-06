@@ -18,7 +18,7 @@ class B2ARequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->orderB2AShipment('ppl', []);
+        $client->orderB2AShipment('ppl', [['eid' => 1]]);
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +29,7 @@ class B2ARequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->orderB2AShipment('ppl', []);
+        $client->orderB2AShipment('ppl', [['eid' => 1]]);
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -47,7 +47,7 @@ class B2ARequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->orderB2AShipment('ppl', []);
+        $client->orderB2AShipment('ppl', [['eid' => 1]]);
     }
 
     public function testThrowsExceptionWhenNoReturnPackages()
@@ -57,13 +57,33 @@ class B2ARequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'eid' => 200,
+                'status' => 200,
             ],
         ]);
 
         $client = new Client($requester);
 
-        $client->orderB2AShipment('ppl', []);
+        $client->orderB2AShipment('ppl', [['eid' => 1]]);
+    }
+
+    public function testThrowsExceptionWhenBadResponseData()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            0        => [
+                'package_id' => 24,
+                'status'     => 200,
+            ],
+            1        => [
+                'status' => 200,
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->orderB2AShipment('ppl', [['eid' => 1], ['eid' => 2]]);
     }
 
     public function testThrowsExceptionWhenWrongNumberOfPackages()

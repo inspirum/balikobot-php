@@ -18,7 +18,7 @@ class AddRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->addPackages('cp', []);
+        $client->addPackages('cp', [['eid' => 1]]);
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +29,7 @@ class AddRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->addPackages('cp', []);
+        $client->addPackages('cp', [['eid' => 1]]);
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -48,7 +48,7 @@ class AddRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->addPackages('cp', []);
+        $client->addPackages('cp', [['eid' => 1]]);
     }
 
     public function testThrowsExceptionWhenNoReturnPackages()
@@ -64,7 +64,27 @@ class AddRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->addPackages('cp', []);
+        $client->addPackages('cp', [['eid' => 1]]);
+    }
+
+    public function testThrowsExceptionWhenBadResponseData()
+    {
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            0        => [
+                'package_id' => 42719,
+                'status'     => 200,
+            ],
+            1        => [
+                'status' => 200,
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->addPackages('cp', [['eid' => 1], ['eid' => 2]]);
     }
 
     public function testThrowsExceptionWhenWrongNumberOfPackages()
