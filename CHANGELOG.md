@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v1.886** (2020-05-29)
     - Added **TRANSPORTCOSTS** request
 - Added support for new options from documentation **v1.887** (2020-06-09)
-    - Add **MESSANGER** (Messenger) shipper
+    - Add **MESSENGER** (Messenger) shipper
 
 
 ## [v3.1.0 (2020-05-30)](https://github.com/inspirum/balikobot-php/compare/v3.0.0...v3.1.0)
