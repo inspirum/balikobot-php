@@ -44,6 +44,7 @@ class PackageTransportCostTest extends AbstractTestCase
         $this->assertCount(5, $transportCost->getCostsBreakdown());
         $this->assertEquals('Avizace telefonem na vykládce: Ano', $transportCost->getCostsBreakdown()[3]->getName());
         $this->assertEquals(100, $transportCost->getCostsBreakdown()[2]->getCost());
+        $this->assertEquals('CZK', $transportCost->getCostsBreakdown()[0]->getCurrencyCode());
     }
 
     public function testStaticConstructorWithMissingData()
