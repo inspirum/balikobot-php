@@ -2017,7 +2017,7 @@ final class ServiceType
             self::ZASILKOVNA_FR_HOME,
             self::ZASILKOVNA_GB_ROYAL_MAIL_48,
             self::ZASILKOVNA_GB_HERMES,
-            self::ZASILKOVNA_GB_ROYAL_MAIL,
+            // self::ZASILKOVNA_GB_ROYAL_MAIL,
             self::ZASILKOVNA_GB_ROYAL_MAIL_24,
             self::ZASILKOVNA_GR_HOME,
             self::ZASILKOVNA_HR_POST,
