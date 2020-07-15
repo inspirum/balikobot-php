@@ -14,7 +14,7 @@ class BranchTest extends AbstractTestCase
             'type'                  => 'type',
             'name'                  => 'name',
             'city'                  => 'city',
-            'street'                => 'street',
+            'street'                => 'street 27/8',
             'zip'                   => 'zip',
             'country'               => 'country',
             'city_part'             => 'city_part',
@@ -47,7 +47,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('type', $branch->getType());
         $this->assertEquals('name', $branch->getName());
         $this->assertEquals('city', $branch->getCity());
-        $this->assertEquals('street', $branch->getStreet());
+        $this->assertEquals('street 27/8', $branch->getStreet());
         $this->assertEquals('zip', $branch->getZip());
         $this->assertEquals('country', $branch->getCountry());
         $this->assertEquals('city_part', $branch->getCityPart());
@@ -162,6 +162,91 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('zip', $branch->getName());
         $this->assertEquals('branch', $branch->getType());
         $this->assertEquals('address', $branch->getStreet());
+    }
+
+    public function testStaticConstructorStreetNumber()
+    {
+        $branch = Branch::newInstanceFromData('cp', 'NP', [
+            'zip'                => 'zip',
+            'street'             => 'street',
+            'house_number'       => '8',
+            'orientation_number' => '896',
+        ]);
+
+        $this->assertEquals('street 8/896', $branch->getStreet());
+
+        $branch = Branch::newInstanceFromData('cp', 'NP', [
+            'zip'                => 'zip',
+            'street'             => 'street',
+            'house_number'       => '8',
+            'orientation_number' => '0',
+        ]);
+
+        $this->assertEquals('street 8', $branch->getStreet());
+
+        $branch = Branch::newInstanceFromData('cp', 'NP', [
+            'zip'                => 'zip',
+            'street'             => 'street',
+            'orientation_number' => '897',
+        ]);
+
+        $this->assertEquals('street 897', $branch->getStreet());
+
+        $branch = Branch::newInstanceFromData('cp', 'NP', [
+            'zip'          => 'zip',
+            'street'       => 'street',
+            'house_number' => '2',
+        ]);
+
+        $this->assertEquals('street 2', $branch->getStreet());
+
+        $branch = Branch::newInstanceFromData('cp', 'NP', [
+            'zip'                => 'zip',
+            'street'             => 'street 1',
+            'house_number'       => '2',
+            'orientation_number' => '3',
+        ]);
+
+        $this->assertEquals('street 1 2/3', $branch->getStreet());
+
+        $branch = Branch::newInstanceFromData('cp', 'NP', [
+            'zip'                => 'zip',
+            'address'            => 'address',
+            'house_number'       => '2',
+            'orientation_number' => '3',
+        ]);
+
+        $this->assertEquals('address', $branch->getStreet());
+
+        $branch = Branch::newInstanceFromData('cp', 'NP', [
+            'zip'                => 'zip',
+            'street'             => '',
+            'house_number'       => '3',
+            'orientation_number' => '4',
+        ]);
+
+        $this->assertEquals('3/4', $branch->getStreet());
+
+        $branch = Branch::newInstanceFromData('cp', 'NP', [
+            'zip'                => 'zip',
+            'city'               => 'Vrbovec',
+            'street'             => '',
+            'house_number'       => '146',
+            'orientation_number' => '0',
+        ]);
+
+        $this->assertEquals('Vrbovec 146', $branch->getStreet());
+
+        $branch = Branch::newInstanceFromData('cp', 'NP', [
+            'zip'                => 'zip',
+            'city'               => 'Vrbovec',
+            'street'             => '',
+            'address'            => 'address',
+            'house_number'       => '147',
+            'orientation_number' => '0',
+        ]);
+
+        $this->assertEquals('Vrbovec 147', $branch->getStreet());
     }
 
     public function testBranchIdResolver()

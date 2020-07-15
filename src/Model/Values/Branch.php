@@ -160,14 +160,14 @@ class Branch
     private $openingFriday;
 
     /**
-     * @var string|null null
+     * @var string|null
      */
-    private $openingSaturday = null;
+    private $openingSaturday;
 
     /**
-     * @var string|null null
+     * @var string|null
      */
-    private $openingSunday = null;
+    private $openingSunday;
 
     /**
      * Branch constructor
@@ -578,6 +578,21 @@ class Branch
     {
         if ($shipper === Shipper::CP && $service === ServiceType::CP_NP) {
             $data['country'] = $data['country'] ?? 'CZ';
+        }
+
+        if (isset($data['street']) && (isset($data['house_number']) || isset($data['orientation_number']))) {
+            $houseNumber       = (int) ($data['house_number'] ?? 0);
+            $orientationNumber = (int) ($data['orientation_number'] ?? 0);
+            $streetNumber      = trim(
+                sprintf(
+                    '%s/%s',
+                    $houseNumber > 0 ? $houseNumber : '',
+                    $orientationNumber > 0 ? $orientationNumber : ''
+                ),
+                '/'
+            );
+
+            $data['street'] = trim(sprintf('%s %s', $data['street'] ?: ($data['city'] ?? ''), $streetNumber));
         }
 
         return new self(
