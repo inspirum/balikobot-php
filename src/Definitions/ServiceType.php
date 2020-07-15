@@ -1140,9 +1140,18 @@ final class ServiceType
     /**
      * RO - best delivery solution
      *
+     * @deprecated Will be removed in v4.0
+     *
      * @var string
      */
     public const ZASILKOVNA_RO_COUTIER = '4161';
+
+    /**
+     * RO - best delivery solution
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RO_COURIER = '4161';
 
     /**
      * Rumunsko DPD
@@ -2045,7 +2054,7 @@ final class ServiceType
             self::ZASILKOVNA_PL_INPOST,
             self::ZASILKOVNA_PT_HOME,
             self::ZASILKOVNA_RO_FAN,
-            self::ZASILKOVNA_RO_COUTIER,
+            self::ZASILKOVNA_RO_COURIER,
             self::ZASILKOVNA_RO_DPD,
             self::ZASILKOVNA_RO_CARGUS,
             self::ZASILKOVNA_RU_EMS,
