@@ -162,6 +162,7 @@ final class Request
      * List of activated services for production API keys
      *
      * @deprecated Will be removed in v4.0
+     * @see        \Inspirum\Balikobot\Definitions\Request::ACTIVATED_SERVICES
      *
      * @var string
      */

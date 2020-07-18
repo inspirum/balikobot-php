@@ -481,10 +481,58 @@ final class ServiceType
      *
      * @var string
      */
+    public const TOPTRANS_STANDARD = '1';
+
+    /**
+     * Toptime
+     *
+     * @var string
+     */
+    public const TOPTRANS_TOPTIME = '2';
+
+    /**
+     * Privat
+     *
+     * @var string
+     */
+    public const TOPTRANS_PRIVATE = '3';
+
+    /**
+     * Weekend
+     *
+     * @var string
+     */
+    public const TOPTRANS_WEEKEND = '4';
+
+    /**
+     * Osobní odběr
+     *
+     * @var string
+     */
+    public const TOPTRANS_PERSONAL = '5';
+
+    /**
+     * Po avizaci
+     *
+     * @var string
+     */
+    public const TOPTRANS_NOTICE = '6';
+
+    /**
+     * 24 hodin (Standard)
+     *
+     * @deprecated Will be removed in v4.0
+     * @see        \Inspirum\Balikobot\Definitions\ServiceType::TOPTRANS_STANDARD
+     *
+     * @var string
+     */
     public const TOP_TRANS_STANDARD = '1';
 
     /**
      * Toptime
+     *
+     * @deprecated Will be removed in v4.0
+     * @see        \Inspirum\Balikobot\Definitions\ServiceType::TOPTRANS_TOPTIME
      *
      * @var string
      */
@@ -493,12 +541,18 @@ final class ServiceType
     /**
      * Privat
      *
+     * @deprecated Will be removed in v4.0
+     * @see        \Inspirum\Balikobot\Definitions\ServiceType::TOPTRANS_PRIVATE
+     *
      * @var string
      */
     public const TOP_TRANS_PRIVATE = '3';
 
     /**
      * Weekend
+     *
+     * @deprecated Will be removed in v4.0
+     * @see        \Inspirum\Balikobot\Definitions\ServiceType::TOPTRANS_WEEKEND
      *
      * @var string
      */
@@ -507,12 +561,18 @@ final class ServiceType
     /**
      * Osobní odběr
      *
+     * @deprecated Will be removed in v4.0
+     * @see        \Inspirum\Balikobot\Definitions\ServiceType::TOPTRANS_PERSONAL
+     *
      * @var string
      */
     public const TOP_TRANS_PERSONAL = '5';
 
     /**
      * Po avizaci
+     *
+     * @deprecated Will be removed in v4.0
+     * @see        \Inspirum\Balikobot\Definitions\ServiceType::TOPTRANS_NOTICE
      *
      * @var string
      */
@@ -1141,6 +1201,7 @@ final class ServiceType
      * RO - best delivery solution
      *
      * @deprecated Will be removed in v4.0
+     * @see        \Inspirum\Balikobot\Definitions\ServiceType::ZASILKOVNA_RO_COURIER
      *
      * @var string
      */
@@ -1944,12 +2005,12 @@ final class ServiceType
     public static function topTrans(): array
     {
         return [
-            self::TOP_TRANS_STANDARD,
-            self::TOP_TRANS_TOPTIME,
-            self::TOP_TRANS_PRIVATE,
-            self::TOP_TRANS_WEEKEND,
-            self::TOP_TRANS_PERSONAL,
-            self::TOP_TRANS_NOTICE,
+            self::TOPTRANS_STANDARD,
+            self::TOPTRANS_TOPTIME,
+            self::TOPTRANS_PRIVATE,
+            self::TOPTRANS_WEEKEND,
+            self::TOPTRANS_PERSONAL,
+            self::TOPTRANS_NOTICE,
         ];
     }
 

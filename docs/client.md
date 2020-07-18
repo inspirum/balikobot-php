@@ -881,7 +881,7 @@ use Inspirum\Balikobot\Definitions\Shipper;
 
 $transportCosts = $client->getTransportCosts(Shipper::TOPTRANS, [
   [
-    Option::SERVICE_TYPE  => ServiceType::TOP_TRANS_STANDARD,
+    Option::SERVICE_TYPE  => ServiceType::TOPTRANS_STANDARD,
     Option::EID           => '12345678',
     Option::REAL_ORDER_ID => '180001',
     Option::ORDER_NUMBER  => 1,
