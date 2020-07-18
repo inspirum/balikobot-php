@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v3.2.2...master)
 
 
-## [v3.2.2 (2020-07-15)](https://github.com/inspirum/balikobot-php/compare/v3.2.1...v3.2.2)
+## [v3.2.2 (2020-07-18)](https://github.com/inspirum/balikobot-php/compare/v3.2.1...v3.2.2)
 ### Changed
 - Normalize service type constants, change **TOP_TRANS\_&ast;** to **TOPTRANS\_&ast;**
 ### Deprecated
