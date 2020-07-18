@@ -59,8 +59,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Added **full_age_minimum** attribute
 ### Changed
 - Normalized shipper constants, change **TOP_TRANS** to **TOPTRANS**
-### Deprecated
-- Deprecated **TOP_TRANS** shipper constant
 
 
 ## [v2.0.1 (2020-03-24)](https://github.com/inspirum/balikobot-php/compare/v2.0.0...v2.0.1)
