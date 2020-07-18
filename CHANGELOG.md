@@ -6,7 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v3.2.1...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v3.2.2...master)
+
+
+## [v3.2.2 (2020-07-15)](https://github.com/inspirum/balikobot-php/compare/v3.2.1...v3.2.2)
+### Changed
+- Normalize service type constants, change **TOP_TRANS\_&ast;** to **TOPTRANS\_&ast;**
+### Deprecated
+- Deprecated **TOP_TRANS\_&ast;** service type constants
 
 
 ## [v3.2.1 (2020-07-15)](https://github.com/inspirum/balikobot-php/compare/v3.2.0...v3.2.1)
@@ -52,6 +59,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Added **full_age_minimum** attribute
 ### Changed
 - Normalized shipper constants, change **TOP_TRANS** to **TOPTRANS**
+### Deprecated
+- Deprecated **TOP_TRANS** shipper constant
 
 
 ## [v2.0.1 (2020-03-24)](https://github.com/inspirum/balikobot-php/compare/v2.0.0...v2.0.1)
