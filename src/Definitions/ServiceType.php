@@ -819,473 +819,1071 @@ final class ServiceType
     public const ZASILKOVNA_VMRO = 'VMRO';
 
     /**
-     * Rakouská pošta
+     * AT Rakouská pošta HD
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_AT_POST = '80';
+    public const ZASILKOVNA_AT_POST = self::ZASILKOVNA_AT_POST_HD;
 
     /**
-     * BE Post
+     * AT Rakouská pošta HD
      *
      * @var string
      */
-    public const ZASILKOVNA_BE_POST = '4832';
+    public const ZASILKOVNA_AT_POST_HD = '80';
+
+    /**
+     * BE Nizozemská pošta HD
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BE_POST = self::ZASILKOVNA_BE_POST_HD;
+
+    /**
+     * BE Nizozemská pošta HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BE_POST_HD = '4832';
+
+    /**
+     * BG Econt HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BG_ECONT_HD = '6006';
+
+    /**
+     * BG Econt PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BG_ECONT_PP = '7377';
 
     /**
      * Bulharsko Speedy Office
      *
-     * @var string
-     */
-    public const ZASILKOVNA_BG_SPEEDY_OFFICE = '4017';
-
-    /**
-     * Bulharsko Speedy Home
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_BG_SPEEDY_HOME = '4015';
+    public const ZASILKOVNA_BG_SPEEDY_OFFICE = self::ZASILKOVNA_BG_SPEEDY_PP;
+
+    /**
+     * BG Speedy PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BG_SPEEDY_PP = '4017';
+
+    /**
+     * BG Speedy HD
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BG_SPEEDY_HOME = self::ZASILKOVNA_BG_SPEEDY_HD;
+
+    /**
+     * BG Speedy HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BG_SPEEDY_HD = '4015';
+
+    /**
+     * BG Econt Box
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BG_ECONT_BOX = '7378';
 
     /**
      * Česká pošta
      *
+     * @deprecated Will be removed in v4.0
+     *
      * @var string
      */
-    public const ZASILKOVNA_CZ_POST = '13';
+    public const ZASILKOVNA_CZ_POST = self::ZASILKOVNA_CZ_POST_HD;
 
     /**
+     * CZ Česká pošta HD
      *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_POST_HD = '13';
+
+    /**
+     * CZ - Nejvýhodnější doručení na adresu
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_COURIER = self::ZASILKOVNA_CZ_COURIER_HD;
+
+    /**
      * CZ - Nejvýhodnější doručení na adresu
      *
      * @var string
      */
-    public const ZASILKOVNA_CZ_COURIER = '106';
+    public const ZASILKOVNA_CZ_COURIER_HD = '106';
 
     /**
-     * Expresní doručení Ostrava
+     * Expresní doručení Praha
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_CZ_EXPRESS_OSTRAVA = '134';
-
-    /**
-     * Expresní doručení Brno
-     *
-     * @var string
-     */
-    public const ZASILKOVNA_CZ_EXPRESS_BRNO = '136';
-
-    /**
-     * Česká republika InTime
-     *
-     * @var string
-     */
-    public const ZASILKOVNA_CZ_INTIME = '153';
+    public const ZASILKOVNA_CZ_EXPRESS_PRAHA = self::ZASILKOVNA_CZ_EXPRESS_PRAHA_HD;
 
     /**
      * Expresní doručení Praha
      *
      * @var string
      */
-    public const ZASILKOVNA_CZ_EXPRESS_PRAHA = '257';
+    public const ZASILKOVNA_CZ_EXPRESS_PRAHA_HD = '257';
+
+    /**
+     * Expresní doručení Brno
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_EXPRESS_BRNO = self::ZASILKOVNA_CZ_EXPRESS_BRNO_HD;
+
+    /**
+     * Expresní doručení Brno
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_EXPRESS_BRNO_HD = '136';
+
+    /**
+     * Expresní doručení Ostrava
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_EXPRESS_OSTRAVA = self::ZASILKOVNA_CZ_EXPRESS_OSTRAVA_HD;
+
+    /**
+     * Expresní doručení Ostrava
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_EXPRESS_OSTRAVA_HD = '134';
+
+    /**
+     * Česká republika InTime
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CZ_INTIME = '153';
 
     /**
      * Česká republika DPD
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
     public const ZASILKOVNA_CZ_DPD = '633';
 
     /**
-     * Německá pošta
+     * DE Německá pošta DHL HD
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_DE_POST = '111';
+    public const ZASILKOVNA_DE_POST = self::ZASILKOVNA_DE_POST_HD;
+
+    /**
+     * DE Německá pošta DHL HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DE_POST_HD = '111';
 
     /**
      * Německo Hermes
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
     public const ZASILKOVNA_DE_HERMES = '3946';
 
     /**
+     * DE Hermes Pickup
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DE_HERMES_PICKUP = self::ZASILKOVNA_DE_HERMES_PP;
+
+    /**
+     * Německo Hermes PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DE_HERMES_PP = '6828';
+
+    /**
+     * DE Hermes Home
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DE_HERMES_HOME = self::ZASILKOVNA_DE_HERMES_HD;
+
+    /**
      * DE Hermes Home
      *
      * @var string
      */
-    public const ZASILKOVNA_DE_HERMES_HOME = '6373';
+    public const ZASILKOVNA_DE_HERMES_HD = '6373';
 
     /**
-     * DE Hermes Pickup
+     * DK Post Nord Home
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_DE_HERMES_PICKUP = '6828';
+    public const ZASILKOVNA_DK_HOME = self::ZASILKOVNA_DK_POST_NORD_HD;
 
     /**
      * DK Post Nord Home
      *
      * @var string
      */
-    public const ZASILKOVNA_DK_HOME = '4993';
+    public const ZASILKOVNA_DK_POST_NORD_HD = '4993';
 
     /**
-     * DK Post Nord pp
+     * DK Post Nord PP
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_DK_PICKUP = '4994';
+    public const ZASILKOVNA_DK_PICKUP = self::ZASILKOVNA_DK_POST_NORD_PP;
+
+    /**
+     * DK Post Nord PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DK_POST_NORD_PP = '4994';
+
+    /**
+     * EE Omniva Home
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_EE_HOME = self::ZASILKOVNA_EE_OMNIVA_BOX;
 
     /**
      * EE Omniva Home
      *
      * @var string
      */
-    public const ZASILKOVNA_EE_HOME = '5060';
+    public const ZASILKOVNA_EE_OMNIVA_HD = '5060';
+
+    /**
+     * EE Omniva pickup
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_EE_PICKUP = self::ZASILKOVNA_EE_OMNIVA_PP;
 
     /**
      * EE Omniva pickup
      *
      * @var string
      */
-    public const ZASILKOVNA_EE_PICKUP = '5061';
+    public const ZASILKOVNA_EE_OMNIVA_PP = '5061';
+
+    /**
+     * EE Omniva Box
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_EE_BOX = self::ZASILKOVNA_EE_OMNIVA_BOX;
 
     /**
      * EE Omniva Box
      *
      * @var string
      */
-    public const ZASILKOVNA_EE_BOX = '5062';
+    public const ZASILKOVNA_EE_OMNIVA_BOX = '5062';
+
+    /**
+     * Španělsko Correos
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_ES_CORREOS = self::ZASILKOVNA_ES_CORREOS_HD;
+
+    /**
+     * ES Correos HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_ES_CORREOS_HD = '4638';
+
+    /**
+     * ES MRW Home
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_ES_HOME = self::ZASILKOVNA_ES_MRW_HD;
 
     /**
      * ES MRW Home
      *
      * @var string
      */
-    public const ZASILKOVNA_ES_HOME = '4653';
+    public const ZASILKOVNA_ES_MRW_HD = '4653';
 
     /**
-     * Španělsko Correos
+     * FI Post Nord Home
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_ES_CORREOS = '4638';
+    public const ZASILKOVNA_FI_HOME = self::ZASILKOVNA_FI_POST_NORD_HP;
 
     /**
      * FI Post Nord Home
      *
      * @var string
      */
-    public const ZASILKOVNA_FI_HOME = '4830';
+    public const ZASILKOVNA_FI_POST_NORD_HP = '4830';
+
+    /**
+     * FI Post Nord Pickup Point
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_FI_PICKUP = self::ZASILKOVNA_FI_POST_NORD_PP;
 
     /**
      * FI Post Nord Pickup Point
      *
      * @var string
      */
-    public const ZASILKOVNA_FI_PICKUP = '4828';
+    public const ZASILKOVNA_FI_POST_NORD_PP = '4828';
+
+    /**
+     * FR Mondial PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_FR_MONDIAL_PP = '4876';
+
+    /**
+     * Francie Colissimo Home
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_FR_HOME = self::ZASILKOVNA_FR_COLISSIMO_HD;
 
     /**
      * Francie Colissimo Home
      *
      * @var string
      */
-    public const ZASILKOVNA_FR_HOME = '4309';
+    public const ZASILKOVNA_FR_COLISSIMO_HD = '4309';
 
     /**
-     * Spojené království Royal Mail 48
+     * Spojené království Hermes
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_GB_ROYAL_MAIL_48 = '4857';
+    public const ZASILKOVNA_GB_HERMES = self::ZASILKOVNA_GB_HERMES_HD;
 
     /**
      * Spojené království Hermes
      *
      * @var string
      */
-    public const ZASILKOVNA_GB_HERMES = '3885';
+    public const ZASILKOVNA_GB_HERMES_HD = '3885';
 
     /**
-     * Spojené království Royal Mail
+     * Spojené království Royal Mail 24
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_GB_ROYAL_MAIL = '1120';
+    public const ZASILKOVNA_GB_ROYAL_MAIL_24 = self::ZASILKOVNA_GB_ROYAL_MAIL_24_HD;
 
     /**
      * Spojené království Royal Mail 24
      *
      * @var string
      */
-    public const ZASILKOVNA_GB_ROYAL_MAIL_24 = '4856';
+    public const ZASILKOVNA_GB_ROYAL_MAIL_24_HD = '4856';
+
+    /**
+     * Spojené království Royal Mail 48
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GB_ROYAL_MAIL_48 = self::ZASILKOVNA_GB_ROYAL_MAIL_48_HD;
+
+    /**
+     * Spojené království Royal Mail 48
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GB_ROYAL_MAIL_48_HD = '4857';
+
+    /**
+     * Spojené království Royal Mail
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GB_ROYAL_MAIL = '1120';
+
+    /**
+     * GR ACS HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GR_ACS_HD = '7770';
+
+    /**
+     * GR ACS PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GR_ACS_PP = '7788';
+
+    /**
+     * Recko Speedy Home
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GR_HOME = self::ZASILKOVNA_GR_SPEEDY_HD;
 
     /**
      * Recko Speedy Home
      *
      * @var string
      */
-    public const ZASILKOVNA_GR_HOME = '4738';
+    public const ZASILKOVNA_GR_SPEEDY_HD = '4738';
 
     /**
-     * Chorvatská Pošta - Výdejní místo
+     * Chorvatsko DPD Home
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_HR_POST = '4635';
-
-    /**
-     * Chorvatská Pošta - doručení na adresu
-     *
-     * @var string
-     */
-    public const ZASILKOVNA_HR_ADDRESS = '4634';
+    public const ZASILKOVNA_HR_HDPD = self::ZASILKOVNA_HR_DPD_HD;
 
     /**
      * Chorvatsko DPD Home
      *
      * @var string
      */
-    public const ZASILKOVNA_HR_HDPD = '4646';
+    public const ZASILKOVNA_HR_DPD_HD = '4646';
 
     /**
-     * HU - best delivery solution
+     * Chorvatská Pošta - Výdejní místo
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_HU_COURIER = '4159';
+    public const ZASILKOVNA_HR_POST = self::ZASILKOVNA_HR_POST_PP;
+
+    /**
+     * Chorvatská Pošta - Výdejní místo
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HR_POST_PP = '4635';
+
+    /**
+     * Chorvatská Pošta - doručení na adresu
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HR_ADDRESS = self::ZASILKOVNA_HR_POST_HD;
+
+    /**
+     * Chorvatská Pošta - doručení na adresu
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HR_POST_HD = '4634';
+
+    /**
+     * Maďarsko Express One (Transoflex)
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HU_EXPRESS = self::ZASILKOVNA_HU_EXPRESS_ONE_HD;
 
     /**
      * Maďarsko Express One (Transoflex)
      *
      * @var string
      */
-    public const ZASILKOVNA_HU_EXPRESS = '151';
+    public const ZASILKOVNA_HU_EXPRESS_ONE_HD = '151';
+
+    /**
+     * Maďarsko DPD
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HU_DPD = self::ZASILKOVNA_HU_DPD_HD;
 
     /**
      * Maďarsko DPD
      *
      * @var string
      */
-    public const ZASILKOVNA_HU_DPD = '805';
+    public const ZASILKOVNA_HU_DPD_HD = '805';
+
+    /**
+     * HU - best delivery solution
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HU_COURIER = self::ZASILKOVNA_HU_COURIER_HD;
+
+    /**
+     * HU - best delivery solution
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HU_COURIER_HD = '4159';
+
+    /**
+     * Maďarská pošta
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HU_POST = self::ZASILKOVNA_HU_POST_HD;
 
     /**
      * Maďarská pošta
      *
      * @var string
      */
-    public const ZASILKOVNA_HU_POST = '763';
+    public const ZASILKOVNA_HU_POST_HD = '763';
+
+    /**
+     * Švýcarsko-Lichtenštejnská Pošta - prioritní
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CH_POST_PRIORITY = self::ZASILKOVNA_CH_POST_PRIORITY_HD;
 
     /**
      * Švýcarsko-Lichtenštejnská Pošta - prioritní
      *
      * @var string
      */
-    public const ZASILKOVNA_CH_POST_PRIORITY = '3870';
+    public const ZASILKOVNA_CH_POST_PRIORITY_HD = '3870';
+
+    /**
+     * Švýcarsko-Lichtejnštejnská Pošta
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_CH_POST = self::ZASILKOVNA_CH_POST_HD;
 
     /**
      * Švýcarsko-Lichtejnštejnská Pošta
      *
      * @var string
      */
-    public const ZASILKOVNA_CH_POST = '3294';
+    public const ZASILKOVNA_CH_POST_HD = '3294';
+
+    /**
+     * Irsko Hermes
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_IE_HERMES = self::ZASILKOVNA_IE_HERMES_HD;
 
     /**
      * Irsko Hermes
      *
      * @var string
      */
-    public const ZASILKOVNA_IE_HERMES = '4524';
+    public const ZASILKOVNA_IE_HERMES_HD = '4524';
+
+    /**
+     * Itálie GLS
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_IT_GLS = self::ZASILKOVNA_IT_GLS_HD;
 
     /**
      * Itálie GLS
      *
      * @var string
      */
-    public const ZASILKOVNA_IT_GLS = '2726';
+    public const ZASILKOVNA_IT_GLS_HD = '2726';
 
     /**
-     * LT Omniva Home
+     * LT Omniva Box
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_LT_HOME = '5065';
+    public const ZASILKOVNA_LT_BOX = self::ZASILKOVNA_LT_OMNIVA_BOX;
 
     /**
      * LT Omniva Box
      *
      * @var string
      */
-    public const ZASILKOVNA_LT_BOX = '5066';
+    public const ZASILKOVNA_LT_OMNIVA_BOX = '5066';
+
+    /**
+     * LT Omniva Home
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LT_HOME = self::ZASILKOVNA_LT_OMNIVA_HD;
+
+    /**
+     * LT Omniva Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LT_OMNIVA_HD = '5065';
+
+    /**
+     * LU DPD
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LU_DPD = self::ZASILKOVNA_LU_DPD_HD;
 
     /**
      * LU DPD
      *
      * @var string
      */
-    public const ZASILKOVNA_LU_DPD = '4834';
+    public const ZASILKOVNA_LU_DPD_HD = '4834';
+
+    /**
+     * LV Omniva Box
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LV_BOX = self::ZASILKOVNA_LV_OMNIVA_BOX;
 
     /**
      * LV Omniva Box
      *
      * @var string
      */
-    public const ZASILKOVNA_LV_BOX = '5064';
+    public const ZASILKOVNA_LV_OMNIVA_BOX = '5064';
+
+    /**
+     * LV Omniva Home
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LV_HOME = self::ZASILKOVNA_LV_OMNIVA_HD;
 
     /**
      * LV Omniva Home
      *
      * @var string
      */
-    public const ZASILKOVNA_LV_HOME = '5063';
+    public const ZASILKOVNA_LV_OMNIVA_HD = '5063';
+
+    /**
+     * NL Post
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_NL_POST = self::ZASILKOVNA_NL_POST_HD;
 
     /**
      * NL Post
      *
      * @var string
      */
-    public const ZASILKOVNA_NL_POST = '4329';
+    public const ZASILKOVNA_NL_POST_HD = '4329';
 
     /**
-     * Polsko Paczkomaty
+     * Polská pošta 24h
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_PL_PACZKOMATY = '3060';
-
-    /**
-     * Polsko DPD
-     *
-     * @var string
-     */
-    public const ZASILKOVNA_PL_DPD = '1406';
-
-    /**
-     * PL - best delivery solution
-     *
-     * @var string
-     */
-    public const ZASILKOVNA_PL_COURIER = '4162';
-
-    /**
-     * Polská pošta
-     *
-     * @var string
-     */
-    public const ZASILKOVNA_PL_POST = '272';
+    public const ZASILKOVNA_PL_POST_24 = self::ZASILKOVNA_PL_POST_24_HD;
 
     /**
      * Polská pošta 24h
      *
      * @var string
      */
-    public const ZASILKOVNA_PL_POST_24 = '1438';
+    public const ZASILKOVNA_PL_POST_24_HD = '1438';
+
+    /**
+     * Polská pošta
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_POST = self::ZASILKOVNA_PL_POST_48_HD;
+
+    /**
+     * Polská pošta
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_POST_48_HD = '272';
+
+    /**
+     * Polsko DPD
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_DPD = self::ZASILKOVNA_PL_DPD_HD;
+
+    /**
+     * Polsko DPD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_DPD_HD = '1406';
+
+    /**
+     * PL - best delivery solution
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_COURIER = self::ZASILKOVNA_PL_COURIER_HD;
+
+    /**
+     * PL - best delivery solution
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_COURIER_HD = '4162';
+
+    /**
+     * Polsko Paczkomaty
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_PACZKOMATY = self::ZASILKOVNA_PL_INPOST_PACZKOMATY_BOX;
+
+    /**
+     * Polsko Paczkomaty
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_INPOST_PACZKOMATY_BOX = '3060';
+
+    /**
+     * Polsko InPost
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PL_INPOST = self::ZASILKOVNA_PL_INPOST_HD;
 
     /**
      * Polsko InPost
      *
      * @var string
      */
-    public const ZASILKOVNA_PL_INPOST = '3603';
+    public const ZASILKOVNA_PL_INPOST_HD = '3603';
+
+    /**
+     * PT MRW Home
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PT_HOME = self::ZASILKOVNA_PT_MRW_HD;
 
     /**
      * PT MRW Home
      *
      * @var string
      */
-    public const ZASILKOVNA_PT_HOME = '4655';
-
-    /**
-     * Rumunsko FAN
-     *
-     * @var string
-     */
-    public const ZASILKOVNA_RO_FAN = '762';
+    public const ZASILKOVNA_PT_MRW_HD = '4655';
 
     /**
      * RO - best delivery solution
      *
      * @deprecated Will be removed in v4.0
-     * @see        \Inspirum\Balikobot\Definitions\ServiceType::ZASILKOVNA_RO_COURIER
      *
      * @var string
      */
-    public const ZASILKOVNA_RO_COUTIER = '4161';
+    public const ZASILKOVNA_RO_COUTIER = self::ZASILKOVNA_RO_COURIER_HD;
+
+    /**
+     * RO - best delivery solution
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RO_COURIER = self::ZASILKOVNA_RO_COURIER_HD;
 
     /**
      * RO - best delivery solution
      *
      * @var string
      */
-    public const ZASILKOVNA_RO_COURIER = '4161';
+    public const ZASILKOVNA_RO_COURIER_HD = '4161';
 
     /**
-     * Rumunsko DPD
+     * Rumunsko Cargus
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_RO_DPD = '836';
+    public const ZASILKOVNA_RO_CARGUS = self::ZASILKOVNA_RO_URGENT_CARGUS_HD;
 
     /**
      * Rumunsko Cargus
      *
      * @var string
      */
-    public const ZASILKOVNA_RO_CARGUS = '590';
+    public const ZASILKOVNA_RO_URGENT_CARGUS_HD = '590';
 
     /**
-     * RU Post EMS
+     * Rumunsko DPD
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_RU_EMS = '5101';
+    public const ZASILKOVNA_RO_DPD = self::ZASILKOVNA_RO_DPD_HD;
 
     /**
-     * RU Post Registered Packet
+     * Rumunsko DPD
      *
      * @var string
      */
-    public const ZASILKOVNA_RU_POST_PACKET = '5102';
+    public const ZASILKOVNA_RO_DPD_HD = '836';
+
+    /**
+     * Rumunsko FAN
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RO_FAN = self::ZASILKOVNA_RO_FAN_COURIER_HD;
+
+    /**
+     * Rumunsko FAN
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RO_FAN_COURIER_HD = '762';
+
+    /**
+     * Ruská pošta
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RU_POST = self::ZASILKOVNA_RU_POST_PP;
 
     /**
      * Ruská pošta
      *
      * @var string
      */
-    public const ZASILKOVNA_RU_POST = '4559';
+    public const ZASILKOVNA_RU_POST_PP = '4559';
 
     /**
-     * SE Post Nord Home
+     * RU Post Registered Packet
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_SE_HOME = '4827';
+    public const ZASILKOVNA_RU_POST_PACKET = self::ZASILKOVNA_RU_POST_RECOMMENDED_PP;
+
+    /**
+     * RU Post Registered Packet
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RU_POST_RECOMMENDED_PP = '5102';
+
+    /**
+     * RU Post EMS
+     *
+     * @deprecated Will be removed in v4.0
+     * @var string
+     */
+    public const ZASILKOVNA_RU_EMS = self::ZASILKOVNA_RU_EMS_HD;
+
+    /**
+     * RU Post EMS
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RU_EMS_HD = '5101';
+
+    /**
+     * SE Post Nord pp
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SE_PICKUP = self::ZASILKOVNA_SE_POST_NORD_PP;
 
     /**
      * SE Post Nord pp
      *
      * @var string
      */
-    public const ZASILKOVNA_SE_PICKUP = '4826';
+    public const ZASILKOVNA_SE_POST_NORD_PP = '4826';
 
     /**
-     * SI DPD Pickup
+     * SE Post Nord Home
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
-    public const ZASILKOVNA_SI_DPD_PICKUP = '4950';
+    public const ZASILKOVNA_SE_HOME = self::ZASILKOVNA_SE_POST_NORD_HD;
+
+    /**
+     * SE Post Nord Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SE_POST_NORD_HD = '4827';
+
+    /**
+     * SI DPD Home
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SI_DPD_HOME = self::ZASILKOVNA_SI_DPD_HD;
 
     /**
      * SI DPD Home
      *
      * @var string
      */
-    public const ZASILKOVNA_SI_DPD_HOME = '4949';
+    public const ZASILKOVNA_SI_DPD_HD = '4949';
+
+    /**
+     * SI DPD Pickup
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SI_DPD_PICKUP = self::ZASILKOVNA_SI_DPD_PP;
+
+    /**
+     * SI DPD Pickup
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SI_DPD_PP = '4950';
 
     /**
      * Slovensko GLS
+     *
+     * @deprecated Will be removed in v4.0
      *
      * @var string
      */
@@ -1294,37 +1892,82 @@ final class ServiceType
     /**
      * Expresné doručenie Bratislava
      *
+     * @deprecated Will be removed in v4.0
+     *
      * @var string
      */
-    public const ZASILKOVNA_SK_EXPRESS_BRATISLAVA = '132';
+    public const ZASILKOVNA_SK_EXPRESS_BRATISLAVA = self::ZASILKOVNA_SK_EXPRESS_BRATISLAVA_HD;
+
+    /**
+     * Expresné doručenie Bratislava
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SK_EXPRESS_BRATISLAVA_HD = '132';
+
+    /**
+     * SK - Best delivery solution
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SK_COURIER = self::ZASILKOVNA_SK_COURIER_HD;
 
     /**
      * SK - Best delivery solution
      *
      * @var string
      */
-    public const ZASILKOVNA_SK_COURIER = '131';
+    public const ZASILKOVNA_SK_COURIER_HD = '131';
+
+    /**
+     * Slovenská pošta
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SK_POST = self::ZASILKOVNA_SK_POST_HD;
 
     /**
      * Slovenská pošta
      *
      * @var string
      */
-    public const ZASILKOVNA_SK_POST = '16';
+    public const ZASILKOVNA_SK_POST_HD = '16';
+
+    /**
+     * Ukrajina Nova Poshta
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_UK_POST = self::ZASILKOVNA_UA_NOVA_POSHTA_PP;
 
     /**
      * Ukrajina Nova Poshta
      *
      * @var string
      */
-    public const ZASILKOVNA_UK_POST = '3616';
+    public const ZASILKOVNA_UA_NOVA_POSHTA_PP = '3616';
+
+    /**
+     * Ukrajina Rosan
+     *
+     * @deprecated Will be removed in v4.0
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_UK_ROSAN = self::ZASILKOVNA_UA_ROSAN_HD;
 
     /**
      * Ukrajina Rosan
      *
      * @var string
      */
-    public const ZASILKOVNA_UK_ROSAN = '1160';
+    public const ZASILKOVNA_UA_ROSAN_HD = '1160';
 
     /**
      * DHL
@@ -2084,77 +2727,78 @@ final class ServiceType
             self::ZASILKOVNA_VMHU,
             self::ZASILKOVNA_VMPL,
             self::ZASILKOVNA_VMRO,
-            self::ZASILKOVNA_AT_POST,
-            self::ZASILKOVNA_BE_POST,
-            self::ZASILKOVNA_BG_SPEEDY_OFFICE,
-            self::ZASILKOVNA_BG_SPEEDY_HOME,
-            self::ZASILKOVNA_CZ_POST,
-            self::ZASILKOVNA_CZ_COURIER,
-            self::ZASILKOVNA_CZ_EXPRESS_OSTRAVA,
-            self::ZASILKOVNA_CZ_EXPRESS_BRNO,
-            // self::ZASILKOVNA_CZ_INTIME,
-            self::ZASILKOVNA_CZ_EXPRESS_PRAHA,
-            // self::ZASILKOVNA_CZ_DPD,
-            self::ZASILKOVNA_DE_POST,
-            self::ZASILKOVNA_DE_HERMES_PICKUP,
-            // self::ZASILKOVNA_DE_HERMES,
-            self::ZASILKOVNA_DE_HERMES_HOME,
-            self::ZASILKOVNA_DK_HOME,
-            self::ZASILKOVNA_DK_PICKUP,
-            self::ZASILKOVNA_EE_HOME,
-            self::ZASILKOVNA_EE_PICKUP,
-            self::ZASILKOVNA_EE_BOX,
-            self::ZASILKOVNA_ES_HOME,
-            self::ZASILKOVNA_ES_CORREOS,
-            self::ZASILKOVNA_FI_HOME,
-            self::ZASILKOVNA_FI_PICKUP,
-            self::ZASILKOVNA_FR_HOME,
-            self::ZASILKOVNA_GB_ROYAL_MAIL_48,
-            self::ZASILKOVNA_GB_HERMES,
-            // self::ZASILKOVNA_GB_ROYAL_MAIL,
-            self::ZASILKOVNA_GB_ROYAL_MAIL_24,
-            self::ZASILKOVNA_GR_HOME,
-            self::ZASILKOVNA_HR_POST,
-            self::ZASILKOVNA_HR_ADDRESS,
-            self::ZASILKOVNA_HR_HDPD,
-            self::ZASILKOVNA_HU_COURIER,
-            self::ZASILKOVNA_HU_EXPRESS,
-            self::ZASILKOVNA_HU_DPD,
-            self::ZASILKOVNA_HU_POST,
-            self::ZASILKOVNA_CH_POST_PRIORITY,
-            self::ZASILKOVNA_CH_POST,
-            self::ZASILKOVNA_IE_HERMES,
-            self::ZASILKOVNA_IT_GLS,
-            self::ZASILKOVNA_LT_HOME,
-            self::ZASILKOVNA_LT_BOX,
-            self::ZASILKOVNA_LU_DPD,
-            self::ZASILKOVNA_LV_BOX,
-            self::ZASILKOVNA_LV_HOME,
-            self::ZASILKOVNA_NL_POST,
-            self::ZASILKOVNA_PL_PACZKOMATY,
-            self::ZASILKOVNA_PL_DPD,
-            self::ZASILKOVNA_PL_COURIER,
-            self::ZASILKOVNA_PL_POST,
-            self::ZASILKOVNA_PL_POST_24,
-            self::ZASILKOVNA_PL_INPOST,
-            self::ZASILKOVNA_PT_HOME,
-            self::ZASILKOVNA_RO_FAN,
-            self::ZASILKOVNA_RO_COURIER,
-            self::ZASILKOVNA_RO_DPD,
-            self::ZASILKOVNA_RO_CARGUS,
-            self::ZASILKOVNA_RU_EMS,
-            self::ZASILKOVNA_RU_POST_PACKET,
-            self::ZASILKOVNA_RU_POST,
-            self::ZASILKOVNA_SE_HOME,
-            self::ZASILKOVNA_SE_PICKUP,
-            self::ZASILKOVNA_SI_DPD_PICKUP,
-            self::ZASILKOVNA_SI_DPD_HOME,
-            // self::ZASILKOVNA_SK_GLS,
-            self::ZASILKOVNA_SK_EXPRESS_BRATISLAVA,
-            self::ZASILKOVNA_SK_COURIER,
-            self::ZASILKOVNA_SK_POST,
-            self::ZASILKOVNA_UK_POST,
-            self::ZASILKOVNA_UK_ROSAN,
+            self::ZASILKOVNA_AT_POST_HD,
+            self::ZASILKOVNA_BE_POST_HD,
+            self::ZASILKOVNA_BG_ECONT_HD,
+            self::ZASILKOVNA_BG_ECONT_PP,
+            self::ZASILKOVNA_BG_SPEEDY_PP,
+            self::ZASILKOVNA_BG_SPEEDY_HD,
+            self::ZASILKOVNA_BG_ECONT_BOX,
+            self::ZASILKOVNA_CZ_POST_HD,
+            self::ZASILKOVNA_CZ_EXPRESS_PRAHA_HD,
+            self::ZASILKOVNA_CZ_EXPRESS_BRNO_HD,
+            self::ZASILKOVNA_CZ_EXPRESS_OSTRAVA_HD,
+            self::ZASILKOVNA_CZ_COURIER_HD,
+            self::ZASILKOVNA_DE_POST_HD,
+            self::ZASILKOVNA_DE_HERMES_PP,
+            self::ZASILKOVNA_DE_HERMES_HD,
+            self::ZASILKOVNA_DK_POST_NORD_HD,
+            self::ZASILKOVNA_DK_POST_NORD_PP,
+            self::ZASILKOVNA_EE_OMNIVA_HD,
+            self::ZASILKOVNA_EE_OMNIVA_PP,
+            self::ZASILKOVNA_EE_OMNIVA_BOX,
+            self::ZASILKOVNA_ES_CORREOS_HD,
+            self::ZASILKOVNA_ES_MRW_HD,
+            self::ZASILKOVNA_FI_POST_NORD_HP,
+            self::ZASILKOVNA_FI_POST_NORD_PP,
+            self::ZASILKOVNA_FR_MONDIAL_PP,
+            self::ZASILKOVNA_FR_COLISSIMO_HD,
+            self::ZASILKOVNA_GB_HERMES_HD,
+            self::ZASILKOVNA_GB_ROYAL_MAIL_24_HD,
+            self::ZASILKOVNA_GB_ROYAL_MAIL_48_HD,
+            self::ZASILKOVNA_GR_ACS_HD,
+            self::ZASILKOVNA_GR_ACS_PP,
+            self::ZASILKOVNA_GR_SPEEDY_HD,
+            self::ZASILKOVNA_HR_DPD_HD,
+            self::ZASILKOVNA_HR_POST_PP,
+            self::ZASILKOVNA_HR_POST_HD,
+            self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
+            self::ZASILKOVNA_HU_DPD_HD,
+            self::ZASILKOVNA_HU_COURIER_HD,
+            self::ZASILKOVNA_HU_POST_HD,
+            self::ZASILKOVNA_CH_POST_PRIORITY_HD,
+            self::ZASILKOVNA_CH_POST_HD,
+            self::ZASILKOVNA_IE_HERMES_HD,
+            self::ZASILKOVNA_IT_GLS_HD,
+            self::ZASILKOVNA_LT_OMNIVA_BOX,
+            self::ZASILKOVNA_LT_OMNIVA_HD,
+            self::ZASILKOVNA_LU_DPD_HD,
+            self::ZASILKOVNA_LV_OMNIVA_BOX,
+            self::ZASILKOVNA_LV_OMNIVA_HD,
+            self::ZASILKOVNA_NL_POST_HD,
+            self::ZASILKOVNA_PL_POST_24_HD,
+            self::ZASILKOVNA_PL_POST_48_HD,
+            self::ZASILKOVNA_PL_DPD_HD,
+            self::ZASILKOVNA_PL_COURIER_HD,
+            self::ZASILKOVNA_PL_INPOST_PACZKOMATY_BOX,
+            self::ZASILKOVNA_PL_INPOST_HD,
+            self::ZASILKOVNA_PT_MRW_HD,
+            self::ZASILKOVNA_RO_COURIER_HD,
+            self::ZASILKOVNA_RO_URGENT_CARGUS_HD,
+            self::ZASILKOVNA_RO_DPD_HD,
+            self::ZASILKOVNA_RO_FAN_COURIER_HD,
+            self::ZASILKOVNA_RU_POST_PP,
+            self::ZASILKOVNA_RU_POST_RECOMMENDED_PP,
+            self::ZASILKOVNA_RU_EMS_HD,
+            self::ZASILKOVNA_SE_POST_NORD_PP,
+            self::ZASILKOVNA_SE_POST_NORD_HD,
+            self::ZASILKOVNA_SI_DPD_HD,
+            self::ZASILKOVNA_SI_DPD_PP,
+            self::ZASILKOVNA_SK_EXPRESS_BRATISLAVA_HD,
+            self::ZASILKOVNA_SK_COURIER_HD,
+            self::ZASILKOVNA_SK_POST_HD,
+            self::ZASILKOVNA_UA_NOVA_POSHTA_PP,
+            self::ZASILKOVNA_UA_ROSAN_HD,
         ];
     }
 

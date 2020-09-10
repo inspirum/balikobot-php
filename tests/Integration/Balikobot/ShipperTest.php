@@ -41,19 +41,20 @@ class ShipperTest extends AbstractBalikobotTestCase
     {
         $service = $this->newBalikobot();
 
-        $shippers = Shipper::all();
-        $services = [];
-
-        foreach ($shippers as $shipper) {
-            $services[$shipper] = array_map('strval', array_keys($service->getServices($shipper)));
-        }
-
         $supportedServices = ServiceType::all();
-
         $supportedServices = array_map(function ($data) {
             return array_filter($data);
         }, $supportedServices);
 
-        $this->assertEqualsCanonicalizing($supportedServices, $services);
+        $shippers = Shipper::all();
+        foreach ($shippers as $shipper) {
+            $services = array_map('strval', array_keys($service->getServices($shipper)));
+
+            $this->assertEqualsCanonicalizing(
+                $supportedServices[$shipper],
+                $services,
+                sprintf('Shipper services are not equal for shipper "%s".', $shipper)
+            );
+        }
     }
 }
