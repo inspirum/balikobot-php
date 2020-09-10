@@ -6,7 +6,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v3.2.2...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v3.3.0...master)
+
+
+## [v3.3.0 (2020-09-10)](https://github.com/inspirum/balikobot-php/compare/v3.2.2...v3.3.0)
+### Added
+- Added support for new options from documentation **v1.889** (2020-07-22)
+    - Add **CP_OLZ** service type
+- Added support for new options from documentation **v1.890** (2020-08-26)
+    - Add **PBH_ACS** service type
+    - Add **PBH_CORREOS** service type
+- Added multiple **ZASILKOVNA\_&ast;** service types
+### Changed
+- Normalize service type constants, change to **ZASILKOVNA\_&ast;\_HD**, **ZASILKOVNA\_&ast;\_PP**, **ZASILKOVNA\_&ast;\_BOX**
+### Deprecated
+- Deprecated multiple **ZASILKOVNA\_&ast;** service type constants
 
 
 ## [v3.2.2 (2020-07-18)](https://github.com/inspirum/balikobot-php/compare/v3.2.1...v3.2.2)

@@ -108,7 +108,7 @@ or add requirement to your `composer.json`
 
 ## Version
 
-Support all options for Balikobot API described in the [documentation][link-api] (**v1.888**, 2020-07-14).
+Support all options for Balikobot API described in the [documentation][link-api] (**v1.890**, 2020-08-26).
 
 
 ## Usage
