@@ -173,6 +173,13 @@ final class ServiceType
     public const CP_CE = 'CE';
 
     /**
+     * Obyčejná listovní zásilka mezinárodní
+     *
+     * @var string
+     */
+    public const CP_OLZ = 'OLZ';
+
+    /**
      * PPL Parcel Business CZ
      *
      * @var string
@@ -1846,6 +1853,7 @@ final class ServiceType
             self::CP_CVP,
             self::CP_CVE,
             self::CP_CE,
+            self::CP_OLZ,
         ];
     }
 
