@@ -1467,6 +1467,20 @@ final class ServiceType
     public const PBH_ECONT = '21';
 
     /**
+     * ACS
+     *
+     * @var string
+     */
+    public const PBH_ACS = '22';
+
+    /**
+     * Correos
+     *
+     * @var string
+     */
+    public const PBH_CORREOS = '23';
+
+    /**
      * Worlwide zásilky
      *
      * @var string
@@ -1948,6 +1962,8 @@ final class ServiceType
             self::PBH_MEEST,
             self::PBH_NOBA_POSHTA,
             self::PBH_ECONT,
+            self::PBH_ACS,
+            self::PBH_CORREOS,
         ];
     }
 
