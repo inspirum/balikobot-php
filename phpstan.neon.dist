@@ -3,5 +3,5 @@ includes:
 parameters:
 	ignoreErrors:
 		-
-			message: '#Parameter \#2 $packageIds of static method Inspirum\Balikobot\Model\Values\OrderedShipment::newInstanceFromData() expects array<int>, array|int|string given#'
+			message: '#Parameter \#2 \$packageIds of static method Inspirum\\Balikobot\\Model\\Values\\OrderedShipment::newInstanceFromData\(\) expects array<int>, array\|int\|string given#'
 			path: %currentWorkingDirectory%/src/Services/Balikobot.php
