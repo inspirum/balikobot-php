@@ -170,7 +170,7 @@ class Requester implements RequesterInterface
      */
     private function validateStatus(int $statusCode, array $response = []): void
     {
-        // unauthorize
+        // unauthorized
         if ($statusCode === 401 || $statusCode === 403) {
             throw new UnauthorizedException(null, $statusCode);
         }
