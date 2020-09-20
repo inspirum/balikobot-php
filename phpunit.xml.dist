@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+         backupGlobals="false"
          backupStaticAttributes="false"
          colors="true"
          verbose="true"
@@ -8,6 +10,19 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false">
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+        <exclude>
+            <directory suffix="Interface.php">src/</directory>
+            <directory suffix=".php">src/Definitions</directory>
+        </exclude>
+        <report>
+            <clover outputFile="build/logs/clover.xml"/>
+            <text outputFile="build/coverage.txt"/>
+        </report>
+    </coverage>
     <testsuites>
         <testsuite name="Integration">
             <directory suffix="Test.php">./tests/Integration/</directory>
@@ -16,24 +31,12 @@
             <directory suffix="Test.php">./tests/Unit/</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
-            <exclude>
-                <directory suffix="Interface.php">src/</directory>
-                <directory suffix=".php">src/Definitions</directory>
-            </exclude>
-        </whitelist>
-    </filter>
     <php>
         <ini name="display_errors" value="true"/>
         <env name="BALIKOBOT_API_USER" value="balikobot_test2cztest"/>
         <env name="BALIKOBOT_API_KEY" value="#lS1tBVo"/>
     </php>
     <logging>
-        <log type="tap" target="build/report.tap"/>
-        <log type="junit" target="build/report.junit.xml"/>
-        <log type="coverage-text" target="build/coverage.txt"/>
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <junit outputFile="build/report.junit.xml"/>
     </logging>
 </phpunit>
