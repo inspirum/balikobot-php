@@ -40,7 +40,7 @@ class Country
     private $currencyCode;
 
     /**
-     * Country constructor.
+     * Country constructor
      *
      * @param array<string,string> $names
      * @param string               $code

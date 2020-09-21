@@ -26,7 +26,7 @@ class PackageTransportCostPart
     private $currencyCode;
 
     /**
-     * PackageTransportCost constructor.
+     * PackageTransportCost constructor
      *
      * @param string $name
      * @param float  $cost

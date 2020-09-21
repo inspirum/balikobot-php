@@ -40,7 +40,7 @@ class PackageTransportCost
     private $costsBreakdown;
 
     /**
-     * PackageTransportCost constructor.
+     * PackageTransportCost constructor
      *
      * @param string                                                           $batchId
      * @param string                                                           $shipper

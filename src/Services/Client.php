@@ -686,15 +686,15 @@ class Client
 
         $this->validateIndexes($response, $carrierIds);
 
-        $formatedLinks = [];
+        $formattedLinks = [];
 
         foreach ($response as $responseItem) {
             $this->validateStatus($responseItem, $response);
 
-            $formatedLinks[] = $responseItem['file_url'];
+            $formattedLinks[] = $responseItem['file_url'];
         }
 
-        return $formatedLinks;
+        return $formattedLinks;
     }
 
     /**
