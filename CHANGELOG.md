@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v3.3.0...master)
+### Added
+- Added support for new options from documentation **v1.892** (2020-09-14)
+    - Added **GETCOUNTRIESDATA** request
 
 
 ## [v3.3.0 (2020-09-10)](https://github.com/inspirum/balikobot-php/compare/v3.2.2...v3.3.0)

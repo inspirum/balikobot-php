@@ -218,78 +218,89 @@ foreach($shippers as $shipper) {
 
 ## All available methods
 
-```
-getShippers(): array
+```php
+use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
+use Inspirum\Balikobot\Model\Aggregates\PackageCollection;
+use Inspirum\Balikobot\Model\Aggregates\PackageTransportCostCollection;
+use Inspirum\Balikobot\Model\Values\OrderedPackage;
+use Inspirum\Balikobot\Model\Values\OrderedShipment;
+use Inspirum\Balikobot\Model\Values\Package;
+use Inspirum\Balikobot\Model\Values\PackageStatus;
 
-addPackages(PackageCollection $packages): OrderedPackageCollection
+interface Balikobot {
 
-dropPackages(OrderedPackageCollection $packages): void
+  function getShippers(): array;
 
-dropPackage(OrderedPackage $package): void
+  function addPackages(PackageCollection $packages): OrderedPackageCollection;
 
-orderShipment(OrderedPackageCollection $packages): OrderedShipment
+  function dropPackages(OrderedPackageCollection $packages): void;
 
-trackPackage(OrderedPackage $package): array
+  function dropPackage(OrderedPackage $package): void;
 
-trackPackages(OrderedPackageCollection $packages): array
+  function orderShipment(OrderedPackageCollection $packages): OrderedShipment;
 
-trackPackageLastStatus(OrderedPackage $package): PackageStatus
+  function trackPackage(OrderedPackage $package): array;
 
-trackPackagesLastStatus(OrderedPackageCollection $packages): array
+  function trackPackages(OrderedPackageCollection $packages): array;
 
-getOverview(string $shipper): OrderedPackageCollection
+  function trackPackageLastStatus(OrderedPackage $package): PackageStatus;
 
-getLabels(OrderedPackageCollection $packages): string
+  function trackPackagesLastStatus(OrderedPackageCollection $packages): array;
 
-getPackageInfo(OrderedPackage $package): Package
+  function getOverview(string $shipper): OrderedPackageCollection;
 
-getOrder(string $shipper, int $orderId): OrderedShipment
+  function getLabels(OrderedPackageCollection $packages): string;
 
-getServices(string $shipper, string $country = null): array
+  function getPackageInfo(OrderedPackage $package): Package;
 
-getManipulationUnits(string $shipper): array
+  function getOrder(string $shipper, int $orderId): OrderedShipment;
 
-getActivatedManipulationUnits(string $shipper): array
+  function getServices(string $shipper, string $country = null): array;
 
-getBranches(): iterable
+  function getManipulationUnits(string $shipper): array;
 
-getBranchesForCountries(array $countries): iterable
+  function getActivatedManipulationUnits(string $shipper): array;
 
-getBranchesForShipper(string $shipper): iterable
+  function getBranches(): iterable;
 
-getBranchesForShipperForCountries(string $shipper, array $countries): iterable
+  function getBranchesForCountries(array $countries): iterable;
 
-getBranchesForShipperService(string $shipper, ?string $service, string $country = null): iterable
+  function getBranchesForShipper(string $shipper): iterable;
 
-getBranchesForShipperServiceForCountry(string $shipper, ?string $service, ?string $country): iterable
+  function getBranchesForShipperForCountries(string $shipper, array $countries): iterable;
 
-getBranchesForShipperServiceForCountries(string $shipper, ?string $service, array $countries): iterable
+  function getBranchesForShipperService(string $shipper, ?string $service, string $country = null): iterable;
 
-getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): iterable
+  function getBranchesForShipperServiceForCountry(string $shipper, ?string $service, ?string $country): iterable;
 
-getCodCountries(string $shipper): array
+  function getBranchesForShipperServiceForCountries(string $shipper, ?string $service, array $countries): iterable;
 
-getCountries(string $shipper): array
+  function getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): iterable;
 
-getPostCodes(string $shipper, string $service, string $country = null): iterable
+  function getCodCountries(string $shipper): array;
 
-checkPackages(PackageCollection $packages): void
+  function getCountries(string $shipper): array;
 
-getAdrUnits(string $shipper): array
+  function getPostCodes(string $shipper, string $service, string $country = null): iterable;
 
-getActivatedServices(string $shipper): array
+  function checkPackages(PackageCollection $packages): void;
 
-orderB2AShipment(PackageCollection $packages): OrderedPackageCollection
+  function getAdrUnits(string $shipper): array;
 
-getB2AServices(string $shipper): array
+  function getActivatedServices(string $shipper): array;
 
-getProofOfDelivery(OrderedPackage $package): string
+  function orderB2AShipment(PackageCollection $packages): OrderedPackageCollection;
 
-getProofOfDeliveries(OrderedPackageCollection $packages): array
+  function getB2AServices(string $shipper): array;
 
-getTransportCosts(PackageCollection $packages): PackageTransportCostCollection
+  function getProofOfDelivery(OrderedPackage $package): string;
 
-getCountriesData(): array
+  function getProofOfDeliveries(OrderedPackageCollection $packages): array;
+
+  function getTransportCosts(PackageCollection $packages): PackageTransportCostCollection;
+
+  function getCountriesData(): array;
+}
 ```
 
 

@@ -86,6 +86,8 @@ var_dump($data);
 */
 ```
 
+See more available methods documentation in [Usage](#usage) section.
+
 
 ## System requirements
 
@@ -108,7 +110,7 @@ or add requirement to your `composer.json`
 
 ## Version
 
-Support all options for Balikobot API described in the [documentation][link-api] (**v1.890**, 2020-08-26).
+Support all options (more in [changelog][link-changelog]) for Balikobot API described in the official [documentation][link-api] (**v1.890**, 2020-08-26).
 
 
 ## Usage
@@ -186,7 +188,7 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 [link-travis]:              https://travis-ci.org/inspirum/balikobot-php
 [link-scrutinizer]:         https://scrutinizer-ci.com/g/inspirum/balikobot-php/code-structure
 [link-code-quality]:        https://scrutinizer-ci.com/g/inspirum/balikobot-php
-[link-api]:                 https://www.balikobot.cz/dokumentace/Balikobot-dokumentace-API.pdf
+[link-api]:                 https://balikobot.docs.apiary.io/#introduction/prehled-zmen
 [link-inspishop]:           https://www.inspishop.cz/
 [link-inspirum]:            https://www.inspirum.cz/
 [link-packagist-stable]:    https://packagist.org/packages/inspirum/balikobot

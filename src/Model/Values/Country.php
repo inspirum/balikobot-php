@@ -42,11 +42,11 @@ class Country
     /**
      * Country constructor.
      *
-     * @param array  $names
-     * @param string $code
-     * @param string $currencyCode
-     * @param float  $phonePrefix
-     * @param string $continent
+     * @param array<string,string> $names
+     * @param string               $code
+     * @param string               $currencyCode
+     * @param float                $phonePrefix
+     * @param string               $continent
      */
     public function __construct(
         array $names,
@@ -113,7 +113,7 @@ class Country
     }
 
     /**
-     * @param array $data
+     * @param array<string,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Values\Country
      */

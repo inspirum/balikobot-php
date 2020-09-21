@@ -402,7 +402,7 @@ var_dump($services);
 
 Method **getManipulationUnits** returns a list of possible manipulation units for pallet transport.
 
-The client normalizes the response by returning unit ID and value from as associative array `[id => value]`.
+The client normalizes the response by returning unit code and value from as associative array `[id => value]`.
 
 This units are used as **mu_type** option in [**ADD**](#add) request.
 
@@ -420,6 +420,32 @@ var_dump($units);
   'EPAL'   => 'EPAL'
   'SKLPAL' => 'SKLPAL'
   'OBALKA' => 'OBALKA'
+  'PYTEL'  => 'PYTEL'
+  ...
+]
+*/
+```
+
+
+### **ACTIVATEDMANIPULATIONUNITS**
+
+Method **getActivatedManipulationUnits** returns a list of activated manipulation units for pallet transport.
+
+The client normalizes the response by returning unit code and value from as associative array `[id => value]`.
+
+This units are used as **mu_type** option in [**ADD**](#add) request.
+
+```php
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$units = $client->getActivatedManipulationUnits(Shipper::TOPTRANS);
+
+/*
+var_dump($units);
+[
+  'KARTON' => 'KARTON'
+  'PALETA' => 'PALETA'
+  'SKLPAL' => 'SKLPAL'
   'PYTEL'  => 'PYTEL'
   ...
 ]
@@ -810,7 +836,7 @@ var_dump($services);
 
 ### **B2A**
 
-Method **B2A** order shipments from place **B** (typically supplier / previous consignee) to place **A** (shipping point)
+Method **orderB2AShipment** order shipments from place **B** (typically supplier / previous consignee) to place **A** (shipping point)
 
 The client normalizes the response by removing the status code (drop **status** attribute).
 
@@ -847,7 +873,7 @@ var_dump($orderedPackages);
 
 ### **POD**
 
-Method **POD** returns PDF links with signed consignment delivery document by the recipient.
+Method **getProofOfDeliveries** returns PDF links with signed consignment delivery document by the recipient.
 
 The client normalizes the response by returning only **file_url** attribute as plain array.
 
@@ -869,7 +895,7 @@ var_dump($fileUrls);
 
 ### **TRANSPORTCOSTS**
 
-Method **TRANSPORTCOSTS** obtain the price of carriage at consignment level.
+Method **getTransportCosts** obtain the price of carriage at consignment level.
 
 The client normalizes the response by returning only transport cost data (drop **status** attribute).
 
@@ -913,68 +939,106 @@ var_dump($transportCosts);
 ```
 
 
+### **GETCOUNTRIESDATA**
+
+Method **getCountriesData** obtain information on individual countries of the world.
+
+The client normalizes the response by returning only countries data (drop **status** attribute).
+
+
+```php
+$countries = $client->getCountriesData();
+
+/*
+var_dump($countries);
+[
+  [
+    'name_en'      => 'Andorra',
+    'name_cz'      => 'Andorra',
+    'iso_code'     => 'AD',
+    'phone_prefix' => '+376',
+    'currency'     => 'EUR',
+    'continent'    => 'Europe',
+  ],
+  [
+    'name_en'      => 'United Arab Emirates',
+    'name_cz'      => 'Spojené arabské emiráty',
+    'iso_code'     => 'AE',
+    'phone_prefix' => '+971',
+    'currency'     => 'AED',
+    'continent'    => 'Asia',
+  ],
+  ...
+]
+*/
+```
+
+
 ## All available methods
 
-```
-addPackages(string $shipper, array $packages, string $version = null, &$labelsUrl = null): array
+```php
+interface Client {
 
-dropPackage(string $shipper, int $packageId): void
-
-dropPackages(string $shipper, array $packageIds): void
-
-trackPackage(string $shipper, string $carrierId): array
-
-trackPackages(string $shipper, array $carrierIds): array
-
-trackPackageLastStatus(string $shipper, string $carrierId): array
-
-trackPackagesLastStatus(string $shipper, array $carrierIds): array
-
-getOverview(string $shipper): array
-
-getLabels(string $shipper, array $packageIds): string
-
-getPackageInfo(string $shipper, int $packageId): array
-
-orderShipment(string $shipper, array $packageIds): array
-
-getOrder(string $shipper, int $orderId): array
-
-orderPickup(string $shipper, DateTime $dateFrom, DateTime $dateTo, float $weight, int $packageCount, string $message = null): void
-
-getServices(string $shipper, string $country = null, string $version = null): array
-
-getManipulationUnits(string $shipper): array
-
-getActivatedManipulationUnits(string $shipper): array
-
-getBranches( string $shipper, ?string $service, bool $fullBranchRequest = false, string $country = null, string $version = null): array
-
-getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): array
-
-getCodCountries(string $shipper): array
-
-getCountries(string $shipper): array
-
-getPostCodes(string $shipper, string $service, string $country = null): array
-
-checkPackages(string $shipper, array $packages): void
-
-getAdrUnits(string $shipper): array
-
-getActivatedServices(string $shipper): array
-
-orderB2AShipment(string $shipper, array $packages): array
-
-getB2AServices(string $shipper): array
-
-getProofOfDelivery(string $shipper, string $carrierId): string
-
-getProofOfDeliveries(string $shipper, array $carrierIds): array
-
-getTransportCosts(string $shipper, array $packages): array
-
-getCountriesData(): array
+  function addPackages(string $shipper, array $packages, string $version = null, &$labelsUrl = null): array;
+    
+  function dropPackage(string $shipper, int $packageId): void;
+    
+  function dropPackages(string $shipper, array $packageIds): void;
+    
+  function trackPackage(string $shipper, string $carrierId): array;
+    
+  function trackPackages(string $shipper, array $carrierIds): array;
+    
+  function trackPackageLastStatus(string $shipper, string $carrierId): array;
+    
+  function trackPackagesLastStatus(string $shipper, array $carrierIds): array;
+    
+  function getOverview(string $shipper): array;
+    
+  function getLabels(string $shipper, array $packageIds): string;
+    
+  function getPackageInfo(string $shipper, int $packageId): array;
+    
+  function orderShipment(string $shipper, array $packageIds): array;
+    
+  function getOrder(string $shipper, int $orderId): array;
+    
+  function orderPickup(string $shipper, DateTime $dateFrom, DateTime $dateTo, float $weight, int $packageCount, string $message = null): void;
+    
+  function getServices(string $shipper, string $country = null, string $version = null): array;
+    
+  function getManipulationUnits(string $shipper): array;
+    
+  function getActivatedManipulationUnits(string $shipper): array;
+    
+  function getBranches( string $shipper, ?string $service, bool $fullBranchRequest = false, string $country = null, string $version = null): array;
+    
+  function getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): array;
+    
+  function getCodCountries(string $shipper): array;
+    
+  function getCountries(string $shipper): array;
+    
+  function getPostCodes(string $shipper, string $service, string $country = null): array;
+    
+  function checkPackages(string $shipper, array $packages): void;
+    
+  function getAdrUnits(string $shipper): array;
+    
+  function getActivatedServices(string $shipper): array;
+    
+  function orderB2AShipment(string $shipper, array $packages): array;
+    
+  function getB2AServices(string $shipper): array;
+    
+  function getProofOfDelivery(string $shipper, string $carrierId): string;
+    
+  function getProofOfDeliveries(string $shipper, array $carrierIds): array;
+    
+  function getTransportCosts(string $shipper, array $packages): array;
+    
+  function getCountriesData(): array;
+}
 ```
 
 
