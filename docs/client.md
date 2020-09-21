@@ -171,9 +171,10 @@ $client->dropPackages(Shipper::CP, [42719, 42720]);
 Track added package status with **trackPackage** method. This method has shipper code and carrier ID as arguments. 
 Carrier ID is from [**ADD**](#add) request response.
 
-This method internally uses new **TRACK V2** request with better response data format. 
+This method internally uses new **TRACK V3** request with better response data format. 
+Response return only **status_id_v2** as **status_id** (you can always cast `float` to `int` to get older status ID) and use **name_internal** instead of **name_balikobot**. 
 
-Older version (**TRACK V1**) is not longer available via this client.
+Older versions (**TRACK V2**, **TRACK V1**) are not longer available via this client.
 
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
@@ -184,19 +185,25 @@ $statuses = $client->trackPackage(Shipper::CP, 'NP1504102246M');
 var_dump($statuses);
 [
   0 => [
-    'date'      => '2018-07-02 00:00:00'
-    'name'      => 'Dodání zásilky. 10003 Depo Praha 701'
-    'status_id' => 2
+    'date'          => '2018-07-02 00:00:00'
+    'name'          => 'Dodání zásilky. 10003 Depo Praha 701'
+    'name_internal' => 'Zásilka byla doručena příjemci.'
+    'status_id'     => 1.2
+    'type'          => 'event'
   ]
   1 => [
-    'date'      => '2018-07-02 00:00:00'
-    'name'      => 'Doručování zásilky. 10003 Depo Praha 701'
-    'status_id' => 1
+    'date'          => '2018-07-02 08:00:00'
+    'name'          => 'E-mail adresátovi - zásilka převzata do přepravy.'
+    'name_internal' => 'Zásilka je v přepravě'
+    'status_id'     => 2.2
+    'type'          => 'notification'
   ]
   2 => [
-    'date'      => '2018-07-02 00:00:00'
-    'name'      => 'Příprava zásilky k doručení. 10003 Depo Praha 701'
-    'status_id' => 1
+    'date'          => '2018-07-03 00:00:00'
+    'name'          => 'Obdrženy údaje k zásilce.'
+    'name_internal' => 'Zásilka zatím nebyla předána dopravci.'    
+    'status_id'     => -1.0
+    'type'          => 'event'
   ]
   ...
 ]
@@ -207,7 +214,7 @@ var_dump($statuses);
 
 Use the **trackPackageLastStatus** method to get last package status.
 
-Client normalize response format to match new [**TRACK V2**](#track) response.
+Client normalize response format to match new [**TRACK V3**](#track) response.
 
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
@@ -217,9 +224,11 @@ $status = $client->trackPackageLastStatus(Shipper::CP, 'NP1504102246M');
 /*
 var_dump($status);
 [
-  'date'      => '2018-07-02 00:00:00'
-  'name'      => 'Zásilka zatím nebyla předána přepravci.'
-  'status_id' => -1
+  'date'          => null,
+  'name'          => 'Obdrženy údaje k zásilce.'
+  'name_internal' => 'Obdrženy údaje k zásilce.'
+  'status_id'     => -1.0
+  'type'          => 'event'
 ]
 */
 ```

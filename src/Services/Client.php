@@ -102,7 +102,7 @@ class Client
      * @param string $shipper
      * @param string $carrierId
      *
-     * @return array<array<string,int|string>>
+     * @return array<array<string,float|string>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -119,7 +119,7 @@ class Client
      * @param string        $shipper
      * @param array<string> $carrierIds
      *
-     * @return array<array<array<string,int|string>>>
+     * @return array<array<array<string,float|string>>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -127,7 +127,7 @@ class Client
     {
         $data = $this->encapsulateIds($carrierIds);
 
-        $response = $this->requester->call(API::V2, $shipper, Request::TRACK, $data, false);
+        $response = $this->requester->call(API::V3, $shipper, Request::TRACK, $data, false);
 
         unset($response['status']);
 
@@ -141,7 +141,23 @@ class Client
 
         $this->validateIndexes($response, $carrierIds);
 
-        return $response;
+        $formattedResponse = [];
+
+        foreach ($response ?? [] as $i => $responseItems) {
+            $formattedResponse[$i] = [];
+
+            foreach ($responseItems ?? [] as $responseItem) {
+                $formattedResponse[$i][] = [
+                    'date'          => $responseItem['date'],
+                    'name'          => $responseItem['name'],
+                    'status_id'     => (float) ($responseItem['status_id_v2'] ?? $responseItem['status_id']),
+                    'type'          => $responseItem['type'] ?? 'event',
+                    'name_internal' => $responseItem['name_balikobot'] ?? $responseItem['name'],
+                ];
+            }
+        }
+
+        return $formattedResponse;
     }
 
     /**
@@ -150,7 +166,7 @@ class Client
      * @param string $shipper
      * @param string $carrierId
      *
-     * @return array<string,int|string>
+     * @return array<string,float|string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -167,7 +183,7 @@ class Client
      * @param string        $shipper
      * @param array<string> $carrierIds
      *
-     * @return array<array<string,int|string|null>>
+     * @return array<array<string,float|string|null>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -175,25 +191,27 @@ class Client
     {
         $data = $this->encapsulateIds($carrierIds);
 
-        $response = $this->requester->call(API::V1, $shipper, Request::TRACK_STATUS, $data, false);
+        $response = $this->requester->call(API::V2, $shipper, Request::TRACK_STATUS, $data, false);
 
         unset($response['status']);
 
         $this->validateIndexes($response, $carrierIds);
 
-        $formatedStatuses = [];
+        $formattedStatuses = [];
 
         foreach ($response as $responseItem) {
             $this->validateStatus($responseItem, $response);
 
-            $formatedStatuses[] = [
-                'name'      => $responseItem['status_text'],
-                'status_id' => $responseItem['status_id'],
-                'date'      => null,
+            $formattedStatuses[] = [
+                'name'          => $responseItem['status_text'],
+                'name_internal' => $responseItem['status_text'],
+                'type'          => 'event',
+                'status_id'     => (float) $responseItem['status_id'],
+                'date'          => null,
             ];
         }
 
-        return $formatedStatuses;
+        return $formattedStatuses;
     }
 
     /**

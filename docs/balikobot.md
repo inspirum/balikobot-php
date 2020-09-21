@@ -134,18 +134,22 @@ $statuses = $balikobot->trackPackage($orderedPackages[0]);
 var_dump($statuses);
 [
   0 => Inspirum\Balikobot\Model\Values\PackageStatus {
-    private $date => DateTime {
+    private $date        => DateTime {
       public $date => '2018-07-02 00:00:00.000000'
     }
-    private $id   => 2
-    private $name => 'Dodání zásilky. 10003 Depo Praha 701'
+    private $id          => 2.2
+    private $name        => 'Zásilka byla doručena příjemci.'
+    private $description => 'Dodání zásilky. (77072 - Depo Olomouc 72)'
+    private $type        => 'event'
   }
   1 => Inspirum\Balikobot\Model\Values\PackageStatus {
-    private $date => DateTime {
+    private $date        => DateTime {
       public $date => '2018-07-02 00:00:00.000000'
     }
-    private $id   => 1
-    private $name => 'Doručování zásilky. 10003 Depo Praha 701'
+    private $id          => 1.2
+    private $name        => 'Zásilka byla doručena příjemci.'
+    private $description => 'E-mail odesílateli - dodání zásilky.'
+    private $type        => 'notification'
   }
   ...
 ]

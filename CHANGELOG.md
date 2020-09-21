@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added support for new options from documentation **v1.892** (2020-09-14)
     - Added **GETCOUNTRIESDATA** request
+- Added support for new options from documentation **v1.893** (2020-09-17)
+    - Add **TRACK** **v3** request
+    - Add **TRACK_STATUS** **v2** request
+### Changed
+- Update [**PackageStatus**](./src/Model/Values/PackageStatus.php) to support data from **TRACK** **v3**
+    - Method **getId** return `float` instead of `int` (attribute **status_id_v2**)
+    - Method **getName** return new internal status name (attribute **name_balikobot**)
+    - Add method **getGroupId** (attribute **status_id**)
+    - Add method **getDescription** (attribute **name**)
+    - Add method **getType** (attribute **type**)
 
 
 ## [v3.3.0 (2020-09-10)](https://github.com/inspirum/balikobot-php/compare/v3.2.2...v3.3.0)
@@ -87,7 +97,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added options to get **labelsUrL** from **ADD** request
 - Added **labelsUrL** attribute to [**OrderedPackageCollection**](./src/Model/Aggregates/OrderedPackageCollection.php)
--  [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php) implements **\ArrayAccess** interface
+- [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php) implements **\ArrayAccess** interface
 ### Changed
 - Support multiple **EID** in [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php)
 ### Removed

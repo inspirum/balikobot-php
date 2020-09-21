@@ -25,7 +25,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             0 => [
-                'status_id'   => 1,
+                'status_id'   => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
@@ -83,7 +83,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'status_id'   => 1,
+                'status_id'   => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
@@ -95,7 +95,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/trackstatus',
+                'https://api.balikobot.cz/v2/cp/trackstatus',
                 [
                     0 => [
                         'id' => 1,
@@ -107,12 +107,12 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testDataAreReturnedInV2Format()
+    public function testDataAreReturnedInV3Format()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'status_id'   => 1,
+                'status_id'   => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
@@ -123,9 +123,11 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
 
         $this->assertEquals(
             [
-                'name'      => 'Zásilka byla doručena příjemci.',
-                'status_id' => 1,
-                'date'      => null,
+                'name'          => 'Zásilka byla doručena příjemci.',
+                'name_internal' => 'Zásilka byla doručena příjemci.',
+                'type'          => 'event',
+                'status_id'     => 1.2,
+                'date'          => null,
             ],
             $status
         );
@@ -148,15 +150,15 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             0 => [
-                'status_id'   => 1,
+                'status_id'   => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
             1 => [
-                'status_id'   => 2,
+                'status_id'   => 2.1,
                 'status_text' => 'Zásilka nebyla doručena příjemci.',
             ],
             2 => [
-                'status_id'   => 1,
+                'status_id'   => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
@@ -188,7 +190,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             0 => [
                 'status'      => 200,
-                'status_id'   => 2,
+                'status_id'   => 2.2,
                 'status_text' => 'Zásilka nebyla doručena příjemci.',
             ],
             1 => [
@@ -221,7 +223,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'status_id'   => 1,
+                'status_id'   => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
@@ -236,12 +238,12 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'status_id'   => 1,
+                'status_id'   => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
             1        => [
-                'status_id'   => 1,
-                'status_text' => 'Zásilka byla doručena příjemci.',
+                'status_id'   => -1,
+                'status_text' => 'Obdrženy údaje k zásilce.',
             ],
         ]);
 
@@ -252,7 +254,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/trackstatus',
+                'https://api.balikobot.cz/v2/cp/trackstatus',
                 [
                     0 => [
                         'id' => 1,
@@ -272,7 +274,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'status_id'   => 1,
+                'status_id'   => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
             1        => [
@@ -280,8 +282,8 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
                 'status_text' => 'Zásilka nebyla doručena příjemci.',
             ],
             2        => [
-                'status_id'   => 3,
-                'status_text' => 'Zásilka byla doručena příjemci.',
+                'status_id'   => 3.2,
+                'status_text' => 'Storno ze strany příjemce.',
             ],
         ]);
 
@@ -292,19 +294,25 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $this->assertEquals(
             [
                 0 => [
-                    'name'      => 'Zásilka byla doručena příjemci.',
-                    'status_id' => 1,
-                    'date'      => null,
+                    'name'          => 'Zásilka byla doručena příjemci.',
+                    'name_internal' => 'Zásilka byla doručena příjemci.',
+                    'type'          => 'event',
+                    'status_id'     => 1.2,
+                    'date'          => null,
                 ],
                 1 => [
-                    'name'      => 'Zásilka nebyla doručena příjemci.',
-                    'status_id' => 5,
-                    'date'      => null,
+                    'name'          => 'Zásilka nebyla doručena příjemci.',
+                    'name_internal' => 'Zásilka nebyla doručena příjemci.',
+                    'type'          => 'event',
+                    'status_id'     => 5.0,
+                    'date'          => null,
                 ],
                 2 => [
-                    'name'      => 'Zásilka byla doručena příjemci.',
-                    'status_id' => 3,
-                    'date'      => null,
+                    'name'          => 'Storno ze strany příjemce.',
+                    'name_internal' => 'Storno ze strany příjemce.',
+                    'type'          => 'event',
+                    'status_id'     => 3.2,
+                    'date'          => null,
                 ],
             ],
             $status

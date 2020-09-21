@@ -26,14 +26,20 @@ class TrackRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             0 => [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 2,
-                    'name'      => 'Dodání zásilky. 10003 Depo Praha 701',
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Doručování zásilky',
+                    'status_id'      => 2,
+                    'status_id_v2'   => 2.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka je v přepravě.',
                 ],
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 1,
-                    'name'      => 'Doručování zásilky. 10003 Depo Praha 701',
+                    'date'           => '2018-11-08 18:00:00',
+                    'name'           => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci.',
                 ],
             ],
         ]);
@@ -77,9 +83,12 @@ class TrackRequestTest extends AbstractClientTestCase
             'status' => 200,
             0        => [
                 [
-                    'date'      => '2018-11-07 14:15:01',
-                    'name'      => 'Doručení',
-                    'status_id' => 2,
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Doručování zásilky',
+                    'status_id'      => 2,
+                    'status_id_v2'   => 2.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka je v přepravě.',
                 ],
             ],
         ]);
@@ -91,7 +100,7 @@ class TrackRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v2/cp/track',
+                'https://api.balikobot.cz/v3/cp/track',
                 [
                     0 => [
                         'id' => 1,
@@ -103,14 +112,48 @@ class TrackRequestTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testDataAreReturnedInV2Format()
+    public function testDataAreReturnedInV3Format()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            0        => [
+                [
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Doručování zásilky',
+                    'status_id'      => 2,
+                    'status_id_v2'   => 2.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka je v přepravě.',
+                ],
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $status = $client->trackPackage('cp', 1);
+
+        $this->assertEquals(
+            [
+                [
+                    'date'          => '2018-11-07 14:15:01',
+                    'name'          => 'Doručování zásilky',
+                    'status_id'     => 2.2,
+                    'type'          => 'event',
+                    'name_internal' => 'Zásilka je v přepravě.',
+                ],
+            ],
+            $status
+        );
+    }
+
+    public function testDataAreReturnedInV3FormatFromV2Response()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
                 [
                     'date'      => '2018-11-07 14:15:01',
-                    'name'      => 'Doručení',
+                    'name'      => 'Doručování zásilky',
                     'status_id' => 2,
                 ],
             ],
@@ -123,9 +166,11 @@ class TrackRequestTest extends AbstractClientTestCase
         $this->assertEquals(
             [
                 [
-                    'date'      => '2018-11-07 14:15:01',
-                    'name'      => 'Doručení',
-                    'status_id' => 2,
+                    'date'          => '2018-11-07 14:15:01',
+                    'name'          => 'Doručování zásilky',
+                    'status_id'     => 2,
+                    'type'          => 'event',
+                    'name_internal' => 'Doručování zásilky',
                 ],
             ],
             $status
@@ -150,28 +195,40 @@ class TrackRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             0 => [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 2,
-                    'name'      => 'Dodání zásilky. 10003 Depo Praha 701',
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Doručování zásilky',
+                    'status_id'      => 2,
+                    'status_id_v2'   => 2.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka je v přepravě.',
                 ],
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 1,
-                    'name'      => 'Doručování zásilky. 10003 Depo Praha 701',
+                    'date'           => '2018-11-08 18:00:00',
+                    'name'           => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci.',
                 ],
             ],
             1 => [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 2,
-                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Doručování zásilky',
+                    'status_id'      => 2,
+                    'status_id_v2'   => 2.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka je v přepravě.',
                 ],
             ],
             2 => [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 1,
-                    'name'      => 'Doručování zásilky. 10003 Depo Praha 701',
+                    'date'           => '2018-11-08 18:00:00',
+                    'name'           => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci.',
                 ],
             ],
         ]);
@@ -190,28 +247,40 @@ class TrackRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             0 => [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 2,
-                    'name'      => 'Dodání zásilky. 10003 Depo Praha 701',
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Doručování zásilky',
+                    'status_id'      => 2,
+                    'status_id_v2'   => 2.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka je v přepravě.',
                 ],
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 1,
-                    'name'      => 'Doručování zásilky. 10003 Depo Praha 701',
+                    'date'           => '2018-11-08 18:00:00',
+                    'name'           => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci.',
                 ],
             ],
             2 => [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 2,
-                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Doručování zásilky',
+                    'status_id'      => 2,
+                    'status_id_v2'   => 2.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka je v přepravě.',
                 ],
             ],
             3 => [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 1,
-                    'name'      => 'Doručování zásilky. 10003 Depo Praha 701',
+                    'date'           => '2018-11-08 18:00:00',
+                    'name'           => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci.',
                 ],
             ],
         ]);
@@ -255,9 +324,12 @@ class TrackRequestTest extends AbstractClientTestCase
             'status' => 200,
             1        => [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 2,
-                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci..',
                 ],
             ],
         ]);
@@ -273,23 +345,32 @@ class TrackRequestTest extends AbstractClientTestCase
             'status' => 200,
             0        => [
                 [
-                    'date'      => '2018-11-07 14:15:01',
-                    'name'      => 'Doručení',
-                    'status_id' => 2,
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci..',
                 ],
             ],
             1        => [
                 [
-                    'date'      => '2018-11-07 14:15:01',
-                    'name'      => 'Doručení',
-                    'status_id' => 2,
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci..',
                 ],
             ],
             2        => [
                 [
-                    'date'      => '2018-11-07 14:15:01',
-                    'name'      => 'Doručení',
-                    'status_id' => 2,
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci..',
                 ],
             ],
         ]);
@@ -301,7 +382,7 @@ class TrackRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v2/cp/track',
+                'https://api.balikobot.cz/v3/cp/track',
                 [
                     0 => [
                         'id' => 1,
@@ -325,14 +406,20 @@ class TrackRequestTest extends AbstractClientTestCase
             'status' => 200,
             1        => [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 2,
-                    'name'      => 'Doručení',
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Doručování zásilky',
+                    'status_id'      => 2,
+                    'status_id_v2'   => 2.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka je v přepravě.',
                 ],
                 [
-                    'date'      => '2018-07-01 00:00:00',
-                    'status_id' => 1,
-                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'date'           => '2018-11-08 18:00:00',
+                    'name'           => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci.',
                 ],
             ],
         ]);
@@ -345,14 +432,18 @@ class TrackRequestTest extends AbstractClientTestCase
         $this->assertEquals(
             [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 2,
-                    'name'      => 'Doručení',
+                    'date'          => '2018-11-07 14:15:01',
+                    'name'          => 'Doručování zásilky',
+                    'status_id'     => 2.2,
+                    'type'          => 'event',
+                    'name_internal' => 'Zásilka je v přepravě.',
                 ],
                 [
-                    'date'      => '2018-07-01 00:00:00',
-                    'status_id' => 1,
-                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'date'          => '2018-11-08 18:00:00',
+                    'name'          => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                    'status_id'     => 1.2,
+                    'type'          => 'event',
+                    'name_internal' => 'Zásilka byla doručena příjemci.',
                 ],
             ],
             $statuses[1]

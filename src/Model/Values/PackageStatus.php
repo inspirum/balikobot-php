@@ -8,7 +8,7 @@ use Throwable;
 class PackageStatus
 {
     /**
-     * @var int
+     * @var float
      */
     private $id;
 
@@ -18,6 +18,16 @@ class PackageStatus
     private $name;
 
     /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
      * @var \DateTime|null
      */
     private $date;
@@ -25,23 +35,35 @@ class PackageStatus
     /**
      * PackageStatus constructor
      *
-     * @param int            $id
+     * @param float          $id
+     * @param string         $type
      * @param string         $name
+     * @param string         $description
      * @param \DateTime|null $date
      */
-    public function __construct(int $id, string $name, DateTime $date = null)
+    public function __construct(float $id, string $type, string $name, string $description, DateTime $date = null)
     {
-        $this->id   = $id;
-        $this->name = $name;
-        $this->date = $date;
+        $this->id          = $id;
+        $this->type        = $type;
+        $this->name        = $name;
+        $this->description = $description;
+        $this->date        = $date;
+    }
+
+    /**
+     * @return float
+     */
+    public function getId(): float
+    {
+        return $this->id;
     }
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getGroupId(): int
     {
-        return $this->id;
+        return (int) $this->id;
     }
 
     /**
@@ -50,6 +72,22 @@ class PackageStatus
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
     }
 
     /**
@@ -73,6 +111,12 @@ class PackageStatus
             $date = null;
         }
 
-        return new self($data['status_id'], $data['name'], $date);
+        return new self(
+            $data['status_id_v2'] ?? $data['status_id'],
+            $data['type'] ?? 'event',
+            $data['name_balikobot'] ?? ($data['name_internal'] ?? $data['name']),
+            $data['name'],
+            $date
+        );
     }
 }

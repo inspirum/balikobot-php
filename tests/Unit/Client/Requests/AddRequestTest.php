@@ -209,7 +209,7 @@ class AddRequestTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testMakeRequestWithUnsopportedVersion()
+    public function testMakeRequestWithUnsupportedVersion()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -223,7 +223,7 @@ class AddRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->addPackages('cp', [['data' => [1, 2, 3], 'test' => false]], 'v3');
+        $client->addPackages('cp', [['data' => [1, 2, 3], 'test' => false]], 'v4');
 
         $requester->shouldHaveReceived(
             'request',
