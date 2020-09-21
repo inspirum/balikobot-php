@@ -973,6 +973,8 @@ getProofOfDelivery(string $shipper, string $carrierId): string
 getProofOfDeliveries(string $shipper, array $carrierIds): array
 
 getTransportCosts(string $shipper, array $packages): array
+
+getCountriesData(): array
 ```
 
 

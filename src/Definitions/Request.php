@@ -188,4 +188,11 @@ final class Request
      * @var string
      */
     public const TRANSPORT_COSTS = 'transportcosts';
+
+    /**
+     * Method for obtaining information on individual countries of the world
+     *
+     * @var string
+     */
+    public const GET_COUNTRIES_DATA = 'getCountriesData';
 }

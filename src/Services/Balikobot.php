@@ -9,6 +9,7 @@ use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
 use Inspirum\Balikobot\Model\Aggregates\PackageCollection;
 use Inspirum\Balikobot\Model\Aggregates\PackageTransportCostCollection;
 use Inspirum\Balikobot\Model\Values\Branch;
+use Inspirum\Balikobot\Model\Values\Country;
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
 use Inspirum\Balikobot\Model\Values\OrderedShipment;
 use Inspirum\Balikobot\Model\Values\Package;
@@ -770,5 +771,25 @@ class Balikobot
         }
 
         return $transportCosts;
+    }
+
+    /**
+     * Ģet information on individual countries of the world
+     *
+     * @return array<string,\Inspirum\Balikobot\Model\Values\Country>|\Inspirum\Balikobot\Model\Values\Country[]
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getCountriesData(): array
+    {
+        $response = $this->client->getCountriesData();
+
+        $countries = [];
+
+        foreach ($response as $code => $country) {
+            $countries[$code] = Country::newInstanceFromData($country);
+        }
+
+        return $countries;
     }
 }

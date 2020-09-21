@@ -705,6 +705,22 @@ class Client
     }
 
     /**
+     * Ģet information on individual countries of the world
+     *
+     * @return array<array<string,mixed>>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getCountriesData(): array
+    {
+        $response = $this->requester->call(API::V1, '', Request::GET_COUNTRIES_DATA);
+
+        $formattedResponse = $this->normalizeResponseItems($response['countries'] ?? [], 'iso_code', null);
+
+        return $formattedResponse;
+    }
+
+    /**
      * Validate response item status
      *
      * @param array<mixed,mixed> $responseItem
@@ -741,16 +757,16 @@ class Client
      *
      * @param array<array<string,string>> $items
      * @param string                      $keyName
-     * @param string                      $valueName
+     * @param string|null                 $valueName
      *
      * @return array<string,mixed>
      */
-    private function normalizeResponseItems(array $items, string $keyName, string $valueName): array
+    private function normalizeResponseItems(array $items, string $keyName, ?string $valueName): array
     {
         $formattedResponse = [];
 
         foreach ($items as $item) {
-            $formattedResponse[$item[$keyName]] = $item[$valueName];
+            $formattedResponse[$item[$keyName]] = $valueName !== null ? $item[$valueName] : $item;
         }
 
         return $formattedResponse;

@@ -288,6 +288,8 @@ getProofOfDelivery(OrderedPackage $package): string
 getProofOfDeliveries(OrderedPackageCollection $packages): array
 
 getTransportCosts(PackageCollection $packages): PackageTransportCostCollection
+
+getCountriesData(): array
 ```
 
 
