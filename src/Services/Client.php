@@ -44,10 +44,6 @@ class Client
     {
         $response = $this->requester->call($version ?: API::V1, $shipper, Request::ADD, $packages);
 
-        if (isset($response[0]['package_id']) === false) {
-            throw new BadRequestException($response);
-        }
-
         if (isset($response['labels_url'])) {
             $labelsUrl = $response['labels_url'];
         }
@@ -56,6 +52,8 @@ class Client
         unset($response['status']);
 
         $this->validateIndexes($response, $packages);
+
+        $this->validateResponseItemHasAttribute($response, 'package_id', $response);
 
         return $response;
     }
@@ -137,6 +135,10 @@ class Client
                 $response[$i] = $response[$i] ?? [];
             }
             sort($response);
+        }
+
+        foreach ($response as $responseStatuses) {
+            $this->validateResponseItemHasAttribute($responseStatuses, 'status_id', $response);
         }
 
         $this->validateIndexes($response, $carrierIds);
@@ -638,13 +640,11 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::B2A, $packages);
 
-        if (isset($response[0]['package_id']) === false) {
-            throw new BadRequestException($response);
-        }
-
         unset($response['status']);
 
         $this->validateIndexes($response, $packages);
+
+        $this->validateResponseItemHasAttribute($response, 'package_id', $response);
 
         return $response;
     }
@@ -711,13 +711,11 @@ class Client
     {
         $response = $this->requester->call(API::V1, $shipper, Request::TRANSPORT_COSTS, $packages);
 
-        if (isset($response[0]['eid']) === false) {
-            throw new BadRequestException($response);
-        }
-
         unset($response['status']);
 
         $this->validateIndexes($response, $packages);
+
+        $this->validateResponseItemHasAttribute($response, 'eid', $response);
 
         return $response;
     }
@@ -745,11 +743,33 @@ class Client
      * @param array<mixed,mixed> $response
      *
      * @return void
+     *
+     * @throws \Inspirum\Balikobot\Exceptions\BadRequestException
      */
     private function validateStatus(array $responseItem, array $response): void
     {
         if (isset($responseItem['status']) && ((int) $responseItem['status']) !== 200) {
             throw new BadRequestException($response);
+        }
+    }
+
+    /**
+     * Validate that every response item has given attribute
+     *
+     * @param array<int,array<string,mixed>> $items
+     * @param string                         $attribute
+     * @param array<mixed,mixed>             $response
+     *
+     * @return void
+     *
+     * @throws \Inspirum\Balikobot\Exceptions\BadRequestException
+     */
+    private function validateResponseItemHasAttribute(array $items, string $attribute, array $response): void
+    {
+        foreach ($items as $item) {
+            if (isset($item[$attribute]) === false) {
+                throw new BadRequestException($response);
+            }
         }
     }
 

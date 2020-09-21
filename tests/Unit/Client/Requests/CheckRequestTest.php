@@ -18,7 +18,7 @@ class CheckRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->checkPackages('cp', []);
+        $client->checkPackages('cp', [['eid' => 1]]);
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +29,7 @@ class CheckRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->checkPackages('cp', []);
+        $client->checkPackages('cp', [['eid' => 1]]);
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -42,7 +42,7 @@ class CheckRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->checkPackages('cp', []);
+        $client->checkPackages('cp', [['eid' => 1]]);
     }
 
     public function testMakeRequest()
@@ -53,11 +53,11 @@ class CheckRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->checkPackages('cp', ['data' => [1, 2, 3], 'test' => false]);
+        $client->checkPackages('cp', [['data' => [1, 2, 3], 'test' => false]]);
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/check', ['data' => [1, 2, 3], 'test' => false]]
+            ['https://api.balikobot.cz/cp/check', [['data' => [1, 2, 3], 'test' => false]]]
         );
 
         $this->assertTrue(true);
