@@ -12,8 +12,8 @@
 
 Offers implementation of Balikobot API described in the [documentation ](#version)
 
-- Support for all API [requests](./src/Services/Client.php)
-- Simple add/track/drop package [methods](./src/Services/Balikobot.php)
+- Support for all API [requests](./docs/client.md)
+- Simple add/track/drop package [methods](./docs/balikobot.md)
 - All package options are accessible via setter/getter methods
 - The entire code is covered by unit tests
 - Customizable [**Requester**](./src/Contracts/RequesterInterface.php) for easy functionality expandability (caching, etc.)
@@ -110,7 +110,9 @@ or add requirement to your `composer.json`
 
 ## Version
 
-Support all options (more in [changelog][link-changelog]) for Balikobot API described in the official [documentation][link-api] (**v1.893**, 2020-09-17).
+Support all options for Balikobot API described in the official [documentation][link-api] until **v1.893** *(2020-09-17)*.
+
+More details are available in [changelog][link-changelog].
 
 
 ## Usage
