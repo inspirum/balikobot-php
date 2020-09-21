@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v1.893** (2020-09-17)
     - Add **TRACK** **v3** request
     - Add **TRACK_STATUS** **v2** request
+- Added optional **fullData** parameter for **ADDRUNIT**, **MANIPULATIONUNITS**, **ACTIVATEDMANIPULATIONUNITS** methods
 ### Changed
 - Update [**PackageStatus**](./src/Model/Values/PackageStatus.php) to support data from **TRACK** **v3**
     - Method **getId** return `float` instead of `int` (attribute **status_id_v2**)

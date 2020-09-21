@@ -101,4 +101,44 @@ class ActivedManipulationUnitsRequestTest extends AbstractClientTestCase
 
         $this->assertEquals([1 => 'KM', 876 => 'M'], $units);
     }
+
+
+    public function testFullDataAreReturned()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            'units'  => [
+                [
+                    'code' => 1,
+                    'name' => 'KM',
+                    'id'   => 26,
+                ],
+                [
+                    'code' => 876,
+                    'name' => 'M',
+                    'id'   => 59,
+                ],
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $units = $client->getActivatedManipulationUnits('cp', true);
+
+        $this->assertEquals(
+            [
+                1   => [
+                    'code' => 1,
+                    'name' => 'KM',
+                    'id'   => 26,
+                ],
+                876 => [
+                    'code' => 876,
+                    'name' => 'M',
+                    'id'   => 59,
+                ],
+            ],
+            $units
+        );
+    }
 }

@@ -261,9 +261,9 @@ interface Balikobot {
 
   function getServices(string $shipper, string $country = null): array;
 
-  function getManipulationUnits(string $shipper): array;
+  function getManipulationUnits(string $shipper, bool $fullData = false): array;
 
-  function getActivatedManipulationUnits(string $shipper): array;
+  function getActivatedManipulationUnits(string $shipper, bool $fullData = false): array;
 
   function getBranches(): iterable;
 
@@ -289,7 +289,7 @@ interface Balikobot {
 
   function checkPackages(PackageCollection $packages): void;
 
-  function getAdrUnits(string $shipper): array;
+  function getAdrUnits(string $shipper, bool $fullData = false): array;
 
   function getActivatedServices(string $shipper): array;
 

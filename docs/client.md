@@ -411,19 +411,19 @@ var_dump($services);
 
 Method **getManipulationUnits** returns a list of possible manipulation units for pallet transport.
 
-The client normalizes the response by returning unit code and value from as associative array `[id => value]`.
+The client normalizes the response by returning unit code and value from as associative array `[id => value]` (with optional **fullData** parameter)
 
 This units are used as **mu_type** option in [**ADD**](#add) request.
 
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$units = $client->getManipulationUnits(Shipper::TOPTRANS);
+$units = $client->getManipulationUnits(Shipper::TOPTRANS, false);
 
 /*
 var_dump($units);
 [
-  'KARTON' => 'KARTON'
+  'KAR' => 'KARTON'
   'KUS'    => 'KUS'
   'PALETA' => 'PALETA'
   'EPAL'   => 'EPAL'
@@ -435,12 +435,33 @@ var_dump($units);
 */
 ```
 
+```php
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$units = $client->getManipulationUnits(Shipper::TOPTRANS, true);
+
+/*
+var_dump($units);
+[
+  'KAR' => [
+    'code' => 'KAR'
+    'name' => 'KARTON
+  ]
+  'KUS'    => [
+    'code' => 'KAR'
+    'name' => 'KARTON
+  ]
+  ...
+]
+*/
+```
+
 
 ### **ACTIVATEDMANIPULATIONUNITS**
 
 Method **getActivatedManipulationUnits** returns a list of activated manipulation units for pallet transport.
 
-The client normalizes the response by returning unit code and value from as associative array `[id => value]`.
+The client normalizes the response by returning unit code and value from as associative array `[id => value]` (with optional **fullData** parameter).
 
 This units are used as **mu_type** option in [**ADD**](#add) request.
 
@@ -456,6 +477,27 @@ var_dump($units);
   'PALETA' => 'PALETA'
   'SKLPAL' => 'SKLPAL'
   'PYTEL'  => 'PYTEL'
+  ...
+]
+*/
+```
+
+```php
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$units = $client->getActivatedManipulationUnits(Shipper::TOPTRANS, true);
+
+/*
+var_dump($units);
+[
+  'KAR' => [
+    'code' => 'KAR'
+    'name' => 'KARTON
+  ]
+  'PALETA'    => [
+    'code' => 'PALETA'
+    'name' => 'KARTON
+  ]
   ...
 ]
 */
@@ -788,7 +830,7 @@ PHP Fatal error: Uncaught Inspirum\Balikobot\Exceptions\BadRequestException:
 
 Method **getAdrUnits** returns a list of possible manipulation units for pallet transport.
 
-The client normalizes the response by returning unit ID and value from as associative array `[id => value]`.
+The client normalizes the response by returning unit ID and value from as associative array `[id => value]` (with optional **fullData** parameter).
 
 This units are used as **adr_un** option in [**ADD**](#add) request.
 
@@ -800,19 +842,41 @@ $units = $client->getAdrUnits(Shipper::TOPTRANS);
 /*
 var_dump($units);
 [
-  432  => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely'
-  1001 => 'ACETYLÉN, ROZPUŠTĚNÝ'
-  1002 => 'VZDUCH, STLAČENÝ'
-  1003 => 'VZDUCH, HLUBOCE ZCHLAZENÝ, KAPALNÝ'
-  1005 => 'AMONIAK (ČPAVEK), BEZVODÝ'
-  1006 => 'ARGON, STLAČENÝ'
-  1008 => 'FLUORID BORITÝ'
-  1009 => 'BROMTRIFLUORMETHAN (PLYN JAKO CHLADICÍ PROSTŘEDEK R 13B1)'
+  '432'  => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely'
+  '1001' => 'ACETYLÉN, ROZPUŠTĚNÝ'
+  '1002' => 'VZDUCH, STLAČENÝ'
+  '1003' => 'VZDUCH, HLUBOCE ZCHLAZENÝ, KAPALNÝ'
+  '1005' => 'AMONIAK (ČPAVEK), BEZVODÝ'
+  '1006' => 'ARGON, STLAČENÝ'
+  '1008' => 'FLUORID BORITÝ'
+  '1009' => 'BROMTRIFLUORMETHAN (PLYN JAKO CHLADICÍ PROSTŘEDEK R 13B1)'
   ...
 ]
 */
 ```
 
+```php
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$units = $client->getAdrUnits(Shipper::TOPTRANS, true);
+
+/*
+var_dump($units);
+[
+  '432'  => [
+    'id'   => 299
+    'code' => '432'
+    'name' => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely'
+  ]
+  '1001' => [
+    'id'   => 377
+    'code' => '1001'
+    'name' => 'ACETYLÉN, ROZPUŠTĚNÝ'
+  ]
+  ...
+]
+*/
+```
 
 ### **ACTIVATEDSERVICES**
 
@@ -1016,9 +1080,9 @@ interface Client {
     
   function getServices(string $shipper, string $country = null, string $version = null): array;
     
-  function getManipulationUnits(string $shipper): array;
+  function getManipulationUnits(string $shipper, bool $fullData = false): array;
     
-  function getActivatedManipulationUnits(string $shipper): array;
+  function getActivatedManipulationUnits(string $shipper, bool $fullData = false): array;
     
   function getBranches( string $shipper, ?string $service, bool $fullBranchRequest = false, string $country = null, string $version = null): array;
     
@@ -1032,7 +1096,7 @@ interface Client {
     
   function checkPackages(string $shipper, array $packages): void;
     
-  function getAdrUnits(string $shipper): array;
+  function getAdrUnits(string $shipper, bool $fullData = false): array;
     
   function getActivatedServices(string $shipper): array;
     

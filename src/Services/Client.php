@@ -388,16 +388,21 @@ class Client
      * Returns all manipulation units for the given shipper
      *
      * @param string $shipper
+     * @param bool   $fullData
      *
-     * @return array<string,string>
+     * @return array<string,string|array>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getManipulationUnits(string $shipper): array
+    public function getManipulationUnits(string $shipper, bool $fullData = false): array
     {
         $response = $this->requester->call(API::V1, $shipper, Request::MANIPULATION_UNITS);
 
-        $formattedResponse = $this->normalizeResponseItems($response['units'] ?? [], 'code', 'name');
+        $formattedResponse = $this->normalizeResponseItems(
+            $response['units'] ?? [],
+            'code',
+            $fullData === false ? 'name' : null
+        );
 
         return $formattedResponse;
     }
@@ -406,16 +411,21 @@ class Client
      * Returns available manipulation units for the given shipper
      *
      * @param string $shipper
+     * @param bool   $fullData
      *
-     * @return array<string,string>
+     * @return array<string,string|array>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getActivatedManipulationUnits(string $shipper): array
+    public function getActivatedManipulationUnits(string $shipper, bool $fullData = false): array
     {
         $response = $this->requester->call(API::V1, $shipper, Request::ACTIVATED_MANIPULATION_UNITS);
 
-        $formattedResponse = $this->normalizeResponseItems($response['units'] ?? [], 'code', 'name');
+        $formattedResponse = $this->normalizeResponseItems(
+            $response['units'] ?? [],
+            'code',
+            $fullData === false ? 'name' : null
+        );
 
         return $formattedResponse;
     }
@@ -592,16 +602,21 @@ class Client
      * Returns available manipulation units for the given shipper
      *
      * @param string $shipper
+     * @param bool   $fullData
      *
      * @return array<string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getAdrUnits(string $shipper): array
+    public function getAdrUnits(string $shipper, bool $fullData = false): array
     {
         $response = $this->requester->call(API::V1, $shipper, Request::ADR_UNITS);
 
-        $formattedResponse = $this->normalizeResponseItems($response['units'] ?? [], 'code', 'name');
+        $formattedResponse = $this->normalizeResponseItems(
+            $response['units'] ?? [],
+            'code',
+            $fullData === false ? 'name' : null
+        );
 
         return $formattedResponse;
     }

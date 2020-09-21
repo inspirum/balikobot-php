@@ -352,14 +352,15 @@ class Balikobot
      * Returns all manipulation units for the given shipper
      *
      * @param string $shipper
+     * @param bool   $fullData
      *
-     * @return array<string>
+     * @return array<string|array>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getManipulationUnits(string $shipper): array
+    public function getManipulationUnits(string $shipper, bool $fullData = false): array
     {
-        $units = $this->client->getManipulationUnits($shipper);
+        $units = $this->client->getManipulationUnits($shipper, $fullData);
 
         return $units;
     }
@@ -368,14 +369,15 @@ class Balikobot
      * Returns available manipulation units for the given shipper
      *
      * @param string $shipper
+     * @param bool   $fullData
      *
-     * @return array<string>
+     * @return array<string|array>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getActivatedManipulationUnits(string $shipper): array
+    public function getActivatedManipulationUnits(string $shipper, bool $fullData = false): array
     {
-        $units = $this->client->getActivatedManipulationUnits($shipper);
+        $units = $this->client->getActivatedManipulationUnits($shipper, $fullData);
 
         return $units;
     }
@@ -660,14 +662,15 @@ class Balikobot
      * Returns available manipulation units for the given shipper
      *
      * @param string $shipper
+     * @param bool   $fullData
      *
-     * @return array<string>
+     * @return array<string|array>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getAdrUnits(string $shipper): array
+    public function getAdrUnits(string $shipper, bool $fullData = false): array
     {
-        $units = $this->client->getAdrUnits($shipper);
+        $units = $this->client->getAdrUnits($shipper, $fullData);
 
         return $units;
     }

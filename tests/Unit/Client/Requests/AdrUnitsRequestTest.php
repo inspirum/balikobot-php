@@ -107,4 +107,43 @@ class AdrUnitsRequestTest extends AbstractClientTestCase
             $units
         );
     }
+
+    public function testFullDataAreReturned()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+            'units'  => [
+                [
+                    'code' => 1,
+                    'name' => 'KM',
+                    'id'   => 26,
+                ],
+                [
+                    'code' => 876,
+                    'name' => 'M',
+                    'id'   => 59,
+                ],
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $units = $client->getAdrUnits('cp', true);
+
+        $this->assertEquals(
+            [
+                1   => [
+                    'code' => 1,
+                    'name' => 'KM',
+                    'id'   => 26,
+                ],
+                876 => [
+                    'code' => 876,
+                    'name' => 'M',
+                    'id'   => 59,
+                ],
+            ],
+            $units
+        );
+    }
 }
