@@ -59,6 +59,7 @@ class GetCountriesDataTest extends AbstractBalikobotTestCase
         $this->assertCount(2, $countries);
         $this->assertEquals('Andorra', $countries['AD']->getName('cs'));
         $this->assertEquals('United Arab Emirates', $countries['AE']->getName('en'));
+        $this->assertEquals(['cs', 'en'], array_keys($countries['AE']->getNames()));
         $this->assertEquals('Spojené arabské emiráty', $countries['AE']->getName('cs'));
         $this->assertEquals('AD', $countries['AD']->getCode());
         $this->assertEquals('+376', $countries['AD']->getPhonePrefix());

@@ -116,9 +116,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
             throw new RuntimeException('Collection is empty');
         }
 
-        foreach ($this->costs as $cost) {
-            return $cost->getCurrencyCode();
-        }
+        return $this->costs[0]->getCurrencyCode();
     }
 
     /**

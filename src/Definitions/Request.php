@@ -159,16 +159,6 @@ final class Request
     public const ACTIVATED_SERVICES = 'activatedservices';
 
     /**
-     * List of activated services for production API keys
-     *
-     * @deprecated Will be removed in v4.0
-     * @see        \Inspirum\Balikobot\Definitions\Request::ACTIVATED_SERVICES
-     *
-     * @var string
-     */
-    public const ACTIVATEDSERVICES = 'activatedservices';
-
-    /**
      * Order shipments from place B (typically supplier / previous consignee) to place A (shipping point)
      *
      * @var string

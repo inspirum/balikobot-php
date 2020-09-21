@@ -41,7 +41,7 @@ trait PackageData
      *
      * @return void
      */
-    public function setHeigth(float $height): void
+    public function setHeight(float $height): void
     {
         $this->offsetSet(Option::HEIGHT, $height);
     }

@@ -480,13 +480,13 @@ class Balikobot
      */
     public function getBranchesForShipperService(string $shipper, ?string $service, string $country = null): iterable
     {
-        $useFullbranchRequest = Shipper::hasFullBranchesSupport($shipper, $service);
+        $useFullBranchRequest = Shipper::hasFullBranchesSupport($shipper, $service);
         $usedRequestVersion   = Shipper::resolveBranchesRequestVersion($shipper, $service);
 
         $branches = $this->client->getBranches(
             $shipper,
             $service,
-            $useFullbranchRequest,
+            $useFullBranchRequest,
             $country,
             $usedRequestVersion
         );

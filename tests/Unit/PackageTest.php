@@ -81,7 +81,7 @@ class PackageTest extends AbstractTestCase
         $package->setSmsNotification(false);
         $package->setWidth(1.3);
         $package->setLength(14.1);
-        $package->setHeigth(19);
+        $package->setHeight(19);
         $package->setNote('NOTE');
         $package->setSwap(true);
         $package->setSwapOption('Option');

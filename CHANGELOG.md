@@ -20,6 +20,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Add method **getGroupId** (attribute **status_id**)
     - Add method **getDescription** (attribute **name**)
     - Add method **getType** (attribute **type**)
+- Rename [**Package**](./src/Model/Values/Package.php) method **setHeigth** to **setHeight**
+### Removed
+- Removed **ZASILKOVNA\_&ast;** service type constants
+- Removed **TOP_TRANS\_&ast;** service type constants
+- Removed **ACTIVATEDSERVICES** request constant
 
 
 ## [v3.3.0 (2020-09-10)](https://github.com/inspirum/balikobot-php/compare/v3.2.2...v3.3.0)

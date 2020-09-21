@@ -37,7 +37,7 @@ class BadRequestException extends AbstractException
     {
         $i = 0;
 
-        // add erros from all packages
+        // add errors from all packages
         while (isset($response[$i])) {
             // set errors for package
             $this->setErrorsForPackage($i, $response[$i]);
@@ -63,7 +63,7 @@ class BadRequestException extends AbstractException
             return;
         }
 
-        // set erros for given package
+        // set errors for given package
         foreach ($response['errors'] as $error) {
             $this->setError($number, $error['attribute'], $error['message']);
         }
@@ -86,7 +86,7 @@ class BadRequestException extends AbstractException
             // get error message from code
             $error = $this->getErrorMessage($key, (int) $code);
 
-            // set erros fro given package from response codes
+            // set errors fro given package from response codes
             $this->setError($number, $key, $error);
         }
     }
