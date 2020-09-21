@@ -819,6 +819,13 @@ final class ServiceType
     public const ZASILKOVNA_VMRO = 'VMRO';
 
     /**
+     * AT DPD HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_AT_DPD_HD = '6830';
+
+    /**
      * AT Rakouská pošta HD
      *
      * @deprecated Will be removed in v4.0
@@ -2727,6 +2734,7 @@ final class ServiceType
             self::ZASILKOVNA_VMHU,
             self::ZASILKOVNA_VMPL,
             self::ZASILKOVNA_VMRO,
+            self::ZASILKOVNA_AT_DPD_HD,
             self::ZASILKOVNA_AT_POST_HD,
             self::ZASILKOVNA_BE_POST_HD,
             self::ZASILKOVNA_BG_ECONT_HD,
