@@ -104,13 +104,13 @@ $ composer require inspirum/balikobot
 ```
 or add requirement to your `composer.json`
 ```json
-"inspirum/balikobot": "^3.0"
+"inspirum/balikobot": "^4.0"
 ```
 
 
 ## Version
 
-Support all options (more in [changelog][link-changelog]) for Balikobot API described in the official [documentation][link-api] (**v1.890**, 2020-08-26).
+Support all options (more in [changelog][link-changelog]) for Balikobot API described in the official [documentation][link-api] (**v1.893**, 2020-09-17).
 
 
 ## Usage
