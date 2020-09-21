@@ -3,8 +3,6 @@
 namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
-use Inspirum\Balikobot\Model\Values\OrderedPackage;
-use Inspirum\Balikobot\Services\Balikobot;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
@@ -349,14 +347,17 @@ class TrackRequestTest extends AbstractClientTestCase
             'status' => 200,
             0        => [
                 [
-                    'status' => 500,
+                    'date'           => '2018-11-07 14:15:01',
+                    'name'           => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'status_id'      => 1,
+                    'status_id_v2'   => 1.2,
+                    'type'           => 'event',
+                    'name_balikobot' => 'Zásilka byla doručena příjemci..',
                 ],
             ],
             1        => [
                 [
-                    'date'      => '2018-07-02 00:00:00',
-                    'status_id' => 2,
-                    'name'      => 'Dodání zásilky. 10005 Depo Praha 701',
+                    'status' => 500,
                 ],
             ],
         ]);
@@ -475,22 +476,5 @@ class TrackRequestTest extends AbstractClientTestCase
             ],
             $statuses[1]
         );
-    }
-
-    public function testThrowsExceptionWhenNoReturnStatus()
-    {
-        $this->expectException(BadRequestException::class);
-
-        $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            0 => [
-                '503',
-            ],
-        ]);
-
-        $service = new Balikobot($requester);
-
-        $package = new OrderedPackage(1, 'gls', '0001', '1234');
-
-        $service->trackPackage($package);
     }
 }

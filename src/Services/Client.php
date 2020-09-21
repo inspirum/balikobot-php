@@ -137,15 +137,13 @@ class Client
             sort($response);
         }
 
-        foreach ($response as $responseStatuses) {
-            $this->validateResponseItemHasAttribute($responseStatuses, 'status_id', $response);
-        }
-
         $this->validateIndexes($response, $carrierIds);
 
         $formattedResponse = [];
 
         foreach ($response ?? [] as $i => $responseItems) {
+            $this->validateResponseItemHasAttribute($responseItems, 'status_id', $response);
+
             $formattedResponse[$i] = [];
 
             foreach ($responseItems ?? [] as $responseItem) {
