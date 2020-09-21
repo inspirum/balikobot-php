@@ -12,8 +12,8 @@
 
 Offers implementation of Balikobot API described in the [documentation ](#version)
 
-- Support for all API [requests](./docs/client.md)
-- Simple add/track/drop package [methods](./docs/balikobot.md)
+- Support for all API [requests](./docs/client.md#requests)
+- Simple add/track/drop package [methods](./docs/balikobot.md#packages)
 - All package options are accessible via setter/getter methods
 - The entire code is covered by unit tests
 - Customizable [**Requester**](./src/Contracts/RequesterInterface.php) for easy functionality expandability (caching, etc.)
