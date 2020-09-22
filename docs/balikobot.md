@@ -10,13 +10,17 @@ Using plain API with [Client](./client.md#client) can be very difficult even wit
 **Balikobot** service add DTO classes to ease to use with simple interfaces and user-friendly *getter* and *setter* methods.
 
 - [**Inspirum\Model\Values\Branch**](../src/Model/Values/Branch.php)
+- [**Inspirum\Model\Values\Country**](../src/Model/Values/Country.php)
 - [**Inspirum\Model\Values\OrderedPackage**](../src/Model/Values/OrderedPackage.php)
 - [**Inspirum\Model\Values\OrderedShipment**](../src/Model/Values/OrderedShipment.php)
 - [**Inspirum\Model\Values\Package**](../src/Model/Values/Package.php)
 - [**Inspirum\Model\Values\PackageStatus**](../src/Model/Values/PackageStatus.php)
+- [**Inspirum\Model\Values\PackageTransportCost**](../src/Model/Values/PackageTransportCost.php)
+- [**Inspirum\Model\Values\PackageTransportCostPart**](../src/Model/Values/PackageTransportCostPart.php)
 - [**Inspirum\Model\Values\PostCode**](../src/Model/Values/PostCode.php)
 - [**Inspirum\Model\Aggregates\OrderedPackageCollection**](../src/Model/Aggregates/OrderedPackageCollection.php)
 - [**Inspirum\Model\Aggregates\PackageCollection**](../src/Model/Aggregates/PackageCollection.php)
+- [**Inspirum\Model\Aggregates\PackageTransportCostCollection**](../src/Model/Aggregates/PackageTransportCostCollection.php)
 
 
 ### Add packages

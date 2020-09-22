@@ -423,7 +423,7 @@ $units = $client->getManipulationUnits(Shipper::TOPTRANS, false);
 /*
 var_dump($units);
 [
-  'KAR' => 'KARTON'
+  'KAR'    => 'KARTON'
   'KUS'    => 'KUS'
   'PALETA' => 'PALETA'
   'EPAL'   => 'EPAL'
@@ -448,8 +448,8 @@ var_dump($units);
     'name' => 'KARTON
   ]
   'KUS'    => [
-    'code' => 'KAR'
-    'name' => 'KARTON
+    'code' => 'KUS'
+    'name' => 'KUS
   ]
   ...
 ]
@@ -473,7 +473,7 @@ $units = $client->getActivatedManipulationUnits(Shipper::TOPTRANS);
 /*
 var_dump($units);
 [
-  'KARTON' => 'KARTON'
+  'KAR'    => 'KARTON'
   'PALETA' => 'PALETA'
   'SKLPAL' => 'SKLPAL'
   'PYTEL'  => 'PYTEL'
@@ -496,7 +496,7 @@ var_dump($units);
   ]
   'PALETA'    => [
     'code' => 'PALETA'
-    'name' => 'KARTON
+    'name' => 'PALETA
   ]
   ...
 ]
@@ -517,14 +517,46 @@ use Inspirum\Balikobot\Definitions\Shipper;
 $branches = $client->getBranches(Shipper::CP, ServiceType::CP_NP);
 
 /*
-var_dump($shippers);
+var_dump($branches);
 [
   0 => [
-    'name'    => 'Kojetice u Prahy'
-    'city'    => 'Kojetice'
-    'street'  => 'Lipová 75'
-    'zip'     => '25072'
+    'id'      => '10000'
+    'name'    => 'Praha 10'
+    'city'    => 'Praha'
+    'street'  => 'Černokostelecká 2020/20'
+    'zip'     => '10000'
     'country' => 'CZ'
+    'type'    => 'branch'
+  ]
+  1 => [
+    ...
+  ]
+  ...
+]
+*/
+```
+
+Method **getBranches** with optional fourth parameter `$country` returns available branches filtered by given country code.
+
+You can use the `Shipper::hasBranchCountryFilterSupport()` method to test whether the shipper supports filtering branches by country.
+
+
+```php
+use Inspirum\Balikobot\Definitions\Country;use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$branches = $client->getBranches(Shipper::PPL, ServiceType::PPL_PARCEL_IMPORT, false, Country::GERMANY);
+
+/*
+var_dump($branches);
+[
+  0 => [
+    'id'      => 'KM48755130'
+    'name'    => 'Elektro Store Mainz'
+    'city'    => 'Mainz'
+    'street'  => 'Portlandstr. 35'
+    'zip'     => '55130'
+    'country' => 'DE'
     'type'    => 'branch'
   ]
   1 => [
@@ -538,34 +570,115 @@ var_dump($shippers);
 
 ### **FULLBRANCHES**
 
-Method **getBranches** returns available branches for given shipper and its service type.
+Method **getBranches** with optional third parameter `$fullBranchRequest=true` returns available branches with more information for given shipper and its service type if possible.
+
+You can use the `Shipper::hasFullBranchesSupport()` method to test whether the shipper supports a `FULLBRANCHES` request.
 
 The client normalizes the response by returning only **branches** array.
 
 ```php
+use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$fullBranchRequest = Shipper::hasFullBranchesSupport(Shipper::ZASILKOVNA, null);
+
+/*
+var_dump($fullBranchRequest);
+true
+*/
+
+$fullBranchRequest = Shipper::hasFullBranchesSupport(Shipper::GEIS, ServiceType::GEIS_PARCEL_GEIS_POINT);
+
+/*
+var_dump($fullBranchRequest);
+false
+*/
+```
+
+```php
+use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\Shipper;
 
 $branches = $client->getBranches(Shipper::ZASILKOVNA, null, true);
 
 /*
-var_dump($shippers);
+var_dump($branches);
 [
   0 => [
-    'id'          => '2859'
-    'name'        => 'OMURTAG,ZAVODSKA OMURTAG'
-    'city'        => 'OMURTAG'
-    'street'      => 'ul. ZAVODSKA 1'
-    'zip'         => '7900'
-    'district'    => ''
-    'region'      => 'България'
-    'country'     => 'BG'
-    'currency'    => 'BGN'
+    'id'          => '12'
+    'name'        => 'České Budějovice, Rudolfovská 1 Tvořilka'
+    'city'        => 'České Budějovice'
+    'street'      => 'Rudolfovská 1'
+    'zip'         => '37001'
+    'district'    => 'okres České Budějovice'
+    'region'      => 'Jihočeský kraj'
+    'country'     => 'CZ'
+    'currency'    => 'CZK'
     'type'        => 'branch'
-    'photo_small' => 'https://www.zasilkovna.cz/images/branch/thumb/stub.jpg'
-    'photo_big'   => 'https://www.zasilkovna.cz/images/branch/normal/stub.jpg'
-    'url'         => 'https://www.zasilkovna.cz/pobocky/omurtag-zavodska'
-    'latitude'    => 43.11715
-    'longitude'   => 26.42129
+    'photo_small' => 'https://www.zasilkovna.cz/images/branch/thumb/kv.jpg'
+    'photo_big'   => 'https://www.zasilkovna.cz/images/branch/normal/kv.jpg'
+    'url'         => 'https://www.zasilkovna.cz/pobocky/ceske-budejovice-otakarova-rudolfovska'
+    'latitude'    => 48.97585
+    'longitude'   => 14.47978
+    ...
+  ]
+  1 => [
+    ...
+  ]
+  ...
+]
+*/
+```
+
+Some carriers support newer **v2** version of **BRANCHES** request. You can specify version in fifth optional parameter `$version`.
+
+You can use the `Shipper::resolveBranchesRequestVersion()` method to get supported API version.
+
+```php
+use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$version = Shipper::resolveBranchesRequestVersion(Shipper::ZASILKOVNA, null);
+
+/*
+var_dump($version);
+'v1'
+*/
+
+$version = Shipper::resolveBranchesRequestVersiont(Shipper::ZASILKOVNA, ServiceType::ZASILKOVNA_VMCZ);
+
+/*
+var_dump($version);
+'v2'
+*/
+````
+
+```php
+use Inspirum\Balikobot\Definitions\API;
+use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$branches = $client->getBranches(Shipper::ZASILKOVNA, ServiceType::ZASILKOVNA_VMSK, true, null, API::V2);
+
+/*
+var_dump($branches);
+[
+  0 => [
+    'id'          => '21'
+    'name'        => 'Prešov, Zemplínska 1, DraziwNet – predaj, servis PC DraziwNet – predaj, servis PC'
+    'city'        => 'Prešov'
+    'street'      => 'Zemplínska 1'
+    'zip'         => '08001'
+    'district'    => ''
+    'region'      => ''
+    'country'     => 'SK'
+    'currency'    => 'EUR'
+    'type'        => 'branch'
+    'photo_small' => 'https://www.zasielkovna.sk/images/branch/thumb/pres2.jpg'
+    'photo_big'   => 'https://www.zasielkovna.sk/images/branch/normal/pres2.jpg'
+    'url'         => 'https://www.zasielkovna.sk/pobocky/presov-zemplinska-1-draziw-net-predaj-servis-pc'
+    'latitude'    => 48.98662
+    'longitude'   => 21.2651
     ...
   ]
   1 => [
@@ -590,7 +703,7 @@ use Inspirum\Balikobot\Definitions\Shipper;
 $branches = $client->getBranchesForLocation(Shipper::UPS, Country::CZECH_REPUBLIC, 'Praha');
 
 /*
-var_dump($shippers);
+var_dump($branches);
 [
   0 => [
     'id'          => 'U25943513'

@@ -4,6 +4,7 @@ The module contains several helper classes that contain most of the constants ne
 
 There are classes for country codes, currency codes, package options, shipper codes and service types:
 
+- [**Inspirum\Balikobot\Definitions\API**](../src/Definitions/API.php)
 - [**Inspirum\Balikobot\Definitions\Country**](../src/Definitions/Country.php)
 - [**Inspirum\Balikobot\Definitions\Currency**](../src/Definitions/Currency.php)
 - [**Inspirum\Balikobot\Definitions\Option**](../src/Definitions/Option.php)
