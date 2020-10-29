@@ -1757,6 +1757,41 @@ final class ServiceType
     public const MESSENGER_DIRECT = '108';
 
     /**
+     * DHL Paket
+     *
+     * @var string
+     */
+    public const DHLDE_PAKET = '1';
+
+    /**
+     * DHL Paket Taggleich
+     *
+     * @var string
+     */
+    public const DHLDE_PAKET_TAGGLEICH = '2';
+
+    /**
+     * DHL Paket International
+     *
+     * @var string
+     */
+    public const DHLDE_PAKET_INTERNATIONAL = '3';
+
+    /**
+     * DHL Europaket
+     *
+     * @var string
+     */
+    public const DHLDE_EUROPAKET = '4';
+
+    /**
+     * DHL Paket Connect
+     *
+     * @var string
+     */
+    public const DHLDE_PAKET_CONNECT = '5';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2167,6 +2202,20 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function dhlde(): array
+    {
+        return [
+            self::DHLDE_PAKET,
+            self::DHLDE_PAKET_TAGGLEICH,
+            self::DHLDE_PAKET_INTERNATIONAL,
+            self::DHLDE_EUROPAKET,
+            self::DHLDE_PAKET_CONNECT,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2192,6 +2241,7 @@ final class ServiceType
             Shipper::GW         => self::gw(),
             Shipper::GWCZ       => self::gwcz(),
             Shipper::MESSENGER  => self::messenger(),
+            Shipper::DHLDE      => self::dhlde(),
         ];
     }
 }

@@ -32,6 +32,7 @@ class ShipperTest extends AbstractBalikobotTestCase
             'gw',
             'gwcz',
             'messenger',
+            'dhlde',
         ];
 
         $this->assertEqualsCanonicalizing($supportedShippers, $shippers);

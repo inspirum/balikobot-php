@@ -133,6 +133,13 @@ final class Shipper
     public const MESSENGER = 'messenger';
 
     /**
+     * DHL DE
+     *
+     * @var string
+     */
+    public const DHLDE = 'dhlde';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -158,6 +165,7 @@ final class Shipper
             self::GW,
             self::GWCZ,
             self::MESSENGER,
+            self::DHLDE,
         ];
     }
 
