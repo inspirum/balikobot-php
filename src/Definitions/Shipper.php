@@ -284,6 +284,7 @@ final class Shipper
             Shipper::DPD,
             Shipper::GLS,
             Shipper::PPL,
+            Shipper::ULOZENKA,
         ];
 
         return in_array($shipperCode, $supportedShippers);

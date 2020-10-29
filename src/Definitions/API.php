@@ -26,13 +26,6 @@ final class API
     public const V3 = 'v3';
 
     /**
-     * API latest version
-     *
-     * @var string
-     */
-    public const LATEST = self::V2;
-
-    /**
      * API URL
      *
      * @internal

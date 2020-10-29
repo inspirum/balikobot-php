@@ -630,7 +630,7 @@ var_dump($branches);
 */
 ```
 
-Some carriers support newer **v2** version of **BRANCHES** request. You can specify version in fifth optional parameter `$version`.
+Some shippers support newer **v2** version of **BRANCHES** request. You can specify version in fifth optional parameter `$version`.
 
 You can use the `Shipper::resolveBranchesRequestVersion()` method to get supported API version.
 
