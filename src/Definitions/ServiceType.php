@@ -1421,6 +1421,13 @@ final class ServiceType
     public const PBH_CORREOS = '23';
 
     /**
+     * 123 Kuriér
+     *
+     * @var string
+     */
+    public const PBH_123_KURIER = '24';
+
+    /**
      * Worlwide zásilky
      *
      * @var string
@@ -1918,7 +1925,7 @@ final class ServiceType
     {
         return [
             self::PBH_DHL,
-            // self::PBH_GLS,
+            self::PBH_GLS,
             self::PBH_UPS,
             self::PBH_SP,
             self::PBH_TRANSOFLEX,
@@ -1940,6 +1947,7 @@ final class ServiceType
             self::PBH_ECONT,
             self::PBH_ACS,
             self::PBH_CORREOS,
+            self::PBH_123_KURIER,
         ];
     }
 
