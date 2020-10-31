@@ -274,13 +274,15 @@ class Balikobot
     {
         $response = $this->client->getPackageInfo($package->getShipper(), $package->getPackageId());
 
-        unset($response['package_id']);
-        unset($response['eshop_id']);
-        unset($response['carrier_id']);
-        unset($response['track_url']);
-        unset($response['label_url']);
-        unset($response['carrier_id_swap']);
-        unset($response['pieces']);
+        unset(
+            $response['package_id'],
+            $response['eshop_id'],
+            $response['carrier_id'],
+            $response['track_url'],
+            $response['label_url'],
+            $response['carrier_id_swap'],
+            $response['pieces']
+        );
 
         $options              = $response;
         $options[Option::EID] = $package->getBatchId();

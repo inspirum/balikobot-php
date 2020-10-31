@@ -48,8 +48,10 @@ class Client
             $labelsUrl = $response['labels_url'];
         }
 
-        unset($response['labels_url']);
-        unset($response['status']);
+        unset(
+            $response['labels_url'],
+            $response['status']
+        );
 
         $this->validateIndexes($response, $packages);
 
