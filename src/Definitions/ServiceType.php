@@ -750,13 +750,6 @@ final class ServiceType
     public const ZASILKOVNA_VMRO = 'VMRO';
 
     /**
-     * AT DPD HD
-     *
-     * @var string
-     */
-    public const ZASILKOVNA_AT_DPD_HD = '6830';
-
-    /**
      * AT Rakouská pošta HD
      *
      * @var string
@@ -764,11 +757,45 @@ final class ServiceType
     public const ZASILKOVNA_AT_POST_HD = '80';
 
     /**
+     * AT DPD HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_AT_DPD_HD = '6830';
+
+    /**
+     * BE Belgická pošta PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BE_POST_PP = '7910';
+
+    /**
+     * BE Belgická pošta HD
+     *
+     * @deprecated Will be removed in v5.0
+     * @see        \Inspirum\Balikobot\Definitions\ServiceType::ZASILKOVNA_BE_POST_HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BE_BE_POST_HD = '7909';
+
+    /**
      * BE Nizozemská pošta HD
+     *
+     * @deprecated Will be removed in v5.0 (change value)
+     * @see        \Inspirum\Balikobot\Definitions\ServiceType::ZASILKOVNA_BE_NL_POST_HD
      *
      * @var string
      */
     public const ZASILKOVNA_BE_POST_HD = '4832';
+
+    /**
+     * BE Nizozemská pošta HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_BE_NL_POST_HD = '4832';
 
     /**
      * BG Econt HD
@@ -1071,6 +1098,13 @@ final class ServiceType
     public const ZASILKOVNA_LT_OMNIVA_HD = '5065';
 
     /**
+     * LU Lucemburská pošta HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_LU_POST_HD = '8125';
+
+    /**
      * LU DPD
      *
      * @var string
@@ -1092,11 +1126,25 @@ final class ServiceType
     public const ZASILKOVNA_LV_OMNIVA_HD = '5063';
 
     /**
+     * NL DHL HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_NL_DHL_HD = '8000';
+
+    /**
      * NL Post
      *
      * @var string
      */
     public const ZASILKOVNA_NL_POST_HD = '4329';
+
+    /**
+     * NL DHL PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_NL_DHL_PP = '8001';
 
     /**
      * Polská pošta 24h
@@ -2076,7 +2124,9 @@ final class ServiceType
             self::ZASILKOVNA_VMRO,
             self::ZASILKOVNA_AT_DPD_HD,
             self::ZASILKOVNA_AT_POST_HD,
-            self::ZASILKOVNA_BE_POST_HD,
+            self::ZASILKOVNA_BE_POST_PP,
+            self::ZASILKOVNA_BE_BE_POST_HD,
+            self::ZASILKOVNA_BE_NL_POST_HD,
             self::ZASILKOVNA_BG_ECONT_HD,
             self::ZASILKOVNA_BG_ECONT_PP,
             self::ZASILKOVNA_BG_SPEEDY_PP,
@@ -2120,10 +2170,13 @@ final class ServiceType
             self::ZASILKOVNA_IT_GLS_HD,
             self::ZASILKOVNA_LT_OMNIVA_BOX,
             self::ZASILKOVNA_LT_OMNIVA_HD,
+            self::ZASILKOVNA_LU_POST_HD,
             self::ZASILKOVNA_LU_DPD_HD,
             self::ZASILKOVNA_LV_OMNIVA_BOX,
             self::ZASILKOVNA_LV_OMNIVA_HD,
+            self::ZASILKOVNA_NL_DHL_HD,
             self::ZASILKOVNA_NL_POST_HD,
+            self::ZASILKOVNA_NL_DHL_PP,
             self::ZASILKOVNA_PL_POST_24_HD,
             self::ZASILKOVNA_PL_POST_48_HD,
             self::ZASILKOVNA_PL_DPD_HD,

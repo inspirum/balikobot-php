@@ -32,7 +32,7 @@ abstract class AbstractTestCase extends PHPUnitTestCase
     }
 
     /**
-     * Get partial mocked API requester instance with overrided call method.
+     * Get partial mocked API requester instance with overridden call method.
      *
      * @param int          $statusCode
      * @param array|string $data
