@@ -140,6 +140,13 @@ final class Shipper
     public const DHLDE = 'dhlde';
 
     /**
+     * FedEx
+     *
+     * @var string
+     */
+    public const FEDEX = 'fedex';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -166,6 +173,7 @@ final class Shipper
             self::GWCZ,
             self::MESSENGER,
             self::DHLDE,
+            self::FEDEX,
         ];
     }
 

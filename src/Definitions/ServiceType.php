@@ -1799,6 +1799,20 @@ final class ServiceType
     public const DHLDE_PAKET_CONNECT = '5';
 
     /**
+     * FedEx International Priority
+     *
+     * @var string
+     */
+    public const FEDEX_INTERNATIONAL = '1';
+
+    /**
+     * FedEx International Economy
+     *
+     * @var string
+     */
+    public const FEDEX_ECONOMY = '2';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2224,6 +2238,17 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function fedex(): array
+    {
+        return [
+            self::FEDEX_INTERNATIONAL,
+            self::FEDEX_ECONOMY,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2250,6 +2275,7 @@ final class ServiceType
             Shipper::GWCZ       => self::gwcz(),
             Shipper::MESSENGER  => self::messenger(),
             Shipper::DHLDE      => self::dhlde(),
+            Shipper::FEDEX      => self::fedex(),
         ];
     }
 }
