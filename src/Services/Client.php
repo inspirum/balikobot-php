@@ -256,7 +256,7 @@ class Client
     }
 
     /**
-     * Gets complete information about a package
+     * Gets complete information about a package by its package ID
      *
      * @param string $shipper
      * @param int    $packageId
@@ -268,6 +268,29 @@ class Client
     public function getPackageInfo(string $shipper, int $packageId): array
     {
         $response = $this->requester->call(API::V1, $shipper, Request::PACKAGE . '/' . $packageId, [], false);
+
+        return $response;
+    }
+
+    /**
+     * Gets complete information about a package by its carrier ID
+     *
+     * @param string $shipper
+     * @param string $carrierId
+     *
+     * @return array<string,int|string>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getPackageInfoByCarrierId(string $shipper, string $carrierId): array
+    {
+        $response = $this->requester->call(
+            API::V1,
+            $shipper,
+            Request::PACKAGE . '/carrier_id/' . $carrierId,
+            [],
+            false
+        );
 
         return $response;
     }
