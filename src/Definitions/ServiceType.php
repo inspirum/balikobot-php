@@ -2160,7 +2160,7 @@ final class ServiceType
             self::ZASILKOVNA_HR_DPD_HD,
             self::ZASILKOVNA_HR_POST_PP,
             self::ZASILKOVNA_HR_POST_HD,
-            self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
+            //self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
             self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
             self::ZASILKOVNA_HU_POST_HD,
