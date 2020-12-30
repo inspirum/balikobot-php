@@ -1077,6 +1077,20 @@ final class ServiceType
     public const ZASILKOVNA_IE_HERMES_HD = '4524';
 
     /**
+     * IE Anpost HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_IE_ANPOST_HD = '9990';
+
+    /**
+     * IT Bartolini Home
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_IT_BARTOLINI_HD = '9103';
+
+    /**
      * Itálie GLS
      *
      * @var string
@@ -1217,6 +1231,13 @@ final class ServiceType
     public const ZASILKOVNA_RO_DPD_HD = '836';
 
     /**
+     * Rumunsko Sameday HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RO_SAMEDAY_HD = '7397';
+
+    /**
      * Rumunsko FAN
      *
      * @var string
@@ -1306,6 +1327,20 @@ final class ServiceType
      * @var string
      */
     public const ZASILKOVNA_UA_ROSAN_HD = '1160';
+
+    /**
+     * US FedEx HD Economy
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_US_FEDEX_ECONOMY_HD = '8289';
+
+    /**
+     * US Fedex HD Priority
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_US_FEDEX_PRIORITY_HD = '8701';
 
     /**
      * DHL
@@ -1474,6 +1509,19 @@ final class ServiceType
      * @var string
      */
     public const PBH_123_KURIER = '24';
+
+    /**
+     * RoyalMail 24h
+     *
+     * @var string
+     */
+    public const PBH_ROYAL_MAIL_24 = '25';
+    /**
+     * RoyalMail 48h
+     *
+     * @var string
+     */
+    public const PBH_ROYAL_MAIL_48 = '26';
 
     /**
      * Worlwide zásilky
@@ -2043,7 +2091,7 @@ final class ServiceType
             self::PBH_PP,
             self::PBH_INPOST_KURIER,
             self::PBH_FAN_KURIER,
-            self::PBH_HERMES,
+            // self::PBH_HERMES,
             self::PBH_SPEEDY,
             self::PBH_COLISSIMO,
             self::PBH_MEEST,
@@ -2052,6 +2100,8 @@ final class ServiceType
             self::PBH_ACS,
             self::PBH_CORREOS,
             self::PBH_123_KURIER,
+            self::PBH_ROYAL_MAIL_24,
+            self::PBH_ROYAL_MAIL_48,
         ];
     }
 
@@ -2208,7 +2258,9 @@ final class ServiceType
             self::ZASILKOVNA_HU_POST_HD,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
             self::ZASILKOVNA_CH_POST_HD,
-            self::ZASILKOVNA_IE_HERMES_HD,
+            // self::ZASILKOVNA_IE_HERMES_HD,
+            self::ZASILKOVNA_IE_ANPOST_HD,
+            self::ZASILKOVNA_IT_BARTOLINI_HD,
             self::ZASILKOVNA_IT_GLS_HD,
             self::ZASILKOVNA_LT_OMNIVA_BOX,
             self::ZASILKOVNA_LT_OMNIVA_HD,
@@ -2229,6 +2281,7 @@ final class ServiceType
             self::ZASILKOVNA_RO_COURIER_HD,
             self::ZASILKOVNA_RO_URGENT_CARGUS_HD,
             self::ZASILKOVNA_RO_DPD_HD,
+            self::ZASILKOVNA_RO_SAMEDAY_HD,
             self::ZASILKOVNA_RO_FAN_COURIER_HD,
             self::ZASILKOVNA_RU_POST_PP,
             self::ZASILKOVNA_RU_POST_RECOMMENDED_PP,
@@ -2242,6 +2295,8 @@ final class ServiceType
             self::ZASILKOVNA_SK_POST_HD,
             self::ZASILKOVNA_UA_NOVA_POSHTA_PP,
             self::ZASILKOVNA_UA_ROSAN_HD,
+            self::ZASILKOVNA_US_FEDEX_ECONOMY_HD,
+            self::ZASILKOVNA_US_FEDEX_PRIORITY_HD,
         ];
     }
 
