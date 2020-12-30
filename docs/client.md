@@ -1139,22 +1139,73 @@ $countries = $client->getCountriesData();
 var_dump($countries);
 [
   [
-    'name_en'      => 'Andorra',
-    'name_cz'      => 'Andorra',
-    'iso_code'     => 'AD',
-    'phone_prefix' => '+376',
-    'currency'     => 'EUR',
-    'continent'    => 'Europe',
-  ],
+    'name_en'      => 'Andorra'
+    'name_cz'      => 'Andorra'
+    'iso_code'     => 'AD'
+    'phone_prefix' => '+376'
+    'currency'     => 'EUR'
+    'continent'    => 'Europe'
+  ]
   [
-    'name_en'      => 'United Arab Emirates',
-    'name_cz'      => 'Spojené arabské emiráty',
-    'iso_code'     => 'AE',
-    'phone_prefix' => '+971',
-    'currency'     => 'AED',
-    'continent'    => 'Asia',
-  ],
+    'name_en'      => 'United Arab Emirates'
+    'name_cz'      => 'Spojené arabské emiráty'
+    'iso_code'     => 'AE'
+    'phone_prefix' => '+971'
+    'currency'     => 'AED'
+    'continent'    => 'Asia'
+  ]
   ...
+]
+*/
+```
+
+
+### **CHANGELOG**
+
+Method **getChangelog** obtain news in the Balikobot API
+
+The client normalizes the response by returning only changelog data (drop **status** attribute).
+
+
+```php
+$changelog = $client->getChangelog();
+
+/*
+var_dump($changelog);
+[
+  'api_v1_documentation_cz' => 'https://balikobot.docs.apiary.io/'
+  'api_v2_documentation_cz' => 'https://balikobotv2.docs.apiary.io/'
+  'api_v1_documentation_en' => 'https://balikoboteng.docs.apiary.io/'
+  'api_v2_documentation_en' => 'https://balikobotv2eng.docs.apiary.io/'
+  'version'                 => '1.900'
+  'date'                    => '2020-12-18'
+  'versions'                => [
+    0 => [
+      'version' => '1.900'
+      'date'    => '2020-12-18'
+      'changes' => [
+        0 => [
+          'name'        => 'ADD Zásilkovna'
+          'description' => '- delivery_costs a delivery_costs_eur - přidání GB'
+        ]
+        1 => [
+          'name'        => 'ADD PbH',
+          'description' => '- content data - přidání GB'
+        ]
+      ]
+    ],
+    1 => [
+      'version' => '1.899'
+      'date'    => '2020-12-07'
+      'changes' => [
+        0 => [
+          'name'        => 'ADD Gebrüder Weiss Česká republika'
+          'description' => '- nový atribut rec_floor_number - číslo patra'
+        ]
+      ]
+    ]
+    ...
+  ]
 ]
 */
 ```
@@ -1224,6 +1275,8 @@ interface Client {
   function getTransportCosts(string $shipper, array $packages): array;
     
   function getCountriesData(): array;
+  
+  function getChangelog(): array;
 }
 ```
 

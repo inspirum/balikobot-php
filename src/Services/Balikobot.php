@@ -779,7 +779,7 @@ class Balikobot
     }
 
     /**
-     * Ģet information on individual countries of the world
+     * Get information on individual countries of the world
      *
      * @return array<string,\Inspirum\Balikobot\Model\Values\Country>|\Inspirum\Balikobot\Model\Values\Country[]
      *
@@ -796,5 +796,19 @@ class Balikobot
         }
 
         return $countries;
+    }
+
+    /**
+     * Method for obtaining news in the Balikobot API
+     *
+     * @return array<string,mixed>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getChangelog(): array
+    {
+        $response = $this->client->getChangelog();
+
+        return $response;
     }
 }

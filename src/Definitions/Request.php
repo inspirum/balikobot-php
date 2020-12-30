@@ -185,4 +185,11 @@ final class Request
      * @var string
      */
     public const GET_COUNTRIES_DATA = 'getCountriesData';
+
+    /**
+     * Method for obtaining news in the Balikobot API
+     *
+     * @var string
+     */
+    public const CHANGELOG = 'changelog';
 }

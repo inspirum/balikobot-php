@@ -308,6 +308,8 @@ interface Balikobot {
   function getTransportCosts(PackageCollection $packages): PackageTransportCostCollection;
 
   function getCountriesData(): array;
+  
+  function getChangelog(): array;
 }
 ```
 

@@ -759,7 +759,7 @@ class Client
     }
 
     /**
-     * Ģet information on individual countries of the world
+     * Get information on individual countries of the world
      *
      * @return array<array<string,mixed>>
      *
@@ -772,6 +772,22 @@ class Client
         $formattedResponse = $this->normalizeResponseItems($response['countries'] ?? [], 'iso_code', null);
 
         return $formattedResponse;
+    }
+
+    /**
+     * Method for obtaining news in the Balikobot API
+     *
+     * @return array<string,mixed>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getChangelog(): array
+    {
+        $response = $this->requester->call(API::V1, '', Request::CHANGELOG);
+
+        unset($response['status']);
+
+        return $response;
     }
 
     /**
