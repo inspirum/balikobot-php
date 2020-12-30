@@ -7,6 +7,7 @@ php:
   - 7.2
   - 7.3
   - 7.4
+  - 8.0
 
 cache:
   directories:
@@ -22,7 +23,7 @@ script:
 
 after_script:
   - |
-    if [[ "$TRAVIS_PHP_VERSION" == '7.4' ]]; then
+    if [[ "$TRAVIS_PHP_VERSION" == '8.0' ]]; then
       wget https://scrutinizer-ci.com/ocular.phar
       php ocular.phar code-coverage:upload --format=php-clover coverage.clover
     fi
