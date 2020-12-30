@@ -147,6 +147,13 @@ final class Shipper
     public const FEDEX = 'fedex';
 
     /**
+     * Fofr
+     *
+     * @var string
+     */
+    public const FOFR = 'fofr';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -174,6 +181,7 @@ final class Shipper
             self::MESSENGER,
             self::DHLDE,
             self::FEDEX,
+            self::FOFR,
         ];
     }
 

@@ -10,11 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added support for new options from documentation **v1.896** (2020-11-18)
     - Add **PACKAGE** request filtered by **carrier_id**
-
+- Added support for new options from documentation **v1.897** (2020-11-30)
+    - Add **FOFR** shipper
 
 ## [v4.2.0 (2020-11-10)](https://github.com/inspirum/balikobot-php/compare/v4.1.0...v4.2.0)
 ### Added
-- Added support for new options *(from documentation **v1.89x** (2020-11-xx))*
+- Added support for new options from documentation **v1.897** (2020-11-30)
     - Add **FEDEX** shipper
 - Added multiple **ZASILKOVNA\_&ast;** service types
 

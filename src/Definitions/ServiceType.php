@@ -1861,6 +1861,48 @@ final class ServiceType
     public const FEDEX_ECONOMY = '2';
 
     /**
+     * Fofr
+     *
+     * @var string
+     */
+    public const FOFR_FOFR = 'F';
+
+    /**
+     * Fofr Economy
+     *
+     * @var string
+     */
+    public const FOFR_ECONOMY = 'C';
+
+    /**
+     * Fofr Balíková přeprava
+     *
+     * @var string
+     */
+    public const FOFR_PARCEL = 'B';
+
+    /**
+     * Fofr Nadrozměrná zásilka
+     *
+     * @var string
+     */
+    public const FOFR_OVERSIZED = 'N';
+
+    /**
+     * Fofr Slovensko
+     *
+     * @var string
+     */
+    public const FOFR_SK = 'S';
+
+    /**
+     * Fofr Zahraničí
+     *
+     * @var string
+     */
+    public const FOFR_ABROAD = 'Z';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2302,6 +2344,21 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function fofr(): array
+    {
+        return [
+            self::FOFR_FOFR,
+            self::FOFR_ECONOMY,
+            self::FOFR_PARCEL,
+            self::FOFR_OVERSIZED,
+            self::FOFR_SK,
+            self::FOFR_ABROAD,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2329,6 +2386,7 @@ final class ServiceType
             Shipper::MESSENGER  => self::messenger(),
             Shipper::DHLDE      => self::dhlde(),
             Shipper::FEDEX      => self::fedex(),
+            Shipper::FOFR       => self::fofr(),
         ];
     }
 }
