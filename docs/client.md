@@ -132,13 +132,13 @@ var_dump($orderedPackages);
 [
   0 => [
     'carrier_id' => 'NP1504102246M'
-    'package_id' => 42719
+    'package_id' => '42719'
     'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.'
     'status'     => '200'
   ]
   1 => [
     'carrier_id' => 'NP1504102247M'
-    'package_id' => 42720
+    'package_id' => '42720'
     'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.'
     'status'     => '200'
   ]
@@ -251,13 +251,13 @@ var_dump($orderedPackages);
   0 => [
     'eshop_id'   => '567A2889'
     'carrier_id' => 'NP1504102246M'
-    'package_id' => 42719
+    'package_id' => '42719'
     'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.'
   ]
   1 => [
     'eshop_id'   => '567A2890'
     'carrier_id' => 'NP1504102247M'
-    'package_id' => 42720
+    'package_id' => '42720'
     'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.'
   ]
   ...
@@ -309,7 +309,7 @@ var_dump($package);
   
   'eshop_id'     => '15431025445bf9e0509a87d'
   'carrier_id'   => 'NP1504102229M'
-  'package_id'   => 42717
+  'package_id'   => '42717'
   'label_url'    => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwZcMBAVAnw.'
 ]
 */
@@ -359,8 +359,8 @@ var_dump($orderedShipment);
   'handover_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtARcMBAhAoU.'
   'labels_url'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtFwwXDAQIAKE'
   'package_ids'  => [
-    0 => 42717
-    1 => 42718
+    0 => '42717'
+    1 => '42718'
   ]
 ]
 */
@@ -1048,9 +1048,9 @@ $orderedPackages = $client->orderB2AShipment(Shipper::PPL, [
 var_dump($orderedPackages);
 [
   0 => [
-    'package_id'     => 24
+    'package_id'     => '24'
     'status_message' => 'OK, přeprava byla objednána'
-    'status'         => '200'
+    'status'         => 200
   ]
 ]
 */

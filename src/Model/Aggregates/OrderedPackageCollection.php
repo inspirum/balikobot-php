@@ -82,7 +82,7 @@ class OrderedPackageCollection implements ArrayAccess, Countable, IteratorAggreg
     /**
      * Get package IDs
      *
-     * @return array<int>
+     * @return array<string>
      */
     public function getPackageIds(): array
     {

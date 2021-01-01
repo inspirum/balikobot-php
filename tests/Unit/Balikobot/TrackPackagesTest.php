@@ -28,7 +28,7 @@ class TrackPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $package = new OrderedPackage(1, 'ppl', '0001', '1234');
+        $package = new OrderedPackage('1', 'ppl', '0001', '1234');
 
         $service->trackPackage($package);
 
@@ -81,7 +81,7 @@ class TrackPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $package = new OrderedPackage(1, 'ppl', '0001', '1234');
+        $package = new OrderedPackage('1', 'ppl', '0001', '1234');
 
         $statuses = $service->trackPackage($package);
 
@@ -124,8 +124,8 @@ class TrackPackagesTest extends AbstractBalikobotTestCase
         $service = new Balikobot($requester);
 
         $packages = new OrderedPackageCollection();
-        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1236'));
-        $packages->add(new OrderedPackage(2, 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage('1', 'ppl', '0001', '1236'));
+        $packages->add(new OrderedPackage('2', 'ppl', '0001', '1234'));
 
         $service->trackPackages($packages);
 
@@ -192,8 +192,8 @@ class TrackPackagesTest extends AbstractBalikobotTestCase
         $service = new Balikobot($requester);
 
         $packages = new OrderedPackageCollection();
-        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1236'));
-        $packages->add(new OrderedPackage(2, 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage('1', 'ppl', '0001', '1236'));
+        $packages->add(new OrderedPackage('2', 'ppl', '0001', '1234'));
 
         $statuses = $service->trackPackages($packages);
 
@@ -221,7 +221,7 @@ class TrackPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $package = new OrderedPackage(1, 'gls', '0001', '1234');
+        $package = new OrderedPackage('1', 'gls', '0001', '1234');
 
         $service->trackPackage($package);
     }

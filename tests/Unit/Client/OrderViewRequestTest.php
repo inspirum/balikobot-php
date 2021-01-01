@@ -73,7 +73,7 @@ class OrderViewRequestTest extends AbstractClientTestCase
             'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
             'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
             'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
-            'package_ids'  => [1, 4, 65],
+            'package_ids'  => ['1', '4', '65'],
         ]);
 
         $client = new Client($requester);
@@ -86,7 +86,7 @@ class OrderViewRequestTest extends AbstractClientTestCase
                 'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
                 'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
                 'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
-                'package_ids'  => [1, 4, 65],
+                'package_ids'  => ['1', '4', '65'],
             ],
             $order
         );

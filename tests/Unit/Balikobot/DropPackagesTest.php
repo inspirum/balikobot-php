@@ -18,8 +18,8 @@ class DropPackagesTest extends AbstractBalikobotTestCase
 
         $packages = new OrderedPackageCollection();
 
-        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
-        $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
+        $packages->add(new OrderedPackage('1', 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage('2', 'ppl', '0001', '5678'));
 
         $service->dropPackages($packages);
 
@@ -29,10 +29,10 @@ class DropPackagesTest extends AbstractBalikobotTestCase
                 'https://api.balikobot.cz/ppl/drop',
                 [
                     0 => [
-                        'id' => 1,
+                        'id' => '1',
                     ],
                     1 => [
-                        'id' => 2,
+                        'id' => '2',
                     ],
                 ],
             ]
@@ -49,7 +49,7 @@ class DropPackagesTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $package = new OrderedPackage(1, 'ppl', '0001', '1234');
+        $package = new OrderedPackage('1', 'ppl', '0001', '1234');
 
         $service->dropPackage($package);
 

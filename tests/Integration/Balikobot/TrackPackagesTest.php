@@ -12,8 +12,8 @@ class TrackPackagesTest extends AbstractBalikobotTestCase
         $service = $this->newBalikobot();
 
         $packages = new OrderedPackageCollection();
-        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1236'));
-        $packages->add(new OrderedPackage(2, 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage('1', 'ppl', '0001', '1236'));
+        $packages->add(new OrderedPackage('2', 'ppl', '0001', '1234'));
 
         $statuses = $service->trackPackages($packages);
 

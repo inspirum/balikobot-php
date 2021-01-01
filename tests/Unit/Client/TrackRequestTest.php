@@ -187,7 +187,7 @@ class TrackRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackages('cp', [1, 2, 4]);
+        $client->trackPackages('cp', ['1', '2', '4']);
     }
 
     public function testRequestShouldNotHaveStatusWithMultiplePackages()
@@ -235,7 +235,7 @@ class TrackRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $status = $client->trackPackages('cp', [3, 4, 5]);
+        $status = $client->trackPackages('cp', ['3', '4', '5']);
 
         $this->assertNotEmpty($status);
     }
@@ -300,7 +300,7 @@ class TrackRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackages('cp', [4, 2]);
+        $client->trackPackages('cp', ['4', '2']);
     }
 
     public function testThrowsExceptionWhenNoDataReturnWithMultiplePackages()
@@ -313,7 +313,7 @@ class TrackRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackages('cp', [1, 3]);
+        $client->trackPackages('cp', ['1', '3']);
     }
 
     public function testThrowsExceptionWhenNotAllDataReturnWithMultiplePackages()
@@ -336,7 +336,7 @@ class TrackRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackages('ppl', [1, 3]);
+        $client->trackPackages('ppl', ['1', '3']);
     }
 
     public function testThrowsExceptionWhenBadResponseData()
@@ -364,7 +364,7 @@ class TrackRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackages('ppl', [1, 3]);
+        $client->trackPackages('ppl', ['1', '3']);
     }
 
     public function testMakeRequestWithMultiplePackages()
@@ -405,7 +405,7 @@ class TrackRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->trackPackages('cp', [1, 33, 4]);
+        $client->trackPackages('cp', ['1', '33', '4']);
 
         $requester->shouldHaveReceived(
             'request',

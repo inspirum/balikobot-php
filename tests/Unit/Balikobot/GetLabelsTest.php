@@ -19,8 +19,8 @@ class GetLabelsTest extends AbstractBalikobotTestCase
 
         $packages = new OrderedPackageCollection();
 
-        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
-        $packages->add(new OrderedPackage(7, 'ppl', '0001', '5678'));
+        $packages->add(new OrderedPackage('1', 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage('7', 'ppl', '0001', '5678'));
 
         $service->getLabels($packages);
 
@@ -29,7 +29,7 @@ class GetLabelsTest extends AbstractBalikobotTestCase
             [
                 'https://api.balikobot.cz/ppl/labels',
                 [
-                    'package_ids' => [1, 7],
+                    'package_ids' => ['1', '7'],
                 ],
             ]
         );
@@ -48,7 +48,7 @@ class GetLabelsTest extends AbstractBalikobotTestCase
 
         $packages = new OrderedPackageCollection();
 
-        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage('1', 'ppl', '0001', '1234'));
 
         $labelsUrl = $service->getLabels($packages);
 

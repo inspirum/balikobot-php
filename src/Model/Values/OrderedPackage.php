@@ -7,7 +7,7 @@ class OrderedPackage
     /**
      * Package ID
      *
-     * @var int
+     * @var string
      */
     private $packageId;
 
@@ -77,7 +77,7 @@ class OrderedPackage
     /**
      * OrderedPackage constructor
      *
-     * @param int           $packageId
+     * @param string        $packageId
      * @param string        $shipper
      * @param string        $batchId
      * @param string        $carrierId
@@ -113,9 +113,9 @@ class OrderedPackage
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getPackageId(): int
+    public function getPackageId(): string
     {
         return $this->packageId;
     }

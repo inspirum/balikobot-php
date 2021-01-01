@@ -14,13 +14,13 @@ class AddPackagesTest extends AbstractBalikobotTestCase
             'status' => 200,
             0        => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
             1        => [
                 'carrier_id' => 'NP1504102247M',
-                'package_id' => 42720,
+                'package_id' => '42720',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                 'status'     => '200',
             ],
@@ -64,13 +64,13 @@ class AddPackagesTest extends AbstractBalikobotTestCase
             'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.',
             0            => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
             1            => [
                 'carrier_id' => 'NP1504102247M',
-                'package_id' => 42720,
+                'package_id' => '42720',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                 'status'     => '200',
             ],
@@ -86,7 +86,7 @@ class AddPackagesTest extends AbstractBalikobotTestCase
         $orderedPackages = $service->addPackages($packages);
 
         $this->assertEquals(2, $orderedPackages->count());
-        $this->assertEquals([42719, 42720], $orderedPackages->getPackageIds());
+        $this->assertEquals(['42719', '42720'], $orderedPackages->getPackageIds());
         $this->assertEquals('NP1504102247M', $orderedPackages[1]->getCarrierId());
         $this->assertEquals('0001', $orderedPackages[0]->getBatchId());
         $this->assertEquals('0002', $orderedPackages[1]->getBatchId());
@@ -103,13 +103,13 @@ class AddPackagesTest extends AbstractBalikobotTestCase
             'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.',
             0            => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
             1            => [
                 'carrier_id' => 'NP1504102247M',
-                'package_id' => 42720,
+                'package_id' => '42720',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                 'status'     => '200',
             ],
@@ -134,7 +134,7 @@ class AddPackagesTest extends AbstractBalikobotTestCase
             'status' => 200,
             0        => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/ups/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
@@ -172,13 +172,13 @@ class AddPackagesTest extends AbstractBalikobotTestCase
             'status' => 200,
             0        => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/ups/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
             1        => [
                 'carrier_id' => 'NP1504102247M',
-                'package_id' => 42720,
+                'package_id' => '42720',
                 'label_url'  => 'https://pdf.balikobot.cz/ups/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                 'status'     => '200',
             ],
@@ -223,13 +223,13 @@ class AddPackagesTest extends AbstractBalikobotTestCase
             'status' => 200,
             0        => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/dhl/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
             1        => [
                 'carrier_id' => 'NP1504102247M',
-                'package_id' => 42720,
+                'package_id' => '42720',
                 'label_url'  => 'https://pdf.balikobot.cz/dhl/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                 'status'     => '200',
             ],
@@ -274,13 +274,13 @@ class AddPackagesTest extends AbstractBalikobotTestCase
             'status' => 200,
             0        => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/tnt/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
             1        => [
                 'carrier_id' => 'NP1504102247M',
-                'package_id' => 42720,
+                'package_id' => '42720',
                 'label_url'  => 'https://pdf.balikobot.cz/dhl/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                 'status'     => '200',
             ],

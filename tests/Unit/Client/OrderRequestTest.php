@@ -53,14 +53,14 @@ class OrderRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->orderShipment('cp', [1, 4]);
+        $client->orderShipment('cp', ['1', '4']);
 
         $requester->shouldHaveReceived(
             'request',
             [
                 'https://api.balikobot.cz/cp/order',
                 [
-                    'package_ids' => [1, 4],
+                    'package_ids' => ['1', '4'],
                 ],
             ]
         );
@@ -76,12 +76,12 @@ class OrderRequestTest extends AbstractClientTestCase
             'order_id'     => 29,
             'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
             'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
-            'package_ids'  => [1],
+            'package_ids'  => ['1'],
         ]);
 
         $client = new Client($requester);
 
-        $order = $client->orderShipment('cp', [1]);
+        $order = $client->orderShipment('cp', ['1']);
 
         $this->assertEquals(
             [
@@ -89,7 +89,7 @@ class OrderRequestTest extends AbstractClientTestCase
                 'order_id'     => 29,
                 'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
                 'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
-                'package_ids'  => [1],
+                'package_ids'  => ['1'],
             ],
             $order
         );

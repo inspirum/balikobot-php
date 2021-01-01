@@ -15,7 +15,7 @@ class GetPackageInfoTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $orderedPackage = new OrderedPackage(1, 'ppl', '0001', '1234');
+        $orderedPackage = new OrderedPackage('1', 'ppl', '0001', '1234');
 
         $service->getPackageInfo($orderedPackage);
 
@@ -33,7 +33,7 @@ class GetPackageInfoTest extends AbstractBalikobotTestCase
     public function testResponseData()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'package_id'      => 1,
+            'package_id'      => '1',
             'eshop_id'        => 19,
             'carrier_id'      => '1234',
             'track_url'       => '/track',
@@ -47,7 +47,7 @@ class GetPackageInfoTest extends AbstractBalikobotTestCase
 
         $service = new Balikobot($requester);
 
-        $orderedPackage = new OrderedPackage(1, 'ppl', '0001', '1234');
+        $orderedPackage = new OrderedPackage('1', 'ppl', '0001', '1234');
 
         $package = $service->getPackageInfo($orderedPackage);
 

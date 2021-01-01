@@ -10,7 +10,7 @@ class OrderedPackageTest extends AbstractTestCase
     public function testStaticConstructor()
     {
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', '0001', [
-            'package_id'      => 1234,
+            'package_id'      => '1234',
             'carrier_id'      => '02IID',
             'track_url'       => '/track',
             'label_url'       => '/labels',
@@ -31,14 +31,14 @@ class OrderedPackageTest extends AbstractTestCase
     public function testStaticConstructorWithMissingData()
     {
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', '0001', [
-            'package_id' => 1234,
+            'package_id' => '1234',
             'carrier_id' => '02IID',
             'label_url'  => '/labels',
         ]);
 
         $this->assertEquals('cp', $orderedPackage->getShipper());
         $this->assertEquals('0001', $orderedPackage->getBatchId());
-        $this->assertEquals(1234, $orderedPackage->getPackageId());
+        $this->assertEquals('1234', $orderedPackage->getPackageId());
         $this->assertEquals('02IID', $orderedPackage->getCarrierId());
         $this->assertEquals(null, $orderedPackage->getTrackUrl());
         $this->assertEquals('/labels', $orderedPackage->getLabelUrl());
@@ -49,12 +49,12 @@ class OrderedPackageTest extends AbstractTestCase
     public function testStaticConstructorWithMissingCarrierId()
     {
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', '0001', [
-            'package_id' => 1234,
+            'package_id' => '1234',
         ]);
 
         $this->assertEquals('cp', $orderedPackage->getShipper());
         $this->assertEquals('0001', $orderedPackage->getBatchId());
-        $this->assertEquals(1234, $orderedPackage->getPackageId());
+        $this->assertEquals('1234', $orderedPackage->getPackageId());
         $this->assertEquals('', $orderedPackage->getCarrierId());
         $this->assertEquals(null, $orderedPackage->getTrackUrl());
         $this->assertEquals(null, $orderedPackage->getLabelUrl());
@@ -65,14 +65,14 @@ class OrderedPackageTest extends AbstractTestCase
     public function testStaticConstructorWithFinalTrackUrl()
     {
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', '0001', [
-            'package_id'       => 1234,
+            'package_id'       => '1234',
             'carrier_id_final' => '00605444103',
             'track_url_final'  => 'https://online.gls-slovakia.sk/tt_page.php',
         ]);
 
         $this->assertEquals('cp', $orderedPackage->getShipper());
         $this->assertEquals('0001', $orderedPackage->getBatchId());
-        $this->assertEquals(1234, $orderedPackage->getPackageId());
+        $this->assertEquals('1234', $orderedPackage->getPackageId());
         $this->assertEquals('', $orderedPackage->getCarrierId());
         $this->assertEquals(null, $orderedPackage->getTrackUrl());
         $this->assertEquals(null, $orderedPackage->getLabelUrl());

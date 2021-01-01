@@ -16,15 +16,15 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
             'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
             'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
             'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
-            'package_ids'  => [1, 2],
+            'package_ids'  => ['1', '2'],
         ]);
 
         $service = new Balikobot($requester);
 
         $packages = new OrderedPackageCollection();
 
-        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
-        $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
+        $packages->add(new OrderedPackage('1', 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage('2', 'ppl', '0001', '5678'));
 
         $service->orderShipment($packages);
 
@@ -33,7 +33,7 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
             [
                 'https://api.balikobot.cz/ppl/order',
                 [
-                    'package_ids' => [1, 2],
+                    'package_ids' => ['1', '2'],
                 ],
             ]
         );
@@ -49,20 +49,20 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
             'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
             'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
             'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
-            'package_ids'  => [1, 2],
+            'package_ids'  => ['1', '2'],
         ]);
 
         $service = new Balikobot($requester);
 
         $packages = new OrderedPackageCollection();
 
-        $packages->add(new OrderedPackage(1, 'ppl', '0001', '1234'));
-        $packages->add(new OrderedPackage(2, 'ppl', '0001', '5678'));
+        $packages->add(new OrderedPackage('1', 'ppl', '0001', '1234'));
+        $packages->add(new OrderedPackage('2', 'ppl', '0001', '5678'));
 
         $orderedShipment = $service->orderShipment($packages);
 
         $this->assertEquals('ppl', $orderedShipment->getShipper());
-        $this->assertEquals([1, 2], $orderedShipment->getPackageIds());
+        $this->assertEquals(['1', '2'], $orderedShipment->getPackageIds());
         $this->assertEquals('http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..', $orderedShipment->getFileUrl());
         $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ', $orderedShipment->getLabelsUrl());
         $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.', $orderedShipment->getHandoverUrl());

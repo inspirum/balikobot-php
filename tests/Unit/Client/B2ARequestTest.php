@@ -39,7 +39,7 @@ class B2ARequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 400,
             0        => [
-                'package_id'     => 24,
+                'package_id'     => '24',
                 'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
@@ -73,7 +73,7 @@ class B2ARequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'package_id' => 24,
+                'package_id' => '24',
                 'status'     => 200,
             ],
             1        => [
@@ -93,12 +93,12 @@ class B2ARequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'package_id'     => 24,
+                'package_id'     => '24',
                 'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
             1        => [
-                'package_id'     => 24,
+                'package_id'     => '24',
                 'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
@@ -114,7 +114,7 @@ class B2ARequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'package_id'     => 24,
+                'package_id'     => '24',
                 'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
@@ -137,13 +137,13 @@ class B2ARequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'package_id'     => 24,
+                'package_id'     => '24',
                 'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
             1        => [
                 'carrier_id'     => '82161058244',
-                'package_id'     => 25,
+                'package_id'     => '25',
                 'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
@@ -156,13 +156,13 @@ class B2ARequestTest extends AbstractClientTestCase
         $this->assertEquals(
             [
                 0 => [
-                    'package_id'     => 24,
+                    'package_id'     => '24',
                     'status_message' => 'OK, přeprava byla objednána.',
                     'status'         => '200',
                 ],
                 1 => [
                     'carrier_id'     => '82161058244',
-                    'package_id'     => 25,
+                    'package_id'     => '25',
                     'status_message' => 'OK, přeprava byla objednána.',
                     'status'         => '200',
                 ],

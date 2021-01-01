@@ -40,7 +40,7 @@ class AddRequestTest extends AbstractClientTestCase
             'status' => 400,
             0        => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
@@ -74,7 +74,7 @@ class AddRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'status'     => 200,
             ],
             1        => [
@@ -95,13 +95,13 @@ class AddRequestTest extends AbstractClientTestCase
             'status' => 200,
             0        => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
             1        => [
                 'carrier_id' => 'NP1504102247M',
-                'package_id' => 42720,
+                'package_id' => '42720',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
@@ -118,7 +118,7 @@ class AddRequestTest extends AbstractClientTestCase
             'status' => 200,
             0        => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
@@ -143,13 +143,13 @@ class AddRequestTest extends AbstractClientTestCase
             'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
             0            => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
             1            => [
                 'carrier_id' => 'NP1504102247M',
-                'package_id' => 42720,
+                'package_id' => '42720',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                 'status'     => '200',
             ],
@@ -163,13 +163,13 @@ class AddRequestTest extends AbstractClientTestCase
             [
                 0 => [
                     'carrier_id' => 'NP1504102246M',
-                    'package_id' => 42719,
+                    'package_id' => '42719',
                     'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                     'status'     => '200',
                 ],
                 1 => [
                     'carrier_id' => 'NP1504102247M',
-                    'package_id' => 42720,
+                    'package_id' => '42720',
                     'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                     'status'     => '200',
                 ],
@@ -185,13 +185,13 @@ class AddRequestTest extends AbstractClientTestCase
             'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.',
             0            => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
             1            => [
                 'carrier_id' => 'NP1504102247M',
-                'package_id' => 42720,
+                'package_id' => '42720',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoB.',
                 'status'     => '200',
             ],
@@ -211,7 +211,7 @@ class AddRequestTest extends AbstractClientTestCase
             'status' => 200,
             0        => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],
@@ -235,7 +235,7 @@ class AddRequestTest extends AbstractClientTestCase
             'status' => 200,
             0        => [
                 'carrier_id' => 'NP1504102246M',
-                'package_id' => 42719,
+                'package_id' => '42719',
                 'label_url'  => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'status'     => '200',
             ],

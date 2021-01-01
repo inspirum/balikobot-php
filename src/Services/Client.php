@@ -64,13 +64,13 @@ class Client
      * Drops a package from the Balikobot – the package must be not ordered
      *
      * @param string $shipper
-     * @param int    $packageId
+     * @param string $packageId
      *
      * @return void
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function dropPackage(string $shipper, int $packageId): void
+    public function dropPackage(string $shipper, string $packageId): void
     {
         $this->dropPackages($shipper, [$packageId]);
     }
@@ -78,8 +78,8 @@ class Client
     /**
      * Drops a package from the Balikobot – the package must be not ordered
      *
-     * @param string     $shipper
-     * @param array<int> $packageIds
+     * @param string        $shipper
+     * @param array<string> $packageIds
      *
      * @return void
      *
