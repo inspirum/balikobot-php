@@ -20,7 +20,7 @@ class GetCodCountriesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/cod4services',
+                'https://apiv2.balikobot.cz/cp/cod4services',
                 [],
             ]
         );

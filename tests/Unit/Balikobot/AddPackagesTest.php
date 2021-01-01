@@ -38,7 +38,7 @@ class AddPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/add',
+                'https://apiv2.balikobot.cz/ppl/add',
                 [
                     0 => [
                         'eid'      => '0001',
@@ -151,7 +151,7 @@ class AddPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ups/add',
+                'https://apiv2.balikobot.cz/ups/add',
                 [
                     0 => [
                         'eid'          => '0001',
@@ -196,7 +196,7 @@ class AddPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v2/ups/add',
+                'https://apiv2.balikobot.cz/v2/ups/add',
                 [
                     0 => [
                         'eid'          => '0001',
@@ -247,7 +247,7 @@ class AddPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v2/dhl/add',
+                'https://apiv2.balikobot.cz/v2/dhl/add',
                 [
                     0 => [
                         'eid'          => '0001',
@@ -298,7 +298,7 @@ class AddPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v2/tnt/add',
+                'https://apiv2.balikobot.cz/v2/tnt/add',
                 [
                     0 => [
                         'eid'          => '0001',

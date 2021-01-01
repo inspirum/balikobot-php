@@ -60,7 +60,7 @@ class PackageRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/package/1',
+                'https://apiv2.balikobot.cz/cp/package/1',
                 [],
             ]
         );

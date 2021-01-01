@@ -35,7 +35,7 @@ class TrackPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v3/ppl/track',
+                'https://apiv2.balikobot.cz/v3/ppl/track',
                 [
                     0 => [
                         'id' => '1234',
@@ -132,7 +132,7 @@ class TrackPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v3/ppl/track',
+                'https://apiv2.balikobot.cz/v3/ppl/track',
                 [
                     0 => [
                         'id' => '1236',

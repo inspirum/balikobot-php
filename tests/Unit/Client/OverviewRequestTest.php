@@ -57,7 +57,7 @@ class OverviewRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/overview', []]
+            ['https://apiv2.balikobot.cz/cp/overview', []]
         );
 
         $this->assertTrue(true);

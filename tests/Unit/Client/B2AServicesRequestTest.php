@@ -58,7 +58,7 @@ class B2AServicesRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/b2a/services',
+                'https://apiv2.balikobot.cz/ppl/b2a/services',
                 [],
             ]
         );

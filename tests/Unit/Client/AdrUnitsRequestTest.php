@@ -58,7 +58,7 @@ class AdrUnitsRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/adrunits', []]
+            ['https://apiv2.balikobot.cz/cp/adrunits', []]
         );
 
         $this->assertTrue(true);

@@ -26,7 +26,7 @@ class CheckPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/check',
+                'https://apiv2.balikobot.cz/ppl/check',
                 [
                     0 => [
                         'eid'      => '0001',

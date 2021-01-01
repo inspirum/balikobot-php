@@ -50,7 +50,7 @@ class TransportCostsPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/toptrans/transportcosts',
+                'https://apiv2.balikobot.cz/toptrans/transportcosts',
                 [
                     0 => [
                         'eid'      => '0001',

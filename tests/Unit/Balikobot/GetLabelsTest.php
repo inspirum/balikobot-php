@@ -27,7 +27,7 @@ class GetLabelsTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/labels',
+                'https://apiv2.balikobot.cz/ppl/labels',
                 [
                     'package_ids' => ['1', '7'],
                 ],

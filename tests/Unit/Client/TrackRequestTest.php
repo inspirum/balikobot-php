@@ -100,7 +100,7 @@ class TrackRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v3/cp/track',
+                'https://apiv2.balikobot.cz/v3/cp/track',
                 [
                     0 => [
                         'id' => 1,
@@ -410,7 +410,7 @@ class TrackRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v3/cp/track',
+                'https://apiv2.balikobot.cz/v3/cp/track',
                 [
                     0 => [
                         'id' => 1,

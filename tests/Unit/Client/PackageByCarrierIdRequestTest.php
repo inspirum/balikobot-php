@@ -60,7 +60,7 @@ class PackageByCarrierIdRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/package/carrier_id/N0123',
+                'https://apiv2.balikobot.cz/cp/package/carrier_id/N0123',
                 [],
             ]
         );

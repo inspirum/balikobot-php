@@ -33,8 +33,8 @@ final class API
      * @var array<string,string>
      */
     public const URL = [
-        self::V1 => 'https://api.balikobot.cz/',
-        self::V2 => 'https://api.balikobot.cz/v2/',
-        self::V3 => 'https://api.balikobot.cz/v3/',
+        self::V1 => 'https://apiv2.balikobot.cz/',
+        self::V2 => 'https://apiv2.balikobot.cz/v2/',
+        self::V3 => 'https://apiv2.balikobot.cz/v3/',
     ];
 }

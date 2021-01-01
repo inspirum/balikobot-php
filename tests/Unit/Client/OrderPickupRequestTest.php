@@ -66,7 +66,7 @@ class OrderPickupRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/orderpickup',
+                'https://apiv2.balikobot.cz/cp/orderpickup',
                 [
                     'date'          => '2018-10-10',
                     'time_from'     => '14:00',

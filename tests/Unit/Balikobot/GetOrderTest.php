@@ -24,7 +24,7 @@ class GetOrderTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/orderview/1',
+                'https://apiv2.balikobot.cz/cp/orderview/1',
                 [],
             ]
         );

@@ -26,7 +26,7 @@ class GetProofOfDeliveryTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/pod',
+                'https://apiv2.balikobot.cz/ppl/pod',
                 [
                     0 => [
                         'id' => '1236',
@@ -81,7 +81,7 @@ class GetProofOfDeliveryTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/pod',
+                'https://apiv2.balikobot.cz/ppl/pod',
                 [
                     0 => [
                         'id' => '1236',

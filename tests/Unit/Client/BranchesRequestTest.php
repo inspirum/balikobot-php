@@ -58,7 +58,7 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/branches/NP', []]
+            ['https://apiv2.balikobot.cz/cp/branches/NP', []]
         );
 
         $this->assertTrue(true);
@@ -77,7 +77,7 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/branches/NP', []]
+            ['https://apiv2.balikobot.cz/cp/branches/NP', []]
         );
 
         $this->assertTrue(true);
@@ -96,7 +96,7 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/fullbranches/NP', []]
+            ['https://apiv2.balikobot.cz/cp/fullbranches/NP', []]
         );
 
         $this->assertTrue(true);
@@ -115,7 +115,7 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/branches/NP/DE', []]
+            ['https://apiv2.balikobot.cz/cp/branches/NP/DE', []]
         );
 
         $this->assertTrue(true);
@@ -134,7 +134,7 @@ class BranchesRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/zasilkovna/branches/DE', []]
+            ['https://apiv2.balikobot.cz/zasilkovna/branches/DE', []]
         );
 
         $this->assertTrue(true);

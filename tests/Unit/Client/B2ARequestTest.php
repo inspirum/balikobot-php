@@ -126,7 +126,7 @@ class B2ARequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/ppl/b2a', [['data' => [1, 2, 3], 'test' => false]]]
+            ['https://apiv2.balikobot.cz/ppl/b2a', [['data' => [1, 2, 3], 'test' => false]]]
         );
 
         $this->assertTrue(true);

@@ -59,7 +59,7 @@ class BranchLocatorRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ups/branchlocator',
+                'https://apiv2.balikobot.cz/ups/branchlocator',
                 [
                     'country'     => 'CZ',
                     'city'        => 'Praha',

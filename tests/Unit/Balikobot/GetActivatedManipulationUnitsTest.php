@@ -20,7 +20,7 @@ class GetActivatedManipulationUnitsTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/activatedmanipulationunits',
+                'https://apiv2.balikobot.cz/ppl/activatedmanipulationunits',
                 [],
             ]
         );

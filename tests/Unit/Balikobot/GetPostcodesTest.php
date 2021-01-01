@@ -24,7 +24,7 @@ class GetPostcodesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/zipcodes/7',
+                'https://apiv2.balikobot.cz/ppl/zipcodes/7',
                 [],
             ]
         );

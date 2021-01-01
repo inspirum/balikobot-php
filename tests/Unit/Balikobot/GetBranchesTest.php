@@ -215,7 +215,7 @@ class GetBranchesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/fullbranches/NP',
+                'https://apiv2.balikobot.cz/cp/fullbranches/NP',
                 [],
             ]
         );
@@ -239,7 +239,7 @@ class GetBranchesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/branches/1/DE',
+                'https://apiv2.balikobot.cz/ppl/branches/1/DE',
                 [],
             ]
         );

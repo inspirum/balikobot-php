@@ -58,7 +58,7 @@ class ActivatedServicesRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/activatedservices',
+                'https://apiv2.balikobot.cz/cp/activatedservices',
                 [],
             ]
         );

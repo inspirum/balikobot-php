@@ -22,7 +22,7 @@ class GetPackageInfoTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/package/1',
+                'https://apiv2.balikobot.cz/ppl/package/1',
                 [],
             ]
         );

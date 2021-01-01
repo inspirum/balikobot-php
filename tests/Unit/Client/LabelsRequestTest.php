@@ -58,7 +58,7 @@ class LabelsRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/labels', ['package_ids' => ['1', '7', '876']]]
+            ['https://apiv2.balikobot.cz/cp/labels', ['package_ids' => ['1', '7', '876']]]
         );
 
         $this->assertTrue(true);

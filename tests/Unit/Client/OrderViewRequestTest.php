@@ -59,7 +59,7 @@ class OrderViewRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/orderview/1', []]
+            ['https://apiv2.balikobot.cz/cp/orderview/1', []]
         );
 
         $this->assertTrue(true);

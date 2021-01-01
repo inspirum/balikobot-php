@@ -20,7 +20,7 @@ class GetAdrUnitsTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/adrunits',
+                'https://apiv2.balikobot.cz/ppl/adrunits',
                 [],
             ]
         );

@@ -58,7 +58,7 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/countries4service', []]
+            ['https://apiv2.balikobot.cz/cp/countries4service', []]
         );
 
         $this->assertTrue(true);

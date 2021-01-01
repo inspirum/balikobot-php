@@ -86,7 +86,7 @@ class ChangelogRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/changelog', []]
+            ['https://apiv2.balikobot.cz/changelog', []]
         );
 
         $this->assertTrue(true);

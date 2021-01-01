@@ -22,7 +22,7 @@ class GetActivatedServicesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/activatedservices',
+                'https://apiv2.balikobot.cz/cp/activatedservices',
                 [],
             ]
         );

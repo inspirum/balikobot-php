@@ -19,7 +19,7 @@ class GetBA2ServicesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/b2a/services',
+                'https://apiv2.balikobot.cz/ppl/b2a/services',
                 [],
             ]
         );

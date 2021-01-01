@@ -58,7 +58,7 @@ class OrderRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/order',
+                'https://apiv2.balikobot.cz/cp/order',
                 [
                     'package_ids' => ['1', '4'],
                 ],

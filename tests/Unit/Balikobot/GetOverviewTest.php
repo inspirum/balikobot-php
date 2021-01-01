@@ -16,7 +16,7 @@ class GetOverviewTest extends AbstractBalikobotTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/ppl/overview', []]
+            ['https://apiv2.balikobot.cz/ppl/overview', []]
         );
 
         $this->assertTrue(true);

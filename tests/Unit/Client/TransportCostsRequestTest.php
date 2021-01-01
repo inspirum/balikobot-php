@@ -153,7 +153,7 @@ class TransportCostsRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/toptrans/transportcosts', [['data' => [1, 2, 3], 'test' => false]]]
+            ['https://apiv2.balikobot.cz/toptrans/transportcosts', [['data' => [1, 2, 3], 'test' => false]]]
         );
 
         $this->assertTrue(true);

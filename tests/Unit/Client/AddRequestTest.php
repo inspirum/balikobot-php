@@ -130,7 +130,7 @@ class AddRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/add', [['data' => [1, 2, 3], 'test' => false]]]
+            ['https://apiv2.balikobot.cz/cp/add', [['data' => [1, 2, 3], 'test' => false]]]
         );
 
         $this->assertTrue(true);
@@ -223,7 +223,7 @@ class AddRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/v2/ups/add', [['data' => [1, 2, 3], 'test' => false]]]
+            ['https://apiv2.balikobot.cz/v2/ups/add', [['data' => [1, 2, 3], 'test' => false]]]
         );
 
         $this->assertTrue(true);
@@ -247,7 +247,7 @@ class AddRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/add', [['data' => [1, 2, 3], 'test' => false]]]
+            ['https://apiv2.balikobot.cz/cp/add', [['data' => [1, 2, 3], 'test' => false]]]
         );
 
         $this->assertTrue(true);

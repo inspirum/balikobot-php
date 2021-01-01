@@ -95,7 +95,7 @@ class PODRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/pod',
+                'https://apiv2.balikobot.cz/cp/pod',
                 [
                     0 => [
                         'id' => 1,
@@ -244,7 +244,7 @@ class PODRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/pod',
+                'https://apiv2.balikobot.cz/cp/pod',
                 [
                     0 => [
                         'id' => 1,

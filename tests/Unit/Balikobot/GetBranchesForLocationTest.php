@@ -24,7 +24,7 @@ class GetBranchesForLocationTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ups/branchlocator',
+                'https://apiv2.balikobot.cz/ups/branchlocator',
                 [
                     'country'     => 'CZ',
                     'city'        => 'Praha',
@@ -63,7 +63,7 @@ class GetBranchesForLocationTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/pbh/branchlocator',
+                'https://apiv2.balikobot.cz/pbh/branchlocator',
                 [
                     'country' => 'DE',
                     'city'    => 'Berlin',

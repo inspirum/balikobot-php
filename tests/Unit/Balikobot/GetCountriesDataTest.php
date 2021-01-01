@@ -20,7 +20,7 @@ class GetCountriesDataTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/getCountriesData',
+                'https://apiv2.balikobot.cz/getCountriesData',
                 [],
             ]
         );

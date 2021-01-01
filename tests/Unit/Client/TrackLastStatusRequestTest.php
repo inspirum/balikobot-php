@@ -95,7 +95,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v2/cp/trackstatus',
+                'https://apiv2.balikobot.cz/v2/cp/trackstatus',
                 [
                     0 => [
                         'id' => 1,
@@ -254,7 +254,7 @@ class TrackLastStatusRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/v2/cp/trackstatus',
+                'https://apiv2.balikobot.cz/v2/cp/trackstatus',
                 [
                     0 => [
                         'id' => 1,

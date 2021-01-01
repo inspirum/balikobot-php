@@ -40,7 +40,7 @@ class OrderB2AShipmentTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/geis/b2a',
+                'https://apiv2.balikobot.cz/geis/b2a',
                 [
                     0 => [
                         'eid'         => '0001',

@@ -71,7 +71,7 @@ class DropRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/drop', [['id' => 1], ['id' => 4], ['id' => 876]]]
+            ['https://apiv2.balikobot.cz/cp/drop', [['id' => 1], ['id' => 4], ['id' => 876]]]
         );
 
         $this->assertTrue(true);

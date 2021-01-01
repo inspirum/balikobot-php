@@ -31,7 +31,7 @@ class OrderShipmentTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/order',
+                'https://apiv2.balikobot.cz/ppl/order',
                 [
                     'package_ids' => ['1', '2'],
                 ],

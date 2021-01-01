@@ -26,7 +26,7 @@ class DropPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/drop',
+                'https://apiv2.balikobot.cz/ppl/drop',
                 [
                     0 => [
                         'id' => '1',
@@ -56,7 +56,7 @@ class DropPackagesTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/drop',
+                'https://apiv2.balikobot.cz/ppl/drop',
                 [
                     0 => [
                         'id' => 1,

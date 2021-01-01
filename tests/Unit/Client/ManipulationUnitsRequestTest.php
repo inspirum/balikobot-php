@@ -58,7 +58,7 @@ class ManipulationUnitsRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/manipulationunits', []]
+            ['https://apiv2.balikobot.cz/cp/manipulationunits', []]
         );
 
         $this->assertTrue(true);

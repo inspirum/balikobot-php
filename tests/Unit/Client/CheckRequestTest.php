@@ -57,7 +57,7 @@ class CheckRequestTest extends AbstractClientTestCase
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/check', [['data' => [1, 2, 3], 'test' => false]]]
+            ['https://apiv2.balikobot.cz/cp/check', [['data' => [1, 2, 3], 'test' => false]]]
         );
 
         $this->assertTrue(true);

@@ -59,7 +59,7 @@ class PostcodeRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/zipcodes/NP',
+                'https://apiv2.balikobot.cz/cp/zipcodes/NP',
                 [],
             ]
         );
@@ -81,7 +81,7 @@ class PostcodeRequestTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/zipcodes/NP/CZ',
+                'https://apiv2.balikobot.cz/cp/zipcodes/NP/CZ',
                 [],
             ]
         );
