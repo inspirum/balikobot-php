@@ -1,12 +1,12 @@
 <?php
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class OverviewRequestTest extends AbstractClientTestCase
+class PackageByCarrierIdRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,20 +18,20 @@ class OverviewRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getOverview('cp');
+        $client->getPackageInfoByCarrierId('cp', 'N0123');
     }
 
     public function testRequestDoesNotHaveStatus()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'order_id' => 29,
+            'data' => 1,
         ]);
 
         $client = new Client($requester);
 
-        $order = $client->getOverview('cp');
+        $status = $client->getPackageInfoByCarrierId('cp', 'N0123');
 
-        $this->assertNotEmpty($order);
+        $this->assertNotEmpty($status);
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -44,20 +44,25 @@ class OverviewRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getOverview('cp');
+        $client->getPackageInfoByCarrierId('cp', 'N0123');
     }
 
     public function testMakeRequest()
     {
-        $requester = $this->newRequesterWithMockedRequestMethod(200, []);
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 200,
+        ]);
 
         $client = new Client($requester);
 
-        $client->getOverview('cp');
+        $client->getPackageInfoByCarrierId('cp', 'N0123');
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/overview', []]
+            [
+                'https://api.balikobot.cz/cp/package/carrier_id/N0123',
+                [],
+            ]
         );
 
         $this->assertTrue(true);

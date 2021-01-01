@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;

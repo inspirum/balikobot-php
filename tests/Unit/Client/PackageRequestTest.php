@@ -1,12 +1,12 @@
 <?php
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class PackageByCarrierIdRequestTest extends AbstractClientTestCase
+class PackageRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,7 +18,7 @@ class PackageByCarrierIdRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getPackageInfoByCarrierId('cp', 'N0123');
+        $client->getPackageInfo('cp', 1);
     }
 
     public function testRequestDoesNotHaveStatus()
@@ -29,7 +29,7 @@ class PackageByCarrierIdRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $status = $client->getPackageInfoByCarrierId('cp', 'N0123');
+        $status = $client->getPackageInfo('cp', 1);
 
         $this->assertNotEmpty($status);
     }
@@ -44,7 +44,7 @@ class PackageByCarrierIdRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getPackageInfoByCarrierId('cp', 'N0123');
+        $client->getPackageInfo('cp', 1);
     }
 
     public function testMakeRequest()
@@ -55,12 +55,12 @@ class PackageByCarrierIdRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getPackageInfoByCarrierId('cp', 'N0123');
+        $client->getPackageInfo('cp', 1);
 
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/package/carrier_id/N0123',
+                'https://api.balikobot.cz/cp/package/1',
                 [],
             ]
         );

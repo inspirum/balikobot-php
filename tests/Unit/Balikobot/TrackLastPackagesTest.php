@@ -6,7 +6,7 @@ use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
 use Inspirum\Balikobot\Services\Balikobot;
 
-class TrackLastPackageTest extends AbstractBalikobotTestCase
+class TrackLastPackagesTest extends AbstractBalikobotTestCase
 {
     public function testMakeRequest()
     {

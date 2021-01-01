@@ -1,12 +1,12 @@
 <?php
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class PackageRequestTest extends AbstractClientTestCase
+class CheckRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,20 +18,18 @@ class PackageRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getPackageInfo('cp', 1);
+        $client->checkPackages('cp', [['eid' => 1]]);
     }
 
-    public function testRequestDoesNotHaveStatus()
+    public function testRequestShouldHaveStatus()
     {
-        $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'data' => 1,
-        ]);
+        $this->expectException(BadRequestException::class);
+
+        $requester = $this->newRequesterWithMockedRequestMethod(200, []);
 
         $client = new Client($requester);
 
-        $status = $client->getPackageInfo('cp', 1);
-
-        $this->assertNotEmpty($status);
+        $client->checkPackages('cp', [['eid' => 1]]);
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -44,7 +42,7 @@ class PackageRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getPackageInfo('cp', 1);
+        $client->checkPackages('cp', [['eid' => 1]]);
     }
 
     public function testMakeRequest()
@@ -55,14 +53,11 @@ class PackageRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getPackageInfo('cp', 1);
+        $client->checkPackages('cp', [['data' => [1, 2, 3], 'test' => false]]);
 
         $requester->shouldHaveReceived(
             'request',
-            [
-                'https://api.balikobot.cz/cp/package/1',
-                [],
-            ]
+            ['https://api.balikobot.cz/cp/check', [['data' => [1, 2, 3], 'test' => false]]]
         );
 
         $this->assertTrue(true);

@@ -40,7 +40,17 @@ class BadRequestException extends AbstractException
         // add errors from all packages
         while (isset($response[$i])) {
             // set errors for package
-            $this->setErrorsForPackage($i, $response[$i]);
+            if (is_array($response[$i])) {
+                $this->setErrorsForPackage($i, $response[$i]);
+            } elseif (is_numeric($response[$i]) && $response[$i] >= 400) {
+                // get error message from code
+                $error = $this->getErrorMessage('status', (int) $response[$i]);
+
+                // set errors fro given package from response codes
+                $this->setError($i, 'status', $error);
+            } else {
+                $this->setError($i, 'status', 'Nespecifikovaná chyba.');
+            }
 
             // try next package
             $i++;

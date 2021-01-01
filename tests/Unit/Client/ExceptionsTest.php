@@ -100,6 +100,64 @@ class ExceptionsTest extends AbstractClientTestCase
         }
     }
 
+    public function testThrowsExceptionMatchSimpleErrorsWithStatusCode()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 400,
+            0        => 406,
+            1        => [
+                'eid' => 413,
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        try {
+            $client->addPackages('cp', []);
+        } catch (ExceptionInterface $exception) {
+            $this->assertEquals(
+                [
+                    0 => [
+                        'status' => 'Nedorazila žádná data ke zpracování nebo nemůžou být akceptována.',
+                    ],
+                    1 => [
+                        'eid' => 'Eshop ID je delší než je maximální povolená délka.',
+                    ],
+                ],
+                $exception->getErrors()
+            );
+        }
+    }
+
+    public function testThrowsExceptionMatchSimpleErrorsWithUnexpectedValue()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 400,
+            0        => [
+                'eid' => 413,
+            ],
+            1        => 'test',
+        ]);
+
+        $client = new Client($requester);
+
+        try {
+            $client->addPackages('cp', []);
+        } catch (ExceptionInterface $exception) {
+            $this->assertEquals(
+                [
+                    0 => [
+                        'eid' => 'Eshop ID je delší než je maximální povolená délka.',
+                    ],
+                    1 => [
+                        'status' => 'Nespecifikovaná chyba.',
+                    ],
+                ],
+                $exception->getErrors()
+            );
+        }
+    }
+
     public function testThrowsExceptionMatchErrors()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [

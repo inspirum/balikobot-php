@@ -1,12 +1,13 @@
 <?php
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
+use DateTime;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class CheckRequestTest extends AbstractClientTestCase
+class OrderPickupRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,7 +19,7 @@ class CheckRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->checkPackages('cp', [['eid' => 1]]);
+        $client->orderPickup('cp', new DateTime(), new DateTime('+4 HOURS'), 1, 2);
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +30,7 @@ class CheckRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->checkPackages('cp', [['eid' => 1]]);
+        $client->orderPickup('cp', new DateTime(), new DateTime('+4 HOURS'), 1, 2);
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -42,7 +43,7 @@ class CheckRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->checkPackages('cp', [['eid' => 1]]);
+        $client->orderPickup('cp', new DateTime(), new DateTime('+4 HOURS'), 1, 2);
     }
 
     public function testMakeRequest()
@@ -53,11 +54,28 @@ class CheckRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->checkPackages('cp', [['data' => [1, 2, 3], 'test' => false]]);
+        $client->orderPickup(
+            'cp',
+            new DateTime('2018-10-10 14:00:00'),
+            new DateTime('2018-12-10 20:00:00'),
+            1,
+            2,
+            'TEST'
+        );
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/check', [['data' => [1, 2, 3], 'test' => false]]]
+            [
+                'https://api.balikobot.cz/cp/orderpickup',
+                [
+                    'date'          => '2018-10-10',
+                    'time_from'     => '14:00',
+                    'time_to'       => '20:00',
+                    'weight'        => 1,
+                    'package_count' => 2,
+                    'message'       => 'TEST',
+                ],
+            ]
         );
 
         $this->assertTrue(true);

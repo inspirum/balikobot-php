@@ -1,12 +1,12 @@
 <?php
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class OrderRequestTest extends AbstractClientTestCase
+class ServicesRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,7 +18,7 @@ class OrderRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->orderShipment('cp', [1]);
+        $client->getServices('cp');
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +29,7 @@ class OrderRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->orderShipment('cp', [1]);
+        $client->getServices('cp');
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -42,7 +42,7 @@ class OrderRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->orderShipment('cp', [1]);
+        $client->getServices('cp');
     }
 
     public function testMakeRequest()
@@ -53,45 +53,52 @@ class OrderRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->orderShipment('cp', [1, 4]);
+        $client->getServices('cp');
 
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/order',
-                [
-                    'package_ids' => [1, 4],
-                ],
+                'https://api.balikobot.cz/cp/services',
+                [],
             ]
         );
 
         $this->assertTrue(true);
     }
 
-    public function testOnlyOrderDataAreReturned()
+    public function testEmptyArrayIsReturnedIfServiceTypesMissing()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status'       => 200,
-            'labels_url'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
-            'order_id'     => 29,
-            'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
-            'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
-            'package_ids'  => [1],
+            'status' => 200,
         ]);
 
         $client = new Client($requester);
 
-        $order = $client->orderShipment('cp', [1]);
+        $services = $client->getServices('cp');
+
+        $this->assertEquals([], $services);
+    }
+
+    public function testOnlyUnitsDataAreReturned()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'        => 200,
+            'service_types' => [
+                'NP' => 'NP - Balík Na poštu',
+                'RR' => 'RR - Doporučená zásilka Ekonomická',
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        $services = $client->getServices('cp');
 
         $this->assertEquals(
             [
-                'labels_url'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
-                'order_id'     => 29,
-                'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
-                'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
-                'package_ids'  => [1],
+                'NP' => 'NP - Balík Na poštu',
+                'RR' => 'RR - Doporučená zásilka Ekonomická',
             ],
-            $order
+            $services
         );
     }
 }

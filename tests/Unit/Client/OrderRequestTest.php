@@ -1,12 +1,12 @@
 <?php
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class B2AServicesRequestTest extends AbstractClientTestCase
+class OrderRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,7 +18,7 @@ class B2AServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getB2AServices('ppl');
+        $client->orderShipment('cp', [1]);
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +29,7 @@ class B2AServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getB2AServices('ppl');
+        $client->orderShipment('cp', [1]);
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -42,7 +42,7 @@ class B2AServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getB2AServices('ppl');
+        $client->orderShipment('cp', [1]);
     }
 
     public function testMakeRequest()
@@ -53,52 +53,45 @@ class B2AServicesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getB2AServices('ppl');
+        $client->orderShipment('cp', [1, 4]);
 
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/ppl/b2a/services',
-                [],
+                'https://api.balikobot.cz/cp/order',
+                [
+                    'package_ids' => [1, 4],
+                ],
             ]
         );
 
         $this->assertTrue(true);
     }
 
-    public function testEmptyArrayIsReturnedIfServiceTypesMissing()
+    public function testOnlyOrderDataAreReturned()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status' => 200,
+            'status'       => 200,
+            'labels_url'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+            'order_id'     => 29,
+            'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
+            'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
+            'package_ids'  => [1],
         ]);
 
         $client = new Client($requester);
 
-        $services = $client->getB2AServices('ppl');
-
-        $this->assertEquals([], $services);
-    }
-
-    public function testOnlyUnitsDataAreReturned()
-    {
-        $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status'        => 200,
-            'service_types' => [
-                '1'  => 'PPL Parcel Business CZ',
-                '11' => 'PPL Parcel Import SK',
-            ],
-        ]);
-
-        $client = new Client($requester);
-
-        $services = $client->getB2AServices('ppl');
+        $order = $client->orderShipment('cp', [1]);
 
         $this->assertEquals(
             [
-                '1'  => 'PPL Parcel Business CZ',
-                '11' => 'PPL Parcel Import SK',
+                'labels_url'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                'order_id'     => 29,
+                'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
+                'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
+                'package_ids'  => [1],
             ],
-            $services
+            $order
         );
     }
 }

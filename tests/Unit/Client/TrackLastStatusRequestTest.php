@@ -1,12 +1,12 @@
 <?php
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class PODRequestTest extends AbstractClientTestCase
+class TrackLastStatusRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,21 +18,21 @@ class PODRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getProofOfDelivery('cp', 1);
+        $client->trackPackageLastStatus('cp', 1);
     }
 
     public function testRequestDoesNotHaveStatus()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             0 => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+                'status_id'   => 1.2,
+                'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
 
         $client = new Client($requester);
 
-        $status = $client->getProofOfDelivery('cp', 1);
+        $status = $client->trackPackageLastStatus('cp', 1);
 
         $this->assertNotEmpty($status);
     }
@@ -47,7 +47,7 @@ class PODRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getProofOfDelivery('cp', 1);
+        $client->trackPackageLastStatus('cp', 1);
     }
 
     public function testThrowsExceptionOnBadStatusCodeForPackage()
@@ -55,14 +55,14 @@ class PODRequestTest extends AbstractClientTestCase
         $this->expectException(BadRequestException::class);
 
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            1 => [
+            0 => [
                 'status' => 404,
             ],
         ]);
 
         $client = new Client($requester);
 
-        $client->getProofOfDelivery('cp', 1);
+        $client->trackPackageLastStatus('cp', 1);
     }
 
     public function testThrowsExceptionWhenNoReturn()
@@ -75,7 +75,7 @@ class PODRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getProofOfDelivery('cp', 1);
+        $client->trackPackageLastStatus('cp', 1);
     }
 
     public function testMakeRequest()
@@ -83,19 +83,19 @@ class PODRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+                'status_id'   => 1.2,
+                'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
 
         $client = new Client($requester);
 
-        $client->getProofOfDelivery('cp', 1);
+        $client->trackPackageLastStatus('cp', 1);
 
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/pod',
+                'https://api.balikobot.cz/v2/cp/trackstatus',
                 [
                     0 => [
                         'id' => 1,
@@ -107,21 +107,30 @@ class PODRequestTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testDataAreReturnedInFormat()
+    public function testDataAreReturnedInV3Format()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+                'status_id'   => 1.2,
+                'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
 
         $client = new Client($requester);
 
-        $link = $client->getProofOfDelivery('cp', 1);
+        $status = $client->trackPackageLastStatus('cp', 1);
 
-        $this->assertEquals('https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs', $link);
+        $this->assertEquals(
+            [
+                'name'          => 'Zásilka byla doručena příjemci.',
+                'name_internal' => 'Zásilka byla doručena příjemci.',
+                'type'          => 'event',
+                'status_id'     => 1.2,
+                'date'          => null,
+            ],
+            $status
+        );
     }
 
     public function testThrowsExceptionOnErrorWithMultiplePackages()
@@ -134,29 +143,29 @@ class PODRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getProofOfDeliveries('cp', [1, 3, 4]);
+        $client->trackPackagesLastStatus('cp', [1, 3, 4]);
     }
 
     public function testRequestDoesNotHaveStatusWithMultiplePackages()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             0 => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+                'status_id'   => 1.2,
+                'status_text' => 'Zásilka byla doručena příjemci.',
             ],
             1 => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+                'status_id'   => 2.1,
+                'status_text' => 'Zásilka nebyla doručena příjemci.',
             ],
             2 => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+                'status_id'   => 1.2,
+                'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
 
         $client = new Client($requester);
 
-        $status = $client->getProofOfDeliveries('cp', [1, 5, 6]);
+        $status = $client->trackPackagesLastStatus('cp', [1, 5, 6]);
 
         $this->assertNotEmpty($status);
     }
@@ -171,7 +180,7 @@ class PODRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getProofOfDeliveries('cp', [1, 4]);
+        $client->trackPackagesLastStatus('cp', [1, 4]);
     }
 
     public function testThrowsExceptionOnBadStatusCodeForPackageWithMultiplePackages()
@@ -180,8 +189,9 @@ class PODRequestTest extends AbstractClientTestCase
 
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             0 => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+                'status'      => 200,
+                'status_id'   => 2.2,
+                'status_text' => 'Zásilka nebyla doručena příjemci.',
             ],
             1 => [
                 'status' => 404,
@@ -190,7 +200,7 @@ class PODRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getProofOfDeliveries('cp', [1, 4]);
+        $client->trackPackagesLastStatus('cp', [1, 4]);
     }
 
     public function testThrowsExceptionWhenNoReturnWithMultiplePackages()
@@ -203,7 +213,7 @@ class PODRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getProofOfDeliveries('cp', [1, 2]);
+        $client->trackPackagesLastStatus('cp', [1, 2]);
     }
 
     public function testThrowsExceptionWhenNotAllDataReturnWithMultiplePackages()
@@ -213,14 +223,14 @@ class PODRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'status_id'   => 1,
+                'status_id'   => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
         ]);
 
         $client = new Client($requester);
 
-        $client->getProofOfDeliveries('cp', [1, 2]);
+        $client->trackPackagesLastStatus('cp', [1, 2]);
     }
 
     public function testMakeRequestWithMultiplePackages()
@@ -228,23 +238,23 @@ class PODRequestTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+                'status_id'   => 1.2,
+                'status_text' => 'Zásilka byla doručena příjemci.',
             ],
             1        => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+                'status_id'   => -1,
+                'status_text' => 'Obdrženy údaje k zásilce.',
             ],
         ]);
 
         $client = new Client($requester);
 
-        $client->getProofOfDeliveries('cp', [1, 6]);
+        $client->trackPackagesLastStatus('cp', [1, 6]);
 
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://api.balikobot.cz/cp/pod',
+                'https://api.balikobot.cz/v2/cp/trackstatus',
                 [
                     0 => [
                         'id' => 1,
@@ -259,35 +269,53 @@ class PODRequestTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testDataAreReturnedInFormatWithMultiplePackages()
+    public function testDataAreReturnedInV2FormatWithMultiplePackages()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             0        => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
+                'status_id'   => 1.2,
+                'status_text' => 'Zásilka byla doručena příjemci.',
             ],
             1        => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFa',
+                'status_id'   => 5,
+                'status_text' => 'Zásilka nebyla doručena příjemci.',
             ],
             2        => [
-                'status'   => 200,
-                'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFb',
+                'status_id'   => 3.2,
+                'status_text' => 'Storno ze strany příjemce.',
             ],
         ]);
 
         $client = new Client($requester);
 
-        $links = $client->getProofOfDeliveries('cp', [1, 6, 5]);
+        $status = $client->trackPackagesLastStatus('cp', [1, 6, 5]);
 
         $this->assertEquals(
             [
-                0 => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
-                1 => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFa',
-                2 => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFb',
+                0 => [
+                    'name'          => 'Zásilka byla doručena příjemci.',
+                    'name_internal' => 'Zásilka byla doručena příjemci.',
+                    'type'          => 'event',
+                    'status_id'     => 1.2,
+                    'date'          => null,
+                ],
+                1 => [
+                    'name'          => 'Zásilka nebyla doručena příjemci.',
+                    'name_internal' => 'Zásilka nebyla doručena příjemci.',
+                    'type'          => 'event',
+                    'status_id'     => 5.0,
+                    'date'          => null,
+                ],
+                2 => [
+                    'name'          => 'Storno ze strany příjemce.',
+                    'name_internal' => 'Storno ze strany příjemce.',
+                    'type'          => 'event',
+                    'status_id'     => 3.2,
+                    'date'          => null,
+                ],
             ],
-            $links
+            $status
         );
     }
 }

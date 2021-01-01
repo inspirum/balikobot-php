@@ -1,12 +1,12 @@
 <?php
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class ManipulationUnitsRequestTest extends AbstractClientTestCase
+class BranchLocatorRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,7 +18,7 @@ class ManipulationUnitsRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getManipulationUnits('cp');
+        $client->getBranchesForLocation('ups', 'CZ', 'Praha');
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +29,7 @@ class ManipulationUnitsRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getManipulationUnits('cp');
+        $client->getBranchesForLocation('ups', 'CZ', 'Praha');
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -42,23 +42,32 @@ class ManipulationUnitsRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getManipulationUnits('cp');
+        $client->getBranchesForLocation('ups', 'CZ', 'Praha');
     }
 
     public function testMakeRequest()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status' => 200,
-            'units'  => [],
+            'status'   => 200,
+            'branches' => [],
         ]);
 
         $client = new Client($requester);
 
-        $client->getManipulationUnits('cp');
+        $client->getBranchesForLocation('ups', 'CZ', 'Praha', null, 'Pražská', 4, 40.3);
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/manipulationunits', []]
+            [
+                'https://api.balikobot.cz/ups/branchlocator',
+                [
+                    'country'     => 'CZ',
+                    'city'        => 'Praha',
+                    'street'      => 'Pražská',
+                    'max_results' => 4,
+                    'radius'      => 40.3,
+                ],
+            ]
         );
 
         $this->assertTrue(true);
@@ -67,77 +76,49 @@ class ManipulationUnitsRequestTest extends AbstractClientTestCase
     public function testEmptyArrayIsReturnedIfUnitsMissing()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status' => 200,
-            'units'  => null,
+            'status'   => 200,
+            'branches' => null,
         ]);
 
         $client = new Client($requester);
 
-        $units = $client->getManipulationUnits('cp');
+        $branches = $client->getBranchesForLocation('ups', 'CZ', 'Praha');
 
-        $this->assertEquals([], $units);
+        $this->assertEquals([], $branches);
     }
 
-    public function testOnlyUnitsDataAreReturned()
+    public function testOnlyBranchesDataAreReturned()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status' => 200,
-            'units'  => [
+            'status'   => 200,
+            'branches' => [
                 [
                     'code' => 1,
-                    'name' => 'KM',
-                    'attr' => 4,
+                    'name' => 'AAA',
                 ],
                 [
                     'code' => 876,
-                    'name' => 'M',
+                    'name' => 'BBB',
                 ],
             ],
         ]);
 
         $client = new Client($requester);
 
-        $units = $client->getManipulationUnits('cp');
-
-        $this->assertEquals([1 => 'KM', 876 => 'M'], $units);
-    }
-
-    public function testFullDataAreReturned()
-    {
-        $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status' => 200,
-            'units'  => [
-                [
-                    'code' => 1,
-                    'name' => 'KM',
-                    'id'   => 26,
-                ],
-                [
-                    'code' => 876,
-                    'name' => 'M',
-                    'id'   => 59,
-                ],
-            ],
-        ]);
-
-        $client = new Client($requester);
-
-        $units = $client->getManipulationUnits('cp', true);
+        $branches = $client->getBranchesForLocation('ups', 'CZ', 'Praha');
 
         $this->assertEquals(
             [
-                1   => [
+                [
                     'code' => 1,
-                    'name' => 'KM',
-                    'id'   => 26,
+                    'name' => 'AAA',
                 ],
-                876 => [
+                [
                     'code' => 876,
-                    'name' => 'M',
-                    'id'   => 59,
+                    'name' => 'BBB',
                 ],
             ],
-            $units
+            $branches
         );
     }
 }

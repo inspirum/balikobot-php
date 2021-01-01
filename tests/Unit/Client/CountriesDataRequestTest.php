@@ -1,12 +1,12 @@
 <?php
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Requests;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
-class CountriesRequestTest extends AbstractClientTestCase
+class CountriesDataRequestTest extends AbstractClientTestCase
 {
     public function testThrowsExceptionOnError()
     {
@@ -18,7 +18,7 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getCountries('cp');
+        $client->getCountriesData();
     }
 
     public function testRequestShouldHaveStatus()
@@ -29,7 +29,7 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getCountries('cp');
+        $client->getCountriesData();
     }
 
     public function testThrowsExceptionOnBadStatusCode()
@@ -42,7 +42,7 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getCountries('cp');
+        $client->getCountriesData();
     }
 
     public function testMakeRequest()
@@ -54,11 +54,11 @@ class CountriesRequestTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getCountries('cp');
+        $client->getCountriesData();
 
         $requester->shouldHaveReceived(
             'request',
-            ['https://api.balikobot.cz/cp/countries4service', []]
+            ['https://api.balikobot.cz/getCountriesData', []]
         );
 
         $this->assertTrue(true);
@@ -67,13 +67,13 @@ class CountriesRequestTest extends AbstractClientTestCase
     public function testEmptyArrayIsReturnedIfUnitsMissing()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status'        => 200,
-            'service_types' => null,
+            'status'    => 200,
+            'countries' => null,
         ]);
 
         $client = new Client($requester);
 
-        $countries = $client->getCountries('cp');
+        $countries = $client->getCountriesData();
 
         $this->assertEquals([], $countries);
     }
@@ -81,40 +81,48 @@ class CountriesRequestTest extends AbstractClientTestCase
     public function testOnlyCountriesDataAreReturned()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status'        => 200,
-            'service_types' => [
+            'status'    => 200,
+            'countries' => [
                 [
-                    'service_type' => 1,
-                    'countries'    => [
-                        'CZ',
-                        'UK',
-                        'DE',
-                    ],
+                    'name_en'      => 'Andorra',
+                    'name_cz'      => 'Andorra',
+                    'iso_code'     => 'AD',
+                    'phone_prefix' => '+376',
+                    'currency'     => 'EUR',
+                    'continent'    => 'Europe',
                 ],
                 [
-                    'service_type' => 4,
-                    'countries'    => [
-                        'CZ',
-                        'SK',
-                    ],
+                    'name_en'      => 'United Arab Emirates',
+                    'name_cz'      => 'Spojené arabské emiráty',
+                    'iso_code'     => 'AE',
+                    'phone_prefix' => '+971',
+                    'currency'     => 'AED',
+                    'continent'    => 'Asia',
                 ],
             ],
         ]);
 
         $client = new Client($requester);
 
-        $countries = $client->getCountries('cp');
+        $countries = $client->getCountriesData();
 
         $this->assertEquals(
             [
-                1 => [
-                    'CZ',
-                    'UK',
-                    'DE',
+                'AD' => [
+                    'name_en'      => 'Andorra',
+                    'name_cz'      => 'Andorra',
+                    'iso_code'     => 'AD',
+                    'phone_prefix' => '+376',
+                    'currency'     => 'EUR',
+                    'continent'    => 'Europe',
                 ],
-                4 => [
-                    'CZ',
-                    'SK',
+                'AE' => [
+                    'name_en'      => 'United Arab Emirates',
+                    'name_cz'      => 'Spojené arabské emiráty',
+                    'iso_code'     => 'AE',
+                    'phone_prefix' => '+971',
+                    'currency'     => 'AED',
+                    'continent'    => 'Asia',
                 ],
             ],
             $countries
