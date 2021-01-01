@@ -45,8 +45,7 @@ class DropPackagesTest extends AbstractBalikobotTestCase
 
         $packages = new OrderedPackageCollection();
 
-        $packages->add(new OrderedPackage('12345', Shipper::PPL, '0001', '1234'));
-        $packages->add(new OrderedPackage('a-56789', Shipper::PPL, '0001', '5678'));
+        $packages->add(new OrderedPackage(12345, Shipper::PPL, '0001', '1234'));
 
         try {
             $service->dropPackages($packages);
@@ -54,9 +53,10 @@ class DropPackagesTest extends AbstractBalikobotTestCase
         } catch (ExceptionInterface $exception) {
             $this->assertEquals(400, $exception->getStatusCode());
             $this->assertTrue(isset($exception->getErrors()[0]['status']));
-            $this->assertEquals('Zásilka neexistuje, nebo již byla zpracována.', $exception->getErrors()[0]['status']);
-            $this->assertTrue(isset($exception->getErrors()[1]['status']));
-            $this->assertEquals('Nedorazila žádná data ke zpracování nebo nemůžou být akceptována.', $exception->getErrors()[1]['status']);
+            $this->assertEquals(
+                'Zásilka neexistuje, nebo již byla zpracována.',
+                $exception->getErrors()[0]['status']
+            );
         }
     }
 }
