@@ -49,7 +49,7 @@
     ],
     "style:check": [
       "@phpcs src tests",
-      "@phpstan -l 7 src"
+      "@phpstan -l 8 src"
     ],
     "style:fix": [
       "@phpcbf src tests"

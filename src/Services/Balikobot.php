@@ -73,7 +73,7 @@ class Balikobot
         foreach ($response as $i => $package) {
             $orderedPackage = OrderedPackage::newInstanceFromData(
                 $packages->getShipper(),
-                $packages->offsetGet($i)->getEID(),
+                (string) $packages->offsetGet($i)->getEID(),
                 $package
             );
             $orderedPackages->add($orderedPackage);
@@ -711,7 +711,7 @@ class Balikobot
         foreach ($response as $i => $package) {
             $orderedPackage = OrderedPackage::newInstanceFromData(
                 $packages->getShipper(),
-                $packages->offsetGet($i)->getEID(),
+                (string) $packages->offsetGet($i)->getEID(),
                 $package
             );
             $orderedPackages->add($orderedPackage);
