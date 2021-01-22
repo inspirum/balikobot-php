@@ -75,7 +75,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
     /**
      * Get EIDs
      *
-     * @return array<int>
+     * @return array<string>
      */
     public function getBatchIds(): array
     {
