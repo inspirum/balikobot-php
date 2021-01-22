@@ -379,6 +379,20 @@ final class ServiceType
     public const GEIS_CARGO_PRIVATE_INTERNATIONAL = '11';
 
     /**
+     * Home Delivery Standard
+     *
+     * @var string
+     */
+    public const GEIS_PARCEL_HD_STANDARD = '12';
+
+    /**
+     * Home Delivery Premium
+     *
+     * @var string
+     */
+    public const GEIS_PARCEL_HD_PREMIUM = '13';
+
+    /**
      * Business Parcel (doručení do ruky)
      *
      * @var string
@@ -2034,6 +2048,8 @@ final class ServiceType
             self::GEIS_PARCEL_PRIVATE_INTERNATIONAL,
             self::GEIS_CARGO_PRIVATE_NATIONAL,
             self::GEIS_CARGO_PRIVATE_INTERNATIONAL,
+            self::GEIS_PARCEL_HD_STANDARD,
+            self::GEIS_PARCEL_HD_PREMIUM,
         ];
     }
 
