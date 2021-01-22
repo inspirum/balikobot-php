@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v4.4.0...master)
 
 
-## [v4.3.0 (2021-01-22)](https://github.com/inspirum/balikobot-php/compare/v4.3.0...v4.4.0)
+## [v4.4.0 (2021-01-22)](https://github.com/inspirum/balikobot-php/compare/v4.3.0...v4.4.0)
 ### Added
 - Added support for new options from documentation **v1.901** (2021-01-18)
   - Add **GEIS_PARCEL_HD_STANDARD** service type
