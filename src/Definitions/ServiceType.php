@@ -2010,7 +2010,7 @@ final class ServiceType
             self::DPD_EXPRESS_10,
             self::DPD_EXPRESS_12,
             self::DPD_EXPRESS_18,
-            self::DPD_PRIVATE_EVENING,
+            // self::DPD_PRIVATE_EVENING,
             self::DPD_PRIVATE_SATURDAY,
         ];
     }

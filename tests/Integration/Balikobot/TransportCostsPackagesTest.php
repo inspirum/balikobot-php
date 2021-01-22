@@ -56,6 +56,7 @@ class TransportCostsPackagesTest extends AbstractBalikobotTestCase
         $package->setRecCountry(Country::CZECH_REPUBLIC);
         $package->setRecPhone('776555888');
         $package->setPrice(1000.00);
+        $package->setWeight(10);
         $packages->add($package);
 
         try {
@@ -63,7 +64,7 @@ class TransportCostsPackagesTest extends AbstractBalikobotTestCase
             $this->assertTrue(false, 'ADD request should thrown exception');
         } catch (ExceptionInterface $exception) {
             $this->assertEquals(400, $exception->getStatusCode());
-            $this->assertTrue(isset($exception->getErrors()[0]['weight']));
+            $this->assertTrue(isset($exception->getErrors()[0]['mu_type_one']));
         }
     }
 }
