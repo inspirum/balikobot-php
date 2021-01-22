@@ -187,8 +187,8 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 [link-changelog]:           ./CHANGELOG.md
 [link-contributing]:        ./docs/CONTRIBUTING.md
 [link-code-of-conduct]:     ./docs/CODE_OF_CONDUCT.md
-[link-travis]:              https://travis-ci.org/inspirum/balikobot-php
 [link-workflow]:            https://github.com/inspirum/balikobot-php/actions
+[link-scrutinizer]:         https://scrutinizer-ci.com/g/inspirum/balikobot-php/code-structure
 [link-code-quality]:        https://scrutinizer-ci.com/g/inspirum/balikobot-php
 [link-api]:                 https://balikobot.docs.apiary.io/#introduction/prehled-zmen
 [link-inspishop]:           https://www.inspishop.cz/
