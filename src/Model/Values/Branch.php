@@ -170,6 +170,11 @@ class Branch
     private $openingSunday;
 
     /**
+     * @var float|null
+     */
+    private $maxWeight;
+
+    /**
      * Branch constructor
      *
      * @param string      $shipper
@@ -203,6 +208,7 @@ class Branch
      * @param string|null $openingFriday
      * @param string|null $openingSaturday
      * @param string|null $openingSunday
+     * @param float|null  $maxWeight
      */
     public function __construct(
         string $shipper,
@@ -235,7 +241,8 @@ class Branch
         string $openingThursday = null,
         string $openingFriday = null,
         string $openingSaturday = null,
-        string $openingSunday = null
+        string $openingSunday = null,
+        float $maxWeight = null
     ) {
         $this->shipper              = $shipper;
         $this->service              = $service;
@@ -268,6 +275,7 @@ class Branch
         $this->openingFriday        = $openingFriday;
         $this->openingSaturday      = $openingSaturday;
         $this->openingSunday        = $openingSunday;
+        $this->maxWeight            = $maxWeight;
 
         $this->setBranchId();
     }
@@ -529,6 +537,14 @@ class Branch
     }
 
     /**
+     * @return float|null
+     */
+    public function getMaxWeight(): ?float
+    {
+        return $this->maxWeight;
+    }
+
+    /**
      * Set branch ID
      *
      * @return void
@@ -626,7 +642,8 @@ class Branch
             $data['opening_thursday'] ?? null,
             $data['opening_friday'] ?? null,
             $data['opening_saturday'] ?? null,
-            $data['opening_sunday'] ?? null
+            $data['opening_sunday'] ?? null,
+            $data['max_weight'] ?? null
         );
     }
 }
