@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: PHP ${{ matrix.php }}
+    strategy:
+      matrix:
+        php: ['7.1', '7.2', '7.3', '7.4', '8.0']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+      - name: Get composer cache directory
+        id: composercache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composercache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress --no-suggest
+      - name: Test
+        run: |
+          vendor/bin/phpcs --standard=./ruleset.xml src/
+          vendor/bin/phpstan analyse -l 7 -c phpstan.neon.dist src/
+          vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+          if [[ "${{ matrix.php }}" == '7.4' ]]; then
+            wget https://scrutinizer-ci.com/ocular.phar
+            php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+          fi

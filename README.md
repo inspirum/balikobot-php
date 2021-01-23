@@ -3,7 +3,7 @@
 **Created as part of [inspishop][link-inspishop] e-commerce platform by [inspirum][link-inspirum] team.**
 
 [![Latest Stable Version][ico-packagist-stable]][link-packagist-stable]
-[![Build Status][ico-travis]][link-travis]
+[![Build Status][ico-workflow]][link-workflow]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![PHPStan][ico-phpstan]][link-phpstan]
@@ -110,7 +110,7 @@ or add requirement to your `composer.json`
 
 ## Version
 
-Support all options for Balikobot API described in the official [documentation][link-api] until **v1.900** *(2020-12-18)*.
+Support all options for Balikobot API described in the official [documentation][link-api] until **v1.901** *(2021-01-18)*.
 
 More details are available in [changelog][link-changelog].
 
@@ -174,12 +174,12 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 
 
 [ico-license]:              https://img.shields.io/github/license/inspirum/balikobot-php.svg?style=flat-square&colorB=blue
-[ico-travis]:               https://img.shields.io/travis/inspirum/balikobot-php/master.svg?branch=master&style=flat-square
+[ico-workflow]:             https://img.shields.io/github/workflow/status/inspirum/balikobot-php/Test/master?style=flat-square
 [ico-scrutinizer]:          https://img.shields.io/scrutinizer/coverage/g/inspirum/balikobot-php/master.svg?style=flat-square
 [ico-code-quality]:         https://img.shields.io/scrutinizer/g/inspirum/balikobot-php.svg?style=flat-square
 [ico-packagist-stable]:     https://img.shields.io/packagist/v/inspirum/balikobot.svg?style=flat-square&colorB=blue
 [ico-packagist-download]:   https://img.shields.io/packagist/dt/inspirum/balikobot.svg?style=flat-square&colorB=blue
-[ico-phpstan]:              https://img.shields.io/badge/style-level%207-brightgreen.svg?style=flat-square&label=phpstan
+[ico-phpstan]:              https://img.shields.io/badge/style-level%208-brightgreen.svg?style=flat-square&label=phpstan
 
 [link-author]:              https://github.com/inspirum
 [link-contributors]:        https://github.com/inspirum/balikobot-php/contributors
@@ -187,7 +187,7 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 [link-changelog]:           ./CHANGELOG.md
 [link-contributing]:        ./docs/CONTRIBUTING.md
 [link-code-of-conduct]:     ./docs/CODE_OF_CONDUCT.md
-[link-travis]:              https://travis-ci.org/inspirum/balikobot-php
+[link-workflow]:            https://github.com/inspirum/balikobot-php/actions
 [link-scrutinizer]:         https://scrutinizer-ci.com/g/inspirum/balikobot-php/code-structure
 [link-code-quality]:        https://scrutinizer-ci.com/g/inspirum/balikobot-php
 [link-api]:                 https://balikobot.docs.apiary.io/#introduction/prehled-zmen

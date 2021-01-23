@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v4.3.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v4.4.0...master)
+
+
+## [v4.4.0 (2021-01-22)](https://github.com/inspirum/balikobot-php/compare/v4.3.0...v4.4.0)
+### Added
+- Added support for new options from documentation **v1.901** (2021-01-18)
+  - Add **GEIS_PARCEL_HD_STANDARD** service type
+  - Add **GEIS_PARCEL_HD_PREMIUM** service type
+- Added **max_weight** to branches
 
 
 ## [v4.3.0 (2020-12-30)](https://github.com/inspirum/balikobot-php/compare/v4.2.0...v4.3.0)

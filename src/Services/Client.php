@@ -168,7 +168,7 @@ class Client
      * @param string $shipper
      * @param string $carrierId
      *
-     * @return array<string,float|string>
+     * @return array<string,float|string|null>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */

@@ -39,6 +39,7 @@ class BranchTest extends AbstractTestCase
             'opening_friday'        => 'opening_friday',
             'opening_saturday'      => 'opening_saturday',
             'opening_sunday'        => 'opening_sunday',
+            'max_weight'            => '5',
         ]);
 
         $this->assertEquals('cp', $branch->getShipper());
@@ -72,6 +73,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('opening_friday', $branch->getOpeningFriday());
         $this->assertEquals('opening_saturday', $branch->getOpeningSaturday());
         $this->assertEquals('opening_sunday', $branch->getOpeningSunday());
+        $this->assertEquals(5.0, $branch->getMaxWeight());
     }
 
     public function testStaticConstructorWithMissingData()
@@ -111,6 +113,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals(null, $branch->getOpeningFriday());
         $this->assertEquals(null, $branch->getOpeningSaturday());
         $this->assertEquals(null, $branch->getOpeningSunday());
+        $this->assertEquals(null, $branch->getMaxWeight());
     }
 
     public function testStaticConstructorWithMissingDataForCPNP()
@@ -150,6 +153,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals(null, $branch->getOpeningFriday());
         $this->assertEquals(null, $branch->getOpeningSaturday());
         $this->assertEquals(null, $branch->getOpeningSunday());
+        $this->assertEquals(null, $branch->getMaxWeight());
     }
 
     public function testStaticConstructorFallbackName()
