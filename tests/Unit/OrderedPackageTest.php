@@ -9,7 +9,9 @@ class OrderedPackageTest extends AbstractTestCase
 {
     public function testStaticConstructor()
     {
-        $orderedPackage = OrderedPackage::newInstanceFromData('cp', '0001', [
+        $orderedPackage = OrderedPackage::newInstanceFromData('cp', [
+            'eid'             => '0001',
+            'order_number'    => 1,
             'package_id'      => '1234',
             'carrier_id'      => '02IID',
             'track_url'       => '/track',
@@ -30,10 +32,12 @@ class OrderedPackageTest extends AbstractTestCase
 
     public function testStaticConstructorWithMissingData()
     {
-        $orderedPackage = OrderedPackage::newInstanceFromData('cp', '0001', [
-            'package_id' => '1234',
-            'carrier_id' => '02IID',
-            'label_url'  => '/labels',
+        $orderedPackage = OrderedPackage::newInstanceFromData('cp', [
+            'eid'          => '0001',
+            'order_number' => 1,
+            'package_id'   => '1234',
+            'carrier_id'   => '02IID',
+            'label_url'    => '/labels',
         ]);
 
         $this->assertEquals('cp', $orderedPackage->getShipper());
@@ -48,8 +52,10 @@ class OrderedPackageTest extends AbstractTestCase
 
     public function testStaticConstructorWithMissingCarrierId()
     {
-        $orderedPackage = OrderedPackage::newInstanceFromData('cp', '0001', [
-            'package_id' => '1234',
+        $orderedPackage = OrderedPackage::newInstanceFromData('cp', [
+            'eid'          => '0001',
+            'order_number' => 1,
+            'package_id'   => '1234',
         ]);
 
         $this->assertEquals('cp', $orderedPackage->getShipper());
@@ -64,7 +70,9 @@ class OrderedPackageTest extends AbstractTestCase
 
     public function testStaticConstructorWithFinalTrackUrl()
     {
-        $orderedPackage = OrderedPackage::newInstanceFromData('cp', '0001', [
+        $orderedPackage = OrderedPackage::newInstanceFromData('cp', [
+            'eid'              => '0001',
+            'order_number'     => 1,
             'package_id'       => '1234',
             'carrier_id_final' => '00605444103',
             'track_url_final'  => 'https://online.gls-slovakia.sk/tt_page.php',

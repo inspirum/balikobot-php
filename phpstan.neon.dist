@@ -3,5 +3,8 @@ includes:
 parameters:
 	ignoreErrors:
 		-
-			message: '#Parameter \#2 \$packageIds of static method Inspirum\\Balikobot\\Model\\Values\\OrderedShipment::newInstanceFromData\(\) expects array<int>, array\|int\|string given#'
+			message: '#Parameter \#2 \$packageIds of static method Inspirum\\Balikobot\\Model\\Values\\OrderedShipment::newInstanceFromData\(\) expects array<string>, array\|int\|string given#'
+			path: %currentWorkingDirectory%/src/Services/Balikobot.php
+		-
+			message: '#Parameter \#2 \$data of static method Inspirum\\Balikobot\\Model\\Values\\OrderedPackage::newInstanceFromData\(\) expects array<string, mixed>, int\|string given#'
 			path: %currentWorkingDirectory%/src/Services/Balikobot.php

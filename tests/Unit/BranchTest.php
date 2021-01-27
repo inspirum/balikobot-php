@@ -76,6 +76,18 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals(5.0, $branch->getMaxWeight());
     }
 
+    public function testBranchUid()
+    {
+        $branch = Branch::newInstanceFromData('ppl', '2', [
+            'branch_uid' => '2-ppl-branch-KMBA01081885107',
+            'branch_id'  => 'KMBA01081885107',
+            'id'         => '1234',
+        ]);
+
+        $this->assertEquals('KMBA01081885107', $branch->getId());
+        $this->assertEquals('2-ppl-branch-KMBA01081885107', $branch->getUId());
+    }
+
     public function testStaticConstructorWithMissingData()
     {
         $branch = Branch::newInstanceFromData('ppl', '1', [
