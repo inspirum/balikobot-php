@@ -28,6 +28,11 @@ class Branch
     private $id;
 
     /**
+     * @var string|null
+     */
+    private $uid;
+
+    /**
      * @var string
      */
     private $type;
@@ -180,6 +185,7 @@ class Branch
      * @param string      $shipper
      * @param string|null $service
      * @param string|null $id
+     * @param string|null $uid
      * @param string      $type
      * @param string      $name
      * @param string      $city
@@ -214,6 +220,7 @@ class Branch
         string $shipper,
         ?string $service,
         ?string $id,
+        ?string $uid,
         string $type,
         string $name,
         string $city,
@@ -247,6 +254,7 @@ class Branch
         $this->shipper              = $shipper;
         $this->service              = $service;
         $this->id                   = $id;
+        $this->uid                   = $uid;
         $this->type                 = $type;
         $this->name                 = $name;
         $this->city                 = $city;
@@ -310,6 +318,14 @@ class Branch
     public function getId(): ?string
     {
         return $this->id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUId(): ?string
+    {
+        return $this->uid;
     }
 
     /**
@@ -614,7 +630,8 @@ class Branch
         return new self(
             $shipper,
             $service,
-            $data['id'] ?? null,
+            $data['branch_id'] ?? ($data['id'] ?? null),
+            $data['branch_uid'] ?? null,
             $data['type'] ?? 'branch',
             $data['name'] ?? ($data['zip'] ?? '00000'),
             $data['city'] ?? '',

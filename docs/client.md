@@ -658,7 +658,7 @@ use Inspirum\Balikobot\Definitions\API;
 use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$branches = $client->getBranches(Shipper::ZASILKOVNA, ServiceType::ZASILKOVNA_VMSK, true, null, API::V2);
+$branches = $client->getBranches(Shipper::ZASILKOVNA, ServiceType::ZASILKOVNA_VMSK, true, null, API::V2V2);
 
 /*
 var_dump($branches);

@@ -71,11 +71,7 @@ class Balikobot
         $orderedPackages->setLabelsUrl($labelsUrl);
 
         foreach ($response as $i => $package) {
-            $orderedPackage = OrderedPackage::newInstanceFromData(
-                $packages->getShipper(),
-                (string) $packages->offsetGet($i)->getEID(),
-                $package
-            );
+            $orderedPackage = OrderedPackage::newInstanceFromData($packages->getShipper(), $package);
             $orderedPackages->add($orderedPackage);
         }
 
@@ -231,14 +227,12 @@ class Balikobot
     {
         $response = $this->client->getOverview($shipper);
 
+        $response = $response['packages'];
+
         $orderedPackages = new OrderedPackageCollection();
 
         foreach ($response as $package) {
-            $orderedPackage = OrderedPackage::newInstanceFromData(
-                $shipper,
-                (string) $package['eshop_id'],
-                $package
-            );
+            $orderedPackage = OrderedPackage::newInstanceFromData($shipper, $package);
             $orderedPackages->add($orderedPackage);
         }
 
@@ -272,7 +266,7 @@ class Balikobot
      */
     public function getPackageInfo(OrderedPackage $package): Package
     {
-        $response = $this->client->getPackageInfo($package->getShipper(), $package->getPackageId());
+        $response = $this->client->getPackageInfoByCarrierId($package->getShipper(), $package->getCarrierId());
 
         unset(
             $response['package_id'],
@@ -296,13 +290,13 @@ class Balikobot
      * Gets complete information about a package
      *
      * @param string $shipper
-     * @param int    $orderId
+     * @param string $orderId
      *
      * @return \Inspirum\Balikobot\Model\Values\OrderedShipment
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getOrder(string $shipper, int $orderId): OrderedShipment
+    public function getOrder(string $shipper, string $orderId): OrderedShipment
     {
         $response = $this->client->getOrder($shipper, $orderId);
 
@@ -709,11 +703,8 @@ class Balikobot
         $orderedPackages = new OrderedPackageCollection();
 
         foreach ($response as $i => $package) {
-            $orderedPackage = OrderedPackage::newInstanceFromData(
-                $packages->getShipper(),
-                (string) $packages->offsetGet($i)->getEID(),
-                $package
-            );
+            $package['eid'] = (string) $packages->offsetGet($i)->getEID();
+            $orderedPackage = OrderedPackage::newInstanceFromData($packages->getShipper(), $package);
             $orderedPackages->add($orderedPackage);
         }
 

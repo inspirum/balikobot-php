@@ -141,7 +141,7 @@ class Requester implements RequesterInterface
      */
     private function resolveHostName(string $version): string
     {
-        return API::URL[$version] ?? API::URL[API::V1];
+        return API::URL[$version] ?? API::URL[API::V2V1];
     }
 
     /**
@@ -176,8 +176,8 @@ class Requester implements RequesterInterface
         }
 
         // request error
-        if ($statusCode !== 200) {
-            throw new BadRequestException($response, $statusCode);
+        if ($statusCode >= 400) {
+            throw new BadRequestException($response, (int) ($response['status'] ?? $statusCode));
         }
     }
 
@@ -200,7 +200,7 @@ class Requester implements RequesterInterface
 
         $statusCode = (int) ($response['status'] ?? 500);
 
-        if ($statusCode !== 200) {
+        if ($statusCode >= 400) {
             throw new BadRequestException($response, $statusCode);
         }
     }

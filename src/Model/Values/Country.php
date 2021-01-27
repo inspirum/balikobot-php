@@ -26,11 +26,11 @@ class Country
     private $continent;
 
     /**
-     * Phone prefix
+     * Phone prefixes
      *
-     * @var float
+     * @var array<string>
      */
-    private $phonePrefix;
+    private $phonePrefixes;
 
     /**
      * Currency code
@@ -45,21 +45,21 @@ class Country
      * @param array<string,string> $names
      * @param string               $code
      * @param string               $currencyCode
-     * @param float                $phonePrefix
+     * @param array<string>        $phonePrefixes
      * @param string               $continent
      */
     public function __construct(
         array $names,
         string $code,
         string $currencyCode,
-        float $phonePrefix,
+        array $phonePrefixes,
         string $continent
     ) {
-        $this->names        = $names;
-        $this->code         = $code;
-        $this->currencyCode = $currencyCode;
-        $this->phonePrefix  = $phonePrefix;
-        $this->continent    = $continent;
+        $this->names         = $names;
+        $this->code          = $code;
+        $this->currencyCode  = $currencyCode;
+        $this->phonePrefixes = $phonePrefixes;
+        $this->continent     = $continent;
     }
 
     /**
@@ -97,11 +97,19 @@ class Country
     }
 
     /**
-     * @return float
+     * @return string
      */
-    public function getPhonePrefix(): float
+    public function getPhonePrefix(): string
     {
-        return $this->phonePrefix;
+        return $this->phonePrefixes[0];
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getPhonePrefixes(): array
+    {
+        return $this->phonePrefixes;
     }
 
     /**
@@ -126,7 +134,7 @@ class Country
             ],
             $data['iso_code'],
             $data['currency'],
-            $data['phone_prefix'],
+            is_array($data['phone_prefix']) ? $data['phone_prefix'] : [$data['phone_prefix']],
             $data['continent']
         );
     }

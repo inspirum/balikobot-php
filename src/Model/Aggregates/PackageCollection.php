@@ -88,7 +88,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      */
     private function newEID(): string
     {
-        return time() . uniqid();
+        return substr(time() . uniqid(), -20, 20);
     }
 
     /**

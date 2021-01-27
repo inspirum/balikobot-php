@@ -230,6 +230,8 @@ final class Shipper
     /**
      * Resolve ADD request version
      *
+     * @deprecated
+     *
      * @param string                     $shipperCode
      * @param array<array<string,mixed>> $packagesData
      *
@@ -237,21 +239,13 @@ final class Shipper
      */
     public static function resolveAddRequestVersion(string $shipperCode, array $packagesData): string
     {
-        $supportedShippers = [Shipper::ZASILKOVNA];
-        if (in_array($shipperCode, $supportedShippers) && isset($packagesData[0][Option::SERVICE_TYPE])) {
-            return API::V2;
-        }
-
-        $supportedShippers = [Shipper::UPS, Shipper::DHL, Shipper::TNT, Shipper::TOPTRANS];
-        if (in_array($shipperCode, $supportedShippers) && isset($packagesData[0][Option::ORDER_NUMBER])) {
-            return API::V2;
-        }
-
-        return API::V1;
+        return API::V2V1;
     }
 
     /**
      * Resolve SERVICES request version
+     *
+     * @deprecated
      *
      * @param string $shipperCode
      *
@@ -259,17 +253,21 @@ final class Shipper
      */
     public static function resolveServicesRequestVersion(string $shipperCode): string
     {
-        $supportedShippers = [Shipper::ZASILKOVNA];
-
-        if (in_array($shipperCode, $supportedShippers)) {
-            return API::V2;
-        }
-
-        return API::V1;
+        return API::V2V1;
+//
+//        $supportedShippers = [Shipper::ZASILKOVNA];
+//
+//        if (in_array($shipperCode, $supportedShippers)) {
+//            return API::V2V2;
+//        }
+//
+//        return API::V2V1;
     }
 
     /**
      * Resolve BRANCHES request version
+     *
+     * @deprecated
      *
      * @param string      $shipperCode
      * @param string|null $serviceCode
@@ -278,13 +276,15 @@ final class Shipper
      */
     public static function resolveBranchesRequestVersion(string $shipperCode, ?string $serviceCode): string
     {
-        $supportedShippers = [Shipper::ZASILKOVNA];
-
-        if (in_array($shipperCode, $supportedShippers) && $serviceCode !== null) {
-            return API::V2;
-        }
-
-        return API::V1;
+        return API::V2V1;
+//
+//        $supportedShippers = [Shipper::ZASILKOVNA];
+//
+//        if (in_array($shipperCode, $supportedShippers) && $serviceCode !== null) {
+//            return API::V2V2;
+//        }
+//
+//        return API::V2V1;
     }
 
     /**
@@ -297,10 +297,10 @@ final class Shipper
     public static function hasBranchCountryFilterSupport(string $shipperCode): bool
     {
         $supportedShippers = [
-            Shipper::DPD,
-            Shipper::GLS,
             Shipper::PPL,
-            Shipper::ULOZENKA,
+            Shipper::DPD,
+            Shipper::GEIS,
+            Shipper::GLS,
         ];
 
         return in_array($shipperCode, $supportedShippers);

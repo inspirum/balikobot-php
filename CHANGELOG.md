@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v4.4.0...master)
-
+### Added
+- Use API v2
+  - Added request/response format from [APIv2 documentation](https://balikobotv2.docs.apiary.io/#introduction/rozdil-api-v2-vs-api-v1)
+  - Update default API URL to **apiv2.balikobot.cz**
+- Added [**Branch**](./src/Model/Values/Branch.php) **uid** parameter to constructor
+### Changed
+- Update [**Country**](./src/Model/Values/Country.php) **phonePrefix** parameter to `array` type
+- Update [**OrderedPackage**](./src/Model/Values/OrderedPackage.php) **packageId** parameter to `string` type
+- Update [**Client**](./src/Services/Client.php) `getOrder()` method **orderId** parameter from `int` to `string` type
 
 ## [v4.4.0 (2021-01-22)](https://github.com/inspirum/balikobot-php/compare/v4.3.0...v4.4.0)
 ### Added

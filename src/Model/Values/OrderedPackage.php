@@ -89,7 +89,7 @@ class OrderedPackage
      * @param string|null   $finalTrackUrl
      */
     public function __construct(
-        int $packageId,
+        string $packageId,
         string $shipper,
         string $batchId,
         string $carrierId,
@@ -194,17 +194,16 @@ class OrderedPackage
 
     /**
      * @param string              $shipper
-     * @param string              $eid
      * @param array<string,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Values\OrderedPackage
      */
-    public static function newInstanceFromData(string $shipper, string $eid, array $data): self
+    public static function newInstanceFromData(string $shipper, array $data): self
     {
         return new self(
             $data['package_id'],
             $shipper,
-            $eid,
+            $data['eid'],
             $data['carrier_id'] ?? '',
             $data['track_url'] ?? null,
             $data['label_url'] ?? null,

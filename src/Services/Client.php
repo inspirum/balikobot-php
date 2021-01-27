@@ -42,16 +42,13 @@ class Client
      */
     public function addPackages(string $shipper, array $packages, string $version = null, &$labelsUrl = null): array
     {
-        $response = $this->requester->call($version ?: API::V1, $shipper, Request::ADD, $packages);
+        $response = $this->requester->call($version ?: API::V2V1, $shipper, Request::ADD, ['packages' => $packages]);
 
         if (isset($response['labels_url'])) {
             $labelsUrl = $response['labels_url'];
         }
 
-        unset(
-            $response['labels_url'],
-            $response['status']
-        );
+        $response = $response['packages'];
 
         $this->validateIndexes($response, $packages);
 
@@ -87,13 +84,11 @@ class Client
      */
     public function dropPackages(string $shipper, array $packageIds): void
     {
-        $data = $this->encapsulateIds($packageIds);
-
-        if (count($data) === 0) {
+        if (count($packageIds) === 0) {
             return;
         }
 
-        $this->requester->call(API::V1, $shipper, Request::DROP, $data);
+        $this->requester->call(API::V2V1, $shipper, Request::DROP, ['package_ids' => $packageIds]);
     }
 
     /**
@@ -125,11 +120,9 @@ class Client
      */
     public function trackPackages(string $shipper, array $carrierIds): array
     {
-        $data = $this->encapsulateIds($carrierIds);
+        $response = $this->requester->call(API::V2V2, $shipper, Request::TRACK, ['carrier_ids' => $carrierIds], false);
 
-        $response = $this->requester->call(API::V3, $shipper, Request::TRACK, $data, false);
-
-        unset($response['status']);
+        $response = $response['packages'] ?? [];
 
         // fixes that API return only last package statuses for GLS shipper
         if ($shipper === Shipper::GLS && count($carrierIds) !== count($response)) {
@@ -144,11 +137,11 @@ class Client
         $formattedResponse = [];
 
         foreach ($response ?? [] as $i => $responseItems) {
-            $this->validateResponseItemHasAttribute($responseItems, 'status_id', $response);
+            $this->validateStatus($responseItems, $response);
 
             $formattedResponse[$i] = [];
 
-            foreach ($responseItems ?? [] as $responseItem) {
+            foreach ($responseItems['states'] ?? [] as $responseItem) {
                 $formattedResponse[$i][] = [
                     'date'          => $responseItem['date'],
                     'name'          => $responseItem['name'],
@@ -191,11 +184,15 @@ class Client
      */
     public function trackPackagesLastStatus(string $shipper, array $carrierIds): array
     {
-        $data = $this->encapsulateIds($carrierIds);
+        $response = $this->requester->call(
+            API::V2V2,
+            $shipper,
+            Request::TRACK_STATUS,
+            ['carrier_ids' => $carrierIds],
+            false
+        );
 
-        $response = $this->requester->call(API::V2, $shipper, Request::TRACK_STATUS, $data, false);
-
-        unset($response['status']);
+        $response = $response['packages'] ?? [];
 
         $this->validateIndexes($response, $carrierIds);
 
@@ -227,7 +224,7 @@ class Client
      */
     public function getOverview(string $shipper): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::OVERVIEW, [], false);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::OVERVIEW, [], false);
 
         return $response;
     }
@@ -235,8 +232,8 @@ class Client
     /**
      * Gets labels
      *
-     * @param string     $shipper
-     * @param array<int> $packageIds
+     * @param string        $shipper
+     * @param array<string> $packageIds
      *
      * @return string
      *
@@ -248,7 +245,7 @@ class Client
             'package_ids' => $packageIds,
         ];
 
-        $response = $this->requester->call(API::V1, $shipper, Request::LABELS, $data);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::LABELS, $data);
 
         $formattedResponse = $response['labels_url'];
 
@@ -259,15 +256,15 @@ class Client
      * Gets complete information about a package by its package ID
      *
      * @param string $shipper
-     * @param int    $packageId
+     * @param string $packageId
      *
      * @return array<string,int|string>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getPackageInfo(string $shipper, int $packageId): array
+    public function getPackageInfo(string $shipper, string $packageId): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::PACKAGE . '/' . $packageId, [], false);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::PACKAGE . '/' . $packageId, [], false);
 
         return $response;
     }
@@ -285,7 +282,7 @@ class Client
     public function getPackageInfoByCarrierId(string $shipper, string $carrierId): array
     {
         $response = $this->requester->call(
-            API::V1,
+            API::V2V1,
             $shipper,
             Request::PACKAGE . '/carrier_id/' . $carrierId,
             [],
@@ -298,8 +295,8 @@ class Client
     /**
      * Order shipment for packages
      *
-     * @param string     $shipper
-     * @param array<int> $packageIds
+     * @param string        $shipper
+     * @param array<string> $packageIds
      *
      * @return array<string,int|string>
      *
@@ -307,11 +304,7 @@ class Client
      */
     public function orderShipment(string $shipper, array $packageIds): array
     {
-        $data = [
-            'package_ids' => $packageIds,
-        ];
-
-        $response = $this->requester->call(API::V1, $shipper, Request::ORDER, $data);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::ORDER, ['package_ids' => $packageIds]);
 
         unset($response['status']);
 
@@ -322,15 +315,15 @@ class Client
      * Get order details
      *
      * @param string $shipper
-     * @param int    $orderId
+     * @param string $orderId
      *
      * @return array<string,int|string|array>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getOrder(string $shipper, int $orderId): array
+    public function getOrder(string $shipper, string $orderId): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::ORDER_VIEW . '/' . $orderId, [], false);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::ORDER_VIEW . '/' . $orderId, [], false);
 
         unset($response['status']);
 
@@ -368,7 +361,7 @@ class Client
             'message'       => $message,
         ];
 
-        $this->requester->call(API::V1, $shipper, Request::ORDER_PICKUP, $data);
+        $this->requester->call(API::V2V1, $shipper, Request::ORDER_PICKUP, $data);
     }
 
     /**
@@ -384,9 +377,13 @@ class Client
      */
     public function getServices(string $shipper, string $country = null, string $version = null): array
     {
-        $response = $this->requester->call($version ?: API::V1, $shipper, Request::SERVICES . '/' . $country);
+        $response = $this->requester->call($version ?: API::V2V1, $shipper, Request::SERVICES . '/' . $country);
 
-        $formattedResponse = $response['service_types'] ?? [];
+        $formattedResponse = $this->normalizeResponseItems(
+            $response['service_types'] ?? [],
+            'service_type',
+            'name'
+        );
 
         return $formattedResponse;
     }
@@ -402,7 +399,7 @@ class Client
      */
     public function getB2AServices(string $shipper): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::B2A . '/' . Request::SERVICES);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::B2A . '/' . Request::SERVICES);
 
         $formattedResponse = $response['service_types'] ?? [];
 
@@ -421,7 +418,7 @@ class Client
      */
     public function getManipulationUnits(string $shipper, bool $fullData = false): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::MANIPULATION_UNITS);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::MANIPULATION_UNITS);
 
         $formattedResponse = $this->normalizeResponseItems(
             $response['units'] ?? [],
@@ -444,7 +441,7 @@ class Client
      */
     public function getActivatedManipulationUnits(string $shipper, bool $fullData = false): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::ACTIVATED_MANIPULATION_UNITS);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::ACTIVATED_MANIPULATION_UNITS);
 
         $formattedResponse = $this->normalizeResponseItems(
             $response['units'] ?? [],
@@ -478,11 +475,15 @@ class Client
     ): array {
         $usedRequest = $fullBranchRequest ? Request::FULL_BRANCHES : Request::BRANCHES;
 
-        $response = $this->requester->call(
-            $version ?: API::V1,
-            $shipper,
-            $usedRequest . '/' . $service . '/' . $country
-        );
+        if ($service !== null) {
+            $usedRequest .= '/service/' . $service;
+        }
+
+        if ($country !== null) {
+            $usedRequest .= '/country/' . $country;
+        }
+
+        $response = $this->requester->call($version ?: API::V2V1, $shipper, $usedRequest);
 
         $formattedResponse = $response['branches'] ?? [];
 
@@ -525,7 +526,7 @@ class Client
             'type'        => $type,
         ];
 
-        $response = $this->requester->call(API::V1, $shipper, Request::BRANCH_LOCATOR, array_filter($data));
+        $response = $this->requester->call(API::V2V1, $shipper, Request::BRANCH_LOCATOR, array_filter($data));
 
         $formattedResponse = $response['branches'] ?? [];
 
@@ -543,7 +544,7 @@ class Client
      */
     public function getCodCountries(string $shipper): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::CASH_ON_DELIVERY_COUNTRIES);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::CASH_ON_DELIVERY_COUNTRIES);
 
         $formattedResponse = $this->normalizeResponseItems(
             $response['service_types'] ?? [],
@@ -565,7 +566,7 @@ class Client
      */
     public function getCountries(string $shipper): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::COUNTRIES);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::COUNTRIES);
 
         $formattedResponse = $this->normalizeResponseItems(
             $response['service_types'] ?? [],
@@ -589,7 +590,7 @@ class Client
      */
     public function getPostCodes(string $shipper, string $service, string $country = null): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::ZIP_CODES . '/' . $service . '/' . $country);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::ZIP_CODES . '/' . $service . '/' . $country);
 
         $country = $response['country'] ?? $country;
 
@@ -620,7 +621,7 @@ class Client
      */
     public function checkPackages(string $shipper, array $packages): void
     {
-        $this->requester->call(API::V1, $shipper, Request::CHECK, $packages);
+        $this->requester->call(API::V2V1, $shipper, Request::CHECK, ['packages' => $packages]);
     }
 
     /**
@@ -635,7 +636,7 @@ class Client
      */
     public function getAdrUnits(string $shipper, bool $fullData = false): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::ADR_UNITS);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::ADR_UNITS);
 
         $formattedResponse = $this->normalizeResponseItems(
             $response['units'] ?? [],
@@ -657,7 +658,7 @@ class Client
      */
     public function getActivatedServices(string $shipper): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::ACTIVATED_SERVICES);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::ACTIVATED_SERVICES);
 
         unset($response['status']);
 
@@ -718,7 +719,7 @@ class Client
     {
         $data = $this->encapsulateIds($carrierIds);
 
-        $response = $this->requester->call(API::V1, $shipper, Request::PROOF_OF_DELIVERY, $data, false);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::PROOF_OF_DELIVERY, $data, false);
 
         unset($response['status']);
 
@@ -747,9 +748,9 @@ class Client
      */
     public function getTransportCosts(string $shipper, array $packages): array
     {
-        $response = $this->requester->call(API::V1, $shipper, Request::TRANSPORT_COSTS, $packages);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::TRANSPORT_COSTS, ['packages' => $packages]);
 
-        unset($response['status']);
+        $response = $response['packages'];
 
         $this->validateIndexes($response, $packages);
 
@@ -767,7 +768,7 @@ class Client
      */
     public function getCountriesData(): array
     {
-        $response = $this->requester->call(API::V1, '', Request::GET_COUNTRIES_DATA);
+        $response = $this->requester->call(API::V2V1, '', Request::GET_COUNTRIES_DATA);
 
         $formattedResponse = $this->normalizeResponseItems($response['countries'] ?? [], 'iso_code', null);
 
@@ -783,7 +784,7 @@ class Client
      */
     public function getChangelog(): array
     {
-        $response = $this->requester->call(API::V1, '', Request::CHANGELOG);
+        $response = $this->requester->call(API::V2V1, '', Request::CHANGELOG);
 
         unset($response['status']);
 
@@ -802,8 +803,8 @@ class Client
      */
     private function validateStatus(array $responseItem, array $response): void
     {
-        if (isset($responseItem['status']) && ((int) $responseItem['status']) !== 200) {
-            throw new BadRequestException($response);
+        if (isset($responseItem['status']) && ((int) $responseItem['status']) >= 400) {
+            throw new BadRequestException($response, (int) $responseItem['status']);
         }
     }
 

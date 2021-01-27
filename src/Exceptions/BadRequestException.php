@@ -37,14 +37,22 @@ class BadRequestException extends AbstractException
     {
         $i = 0;
 
+        if (isset($response['packages'])) {
+            $packages = $response['packages'];
+        } elseif (isset($response['errors'])) {
+            $packages = $response['errors'];
+        } else {
+            $packages = $response;
+        }
+
         // add errors from all packages
-        while (isset($response[$i])) {
+        while (isset($packages[$i])) {
             // set errors for package
-            if (is_array($response[$i])) {
-                $this->setErrorsForPackage($i, $response[$i]);
-            } elseif (is_numeric($response[$i]) && $response[$i] >= 400) {
+            if (is_array($packages[$i])) {
+                $this->setErrorsForPackage($i, $packages[$i]);
+            } elseif (is_numeric($packages[$i]) && $packages[$i] >= 400) {
                 // get error message from code
-                $error = $this->getErrorMessage('status', (int) $response[$i]);
+                $error = $this->getErrorMessage('status', (int) $packages[$i]);
 
                 // set errors fro given package from response codes
                 $this->setError($i, 'status', $error);
