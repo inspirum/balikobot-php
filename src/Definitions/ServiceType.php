@@ -787,22 +787,9 @@ final class ServiceType
     /**
      * BE Belgická pošta HD
      *
-     * @deprecated Will be removed in v5.0
-     * @see        \Inspirum\Balikobot\Definitions\ServiceType::ZASILKOVNA_BE_POST_HD
-     *
      * @var string
      */
-    public const ZASILKOVNA_BE_BE_POST_HD = '7909';
-
-    /**
-     * BE Nizozemská pošta HD
-     *
-     * @deprecated Will be removed in v5.0 (change value)
-     * @see        \Inspirum\Balikobot\Definitions\ServiceType::ZASILKOVNA_BE_NL_POST_HD
-     *
-     * @var string
-     */
-    public const ZASILKOVNA_BE_POST_HD = '4832';
+    public const ZASILKOVNA_BE_POST_HD = '7909';
 
     /**
      * BE Nizozemská pošta HD
@@ -2233,7 +2220,7 @@ final class ServiceType
             self::ZASILKOVNA_AT_DPD_HD,
             self::ZASILKOVNA_AT_POST_HD,
             self::ZASILKOVNA_BE_POST_PP,
-            self::ZASILKOVNA_BE_BE_POST_HD,
+            self::ZASILKOVNA_BE_POST_HD,
             self::ZASILKOVNA_BE_NL_POST_HD,
             self::ZASILKOVNA_BG_ECONT_HD,
             self::ZASILKOVNA_BG_ECONT_PP,
