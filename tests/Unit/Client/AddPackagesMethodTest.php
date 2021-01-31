@@ -146,7 +146,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
                         ],
                     ],
                 ],
-            ],
+            ]
         );
 
         $this->assertTrue(true);
