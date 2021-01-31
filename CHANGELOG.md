@@ -7,11 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v4.4.0...master)
+> This release (^5.0) uses new refactored **API v2**
 ### Added
-- Use API v2
-  - Added request/response format from [APIv2 documentation](https://balikobotv2.docs.apiary.io/#introduction/rozdil-api-v2-vs-api-v1)
-  - Update default API URL to **apiv2.balikobot.cz**
+- Added request/response format from [APIv2 documentation](https://balikobotv2.docs.apiary.io/#introduction/rozdil-api-v2-vs-api-v1)
 - Added [**Branch**](./src/Model/Values/Branch.php) #4 **uid** parameter to constructor
+### Changed
+- Update default API URL to `API::V2V1` (**apiv2.balikobot.cz**)
 ### Fixed
 - Fixed [**Country**](./src/Model/Values/Country.php) #4 **phonePrefix** parameter to `array` type
 - Fixed [**OrderedPackage**](./src/Model/Values/OrderedPackage.php) #1 **packageId** parameter to `string` type
@@ -25,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Removed [**Shipper**](./src/Model/Values/Shipper.php) `resolveServicesRequestVersion()` method
 - Removed [**Shipper**](./src/Model/Values/Shipper.php) `resolveBranchesRequestVersion()` method
 - Removed parameter #2 **country** from [**Balikobot**](./src/Services/Balikobot.php) `getServices()` method
+- Removed **ZASILKOVNA\_&ast;** service type constants
 
 ## [v4.4.0 (2021-01-22)](https://github.com/inspirum/balikobot-php/compare/v4.3.0...v4.4.0)
 ### Added

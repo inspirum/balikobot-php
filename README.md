@@ -1,4 +1,4 @@
-# Balikobot API
+# Balikobot API 
 
 **Created as part of [inspishop][link-inspishop] e-commerce platform by [inspirum][link-inspirum] team.**
 
@@ -10,12 +10,12 @@
 [![Total Downloads][ico-packagist-download]][link-packagist-download]
 [![Software License][ico-license]][link-licence]
 
-Offers implementation of Balikobot API described in the [documentation ](#version)
+Offers implementation of Balikobot API v2 described in the [documentation](#version)
 
 - Support for all API [requests](./docs/client.md#requests)
 - Simple add/track/drop package [methods](./docs/balikobot.md#packages)
-- All package options are accessible via setter/getter methods
-- The entire code is covered by unit tests
+- All package options are accessible via setter and getter methods
+- The entire code is covered by unit and integration tests
 - Customizable [**Requester**](./src/Contracts/RequesterInterface.php) for easy functionality expandability (caching, etc.)
 
 
