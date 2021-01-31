@@ -11,11 +11,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Use API v2
   - Added request/response format from [APIv2 documentation](https://balikobotv2.docs.apiary.io/#introduction/rozdil-api-v2-vs-api-v1)
   - Update default API URL to **apiv2.balikobot.cz**
-- Added [**Branch**](./src/Model/Values/Branch.php) **uid** parameter to constructor
-### Changed
-- Update [**Country**](./src/Model/Values/Country.php) **phonePrefix** parameter to `array` type
-- Update [**OrderedPackage**](./src/Model/Values/OrderedPackage.php) **packageId** parameter to `string` type
-- Update [**Client**](./src/Services/Client.php) `getOrder()` method **orderId** parameter from `int` to `string` type
+- Added [**Branch**](./src/Model/Values/Branch.php) #4 **uid** parameter to constructor
+### Fixed
+- Fixed [**Country**](./src/Model/Values/Country.php) #4 **phonePrefix** parameter to `array` type
+- Fixed [**OrderedPackage**](./src/Model/Values/OrderedPackage.php) #1 **packageId** parameter to `string` type
+- Fixed [**Client**](./src/Services/Client.php) `getOrder()` method #2 **orderId** parameter from `int` to `string` type
+### Removed
+- Removed parameter #3 **version** from [**Client**](./src/Services/Client.php) `addPackages()` method
+- Removed parameter #2 **country** from [**Client**](./src/Services/Client.php) `getServices()` method
+- Removed parameter #3 **version** from [**Client**](./src/Services/Client.php) `getServices()` method
+- Removed parameter #5 **version** from [**Client**](./src/Services/Client.php) `getBranches()` method
+- Removed [**Shipper**](./src/Model/Values/Shipper.php) `resolveAddRequestVersion()` method
+- Removed [**Shipper**](./src/Model/Values/Shipper.php) `resolveServicesRequestVersion()` method
+- Removed [**Shipper**](./src/Model/Values/Shipper.php) `resolveBranchesRequestVersion()` method
+- Removed parameter #2 **country** from [**Balikobot**](./src/Services/Balikobot.php) `getServices()` method
 
 ## [v4.4.0 (2021-01-22)](https://github.com/inspirum/balikobot-php/compare/v4.3.0...v4.4.0)
 ### Added

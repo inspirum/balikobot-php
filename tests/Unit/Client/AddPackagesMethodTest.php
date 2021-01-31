@@ -229,46 +229,8 @@ class AddPackagesMethodTest extends AbstractClientTestCase
 
         $labelsUrl = null;
 
-        $client->addPackages('cp', [['eid' => '0001'], ['eid' => '0002']], null, $labelsUrl);
+        $client->addPackages('cp', [['eid' => '0001'], ['eid' => '0002']], $labelsUrl);
 
         $this->assertEquals('https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.', $labelsUrl);
-    }
-
-    public function testMakeRequestWithUnsupportedVersion()
-    {
-        $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status'   => 200,
-            'packages' => [
-                0 => [
-                    'eid'          => '0001',
-                    'order_number' => 1,
-                    'carrier_id'   => 'NP1504102246M',
-                    'package_id'   => '42719',
-                    'label_url'    => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
-                    'status'       => '200',
-                ],
-            ],
-        ]);
-
-        $client = new Client($requester);
-
-        $client->addPackages('cp', [['data' => [1, 2, 3], 'test' => false]], 'v4');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/add',
-                [
-                    'packages' => [
-                        [
-                            'data' => [1, 2, 3],
-                            'test' => false,
-                        ],
-                    ],
-                ],
-            ]
-        );
-
-        $this->assertTrue(true);
     }
 }

@@ -263,7 +263,7 @@ interface Balikobot {
 
   function getOrder(string $shipper, int $orderId): OrderedShipment;
 
-  function getServices(string $shipper, string $country = null): array;
+  function getServices(string $shipper): array;
 
   function getManipulationUnits(string $shipper, bool $fullData = false): array;
 

@@ -4,9 +4,6 @@ namespace Inspirum\Balikobot\Definitions;
 
 use InvalidArgumentException;
 
-/**
- * Currencies in ISO 4217 format
- */
 final class Currency
 {
     /**

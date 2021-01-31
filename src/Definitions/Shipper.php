@@ -228,66 +228,6 @@ final class Shipper
     }
 
     /**
-     * Resolve ADD request version
-     *
-     * @deprecated
-     *
-     * @param string                     $shipperCode
-     * @param array<array<string,mixed>> $packagesData
-     *
-     * @return string
-     */
-    public static function resolveAddRequestVersion(string $shipperCode, array $packagesData): string
-    {
-        return API::V2V1;
-    }
-
-    /**
-     * Resolve SERVICES request version
-     *
-     * @deprecated
-     *
-     * @param string $shipperCode
-     *
-     * @return string
-     */
-    public static function resolveServicesRequestVersion(string $shipperCode): string
-    {
-        return API::V2V1;
-//
-//        $supportedShippers = [Shipper::ZASILKOVNA];
-//
-//        if (in_array($shipperCode, $supportedShippers)) {
-//            return API::V2V2;
-//        }
-//
-//        return API::V2V1;
-    }
-
-    /**
-     * Resolve BRANCHES request version
-     *
-     * @deprecated
-     *
-     * @param string      $shipperCode
-     * @param string|null $serviceCode
-     *
-     * @return string
-     */
-    public static function resolveBranchesRequestVersion(string $shipperCode, ?string $serviceCode): string
-    {
-        return API::V2V1;
-//
-//        $supportedShippers = [Shipper::ZASILKOVNA];
-//
-//        if (in_array($shipperCode, $supportedShippers) && $serviceCode !== null) {
-//            return API::V2V2;
-//        }
-//
-//        return API::V2V1;
-    }
-
-    /**
      * Determine if shipper has support to filter branches by country code.
      *
      * @param string $shipperCode

@@ -27,6 +27,13 @@ class Requester implements RequesterInterface
     private $apiKey;
 
     /**
+     * Response validator
+     *
+     * @var \Inspirum\Balikobot\Services\Validator
+     */
+    private $validator;
+
+    /**
      * Balikobot API client
      *
      * @param string $apiUser
@@ -36,6 +43,8 @@ class Requester implements RequesterInterface
     {
         $this->apiUser = $apiUser;
         $this->apiKey  = $apiKey;
+
+        $this->validator = new Validator();
     }
 
     /**
@@ -155,53 +164,8 @@ class Requester implements RequesterInterface
      */
     private function validateResponse(int $statusCode, array $response, bool $shouldHaveStatus): void
     {
-        $this->validateStatus($statusCode, $response);
+        $this->validator->validateStatus($statusCode, $response);
 
-        $this->validateResponseStatus($response, $shouldHaveStatus);
-    }
-
-    /**
-     * Validate status code
-     *
-     * @param int                $statusCode
-     * @param array<mixed,mixed> $response
-     *
-     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
-     */
-    private function validateStatus(int $statusCode, array $response = []): void
-    {
-        // unauthorized
-        if ($statusCode === 401 || $statusCode === 403) {
-            throw new UnauthorizedException(null, $statusCode);
-        }
-
-        // request error
-        if ($statusCode >= 400) {
-            throw new BadRequestException($response, (int) ($response['status'] ?? $statusCode));
-        }
-    }
-
-    /**
-     * Validate response status
-     *
-     * @param array<mixed,mixed> $response
-     * @param bool               $shouldHaveStatus
-     *
-     * @return void
-     *
-     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
-     */
-    private function validateResponseStatus(array $response, bool $shouldHaveStatus): void
-    {
-        // no status to validate
-        if (isset($response['status']) === false && $shouldHaveStatus === false) {
-            return;
-        }
-
-        $statusCode = (int) ($response['status'] ?? 500);
-
-        if ($statusCode >= 400) {
-            throw new BadRequestException($response, $statusCode);
-        }
+        $this->validator->validateResponseStatus($response, null, $shouldHaveStatus);
     }
 }

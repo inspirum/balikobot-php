@@ -17,7 +17,7 @@ class ShipperTest extends AbstractClientTestCase
         foreach ($shippers as $shipper) {
             try {
                 $shipperServices = array_keys(
-                    $service->getServices($shipper, null, Shipper::resolveServicesRequestVersion($shipper))
+                    $service->getServices($shipper, null)
                 );
                 $shipperService  = $shipperServices[0] ?? null;
                 $service->getBranches($shipper, $shipperService, false, 'CZ');

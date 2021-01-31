@@ -475,6 +475,8 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
 
     public function testGlsOnlyReturnsLastPackageStatusesWithMultiplePackages()
     {
+        $this->expectException(BadRequestException::class);
+
         $client = $this->newMockedClient(200, [
             'status'   => 200,
             'packages' => [

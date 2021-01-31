@@ -117,11 +117,8 @@ class OrderedShipment
      *
      * @return \Inspirum\Balikobot\Model\Values\OrderedShipment
      */
-    public static function newInstanceFromData(
-        string $shipper,
-        array $packageIds,
-        array $data
-    ): self {
+    public static function newInstanceFromData(string $shipper, array $packageIds, array $data): self
+    {
         return new self(
             $data['order_id'],
             $shipper,

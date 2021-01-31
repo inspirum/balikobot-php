@@ -630,65 +630,6 @@ var_dump($branches);
 */
 ```
 
-Some shippers support newer **v2** version of **BRANCHES** request. You can specify version in fifth optional parameter `$version`.
-
-You can use the `Shipper::resolveBranchesRequestVersion()` method to get supported API version.
-
-```php
-use Inspirum\Balikobot\Definitions\ServiceType;
-use Inspirum\Balikobot\Definitions\Shipper;
-
-$version = Shipper::resolveBranchesRequestVersion(Shipper::ZASILKOVNA, null);
-
-/*
-var_dump($version);
-'v1'
-*/
-
-$version = Shipper::resolveBranchesRequestVersiont(Shipper::ZASILKOVNA, ServiceType::ZASILKOVNA_VMCZ);
-
-/*
-var_dump($version);
-'v2'
-*/
-````
-
-```php
-use Inspirum\Balikobot\Definitions\API;
-use Inspirum\Balikobot\Definitions\ServiceType;
-use Inspirum\Balikobot\Definitions\Shipper;
-
-$branches = $client->getBranches(Shipper::ZASILKOVNA, ServiceType::ZASILKOVNA_VMSK, true, null, API::V2V2);
-
-/*
-var_dump($branches);
-[
-  0 => [
-    'id'          => '21'
-    'name'        => 'Prešov, Zemplínska 1, DraziwNet – predaj, servis PC DraziwNet – predaj, servis PC'
-    'city'        => 'Prešov'
-    'street'      => 'Zemplínska 1'
-    'zip'         => '08001'
-    'district'    => ''
-    'region'      => ''
-    'country'     => 'SK'
-    'currency'    => 'EUR'
-    'type'        => 'branch'
-    'photo_small' => 'https://www.zasielkovna.sk/images/branch/thumb/pres2.jpg'
-    'photo_big'   => 'https://www.zasielkovna.sk/images/branch/normal/pres2.jpg'
-    'url'         => 'https://www.zasielkovna.sk/pobocky/presov-zemplinska-1-draziw-net-predaj-servis-pc'
-    'latitude'    => 48.98662
-    'longitude'   => 21.2651
-    ...
-  ]
-  1 => [
-    ...
-  ]
-  ...
-]
-*/
-```
-
 
 ### **BRANCHLOCATOR**
 
@@ -1216,7 +1157,7 @@ var_dump($changelog);
 ```php
 interface Client {
 
-  function addPackages(string $shipper, array $packages, string $version = null, &$labelsUrl = null): array;
+  function addPackages(string $shipper, array $packages, &$labelsUrl = null): array;
     
   function dropPackage(string $shipper, int $packageId): void;
     
@@ -1242,13 +1183,13 @@ interface Client {
     
   function orderPickup(string $shipper, DateTime $dateFrom, DateTime $dateTo, float $weight, int $packageCount, string $message = null): void;
     
-  function getServices(string $shipper, string $country = null, string $version = null): array;
+  function getServices(string $shipper): array;
     
   function getManipulationUnits(string $shipper, bool $fullData = false): array;
     
   function getActivatedManipulationUnits(string $shipper, bool $fullData = false): array;
     
-  function getBranches( string $shipper, ?string $service, bool $fullBranchRequest = false, string $country = null, string $version = null): array;
+  function getBranches( string $shipper, ?string $service, bool $fullBranchRequest = false, string $country = null): array;
     
   function getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): array;
     
