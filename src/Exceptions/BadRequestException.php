@@ -37,25 +37,14 @@ class BadRequestException extends AbstractException
     {
         $i = 0;
 
-        if (isset($response['packages'])) {
-            $packages = $response['packages'];
-        } elseif (isset($response['errors'])) {
-            $packages = $response['errors'];
-        } else {
-            $packages = $response;
-        }
+        $packages = $this->resolveErrorsData($response);
 
         // add errors from all packages
         while (isset($packages[$i])) {
-            // set errors for package
             if (is_array($packages[$i])) {
                 $this->setErrorsForPackage($i, $packages[$i]);
             } elseif (is_numeric($packages[$i]) && $packages[$i] >= 400) {
-                // get error message from code
-                $error = $this->getErrorMessage('status', (int) $packages[$i]);
-
-                // set errors fro given package from response codes
-                $this->setError($i, 'status', $error);
+                $this->setError($i, 'status', $this->getErrorMessage('status', (int) $packages[$i]));
             } else {
                 $this->setError($i, 'status', 'Nespecifikovaná chyba.');
             }
@@ -66,6 +55,26 @@ class BadRequestException extends AbstractException
     }
 
     /**
+     * Resolve errors data array
+     *
+     * @param array<mixed> $response
+     *
+     * @return array<mixed>
+     */
+    private function resolveErrorsData(array $response): array
+    {
+        if (isset($response['packages'])) {
+            return $response['packages'];
+        } elseif (isset($response['errors'])) {
+            return $response['errors'];
+        } else {
+            return $response;
+        }
+    }
+
+    /**
+     * Set errors for package
+     *
      * @param int          $number
      * @param array<mixed> $response
      *
@@ -88,6 +97,8 @@ class BadRequestException extends AbstractException
     }
 
     /**
+     * Set errors from codes
+     *
      * @param int                      $number
      * @param array<string,int|string> $response
      *
@@ -101,15 +112,14 @@ class BadRequestException extends AbstractException
                 continue;
             }
 
-            // get error message from code
-            $error = $this->getErrorMessage($key, (int) $code);
-
-            // set errors fro given package from response codes
-            $this->setError($number, $key, $error);
+            // set errors from given package from response codes
+            $this->setError($number, $key, $this->getErrorMessage($key, (int) $code));
         }
     }
 
     /**
+     * Get error message from variables
+     *
      * @param string $key
      * @param int    $code
      *
@@ -130,6 +140,8 @@ class BadRequestException extends AbstractException
     }
 
     /**
+     * Set new error message
+     *
      * @param int    $number
      * @param string $key
      * @param string $error

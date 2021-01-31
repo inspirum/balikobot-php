@@ -254,7 +254,7 @@ class Branch
         $this->shipper              = $shipper;
         $this->service              = $service;
         $this->id                   = $id;
-        $this->uid                   = $uid;
+        $this->uid                  = $uid;
         $this->type                 = $type;
         $this->name                 = $name;
         $this->city                 = $city;
@@ -284,8 +284,7 @@ class Branch
         $this->openingSaturday      = $openingSaturday;
         $this->openingSunday        = $openingSunday;
         $this->maxWeight            = $maxWeight;
-
-        $this->setBranchId();
+        $this->branchId             = $this->resolveBranchId();
     }
 
     /**
@@ -558,16 +557,6 @@ class Branch
     public function getMaxWeight(): ?float
     {
         return $this->maxWeight;
-    }
-
-    /**
-     * Set branch ID
-     *
-     * @return void
-     */
-    private function setBranchId(): void
-    {
-        $this->branchId = $this->resolveBranchId();
     }
 
     /**

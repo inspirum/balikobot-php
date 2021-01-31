@@ -111,11 +111,7 @@ class Balikobot
     {
         $response = $this->client->orderShipment($packages->getShipper(), $packages->getPackageIds());
 
-        return OrderedShipment::newInstanceFromData(
-            $packages->getShipper(),
-            $packages->getPackageIds(),
-            $response
-        );
+        return OrderedShipment::newInstanceFromData($packages->getShipper(), $packages->getPackageIds(), $response);
     }
 
     /**
@@ -150,12 +146,8 @@ class Balikobot
 
         $statuses = [];
 
-        foreach ($response as $i => $responseStatuses) {
-            $statuses[$i] = [];
-
-            foreach ($responseStatuses as $status) {
-                $statuses[$i][] = PackageStatus::newInstanceFromData($status);
-            }
+        foreach ($response as $responseStatuses) {
+            $statuses[] = $this->createPackageStatusesCollection($responseStatuses);
         }
 
         return $statuses;
@@ -191,6 +183,18 @@ class Balikobot
     {
         $response = $this->client->trackPackagesLastStatus($packages->getShipper(), $packages->getCarrierIds());
 
+        return $this->createPackageStatusesCollection($response);
+    }
+
+    /**
+     * Create package statuses collection for package
+     *
+     * @param array<array<string,float|string|null>> $response
+     *
+     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>
+     */
+    private function createPackageStatusesCollection(array $response): array
+    {
         $statuses = [];
 
         foreach ($response as $status) {
@@ -635,8 +639,8 @@ class Balikobot
         $orderedPackages = new OrderedPackageCollection();
 
         foreach ($response as $i => $package) {
-            $package['eid'] = (string) $packages->offsetGet($i)->getEID();
-            $orderedPackage = OrderedPackage::newInstanceFromData($packages->getShipper(), $package);
+            $package[Option::EID] = (string) $packages->offsetGet($i)->getEID();
+            $orderedPackage       = OrderedPackage::newInstanceFromData($packages->getShipper(), $package);
             $orderedPackages->add($orderedPackage);
         }
 
