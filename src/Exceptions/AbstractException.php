@@ -54,9 +54,9 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
         if ($message === null) {
             $message = Response::$statusCodesErrors[$statusCode] ?? 'Operace neproběhla v pořádku.';
         }
-		if (isset($response[0]) === true && \is_array($response[0]) === true && \count($response[0]) > 0) {
-			$message .= "\n" . 'Please check keys: "' . implode('", "', array_keys($response[0])) . '".';
-		}
+        if (isset($response[0]) === true && \is_array($response[0]) === true && \count($response[0]) > 0) {
+            $message .= "\n" . 'Please check keys: "' . implode('", "', array_keys($response[0])) . '".';
+        }
 
         // construct exception
         parent::__construct($message, $statusCode, $previous);
