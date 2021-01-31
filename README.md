@@ -98,19 +98,24 @@ See more available methods documentation in [Usage](#usage) section.
 
 ## Installation
 
-Run composer require command
+Run composer require command:
 ```bash
 $ composer require inspirum/balikobot
 ```
-or add requirement to your `composer.json`
+or add a requirement to your `composer.json`:
 ```json
-"inspirum/balikobot": "^4.0"
+"inspirum/balikobot": "^5.0"
 ```
 
 
 ## Version
 
-Support all options for Balikobot API described in the official [documentation][link-api] until **v1.901** *(2021-01-18)*.
+Support all options for Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v1.901** *(2021-01-18)*.
+
+If you want to use older API [v1][link-api], please use `^4.0` version:
+```json
+"inspirum/balikobot": "^4.0"
+```
 
 More details are available in [changelog][link-changelog].
 
@@ -138,6 +143,13 @@ To run unit tests, run:
 
 ```bash
 $ composer test:test
+```
+
+You can also run only Unit or Integration test suites, run:
+
+```bash
+$ composer test:unit
+$ composer test:integration
 ```
 
 To show coverage, run:
@@ -191,6 +203,8 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 [link-scrutinizer]:         https://scrutinizer-ci.com/g/inspirum/balikobot-php/code-structure
 [link-code-quality]:        https://scrutinizer-ci.com/g/inspirum/balikobot-php
 [link-api]:                 https://balikobot.docs.apiary.io/#introduction/prehled-zmen
+[link-api-v2]:              https://balikobotv2.docs.apiary.io/#introduction/prehled-zmen
+[link-api-v2-upgrade]:      https://balikobotv2.docs.apiary.io/#introduction/rozdil-api-v2-vs-api-v1
 [link-inspishop]:           https://www.inspishop.cz/
 [link-inspirum]:            https://www.inspirum.cz/
 [link-packagist-stable]:    https://packagist.org/packages/inspirum/balikobot
