@@ -1,4 +1,4 @@
-# Balikobot API 
+# Balikobot API
 
 **Created as part of [inspishop][link-inspishop] e-commerce platform by [inspirum][link-inspirum] team.**
 

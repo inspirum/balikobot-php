@@ -129,7 +129,7 @@ class ExceptionsTest extends AbstractClientTestCase
 
     public function testThrowsExceptionMatchMessageWithErrors()
     {
-        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+        $client = $this->newMockedClient(200, [
             'status' => 400,
             0        => [
                 'status'   => 413,
@@ -141,8 +141,6 @@ class ExceptionsTest extends AbstractClientTestCase
                 'aa' => 406,
             ],
         ]);
-
-        $client = new Client($requester);
 
         try {
             $client->addPackages('cp', []);
