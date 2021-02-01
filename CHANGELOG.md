@@ -6,7 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v4.5.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.0.0...master)
+
+
+## [v5.0.0 (2021-02-01)](https://github.com/inspirum/balikobot-php/compare/v4.5.0...v5.0.0)
 > This release (^5.0) uses new refactored **API v2**
 ### Added
 - Added request/response format from [APIv2 documentation](https://balikobotv2.docs.apiary.io/#introduction/rozdil-api-v2-vs-api-v1)
@@ -27,7 +30,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Removed [**Shipper**](./src/Model/Values/Shipper.php) `resolveBranchesRequestVersion()` method
 - Removed parameter #2 **country** from [**Balikobot**](./src/Services/Balikobot.php) `getServices()` method
 - Removed **ZASILKOVNA\_&ast;** service type constants
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v4.5.0...master)
 
 
 ## [v4.5.0 (2021-02-01)](https://github.com/inspirum/balikobot-php/compare/v4.4.0...v4.5.0)
