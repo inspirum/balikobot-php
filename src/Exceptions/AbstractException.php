@@ -53,6 +53,7 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
         // overwrite default message
         if ($message === null) {
             $message = Response::$statusCodesErrors[$statusCode] ?? 'Operace neproběhla v pořádku.';
+            $message = $this->getMessageWithErrors($message);
         }
 
         // construct exception
@@ -97,5 +98,25 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
     public function getErrors(): array
     {
         return $this->errors;
+    }
+
+    /**
+     * Get message with errors
+     *
+     * @param string $message
+     *
+     * @return string
+     */
+    private function getMessageWithErrors(string $message): string
+    {
+        $messages = [$message];
+
+        foreach ($this->getErrors() as $i => $errors) {
+            foreach ($errors as $key => $error) {
+                $messages[] = sprintf('[%s][%s]: %s', $i, $key, $error);
+            }
+        }
+
+        return implode("\n", $messages);
     }
 }

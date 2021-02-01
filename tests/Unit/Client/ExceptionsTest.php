@@ -100,6 +100,37 @@ class ExceptionsTest extends AbstractClientTestCase
         }
     }
 
+    public function testThrowsExceptionMatchMessageWithErrors()
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status' => 400,
+            0        => [
+                'status'   => 413,
+                'id'       => 404,
+                'eid'      => 'Missing',
+                'rec_name' => 406,
+            ],
+            1        => [
+                'aa' => 406,
+            ],
+        ]);
+
+        $client = new Client($requester);
+
+        try {
+            $client->addPackages('cp', []);
+        } catch (ExceptionInterface $exception) {
+            $this->assertEquals(
+                'Operace neproběhla v pořádku, zkontrolujte konkrétní data.' . "\n" .
+                '[0][status]: Špatný formát dat.' . "\n" .
+                '[0][id]: Nespecifikovaná chyba.' . "\n" .
+                '[0][rec_name]: Nedorazilo jméno příjemce.' . "\n" .
+                '[1][aa]: Nedorazila žádná data ke zpracování.',
+                $exception->getMessage()
+            );
+        }
+    }
+
     public function testThrowsExceptionMatchSimpleErrorsWithStatusCode()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
