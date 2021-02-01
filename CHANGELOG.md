@@ -6,7 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v4.4.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v4.5.0...master)
+
+
+## [v4.5.0 (2021-02-01)](https://github.com/inspirum/balikobot-php/compare/v4.4.0...v4.5.0)
+### Added
+- Added error messages from package data validation to exception message as newlines (inspired by [#7](https://github.com/inspirum/balikobot-php/pull/7))
 
 
 ## [v4.4.0 (2021-01-22)](https://github.com/inspirum/balikobot-php/compare/v4.3.0...v4.4.0)
