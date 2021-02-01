@@ -1225,6 +1225,13 @@ final class ServiceType
     public const ZASILKOVNA_RO_URGENT_CARGUS_HD = '590';
 
     /**
+     * Rumunsko Sameday box
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_RO_SAMEDAY_BOX = '7455';
+
+    /**
      * Rumunsko DPD
      *
      * @var string
@@ -2283,6 +2290,7 @@ final class ServiceType
             self::ZASILKOVNA_PT_MRW_HD,
             self::ZASILKOVNA_RO_COURIER_HD,
             self::ZASILKOVNA_RO_URGENT_CARGUS_HD,
+            self::ZASILKOVNA_RO_SAMEDAY_BOX,
             self::ZASILKOVNA_RO_DPD_HD,
             self::ZASILKOVNA_RO_SAMEDAY_HD,
             self::ZASILKOVNA_RO_FAN_COURIER_HD,
