@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.0.0...master)
+### Added
+- Added support for new options from documentation **v1.902** (2021-02-10)
+  - Added **declaration_comments** attribute
+  - Added **declaration_charges_discount** attribute
+  - Added **declaration_insurance_charges** attribute
+  - Added **declaration_other_charges** attribute
+  - Added **declaration_transport_charges** attribute
+  - Added **is_alcohol** attribute
+- Added **ZASILKOVNA_FR_COLISSIMO_PP** service type
+### Deprecated
+- Deprecated some **GEIS_\_&ast;** service type constants
 
 
 ## [v5.0.0 (2021-02-01)](https://github.com/inspirum/balikobot-php/compare/v4.5.0...v5.0.0)
