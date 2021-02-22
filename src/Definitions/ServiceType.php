@@ -301,7 +301,8 @@ final class ServiceType
 
     /**
      * Soukromá zásilka (B2C)
-     * // TODO: rename to B2C
+     *
+     * @deprecated Will be removed in 6.0
      *
      * @var string
      */
@@ -309,7 +310,8 @@ final class ServiceType
 
     /**
      * Firemní zásilka
-     * // TODO: rename to B2B
+     *
+     * @deprecated Will be removed in 6.0
      *
      * @var string
      */
@@ -317,6 +319,8 @@ final class ServiceType
 
     /**
      * Mezinárodní zásilka (B2B)
+     *
+     * @deprecated Will be removed in 6.0
      *
      * @var string
      */
@@ -339,12 +343,16 @@ final class ServiceType
     /**
      * Geis Point
      *
+     * @deprecated Will be removed in 6.0
+     *
      * @var string
      */
     public const GEIS_PARCEL_GEIS_POINT = '6';
 
     /**
      * Garantované doručení (GAR)
+     *
+     * @deprecated Will be removed in 6.0
      *
      * @var string
      */
@@ -353,12 +361,16 @@ final class ServiceType
     /**
      * Doručení do 12. hodin (D12)
      *
+     * @deprecated Will be removed in 6.0
+     *
      * @var string
      */
     public const GEIS_PARCEL_12 = '8';
 
     /**
      * Mezinárodní zásilka (B2C)
+     *
+     * @deprecated Will be removed in 6.0
      *
      * @var string
      */
@@ -957,6 +969,13 @@ final class ServiceType
      * @var string
      */
     public const ZASILKOVNA_FR_MONDIAL_PP = '4876';
+
+    /**
+     * Francie Colissimo PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_FR_COLISSIMO_PP = '4307';
 
     /**
      * Francie Colissimo Home
@@ -2031,15 +2050,8 @@ final class ServiceType
     public static function geis(): array
     {
         return [
-            self::GEIS_PARCEL_PRIVATE,
-            self::GEIS_PARCEL_BUSINESS,
-            self::GEIS_PARCEL_BUSINESS_INTERNATIONAL,
             self::GEIS_CARGO_BUSINESS_NATIONAL,
             self::GEIS_CARGO_BUSINESS_INTERNATIONAL,
-            self::GEIS_PARCEL_GEIS_POINT,
-            self::GEIS_PARCEL_GARANTED,
-            self::GEIS_PARCEL_12,
-            self::GEIS_PARCEL_PRIVATE_INTERNATIONAL,
             self::GEIS_CARGO_PRIVATE_NATIONAL,
             self::GEIS_CARGO_PRIVATE_INTERNATIONAL,
             self::GEIS_PARCEL_HD_STANDARD,
@@ -2252,6 +2264,7 @@ final class ServiceType
             self::ZASILKOVNA_FI_POST_NORD_HP,
             self::ZASILKOVNA_FI_POST_NORD_PP,
             self::ZASILKOVNA_FR_MONDIAL_PP,
+            self::ZASILKOVNA_FR_COLISSIMO_PP,
             self::ZASILKOVNA_FR_COLISSIMO_HD,
             self::ZASILKOVNA_GB_HERMES_HD,
             self::ZASILKOVNA_GB_ROYAL_MAIL_24_HD,

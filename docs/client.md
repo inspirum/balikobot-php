@@ -587,7 +587,7 @@ var_dump($fullBranchRequest);
 true
 */
 
-$fullBranchRequest = Shipper::hasFullBranchesSupport(Shipper::GEIS, ServiceType::GEIS_PARCEL_GEIS_POINT);
+$fullBranchRequest = Shipper::hasFullBranchesSupport(Shipper::DPD, ServiceType::DPD_PICKUP);
 
 /*
 var_dump($fullBranchRequest);
