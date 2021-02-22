@@ -122,11 +122,9 @@ More details are available in [changelog][link-changelog].
 
 ## Usage
 
-
 ### [**Definitons**](./docs/definitions.md)
 
 The module contains several helper classes that contain most of the constants needed to work with the Balikobot API.
-
 
 ### [**Client**](./docs/client.md)
 
