@@ -799,4 +799,52 @@ final class Option
      * @var string
      */
     public const BANK_CODE = 'bank_code';
+
+    /**
+     * Komentáře k deklaraci (maximalni počet znaků - 150)
+     * string
+     *
+     * @var string
+     */
+    public const DECLARATION_COMMENTS = 'declaration_comments';
+
+    /**
+     * Sleva declaration_transport_charges - cena přepravy (maximalni počet znaků - 15)
+     * float
+     *
+     * @var string
+     */
+    public const DECLARATION_CHARGES_DISCOUNT = 'declaration_charges_discount';
+
+    /**
+     * Cena vlastniho pripojisteni (maximalni počet znaků - 15)
+     * float
+     *
+     * @var string
+     */
+    public const DECLARATION_INSURANCE_CHARGES = 'declaration_insurance_charges';
+
+    /**
+     * Ostatní náklady (maximalni počet znaků - 15)
+     * float
+     *
+     * @var string
+     */
+    public const DECLARATION_OTHER_CHARGES = 'declaration_other_charges';
+
+    /**
+     * Náklady za přepravu (maximalni počet znaků - 15)
+     * float
+     *
+     * @var string
+     */
+    public const DECLARATION_TRANSPORT_CHARGES = 'declaration_transport_charges';
+
+    /**
+     * Přeprava alkoholu - dle smlouvy s UPS
+     * bool
+     *
+     * @var string
+     */
+    public const IS_ALCOHOL = 'is_alcohol';
 }

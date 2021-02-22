@@ -366,4 +366,64 @@ trait DeliveryData
     {
         $this->offsetSet(Option::PICKUP_TIME_TO, $pickupTimeTo->format('H:i'));
     }
+
+    /**
+     * @param string $value
+     *
+     * @return void
+     */
+    public function setDeclarationComments(string $value): void
+    {
+        $this->offsetSet(Option::DECLARATION_COMMENTS, $value);
+    }
+
+    /**
+     * @param float $value
+     *
+     * @return void
+     */
+    public function setDeclarationChargesDiscount(float $value): void
+    {
+        $this->offsetSet(Option::DECLARATION_CHARGES_DISCOUNT, $value);
+    }
+
+    /**
+     * @param float $value
+     *
+     * @return void
+     */
+    public function setDeclarationInsuranceCharges(float $value): void
+    {
+        $this->offsetSet(Option::DECLARATION_INSURANCE_CHARGES, $value);
+    }
+
+    /**
+     * @param float $value
+     *
+     * @return void
+     */
+    public function setDeclarationOtherCharges(float $value): void
+    {
+        $this->offsetSet(Option::DECLARATION_OTHER_CHARGES, $value);
+    }
+
+    /**
+     * @param float $value
+     *
+     * @return void
+     */
+    public function setDeclarationTransportCharges(float $value): void
+    {
+        $this->offsetSet(Option::DECLARATION_TRANSPORT_CHARGES, $value);
+    }
+
+    /**
+     * @param bool $value
+     *
+     * @return void
+     */
+    public function setIsAlcohol(bool $value): void
+    {
+        $this->offsetSet(Option::IS_ALCOHOL, $value);
+    }
 }
