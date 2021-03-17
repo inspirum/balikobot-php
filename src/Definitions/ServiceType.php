@@ -1739,6 +1739,13 @@ final class ServiceType
      */
     public const TNT_SPECIAL_ECONOMY_EXPRESS = '16';
 
+     /**
+     * Direct Infeed
+     *
+     * @var string
+     */
+    public const TNT_DIRECT_INFEED = '17';
+
     /**
      * Priority Goods 9:00
      *
@@ -2346,6 +2353,7 @@ final class ServiceType
             self::TNT_NIGHT_EXPRESS_7,
             self::TNT_NIGHT_EXPRESS_14,
             self::TNT_SPECIAL_ECONOMY_EXPRESS,
+            self::TNT_DIRECT_INFEED,
         ];
     }
 

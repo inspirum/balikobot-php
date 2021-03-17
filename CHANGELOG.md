@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **declaration_transport_charges** attribute
   - Added **is_alcohol** attribute
 - Added **ZASILKOVNA_FR_COLISSIMO_PP** service type
+- Added support for new options from documentation **v1.905** (2021-03-09)
+  - Added **TNT_DIRECT_INFEED** service type
 ### Deprecated
 - Deprecated some **GEIS_\_&ast;** service type constants
 
