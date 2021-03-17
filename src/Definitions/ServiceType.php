@@ -964,6 +964,13 @@ final class ServiceType
     public const ZASILKOVNA_FI_POST_NORD_PP = '4828';
 
     /**
+     * FR Colis Privé HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_FR_COLIS_PRIVE_HD = '4033';
+
+    /**
      * FR Mondial PP
      *
      * @var string
@@ -1964,6 +1971,13 @@ final class ServiceType
     public const FOFR_PARCEL = 'B';
 
     /**
+     * Fofr Paletová přeprava
+     *
+     * @var string
+     */
+    public const FOFR_PALETTE = 'P';
+
+    /**
      * Fofr Nadrozměrná zásilka
      *
      * @var string
@@ -2270,6 +2284,7 @@ final class ServiceType
             self::ZASILKOVNA_ES_MRW_HD,
             self::ZASILKOVNA_FI_POST_NORD_HP,
             self::ZASILKOVNA_FI_POST_NORD_PP,
+            self::ZASILKOVNA_FR_COLIS_PRIVE_HD,
             self::ZASILKOVNA_FR_MONDIAL_PP,
             self::ZASILKOVNA_FR_COLISSIMO_PP,
             self::ZASILKOVNA_FR_COLISSIMO_HD,
@@ -2439,6 +2454,7 @@ final class ServiceType
             self::FOFR_FOFR,
             self::FOFR_ECONOMY,
             self::FOFR_PARCEL,
+            self::FOFR_PALETTE,
             self::FOFR_OVERSIZED,
             self::FOFR_SK,
             self::FOFR_ABROAD,

@@ -44,10 +44,10 @@ class GetOrderMethodTest extends AbstractBalikobotTestCase
         $service = $this->newBalikobot();
 
         try {
-            $service->getOrder(Shipper::PPL, '1234');
+            $service->getOrder(Shipper::ZASILKOVNA, '1234');
             $this->assertTrue(false, 'ORDERVIEW request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(406, $exception->getStatusCode());
+            $this->assertEquals(404, $exception->getStatusCode());
         }
     }
 }

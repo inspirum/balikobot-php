@@ -12,8 +12,8 @@ class GetActivatedServicesMethodTest extends AbstractBalikobotTestCase
 
         $services = $service->getActivatedServices(Shipper::PPL);
 
-        $this->assertTrue(is_bool($services['active_parcel']));
-        $this->assertTrue(is_bool($services['active_cargo']));
+        $this->assertTrue(isset($services['active_parcel']) === false || is_bool($services['active_parcel']));
+        $this->assertTrue(isset($services['active_cargo']) === false || is_bool($services['active_cargo']));
         $this->assertTrue(count($services['service_types']) > 0);
     }
 }
