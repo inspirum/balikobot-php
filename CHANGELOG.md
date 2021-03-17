@@ -6,7 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.0.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.1.0...master)
+
+
+## [v5.1.0 (2021-03-17)](https://github.com/inspirum/balikobot-php/compare/v5.0.0...v5.1.0)
 ### Added
 - Added support for new options from documentation **v1.902** (2021-02-10)
   - Added **declaration_comments** attribute
@@ -18,6 +21,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added **ZASILKOVNA_FR_COLISSIMO_PP** service type
 - Added support for new options from documentation **v1.905** (2021-03-09)
   - Added **TNT_DIRECT_INFEED** service type
+- Added **ZASILKOVNA_FR_COLIS_PRIVE_HD** service type
+- Added **FOFR_PALETTE** service type
 ### Deprecated
 - Deprecated some **GEIS_\_&ast;** service type constants
 
