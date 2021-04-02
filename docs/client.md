@@ -1152,6 +1152,29 @@ var_dump($changelog);
 ```
 
 
+### **ADDSERVICEOPTIONS**
+
+Method **getAddServiceOptions** obtains a list of additional services by individual transport services.
+
+The client normalizes the response by returning service option code and value from as associative array `[id => value]` (with optional **fullData** parameter).
+
+This units are used as **services** option in [**ADD**](#add) request.
+
+
+```php
+$options = $client->getAddServiceOptions();
+
+/*
+var_dump($options);
+[
+  '10' => 'Neskladně',
+  '44' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
+  ...
+]
+*/
+```
+
+
 ## All available methods
 
 ```php
@@ -1218,6 +1241,8 @@ interface Client {
   function getCountriesData(): array;
   
   function getChangelog(): array;
+  
+  function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array;
 }
 ```
 

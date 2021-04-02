@@ -692,4 +692,26 @@ class Client
 
         return $this->formatter->withoutStatus($response);
     }
+
+    /**
+     * Method for obtaining a list of additional services by individual transport services
+     *
+     * @param  string $shipper
+     * @param string|null $service
+     * @param bool $fullData
+     *
+     * @return array<string, string|array>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array
+    {
+        $response = $this->requester->call(API::V2V1, $shipper, Request::ADD_SERVICE_OPTIONS . '/' . $service);
+
+        return $this->formatter->normalizeResponseItems(
+            $response['services'] ?? [],
+            'code',
+            $fullData === false ? 'name' : null
+        );
+    }
 }

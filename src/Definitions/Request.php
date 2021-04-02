@@ -192,4 +192,11 @@ final class Request
      * @var string
      */
     public const CHANGELOG = 'changelog';
+
+    /**
+     * Method for obtaining a list of additional services by individual transport services
+     *
+     * @var string
+     */
+    public const ADD_SERVICE_OPTIONS = 'addserviceoptions';
 }

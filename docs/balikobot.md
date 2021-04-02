@@ -310,6 +310,8 @@ interface Balikobot {
   function getCountriesData(): array;
   
   function getChangelog(): array;
+  
+  function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array;
 }
 ```
 

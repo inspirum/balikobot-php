@@ -732,4 +732,20 @@ class Balikobot
     {
         return $this->client->getChangelog();
     }
+
+    /**
+     * Method for obtaining a list of additional services by individual transport services
+     *
+     * @param string      $shipper
+     * @param string|null $service
+     * @param bool        $fullData
+     *
+     * @return array<string|array>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array
+    {
+        return $this->client->getAddServiceOptions($shipper, $service, $fullData);
+    }
 }
