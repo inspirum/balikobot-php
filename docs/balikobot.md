@@ -311,6 +311,8 @@ interface Balikobot {
   
   function getChangelog(): array;
   
+  function getAddAttributes(string $shipper): array;
+  
   function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array;
 }
 ```

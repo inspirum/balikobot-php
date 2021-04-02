@@ -20,7 +20,7 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://apiv2.balikobot.cz/ppl/addserviceoptions',
+                'https://api.balikobot.cz/ppl/addserviceoptions',
                 [],
             ]
         );
@@ -42,7 +42,7 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://apiv2.balikobot.cz/cp/addserviceoptions/CE',
+                'https://api.balikobot.cz/cp/addserviceoptions/CE',
                 [],
             ]
         );

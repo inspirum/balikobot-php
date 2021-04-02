@@ -694,11 +694,31 @@ class Client
     }
 
     /**
+     * Method for easier carrier integration, obtaining list of available input attributes for the ADD method
+     *
+     * @param string $shipper
+     *
+     * @return array<string, array>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getAddAttributes(string $shipper): array
+    {
+        $response = $this->requester->call(API::V1, $shipper, Request::ADD_ATTRIBUTES);
+
+        return $this->formatter->normalizeResponseItems(
+            $response['attributes'] ?? [],
+            'name',
+            null
+        );
+    }
+
+    /**
      * Method for obtaining a list of additional services by individual transport services
      *
-     * @param  string $shipper
+     * @param string      $shipper
      * @param string|null $service
-     * @param bool $fullData
+     * @param bool        $fullData
      *
      * @return array<string, string|array>
      *
@@ -706,7 +726,7 @@ class Client
      */
     public function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array
     {
-        $response = $this->requester->call(API::V2V1, $shipper, Request::ADD_SERVICE_OPTIONS . '/' . $service);
+        $response = $this->requester->call(API::V1, $shipper, Request::ADD_SERVICE_OPTIONS . '/' . $service);
 
         return $this->formatter->normalizeResponseItems(
             $response['services'] ?? [],

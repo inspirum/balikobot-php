@@ -2019,7 +2019,7 @@ final class ServiceType
             self::CP_DT,
             self::CP_DS,
             self::CP_EE,
-            self::CP_BE,
+            // self::CP_BE,
             self::CP_RZP,
             self::CP_VZP,
             self::CP_EM,
@@ -2027,7 +2027,7 @@ final class ServiceType
             self::CP_CSE,
             self::CP_CVP,
             self::CP_CVE,
-            self::CP_CE,
+            // self::CP_CE,
             self::CP_OLZ,
         ];
     }

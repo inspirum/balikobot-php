@@ -199,4 +199,12 @@ final class Request
      * @var string
      */
     public const ADD_SERVICE_OPTIONS = 'addserviceoptions';
+
+    /**
+     * Experimental method for easier carrier integration
+     * List of available input attributes for the ADD method of the selected carrier
+     *
+     * @var string
+     */
+    public const ADD_ATTRIBUTES = 'addattributes';
 }

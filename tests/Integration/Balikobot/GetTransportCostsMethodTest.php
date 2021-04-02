@@ -63,6 +63,7 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
             $service->getTransportCosts($packages);
             $this->assertTrue(false, 'ADD request should thrown exception');
         } catch (ExceptionInterface $exception) {
+            var_dump($exception->getResponse());
             $this->assertEquals(400, $exception->getStatusCode());
             $this->assertTrue(isset($exception->getErrors()[0]['mu_type']));
         }

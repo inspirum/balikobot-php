@@ -736,6 +736,20 @@ class Balikobot
     /**
      * Method for obtaining a list of additional services by individual transport services
      *
+     * @param string $shipper
+     *
+     * @return array<string, array>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getAddAttributes(string $shipper): array
+    {
+        return $this->client->getAddAttributes($shipper);
+    }
+
+    /**
+     * Method for obtaining a list of additional services by individual transport services
+     *
      * @param string      $shipper
      * @param string|null $service
      * @param bool        $fullData

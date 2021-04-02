@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.1.0...master)
+- Added support for new options from documentation **v1.911** (2021-03-29)
+  - Added **ADDATTRIBUTES** request
 - Added support for new options from documentation **v1.908** (2021-03-23)
   - Added **ADDSERVICEOPTIONS** request
 

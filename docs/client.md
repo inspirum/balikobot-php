@@ -1151,6 +1151,43 @@ var_dump($changelog);
 */
 ```
 
+### **ADDATTRIBUTES**
+
+Method **getAddAttributes** obtains a list of available input attributes for the ADD method.
+
+The client normalizes the response by returning service option code and value from as associative array `[name => attribute]`.
+
+These attributes are used in [**ADD**](#add) request.
+
+
+```php
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$attributes = $client->getAddAttributes(Shipper::CP);
+
+/*
+var_dump($attributes);
+[
+  'eid' => [
+    'name'       => 'eid'
+    'data_type'  => 'string'
+    'max_length' => 40
+  ]
+  'services' => [
+    'name'       => 'services'
+    'data_type'  => 'plus_separated_values'
+    'max_length' => null
+  ]
+  'vs' => [
+    'name'       => 'vs'
+    'data_type'  => 'int'
+    'max_length' => 10
+  ]
+  ...
+]
+*/
+```
+
 
 ### **ADDSERVICEOPTIONS**
 
@@ -1158,17 +1195,20 @@ Method **getAddServiceOptions** obtains a list of additional services by individ
 
 The client normalizes the response by returning service option code and value from as associative array `[id => value]` (with optional **fullData** parameter).
 
-This units are used as **services** option in [**ADD**](#add) request.
+These services are used as **services** option in [**ADD**](#add) request.
 
 
 ```php
-$options = $client->getAddServiceOptions();
+use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$options = $client->getAddServiceOptions(Shipper::CP, ServiceType::CP_CE);
 
 /*
 var_dump($options);
 [
-  '10' => 'Neskladně',
-  '44' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
+  '10' => 'Neskladně'
+  '44' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)'
   ...
 ]
 */
@@ -1241,6 +1281,8 @@ interface Client {
   function getCountriesData(): array;
   
   function getChangelog(): array;
+  
+  function getAddAttributes(string $shipper): array;
   
   function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array;
 }
