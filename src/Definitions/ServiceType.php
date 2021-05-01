@@ -2090,6 +2090,48 @@ final class ServiceType
     public const DHLPARCEL_CONNECT = '1';
 
     /**
+     * Raben Cargo Classic
+     *
+     * @var string
+     */
+    public const RABEN_CLASSIC = 'PROD01';
+
+    /**
+     * Raben Cargo Classic - Time slot
+     *
+     * @var string
+     */
+    public const RABEN_CLASSIC_TIME = 'PROD01-RTS';
+
+    /**
+     * Raben Cargo Premium
+     *
+     * @var string
+     */
+    public const RABEN_PREMIUM = 'PROD02';
+
+    /**
+     * Raben Cargo Premium - Time slot
+     *
+     * @var string
+     */
+    public const RABEN_PREMIUM_TIME = 'PROD02-RTS';
+
+    /**
+     * Raben Cargo Premium - Delivery till 12:00 p
+     *
+     * @var string
+     */
+    public const RABEN_PREMIUM_12 = 'PROD02-ND12';
+
+    /**
+     * Raben Cargo Premium - Fixed date
+     *
+     * @var string
+     */
+    public const RABEN_PREMIUM_FIX = 'PROD02-FIX';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2584,6 +2626,21 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function raben(): array
+    {
+        return [
+            self::RABEN_CLASSIC,
+            self::RABEN_CLASSIC_TIME,
+            self::RABEN_PREMIUM,
+            self::RABEN_PREMIUM_TIME,
+            self::RABEN_PREMIUM_12,
+            self::RABEN_PREMIUM_FIX,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2614,6 +2671,7 @@ final class ServiceType
             Shipper::FOFR       => self::fofr(),
             Shipper::DACHSER    => self::dachser(),
             Shipper::DHLPARCEL  => self::dhlparcel(),
+            Shipper::RABEN      => self::raben(),
         ];
     }
 }

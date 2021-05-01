@@ -168,6 +168,13 @@ final class Shipper
     public const DHLPARCEL = 'dhlparcel';
 
     /**
+     * Raben
+     *
+     * @var string
+     */
+    public const RABEN = 'raben';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -198,6 +205,7 @@ final class Shipper
             self::FOFR,
             self::DACHSER,
             self::DHLPARCEL,
+            self::RABEN,
         ];
     }
 
