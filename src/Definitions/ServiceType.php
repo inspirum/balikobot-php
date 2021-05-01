@@ -222,6 +222,13 @@ final class ServiceType
     public const PPL_PRIVATE_EVENING = '9';
 
     /**
+     * PPL Parcel Business Europe
+     *
+     * @var string
+     */
+    public const PPL_BUSINESS_EU = '10';
+
+    /**
      * PPl Parcel Import
      *
      * @var string
@@ -2175,6 +2182,7 @@ final class ServiceType
             self::PPL_PRIVATE,
             self::PPL_BUSINESS,
             self::PPL_PRIVATE_EVENING,
+            self::PPL_BUSINESS_EU,
             self::PPL_BUSINESS_PALETTE,
             self::PPL_PRIVATE_PALETTE,
         ];
