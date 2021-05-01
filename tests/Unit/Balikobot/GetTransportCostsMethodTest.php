@@ -54,17 +54,15 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
             [
                 'https://apiv2.balikobot.cz/toptrans/transportcosts',
                 [
-                    'packages' => [
-                        0 => [
-                            'eid'      => '0001',
-                            'vs'       => '0001',
-                            'rec_name' => 'Name',
-                        ],
-                        1 => [
-                            'eid'   => '0001',
-                            'vs'    => '0002',
-                            'price' => 2000,
-                        ],
+                    0 => [
+                        'eid'      => '0001',
+                        'vs'       => '0001',
+                        'rec_name' => 'Name',
+                    ],
+                    1 => [
+                        'eid'   => '0001',
+                        'vs'    => '0002',
+                        'price' => 2000,
                     ],
                 ],
             ]

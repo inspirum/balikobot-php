@@ -654,7 +654,7 @@ class Client
      */
     public function getTransportCosts(string $shipper, array $packages): array
     {
-        $response = $this->requester->call(API::V2V1, $shipper, Request::TRANSPORT_COSTS, ['packages' => $packages]);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::TRANSPORT_COSTS, $packages);
 
         $response = $response['packages'];
 

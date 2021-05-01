@@ -10,7 +10,7 @@ class ChangelogTest extends AbstractClientTestCase
 
         $changelog = $service->getChangelog();
 
-        $expected = '1.906';
+        $expected = '1.918';
         $actual   = $changelog['version'];
 
         if ($actual !== $expected) {

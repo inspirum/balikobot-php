@@ -154,11 +154,9 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
             [
                 'https://apiv2.balikobot.cz/toptrans/transportcosts',
                 [
-                    'packages' => [
-                        [
-                            'data' => [1, 2, 3],
-                            'test' => false,
-                        ],
+                    [
+                        'data' => [1, 2, 3],
+                        'test' => false,
                     ],
                 ],
             ]

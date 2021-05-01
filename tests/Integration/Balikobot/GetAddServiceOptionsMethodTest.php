@@ -47,16 +47,4 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
             $this->assertTrue($option['code'] === (string) $code);
         }
     }
-
-    public function testInvalidRequest()
-    {
-        $service = $this->newBalikobot();
-
-        try {
-            $service->getAddServiceOptions(Shipper::TOPTRANS);
-            $this->assertTrue(false, 'ADDSERVICEOPTIONS request should thrown exception');
-        } catch (ExceptionInterface $exception) {
-            $this->assertEquals(400, $exception->getStatusCode());
-        }
-    }
 }
