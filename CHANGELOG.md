@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.1.0...master)
+- Added [**Status**](./src/Definitions/Status.php) constants
+- Added support for new options from documentation **v1.918** (2021-04-29)
+  - Add **RABEN** shipper
+- Added support for new options from documentation **v1.915** (2021-04-19)
+  - Add **DHLPARCEL** shipper
+- Added support for new options from documentation **v1.914** (2021-04-19)
+  - Add **DACHSER** shipper
+- Added support for new options from documentation **v1.913** (2021-04-08)
+  - Added **PPL_BUSINESS_EU** service type
+- Added support for new options from documentation **v1.912** (2021-04-06)
+  - Added **INTIME_BOX_CZ** service type
+  - Added **INTIME_BOX_SK** service type
 - Added support for new options from documentation **v1.911** (2021-03-29)
   - Added **ADDATTRIBUTES** request
 - Added support for new options from documentation **v1.908** (2021-03-23)
