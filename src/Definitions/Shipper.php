@@ -154,6 +154,13 @@ final class Shipper
     public const FOFR = 'fofr';
 
     /**
+     * Dachser
+     *
+     * @var string
+     */
+    public const DACHSER = 'dachser';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -182,6 +189,7 @@ final class Shipper
             self::DHLDE,
             self::FEDEX,
             self::FOFR,
+            self::DACHSER,
         ];
     }
 

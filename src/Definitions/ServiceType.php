@@ -1767,7 +1767,7 @@ final class ServiceType
      */
     public const TNT_SPECIAL_ECONOMY_EXPRESS = '16';
 
-     /**
+    /**
      * Direct Infeed
      *
      * @var string
@@ -2018,6 +2018,70 @@ final class ServiceType
      * @var string
      */
     public const FOFR_ABROAD = 'Z';
+
+    /**
+     * Dachser Targospeed
+     *
+     * @var string
+     */
+    public const DACHSER_SPEED = 'Z';
+
+    /**
+     * Dachser Targospeed 10
+     *
+     * @var string
+     */
+    public const DACHSER_SPEED_10 = 'S';
+
+    /**
+     * Dachser Targospeed 12
+     *
+     * @var string
+     */
+    public const DACHSER_SPEED_12 = 'E';
+
+    /**
+     * Dachser Targospeed plux
+     *
+     * @var string
+     */
+    public const DACHSER_SPEED_PLUS = 'X';
+
+    /**
+     * Dachser Targofix
+     *
+     * @var string
+     */
+    public const DACHSER_FIX = 'V';
+
+    /**
+     * Dachser Targofix 10
+     *
+     * @var string
+     */
+    public const DACHSER_FIX_10 = 'R';
+
+    /**
+     * Dachser Targofix 12
+     *
+     * @var string
+     */
+    public const DACHSER_FIX_12 = 'W';
+
+    /**
+     * Dachser Targoflex
+     *
+     * @var string
+     */
+    public const DACHSER_FLEX = 'Y';
+
+    /**
+     * Dachser Targo on-site
+     *
+     * @var string
+     */
+    public const DACHSER_ONSITE = 'A';
+
 
     /**
      * @return array<string>
@@ -2486,6 +2550,24 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function dachser(): array
+    {
+        return [
+            self::DACHSER_SPEED,
+            self::DACHSER_SPEED_10,
+            self::DACHSER_SPEED_12,
+            self::DACHSER_SPEED_PLUS,
+            self::DACHSER_FIX,
+            self::DACHSER_FIX_10,
+            self::DACHSER_FIX_12,
+            self::DACHSER_FLEX,
+            self::DACHSER_ONSITE,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2514,6 +2596,7 @@ final class ServiceType
             Shipper::DHLDE      => self::dhlde(),
             Shipper::FEDEX      => self::fedex(),
             Shipper::FOFR       => self::fofr(),
+            Shipper::DACHSER    => self::dachser(),
         ];
     }
 }
