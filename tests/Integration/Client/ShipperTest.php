@@ -12,7 +12,8 @@ class ShipperTest extends AbstractClientTestCase
         $service = $this->newClient();
 
         // get all shipper service codes
-        $shippers = Shipper::all();
+        $shippers  = Shipper::all();
+        $countries = ['CZ', 'EE'];
 
         foreach ($shippers as $shipper) {
             try {
@@ -20,15 +21,42 @@ class ShipperTest extends AbstractClientTestCase
                     $service->getServices($shipper, null)
                 );
                 $shipperService  = $shipperServices[0] ?? null;
-                $service->getBranches($shipper, $shipperService, false, 'CZ');
-                $this->assertTrue(
-                    Shipper::hasBranchCountryFilterSupport($shipper),
-                    sprintf(
-                        '%s/%s',
-                        strtoupper($shipper),
-                        $shipperService !== null ? $shipperService : 'NULL'
-                    )
-                );
+
+                $branches = $service->getBranches($shipper, $shipperService, false);
+                if (count($branches) === 0) {
+                    continue;
+                }
+
+                $totalCount = 0;
+                foreach ($countries as $country) {
+                    $branches   = $service->getBranches($shipper, $shipperService, false, $country);
+                    $totalCount += count($branches);
+                    foreach ($branches ?? [] as $branch) {
+                        if ($branch['country'] !== $country) {
+                            throw new BadRequestException([]);
+                        }
+                    }
+                }
+
+                $shouldSupport = Shipper::hasBranchCountryFilterSupport($shipper);
+                if ($shouldSupport === false && $totalCount === 0) {
+                    $this->addWarning(
+                        sprintf(
+                            '%s/%s could support branch country filter',
+                            strtoupper($shipper),
+                            $shipperService !== null ? $shipperService : 'NULL'
+                        )
+                    );
+                } else {
+                    $this->assertTrue(
+                        $shouldSupport,
+                        sprintf(
+                            '%s/%s should not support branch country filter',
+                            strtoupper($shipper),
+                            $shipperService !== null ? $shipperService : 'NULL'
+                        )
+                    );
+                }
             } catch (BadRequestException $exception) {
                 $this->assertFalse(
                     Shipper::hasBranchCountryFilterSupport($shipper),
