@@ -2082,6 +2082,12 @@ final class ServiceType
      */
     public const DACHSER_ONSITE = 'A';
 
+    /**
+     * DHL Parcel Connect
+     *
+     * @var string
+     */
+    public const DHLPARCEL_CONNECT = '1';
 
     /**
      * @return array<string>
@@ -2568,6 +2574,16 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function dhlparcel(): array
+    {
+        return [
+            self::DHLPARCEL_CONNECT,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2597,6 +2613,7 @@ final class ServiceType
             Shipper::FEDEX      => self::fedex(),
             Shipper::FOFR       => self::fofr(),
             Shipper::DACHSER    => self::dachser(),
+            Shipper::DHLPARCEL  => self::dhlparcel(),
         ];
     }
 }

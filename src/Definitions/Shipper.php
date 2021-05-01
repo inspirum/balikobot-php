@@ -7,14 +7,14 @@ use InvalidArgumentException;
 final class Shipper
 {
     /**
-     * Česká pošta s.p.
+     * Česká pošta
      *
      * @var string
      */
     public const CP = 'cp';
 
     /**
-     * Direct Parcel Distribution CZ s.r.o.
+     * DPD
      *
      * @var string
      */
@@ -28,77 +28,77 @@ final class Shipper
     public const DHL = 'dhl';
 
     /**
-     * Geis CZ s.r.o.
+     * Geis Cargo - paletová přeprava
      *
      * @var string
      */
     public const GEIS = 'geis';
 
     /**
-     * General Logistics Systems Czech Republic s.r.o.
+     * GLS
      *
      * @var string
      */
     public const GLS = 'gls';
 
     /**
-     * IN TIME SPEDICE s.r.o.
+     * WE DO
      *
      * @var string
      */
     public const INTIME = 'intime';
 
     /**
-     * Pošta bez hranic (Frogman s.r.o.)
+     * Pošta bez hranic
      *
      * @var string
      */
     public const PBH = 'pbh';
 
     /**
-     * PPL CZ s.r.o.
+     * PPL + DHL Freight
      *
      * @var string
      */
     public const PPL = 'ppl';
 
     /**
-     * Slovenská pošta a.s.,
+     * Slovenská pošta
      *
      * @var string
      */
     public const SP = 'sp';
 
     /**
-     * Slovak Parcel Service s.r.o.
+     * Slovak Parcel Service
      *
      * @var string
      */
     public const SPS = 'sps';
 
     /**
-     * TOPTRANS EU a.s.
+     * Toptrans
      *
      * @var string
      */
     public const TOPTRANS = 'toptrans';
 
     /**
-     * Uloženka s.r.o.
+     * WE DO - Uloženka
      *
      * @var string
      */
     public const ULOZENKA = 'ulozenka';
 
     /**
-     * UPS SCS Czech Republic s.r.o.
+     * UPS
      *
      * @var string
      */
     public const UPS = 'ups';
 
     /**
-     * Zásilkovna s.r.o.
+     * Zásilkovna
      *
      * @var string
      */
@@ -112,7 +112,7 @@ final class Shipper
     public const TNT = 'tnt';
 
     /**
-     * Gebrüder Weiss
+     * Gebrüder Weiss Slovensko
      *
      * @var string
      */
@@ -161,6 +161,13 @@ final class Shipper
     public const DACHSER = 'dachser';
 
     /**
+     * DHL Parcel Europe - PPL Parcel Connect EU
+     *
+     * @var string
+     */
+    public const DHLPARCEL = 'dhlparcel';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -190,6 +197,7 @@ final class Shipper
             self::FEDEX,
             self::FOFR,
             self::DACHSER,
+            self::DHLPARCEL,
         ];
     }
 
