@@ -510,6 +510,20 @@ final class ServiceType
     public const INTIME_PARCEL_EU_PLUS = '9';
 
     /**
+     * BOXCZ - Výdejní box CZ
+     *
+     * @var string
+     */
+    public const INTIME_BOX_CZ = '10';
+
+    /**
+     * BOXSK - Výdejní box SK
+     *
+     * @var string
+     */
+    public const INTIME_BOX_SK = '11';
+
+    /**
      * 24 hodin (Standard)
      *
      * @var string
@@ -2027,7 +2041,7 @@ final class ServiceType
             self::CP_CSE,
             self::CP_CVP,
             self::CP_CVE,
-            // self::CP_CE,
+            self::CP_CE,
             self::CP_OLZ,
         ];
     }
@@ -2110,6 +2124,8 @@ final class ServiceType
             self::INTIME_EXTRA_CZ,
             self::INTIME_PARCEL_EU,
             self::INTIME_PARCEL_EU_PLUS,
+            self::INTIME_BOX_CZ,
+            self::INTIME_BOX_SK,
         ];
     }
 
