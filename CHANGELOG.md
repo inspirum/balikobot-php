@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [v5.2.0 (2021-05-01)](https://github.com/inspirum/balikobot-php/compare/v5.1.0...v5.2.0)
+### Added
 - Added [**Status**](./src/Definitions/Status.php) constants
 - Added support for new options from documentation **v1.918** (2021-04-29)
   - Add **RABEN** shipper
