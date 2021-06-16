@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.2.0...master)
+### Added
+- Added support for new options from documentation **v1.919** (2021-05-11)
+  - Add **SPRING** shipper
 
 
 ## [v5.2.0 (2021-05-01)](https://github.com/inspirum/balikobot-php/compare/v5.1.0...v5.2.0)

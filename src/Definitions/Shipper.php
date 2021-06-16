@@ -175,6 +175,13 @@ final class Shipper
     public const RABEN = 'raben';
 
     /**
+     * Spring
+     *
+     * @var string
+     */
+    public const SPRING = 'spring';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -206,6 +213,7 @@ final class Shipper
             self::DACHSER,
             self::DHLPARCEL,
             self::RABEN,
+            self::SPRING,
         ];
     }
 

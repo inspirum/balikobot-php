@@ -2202,6 +2202,27 @@ final class ServiceType
     public const RABEN_PREMIUM_FIX = 'PROD02-FIX';
 
     /**
+     * Spring Tracked
+     *
+     * @var string
+     */
+    public const SPRING_TRACKED = 'TRCK';
+
+    /**
+     * Spring Signatured
+     *
+     * @var string
+     */
+    public const SPRING_SIGNATURED = 'SIGN';
+
+    /**
+     * Spring Untracked
+     *
+     * @var string
+     */
+    public const SPRING_UNTRACKED = 'UNTR';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2721,6 +2742,18 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function spring(): array
+    {
+        return [
+            self::SPRING_TRACKED,
+            self::SPRING_SIGNATURED,
+            self::SPRING_UNTRACKED,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2752,6 +2785,7 @@ final class ServiceType
             Shipper::DACHSER    => self::dachser(),
             Shipper::DHLPARCEL  => self::dhlparcel(),
             Shipper::RABEN      => self::raben(),
+            Shipper::SPRING     => self::spring(),
         ];
     }
 }
