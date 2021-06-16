@@ -2,6 +2,7 @@
 
 namespace Inspirum\Balikobot\Model\Values\Package;
 
+use DateTime;
 use Inspirum\Balikobot\Definitions\Option;
 
 trait ParcelPackageData
@@ -204,5 +205,55 @@ trait ParcelPackageData
     public function setVDLService(bool $vdlService): void
     {
         $this->offsetSet(Option::VDL_SERVICE, (int) $vdlService);
+    }
+
+    /**
+     * @param \DateTime $deliveryDate
+     *
+     * @return void
+     */
+    public function setContentIssueDate(DateTime $deliveryDate): void
+    {
+        $this->offsetSet(Option::CONTENT_ISSUE_DATE, $deliveryDate->format('Y-m-d'));
+    }
+
+    /**
+     * @param string $number
+     *
+     * @return void
+     */
+    public function setContentInvoiceNumber(string $number): void
+    {
+        $this->offsetSet(Option::CONTENT_INVOICE_NUMBER, $number);
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return void
+     */
+    public function setContentEAD(string $value): void
+    {
+        $this->offsetSet(Option::CONTENT_EAD, $value);
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return void
+     */
+    public function setContentMRN(string $value): void
+    {
+        $this->offsetSet(Option::CONTENT_MRN, $value);
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return void
+     */
+    public function setEADPdf(string $value): void
+    {
+        $this->offsetSet(Option::EAD_PDF, $value);
     }
 }

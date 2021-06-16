@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added support for new options from documentation **v1.919** (2021-05-11)
   - Add **SPRING** shipper
+- Added support for new options from documentation **v1.921** (2021-06-03)
+  - Added **content_issue_date** attribute
+  - Added **content_invoice_number** attribute
+  - Added **content_ead** attribute
+  - Added **content_mrn** attribute
+  - Added **ead_pdf** attribute
 
 
 ## [v5.2.0 (2021-05-01)](https://github.com/inspirum/balikobot-php/compare/v5.1.0...v5.2.0)

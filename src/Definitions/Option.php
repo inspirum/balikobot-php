@@ -847,4 +847,45 @@ final class Option
      * @var string
      */
     public const IS_ALCOHOL = 'is_alcohol';
+
+    /**
+     *
+     * Datum vystavení faktury (formát YYYY-MM-DD)
+     * string
+     *
+     * @var string
+     */
+    public const CONTENT_ISSUE_DATE = 'content_issue_date';
+
+    /**
+     * Číslo faktury, které se váže k produktu.
+     * string
+     *
+     * @var string
+     */
+    public const CONTENT_INVOICE_NUMBER = 'content_invoice_number';
+
+    /**
+     * Způsob proclení, může obsahovat hodnoty 'own' = vlastní celní prohlášení, 'create' nebo 'arrier'.
+     * string
+     *
+     * @var string
+     */
+    public const CONTENT_EAD = 'content_ead';
+
+    /**
+     * Vaše MRN, pouze pro ead = own.
+     * string
+     *
+     * @var string
+     */
+    public const CONTENT_MRN = 'content_mrn';
+
+    /**
+     * Dokument EAD, řetězec musí být base64 PDF pro správné předání, pouze pro ead = own
+     * string
+     *
+     * @var string
+     */
+    public const EAD_PDF = 'ead_pdf';
 }

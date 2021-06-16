@@ -106,7 +106,7 @@ class PackageTest extends AbstractTestCase
         $package->setBankAccountNumber('56789/0900');
         $package->setContent('content');
         $package->setTermsOfTrade('terms an terms');
-        $package->setInvoicePDF('4567890');
+        $package->setInvoicePDF('base64:pdf');
         $package->setFullAgeData('FullAgeData');
         $package->setSatDelivery(true);
         $package->setGetPiecesNumbers(false);
@@ -159,6 +159,11 @@ class PackageTest extends AbstractTestCase
         $package->setDeclarationOtherCharges(99.9);
         $package->setDeclarationTransportCharges(5.3);
         $package->setIsAlcohol(true);
+        $package->setContentIssueDate(new DateTime('2019-11-11 18:10:59'));
+        $package->setContentInvoiceNumber('1234567890');
+        $package->setContentEAD('create');
+        $package->setContentMRN('1234');
+        $package->setEADPdf('base64:ead');
 
         $this->assertEquals(
             [
@@ -219,7 +224,7 @@ class PackageTest extends AbstractTestCase
                 Option::BANK_ACCOUNT_NUMBER           => '56789/0900',
                 Option::CONTENT                       => 'content',
                 Option::TERMS_OF_TRADE                => 'terms an terms',
-                Option::INVOICE_PDF                   => '4567890',
+                Option::INVOICE_PDF                   => 'base64:pdf',
                 Option::FULL_AGE_DATA                 => 'FullAgeData',
                 Option::SAT_DELIVERY                  => 1,
                 Option::GET_PIECES_NUMBERS            => 0,
@@ -271,6 +276,11 @@ class PackageTest extends AbstractTestCase
                 Option::DECLARATION_OTHER_CHARGES     => 99.9,
                 Option::DECLARATION_TRANSPORT_CHARGES => 5.3,
                 Option::IS_ALCOHOL                    => true,
+                Option::CONTENT_ISSUE_DATE            => '2019-11-11',
+                Option::CONTENT_INVOICE_NUMBER        => '1234567890',
+                Option::CONTENT_EAD                   => 'create',
+                Option::CONTENT_MRN                   => '1234',
+                Option::EAD_PDF                       => 'base64:ead',
             ],
             $package->toArray()
         );
