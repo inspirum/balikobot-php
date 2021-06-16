@@ -762,6 +762,13 @@ final class ServiceType
     public const ULOZENKA_DEPO_SK = '22';
 
     /**
+     * Mall Delivery
+     *
+     * @var string
+     */
+    public const ULOZENKA_MALL_DELIVERY = '100';
+
+    /**
      * Výdejní místa Česká republika
      *
      * @var string
@@ -1034,6 +1041,13 @@ final class ServiceType
     public const ZASILKOVNA_GB_ROYAL_MAIL_48_HD = '4857';
 
     /**
+     * GR Taxydromiki
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_GR_TAXYDROMIKI = '8847';
+
+    /**
      * GR ACS HD
      *
      * @var string
@@ -1053,6 +1067,13 @@ final class ServiceType
      * @var string
      */
     public const ZASILKOVNA_GR_SPEEDY_HD = '4738';
+
+    /**
+     * HR Overseas Express HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HR_OVERSEAS_HD = '10618';
 
     /**
      * Chorvatsko DPD Home
@@ -1347,6 +1368,27 @@ final class ServiceType
      * @var string
      */
     public const ZASILKOVNA_SI_DPD_PP = '4950';
+
+    /**
+     * SI Post HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SI_POST_HD = '10741';
+
+    /**
+     * SI Post PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SI_POST_PP = '10742';
+
+    /**
+     * SI Post Box
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_SI_POST_BOX = '11122';
 
     /**
      * Expresné doručenie Bratislava
@@ -1922,6 +1964,27 @@ final class ServiceType
     public const MESSENGER_DIRECT = '108';
 
     /**
+     * Praha – 9-13h
+     *
+     * @var string
+     */
+    public const MESSENGER_PRAGUE_09_13 = '205';
+
+    /**
+     * Praha – 13-17h
+     *
+     * @var string
+     */
+    public const MESSENGER_PRAGUE_13_17 = '206';
+
+    /**
+     * Praha – 17-21h
+     *
+     * @var string
+     */
+    public const MESSENGER_PRAGUE_17_21 = '207';
+
+    /**
      * DHL Paket
      *
      * @var string
@@ -2081,6 +2144,13 @@ final class ServiceType
      * @var string
      */
     public const DACHSER_ONSITE = 'A';
+
+    /**
+     * Dachser classicline
+     *
+     * @var string
+     */
+    public const DACHSER_CLASSIC = 'N';
 
     /**
      * DHL Parcel Connect
@@ -2366,6 +2436,7 @@ final class ServiceType
             self::ULOZENKA_EXPRESS_SK,
             self::ULOZENKA_BALIKOBOX_SK,
             self::ULOZENKA_DEPO_SK,
+            self::ULOZENKA_MALL_DELIVERY,
         ];
     }
 
@@ -2427,9 +2498,11 @@ final class ServiceType
             self::ZASILKOVNA_GB_HERMES_HD,
             self::ZASILKOVNA_GB_ROYAL_MAIL_24_HD,
             self::ZASILKOVNA_GB_ROYAL_MAIL_48_HD,
+            self::ZASILKOVNA_GR_TAXYDROMIKI,
             self::ZASILKOVNA_GR_ACS_HD,
             self::ZASILKOVNA_GR_ACS_PP,
             self::ZASILKOVNA_GR_SPEEDY_HD,
+            self::ZASILKOVNA_HR_OVERSEAS_HD,
             self::ZASILKOVNA_HR_DPD_HD,
             self::ZASILKOVNA_HR_POST_PP,
             self::ZASILKOVNA_HR_POST_HD,
@@ -2472,6 +2545,9 @@ final class ServiceType
             self::ZASILKOVNA_SE_POST_NORD_HD,
             self::ZASILKOVNA_SI_DPD_HD,
             self::ZASILKOVNA_SI_DPD_PP,
+            self::ZASILKOVNA_SI_POST_HD,
+            self::ZASILKOVNA_SI_POST_PP,
+            self::ZASILKOVNA_SI_POST_BOX,
             self::ZASILKOVNA_SK_EXPRESS_BRATISLAVA_HD,
             self::ZASILKOVNA_SK_COURIER_HD,
             self::ZASILKOVNA_SK_POST_HD,
@@ -2553,6 +2629,9 @@ final class ServiceType
             self::MESSENGER_OVERNIGHT_ECONOMY,
             self::MESSENGER_OVERNIGHT_EXPRESS,
             self::MESSENGER_DIRECT,
+            self::MESSENGER_PRAGUE_09_13,
+            self::MESSENGER_PRAGUE_13_17,
+            self::MESSENGER_PRAGUE_17_21,
         ];
     }
 
@@ -2612,6 +2691,7 @@ final class ServiceType
             self::DACHSER_FIX_12,
             self::DACHSER_FLEX,
             self::DACHSER_ONSITE,
+            self::DACHSER_CLASSIC,
         ];
     }
 
