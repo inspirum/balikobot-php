@@ -182,6 +182,13 @@ final class Shipper
     public const SPRING = 'spring';
 
     /**
+     * Spring
+     *
+     * @var string
+     */
+    public const DSV = 'dsv';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -214,6 +221,7 @@ final class Shipper
             self::DHLPARCEL,
             self::RABEN,
             self::SPRING,
+            self::DSV,
         ];
     }
 

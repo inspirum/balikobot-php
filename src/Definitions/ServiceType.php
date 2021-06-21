@@ -2223,6 +2223,20 @@ final class ServiceType
     public const SPRING_UNTRACKED = 'UNTR';
 
     /**
+     * DSV Road
+     *
+     * @var string
+     */
+    public const DSV_ROAD = 'road';
+
+    /**
+     * DSV B2C
+     *
+     * @var string
+     */
+    public const DSV_B2C = 'b2c';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2754,6 +2768,17 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function dsv(): array
+    {
+        return [
+            self::DSV_ROAD,
+            self::DSV_B2C,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2786,6 +2811,7 @@ final class ServiceType
             Shipper::DHLPARCEL  => self::dhlparcel(),
             Shipper::RABEN      => self::raben(),
             Shipper::SPRING     => self::spring(),
+            Shipper::DSV        => self::dsv(),
         ];
     }
 }
