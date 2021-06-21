@@ -10,10 +10,10 @@ class ChangelogTest extends AbstractClientTestCase
 
         $changelog = $service->getChangelog();
 
-        $expected = '1.918';
+        $expected = '1.924';
         $actual   = $changelog['version'];
 
-        if ($actual !== $expected) {
+        if ($actual > $expected) {
             $this->addWarning(sprintf('Package not supporting latest changes [%s > %s]', $actual, $expected));
         } else {
             $this->assertTrue(true);

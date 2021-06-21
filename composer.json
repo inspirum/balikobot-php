@@ -42,10 +42,10 @@
   },
   "scripts": {
     "test": [
-      "@phpcs src tests",
+      "@style:phpcs",
       "@test:unit",
-      "@test:integration",
-      "@phpstan -l 8 src"
+      "@style:phpstan",
+      "@test:integration"
     ],
     "test:test": [
       "@phpunit"
@@ -63,7 +63,7 @@
       "@phpcs src tests"
     ],
     "style:phpstan": [
-      "@phpstan -l 8 src"
+      "@phpstan -l max src"
     ],
     "style:check": [
       "@style:phpcs",

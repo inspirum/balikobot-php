@@ -6,9 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.2.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.3.0...master)
+
+
+## [v5.3.0 (2021-06-21)](https://github.com/inspirum/balikobot-php/compare/v5.2.0...v5.3.0)
 ### Added
-- Added support for new options from documentation **v1.924** (2021-05-18)
+- Added support for new options from documentation **v1.924** (2021-06-18)
   - Add **DSV** shipper
 - Added support for new options from documentation **v1.921** (2021-06-03)
   - Added **content_issue_date** attribute
