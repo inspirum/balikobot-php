@@ -18,7 +18,7 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
         $packages = new PackageCollection(Shipper::TOPTRANS);
 
         $package = new Package();
-        $package->setServiceType(ServiceType::TOPTRANS_PERSONAL);
+        $package->setServiceType(ServiceType::TOPTRANS_TOPTIME);
         $package->setBranchId('12');
         $package->setRecName('Tomáš Novák');
         $package->setRecEmail('tets@test.cz');
@@ -64,7 +64,7 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
             $this->assertTrue(false, 'ADD request should thrown exception');
         } catch (ExceptionInterface $exception) {
             $this->assertEquals(400, $exception->getStatusCode());
-            $this->assertTrue(isset($exception->getErrors()[0]['mu_type']));
+            $this->assertTrue(isset($exception->getErrors()[0]['mu_type_one']));
         }
     }
 }

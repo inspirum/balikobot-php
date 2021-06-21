@@ -11,32 +11,30 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
     public function testMakeRequest()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status'   => 200,
-            'packages' => [
-                0 => [
-                    'eid'             => '8316699909',
-                    'costs_total'     => 1200,
-                    'currency'        => 'CZK',
-                    'costs_breakdown' => [
-                        [
-                            'name' => 'Base price',
-                            'cost' => 1200,
-                        ],
+            'status' => 200,
+            0        => [
+                'eid'             => '8316699909',
+                'costs_total'     => 1200,
+                'currency'        => 'CZK',
+                'costs_breakdown' => [
+                    [
+                        'name' => 'Base price',
+                        'cost' => 1200,
                     ],
-                    'status'          => '200',
                 ],
-                1 => [
-                    'eid'             => '9636699909',
-                    'costs_total'     => 800,
-                    'currency'        => 'CZK',
-                    'costs_breakdown' => [
-                        [
-                            'name' => 'Base price',
-                            'cost' => 800,
-                        ],
+                'status'          => '200',
+            ],
+            1        => [
+                'eid'             => '9636699909',
+                'costs_total'     => 800,
+                'currency'        => 'CZK',
+                'costs_breakdown' => [
+                    [
+                        'name' => 'Base price',
+                        'cost' => 800,
                     ],
-                    'status'          => '200',
                 ],
+                'status'          => '200',
             ],
         ]);
 
@@ -52,7 +50,7 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://apiv2.balikobot.cz/toptrans/transportcosts',
+                'https://api.balikobot.cz/toptrans/transportcosts',
                 [
                     0 => [
                         'eid'      => '0001',
@@ -74,32 +72,30 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
     public function testResponseData()
     {
         $service = $this->newMockedBalikobot(200, [
-            'status'   => 200,
-            'packages' => [
-                0 => [
-                    'eid'             => '8316699909',
-                    'costs_total'     => 1200,
-                    'currency'        => 'CZK',
-                    'costs_breakdown' => [
-                        [
-                            'name' => 'Base price',
-                            'cost' => 1200,
-                        ],
+            'status' => 200,
+            0        => [
+                'eid'             => '8316699909',
+                'costs_total'     => 1200,
+                'currency'        => 'CZK',
+                'costs_breakdown' => [
+                    [
+                        'name' => 'Base price',
+                        'cost' => 1200,
                     ],
-                    'status'          => '200',
                 ],
-                1 => [
-                    'eid'             => '9636699909',
-                    'costs_total'     => 800,
-                    'currency'        => 'CZK',
-                    'costs_breakdown' => [
-                        [
-                            'name' => 'Base price',
-                            'cost' => 800,
-                        ],
+                'status'          => '200',
+            ],
+            1        => [
+                'eid'             => '9636699909',
+                'costs_total'     => 800,
+                'currency'        => 'CZK',
+                'costs_breakdown' => [
+                    [
+                        'name' => 'Base price',
+                        'cost' => 800,
                     ],
-                    'status'          => '200',
                 ],
+                'status'          => '200',
             ],
         ]);
 

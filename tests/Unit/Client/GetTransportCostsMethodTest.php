@@ -33,17 +33,15 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
         $this->expectException(BadRequestException::class);
 
         $client = $this->newMockedClient(200, [
-            'status'   => 400,
-            'packages' => [
-                0 => [
-                    'eid'             => '8316699909',
-                    'costs_total'     => 1200,
-                    'currency'        => 'CZK',
-                    'costs_breakdown' => [
-                        [
-                            'name' => 'Base price',
-                            'cost' => 1200,
-                        ],
+            'status' => 400,
+            0        => [
+                'eid'             => '8316699909',
+                'costs_total'     => 1200,
+                'currency'        => 'CZK',
+                'costs_breakdown' => [
+                    [
+                        'name' => 'Base price',
+                        'cost' => 1200,
                     ],
                 ],
             ],
@@ -57,11 +55,9 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
         $this->expectException(BadRequestException::class);
 
         $client = $this->newMockedClient(200, [
-            'status'   => 200,
-            'packages' => [
-                0 => [
-                    'status' => 200,
-                ],
+            'status' => 200,
+            0        => [
+                'status' => 200,
             ],
         ]);
 
@@ -73,15 +69,13 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
         $this->expectException(BadRequestException::class);
 
         $client = $this->newMockedClient(200, [
-            'status'   => 200,
-            'packages' => [
-                0 => [
-                    'eid'    => 1,
-                    'status' => 200,
-                ],
-                1 => [
-                    'status' => 200,
-                ],
+            'status' => 200,
+            0        => [
+                'eid'    => 1,
+                'status' => 200,
+            ],
+            1        => [
+                'status' => 200,
             ],
         ]);
 
@@ -93,32 +87,30 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
         $this->expectException(BadRequestException::class);
 
         $client = $this->newMockedClient(200, [
-            'status'   => 200,
-            'packages' => [
-                0 => [
-                    'eid'             => '8316699909',
-                    'costs_total'     => 1200,
-                    'currency'        => 'CZK',
-                    'costs_breakdown' => [
-                        [
-                            'name' => 'Base price',
-                            'cost' => 1200,
-                        ],
+            'status' => 200,
+            0        => [
+                'eid'             => '8316699909',
+                'costs_total'     => 1200,
+                'currency'        => 'CZK',
+                'costs_breakdown' => [
+                    [
+                        'name' => 'Base price',
+                        'cost' => 1200,
                     ],
-                    'status'          => '200',
                 ],
-                1 => [
-                    'eid'             => '9636699909',
-                    'costs_total'     => 800,
-                    'currency'        => 'CZK',
-                    'costs_breakdown' => [
-                        [
-                            'name' => 'Base price',
-                            'cost' => 800,
-                        ],
+                'status'          => '200',
+            ],
+            1        => [
+                'eid'             => '9636699909',
+                'costs_total'     => 800,
+                'currency'        => 'CZK',
+                'costs_breakdown' => [
+                    [
+                        'name' => 'Base price',
+                        'cost' => 800,
                     ],
-                    'status'          => '200',
                 ],
+                'status'          => '200',
             ],
         ]);
 
@@ -128,20 +120,18 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
     public function testMakeRequest()
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
-            'status'   => 200,
-            'packages' => [
-                0 => [
-                    'eid'             => '8316699909',
-                    'costs_total'     => 1200,
-                    'currency'        => 'CZK',
-                    'costs_breakdown' => [
-                        [
-                            'name' => 'Base price',
-                            'cost' => 1200,
-                        ],
+            'status' => 200,
+            0        => [
+                'eid'             => '8316699909',
+                'costs_total'     => 1200,
+                'currency'        => 'CZK',
+                'costs_breakdown' => [
+                    [
+                        'name' => 'Base price',
+                        'cost' => 1200,
                     ],
-                    'status'          => '200',
                 ],
+                'status'          => '200',
             ],
         ]);
 
@@ -152,7 +142,7 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://apiv2.balikobot.cz/toptrans/transportcosts',
+                'https://api.balikobot.cz/toptrans/transportcosts',
                 [
                     [
                         'data' => [1, 2, 3],
@@ -168,32 +158,30 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
     public function testOnlyPackagesDataAreReturned()
     {
         $client = $this->newMockedClient(200, [
-            'status'   => 200,
-            'packages' => [
-                0 => [
-                    'eid'             => '8316699909',
-                    'costs_total'     => 1200,
-                    'currency'        => 'CZK',
-                    'costs_breakdown' => [
-                        [
-                            'name' => 'Base price',
-                            'cost' => 1200,
-                        ],
+            'status' => 200,
+            0        => [
+                'eid'             => '8316699909',
+                'costs_total'     => 1200,
+                'currency'        => 'CZK',
+                'costs_breakdown' => [
+                    [
+                        'name' => 'Base price',
+                        'cost' => 1200,
                     ],
-                    'status'          => '200',
                 ],
-                1 => [
-                    'eid'             => '9636699909',
-                    'costs_total'     => 800,
-                    'currency'        => 'CZK',
-                    'costs_breakdown' => [
-                        [
-                            'name' => 'Base price',
-                            'cost' => 800,
-                        ],
+                'status'          => '200',
+            ],
+            1        => [
+                'eid'             => '9636699909',
+                'costs_total'     => 800,
+                'currency'        => 'CZK',
+                'costs_breakdown' => [
+                    [
+                        'name' => 'Base price',
+                        'cost' => 800,
                     ],
-                    'status'          => '200',
                 ],
+                'status'          => '200',
             ],
         ]);
 

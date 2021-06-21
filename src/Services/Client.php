@@ -654,9 +654,9 @@ class Client
      */
     public function getTransportCosts(string $shipper, array $packages): array
     {
-        $response = $this->requester->call(API::V2V1, $shipper, Request::TRANSPORT_COSTS, $packages);
+        $response = $this->requester->call(API::V1, $shipper, Request::TRANSPORT_COSTS, $packages);
 
-        $response = $response['packages'];
+        unset($response['status']);
 
         $this->validator->validateIndexes($response, count($packages));
 
