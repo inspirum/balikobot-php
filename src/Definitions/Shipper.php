@@ -189,6 +189,13 @@ final class Shipper
     public const DSV = 'dsv';
 
     /**
+     * DHL Freight Euroconnect
+     *
+     * @var string
+     */
+    public const DHLFREIGHTEC = 'dhlfreightec';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>

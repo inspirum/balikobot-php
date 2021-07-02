@@ -2237,6 +2237,34 @@ final class ServiceType
     public const DSV_B2C = 'b2c';
 
     /**
+     * DHLFREIGHTEC EuroConnect Domestic B2B
+     *
+     * @var string
+     */
+    public const DHLFREIGHTEC_ECD_B2B = 'ECD_B2B';
+
+    /**
+     * DHLFREIGHTEC EuroConnect Domestic B2C
+     *
+     * @var string
+     */
+    public const DHLFREIGHTEC_ECD_B2C = 'ECD_B2C';
+
+    /**
+     * DHLFREIGHTEC EuroConnect International
+     *
+     * @var string
+     */
+    public const DHLFREIGHTEC_ECI = 'ECI';
+
+    /**
+     * DHLFREIGHTEC EuroRapid International
+     *
+     * @var string
+     */
+    public const DHLFREIGHTEC_ERI = 'ERI';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2779,6 +2807,19 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function dhlfreightec(): array
+    {
+        return [
+            self::DHLFREIGHTEC_ECD_B2B,
+            self::DHLFREIGHTEC_ECD_B2C,
+            self::DHLFREIGHTEC_ECI,
+            self::DHLFREIGHTEC_ERI,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2786,32 +2827,33 @@ final class ServiceType
     public static function all(): array
     {
         return [
-            Shipper::CP         => self::cp(),
-            Shipper::DPD        => self::dpd(),
-            Shipper::DHL        => self::dhl(),
-            Shipper::GEIS       => self::geis(),
-            Shipper::GLS        => self::gls(),
-            Shipper::INTIME     => self::intime(),
-            Shipper::PBH        => self::pbh(),
-            Shipper::PPL        => self::ppl(),
-            Shipper::SP         => self::sp(),
-            Shipper::SPS        => self::sps(),
-            Shipper::TOPTRANS   => self::topTrans(),
-            Shipper::ULOZENKA   => self::ulozenka(),
-            Shipper::UPS        => self::ups(),
-            Shipper::ZASILKOVNA => self::zasilkovna(),
-            Shipper::TNT        => self::tnt(),
-            Shipper::GW         => self::gw(),
-            Shipper::GWCZ       => self::gwcz(),
-            Shipper::MESSENGER  => self::messenger(),
-            Shipper::DHLDE      => self::dhlde(),
-            Shipper::FEDEX      => self::fedex(),
-            Shipper::FOFR       => self::fofr(),
-            Shipper::DACHSER    => self::dachser(),
-            Shipper::DHLPARCEL  => self::dhlparcel(),
-            Shipper::RABEN      => self::raben(),
-            Shipper::SPRING     => self::spring(),
-            Shipper::DSV        => self::dsv(),
+            Shipper::CP           => self::cp(),
+            Shipper::DPD          => self::dpd(),
+            Shipper::DHL          => self::dhl(),
+            Shipper::GEIS         => self::geis(),
+            Shipper::GLS          => self::gls(),
+            Shipper::INTIME       => self::intime(),
+            Shipper::PBH          => self::pbh(),
+            Shipper::PPL          => self::ppl(),
+            Shipper::SP           => self::sp(),
+            Shipper::SPS          => self::sps(),
+            Shipper::TOPTRANS     => self::topTrans(),
+            Shipper::ULOZENKA     => self::ulozenka(),
+            Shipper::UPS          => self::ups(),
+            Shipper::ZASILKOVNA   => self::zasilkovna(),
+            Shipper::TNT          => self::tnt(),
+            Shipper::GW           => self::gw(),
+            Shipper::GWCZ         => self::gwcz(),
+            Shipper::MESSENGER    => self::messenger(),
+            Shipper::DHLDE        => self::dhlde(),
+            Shipper::FEDEX        => self::fedex(),
+            Shipper::FOFR         => self::fofr(),
+            Shipper::DACHSER      => self::dachser(),
+            Shipper::DHLPARCEL    => self::dhlparcel(),
+            Shipper::RABEN        => self::raben(),
+            Shipper::SPRING       => self::spring(),
+            Shipper::DSV          => self::dsv(),
+            Shipper::DHLFREIGHTEC => self::dhlfreightec(),
         ];
     }
 }
