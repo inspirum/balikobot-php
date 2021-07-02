@@ -229,6 +229,7 @@ final class Shipper
             self::RABEN,
             self::SPRING,
             self::DSV,
+            self::DHLFREIGHTEC,
         ];
     }
 

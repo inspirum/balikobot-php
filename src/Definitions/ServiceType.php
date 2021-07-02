@@ -243,12 +243,25 @@ final class ServiceType
     public const PPL_BUSINESS_PALETTE = '15';
 
     /**
-     *
      * PPL Soukromá paleta
      *
      * @var string
      */
     public const PPL_PRIVATE_PALETTE = '19';
+
+    /**
+     * PPL Smart CZ
+     *
+     * @var string
+     */
+    public const PPL_PRIVATE_SMART_CZ = '46';
+
+    /**
+     * PPL Smart Europe
+     *
+     * @var string
+     */
+    public const PPL_PRIVATE_SMART_EU = '48';
 
     /**
      * DPD Classic
@@ -2430,6 +2443,8 @@ final class ServiceType
             self::PPL_BUSINESS_EU,
             self::PPL_BUSINESS_PALETTE,
             self::PPL_PRIVATE_PALETTE,
+            self::PPL_PRIVATE_SMART_CZ,
+            self::PPL_PRIVATE_SMART_EU,
         ];
     }
 
