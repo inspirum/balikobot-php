@@ -172,8 +172,8 @@ foreach($branches as $branch) {
 ## Installation
 
 Run composer require command:
-```bash
-$ composer require inspirum/balikobot
+```
+composer require inspirum/balikobot
 ```
 or add a requirement to your `composer.json`:
 ```json
