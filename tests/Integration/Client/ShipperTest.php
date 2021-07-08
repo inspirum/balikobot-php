@@ -38,7 +38,7 @@ class ShipperTest extends AbstractClientTestCase
                     }
                 }
 
-                $shouldSupport = Shipper::hasBranchCountryFilterSupport($shipper);
+                $shouldSupport = Shipper::hasBranchCountryFilterSupport($shipper, $shipperService);
                 if ($shouldSupport === false && $totalCount === 0) {
                     $this->addWarning(
                         sprintf(
@@ -59,7 +59,7 @@ class ShipperTest extends AbstractClientTestCase
                 }
             } catch (BadRequestException $exception) {
                 $this->assertFalse(
-                    Shipper::hasBranchCountryFilterSupport($shipper),
+                    Shipper::hasBranchCountryFilterSupport($shipper, $shipperService),
                     sprintf(
                         '%s/%s: %s',
                         strtoupper($shipper),

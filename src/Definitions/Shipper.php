@@ -278,12 +278,17 @@ final class Shipper
     /**
      * Determine if shipper has support to filter branches by country code.
      *
-     * @param string $shipperCode
+     * @param string      $shipperCode
+     * @param string|null $serviceCode
      *
      * @return bool
      */
-    public static function hasBranchCountryFilterSupport(string $shipperCode): bool
+    public static function hasBranchCountryFilterSupport(string $shipperCode, ?string $serviceCode): bool
     {
+        if ($serviceCode === null) {
+            return true;
+        }
+
         $supportedShippers = [
             Shipper::PPL,
             Shipper::DPD,

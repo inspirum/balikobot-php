@@ -9,12 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.4.0...master)
 
 
-## [v5.4.0 (2021-07-02)](https://github.com/inspirum/balikobot-php/compare/v5.3.0...v5.4.0)
+## [v5.4.0 (2021-07-08)](https://github.com/inspirum/balikobot-php/compare/v5.3.0...v5.4.0)
 - Added support for new options from documentation **v1.925** (2021-06-30)
   - Add **DHLFREIGHTEC** shipper
 - Added support for new options from documentation **v1.926** (2021-06-30)
   - Added **PPL_PRIVATE_SMART_CZ** service type
   - Added **PPL_PRIVATE_SMART_EU** service type
+### Fixed
+- Fixed branches filter by countries if service type is `null` (and shipper does not support filter by both)
+  - Add [**Shipper**](./src/Definitions/Shipper.php) `hasBranchCountryFilterSupport()` #2 **serviceCode** optional parameter
 
 
 ## [v5.3.0 (2021-06-21)](https://github.com/inspirum/balikobot-php/compare/v5.2.0...v5.3.0)

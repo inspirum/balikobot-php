@@ -67,6 +67,44 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(4, $count);
     }
 
+    public function testGetBranchesForShipperCallWithCountriesWithoutAPISupport()
+    {
+        /* @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
+        $service = Mockery::mock(
+            Balikobot::class . '[getServices,getBranchesForShipperService]',
+            [new Requester('test', 'test')]
+        );
+
+        $service->shouldReceive('getBranchesForShipperService')
+                ->with('zasilkovna', null, 'DE')
+                ->andReturnUsing(function () {
+                    yield from $this->branchesGenerator(5, 'DE', 'zasilkovna', null);
+                });
+        $service->shouldReceive('getBranchesForShipperService')
+                ->with('zasilkovna', null, 'CZ')
+                ->andReturnUsing(function () {
+                    yield from $this->branchesGenerator(1, null, 'zasilkovna', null);
+                    yield from $this->branchesGenerator(2, 'CZ', 'zasilkovna', null);
+                });
+        $service->shouldReceive('getBranchesForShipperService')
+                ->with('zasilkovna', null, 'SK')
+                ->andReturnUsing(function () {
+                    yield from $this->branchesGenerator(1, 'SK', 'zasilkovna', null);
+                });
+
+        $count = 0;
+        foreach (
+            $service->getBranchesForShipperServiceForCountries(
+                'zasilkovna',
+                null,
+                ['DE', 'CZ', 'SK']) as $branch) {
+            $this->assertNotEmpty($branch->getZip());
+            $count++;
+        }
+
+        $this->assertEquals(8, $count);
+    }
+
     public function testGetBranchesForShipperCallAllServices()
     {
         /* @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */

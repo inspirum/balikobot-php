@@ -153,10 +153,16 @@ To show coverage, run:
 $ composer test:coverage
 ```
 
+To run all test (phpcs, phpstan, phpunit, etc.), run:
+
+```bash
+$ composer test
+```
+
 For testing purposes, you can use these credentials:
 
-- **API username:** balikobot_test2cztest
-- **API key:** #lS1tBVo
+- **API username:** `balikobot_test2cztest`
+- **API key:** `#lS1tBVo`
 
 
 ## Contributing

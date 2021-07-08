@@ -463,7 +463,7 @@ class Balikobot
         ?string $service,
         array $countries
     ): iterable {
-        if (Shipper::hasBranchCountryFilterSupport($shipper) === false) {
+        if (Shipper::hasBranchCountryFilterSupport($shipper, $service) === false) {
             return yield from $this->getBranchesForShipperService($shipper, $service);
         }
 
