@@ -136,27 +136,27 @@ Extension over Client that uses custom DTO classes as an input and output for it
 
 To run unit tests, run:
 
-```bash
-$ composer test:test
+```
+composer test:test
 ```
 
 You can also run only Unit or Integration test suites, run:
 
-```bash
-$ composer test:unit
-$ composer test:integration
+```
+composer test:unit
+composer test:integration
 ```
 
 To show coverage, run:
 
-```bash
-$ composer test:coverage
+```
+composer test:coverage
 ```
 
 To run all test (phpcs, phpstan, phpunit, etc.), run:
 
-```bash
-$ composer test
+```
+composer test
 ```
 
 For testing purposes, you can use these credentials:
