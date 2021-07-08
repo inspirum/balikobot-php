@@ -97,7 +97,9 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
             $service->getBranchesForShipperServiceForCountries(
                 'zasilkovna',
                 null,
-                ['DE', 'CZ', 'SK']) as $branch) {
+                ['DE', 'CZ', 'SK']
+            ) as $branch
+        ) {
             $this->assertNotEmpty($branch->getZip());
             $count++;
         }
