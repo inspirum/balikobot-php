@@ -21,7 +21,12 @@ Offers implementation of Balikobot API v2 described in the [documentation](#vers
 
 ## Usage example
 
-*All the code snippets shown here are modified for clarity, so they may not be executable.*
+See more available methods' documentation in [Usage](#usage) section.
+
+> *All the code snippets shown here are modified for clarity, so they may not be executable.*
+
+
+#### Setup service
 
 ```php
 // get credentials
@@ -31,8 +36,12 @@ $apiKey  = getenv('BALIKOBOT_API_KEY');
 // init balikobot class
 $requester = new Requester($apiUser, $apiKey);
 $balikobot = new Balikobot($requester);
-$data      = [];
+```
 
+
+#### Create packages and order shipment
+
+```php
 // create new package collection for specific shipper
 $packages = new PackageCollection(Shipper::CP);
 
@@ -53,6 +62,7 @@ $packages->add($package);
 $orderedPackages = $balikobot->addPackages($packages);
 
 // save package IDs
+$data             = [];
 $data['packages'] = $orderedPackages->getPackageIds();
 
 // save track URL for each package
@@ -86,7 +96,70 @@ var_dump($data);
 */
 ```
 
-See more available methods documentation in [Usage](#usage) section.
+
+#### Test packages data / delete packages
+
+```php
+// check if packages data is valid
+try {
+    $balikobot->checkPackages($packages);
+} catch (ExceptionInterface $exception) {
+    return $exception->getErrors();
+}
+
+// drop packages if shipment is not ordered yet
+$balikobot->dropPackages($orderedPackages);
+````
+
+
+#### Track packages
+
+```php
+// track last package status
+$status = $balikobot->trackPackageLastStatus($orderedPackages[0]);
+/*
+var_dump($status);
+Inspirum\Balikobot\Model\Values\PackageStatus {
+  'date'        => DateTime { '2018-07-02 09:15:01.000000' }
+  'id'          => 2.2
+  'name'        => 'Zásilka byla doručena příjemci.'
+  'description' => 'Dodání zásilky. (77072 - Depo Olomouc 72)'
+  'type'        => 'event'
+}
+*/
+```
+
+#### Import branches
+
+```php
+$branches = $balikobot->getBranchesForShipperForCountries(
+  Shipper::ZASILKOVNA, 
+  [Country::CZECH_REPUBLIC, Country::SLOVAKIA]
+); 
+
+foreach($branches as $branch) {
+  /*
+  var_dump($branch);
+  Inspirum\Balikobot\Model\Values\Branch {
+    private $shipper  => 'zasilkovna'
+    private $service  => null
+    private $branchId => '10000'
+    private $uid      => 'VMCZ-zasilkovna-branch-10000'
+    private $id       => '10000'
+    private $type     => 'branch'
+    private $name     => 'Hradec Králové, Dukelská tř. 1713/7 (OC Atrium - Traficon) Tabák Traficon'
+    private $city     => 'Hradec Králové'
+    private $street   => 'Dukelská tř. 1713/7'
+    private $zip      => '50002'
+    private $cityPart => null
+    private $district => 'okres Hradec Králové'
+    private $region   => 'Královéhradecký kraj'
+    private $country  => 'CZ'
+    ...
+  }
+  */
+}
+```
 
 
 ## System requirements

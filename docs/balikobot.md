@@ -198,11 +198,11 @@ Different shippers use different attribute as **branch_id** in [**ADD**](./clien
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$shippers = $balikobot->getBranchesForShipper(Shipper::CP);
+$branches = $balikobot->getBranchesForShipper(Shipper::CP);
 
-foreach($shippers as $shipper) {
+foreach($branches as $branch) {
   /*
-  var_dump($shipper);
+  var_dump($branch);
   Inspirum\Balikobot\Model\Values\Branch {
     private $shipper  => 'cp'
     private $service  => 'NB'
