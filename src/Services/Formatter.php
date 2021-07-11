@@ -165,6 +165,37 @@ class Formatter
     }
 
     /**
+     * Normalize response items indexed by group
+     *
+     * @param array<array<mixed>> $items
+     * @param string              $groupKeyName
+     * @param string              $groupItemsKeyName
+     * @param string              $keyName
+     * @param string|null         $valueName
+     *
+     * @return array<string,array<string,mixed>>
+     */
+    public function normalizeResponseIndexedItems(
+        array $items,
+        string $groupKeyName,
+        string $groupItemsKeyName,
+        string $keyName,
+        ?string $valueName
+    ): array {
+        $formattedItems = [];
+
+        foreach ($items as $item) {
+            $formattedItems[(string) $item[$groupKeyName]] = $this->normalizeResponseItems(
+                $item[$groupItemsKeyName] ?? [],
+                $keyName,
+                $valueName
+            );
+        }
+
+        return $formattedItems;
+    }
+
+    /**
      * Encapsulate ids with key
      *
      * @param array<int|string> $ids

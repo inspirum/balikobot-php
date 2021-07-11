@@ -67,14 +67,67 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
             ],
         ]);
 
-        $units = $service->getAddServiceOptions('cp', 'CE');
+        $options = $service->getAddServiceOptions('cp', 'CE');
 
         $this->assertEquals(
             [
                 '10' => 'Neskladně',
                 '44' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
             ],
-            $units
+            $options
+        );
+    }
+
+    public function testResponseDataWithoutServiceType()
+    {
+        $service = $this->newMockedBalikobot(200, [
+            'status'        => 200,
+            'service_types' => [
+                [
+                    'service_type'      => 'CE',
+                    'service_type_name' => 'CE - Obchodní balík do zahraničí',
+                    'services'          => [
+                        [
+                            'name' => 'Neskladně',
+                            'code' => '10',
+                        ],
+                        [
+                            'name' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
+                            'code' => '44',
+                        ],
+                    ],
+                ],
+                [
+                    'service_type'      => 'CV',
+                    'service_type_name' => '',
+                    'services'          => [
+                        [
+                            'name' => 'Dodejka',
+                            'code' => '3',
+                        ],
+                        [
+                            'name' => 'Dobírka Pk A/MZ dobírka',
+                            'code' => '4',
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        $options = $service->getAddServiceOptions('cp');
+
+        $this->assertEquals(
+            [
+                'CE' => [
+                    '10' => 'Neskladně',
+                    '44' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
+                ],
+                'CV' => [
+                    '3' => 'Dodejka',
+                    '4' => 'Dobírka Pk A/MZ dobírka',
+                ],
+            ],
+            $options
         );
     }
 }

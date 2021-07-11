@@ -754,7 +754,7 @@ class Balikobot
      * @param string|null $service
      * @param bool        $fullData
      *
-     * @return array<string|array>
+     * @return array<string, string|array|array<string, string|array>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */

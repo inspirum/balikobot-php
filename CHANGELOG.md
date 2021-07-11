@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.4.0...master)
+### Fixed
+- Fixed **ADDSERVICEOPTIONS** request response without specific **service** ([#13](https://github.com/inspirum/balikobot-php/issues/13))
 
 
 ## [v5.4.0 (2021-07-08)](https://github.com/inspirum/balikobot-php/compare/v5.3.0...v5.4.0)
@@ -17,7 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **PPL_PRIVATE_SMART_CZ** service type
   - Added **PPL_PRIVATE_SMART_EU** service type
 ### Fixed
-- Fixed branches filter by countries if service type is `null` (and shipper does not support filter by both)
+- Fixed branches filter by countries if service type is `null` (and shipper does not support filter by both)  ([#12](https://github.com/inspirum/balikobot-php/issues/12))
   - Add [**Shipper**](./src/Definitions/Shipper.php) `hasBranchCountryFilterSupport()` #2 **serviceCode** optional parameter
 
 

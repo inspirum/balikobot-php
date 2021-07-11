@@ -720,13 +720,23 @@ class Client
      * @param string|null $service
      * @param bool        $fullData
      *
-     * @return array<string, string|array>
+     * @return array<string, string|array|array<string, string|array>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
     public function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array
     {
         $response = $this->requester->call(API::V1, $shipper, Request::ADD_SERVICE_OPTIONS . '/' . $service);
+
+        if ($service === null) {
+            return $this->formatter->normalizeResponseIndexedItems(
+                $response['service_types'] ?? [],
+                'service_type',
+                'services',
+                'code',
+                $fullData === false ? 'name' : null
+            );
+        }
 
         return $this->formatter->normalizeResponseItems(
             $response['services'] ?? [],

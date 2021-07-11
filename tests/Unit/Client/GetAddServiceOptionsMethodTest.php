@@ -108,14 +108,14 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $services = $client->getAddServiceOptions('cp', 'CE');
+        $options = $client->getAddServiceOptions('cp', 'CE');
 
         $this->assertEquals(
             [
                 '10' => 'Neskladně',
                 '44' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
             ],
-            $services
+            $options
         );
     }
 
@@ -136,7 +136,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $services = $client->getAddServiceOptions('cp', 'CE', true);
+        $options = $client->getAddServiceOptions('cp', 'CE', true);
 
         $this->assertEquals(
             [
@@ -149,7 +149,125 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
                     'name' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
                 ],
             ],
-            $services
+            $options
+        );
+    }
+
+    public function testAllServicesDataAreReturned()
+    {
+        $client = $this->newMockedClient(200, [
+            'status'        => 200,
+            'service_types' => [
+                [
+                    'service_type'      => 'CE',
+                    'service_type_name' => 'CE - Obchodní balík do zahraničí',
+                    'services'          => [
+                        [
+                            'name' => 'Neskladně',
+                            'code' => '10',
+                        ],
+                        [
+                            'name' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
+                            'code' => '44',
+                        ],
+                    ],
+                ],
+                [
+                    'service_type'      => 'CV',
+                    'service_type_name' => '',
+                    'services'          => [
+                        [
+                            'name' => 'Dodejka',
+                            'code' => '3',
+                        ],
+                        [
+                            'name' => 'Dobírka Pk A/MZ dobírka',
+                            'code' => '4',
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        $options = $client->getAddServiceOptions('cp');
+
+        $this->assertEquals(
+            [
+                'CE' => [
+                    '10' => 'Neskladně',
+                    '44' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
+                ],
+                'CV' => [
+                    '3' => 'Dodejka',
+                    '4' => 'Dobírka Pk A/MZ dobírka',
+                ],
+            ],
+            $options
+        );
+    }
+
+    public function testAllFullDataAreReturned()
+    {
+        $client = $this->newMockedClient(200, [
+            'status'        => 200,
+            'service_types' => [
+                [
+                    'service_type'      => 'CE',
+                    'service_type_name' => 'CE - Obchodní balík do zahraničí',
+                    'services'          => [
+                        [
+                            'name' => 'Neskladně',
+                            'code' => '10',
+                        ],
+                        [
+                            'name' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
+                            'code' => '44',
+                        ],
+                    ],
+                ],
+                [
+                    'service_type'      => 'CV',
+                    'service_type_name' => '',
+                    'services'          => [
+                        [
+                            'name' => 'Dodejka',
+                            'code' => '3',
+                        ],
+                        [
+                            'name' => 'Dobírka Pk A/MZ dobírka',
+                            'code' => '4',
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        $options = $client->getAddServiceOptions('cp', null, true);
+
+        $this->assertEquals(
+            [
+                'CE' => [
+                    '10' => [
+                        'code' => '10',
+                        'name' => 'Neskladně',
+                    ],
+                    '44' => [
+                        'code' => '44',
+                        'name' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
+                    ],
+                ],
+                'CV' => [
+                    '3' => [
+                        'code' => '3',
+                        'name' => 'Dodejka',
+                    ],
+                    '4' => [
+                        'code' => '4',
+                        'name' => 'Dobírka Pk A/MZ dobírka',
+                    ],
+                ],
+            ],
+            $options
         );
     }
 }
