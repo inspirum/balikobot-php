@@ -2299,6 +2299,76 @@ final class ServiceType
     public const KURIER_STANDARD = 'std';
 
     /**
+     * DB Schenker System FIX
+     *
+     * @var string
+     */
+    public const DBSCHENKER_SYSTEM_FIX = '35';
+
+    /**
+     * DB Schenker System FIX TBA
+     *
+     * @var string
+     */
+    public const DBSCHENKER_SYSTEM_FIX_TBA = '39';
+
+    /**
+     * DB Schenker System
+     *
+     * @var string
+     */
+    public const DBSCHENKER_SYSTEM = '43';
+
+    /**
+     * DB Schenker System Premium
+     *
+     * @var string
+     */
+    public const DBSCHENKER_SYSTEM_PREMIUM = '44';
+
+    /**
+     * DB Schenker System Premium 10
+     *
+     * @var string
+     */
+    public const DBSCHENKER_SYSTEM_PREMIUM_10 = '55';
+
+    /**
+     * DB Schenker System Premium 13
+     *
+     * @var string
+     */
+    public const DBSCHENKER_SYSTEM_PREMIUM_13 = '56';
+
+    /**
+     * DB Schenker System FIX 10
+     *
+     * @var string
+     */
+    public const DBSCHENKER_SYSTEM_FIX_10 = '57';
+
+    /**
+     * DB Schenker System FIX 13
+     *
+     * @var string
+     */
+    public const DBSCHENKER_SYSTEM_FIX_13 = '58';
+
+    /**
+     * DB Schenker Full Load
+     *
+     * @var string
+     */
+    public const DBSCHENKER_FULL_LOAD = '71';
+
+    /**
+     * DB Schenker Part Load
+     *
+     * @var string
+     */
+    public const DBSCHENKER_PART_LOAD = '72';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2868,6 +2938,25 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function dbschenker(): array
+    {
+        return [
+            self::DBSCHENKER_SYSTEM_FIX,
+            self::DBSCHENKER_SYSTEM_FIX_TBA,
+            self::DBSCHENKER_SYSTEM,
+            self::DBSCHENKER_SYSTEM_PREMIUM,
+            self::DBSCHENKER_SYSTEM_PREMIUM_10,
+            self::DBSCHENKER_SYSTEM_PREMIUM_13,
+            self::DBSCHENKER_SYSTEM_FIX_10,
+            self::DBSCHENKER_SYSTEM_FIX_13,
+            self::DBSCHENKER_FULL_LOAD,
+            self::DBSCHENKER_PART_LOAD,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2903,6 +2992,7 @@ final class ServiceType
             Shipper::DSV          => self::dsv(),
             Shipper::DHLFREIGHTEC => self::dhlfreightec(),
             Shipper::KURIER       => self::kurier(),
+            Shipper::DBSCHENKER   => self::dbschenker(),
         ];
     }
 }

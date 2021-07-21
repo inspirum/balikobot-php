@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added support for new options from documentation **v1.929** (2021-07-13)
   - Add **KURIER** shipper
+- Added support for new options from documentation **v1.930** (2021-07-16)
+  - Add **DBSCHENKER** shipper
 ### Fixed
 - Fixed **TRACK** request response when API returns states as `string` instead of `array` ([#15](https://github.com/inspirum/balikobot-php/issues/15))
 

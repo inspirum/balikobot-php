@@ -203,6 +203,13 @@ final class Shipper
     public const KURIER = 'kurier';
 
     /**
+     * DB Schenker
+     *
+     * @var string
+     */
+    public const DBSCHENKER = 'dbschenker';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -238,6 +245,7 @@ final class Shipper
             self::DSV,
             self::DHLFREIGHTEC,
             self::KURIER,
+            self::DBSCHENKER,
         ];
     }
 
