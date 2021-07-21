@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.4.1...master)
+### Added
+- Added support for new options from documentation **v1.929** (2021-07-13)
+  - Add **KURIER** shipper
 ### Fixed
 - Fixed **TRACK** request response when API returns states as `string` instead of `array` ([#15](https://github.com/inspirum/balikobot-php/issues/15))
 

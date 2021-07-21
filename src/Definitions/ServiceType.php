@@ -2278,6 +2278,27 @@ final class ServiceType
     public const DHLFREIGHTEC_ERI = 'ERI';
 
     /**
+     * KURIER Garantované doručení
+     *
+     * @var string
+     */
+    public const KURIER_GARANTED = 'gdd';
+
+    /**
+     * KURIER Doručení do 12h
+     *
+     * @var string
+     */
+    public const KURIER_12 = 'd12';
+
+    /**
+     * KURIER Statndard
+     *
+     * @var string
+     */
+    public const KURIER_STANDARD = 'std';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2835,6 +2856,18 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function kurier(): array
+    {
+        return [
+            self::KURIER_GARANTED,
+            self::KURIER_12,
+            self::KURIER_STANDARD,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -2869,6 +2902,7 @@ final class ServiceType
             Shipper::SPRING       => self::spring(),
             Shipper::DSV          => self::dsv(),
             Shipper::DHLFREIGHTEC => self::dhlfreightec(),
+            Shipper::KURIER       => self::kurier(),
         ];
     }
 }

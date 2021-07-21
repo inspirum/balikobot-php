@@ -196,6 +196,13 @@ final class Shipper
     public const DHLFREIGHTEC = 'dhlfreightec';
 
     /**
+     * 123kurier
+     *
+     * @var string
+     */
+    public const KURIER = 'kurier';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -230,6 +237,7 @@ final class Shipper
             self::SPRING,
             self::DSV,
             self::DHLFREIGHTEC,
+            self::KURIER,
         ];
     }
 
