@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.4.1...master)
+### Fixed
+- Fixed **TRACK** request response when API returns states as `string` instead of `array` ([#15](https://github.com/inspirum/balikobot-php/issues/15))
 
 
 ## [v5.4.1 (2021-07-11)](https://github.com/inspirum/balikobot-php/compare/v5.4.0...v5.4.1)

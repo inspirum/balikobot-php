@@ -95,6 +95,11 @@ class Formatter
             $formattedResponse[$i] = [];
 
             foreach ($responseItems['states'] ?? [] as $responseItem) {
+                // fix wrong API response https://github.com/inspirum/balikobot-php/issues/15 for PHP < 8.0
+                if (is_array($responseItem) === false || array_key_exists('name', $responseItem) === false) {
+                    continue;
+                }
+
                 $formattedResponse[$i][] = [
                     'date'          => $responseItem['date'],
                     'name'          => $responseItem['name'],

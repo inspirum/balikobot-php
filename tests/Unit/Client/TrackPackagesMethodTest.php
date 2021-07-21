@@ -528,4 +528,57 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
             $statuses[1]
         );
     }
+
+    public function testDataAreReturnedAsString()
+    {
+        $client = $this->newMockedClient(200, [
+            'status'   => 200,
+            'packages' => [
+                0 => [
+                    'carrier_id' => '1',
+                    'status'     => 200,
+                    'states'     => [
+                        [
+                            '404',
+                        ],
+                    ],
+                ],
+                1 => [
+                    'carrier_id' => '2',
+                    'status'     => 200,
+                    'states'     => [
+                        [
+                            '404',
+                        ],
+                        [
+                            'date'           => '2018-11-07 14:15:01',
+                            'name'           => 'Doručování zásilky',
+                            'status_id'      => 2,
+                            'status_id_v2'   => 2.2,
+                            'type'           => 'event',
+                            'name_balikobot' => 'Zásilka je v přepravě.',
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        $status = $client->trackPackages('cp', ['1', '2']);
+
+        $this->assertEquals(
+            [
+                0 => [],
+                1 => [
+                    [
+                        'date'          => '2018-11-07 14:15:01',
+                        'name'          => 'Doručování zásilky',
+                        'status_id'     => 2.2,
+                        'type'          => 'event',
+                        'name_internal' => 'Zásilka je v přepravě.',
+                    ],
+                ],
+            ],
+            $status
+        );
+    }
 }
