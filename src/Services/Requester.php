@@ -5,8 +5,6 @@ namespace Inspirum\Balikobot\Services;
 use GuzzleHttp\Psr7\Response;
 use Inspirum\Balikobot\Contracts\RequesterInterface;
 use Inspirum\Balikobot\Definitions\API;
-use Inspirum\Balikobot\Exceptions\BadRequestException;
-use Inspirum\Balikobot\Exceptions\UnauthorizedException;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
@@ -27,6 +25,13 @@ class Requester implements RequesterInterface
     private $apiKey;
 
     /**
+     * SSL verification enabled
+     *
+     * @var bool
+     */
+    private $sslVerify;
+
+    /**
      * Response validator
      *
      * @var \Inspirum\Balikobot\Services\Validator
@@ -38,11 +43,13 @@ class Requester implements RequesterInterface
      *
      * @param string $apiUser
      * @param string $apiKey
+     * @param bool   $sslVerify
      */
-    public function __construct(string $apiUser, string $apiKey)
+    public function __construct(string $apiUser, string $apiKey, bool $sslVerify = false)
     {
-        $this->apiUser = $apiUser;
-        $this->apiKey  = $apiKey;
+        $this->apiUser   = $apiUser;
+        $this->apiKey    = $apiKey;
+        $this->sslVerify = $sslVerify;
 
         $this->validator = new Validator();
     }
@@ -111,8 +118,12 @@ class Requester implements RequesterInterface
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        // disable SSL verification
+        if ($this->sslVerify === false) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        }
 
         // set data
         if (count($data) > 0) {
