@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.5.0...master)
+### Added
+- Added support for new options from documentation **v1.933** (2021-07-29)
+  - Add **AIRWAY** shipper
+- Added opt-in option to Requester SSL verification [#14](https://github.com/inspirum/balikobot-php/pull/14)
 
 
 ## [v5.5.0 (2021-07-21)](https://github.com/inspirum/balikobot-php/compare/v5.4.1...v5.5.0)

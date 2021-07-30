@@ -210,6 +210,13 @@ final class Shipper
     public const DBSCHENKER = 'dbschenker';
 
     /**
+     * AIRWAY
+     *
+     * @var string
+     */
+    public const AIRWAY = 'airway';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -246,6 +253,7 @@ final class Shipper
             self::DHLFREIGHTEC,
             self::KURIER,
             self::DBSCHENKER,
+            self::AIRWAY,
         ];
     }
 

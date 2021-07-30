@@ -2369,6 +2369,70 @@ final class ServiceType
     public const DBSCHENKER_PART_LOAD = '72';
 
     /**
+     * Airway Express
+     *
+     * @var string
+     */
+    public const AIRWAY_EXPRESS = '1';
+
+
+    /**
+     * Airway Normal
+     *
+     * @var string
+     */
+    public const AIRWAY_NORMAL = '2';
+
+    /**
+     * Airway Economy
+     *
+     * @var string
+     */
+    public const AIRWAY_ECONOMY = '3';
+
+    /**
+     * Airway Same Day
+     *
+     * @var string
+     */
+    public const AIRWAY_SAME_DAY = '4';
+
+    /**
+     * Airway Prague 9-13
+     *
+     * @var string
+     */
+    public const AIRWAY_PRAGUE_13 = '5';
+
+    /**
+     * Airway Prague 13-17
+     *
+     * @var string
+     */
+    public const AIRWAY_PRAGUE_17 = '6';
+
+    /**
+     * Airway Prague 17-21
+     *
+     * @var string
+     */
+    public const AIRWAY_PRAGUE_21 = '7';
+
+    /**
+     * Airway Další den
+     *
+     * @var string
+     */
+    public const AIRWAY_NEXT_DAY = '8';
+
+    /**
+     * Airway Další pracovní den
+     *
+     * @var string
+     */
+    public const AIRWAY_NEXT_WEEKDAY = '9';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2932,7 +2996,7 @@ final class ServiceType
     {
         return [
             self::KURIER_GARANTED,
-            self::KURIER_12,
+            // self::KURIER_12,
             self::KURIER_STANDARD,
         ];
     }
@@ -2953,6 +3017,24 @@ final class ServiceType
             self::DBSCHENKER_SYSTEM_FIX_13,
             self::DBSCHENKER_FULL_LOAD,
             self::DBSCHENKER_PART_LOAD,
+        ];
+    }
+
+    /**
+     * @return array<string>
+     */
+    public static function airway(): array
+    {
+        return [
+            self::AIRWAY_EXPRESS,
+            self::AIRWAY_NORMAL,
+            self::AIRWAY_ECONOMY,
+            self::AIRWAY_SAME_DAY,
+            self::AIRWAY_PRAGUE_13,
+            self::AIRWAY_PRAGUE_17,
+            self::AIRWAY_PRAGUE_21,
+            self::AIRWAY_NEXT_DAY,
+            self::AIRWAY_NEXT_WEEKDAY,
         ];
     }
 
@@ -2993,6 +3075,7 @@ final class ServiceType
             Shipper::DHLFREIGHTEC => self::dhlfreightec(),
             Shipper::KURIER       => self::kurier(),
             Shipper::DBSCHENKER   => self::dbschenker(),
+            Shipper::AIRWAY       => self::airway(),
         ];
     }
 }
