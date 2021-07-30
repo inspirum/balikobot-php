@@ -11,6 +11,7 @@ There are classes for country codes, currency codes, package options, shipper co
 - [**Inspirum\Balikobot\Definitions\Region**](../src/Definitions/Region.php)
 - [**Inspirum\Balikobot\Definitions\ServiceType**](../src/Definitions/ServiceType.php)
 - [**Inspirum\Balikobot\Definitions\Shipper**](../src/Definitions/Shipper.php)
+- [**Inspirum\Balikobot\Definitions\Status**](../src/Definitions/Status.php)
 
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;

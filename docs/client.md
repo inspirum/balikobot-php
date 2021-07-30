@@ -14,7 +14,7 @@ use Inspirum\Balikobot\Services\Requester;
 $apiUser = getenv('BALIKOBOT_API_USER');
 $apiKey  = getenv('BALIKOBOT_API_KEY');
 
-$client = new Client(new Requester($apiUser, $apiKey));
+$client = new Client(new Requester($apiUser, $apiKey, sslVerify: true));
 ```
 
 
@@ -418,7 +418,7 @@ This units are used as **mu_type** option in [**ADD**](#add) request.
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$units = $client->getManipulationUnits(Shipper::TOPTRANS, false);
+$units = $client->getManipulationUnits(Shipper::TOPTRANS, fullData: false);
 
 /*
 var_dump($units);
@@ -438,7 +438,7 @@ var_dump($units);
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$units = $client->getManipulationUnits(Shipper::TOPTRANS, true);
+$units = $client->getManipulationUnits(Shipper::TOPTRANS, fullData: true);
 
 /*
 var_dump($units);
@@ -485,7 +485,7 @@ var_dump($units);
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$units = $client->getActivatedManipulationUnits(Shipper::TOPTRANS, true);
+$units = $client->getActivatedManipulationUnits(Shipper::TOPTRANS, fullData: true);
 
 /*
 var_dump($units);
@@ -545,7 +545,7 @@ You can use the `Shipper::hasBranchCountryFilterSupport()` method to test whethe
 use Inspirum\Balikobot\Definitions\Country;use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$branches = $client->getBranches(Shipper::PPL, ServiceType::PPL_PARCEL_IMPORT, false, Country::GERMANY);
+$branches = $client->getBranches(Shipper::PPL, ServiceType::PPL_PARCEL_IMPORT, fullBranchesRequest: false, Country::GERMANY);
 
 /*
 var_dump($branches);
@@ -580,7 +580,7 @@ The client normalizes the response by returning only **branches** array.
 use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$fullBranchRequest = Shipper::hasFullBranchesSupport(Shipper::ZASILKOVNA, null);
+$fullBranchRequest = Shipper::hasFullBranchesSupport(Shipper::ZASILKOVNA, service: null);
 
 /*
 var_dump($fullBranchRequest);
@@ -599,7 +599,7 @@ false
 use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$branches = $client->getBranches(Shipper::ZASILKOVNA, null, true);
+$branches = $client->getBranches(Shipper::ZASILKOVNA, service: null, fullBranchesRequest: true);
 
 /*
 var_dump($branches);
@@ -783,7 +783,7 @@ var_dump($postcodes);
 use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$postcodes = $client->getPostCodes(Shipper::GEIS, ServiceType::GEIS_PARCEL_PRIVATE);
+$postcodes = $client->getPostCodes(Shipper::GEIS, ServiceType::GEIS_CARGO_BUSINESS_NATIONAL);
 
 /*
 var_dump($postcodes);
@@ -912,7 +912,7 @@ var_dump($units);
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$units = $client->getAdrUnits(Shipper::TOPTRANS, true);
+$units = $client->getAdrUnits(Shipper::TOPTRANS, fullData: true);
 
 /*
 var_dump($units);

@@ -43,7 +43,7 @@ use Inspirum\Balikobot\Services\Requester;
 $apiUser = getenv('BALIKOBOT_API_USER');
 $apiKey  = getenv('BALIKOBOT_API_KEY');
 
-$balikobot = new Balikobot(new Requester($apiUser, $apiKey));
+$balikobot = new Balikobot(new Requester($apiUser, $apiKey, sslVerify: true));
 
 $packages = new PackageCollection(Shipper::CP);
 
@@ -184,7 +184,7 @@ $branches = $balikobot->getBranchesForShipperService(Shipper::CP, ServiceType::C
 
 $branches = $balikobot->getBranchesForCountries([Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
 $branches = $balikobot->getBranchesForShipperForCountries(Shipper::ZASILKOVNA, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
-$branches = $balikobot->getBranchesForShipperServiceForCountries(Shipper::ZASILKOVNA, null, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
+$branches = $balikobot->getBranchesForShipperServiceForCountries(Shipper::ZASILKOVNA, service: null, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
 
 /*
 var_dump($branches);

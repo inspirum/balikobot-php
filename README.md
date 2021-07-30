@@ -35,7 +35,7 @@ $apiUser = getenv('BALIKOBOT_API_USER');
 $apiKey  = getenv('BALIKOBOT_API_KEY');
 
 // init balikobot class
-$requester = new Requester($apiUser, $apiKey);
+$requester = new Requester($apiUser, $apiKey, sslVerify: true);
 $balikobot = new Balikobot($requester);
 ```
 
