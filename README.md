@@ -165,10 +165,11 @@ foreach($branches as $branch) {
 
 ## System requirements
 
-* [PHP 7.1+](http://php.net/releases/7_1_0.php)
+* [PHP 8.0+](http://php.net/releases/8_0_0.php)
 * [ext-curl](http://php.net/curl)
 * [ext-json](http://php.net/json)
 
+If you are still using older PHP version, you can use this package in `^5.0` version (for PHP 7.1+).
 
 ## Installation
 
@@ -186,7 +187,7 @@ or add a requirement to your `composer.json`:
 
 Support all options for Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v1.933** *(2021-07-29)*.
 
-If you want to use older API [v1][link-api], please use `^4.0` version:
+If you want to use older API [v1][link-api], please use `^4.0` version.
 
 More details are available in [changelog][link-changelog].
 
