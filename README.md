@@ -17,7 +17,6 @@ Offers implementation of Balikobot API v2 described in the [documentation](#vers
 - All package options are accessible via setter and getter methods
 - The entire code is covered by unit and integration tests
 - Customizable [**Requester**](./src/Contracts/RequesterInterface.php) for easy functionality expandability (caching, etc.)
-  - By default, Requester use Curl without SSL verification (`CURLOPT_SSL_VERIFYHOST=false`)
 
 
 ## Usage example

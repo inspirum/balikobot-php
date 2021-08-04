@@ -75,7 +75,7 @@ class Requester implements RequesterInterface
      * @param string $apiKey
      * @param bool   $sslVerify
      */
-    public function __construct(string $apiUser, string $apiKey, bool $sslVerify = false)
+    public function __construct(string $apiUser, string $apiKey, bool $sslVerify = true)
     {
         $this->apiUser   = $apiUser;
         $this->apiKey    = $apiKey;
