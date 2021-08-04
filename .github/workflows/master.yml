@@ -13,6 +13,8 @@ jobs:
         php: ['8.0']
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Set up PHP ${{ matrix.php }}
         uses: shivammathur/setup-php@v2
         with:
@@ -28,7 +30,7 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
       - name: Install dependencies
-        run: composer install --prefer-dist --no-interaction --no-progress --no-suggest
+        run: composer install --prefer-dist --no-interaction --no-progress
       - name: Run linters
         run: |
           vendor/bin/phpcs --standard=./ruleset.xml src/
@@ -37,6 +39,6 @@ jobs:
         run: |
           vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
           if [[ "${{ matrix.php }}" == '8.0' ]]; then
-            composer require --dev --no-interaction --no-progress --no-suggest scrutinizer/ocular
+            composer require --dev --no-interaction --no-progress --quiet scrutinizer/ocular
             vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
           fi
