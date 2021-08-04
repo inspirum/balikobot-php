@@ -7,21 +7,33 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.6.0...master)
+### Added
+- Added support for new options from documentation **v1.931** (2021-07-20)
+    - Added option to get compressed response in GZIP (by parameter `?gzip=1`)
+    - Added new optional parameter `$gzip` to method [RequesterInterface](./src/Contracts/RequesterInterface.php)`call()` (and [Requester](./src/Services/Requester.php))
+    - Added new optional parameter `$gzip` to method [Client](./src/Services/Client.php) `getBranches()` 
+- Enable strict types (`declare(strict_types=1)`)
+### Changed
+- Support only **PHP 8.0+**
+- Changed option to Requester SSL verification [#14](https://github.com/inspirum/balikobot-php/pull/14) to opt-out (enabled by default)
+- Changed order of [Client](./src/Services/Client.php) `getBranches()` method (switch **fullBranchesRequest** and **country** parameter)
+### Removed
+- Removed deprecated **GEIS_\_&ast;** service type constants
 
 
 ## [v5.6.0 (2021-08-04)](https://github.com/inspirum/balikobot-php/compare/v5.5.0...v5.6.0)
 ### Added
 - Added support for new options from documentation **v1.933** (2021-07-29)
-  - Add **AIRWAY** shipper
+    - Added **AIRWAY** shipper
 - Added opt-in option to Requester SSL verification [#14](https://github.com/inspirum/balikobot-php/pull/14)
 
 
 ## [v5.5.0 (2021-07-21)](https://github.com/inspirum/balikobot-php/compare/v5.4.1...v5.5.0)
 ### Added
 - Added support for new options from documentation **v1.929** (2021-07-13)
-  - Add **KURIER** shipper
+    - Added **KURIER** shipper
 - Added support for new options from documentation **v1.930** (2021-07-16)
-  - Add **DBSCHENKER** shipper
+    - Added **DBSCHENKER** shipper
 ### Fixed
 - Fixed **TRACK** request response when API returns states as `string` instead of `array` ([#15](https://github.com/inspirum/balikobot-php/issues/15))
 
@@ -34,61 +46,61 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v5.4.0 (2021-07-08)](https://github.com/inspirum/balikobot-php/compare/v5.3.0...v5.4.0)
 ### Added
 - Added support for new options from documentation **v1.925** (2021-06-30)
-  - Add **DHLFREIGHTEC** shipper
+    - Added **DHLFREIGHTEC** shipper
 - Added support for new options from documentation **v1.926** (2021-06-30)
-  - Added **PPL_PRIVATE_SMART_CZ** service type
-  - Added **PPL_PRIVATE_SMART_EU** service type
+    - Added **PPL_PRIVATE_SMART_CZ** service type
+    - Added **PPL_PRIVATE_SMART_EU** service type
 ### Fixed
 - Fixed branches filter by countries if service type is `null` (and shipper does not support filter by both)  ([#12](https://github.com/inspirum/balikobot-php/issues/12))
-  - Add [**Shipper**](./src/Definitions/Shipper.php) `hasBranchCountryFilterSupport()` #2 **serviceCode** optional parameter
+    - Added [**Shipper**](./src/Definitions/Shipper.php) `hasBranchCountryFilterSupport()` #2 **serviceCode** optional parameter
 
 
 ## [v5.3.0 (2021-06-21)](https://github.com/inspirum/balikobot-php/compare/v5.2.0...v5.3.0)
 ### Added
 - Added support for new options from documentation **v1.924** (2021-06-18)
-  - Add **DSV** shipper
+    - Added **DSV** shipper
 - Added support for new options from documentation **v1.921** (2021-06-03)
-  - Added **content_issue_date** attribute
-  - Added **content_invoice_number** attribute
-  - Added **content_ead** attribute
-  - Added **content_mrn** attribute
-  - Added **ead_pdf** attribute
+    - Added **content_issue_date** attribute
+    - Added **content_invoice_number** attribute
+    - Added **content_ead** attribute
+    - Added **content_mrn** attribute
+    - Added **ead_pdf** attribute
 - Added support for new options from documentation **v1.919** (2021-05-11)
-  - Add **SPRING** shipper
+    - Added **SPRING** shipper
 
 
 ## [v5.2.0 (2021-05-01)](https://github.com/inspirum/balikobot-php/compare/v5.1.0...v5.2.0)
 ### Added
 - Added [**Status**](./src/Definitions/Status.php) constants
 - Added support for new options from documentation **v1.918** (2021-04-29)
-  - Add **RABEN** shipper
+    - Added **RABEN** shipper
 - Added support for new options from documentation **v1.915** (2021-04-19)
-  - Add **DHLPARCEL** shipper
+    - Added **DHLPARCEL** shipper
 - Added support for new options from documentation **v1.914** (2021-04-19)
-  - Add **DACHSER** shipper
+    - Added **DACHSER** shipper
 - Added support for new options from documentation **v1.913** (2021-04-08)
-  - Added **PPL_BUSINESS_EU** service type
+    - Added **PPL_BUSINESS_EU** service type
 - Added support for new options from documentation **v1.912** (2021-04-06)
-  - Added **INTIME_BOX_CZ** service type
-  - Added **INTIME_BOX_SK** service type
+    - Added **INTIME_BOX_CZ** service type
+    - Added **INTIME_BOX_SK** service type
 - Added support for new options from documentation **v1.911** (2021-03-29)
-  - Added **ADDATTRIBUTES** request
+    - Added **ADDATTRIBUTES** request
 - Added support for new options from documentation **v1.908** (2021-03-23)
-  - Added **ADDSERVICEOPTIONS** request
+    - Added **ADDSERVICEOPTIONS** request
 
 
 ## [v5.1.0 (2021-03-17)](https://github.com/inspirum/balikobot-php/compare/v5.0.0...v5.1.0)
 ### Added
 - Added support for new options from documentation **v1.902** (2021-02-10)
-  - Added **declaration_comments** attribute
-  - Added **declaration_charges_discount** attribute
-  - Added **declaration_insurance_charges** attribute
-  - Added **declaration_other_charges** attribute
-  - Added **declaration_transport_charges** attribute
-  - Added **is_alcohol** attribute
+    - Added **declaration_comments** attribute
+    - Added **declaration_charges_discount** attribute
+    - Added **declaration_insurance_charges** attribute
+    - Added **declaration_other_charges** attribute
+    - Added **declaration_transport_charges** attribute
+    - Added **is_alcohol** attribute
 - Added **ZASILKOVNA_FR_COLISSIMO_PP** service type
 - Added support for new options from documentation **v1.905** (2021-03-09)
-  - Added **TNT_DIRECT_INFEED** service type
+    - Added **TNT_DIRECT_INFEED** service type
 - Added **ZASILKOVNA_FR_COLIS_PRIVE_HD** service type
 - Added **FOFR_PALETTE** service type
 ### Deprecated
@@ -101,7 +113,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added request/response format from [APIv2 documentation](https://balikobotv2.docs.apiary.io/#introduction/rozdil-api-v2-vs-api-v1)
 - Added [**Branch**](./src/Model/Values/Branch.php) #4 **uid** parameter to constructor
 ### Changed
-- Update default API URL to `API::V2V1` (**apiv2.balikobot.cz**)
+- Updated default API URL to `API::V2V1` (**apiv2.balikobot.cz**)
 ### Fixed
 - Fixed [**Country**](./src/Model/Values/Country.php) #4 **phonePrefix** parameter to `array` type
 - Fixed [**OrderedPackage**](./src/Model/Values/OrderedPackage.php) #1 **packageId** parameter to `string` type
@@ -126,34 +138,34 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v4.4.0 (2021-01-22)](https://github.com/inspirum/balikobot-php/compare/v4.3.0...v4.4.0)
 ### Added
 - Added support for new options from documentation **v1.901** (2021-01-18)
-  - Add **GEIS_PARCEL_HD_STANDARD** service type
-  - Add **GEIS_PARCEL_HD_PREMIUM** service type
+    - Added **GEIS_PARCEL_HD_STANDARD** service type
+    - Added **GEIS_PARCEL_HD_PREMIUM** service type
 - Added **max_weight** to branches
 
 
 ## [v4.3.0 (2020-12-30)](https://github.com/inspirum/balikobot-php/compare/v4.2.0...v4.3.0)
 ### Added
 - Added support for new options from documentation **v1.896** (2020-11-18)
-  - Add **PACKAGE** request filtered by **carrier_id**
+    - Added **PACKAGE** request filtered by **carrier_id**
 - Added support for new options from documentation **v1.897** (2020-11-30)
-  - Add **FOFR** shipper
+    - Added **FOFR** shipper
 - Added support for new options from documentation **v1.898** (2020-12-01)
-  - Added **CHANGELOG** request
+    - Added **CHANGELOG** request
 
 
 ## [v4.2.0 (2020-11-10)](https://github.com/inspirum/balikobot-php/compare/v4.1.0...v4.2.0)
 ### Added
 - Added support for new options from documentation **v1.897** (2020-11-30)
-    - Add **FEDEX** shipper
+    - Added **FEDEX** shipper
 - Added multiple **ZASILKOVNA\_&ast;** service types
 
 
 ## [v4.1.0 (2020-10-29)](https://github.com/inspirum/balikobot-php/compare/v4.0.0...v4.1.0)
 ### Added
 - Added support for new options from documentation **v1.894** (2020-10-20)
-    - Add **DHLDE** shipper
+    - Added **DHLDE** shipper
 - Added support for new options from documentation **v1.895** (2020-10-29)
-    - Add **PBH_123_KURIER** service type
+    - Added **PBH_123_KURIER** service type
 
 
 ## [v4.0.0 (2020-09-21)](https://github.com/inspirum/balikobot-php/compare/v3.3.0...v4.0.0)
@@ -161,17 +173,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v1.892** (2020-09-14)
     - Added **GETCOUNTRIESDATA** request
 - Added support for new options from documentation **v1.893** (2020-09-17)
-    - Add **TRACK** **v3** request
-    - Add **TRACK_STATUS** **v2** request
+    - Added **TRACK** **v3** request
+    - Added **TRACK_STATUS** **v2** request
 - Added optional **fullData** parameter for **ADDRUNIT**, **MANIPULATIONUNITS**, **ACTIVATEDMANIPULATIONUNITS** methods
 ### Changed
-- Update [**PackageStatus**](./src/Model/Values/PackageStatus.php) to support data from **TRACK** **v3**
+- Updated [**PackageStatus**](./src/Model/Values/PackageStatus.php) to support data from **TRACK** **v3**
     - Method **getId** return `float` instead of `int` (attribute **status_id_v2**)
     - Method **getName** return new internal status name (attribute **name_balikobot**)
-    - Add method **getGroupId** (attribute **status_id**)
-    - Add method **getDescription** (attribute **name**)
-    - Add method **getType** (attribute **type**)
-- Rename [**Package**](./src/Model/Values/Package.php) method **setHeigth** to **setHeight**
+    - Added method **getGroupId** (attribute **status_id**)
+    - Added method **getDescription** (attribute **name**)
+    - Added method **getType** (attribute **type**)
+- Renamed [**Package**](./src/Model/Values/Package.php) method **setHeigth** to **setHeight**
 ### Removed
 - Removed **ZASILKOVNA\_&ast;** service type constants
 - Removed **TOP_TRANS\_&ast;** service type constants
@@ -181,20 +193,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v3.3.0 (2020-09-10)](https://github.com/inspirum/balikobot-php/compare/v3.2.2...v3.3.0)
 ### Added
 - Added support for new options from documentation **v1.889** (2020-07-22)
-    - Add **CP_OLZ** service type
+    - Added **CP_OLZ** service type
 - Added support for new options from documentation **v1.890** (2020-08-26)
-    - Add **PBH_ACS** service type
-    - Add **PBH_CORREOS** service type
+    - Added **PBH_ACS** service type
+    - Added **PBH_CORREOS** service type
 - Added multiple **ZASILKOVNA\_&ast;** service types
 ### Changed
-- Normalize service type constants, change to **ZASILKOVNA\_&ast;\_HD**, **ZASILKOVNA\_&ast;\_PP**, **ZASILKOVNA\_&ast;\_BOX**
+- Normalized service type constants, change to **ZASILKOVNA\_&ast;\_HD**, **ZASILKOVNA\_&ast;\_PP**, **ZASILKOVNA\_&ast;\_BOX**
 ### Deprecated
 - Deprecated multiple **ZASILKOVNA\_&ast;** service type constants
 
 
 ## [v3.2.2 (2020-07-18)](https://github.com/inspirum/balikobot-php/compare/v3.2.1...v3.2.2)
 ### Changed
-- Normalize service type constants, change **TOP_TRANS\_&ast;** to **TOPTRANS\_&ast;**
+- Normalized service type constants, change **TOP_TRANS\_&ast;** to **TOPTRANS\_&ast;**
 ### Deprecated
 - Deprecated **TOP_TRANS\_&ast;** service type constants
 
@@ -209,20 +221,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v1.886** (2020-05-29)
     - Added **TRANSPORTCOSTS** request
 - Added support for new options from documentation **v1.887** (2020-06-09)
-    - Add **MESSENGER** (Messenger) shipper
+    - Added **MESSENGER** (Messenger) shipper
 
 
 ## [v3.1.0 (2020-05-30)](https://github.com/inspirum/balikobot-php/compare/v3.0.0...v3.1.0)
 ### Added
 - Added support for new options from documentation **v1.885** (2020-05-14)
-    - Add **PBH_ECONT** service type
+    - Added **PBH_ECONT** service type
 - Added support for new options from documentation **v1.884** (2020-05-07)
     - Added **ACTIVATEDMANIPULATIONUNITS** request
 - Added **ZASILKOVNA_DE_HERMES_HOME** service type 
 - Added **ZASILKOVNA_DE_HERMES_PICKUP** service type 
 - Added **ZASILKOVNA_LT_HOME** service type 
 ### Changed
-- Normalize request constants, change **ACTIVATEDSERVICES** to **ACTIVATED_SERVICES**
+- Normalized request constants, change **ACTIVATEDSERVICES** to **ACTIVATED_SERVICES**
 ### Fixed
 - Fixed bug that API returns only last package statuses for GLS shipper ([#3](https://github.com/inspirum/balikobot-php/issues/3))
 ### Deprecated
@@ -232,7 +244,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v3.0.0 (2020-05-09)](https://github.com/inspirum/balikobot-php/compare/v2.0.1...v3.0.0)
 ### Added
 - Added support for new options from documentation **v1.882** (2020-04-15)
-    - Add **ADD** **v2** request for **TOPTRANS** shipper
+    - Added **ADD** **v2** request for **TOPTRANS** shipper
 - Added support for new options from documentation **v1.881** (2020-04-09)
     - Added **country** parameter to **SERVICES** **v2** request
     - Added **ADD** **v2** request for **ZASILKOVNA** shipper
@@ -264,7 +276,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v1.4.0 (2020-03-15)](https://github.com/inspirum/balikobot-php/compare/v1.3.2...v1.4.0)
 ### Added
 - Added support for new options from documentation **v1.879** (2020-03-13)
-    - Add **GWCZ** (Gebrüder Weiss Česká republika) shipper
+    - Added **GWCZ** (Gebrüder Weiss Česká republika) shipper
 - Added support for new options from documentation **v1.878** (2020-01-30)
     - Added **B2A/SERVICES** request
 ### Fixed
@@ -298,7 +310,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Added **ADD** **v2** request for **TNT** shipper
     - Added **bank_code** attribute
 - Added support for new options from documentation **v1.872** (2019-10-24)
-    - Add **ADD** **v2** request for **UPS** shipper
+    - Added **ADD** **v2** request for **UPS** shipper
 - Added support for new options from documentation **v1.872** (2019-10-22)
     - Added **POD** request
     - Added **GLS_GUARANTEED24** service type
@@ -334,10 +346,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [v1.1.2 (2019-06-24)](https://github.com/inspirum/balikobot-php/compare/v1.1.1...v1.1.2)
 ### Added
-- Add support for new options from documentation **v1.861** (2019-05-28)
-    - Add **ACTIVATEDSERVICES** request
-- Add support for new options from documentation **v1.859** (2019-05-07)
-    - Add **SPS_INTERNATIONAL** service type (Export (mezinárodní zásilky))
+- Added support for new options from documentation **v1.861** (2019-05-28)
+    - Added **ACTIVATEDSERVICES** request
+- Added support for new options from documentation **v1.859** (2019-05-07)
+    - Added **SPS_INTERNATIONAL** service type (Export (mezinárodní zásilky))
 ### Fixed
 - Fixed bug that **TRACK** request does not require **status** attribute in response data
 
@@ -345,8 +357,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v1.1.1 (2019-05-01)](https://github.com/inspirum/balikobot-php/compare/v1.1.0...v1.1.1)
 ### Added
 - Added support for new options from documentation **v1.857** (2019-04-26)
-    - Add **delivery_costs** attribute
-    - Add **delivery_costs_eur** attribute
+    - Added **delivery_costs** attribute
+    - Added **delivery_costs_eur** attribute
 - Added support for new options from documentation **v1.856** (2019-04-10)
     - Added **SPS** (Slovak Parcel Service) shipper
     - Added **ULOZENKA_EXPRESS_COURRIER** service type (Expres Kurýr SK for Ulozenka)
