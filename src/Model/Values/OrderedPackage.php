@@ -11,70 +11,70 @@ class OrderedPackage
      *
      * @var string
      */
-    private $packageId;
+    private string $packageId;
 
     /**
      * Package batch ID (EID)
      *
      * @var string
      */
-    private $batchId;
+    private string $batchId;
 
     /**
      * Shipper
      *
      * @var string
      */
-    private $shipper;
+    private string $shipper;
 
     /**
      * Carrier ID (for package tracking)
      *
      * @var string
      */
-    private $carrierId;
+    private string $carrierId;
 
     /**
      * Track URL
      *
      * @var string|null
      */
-    private $trackUrl;
+    private ?string $trackUrl;
 
     /**
      * Label URL
      *
      * @var string|null
      */
-    private $labelUrl;
+    private ?string $labelUrl;
 
     /**
      * Carrier ID Swap
      *
      * @var string|null
      */
-    private $carrierIdSwap;
+    private ?string $carrierIdSwap;
 
     /**
      * Pieces
      *
      * @var array<string>
      */
-    private $pieces;
+    private array $pieces;
 
     /**
      * Final carrier ID
      *
      * @var string|null
      */
-    private $finalCarrierId;
+    private ?string $finalCarrierId;
 
     /**
      * Final track URL
      *
      * @var string|null
      */
-    private $finalTrackUrl;
+    private ?string $finalTrackUrl;
 
     /**
      * OrderedPackage constructor

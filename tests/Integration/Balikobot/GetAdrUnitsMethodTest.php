@@ -30,7 +30,7 @@ class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
     {
         $service = $this->newBalikobot();
 
-        $units = $service->getAdrUnits(Shipper::TOPTRANS, true);
+        $units = $service->getAdrUnits(Shipper::TOPTRANS, fullData: true);
 
         $this->assertTrue(count($units) > 0);
         foreach ($units as $id => $unit) {

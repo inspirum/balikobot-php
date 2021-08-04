@@ -87,7 +87,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getBranches('cp', 'NP', true);
+        $client->getBranches('cp', 'NP', fullBranchesRequest: true);
 
         $requester->shouldHaveReceived(
             'request',
@@ -106,7 +106,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getBranches('cp', 'NP', false, 'DE');
+        $client->getBranches('cp', 'NP', 'DE');
 
         $requester->shouldHaveReceived(
             'request',
@@ -125,7 +125,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getBranches('zasilkovna', null, false, 'DE');
+        $client->getBranches('zasilkovna', null, 'DE');
 
         $requester->shouldHaveReceived(
             'request',

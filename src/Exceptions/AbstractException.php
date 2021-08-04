@@ -19,21 +19,21 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
      *
      * @var array<mixed>
      */
-    protected $response;
+    protected array $response;
 
     /**
      * Response HTTP status code
      *
      * @var int
      */
-    protected $statusCode;
+    protected int $statusCode;
 
     /**
      * API response errors
      *
      * @var array<array<string,string>>
      */
-    protected $errors = [];
+    protected array $errors = [];
 
     /**
      * AbstractException constructor

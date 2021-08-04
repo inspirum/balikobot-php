@@ -44,7 +44,7 @@ abstract class AbstractTestCase extends PHPUnitTestCase
      *
      * @return \Inspirum\Balikobot\Services\Requester|\Mockery\MockInterface
      */
-    protected function newRequesterWithMockedRequestMethod(int $statusCode, $data): MockInterface
+    protected function newRequesterWithMockedRequestMethod(int $statusCode, array|string $data): MockInterface
     {
         /** @var \Inspirum\Balikobot\Services\Requester|\Mockery\MockInterface $requester */
         $requester = Mockery::mock(Requester::class . '[request]', ['test', 'test']);

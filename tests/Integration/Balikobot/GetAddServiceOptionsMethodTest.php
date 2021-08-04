@@ -46,7 +46,7 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
     {
         $service = $this->newBalikobot();
 
-        $options = $service->getAddServiceOptions(Shipper::CP, null, true);
+        $options = $service->getAddServiceOptions(Shipper::CP, fullData: true);
 
         $this->assertTrue(count($options) > 0);
         foreach ($options as $serviceType => $serviceOptions) {
@@ -63,7 +63,7 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
     {
         $service = $this->newBalikobot();
 
-        $options = $service->getAddServiceOptions(Shipper::CP, ServiceType::CP_CE, true);
+        $options = $service->getAddServiceOptions(Shipper::CP, ServiceType::CP_CE, fullData: true);
 
         $this->assertTrue(count($options) > 0);
         foreach ($options as $code => $option) {

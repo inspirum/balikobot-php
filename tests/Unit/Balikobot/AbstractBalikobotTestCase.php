@@ -17,7 +17,7 @@ abstract class AbstractBalikobotTestCase extends AbstractTestCase
      *
      * @return \Inspirum\Balikobot\Services\Balikobot
      */
-    public function newMockedBalikobot(int $statusCode, $data): Balikobot
+    public function newMockedBalikobot(int $statusCode, array|string $data): Balikobot
     {
         return new Balikobot($this->newRequesterWithMockedRequestMethod($statusCode, $data));
     }

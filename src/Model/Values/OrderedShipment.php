@@ -9,32 +9,32 @@ class OrderedShipment
     /**
      * @var string
      */
-    private $orderId;
+    private string $orderId;
 
     /**
      * @var string
      */
-    private $handoverUrl;
+    private string $handoverUrl;
 
     /**
      * @var string
      */
-    private $labelsUrl;
+    private string $labelsUrl;
 
     /**
      * @var string|null
      */
-    private $fileUrl;
+    private ?string $fileUrl;
 
     /**
      * @var string
      */
-    private $shipper;
+    private string $shipper;
 
     /**
      * @var array<string>
      */
-    private $packageIds;
+    private array $packageIds;
 
     /**
      * OrderedShipment constructor

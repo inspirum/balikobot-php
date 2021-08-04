@@ -9,37 +9,37 @@ class PostCode
     /**
      * @var string
      */
-    private $shipper;
+    private string $shipper;
 
     /**
      * @var string|null
      */
-    private $service;
+    private ?string $service;
 
     /**
      * @var string
      */
-    private $postcode;
+    private string $postcode;
 
     /**
      * @var string|null
      */
-    private $postcodeEnd;
+    private ?string $postcodeEnd;
 
     /**
      * @var string|null
      */
-    private $city;
+    private ?string $city;
 
     /**
      * @var string|null
      */
-    private $country;
+    private ?string $country;
 
     /**
      * @var bool
      */
-    private $morningDelivery;
+    private bool $morningDelivery;
 
     /**
      * Postcode constructor

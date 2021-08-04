@@ -15,174 +15,174 @@ class Branch
     /**
      * @var string
      */
-    private $shipper;
+    private string $shipper;
 
     /**
      * @var string|null
      */
-    private $service;
+    private ?string $service;
 
     /**
      * @var string
      */
-    private $branchId;
+    private string $branchId;
 
     /**
      * @var string|null
      */
-    private $id;
+    private ?string $id;
 
     /**
      * @var string|null
      */
-    private $uid;
+    private ?string $uid;
 
     /**
      * @var string
      */
-    private $type;
+    private string $type;
 
     /**
      * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * @var string
      */
-    private $city;
+    private string $city;
 
     /**
      * @var string
      */
-    private $street;
+    private string $street;
 
     /**
      * @var string
      */
-    private $zip;
+    private string $zip;
 
     /**
      * @var string|null
      */
-    private $cityPart;
+    private ?string $cityPart;
 
     /**
      * @var string|null
      */
-    private $district;
+    private ?string $district;
 
     /**
      * @var string|null
      */
-    private $region;
+    private ?string $region;
 
     /**
      * ISO 3166-1 alpha-2 http://cs.wikipedia.org/wiki/ISO_3166-1
      *
      * @var string|null
      */
-    private $country;
+    private ?string $country;
 
     /**
      * @var string|null
      */
-    private $currency;
+    private ?string $currency;
 
     /**
      * @var string|null
      */
-    private $photoSmall;
+    private ?string $photoSmall;
 
     /**
      * @var string|null
      */
-    private $photoBig;
+    private ?string $photoBig;
 
     /**
      * @var string|null
      */
-    private $url;
+    private ?string $url;
 
     /**
      * @var float|null
      */
-    private $latitude;
+    private ?float $latitude;
 
     /**
      * @var float|null
      */
-    private $longitude;
+    private ?float $longitude;
 
     /**
      * @var string|null
      */
-    private $directionsGlobal;
+    private ?string $directionsGlobal;
 
     /**
      * @var string|null
      */
-    private $directionsCar;
+    private ?string $directionsCar;
 
     /**
      * @var string|null
      */
-    private $directionsPublic;
+    private ?string $directionsPublic;
 
     /**
      * @var bool|null
      */
-    private $wheelchairAccessible;
+    private ?bool $wheelchairAccessible;
 
     /**
      * @var bool|null
      */
-    private $claimAssistant;
+    private ?bool $claimAssistant;
 
     /**
      * @var bool|null
      */
-    private $dressingRoom;
+    private ?bool $dressingRoom;
 
     /**
      * @var string|null
      */
-    private $openingMonday;
+    private ?string $openingMonday;
 
     /**
      * @var string|null
      */
-    private $openingTuesday;
+    private ?string $openingTuesday;
 
     /**
      * @var string|null
      */
-    private $openingWednesday;
+    private ?string $openingWednesday;
 
     /**
      * @var string|null
      */
-    private $openingThursday;
+    private ?string $openingThursday;
 
     /**
      * @var string|null
      */
-    private $openingFriday;
+    private ?string $openingFriday;
 
     /**
      * @var string|null
      */
-    private $openingSaturday;
+    private ?string $openingSaturday;
 
     /**
      * @var string|null
      */
-    private $openingSunday;
+    private ?string $openingSunday;
 
     /**
      * @var float|null
      */
-    private $maxWeight;
+    private ?float $maxWeight;
 
     /**
      * Branch constructor
@@ -603,7 +603,7 @@ class Branch
     public static function newInstanceFromData(string $shipper, ?string $service, array $data): self
     {
         if ($shipper === Shipper::CP && $service === ServiceType::CP_NP) {
-            $data['country'] = $data['country'] ?? 'CZ';
+            $data['country'] ??= 'CZ';
         }
 
         if (isset($data['street']) && (isset($data['house_number']) || isset($data['orientation_number']))) {

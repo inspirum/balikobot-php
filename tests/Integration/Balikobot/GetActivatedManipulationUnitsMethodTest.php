@@ -29,7 +29,7 @@ class GetActivatedManipulationUnitsMethodTest extends AbstractBalikobotTestCase
     {
         $service = $this->newBalikobot();
 
-        $units = $service->getActivatedManipulationUnits(Shipper::PPL, true);
+        $units = $service->getActivatedManipulationUnits(Shipper::PPL, fullData: true);
 
         $this->assertTrue(count($units) > 0);
         foreach ($units as $id => $unit) {

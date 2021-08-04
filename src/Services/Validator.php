@@ -46,7 +46,7 @@ class Validator
     public function validateResponseStatus(
         array $responseItem,
         ?array $response = null,
-        bool $shouldHaveStatus = true
+        bool $shouldHaveStatus = true,
     ): void {
         if ($shouldHaveStatus === false && isset($responseItem['status']) === false) {
             return;

@@ -25,14 +25,14 @@ class ShipperTest extends AbstractClientTestCase
             try {
                 $shipperService = (string) array_keys($service->getServices($shipper, null))[0];
 
-                $branches = $service->getBranches($shipper, $shipperService, false);
+                $branches = $service->getBranches($shipper, $shipperService, fullBranchesRequest: false);
                 if (count($branches) === 0) {
                     continue;
                 }
 
                 $totalCount = 0;
                 foreach ($countries as $country) {
-                    $branches    = $service->getBranches($shipper, $shipperService, false, $country);
+                    $branches    = $service->getBranches($shipper, $shipperService, $country, fullBranchesRequest: false);
                     $totalCount += count($branches);
                     foreach ($branches ?? [] as $branch) {
                         if ($branch['country'] !== $country) {

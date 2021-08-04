@@ -111,7 +111,7 @@ class GetManipulationUnitsMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $units = $client->getManipulationUnits('cp', true);
+        $units = $client->getManipulationUnits('cp', fullData: true);
 
         $this->assertEquals(
             [

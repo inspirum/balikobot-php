@@ -13,35 +13,35 @@ class PackageTransportCost
      *
      * @var string
      */
-    private $batchId;
+    private string $batchId;
 
     /**
      * Shipper
      *
      * @var string
      */
-    private $shipper;
+    private string $shipper;
 
     /**
      * Total cost
      *
      * @var float
      */
-    private $totalCost;
+    private float $totalCost;
 
     /**
      * Currency code
      *
      * @var string
      */
-    private $currencyCode;
+    private string $currencyCode;
 
     /**
      * Cost breakdown
      *
      * @var array<\Inspirum\Balikobot\Model\Values\PackageTransportCostPart>
      */
-    private $costsBreakdown;
+    private array $costsBreakdown;
 
     /**
      * PackageTransportCost constructor
@@ -119,9 +119,7 @@ class PackageTransportCost
             $shipper,
             $data['costs_total'],
             $data['currency'],
-            array_map(static function (array $part) use ($data) {
-                return new PackageTransportCostPart($part['name'], $part['cost'], $data['currency']);
-            }, $data['costs_breakdown'] ?? [])
+            array_map(static fn(array $part) => new PackageTransportCostPart($part['name'], $part['cost'], $data['currency']), $data['costs_breakdown'] ?? [])
         );
     }
 }

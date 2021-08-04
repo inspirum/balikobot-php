@@ -12,27 +12,27 @@ class PackageStatus
     /**
      * @var float
      */
-    private $id;
+    private float $id;
 
     /**
      * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * @var string
      */
-    private $description;
+    private string $description;
 
     /**
      * @var string
      */
-    private $type;
+    private string $type;
 
     /**
      * @var \DateTime|null
      */
-    private $date;
+    private ?DateTime $date;
 
     /**
      * PackageStatus constructor

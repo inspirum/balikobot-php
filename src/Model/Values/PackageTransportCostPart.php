@@ -11,21 +11,21 @@ class PackageTransportCostPart
      *
      * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * Part cost
      *
      * @var float
      */
-    private $cost;
+    private float $cost;
 
     /**
      * Currency code
      *
      * @var string
      */
-    private $currencyCode;
+    private string $currencyCode;
 
     /**
      * PackageTransportCost constructor

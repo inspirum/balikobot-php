@@ -27,14 +27,14 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      *
      * @var array<int,\Inspirum\Balikobot\Model\Values\PackageTransportCost>|\Inspirum\Balikobot\Model\Values\PackageTransportCost[]
      */
-    private $costs = [];
+    private array $costs = [];
 
     /**
      * Shipper code
      *
      * @var string|null
      */
-    private $shipper;
+    private ?string $shipper;
 
     /**
      * OrderedPackageCollection constructor
@@ -85,9 +85,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      */
     public function getBatchIds(): array
     {
-        return array_map(static function (PackageTransportCost $transportCost) {
-            return $transportCost->getBatchId();
-        }, $this->costs);
+        return array_map(static fn(PackageTransportCost $transportCost) => $transportCost->getBatchId(), $this->costs);
     }
 
     /**
@@ -160,7 +158,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      *
      * @return bool
      */
-    public function offsetExists($key): bool
+    public function offsetExists(mixed $key): bool
     {
         return array_key_exists($key, $this->costs);
     }
@@ -172,7 +170,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      *
      * @return \Inspirum\Balikobot\Model\Values\PackageTransportCost
      */
-    public function offsetGet($key): PackageTransportCost
+    public function offsetGet(mixed $key): PackageTransportCost
     {
         return $this->costs[$key];
     }
@@ -185,7 +183,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      *
      * @return void
      */
-    public function offsetSet($key, $value): void
+    public function offsetSet(mixed $key, mixed $value): void
     {
         $this->validateShipper($value);
 
@@ -199,7 +197,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      *
      * @return void
      */
-    public function offsetUnset($key): void
+    public function offsetUnset(mixed $key): void
     {
         unset($this->costs[$key]);
     }

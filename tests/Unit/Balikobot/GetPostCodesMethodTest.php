@@ -34,6 +34,30 @@ class GetPostCodesMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
+    public function testMakeRequestWithCountry(): void
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'    => 200,
+            'zip_codes' => [],
+        ]);
+
+        $service = new Balikobot($requester);
+
+        $postCodes = $service->getPostCodes('ppl', '7', 'CZ');
+
+        $postCodes->valid();
+
+        $requester->shouldHaveReceived(
+            'request',
+            [
+                'https://apiv2.balikobot.cz/ppl/zipcodes/7/CZ',
+                [],
+            ]
+        );
+
+        $this->assertTrue(true);
+    }
+
     public function testResponseData(): void
     {
         $service = $this->newMockedBalikobot(200, [

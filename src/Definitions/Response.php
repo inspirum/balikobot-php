@@ -9,7 +9,7 @@ final class Response
     /**
      * @var array<int,string>
      */
-    public static $statusCodesErrors = [
+    public static array $statusCodesErrors = [
         200 => 'OK, operace proběhla v pořádku.',
         208 => 'Položka s doloženým ID již existuje. Data, která jsou navrácena, patří k původnímu záznamu.',
         400 => 'Operace neproběhla v pořádku, zkontrolujte konkrétní data.',
@@ -28,7 +28,7 @@ final class Response
     /**
      * @var array<int,string>
      */
-    public static $packageDataErrors = [
+    public static array $packageDataErrors = [
         406 => 'Nedorazila žádná data ke zpracování.',
         409 => 'Nepovolená kombinace služeb dobírky a výměnné zásilky.',
         413 => 'Špatný formát dat.',
@@ -38,7 +38,7 @@ final class Response
     /**
      * @var array<int,array<string,string>>
      */
-    public static $packageDataKeyErrors = [
+    public static array $packageDataKeyErrors = [
         406 => [
             'eid'           => 'Nedorazilo eshop ID.',
             'service_type'  => 'Nedorazilo ID vybrané služby přepravce.',

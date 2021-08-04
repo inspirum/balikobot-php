@@ -29,7 +29,7 @@ class Balikobot
      *
      * @var \Inspirum\Balikobot\Services\Client
      */
-    private $client;
+    private Client $client;
 
     /**
      * Balikobot constructor
@@ -68,7 +68,7 @@ class Balikobot
         $orderedPackages = new OrderedPackageCollection();
         $orderedPackages->setLabelsUrl($labelsUrl);
 
-        foreach ($response as $i => $package) {
+        foreach ($response as $package) {
             $orderedPackages->add(OrderedPackage::newInstanceFromData($packages->getShipper(), $package));
         }
 
@@ -268,7 +268,7 @@ class Balikobot
             $response['track_url'],
             $response['label_url'],
             $response['carrier_id_swap'],
-            $response['pieces']
+            $response['pieces'],
         );
 
         $options              = $response;
@@ -500,7 +500,7 @@ class Balikobot
     {
         $useFullBranchRequest = Shipper::hasFullBranchesSupport($shipper, $service);
 
-        foreach ($this->client->getBranches($shipper, $service, $useFullBranchRequest, $country) as $branch) {
+        foreach ($this->client->getBranches($shipper, $service, $country, $useFullBranchRequest) as $branch) {
             yield Branch::newInstanceFromData($shipper, $service, $branch);
         }
     }
@@ -529,7 +529,7 @@ class Balikobot
         ?string $street = null,
         ?int $maxResults = null,
         ?float $radius = null,
-        ?string $type = null
+        ?string $type = null,
     ): iterable {
         $branches = $this->client->getBranchesForLocation(
             $shipper,
@@ -539,7 +539,7 @@ class Balikobot
             $street,
             $maxResults,
             $radius,
-            $type
+            $type,
         );
 
         foreach ($branches as $branch) {
@@ -706,7 +706,7 @@ class Balikobot
 
         $transportCosts = new PackageTransportCostCollection($packages->getShipper());
 
-        foreach ($response as $i => $package) {
+        foreach ($response as $package) {
             $transportCost = PackageTransportCost::newInstanceFromData($packages->getShipper(), $package);
             $transportCosts->add($transportCost);
         }

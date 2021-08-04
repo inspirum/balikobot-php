@@ -60,9 +60,7 @@ class ShipperTest extends AbstractBalikobotTestCase
         $service = $this->newBalikobot();
 
         $supportedServices = ServiceType::all();
-        $supportedServices = array_map(static function ($data) {
-            return array_filter($data);
-        }, $supportedServices);
+        $supportedServices = array_map(static fn($data) => array_filter($data), $supportedServices);
 
         $shippers = Shipper::all();
         foreach ($shippers as $shipper) {

@@ -138,7 +138,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $options = $client->getAddServiceOptions('cp', 'CE', true);
+        $options = $client->getAddServiceOptions('cp', 'CE', fullData: true);
 
         $this->assertEquals(
             [
@@ -244,7 +244,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $options = $client->getAddServiceOptions('cp', null, true);
+        $options = $client->getAddServiceOptions('cp', fullData: true);
 
         $this->assertEquals(
             [

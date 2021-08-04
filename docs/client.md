@@ -545,7 +545,7 @@ You can use the `Shipper::hasBranchCountryFilterSupport()` method to test whethe
 use Inspirum\Balikobot\Definitions\Country;use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\Shipper;
 
-$branches = $client->getBranches(Shipper::PPL, ServiceType::PPL_PARCEL_IMPORT, fullBranchesRequest: false, Country::GERMANY);
+$branches = $client->getBranches(Shipper::PPL, ServiceType::PPL_PARCEL_IMPORT, Country::GERMANY, fullBranchesRequest: false);
 
 /*
 var_dump($branches);

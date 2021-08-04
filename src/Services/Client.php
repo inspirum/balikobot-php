@@ -18,21 +18,21 @@ class Client
      *
      * @var \Inspirum\Balikobot\Contracts\RequesterInterface
      */
-    private $requester;
+    private RequesterInterface $requester;
 
     /**
      * Request and Response formatter
      *
      * @var \Inspirum\Balikobot\Services\Formatter
      */
-    private $formatter;
+    private Formatter $formatter;
 
     /**
      * Response validator
      *
      * @var \Inspirum\Balikobot\Services\Validator
      */
-    private $validator;
+    private Validator $validator;
 
     /**
      * Balikobot API client
@@ -57,7 +57,7 @@ class Client
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function addPackages(string $shipper, array $packages, &$labelsUrl = null): array
+    public function addPackages(string $shipper, array $packages, mixed &$labelsUrl = null): array
     {
         $response = $this->requester->call(API::V2V1, $shipper, Request::ADD, ['packages' => $packages]);
 
@@ -133,7 +133,7 @@ class Client
      */
     public function trackPackages(string $shipper, array $carrierIds): array
     {
-        $response = $this->requester->call(API::V2V2, $shipper, Request::TRACK, ['carrier_ids' => $carrierIds], false);
+        $response = $this->requester->call(API::V2V2, $shipper, Request::TRACK, ['carrier_ids' => $carrierIds], shouldHaveStatus: false);
 
         $response = $response['packages'] ?? [];
 
@@ -174,7 +174,7 @@ class Client
             $shipper,
             Request::TRACK_STATUS,
             ['carrier_ids' => $carrierIds],
-            false
+            shouldHaveStatus: false,
         );
 
         $response = $response['packages'] ?? [];
@@ -195,7 +195,7 @@ class Client
      */
     public function getOverview(string $shipper): array
     {
-        return $this->requester->call(API::V2V1, $shipper, Request::OVERVIEW, [], false);
+        return $this->requester->call(API::V2V1, $shipper, Request::OVERVIEW, shouldHaveStatus: false);
     }
 
     /**
@@ -227,7 +227,7 @@ class Client
      */
     public function getPackageInfo(string $shipper, string $packageId): array
     {
-        return $this->requester->call(API::V2V1, $shipper, Request::PACKAGE . '/' . $packageId, [], false);
+        return $this->requester->call(API::V2V1, $shipper, Request::PACKAGE . '/' . $packageId, shouldHaveStatus: false);
     }
 
     /**
@@ -246,8 +246,7 @@ class Client
             API::V2V1,
             $shipper,
             Request::PACKAGE . '/carrier_id/' . $carrierId,
-            [],
-            false
+            shouldHaveStatus: false,
         );
     }
 
@@ -280,7 +279,7 @@ class Client
      */
     public function getOrder(string $shipper, string $orderId): array
     {
-        $response = $this->requester->call(API::V2V1, $shipper, Request::ORDER_VIEW . '/' . $orderId, [], false);
+        $response = $this->requester->call(API::V2V1, $shipper, Request::ORDER_VIEW . '/' . $orderId, shouldHaveStatus: false);
 
         return $this->formatter->withoutStatus($response);
     }
@@ -305,7 +304,7 @@ class Client
         DateTime $dateTo,
         float $weight,
         int $packageCount,
-        ?string $message = null
+        ?string $message = null,
     ): void {
         $this->requester->call(API::V2V1, $shipper, Request::ORDER_PICKUP, [
             'date'          => $dateFrom->format('Y-m-d'),
@@ -366,7 +365,7 @@ class Client
         return $this->formatter->normalizeResponseItems(
             $response['units'] ?? [],
             'code',
-            $fullData === false ? 'name' : null
+            $fullData === false ? 'name' : null,
         );
     }
 
@@ -387,7 +386,7 @@ class Client
         return $this->formatter->normalizeResponseItems(
             $response['units'] ?? [],
             'code',
-            $fullData === false ? 'name' : null
+            $fullData === false ? 'name' : null,
         );
     }
 
@@ -397,8 +396,8 @@ class Client
      *
      * @param string      $shipper
      * @param string|null $service
-     * @param bool        $fullBranchesRequest
      * @param string|null $country
+     * @param bool        $fullBranchesRequest
      *
      * @return array<array<string,mixed>>
      *
@@ -407,8 +406,8 @@ class Client
     public function getBranches(
         string $shipper,
         ?string $service,
+        ?string $country = null,
         bool $fullBranchesRequest = false,
-        ?string $country = null
     ): array {
         $usedRequest = $fullBranchesRequest ? Request::FULL_BRANCHES : Request::BRANCHES;
 
@@ -449,7 +448,7 @@ class Client
         ?string $street = null,
         ?int $maxResults = null,
         ?float $radius = null,
-        ?string $type = null
+        ?string $type = null,
     ): array {
         $response = $this->requester->call(
             API::V2V1,
@@ -487,7 +486,7 @@ class Client
         return $this->formatter->normalizeResponseItems(
             $response['service_types'] ?? [],
             'service_type',
-            'cod_countries'
+            'cod_countries',
         );
     }
 
@@ -507,7 +506,7 @@ class Client
         return $this->formatter->normalizeResponseItems(
             $response['service_types'] ?? [],
             'service_type',
-            'countries'
+            'countries',
         );
     }
 
@@ -561,7 +560,7 @@ class Client
         return $this->formatter->normalizeResponseItems(
             $response['units'] ?? [],
             'code',
-            $fullData === false ? 'name' : null
+            $fullData === false ? 'name' : null,
         );
     }
 
@@ -636,7 +635,7 @@ class Client
             $shipper,
             Request::PROOF_OF_DELIVERY,
             $this->formatter->encapsulateIds($carrierIds, 'id'),
-            false
+            shouldHaveStatus: false,
         );
 
         $response = $this->formatter->withoutStatus($response);
@@ -713,7 +712,7 @@ class Client
         return $this->formatter->normalizeResponseItems(
             $response['attributes'] ?? [],
             'name',
-            null
+            null,
         );
     }
 
@@ -738,14 +737,14 @@ class Client
                 'service_type',
                 'services',
                 'code',
-                $fullData === false ? 'name' : null
+                $fullData === false ? 'name' : null,
             );
         }
 
         return $this->formatter->normalizeResponseItems(
             $response['services'] ?? [],
             'code',
-            $fullData === false ? 'name' : null
+            $fullData === false ? 'name' : null,
         );
     }
 }

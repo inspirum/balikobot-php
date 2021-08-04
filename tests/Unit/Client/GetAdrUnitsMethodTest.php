@@ -117,7 +117,7 @@ class GetAdrUnitsMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $units = $client->getAdrUnits('cp', true);
+        $units = $client->getAdrUnits('cp', fullData: true);
 
         $this->assertEquals(
             [

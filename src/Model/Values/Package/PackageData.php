@@ -16,7 +16,7 @@ trait PackageData
      *
      * @return void
      */
-    abstract public function offsetSet($key, $value): void;
+    abstract public function offsetSet(string $key, mixed $value): void;
 
     /**
      * @param float $width

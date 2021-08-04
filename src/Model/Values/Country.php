@@ -13,35 +13,35 @@ class Country
      *
      * @var array<string,string>
      */
-    private $names;
+    private array $names;
 
     /**
      * Alpha-2 country code
      *
      * @var string
      */
-    private $code;
+    private string $code;
 
     /**
      * Continent name
      *
      * @var string
      */
-    private $continent;
+    private string $continent;
 
     /**
      * Phone prefixes
      *
      * @var array<string>
      */
-    private $phonePrefixes;
+    private array $phonePrefixes;
 
     /**
      * Currency code
      *
      * @var string
      */
-    private $currencyCode;
+    private string $currencyCode;
 
     /**
      * Country constructor

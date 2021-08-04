@@ -49,7 +49,7 @@ class GetBranchesForLocatotionMethodTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getBranchesForLocation('ups', 'CZ', 'Praha', null, 'Pražská', 4, 40.3);
+        $client->getBranchesForLocation('ups', 'CZ', 'Praha', street: 'Pražská', maxResults: 4, radius: 40.3);
 
         $requester->shouldHaveReceived(
             'request',

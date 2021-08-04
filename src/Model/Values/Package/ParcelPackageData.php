@@ -17,7 +17,7 @@ trait ParcelPackageData
      *
      * @return void
      */
-    abstract public function offsetSet($key, $value): void;
+    abstract public function offsetSet(string $key, mixed $value): void;
 
     /**
      * @param string $muType

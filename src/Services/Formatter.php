@@ -14,7 +14,7 @@ class Formatter
      *
      * @var \Inspirum\Balikobot\Services\Validator
      */
-    private $validator;
+    private Validator $validator;
 
     /**
      * @param \Inspirum\Balikobot\Services\Validator $validator

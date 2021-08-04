@@ -20,7 +20,7 @@ abstract class AbstractPackage implements ArrayAccess
      *
      * @var array<string,mixed>
      */
-    private $data;
+    private array $data;
 
     /**
      * Package constructor
@@ -39,7 +39,7 @@ abstract class AbstractPackage implements ArrayAccess
      *
      * @return bool
      */
-    public function offsetExists($key): bool
+    public function offsetExists(mixed $key): bool
     {
         return array_key_exists($key, $this->data);
     }
@@ -50,10 +50,8 @@ abstract class AbstractPackage implements ArrayAccess
      * @param string $key
      *
      * @return mixed
-     *
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
      */
-    public function offsetGet($key)
+    public function offsetGet(mixed $key): mixed
     {
         return $this->data[$key];
     }
@@ -66,7 +64,7 @@ abstract class AbstractPackage implements ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($key, $value): void
+    public function offsetSet(mixed $key, mixed $value): void
     {
         $this->data[$key] = $value;
     }
@@ -78,7 +76,7 @@ abstract class AbstractPackage implements ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($key): void
+    public function offsetUnset(mixed $key): void
     {
         unset($this->data[$key]);
     }

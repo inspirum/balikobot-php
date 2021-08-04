@@ -27,14 +27,14 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @var array<int,\Inspirum\Balikobot\Model\Values\Package>
      */
-    private $packages = [];
+    private array $packages = [];
 
     /**
      * Shipper code
      *
      * @var string
      */
-    private $shipper;
+    private string $shipper;
 
     /**
      * PackageCollection constructor
@@ -84,9 +84,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      */
     public function toArray(): array
     {
-        return array_map(static function (Package $package) {
-            return $package->toArray();
-        }, $this->packages);
+        return array_map(static fn(Package $package) => $package->toArray(), $this->packages);
     }
 
     /**
@@ -106,7 +104,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return bool
      */
-    public function offsetExists($key): bool
+    public function offsetExists(mixed $key): bool
     {
         return array_key_exists($key, $this->packages);
     }
@@ -118,7 +116,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return \Inspirum\Balikobot\Model\Values\Package
      */
-    public function offsetGet($key): Package
+    public function offsetGet(mixed $key): Package
     {
         return $this->packages[$key];
     }
@@ -131,7 +129,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return void
      */
-    public function offsetSet($key, $value): void
+    public function offsetSet(mixed $key, mixed $value): void
     {
         $this->packages[$key] = $value;
     }
@@ -143,7 +141,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return void
      */
-    public function offsetUnset($key): void
+    public function offsetUnset(mixed $key): void
     {
         unset($this->packages[$key]);
     }

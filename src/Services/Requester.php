@@ -39,28 +39,28 @@ class Requester implements RequesterInterface
      *
      * @var string
      */
-    private $apiUser;
+    private string $apiUser;
 
     /**
      * API key
      *
      * @var string
      */
-    private $apiKey;
+    private string $apiKey;
 
     /**
      * SSL verification enabled
      *
      * @var bool
      */
-    private $sslVerify;
+    private bool $sslVerify;
 
     /**
      * Response validator
      *
      * @var \Inspirum\Balikobot\Services\Validator
      */
-    private $validator;
+    private Validator $validator;
 
     /**
      * Balikobot API client
@@ -96,7 +96,7 @@ class Requester implements RequesterInterface
         string $shipper,
         string $request,
         array $data = [],
-        bool $shouldHaveStatus = true
+        bool $shouldHaveStatus = true,
     ): array {
         // resolve url
         $path = trim($shipper . '/' . $request, '/');

@@ -17,7 +17,7 @@ trait CommonData
      *
      * @return void
      */
-    abstract public function offsetSet($key, $value): void;
+    abstract public function offsetSet(string $key, mixed $value): void;
 
     /**
      * Get an item at a given offset
@@ -25,10 +25,8 @@ trait CommonData
      * @param string $key
      *
      * @return mixed
-     *
-     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
      */
-    abstract public function offsetGet($key);
+    abstract public function offsetGet(string $key): mixed;
 
     /**
      * Determine if an item exists at an offset
@@ -37,7 +35,7 @@ trait CommonData
      *
      * @return bool
      */
-    abstract public function offsetExists($key): bool;
+    abstract public function offsetExists(string $key): bool;
 
     /**
      * Set EID
