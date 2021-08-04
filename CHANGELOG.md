@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.6.0...master)
 
 
-## [v5.5.0 (2021-07-21)](https://github.com/inspirum/balikobot-php/compare/v5.5.0...v5.6.0)
+## [v5.6.0 (2021-08-04)](https://github.com/inspirum/balikobot-php/compare/v5.5.0...v5.6.0)
 ### Added
 - Added support for new options from documentation **v1.933** (2021-07-29)
   - Add **AIRWAY** shipper
