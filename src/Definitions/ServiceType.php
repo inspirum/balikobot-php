@@ -322,33 +322,6 @@ final class ServiceType
     public const DPD_PRIVATE_SATURDAY = '8';
 
     /**
-     * Soukromá zásilka (B2C)
-     *
-     * @deprecated Will be removed in 6.0
-     *
-     * @var string
-     */
-    public const GEIS_PARCEL_PRIVATE = '1';
-
-    /**
-     * Firemní zásilka
-     *
-     * @deprecated Will be removed in 6.0
-     *
-     * @var string
-     */
-    public const GEIS_PARCEL_BUSINESS = '2';
-
-    /**
-     * Mezinárodní zásilka (B2B)
-     *
-     * @deprecated Will be removed in 6.0
-     *
-     * @var string
-     */
-    public const GEIS_PARCEL_BUSINESS_INTERNATIONAL = '3';
-
-    /**
      * Vnitrostátní paletová zásilka B2B
      *
      * @var string
@@ -361,42 +334,6 @@ final class ServiceType
      * @var string
      */
     public const GEIS_CARGO_BUSINESS_INTERNATIONAL = '5';
-
-    /**
-     * Geis Point
-     *
-     * @deprecated Will be removed in 6.0
-     *
-     * @var string
-     */
-    public const GEIS_PARCEL_GEIS_POINT = '6';
-
-    /**
-     * Garantované doručení (GAR)
-     *
-     * @deprecated Will be removed in 6.0
-     *
-     * @var string
-     */
-    public const GEIS_PARCEL_GARANTED = '7';
-
-    /**
-     * Doručení do 12. hodin (D12)
-     *
-     * @deprecated Will be removed in 6.0
-     *
-     * @var string
-     */
-    public const GEIS_PARCEL_12 = '8';
-
-    /**
-     * Mezinárodní zásilka (B2C)
-     *
-     * @deprecated Will be removed in 6.0
-     *
-     * @var string
-     */
-    public const GEIS_PARCEL_PRIVATE_INTERNATIONAL = '9';
 
     /**
      * Vnitrostátní paletová zásilka B2C
