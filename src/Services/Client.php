@@ -398,6 +398,7 @@ class Client
      * @param string|null $service
      * @param string|null $country
      * @param bool        $fullBranchesRequest
+     * @param bool        $gzip
      *
      * @return array<array<string,mixed>>
      *
@@ -408,6 +409,7 @@ class Client
         ?string $service,
         ?string $country = null,
         bool $fullBranchesRequest = false,
+        bool $gzip = false,
     ): array {
         $usedRequest = $fullBranchesRequest ? Request::FULL_BRANCHES : Request::BRANCHES;
 
@@ -419,7 +421,7 @@ class Client
             $usedRequest .= '/country/' . $country;
         }
 
-        $response = $this->requester->call(API::V2V1, $shipper, $usedRequest);
+        $response = $this->requester->call(API::V2V1, $shipper, $usedRequest, gzip: $gzip);
 
         return $response['branches'] ?? [];
     }

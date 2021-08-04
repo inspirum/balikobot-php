@@ -500,7 +500,7 @@ class Balikobot
     {
         $useFullBranchRequest = Shipper::hasFullBranchesSupport($shipper, $service);
 
-        foreach ($this->client->getBranches($shipper, $service, $country, $useFullBranchRequest) as $branch) {
+        foreach ($this->client->getBranches($shipper, $service, $country, fullBranchesRequest: $useFullBranchRequest, gzip: true) as $branch) {
             yield Branch::newInstanceFromData($shipper, $service, $branch);
         }
     }

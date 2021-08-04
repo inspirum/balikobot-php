@@ -16,6 +16,7 @@ interface RequesterInterface
      * @param string             $shipper
      * @param array<mixed,mixed> $data
      * @param bool               $shouldHaveStatus
+     * @param bool               $gzip
      *
      * @return array<mixed,mixed>
      *
@@ -26,7 +27,8 @@ interface RequesterInterface
         string $shipper,
         string $request,
         array $data = [],
-        bool $shouldHaveStatus = true
+        bool $shouldHaveStatus = true,
+        bool $gzip = false,
     ): array;
 
     /**

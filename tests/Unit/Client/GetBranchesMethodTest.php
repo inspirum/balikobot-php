@@ -135,6 +135,101 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
+    public function testMakeRequestCompressed(): void
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'   => 200,
+            'branches' => [],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->getBranches('cp', 'NP', gzip: true);
+
+        $requester->shouldHaveReceived(
+            'request',
+            ['https://apiv2.balikobot.cz/cp/branches/service/NP?gzip=1', []]
+        );
+
+        $this->assertTrue(true);
+    }
+
+    public function testMakeRequestWithServiceCompressed(): void
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'   => 200,
+            'branches' => [],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->getBranches('cp', 'NP', gzip: true);
+
+        $requester->shouldHaveReceived(
+            'request',
+            ['https://apiv2.balikobot.cz/cp/branches/service/NP?gzip=1', []]
+        );
+
+        $this->assertTrue(true);
+    }
+
+    public function testMakeRequestFullbranchesCompressed(): void
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'   => 200,
+            'branches' => [],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->getBranches('cp', 'NP', fullBranchesRequest: true, gzip: true);
+
+        $requester->shouldHaveReceived(
+            'request',
+            ['https://apiv2.balikobot.cz/cp/fullbranches/service/NP?gzip=1', []]
+        );
+
+        $this->assertTrue(true);
+    }
+
+    public function testMakeRequestWithCountryCompressed(): void
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'   => 200,
+            'branches' => [],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->getBranches('cp', 'NP', 'DE', gzip: true);
+
+        $requester->shouldHaveReceived(
+            'request',
+            ['https://apiv2.balikobot.cz/cp/branches/service/NP/country/DE?gzip=1', []]
+        );
+
+        $this->assertTrue(true);
+    }
+
+    public function testMakeRequestWithCountryWithoutServiceCompressed(): void
+    {
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
+            'status'   => 200,
+            'branches' => [],
+        ]);
+
+        $client = new Client($requester);
+
+        $client->getBranches('zasilkovna', null, 'DE', gzip: true);
+
+        $requester->shouldHaveReceived(
+            'request',
+            ['https://apiv2.balikobot.cz/zasilkovna/branches/country/DE?gzip=1', []]
+        );
+
+        $this->assertTrue(true);
+    }
+
     public function testEmptyArrayIsReturnedIfUnitsMissing(): void
     {
         $client = $this->newMockedClient(200, [

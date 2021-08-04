@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Services;
 
+use GuzzleHttp\Psr7\InflateStream;
 use GuzzleHttp\Psr7\Response;
 use Inspirum\Balikobot\Contracts\RequesterInterface;
 use Inspirum\Balikobot\Definitions\API;
+use Inspirum\Balikobot\Exceptions\BadRequestException;
+use JsonException;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamInterface;
 use RuntimeException;
+use Throwable;
 use function base64_encode;
 use function count;
 use function curl_close;
@@ -31,6 +36,7 @@ use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_SSL_VERIFYHOST;
 use const CURLOPT_SSL_VERIFYPEER;
 use const CURLOPT_URL;
+use const JSON_THROW_ON_ERROR;
 
 class Requester implements RequesterInterface
 {
@@ -97,26 +103,27 @@ class Requester implements RequesterInterface
         string $request,
         array $data = [],
         bool $shouldHaveStatus = true,
+        bool $gzip = false,
     ): array {
         // resolve url
         $path = trim($shipper . '/' . $request, '/');
         $path = str_replace('//', '/', $path);
         $host = $this->resolveHostName($version);
 
+        // add query to compress response as gzip
+        if ($gzip) {
+            $path .= '?gzip=1';
+        }
+
         // call API server and get response
         $response = $this->request($host . $path, $data);
 
         // get status code and content
         $statusCode = $response->getStatusCode();
-        $content    = $response->getBody()->getContents();
+        $content    = $this->getContents($response->getBody(), $gzip);
 
         // parse response content to assoc array
-        $content = json_decode($content, true);
-
-        // return empty array when json_decode fails
-        if ($content === null) {
-            $content = [];
-        }
+        $content = $this->parseContents($content, $statusCode < 300);
 
         // validate response status code
         $this->validateResponse($statusCode, $content, $shouldHaveStatus);
@@ -177,6 +184,42 @@ class Requester implements RequesterInterface
     }
 
     /**
+     * Decode API response JSON to array
+     *
+     * @param string $content
+     *
+     * @return array<mixed,mixed>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    private function parseContents(string $content, bool $throwOnError): array
+    {
+        try {
+            return $this->decode($content);
+        } catch (JsonException $exception) {
+            if ($throwOnError) {
+                throw new BadRequestException([], 400, $exception, 'Cannot parse response data');
+            }
+
+            return [];
+        }
+    }
+
+    /**
+     * Decode API response JSON to array
+     *
+     * @param string $content
+     *
+     * @return array<mixed,mixed>
+     *
+     * @throws \JsonException
+     */
+    protected function decode(string $content): array
+    {
+        return json_decode($content, true, flags: JSON_THROW_ON_ERROR);
+    }
+
+    /**
      * Get API url for given version
      *
      * @param string $version
@@ -186,6 +229,31 @@ class Requester implements RequesterInterface
     private function resolveHostName(string $version): string
     {
         return API::URL[$version] ?? API::URL[API::V2V1];
+    }
+
+    /**
+     * Get response content (even gzipped)
+     *
+     * @param \Psr\Http\Message\StreamInterface $stream
+     * @param bool                              $gzip
+     *
+     * @return string
+     */
+    private function getContents(StreamInterface $stream, bool $gzip): string
+    {
+        if ($gzip === false) {
+            return $stream->getContents();
+        }
+
+        try {
+            $inflateStream = new InflateStream($stream);
+
+            return $inflateStream->getContents();
+        } catch (Throwable) {
+            $stream->rewind();
+
+            return $stream->getContents();
+        }
     }
 
     /**
