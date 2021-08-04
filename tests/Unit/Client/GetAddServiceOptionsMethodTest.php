@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Services\Client;
 
 class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -18,7 +20,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
         $client->getAddServiceOptions('cp');
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -27,7 +29,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
         $client->getAddServiceOptions('cp');
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -38,7 +40,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
         $client->getAddServiceOptions('cp');
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -59,7 +61,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testMakeRequestWithService()
+    public function testMakeRequestWithService(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -80,7 +82,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testEmptyArrayIsReturnedIfServiceTypesMissing()
+    public function testEmptyArrayIsReturnedIfServiceTypesMissing(): void
     {
         $client = $this->newMockedClient(200, [
             'status' => 200,
@@ -91,7 +93,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
         $this->assertEquals([], $services);
     }
 
-    public function testOnlyServicesDataAreReturned()
+    public function testOnlyServicesDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'       => 200,
@@ -119,7 +121,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
         );
     }
 
-    public function testFullDataAreReturned()
+    public function testFullDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'       => 200,
@@ -153,7 +155,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
         );
     }
 
-    public function testAllServicesDataAreReturned()
+    public function testAllServicesDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'        => 200,
@@ -206,7 +208,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
         );
     }
 
-    public function testAllFullDataAreReturned()
+    public function testAllFullDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'        => 200,

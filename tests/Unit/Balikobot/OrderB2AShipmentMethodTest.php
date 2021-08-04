@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Inspirum\Balikobot\Model\Aggregates\PackageCollection;
@@ -8,7 +10,7 @@ use Inspirum\Balikobot\Services\Balikobot;
 
 class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
 {
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -59,7 +61,7 @@ class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testResponseData()
+    public function testResponseData(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'status' => 200,
@@ -93,7 +95,7 @@ class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals('0002', $orderedPackages[1]->getBatchId());
     }
 
-    public function testResponseDataWithoutCarrierId()
+    public function testResponseDataWithoutCarrierId(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'status' => 200,

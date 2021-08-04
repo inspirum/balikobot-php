@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Definitions;
 
 use InvalidArgumentException;
+use function in_array;
 
 final class Shipper
 {
@@ -283,20 +286,17 @@ final class Shipper
      */
     public static function hasFullBranchesSupport(string $shipperCode, ?string $serviceCode): bool
     {
-        if ($shipperCode == Shipper::ZASILKOVNA) {
+        if ($shipperCode === self::ZASILKOVNA) {
             return true;
         }
 
-        if ($shipperCode == Shipper::CP && $serviceCode === ServiceType::CP_NP) {
+        if ($shipperCode === self::CP && $serviceCode === ServiceType::CP_NP) {
             return true;
         }
 
         $services = [ServiceType::PBH_MP, ServiceType::PBH_FAN_KURIER];
-        if ($shipperCode == Shipper::PBH && in_array($serviceCode, $services)) {
-            return true;
-        }
 
-        return false;
+        return $shipperCode === self::PBH && in_array($serviceCode, $services);
     }
 
     /**
@@ -314,10 +314,10 @@ final class Shipper
         }
 
         $supportedShippers = [
-            Shipper::PPL,
-            Shipper::DPD,
-            Shipper::GEIS,
-            Shipper::GLS,
+            self::PPL,
+            self::DPD,
+            self::GEIS,
+            self::GLS,
         ];
 
         return in_array($shipperCode, $supportedShippers);

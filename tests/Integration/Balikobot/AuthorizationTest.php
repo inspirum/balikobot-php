@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Definitions\Country;
@@ -11,7 +13,7 @@ use Inspirum\Balikobot\Model\Values\Package;
 
 class AuthorizationTest extends AbstractBalikobotTestCase
 {
-    public function testWrongAuthorizationException()
+    public function testWrongAuthorizationException(): void
     {
         $this->expectException(UnauthorizedException::class);
 
@@ -20,7 +22,7 @@ class AuthorizationTest extends AbstractBalikobotTestCase
         $service->getServices('cp');
     }
 
-    public function testAuthorization()
+    public function testAuthorization(): void
     {
         $service = $this->newBalikobot('balikobot_test2cztest', '#lS1tBVo');
 

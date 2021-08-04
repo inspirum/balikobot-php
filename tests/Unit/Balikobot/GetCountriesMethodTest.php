@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Inspirum\Balikobot\Services\Balikobot;
 
 class GetCountriesMethodTest extends AbstractBalikobotTestCase
 {
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'        => 200,
@@ -28,7 +30,7 @@ class GetCountriesMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testResponseData()
+    public function testResponseData(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'status'        => 200,

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Aggregates;
 
 use ArrayAccess;
@@ -9,6 +11,10 @@ use Inspirum\Balikobot\Model\Values\OrderedPackage;
 use InvalidArgumentException;
 use IteratorAggregate;
 use RuntimeException;
+use function array_key_exists;
+use function array_map;
+use function count;
+use function sprintf;
 
 /**
  * @implements \ArrayAccess<int,\Inspirum\Balikobot\Model\Values\OrderedPackage>
@@ -42,7 +48,7 @@ class OrderedPackageCollection implements ArrayAccess, Countable, IteratorAggreg
      *
      * @param string|null $shipper
      */
-    public function __construct(string $shipper = null)
+    public function __construct(?string $shipper = null)
     {
         $this->shipper = $shipper;
     }
@@ -86,7 +92,7 @@ class OrderedPackageCollection implements ArrayAccess, Countable, IteratorAggreg
      */
     public function getPackageIds(): array
     {
-        return array_map(function (OrderedPackage $package) {
+        return array_map(static function (OrderedPackage $package) {
             return $package->getPackageId();
         }, $this->packages);
     }
@@ -98,7 +104,7 @@ class OrderedPackageCollection implements ArrayAccess, Countable, IteratorAggreg
      */
     public function getCarrierIds(): array
     {
-        return array_map(function (OrderedPackage $package) {
+        return array_map(static function (OrderedPackage $package) {
             return $package->getCarrierId();
         }, $this->packages);
     }
@@ -156,7 +162,7 @@ class OrderedPackageCollection implements ArrayAccess, Countable, IteratorAggreg
      *
      * @return bool
      */
-    public function offsetExists($key)
+    public function offsetExists($key): bool
     {
         return array_key_exists($key, $this->packages);
     }
@@ -168,7 +174,7 @@ class OrderedPackageCollection implements ArrayAccess, Countable, IteratorAggreg
      *
      * @return \Inspirum\Balikobot\Model\Values\OrderedPackage
      */
-    public function offsetGet($key)
+    public function offsetGet($key): OrderedPackage
     {
         return $this->packages[$key];
     }
@@ -181,7 +187,7 @@ class OrderedPackageCollection implements ArrayAccess, Countable, IteratorAggreg
      *
      * @return void
      */
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value): void
     {
         $this->validateShipper($value);
 
@@ -195,7 +201,7 @@ class OrderedPackageCollection implements ArrayAccess, Countable, IteratorAggreg
      *
      * @return void
      */
-    public function offsetUnset($key)
+    public function offsetUnset($key): void
     {
         unset($this->packages[$key]);
     }

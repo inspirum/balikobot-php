@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Contracts\ExceptionInterface;
@@ -9,7 +11,7 @@ use Inspirum\Balikobot\Model\Values\Branch;
 
 class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
 {
-    public function testValidRequest()
+    public function testValidRequest(): void
     {
         $service = $this->newBalikobot();
 
@@ -23,14 +25,14 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
             40.3
         );
 
-        /* @var \Inspirum\Balikobot\Model\Values\Branch $branch */
+        /** @var \Inspirum\Balikobot\Model\Values\Branch $branch */
         $branch = $branches->current();
 
         $this->assertInstanceOf(Branch::class, $branch);
         $this->assertNotEmpty($branch->getId());
     }
 
-    public function testInvalidRequest()
+    public function testInvalidRequest(): void
     {
         $service = $this->newBalikobot();
 

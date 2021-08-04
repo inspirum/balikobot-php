@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Contracts\ExceptionInterface;
@@ -11,7 +13,7 @@ use Inspirum\Balikobot\Model\Values\Package;
 
 class AddPackagesMethodTest extends AbstractBalikobotTestCase
 {
-    public function testValidRequest()
+    public function testValidRequest(): void
     {
         $service = $this->newBalikobot();
 
@@ -36,7 +38,7 @@ class AddPackagesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(Shipper::ZASILKOVNA, $orderPackages->getShipper());
     }
 
-    public function testMissingBranchId()
+    public function testMissingBranchId(): void
     {
         $service = $this->newBalikobot();
 

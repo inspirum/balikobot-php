@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Client;
 
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Services\Requester;
 use Inspirum\Balikobot\Tests\AbstractTestCase;
+use function getenv;
 
 abstract class AbstractClientTestCase extends AbstractTestCase
 {
@@ -16,7 +19,7 @@ abstract class AbstractClientTestCase extends AbstractTestCase
      *
      * @return \Inspirum\Balikobot\Services\Client
      */
-    protected function newClient(string $apiUser = null, string $apiKey = null): Client
+    protected function newClient(?string $apiUser = null, ?string $apiKey = null): Client
     {
         return new Client(
             new Requester(

@@ -1,13 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\Shipper;
+use function array_filter;
+use function array_keys;
+use function array_map;
+use function sprintf;
 
 class ShipperTest extends AbstractBalikobotTestCase
 {
-    public function testPackageSupportAllShippers()
+    public function testPackageSupportAllShippers(): void
     {
         $service = $this->newBalikobot();
 
@@ -49,12 +55,12 @@ class ShipperTest extends AbstractBalikobotTestCase
         $this->assertEqualsCanonicalizing($supportedShippers, $shippers);
     }
 
-    public function testPackageSupportAllShippersServices()
+    public function testPackageSupportAllShippersServices(): void
     {
         $service = $this->newBalikobot();
 
         $supportedServices = ServiceType::all();
-        $supportedServices = array_map(function ($data) {
+        $supportedServices = array_map(static function ($data) {
             return array_filter($data);
         }, $supportedServices);
 

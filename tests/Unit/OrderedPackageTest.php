@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Tests\AbstractTestCase;
 
 class OrderedPackageTest extends AbstractTestCase
 {
-    public function testStaticConstructor()
+    public function testStaticConstructor(): void
     {
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', [
             'eid'             => '0001',
@@ -16,21 +18,21 @@ class OrderedPackageTest extends AbstractTestCase
             'carrier_id'      => '02IID',
             'track_url'       => '/track',
             'label_url'       => '/labels',
-            'carrier_id_swap' => 23,
-            'pieces'          => [1, 2],
+            'carrier_id_swap' => '23',
+            'pieces'          => ['1', '2'],
         ]);
 
         $this->assertEquals('cp', $orderedPackage->getShipper());
         $this->assertEquals('0001', $orderedPackage->getBatchId());
-        $this->assertEquals(1234, $orderedPackage->getPackageId());
+        $this->assertEquals('1234', $orderedPackage->getPackageId());
         $this->assertEquals('02IID', $orderedPackage->getCarrierId());
         $this->assertEquals('/track', $orderedPackage->getTrackUrl());
         $this->assertEquals('/labels', $orderedPackage->getLabelUrl());
-        $this->assertEquals(23, $orderedPackage->getCarrierIdSwap());
-        $this->assertEquals([1, 2], $orderedPackage->getPieces());
+        $this->assertEquals('23', $orderedPackage->getCarrierIdSwap());
+        $this->assertEquals(['1', '2'], $orderedPackage->getPieces());
     }
 
-    public function testStaticConstructorWithMissingData()
+    public function testStaticConstructorWithMissingData(): void
     {
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', [
             'eid'          => '0001',
@@ -50,7 +52,7 @@ class OrderedPackageTest extends AbstractTestCase
         $this->assertEquals([], $orderedPackage->getPieces());
     }
 
-    public function testStaticConstructorWithMissingCarrierId()
+    public function testStaticConstructorWithMissingCarrierId(): void
     {
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', [
             'eid'          => '0001',
@@ -68,7 +70,7 @@ class OrderedPackageTest extends AbstractTestCase
         $this->assertEquals([], $orderedPackage->getPieces());
     }
 
-    public function testStaticConstructorWithFinalTrackUrl()
+    public function testStaticConstructorWithFinalTrackUrl(): void
     {
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', [
             'eid'              => '0001',

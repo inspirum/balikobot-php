@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Values;
 
 use ArrayAccess;
 use Inspirum\Balikobot\Model\Values\Package\CommonData;
+use function array_key_exists;
 
 /**
  * @implements \ArrayAccess<string,mixed>
@@ -36,7 +39,7 @@ abstract class AbstractPackage implements ArrayAccess
      *
      * @return bool
      */
-    public function offsetExists($key)
+    public function offsetExists($key): bool
     {
         return array_key_exists($key, $this->data);
     }
@@ -47,6 +50,8 @@ abstract class AbstractPackage implements ArrayAccess
      * @param string $key
      *
      * @return mixed
+     *
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
      */
     public function offsetGet($key)
     {
@@ -61,7 +66,7 @@ abstract class AbstractPackage implements ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value): void
     {
         $this->data[$key] = $value;
     }
@@ -73,7 +78,7 @@ abstract class AbstractPackage implements ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($key)
+    public function offsetUnset($key): void
     {
         unset($this->data[$key]);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Contracts\ExceptionInterface;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Exceptions\UnauthorizedException;
 
 class ExceptionsTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(UnauthorizedException::class);
 
@@ -16,7 +18,7 @@ class ExceptionsTest extends AbstractClientTestCase
         $client->addPackages('cp', []);
     }
 
-    public function testThrowsExceptionMatchStatusCode()
+    public function testThrowsExceptionMatchStatusCode(): void
     {
         $client = $this->newMockedClient(409, []);
 
@@ -27,7 +29,7 @@ class ExceptionsTest extends AbstractClientTestCase
         }
     }
 
-    public function testThrowsExceptionMatchStatusCodeFromResponse()
+    public function testThrowsExceptionMatchStatusCodeFromResponse(): void
     {
         $client = $this->newMockedClient(200, [
             'status' => 419,
@@ -40,7 +42,7 @@ class ExceptionsTest extends AbstractClientTestCase
         }
     }
 
-    public function testThrowsExceptionMatchResponse()
+    public function testThrowsExceptionMatchResponse(): void
     {
         $client = $this->newMockedClient(409, [
             'test'   => 1,
@@ -57,7 +59,7 @@ class ExceptionsTest extends AbstractClientTestCase
         }
     }
 
-    public function testThrowsExceptionMatchSimpleErrors()
+    public function testThrowsExceptionMatchSimpleErrors(): void
     {
         $client = $this->newMockedClient(200, [
             'status'   => 400,
@@ -93,7 +95,7 @@ class ExceptionsTest extends AbstractClientTestCase
         }
     }
 
-    public function testThrowsExceptionMatchSimpleErrorsWithOlderResponse()
+    public function testThrowsExceptionMatchSimpleErrorsWithOlderResponse(): void
     {
         $client = $this->newMockedClient(200, [
             'status' => 400,
@@ -127,7 +129,7 @@ class ExceptionsTest extends AbstractClientTestCase
         }
     }
 
-    public function testThrowsExceptionMatchMessageWithErrors()
+    public function testThrowsExceptionMatchMessageWithErrors(): void
     {
         $client = $this->newMockedClient(200, [
             'status' => 400,
@@ -156,7 +158,7 @@ class ExceptionsTest extends AbstractClientTestCase
         }
     }
 
-    public function testThrowsExceptionMatchSimpleErrorsWithStatusCode()
+    public function testThrowsExceptionMatchSimpleErrorsWithStatusCode(): void
     {
         $client = $this->newMockedClient(200, [
             'status'   => 400,
@@ -185,7 +187,7 @@ class ExceptionsTest extends AbstractClientTestCase
         }
     }
 
-    public function testThrowsExceptionMatchSimpleErrorsWithUnexpectedValue()
+    public function testThrowsExceptionMatchSimpleErrorsWithUnexpectedValue(): void
     {
         $client = $this->newMockedClient(200, [
             'status'   => 400,
@@ -214,7 +216,7 @@ class ExceptionsTest extends AbstractClientTestCase
         }
     }
 
-    public function testThrowsExceptionMatchErrors()
+    public function testThrowsExceptionMatchErrors(): void
     {
         $client = $this->newMockedClient(200, [
             'status'   => 400,

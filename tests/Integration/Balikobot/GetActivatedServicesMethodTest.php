@@ -1,12 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Definitions\Shipper;
+use function count;
+use function is_bool;
 
 class GetActivatedServicesMethodTest extends AbstractBalikobotTestCase
 {
-    public function testValidRequest()
+    public function testValidRequest(): void
     {
         $service = $this->newBalikobot();
 

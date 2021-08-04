@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Services\Balikobot;
 
 class GetPackageInfoMethodTest extends AbstractBalikobotTestCase
 {
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -30,7 +32,7 @@ class GetPackageInfoMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testResponseData()
+    public function testResponseData(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'package_id'      => '1',

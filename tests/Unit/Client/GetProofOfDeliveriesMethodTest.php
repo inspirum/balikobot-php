@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
-use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
 class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -16,10 +17,10 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             'status' => 200,
         ]);
 
-        $client->getProofOfDelivery('cp', 1);
+        $client->getProofOfDelivery('cp', '1');
     }
 
-    public function testRequestDoesNotHaveStatus()
+    public function testRequestDoesNotHaveStatus(): void
     {
         $client = $this->newMockedClient(200, [
             0 => [
@@ -28,12 +29,12 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $status = $client->getProofOfDelivery('cp', 1);
+        $status = $client->getProofOfDelivery('cp', '1');
 
         $this->assertNotEmpty($status);
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -41,10 +42,10 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             'status' => 400,
         ]);
 
-        $client->getProofOfDelivery('cp', 1);
+        $client->getProofOfDelivery('cp', '1');
     }
 
-    public function testThrowsExceptionOnBadStatusCodeForPackage()
+    public function testThrowsExceptionOnBadStatusCodeForPackage(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -54,10 +55,10 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $client->getProofOfDelivery('cp', 1);
+        $client->getProofOfDelivery('cp', '1');
     }
 
-    public function testThrowsExceptionWhenNoReturn()
+    public function testThrowsExceptionWhenNoReturn(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -65,10 +66,10 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             'status' => 200,
         ]);
 
-        $client->getProofOfDelivery('cp', 1);
+        $client->getProofOfDelivery('cp', '1');
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -80,7 +81,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getProofOfDelivery('cp', 1);
+        $client->getProofOfDelivery('cp', '1');
 
         $requester->shouldHaveReceived(
             'request',
@@ -97,7 +98,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testDataAreReturnedInFormat()
+    public function testDataAreReturnedInFormat(): void
     {
         $client = $this->newMockedClient(200, [
             'status' => 200,
@@ -107,12 +108,12 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $link = $client->getProofOfDelivery('cp', 1);
+        $link = $client->getProofOfDelivery('cp', '1');
 
         $this->assertEquals('https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs', $link);
     }
 
-    public function testThrowsExceptionOnErrorWithMultiplePackages()
+    public function testThrowsExceptionOnErrorWithMultiplePackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -120,10 +121,10 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             'status' => 200,
         ]);
 
-        $client->getProofOfDeliveries('cp', [1, 3, 4]);
+        $client->getProofOfDeliveries('cp', ['1', '3', '4']);
     }
 
-    public function testRequestDoesNotHaveStatusWithMultiplePackages()
+    public function testRequestDoesNotHaveStatusWithMultiplePackages(): void
     {
         $client = $this->newMockedClient(200, [
             0 => [
@@ -140,12 +141,12 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $status = $client->getProofOfDeliveries('cp', [1, 5, 6]);
+        $status = $client->getProofOfDeliveries('cp', ['1', '5', '6']);
 
         $this->assertNotEmpty($status);
     }
 
-    public function testThrowsExceptionOnBadStatusCodeWithMultiplePackages()
+    public function testThrowsExceptionOnBadStatusCodeWithMultiplePackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -153,10 +154,10 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             'status' => 400,
         ]);
 
-        $client->getProofOfDeliveries('cp', [1, 4]);
+        $client->getProofOfDeliveries('cp', ['1', '4']);
     }
 
-    public function testThrowsExceptionOnBadStatusCodeForPackageWithMultiplePackages()
+    public function testThrowsExceptionOnBadStatusCodeForPackageWithMultiplePackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -170,10 +171,10 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $client->getProofOfDeliveries('cp', [1, 4]);
+        $client->getProofOfDeliveries('cp', ['1', '4']);
     }
 
-    public function testThrowsExceptionWhenNoReturnWithMultiplePackages()
+    public function testThrowsExceptionWhenNoReturnWithMultiplePackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -181,10 +182,10 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             'status' => 200,
         ]);
 
-        $client->getProofOfDeliveries('cp', [1, 2]);
+        $client->getProofOfDeliveries('cp', ['1', '2']);
     }
 
-    public function testThrowsExceptionWhenNotAllDataReturnWithMultiplePackages()
+    public function testThrowsExceptionWhenNotAllDataReturnWithMultiplePackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -196,10 +197,10 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $client->getProofOfDeliveries('cp', [1, 2]);
+        $client->getProofOfDeliveries('cp', ['1', '2']);
     }
 
-    public function testMakeRequestWithMultiplePackages()
+    public function testMakeRequestWithMultiplePackages(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -215,7 +216,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getProofOfDeliveries('cp', [1, 6]);
+        $client->getProofOfDeliveries('cp', ['1', '6']);
 
         $requester->shouldHaveReceived(
             'request',
@@ -235,7 +236,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testDataAreReturnedInFormatWithMultiplePackages()
+    public function testDataAreReturnedInFormatWithMultiplePackages(): void
     {
         $client = $this->newMockedClient(200, [
             'status' => 200,
@@ -253,7 +254,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             ],
         ]);
 
-        $links = $client->getProofOfDeliveries('cp', [1, 6, 5]);
+        $links = $client->getProofOfDeliveries('cp', ['1', '6', '5']);
 
         $this->assertEquals(
             [

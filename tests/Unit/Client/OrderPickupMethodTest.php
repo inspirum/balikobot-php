@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use DateTime;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
-use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
 class OrderPickupMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -20,7 +21,7 @@ class OrderPickupMethodTest extends AbstractClientTestCase
         $client->orderPickup('cp', new DateTime(), new DateTime('+4 HOURS'), 1, 2);
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -29,7 +30,7 @@ class OrderPickupMethodTest extends AbstractClientTestCase
         $client->orderPickup('cp', new DateTime(), new DateTime('+4 HOURS'), 1, 2);
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -40,7 +41,7 @@ class OrderPickupMethodTest extends AbstractClientTestCase
         $client->orderPickup('cp', new DateTime(), new DateTime('+4 HOURS'), 1, 2);
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,

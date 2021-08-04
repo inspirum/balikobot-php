@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Aggregates;
 
 use ArrayAccess;
@@ -9,6 +11,10 @@ use Inspirum\Balikobot\Model\Values\PackageTransportCost;
 use InvalidArgumentException;
 use IteratorAggregate;
 use RuntimeException;
+use function array_key_exists;
+use function array_map;
+use function count;
+use function sprintf;
 
 /**
  * @implements \ArrayAccess<int,\Inspirum\Balikobot\Model\Values\PackageTransportCost>
@@ -35,7 +41,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      *
      * @param string|null $shipper
      */
-    public function __construct(string $shipper = null)
+    public function __construct(?string $shipper = null)
     {
         $this->shipper = $shipper;
     }
@@ -79,7 +85,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      */
     public function getBatchIds(): array
     {
-        return array_map(function (PackageTransportCost $transportCost) {
+        return array_map(static function (PackageTransportCost $transportCost) {
             return $transportCost->getBatchId();
         }, $this->costs);
     }
@@ -154,7 +160,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      *
      * @return bool
      */
-    public function offsetExists($key)
+    public function offsetExists($key): bool
     {
         return array_key_exists($key, $this->costs);
     }
@@ -166,7 +172,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      *
      * @return \Inspirum\Balikobot\Model\Values\PackageTransportCost
      */
-    public function offsetGet($key)
+    public function offsetGet($key): PackageTransportCost
     {
         return $this->costs[$key];
     }
@@ -179,7 +185,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      *
      * @return void
      */
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value): void
     {
         $this->validateShipper($value);
 
@@ -193,7 +199,7 @@ class PackageTransportCostCollection implements ArrayAccess, Countable, Iterator
      *
      * @return void
      */
-    public function offsetUnset($key)
+    public function offsetUnset($key): void
     {
         unset($this->costs[$key]);
     }

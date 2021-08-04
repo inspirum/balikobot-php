@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Values;
 
 class OrderedShipment
@@ -50,7 +52,7 @@ class OrderedShipment
         array $packageIds,
         string $handoverUrl,
         string $labelsUrl,
-        string $fileUrl = null
+        ?string $fileUrl = null
     ) {
         $this->orderId     = $orderId;
         $this->shipper     = $shipper;

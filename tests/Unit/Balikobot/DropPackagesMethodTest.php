@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
@@ -8,7 +10,7 @@ use Inspirum\Balikobot\Services\Balikobot;
 
 class DropPackagesMethodTest extends AbstractBalikobotTestCase
 {
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -39,7 +41,7 @@ class DropPackagesMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testMakeRequestForSinglePackage()
+    public function testMakeRequestForSinglePackage(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,

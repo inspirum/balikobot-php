@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Generator;
@@ -10,9 +12,9 @@ use Mockery;
 
 class GetBranchesMethodTest extends AbstractBalikobotTestCase
 {
-    public function testGetBranchesForShipperServiceCallAllServicesWithCountries()
+    public function testGetBranchesForShipperServiceCallAllServicesWithCountries(): void
     {
-        /* @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
+        /** @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
         $service = Mockery::mock(
             Balikobot::class . '[getServices,getBranchesForShipperService]',
             [new Requester('test', 'test')]
@@ -44,9 +46,9 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(8, $count);
     }
 
-    public function testGetBranchesForShipperServiceCallAllServicesWithCountriesWithoutAPISupport()
+    public function testGetBranchesForShipperServiceCallAllServicesWithCountriesWithoutAPISupport(): void
     {
-        /* @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
+        /** @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
         $service = Mockery::mock(
             Balikobot::class . '[getServices,getBranchesForShipperService]',
             [new Requester('test', 'test')]
@@ -67,9 +69,9 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(4, $count);
     }
 
-    public function testGetBranchesForShipperCallWithCountriesWithoutAPISupport()
+    public function testGetBranchesForShipperCallWithCountriesWithoutAPISupport(): void
     {
-        /* @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
+        /** @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
         $service = Mockery::mock(
             Balikobot::class . '[getServices,getBranchesForShipperService]',
             [new Requester('test', 'test')]
@@ -107,9 +109,9 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(8, $count);
     }
 
-    public function testGetBranchesForShipperCallAllServices()
+    public function testGetBranchesForShipperCallAllServices(): void
     {
-        /* @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
+        /** @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
         $service = Mockery::mock(
             Balikobot::class . '[getServices,getBranchesForShipperService]',
             [new Requester('test', 'test')]
@@ -132,9 +134,9 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(5, $count);
     }
 
-    public function testGetBranchesForShipperCallAllServicesWithCountries()
+    public function testGetBranchesForShipperCallAllServicesWithCountries(): void
     {
-        /* @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
+        /** @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
         $service = Mockery::mock(
             Balikobot::class . '[getServices,getBranchesForShipperServiceForCountries]',
             [new Requester('test', 'test')]
@@ -161,9 +163,9 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(5, $count);
     }
 
-    public function testGetBranchesForShipperCallForEmptyServices()
+    public function testGetBranchesForShipperCallForEmptyServices(): void
     {
-        /* @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
+        /** @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
         $service = Mockery::mock(
             Balikobot::class . '[getServices,getBranchesForShipperService]',
             [new Requester('test', 'test')]
@@ -185,9 +187,9 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(2, $count);
     }
 
-    public function testGetBranchesCallAllShippers()
+    public function testGetBranchesCallAllShippers(): void
     {
-        /* @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
+        /** @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
         $service = Mockery::mock(
             Balikobot::class . '[getShippers,getBranchesForShipper]',
             [new Requester('test', 'test')]
@@ -210,9 +212,9 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(2, $count);
     }
 
-    public function testGetBranchesCallAllShippersWithCountries()
+    public function testGetBranchesCallAllShippersWithCountries(): void
     {
-        /* @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
+        /** @var \Inspirum\Balikobot\Services\Balikobot|\Mockery\MockInterface $service */
         $service = Mockery::mock(
             Balikobot::class . '[getShippers,getBranchesForShipperForCountries]',
             [new Requester('test', 'test')]
@@ -239,7 +241,7 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(3, $count);
     }
 
-    public function testFullBranchesMakeRequest()
+    public function testFullBranchesMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -263,7 +265,7 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testBranchesWithCountryMakeRequest()
+    public function testBranchesWithCountryMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -287,17 +289,17 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testResponseData()
+    public function testResponseData(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'status'   => 200,
             'branches' => [
                 [
-                    'id'  => 1,
+                    'id'  => '1',
                     'zip' => '11000',
                 ],
                 [
-                    'id'  => 876,
+                    'id'  => '876',
                     'zip' => '12000',
                 ],
             ],
@@ -307,7 +309,7 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
 
         $this->assertInstanceOf(Generator::class, $branches);
 
-        /* @var \Inspirum\Balikobot\Model\Values\Branch $branch */
+        /** @var \Inspirum\Balikobot\Model\Values\Branch $branch */
         $branch = $branches->current();
 
         $this->assertInstanceOf(Branch::class, $branch);
@@ -325,6 +327,14 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(null, $branch);
     }
 
+    /**
+     * @param int         $limit
+     * @param string|null $country
+     * @param string      $shipper
+     * @param string|null $service
+     *
+     * @return iterable<\Inspirum\Balikobot\Model\Values\Branch>
+     */
     private function branchesGenerator(int $limit, ?string $country, string $shipper, ?string $service): iterable
     {
         for ($i = 0; $i < $limit; $i++) {

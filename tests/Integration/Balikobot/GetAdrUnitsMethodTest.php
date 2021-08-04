@@ -1,12 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Definitions\Shipper;
+use function count;
+use function is_array;
+use function is_int;
+use function is_numeric;
+use function is_string;
 
 class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
 {
-    public function testValidRequest()
+    public function testValidRequest(): void
     {
         $service = $this->newBalikobot();
 
@@ -19,7 +26,7 @@ class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
         }
     }
 
-    public function testValidRequestWithFullData()
+    public function testValidRequestWithFullData(): void
     {
         $service = $this->newBalikobot();
 
@@ -30,11 +37,11 @@ class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
             $this->assertTrue(is_array($unit));
             $this->assertTrue(is_numeric($unit['id']));
             $this->assertTrue(is_string($unit['name']));
-            $this->assertTrue($unit['code'] == $id);
+            $this->assertTrue($unit['code'] === (string) $id);
         }
     }
 
-    public function testInvalidRequest()
+    public function testInvalidRequest(): void
     {
         $service = $this->newBalikobot();
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
@@ -10,7 +12,7 @@ use RuntimeException;
 
 class OrderedPackageCollectionTest extends AbstractTestCase
 {
-    public function testGetters()
+    public function testGetters(): void
     {
         $packages = new OrderedPackageCollection('cp');
 
@@ -23,7 +25,7 @@ class OrderedPackageCollectionTest extends AbstractTestCase
         $this->assertEquals(2, $packages->count());
     }
 
-    public function testThrowsErrorOnMissingShipper()
+    public function testThrowsErrorOnMissingShipper(): void
     {
         $this->expectException(RuntimeException::class);
 
@@ -32,7 +34,7 @@ class OrderedPackageCollectionTest extends AbstractTestCase
         $packages->getShipper();
     }
 
-    public function testCollectionShipperFromFirstPackage()
+    public function testCollectionShipperFromFirstPackage(): void
     {
         $packages = new OrderedPackageCollection();
 
@@ -41,7 +43,7 @@ class OrderedPackageCollectionTest extends AbstractTestCase
         $this->assertEquals('cp', $packages->getShipper());
     }
 
-    public function testDiffShipperThrowsError()
+    public function testDiffShipperThrowsError(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Package is from different shipper ("ppl" instead of "cp")');
@@ -52,7 +54,7 @@ class OrderedPackageCollectionTest extends AbstractTestCase
         $packages->add(new OrderedPackage('2', 'ppl', '0001', '5678'));
     }
 
-    public function testDiffShipperThrowsErrorWithOffsetSetMethod()
+    public function testDiffShipperThrowsErrorWithOffsetSetMethod(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Package is from different shipper ("ppl" instead of "cp")');
@@ -63,7 +65,7 @@ class OrderedPackageCollectionTest extends AbstractTestCase
         $packages->offsetSet(2, new OrderedPackage('2', 'ppl', '0001', '5678'));
     }
 
-    public function testSupportArrayAccess()
+    public function testSupportArrayAccess(): void
     {
         $packages = new OrderedPackageCollection('cp');
 
@@ -79,7 +81,7 @@ class OrderedPackageCollectionTest extends AbstractTestCase
         $this->assertFalse($packages->offsetExists(1));
     }
 
-    public function testSupportIteratorAggregate()
+    public function testSupportIteratorAggregate(): void
     {
         $packages = new OrderedPackageCollection('cp');
 
@@ -92,7 +94,7 @@ class OrderedPackageCollectionTest extends AbstractTestCase
         $this->assertEquals('6', $iterator->current()->getPackageId());
     }
 
-    public function testLabelsUrl()
+    public function testLabelsUrl(): void
     {
         $packages = new OrderedPackageCollection();
 

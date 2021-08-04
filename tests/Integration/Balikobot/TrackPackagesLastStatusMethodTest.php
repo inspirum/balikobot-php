@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Model\Values\OrderedPackage;
 
 class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
 {
-    public function testValidRequest()
+    public function testValidRequest(): void
     {
         $service = $this->newBalikobot();
 

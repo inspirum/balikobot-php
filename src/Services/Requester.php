@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Services;
 
 use GuzzleHttp\Psr7\Response;
@@ -7,6 +9,28 @@ use Inspirum\Balikobot\Contracts\RequesterInterface;
 use Inspirum\Balikobot\Definitions\API;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
+use function base64_encode;
+use function count;
+use function curl_close;
+use function curl_errno;
+use function curl_error;
+use function curl_exec;
+use function curl_getinfo;
+use function curl_init;
+use function curl_setopt;
+use function json_decode;
+use function json_encode;
+use function str_replace;
+use function trim;
+use const CURLINFO_HTTP_CODE;
+use const CURLOPT_HEADER;
+use const CURLOPT_HTTPHEADER;
+use const CURLOPT_POST;
+use const CURLOPT_POSTFIELDS;
+use const CURLOPT_RETURNTRANSFER;
+use const CURLOPT_SSL_VERIFYHOST;
+use const CURLOPT_SSL_VERIFYPEER;
+use const CURLOPT_URL;
 
 class Requester implements RequesterInterface
 {

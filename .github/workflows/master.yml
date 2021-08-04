@@ -29,10 +29,12 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install dependencies
         run: composer install --prefer-dist --no-interaction --no-progress --no-suggest
-      - name: Test
+      - name: Test styles
         run: |
           vendor/bin/phpcs --standard=./ruleset.xml src/
-          vendor/bin/phpstan analyse -l 7 -c phpstan.neon.dist src/
+          vendor/bin/phpstan analyse -l max -c phpstan.neon.dist src/
+      - name: Test
+        run: |
           vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
           if [[ "${{ matrix.php }}" == '7.4' ]]; then
             wget https://scrutinizer-ci.com/ocular.phar

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Generator;
@@ -8,7 +10,7 @@ use Inspirum\Balikobot\Services\Balikobot;
 
 class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
 {
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -38,7 +40,7 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testMakeRequestWithTypeParameter()
+    public function testMakeRequestWithTypeParameter(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -76,17 +78,17 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testResponseData()
+    public function testResponseData(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'status'   => 200,
             'branches' => [
                 [
-                    'id'  => 1,
+                    'id'  => '1',
                     'zip' => '11000',
                 ],
                 [
-                    'id'  => 876,
+                    'id'  => '876',
                     'zip' => '12000',
                 ],
             ],
@@ -96,7 +98,7 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
 
         $this->assertInstanceOf(Generator::class, $branches);
 
-        /* @var \Inspirum\Balikobot\Model\Values\Branch $branch */
+        /** @var \Inspirum\Balikobot\Model\Values\Branch $branch */
         $branch = $branches->current();
 
         $this->assertInstanceOf(Branch::class, $branch);

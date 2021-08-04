@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Values\Package;
 
 use Inspirum\Balikobot\Definitions\Option;
+use function implode;
 
 trait CommonData
 {
@@ -14,7 +17,7 @@ trait CommonData
      *
      * @return void
      */
-    abstract public function offsetSet($key, $value);
+    abstract public function offsetSet($key, $value): void;
 
     /**
      * Get an item at a given offset
@@ -22,6 +25,8 @@ trait CommonData
      * @param string $key
      *
      * @return mixed
+     *
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint
      */
     abstract public function offsetGet($key);
 
@@ -32,7 +37,7 @@ trait CommonData
      *
      * @return bool
      */
-    abstract public function offsetExists($key);
+    abstract public function offsetExists($key): bool;
 
     /**
      * Set EID

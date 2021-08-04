@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
-use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
 class GetPostCodesMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -19,7 +20,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         $client->getPostCodes('cp', 'NP');
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -28,7 +29,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         $client->getPostCodes('cp', 'NP');
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -39,7 +40,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         $client->getPostCodes('cp', 'NP');
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'    => 200,
@@ -61,7 +62,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testMakeRequestWithCountry()
+    public function testMakeRequestWithCountry(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'    => 200,
@@ -83,7 +84,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testEmptyArrayIsReturnedIfPostCodesMissing()
+    public function testEmptyArrayIsReturnedIfPostCodesMissing(): void
     {
         $client = $this->newMockedClient(200, [
             'status'    => 200,
@@ -95,7 +96,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         $this->assertEquals([], $postcodes);
     }
 
-    public function testDataAreReturnedFromResponseType1()
+    public function testDataAreReturnedFromResponseType1(): void
     {
         $client = $this->newMockedClient(200, [
             'status'       => 200,
@@ -138,7 +139,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         );
     }
 
-    public function testDataAreReturnedFromResponseType2()
+    public function testDataAreReturnedFromResponseType2(): void
     {
         $client = $this->newMockedClient(200, [
             'status'       => 200,
@@ -181,7 +182,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         );
     }
 
-    public function testDataAreReturnedFromResponseType4()
+    public function testDataAreReturnedFromResponseType4(): void
     {
         $client = $this->newMockedClient(200, [
             'status'       => 200,
@@ -213,7 +214,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         );
     }
 
-    public function testDataAreReturnedFromResponseType5()
+    public function testDataAreReturnedFromResponseType5(): void
     {
         $client = $this->newMockedClient(200, [
             'status'       => 200,

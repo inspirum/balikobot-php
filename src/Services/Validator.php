@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Services;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Exceptions\UnauthorizedException;
+use function array_keys;
+use function range;
 
 class Validator
 {
@@ -41,7 +45,7 @@ class Validator
      */
     public function validateResponseStatus(
         array $responseItem,
-        array $response = null,
+        ?array $response = null,
         bool $shouldHaveStatus = true
     ): void {
         if ($shouldHaveStatus === false && isset($responseItem['status']) === false) {

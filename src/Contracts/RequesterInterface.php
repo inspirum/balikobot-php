@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Contracts;
 
 use Psr\Http\Message\ResponseInterface;

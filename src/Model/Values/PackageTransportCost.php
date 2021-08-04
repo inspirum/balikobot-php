@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Values;
+
+use function array_map;
 
 class PackageTransportCost
 {
@@ -115,7 +119,7 @@ class PackageTransportCost
             $shipper,
             $data['costs_total'],
             $data['currency'],
-            array_map(function (array $part) use ($data) {
+            array_map(static function (array $part) use ($data) {
                 return new PackageTransportCostPart($part['name'], $part['cost'], $data['currency']);
             }, $data['costs_breakdown'] ?? [])
         );

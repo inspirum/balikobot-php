@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Values\Package;
 
 use DateTime;
@@ -15,7 +17,7 @@ trait ParcelPackageData
      *
      * @return void
      */
-    abstract public function offsetSet($key, $value);
+    abstract public function offsetSet($key, $value): void;
 
     /**
      * @param string $muType

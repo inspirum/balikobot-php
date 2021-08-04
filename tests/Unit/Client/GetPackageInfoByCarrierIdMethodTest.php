@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Services\Client;
 
 class GetPackageInfoByCarrierIdMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -18,7 +20,7 @@ class GetPackageInfoByCarrierIdMethodTest extends AbstractClientTestCase
         $client->getPackageInfoByCarrierId('cp', 'N0123');
     }
 
-    public function testRequestDoesNotHaveStatus()
+    public function testRequestDoesNotHaveStatus(): void
     {
         $client = $this->newMockedClient(200, [
             'data' => 1,
@@ -29,7 +31,7 @@ class GetPackageInfoByCarrierIdMethodTest extends AbstractClientTestCase
         $this->assertNotEmpty($status);
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -40,7 +42,7 @@ class GetPackageInfoByCarrierIdMethodTest extends AbstractClientTestCase
         $client->getPackageInfoByCarrierId('cp', 'N0123');
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,

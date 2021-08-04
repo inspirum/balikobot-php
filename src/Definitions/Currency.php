@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Definitions;
 
 use InvalidArgumentException;
+use function in_array;
 
 final class Currency
 {

@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
-use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
 class GetBranchesMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -19,7 +20,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $client->getBranches('cp', 'NP');
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -28,7 +29,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $client->getBranches('cp', 'NP');
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -39,7 +40,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $client->getBranches('cp', 'NP');
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -58,7 +59,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testMakeRequestWithService()
+    public function testMakeRequestWithService(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -77,7 +78,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testMakeRequestFullbranches()
+    public function testMakeRequestFullbranches(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -96,7 +97,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testMakeRequestWithCountry()
+    public function testMakeRequestWithCountry(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -115,7 +116,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testMakeRequestWithCountryWithoutService()
+    public function testMakeRequestWithCountryWithoutService(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -134,7 +135,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testEmptyArrayIsReturnedIfUnitsMissing()
+    public function testEmptyArrayIsReturnedIfUnitsMissing(): void
     {
         $client = $this->newMockedClient(200, [
             'status'   => 200,
@@ -146,7 +147,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $this->assertEquals([], $branches);
     }
 
-    public function testOnlyBranchesDataAreReturned()
+    public function testOnlyBranchesDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'   => 200,

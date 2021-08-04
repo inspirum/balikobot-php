@@ -1,11 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Exceptions;
 
 use Inspirum\Balikobot\Contracts\ExceptionInterface;
 use Inspirum\Balikobot\Definitions\Response;
 use RuntimeException;
 use Throwable;
+use function implode;
+use function json_encode;
+use function sprintf;
 
 abstract class AbstractException extends RuntimeException implements ExceptionInterface
 {
@@ -41,8 +46,8 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
     public function __construct(
         array $response = [],
         int $statusCode = 500,
-        Throwable $previous = null,
-        string $message = null
+        ?Throwable $previous = null,
+        ?string $message = null
     ) {
         // set response data
         $this->response = $response;

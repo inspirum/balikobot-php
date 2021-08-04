@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Services\Client;
@@ -10,8 +12,8 @@ abstract class AbstractClientTestCase extends AbstractTestCase
     /**
      * Get client with partial mocked API requester instance with overridden call method.
      *
-     * @param int          $statusCode
-     * @param array|string $data
+     * @param int                 $statusCode
+     * @param array<mixed>|string $data
      *
      * @return \Inspirum\Balikobot\Services\Client
      */

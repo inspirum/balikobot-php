@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Values;
 
 use Inspirum\Balikobot\Model\Values\Package\CashOnDeliveryData;

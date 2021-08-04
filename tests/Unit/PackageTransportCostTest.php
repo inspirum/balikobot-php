@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Model\Values\PackageTransportCost;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Tests\AbstractTestCase;
 
 class PackageTransportCostTest extends AbstractTestCase
 {
-    public function testStaticConstructor()
+    public function testStaticConstructor(): void
     {
         $transportCost = PackageTransportCost::newInstanceFromData('toptrans', [
             'eid'             => '8316699909',
@@ -47,7 +49,7 @@ class PackageTransportCostTest extends AbstractTestCase
         $this->assertEquals('CZK', $transportCost->getCostsBreakdown()[0]->getCurrencyCode());
     }
 
-    public function testStaticConstructorWithMissingData()
+    public function testStaticConstructorWithMissingData(): void
     {
         $transportCost = PackageTransportCost::newInstanceFromData('toptrans', [
             'eid'         => '8316699909',

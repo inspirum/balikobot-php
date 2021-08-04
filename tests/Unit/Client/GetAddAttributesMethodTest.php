@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Services\Client;
 
 class GetAddAttributesMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -18,7 +20,7 @@ class GetAddAttributesMethodTest extends AbstractClientTestCase
         $client->getAddAttributes('cp');
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -27,7 +29,7 @@ class GetAddAttributesMethodTest extends AbstractClientTestCase
         $client->getAddAttributes('cp');
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -38,7 +40,7 @@ class GetAddAttributesMethodTest extends AbstractClientTestCase
         $client->getAddAttributes('cp');
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -59,7 +61,7 @@ class GetAddAttributesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testEmptyArrayIsReturnedIfServiceTypesMissing()
+    public function testEmptyArrayIsReturnedIfServiceTypesMissing(): void
     {
         $client = $this->newMockedClient(200, [
             'status' => 200,
@@ -70,7 +72,7 @@ class GetAddAttributesMethodTest extends AbstractClientTestCase
         $this->assertEquals([], $services);
     }
 
-    public function testOnlyServicesDataAreReturned()
+    public function testOnlyServicesDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'     => 200,

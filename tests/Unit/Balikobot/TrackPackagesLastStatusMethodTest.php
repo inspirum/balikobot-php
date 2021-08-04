@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
@@ -8,7 +10,7 @@ use Inspirum\Balikobot\Services\Balikobot;
 
 class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
 {
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'packages' => [
@@ -42,7 +44,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testResponseData()
+    public function testResponseData(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'packages' => [
@@ -64,7 +66,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals('Zásilka byla doručena příjemci.', $status->getName());
     }
 
-    public function testMakeRequestWithMultiplePackages()
+    public function testMakeRequestWithMultiplePackages(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'packages' => [
@@ -107,7 +109,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testResponseDataWithMultiplePackages()
+    public function testResponseDataWithMultiplePackages(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'packages' => [

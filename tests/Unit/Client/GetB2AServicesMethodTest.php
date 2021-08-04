@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
-use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
 class GetB2AServicesMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -19,7 +20,7 @@ class GetB2AServicesMethodTest extends AbstractClientTestCase
         $client->getB2AServices('ppl');
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -28,7 +29,7 @@ class GetB2AServicesMethodTest extends AbstractClientTestCase
         $client->getB2AServices('ppl');
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -39,7 +40,7 @@ class GetB2AServicesMethodTest extends AbstractClientTestCase
         $client->getB2AServices('ppl');
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -60,7 +61,7 @@ class GetB2AServicesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testEmptyArrayIsReturnedIfServiceTypesMissing()
+    public function testEmptyArrayIsReturnedIfServiceTypesMissing(): void
     {
         $client = $this->newMockedClient(200, [
             'status' => 200,
@@ -71,7 +72,7 @@ class GetB2AServicesMethodTest extends AbstractClientTestCase
         $this->assertEquals([], $services);
     }
 
-    public function testOnlyUnitsDataAreReturned()
+    public function testOnlyUnitsDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'        => 200,

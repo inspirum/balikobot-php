@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use DateTime;
@@ -8,7 +10,7 @@ use Inspirum\Balikobot\Tests\AbstractTestCase;
 
 class PackageStatusTest extends AbstractTestCase
 {
-    public function testStaticConstructor()
+    public function testStaticConstructor(): void
     {
         $status = PackageStatus::newInstanceFromData(
             [
@@ -27,7 +29,7 @@ class PackageStatusTest extends AbstractTestCase
         $this->assertEquals('notification', $status->getType());
     }
 
-    public function testStaticConstructorWithMissingData()
+    public function testStaticConstructorWithMissingData(): void
     {
         $status = PackageStatus::newInstanceFromData(
             [
@@ -44,7 +46,7 @@ class PackageStatusTest extends AbstractTestCase
         $this->assertEquals('event', $status->getType());
     }
 
-    public function testStaticConstructorForV3Response()
+    public function testStaticConstructorForV3Response(): void
     {
         $status = PackageStatus::newInstanceFromData(
             [

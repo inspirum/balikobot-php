@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
-use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
 class GetOrderMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -16,21 +17,21 @@ class GetOrderMethodTest extends AbstractClientTestCase
             'status' => 200,
         ]);
 
-        $client->getOrder('cp', 1);
+        $client->getOrder('cp', '1');
     }
 
-    public function testRequestDoesNotHaveStatus()
+    public function testRequestDoesNotHaveStatus(): void
     {
         $client = $this->newMockedClient(200, [
             'order_id' => 29,
         ]);
 
-        $order = $client->getOrder('cp', 1);
+        $order = $client->getOrder('cp', '1');
 
         $this->assertNotEmpty($order);
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -38,10 +39,10 @@ class GetOrderMethodTest extends AbstractClientTestCase
             'status' => 400,
         ]);
 
-        $client->getOrder('cp', 1);
+        $client->getOrder('cp', '1');
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -49,7 +50,7 @@ class GetOrderMethodTest extends AbstractClientTestCase
 
         $client = new Client($requester);
 
-        $client->getOrder('cp', 1);
+        $client->getOrder('cp', '1');
 
         $requester->shouldHaveReceived(
             'request',
@@ -59,7 +60,7 @@ class GetOrderMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testOnlyOrderDataAreReturned()
+    public function testOnlyOrderDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'       => 200,
@@ -70,7 +71,7 @@ class GetOrderMethodTest extends AbstractClientTestCase
             'package_ids'  => ['1', '4', '65'],
         ]);
 
-        $order = $client->getOrder('cp', 1);
+        $order = $client->getOrder('cp', '1');
 
         $this->assertEquals(
             [

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
@@ -9,9 +11,9 @@ use Mockery;
 
 class DropPackagesMethodTest extends AbstractClientTestCase
 {
-    public function testDropPackagesIsProxyToDropPackageMethod()
+    public function testDropPackagesIsProxyToDropPackageMethod(): void
     {
-        /* @var \Inspirum\Balikobot\Services\Client|\Mockery\MockInterface $client */
+        /** @var \Inspirum\Balikobot\Services\Client|\Mockery\MockInterface $client */
         $client = Mockery::mock(Client::class . '[dropPackages]', [new Requester('test', 'test')]);
 
         $client->shouldReceive('dropPackages')->with('cp', ['1'])->once()->andReturns();
@@ -21,7 +23,7 @@ class DropPackagesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -32,7 +34,7 @@ class DropPackagesMethodTest extends AbstractClientTestCase
         $client->dropPackages('cp', ['1']);
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -43,7 +45,7 @@ class DropPackagesMethodTest extends AbstractClientTestCase
         $client->dropPackages('cp', ['2']);
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -52,7 +54,7 @@ class DropPackagesMethodTest extends AbstractClientTestCase
         $client->dropPackages('cp', ['3']);
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -70,7 +72,7 @@ class DropPackagesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testDoesNotMakeRequestWithNoData()
+    public function testDoesNotMakeRequestWithNoData(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(404, []);
 

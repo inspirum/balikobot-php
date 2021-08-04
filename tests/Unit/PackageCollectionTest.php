@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Model\Aggregates\PackageCollection;
@@ -8,7 +10,7 @@ use Inspirum\Balikobot\Tests\AbstractTestCase;
 
 class PackageCollectionTest extends AbstractTestCase
 {
-    public function testCreateEid()
+    public function testCreateEid(): void
     {
         $packages = new PackageCollection('cp');
 
@@ -17,7 +19,7 @@ class PackageCollectionTest extends AbstractTestCase
         $this->assertNotEmpty($packages->offsetGet(0)->getEid());
     }
 
-    public function testCreateUniqueEid()
+    public function testCreateUniqueEid(): void
     {
         $packages1 = new PackageCollection('cp');
         $packages2 = new PackageCollection('cp');
@@ -34,7 +36,7 @@ class PackageCollectionTest extends AbstractTestCase
         $this->assertTrue($packages2->offsetGet(0)->getEid() !== $packages3->offsetGet(0)->getEid());
     }
 
-    public function testAddedPackagesHasUniqueEid()
+    public function testAddedPackagesHasUniqueEid(): void
     {
         $packages = new PackageCollection('cp');
 
@@ -49,7 +51,7 @@ class PackageCollectionTest extends AbstractTestCase
         $this->assertEquals(2, $packages->count());
     }
 
-    public function testAddedPackagesAreClones()
+    public function testAddedPackagesAreClones(): void
     {
         $packages = new PackageCollection('cp');
 
@@ -76,7 +78,7 @@ class PackageCollectionTest extends AbstractTestCase
         );
     }
 
-    public function testSupportCustomEIDForPackage()
+    public function testSupportCustomEIDForPackage(): void
     {
         $packages = new PackageCollection('cp');
 
@@ -98,7 +100,7 @@ class PackageCollectionTest extends AbstractTestCase
         );
     }
 
-    public function testSupportArrayAccess()
+    public function testSupportArrayAccess(): void
     {
         $packages = new PackageCollection('cp');
 
@@ -118,7 +120,7 @@ class PackageCollectionTest extends AbstractTestCase
         $this->assertTrue($packages->offsetExists(2));
     }
 
-    public function testSupportIteratorAggregate()
+    public function testSupportIteratorAggregate(): void
     {
         $packages = new PackageCollection('cp');
 

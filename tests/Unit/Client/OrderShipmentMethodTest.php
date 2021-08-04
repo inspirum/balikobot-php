@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
-use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
 class OrderShipmentMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -19,7 +20,7 @@ class OrderShipmentMethodTest extends AbstractClientTestCase
         $client->orderShipment('cp', ['1']);
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -28,7 +29,7 @@ class OrderShipmentMethodTest extends AbstractClientTestCase
         $client->orderShipment('cp', ['1']);
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -39,7 +40,7 @@ class OrderShipmentMethodTest extends AbstractClientTestCase
         $client->orderShipment('cp', ['1']);
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
@@ -62,7 +63,7 @@ class OrderShipmentMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testOnlyOrderDataAreReturned()
+    public function testOnlyOrderDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'       => 200,

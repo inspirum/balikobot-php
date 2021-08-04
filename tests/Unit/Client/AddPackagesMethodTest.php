@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client\Request;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
@@ -8,7 +10,7 @@ use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
 class AddPackagesMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -19,7 +21,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
         $client->addPackages('cp', [['eid' => 1]]);
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -28,7 +30,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
         $client->addPackages('cp', [['eid' => 1]]);
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -49,7 +51,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
         $client->addPackages('cp', [['eid' => 1]]);
     }
 
-    public function testThrowsExceptionWhenNoReturnPackages()
+    public function testThrowsExceptionWhenNoReturnPackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -65,7 +67,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
         $client->addPackages('cp', [['eid' => 1]]);
     }
 
-    public function testThrowsExceptionWhenBadResponseData()
+    public function testThrowsExceptionWhenBadResponseData(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -85,7 +87,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
         $client->addPackages('cp', [['eid' => 1], ['eid' => 2]]);
     }
 
-    public function testThrowsExceptionWhenWrongNumberOfPackages()
+    public function testThrowsExceptionWhenWrongNumberOfPackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -114,7 +116,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
         $client->addPackages('cp', [['eid' => 1]]);
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -152,7 +154,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testOnlyPackagesDataAreReturned()
+    public function testOnlyPackagesDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'     => 200,
@@ -202,7 +204,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
         );
     }
 
-    public function testLabelsUrl()
+    public function testLabelsUrl(): void
     {
         $client = $this->newMockedClient(200, [
             'status'     => 200,

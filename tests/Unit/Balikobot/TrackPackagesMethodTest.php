@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use DateTime;
@@ -7,10 +9,11 @@ use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
 use Inspirum\Balikobot\Services\Balikobot;
+use function count;
 
 class TrackPackagesMethodTest extends AbstractBalikobotTestCase
 {
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -53,7 +56,7 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testResponseData()
+    public function testResponseData(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'status'   => 200,
@@ -105,7 +108,7 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(1.2, $statuses[1]->getId());
     }
 
-    public function testMakeRequestWithMultiplePackages()
+    public function testMakeRequestWithMultiplePackages(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -165,7 +168,7 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testResponseDataWithMultiplePackages()
+    public function testResponseDataWithMultiplePackages(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'status'   => 200,
@@ -236,7 +239,7 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
         $this->assertEquals(new DateTime('2018-11-08 14:18:06'), $statuses[1][0]->getDate());
     }
 
-    public function testThrowsExceptionWhenNoReturnStatus()
+    public function testThrowsExceptionWhenNoReturnStatus(): void
     {
         $this->expectException(BadRequestException::class);
         $this->expectExceptionMessage('Technologie dopravce není dostupná');

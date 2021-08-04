@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Services\Client;
 
 class TrackPackagesMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -18,7 +20,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $client->trackPackage('cp', '1');
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $client = $this->newMockedClient(200, [
             'packages' => [
@@ -52,7 +54,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $this->assertNotEmpty($status);
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -63,7 +65,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $client->trackPackage('cp', '1');
     }
 
-    public function testThrowsExceptionWhenNoDataReturn()
+    public function testThrowsExceptionWhenNoDataReturn(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -74,7 +76,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $client->trackPackage('cp', '1');
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -115,7 +117,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testDataAreReturnedInV3Format()
+    public function testDataAreReturnedInV3Format(): void
     {
         $client = $this->newMockedClient(200, [
             'status'   => 200,
@@ -153,7 +155,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         );
     }
 
-    public function testDataAreReturnedInV3FormatFromV2Response()
+    public function testDataAreReturnedInV3FormatFromV2Response(): void
     {
         $client = $this->newMockedClient(200, [
             'status'   => 200,
@@ -188,7 +190,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         );
     }
 
-    public function testThrowsExceptionOnErrorWithMultiplePackages()
+    public function testThrowsExceptionOnErrorWithMultiplePackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -199,7 +201,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $client->trackPackages('cp', ['1', '2', '4']);
     }
 
-    public function testRequestShouldNotHaveStatusWithMultiplePackages()
+    public function testRequestShouldNotHaveStatusWithMultiplePackages(): void
     {
         $client = $this->newMockedClient(200, [
             'packages' => [
@@ -261,7 +263,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $this->assertNotEmpty($status);
     }
 
-    public function testThrowsExceptionOnBadPackageIndexes()
+    public function testThrowsExceptionOnBadPackageIndexes(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -323,7 +325,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $client->trackPackages('cp', ['3', '4', '5']);
     }
 
-    public function testThrowsExceptionOnBadStatusCodeWithMultiplePackages()
+    public function testThrowsExceptionOnBadStatusCodeWithMultiplePackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -334,7 +336,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $client->trackPackages('cp', ['4', '2']);
     }
 
-    public function testThrowsExceptionWhenNoDataReturnWithMultiplePackages()
+    public function testThrowsExceptionWhenNoDataReturnWithMultiplePackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -345,7 +347,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $client->trackPackages('cp', ['1', '3']);
     }
 
-    public function testThrowsExceptionWhenNotAllDataReturnWithMultiplePackages()
+    public function testThrowsExceptionWhenNotAllDataReturnWithMultiplePackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -372,7 +374,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $client->trackPackages('ppl', ['1', '3']);
     }
 
-    public function testThrowsExceptionWhenBadResponseData()
+    public function testThrowsExceptionWhenBadResponseData(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -402,7 +404,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $client->trackPackages('ppl', ['1', '3']);
     }
 
-    public function testMakeRequestWithMultiplePackages()
+    public function testMakeRequestWithMultiplePackages(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
@@ -473,7 +475,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testGlsOnlyReturnsLastPackageStatusesWithMultiplePackages()
+    public function testGlsOnlyReturnsLastPackageStatusesWithMultiplePackages(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -529,7 +531,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
         );
     }
 
-    public function testDataAreReturnedAsString()
+    public function testDataAreReturnedAsString(): void
     {
         $client = $this->newMockedClient(200, [
             'status'   => 200,

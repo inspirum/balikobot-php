@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Exceptions;
 
 use Inspirum\Balikobot\Definitions\Response;
 use Throwable;
+use function is_array;
+use function is_numeric;
 
 class BadRequestException extends AbstractException
 {
@@ -18,8 +22,8 @@ class BadRequestException extends AbstractException
     public function __construct(
         array $response,
         int $statusCode = 400,
-        Throwable $previous = null,
-        string $message = null
+        ?Throwable $previous = null,
+        ?string $message = null
     ) {
         $this->setErrors($response);
 
@@ -65,11 +69,13 @@ class BadRequestException extends AbstractException
     {
         if (isset($response['packages'])) {
             return $response['packages'];
-        } elseif (isset($response['errors'])) {
-            return $response['errors'];
-        } else {
-            return $response;
         }
+
+        if (isset($response['errors'])) {
+            return $response['errors'];
+        }
+
+        return $response;
     }
 
     /**
@@ -104,7 +110,7 @@ class BadRequestException extends AbstractException
      *
      * @return void
      */
-    private function setErrorsFromResponseCodes(int $number, array $response)
+    private function setErrorsFromResponseCodes(int $number, array $response): void
     {
         foreach ($response as $key => $code) {
             // skip non-numeric codes

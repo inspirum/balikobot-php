@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Client;
+
+use function sprintf;
 
 class ChangelogTest extends AbstractClientTestCase
 {
-    public function testLatestChangesSupport()
+    public function testLatestChangesSupport(): void
     {
         $service = $this->newClient();
 

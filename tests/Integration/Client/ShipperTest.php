@@ -1,13 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Client;
 
 use Inspirum\Balikobot\Definitions\Shipper;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
+use function array_keys;
+use function count;
+use function sprintf;
+use function strtoupper;
 
 class ShipperTest extends AbstractClientTestCase
 {
-    public function testBranchCountryFilterSupport()
+    public function testBranchCountryFilterSupport(): void
     {
         $service = $this->newClient();
 
@@ -17,10 +23,7 @@ class ShipperTest extends AbstractClientTestCase
 
         foreach ($shippers as $shipper) {
             try {
-                $shipperServices = array_keys(
-                    $service->getServices($shipper, null)
-                );
-                $shipperService  = $shipperServices[0] ?? null;
+                $shipperService = (string) array_keys($service->getServices($shipper, null))[0];
 
                 $branches = $service->getBranches($shipper, $shipperService, false);
                 if (count($branches) === 0) {
@@ -29,7 +32,7 @@ class ShipperTest extends AbstractClientTestCase
 
                 $totalCount = 0;
                 foreach ($countries as $country) {
-                    $branches   = $service->getBranches($shipper, $shipperService, false, $country);
+                    $branches    = $service->getBranches($shipper, $shipperService, false, $country);
                     $totalCount += count($branches);
                     foreach ($branches ?? [] as $branch) {
                         if ($branch['country'] !== $country) {
@@ -44,7 +47,7 @@ class ShipperTest extends AbstractClientTestCase
                         sprintf(
                             '%s/%s could support branch country filter',
                             strtoupper($shipper),
-                            $shipperService !== null ? $shipperService : 'NULL'
+                            $shipperService ?? 'NULL'
                         )
                     );
                 } else {
@@ -53,7 +56,7 @@ class ShipperTest extends AbstractClientTestCase
                         sprintf(
                             '%s/%s should not support branch country filter',
                             strtoupper($shipper),
-                            $shipperService !== null ? $shipperService : 'NULL'
+                            $shipperService ?? 'NULL'
                         )
                     );
                 }
@@ -63,7 +66,7 @@ class ShipperTest extends AbstractClientTestCase
                     sprintf(
                         '%s/%s: %s',
                         strtoupper($shipper),
-                        $shipperService !== null ? $shipperService : 'NULL',
+                        $shipperService ?? 'NULL',
                         $exception->getMessage()
                     )
                 );

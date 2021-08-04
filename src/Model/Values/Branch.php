@@ -1,9 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Values;
 
 use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\Shipper;
+use function sprintf;
+use function str_replace;
+use function trim;
 
 class Branch
 {
@@ -226,30 +231,30 @@ class Branch
         string $city,
         string $street,
         string $zip,
-        string $country = null,
-        string $cityPart = null,
-        string $district = null,
-        string $region = null,
-        string $currency = null,
-        string $photoSmall = null,
-        string $photoBig = null,
-        string $url = null,
-        float $latitude = null,
-        float $longitude = null,
-        string $directionsGlobal = null,
-        string $directionsCar = null,
-        string $directionsPublic = null,
-        bool $wheelchairAccessible = null,
-        bool $claimAssistant = null,
-        bool $dressingRoom = null,
-        string $openingMonday = null,
-        string $openingTuesday = null,
-        string $openingWednesday = null,
-        string $openingThursday = null,
-        string $openingFriday = null,
-        string $openingSaturday = null,
-        string $openingSunday = null,
-        float $maxWeight = null
+        ?string $country = null,
+        ?string $cityPart = null,
+        ?string $district = null,
+        ?string $region = null,
+        ?string $currency = null,
+        ?string $photoSmall = null,
+        ?string $photoBig = null,
+        ?string $url = null,
+        ?float $latitude = null,
+        ?float $longitude = null,
+        ?string $directionsGlobal = null,
+        ?string $directionsCar = null,
+        ?string $directionsPublic = null,
+        ?bool $wheelchairAccessible = null,
+        ?bool $claimAssistant = null,
+        ?bool $dressingRoom = null,
+        ?string $openingMonday = null,
+        ?string $openingTuesday = null,
+        ?string $openingWednesday = null,
+        ?string $openingThursday = null,
+        ?string $openingFriday = null,
+        ?string $openingSaturday = null,
+        ?string $openingSunday = null,
+        ?float $maxWeight = null
     ) {
         $this->shipper              = $shipper;
         $this->service              = $service;
@@ -619,7 +624,7 @@ class Branch
         return new self(
             $shipper,
             $service,
-            $data['branch_id'] ?? ($data['id'] ?? null),
+            $data['branch_id'] ?? (isset($data['id']) ? (string) $data['id'] : null),
             $data['branch_uid'] ?? null,
             $data['type'] ?? 'branch',
             $data['name'] ?? ($data['zip'] ?? '00000'),
@@ -634,14 +639,14 @@ class Branch
             $data['photo_small'] ?? null,
             $data['photo_big'] ?? null,
             $data['url'] ?? null,
-            (isset($data['latitude']) ? (float) trim($data['latitude']) : null) ?: null,
-            (isset($data['longitude']) ? (float) trim($data['longitude']) : null) ?: null,
+            (isset($data['latitude']) ? (float) trim((string) $data['latitude']) : null) ?: null,
+            (isset($data['longitude']) ? (float) trim((string) $data['longitude']) : null) ?: null,
             $data['directions_global'] ?? null,
             $data['directions_car'] ?? null,
             $data['directions_public'] ?? null,
-            $data['wheelchair_accessible'] ?? null,
-            $data['claim_assistant'] ?? null,
-            $data['dressing_room'] ?? null,
+            isset($data['wheelchair_accessible']) ? (bool) $data['wheelchair_accessible'] : null,
+            isset($data['claim_assistant']) ? (bool) $data['claim_assistant'] : null,
+            isset($data['dressing_room']) ? (bool) $data['dressing_room'] : null,
             $data['opening_monday'] ?? null,
             $data['opening_tuesday'] ?? null,
             $data['opening_wednesday'] ?? null,
@@ -649,7 +654,7 @@ class Branch
             $data['opening_friday'] ?? null,
             $data['opening_saturday'] ?? null,
             $data['opening_sunday'] ?? null,
-            $data['max_weight'] ?? null
+            isset($data['max_weight']) ? (float) $data['max_weight'] : null
         );
     }
 }

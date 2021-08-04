@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Values;
 
 class OrderedPackage
@@ -93,12 +95,12 @@ class OrderedPackage
         string $shipper,
         string $batchId,
         string $carrierId,
-        string $trackUrl = null,
-        string $labelUrl = null,
-        string $carrierIdSwap = null,
+        ?string $trackUrl = null,
+        ?string $labelUrl = null,
+        ?string $carrierIdSwap = null,
         array $pieces = [],
-        string $finalCarrierId = null,
-        string $finalTrackUrl = null
+        ?string $finalCarrierId = null,
+        ?string $finalTrackUrl = null
     ) {
         $this->packageId      = $packageId;
         $this->shipper        = $shipper;
@@ -201,7 +203,7 @@ class OrderedPackage
     public static function newInstanceFromData(string $shipper, array $data): self
     {
         return new self(
-            $data['package_id'],
+            (string) $data['package_id'],
             $shipper,
             $data['eid'],
             $data['carrier_id'] ?? '',

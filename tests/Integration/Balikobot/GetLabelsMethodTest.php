@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Contracts\ExceptionInterface;
@@ -13,7 +15,7 @@ use Inspirum\Balikobot\Model\Values\Package;
 
 class GetLabelsMethodTest extends AbstractBalikobotTestCase
 {
-    public function testValidRequest()
+    public function testValidRequest(): void
     {
         $service = $this->newBalikobot();
 
@@ -39,7 +41,7 @@ class GetLabelsMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testInvalidRequest()
+    public function testInvalidRequest(): void
     {
         $service = $this->newBalikobot();
 

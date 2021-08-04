@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit;
 
 use Inspirum\Balikobot\Model\Values\Branch;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Tests\AbstractTestCase;
 
 class BranchTest extends AbstractTestCase
 {
-    public function testStaticConstructor()
+    public function testStaticConstructor(): void
     {
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'id'                    => '1234',
@@ -76,7 +78,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals(5.0, $branch->getMaxWeight());
     }
 
-    public function testBranchUid()
+    public function testBranchUid(): void
     {
         $branch = Branch::newInstanceFromData('ppl', '2', [
             'branch_uid' => '2-ppl-branch-KMBA01081885107',
@@ -88,7 +90,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('2-ppl-branch-KMBA01081885107', $branch->getUId());
     }
 
-    public function testStaticConstructorWithMissingData()
+    public function testStaticConstructorWithMissingData(): void
     {
         $branch = Branch::newInstanceFromData('ppl', '1', [
             'zip' => 'zip',
@@ -128,7 +130,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals(null, $branch->getMaxWeight());
     }
 
-    public function testStaticConstructorWithMissingDataForCPNP()
+    public function testStaticConstructorWithMissingDataForCPNP(): void
     {
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip' => 'zip',
@@ -168,7 +170,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals(null, $branch->getMaxWeight());
     }
 
-    public function testStaticConstructorFallbackName()
+    public function testStaticConstructorFallbackName(): void
     {
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'     => 'zip',
@@ -180,7 +182,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('address', $branch->getStreet());
     }
 
-    public function testStaticConstructorStreetNumber()
+    public function testStaticConstructorStreetNumber(): void
     {
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'                => 'zip',
@@ -265,7 +267,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('Vrbovec 147', $branch->getStreet());
     }
 
-    public function testBranchIdResolver()
+    public function testBranchIdResolver(): void
     {
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'id'   => 11,
@@ -276,7 +278,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('11000', $branch->getBranchId());
 
         $branch = Branch::newInstanceFromData('sp', 'NP', [
-            'id'   => 11,
+            'id'   => '11',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
@@ -284,7 +286,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('11000', $branch->getBranchId());
 
         $branch = Branch::newInstanceFromData('ulozenka', '7', [
-            'id'   => 11,
+            'id'   => '11',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
@@ -308,7 +310,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('K1M234', $branch->getBranchId());
 
         $branch = Branch::newInstanceFromData('intime', 'NP', [
-            'id'   => 11,
+            'id'   => '11',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
@@ -316,7 +318,7 @@ class BranchTest extends AbstractTestCase
         $this->assertEquals('Branch Name', $branch->getBranchId());
 
         $branch = Branch::newInstanceFromData('zasilkovna', null, [
-            'id'   => 167,
+            'id'   => '167',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);

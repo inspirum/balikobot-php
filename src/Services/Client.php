@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Services;
 
 use DateTime;
 use Inspirum\Balikobot\Contracts\RequesterInterface;
 use Inspirum\Balikobot\Definitions\API;
 use Inspirum\Balikobot\Definitions\Request;
+use function array_filter;
+use function count;
 
 class Client
 {
@@ -301,7 +305,7 @@ class Client
         DateTime $dateTo,
         float $weight,
         int $packageCount,
-        string $message = null
+        ?string $message = null
     ): void {
         $this->requester->call(API::V2V1, $shipper, Request::ORDER_PICKUP, [
             'date'          => $dateFrom->format('Y-m-d'),
@@ -404,7 +408,7 @@ class Client
         string $shipper,
         ?string $service,
         bool $fullBranchesRequest = false,
-        string $country = null
+        ?string $country = null
     ): array {
         $usedRequest = $fullBranchesRequest ? Request::FULL_BRANCHES : Request::BRANCHES;
 
@@ -441,11 +445,11 @@ class Client
         string $shipper,
         string $country,
         string $city,
-        string $postcode = null,
-        string $street = null,
-        int $maxResults = null,
-        float $radius = null,
-        string $type = null
+        ?string $postcode = null,
+        ?string $street = null,
+        ?int $maxResults = null,
+        ?float $radius = null,
+        ?string $type = null
     ): array {
         $response = $this->requester->call(
             API::V2V1,
@@ -472,7 +476,7 @@ class Client
      *
      * @param string $shipper
      *
-     * @return array<array<int|string,array<string,array>>>
+     * @return array<array<int|string,array<string,array<string,mixed>>>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -518,7 +522,7 @@ class Client
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getPostCodes(string $shipper, string $service, string $country = null): array
+    public function getPostCodes(string $shipper, string $service, ?string $country = null): array
     {
         $response = $this->requester->call(API::V2V1, $shipper, Request::ZIP_CODES . '/' . $service . '/' . $country);
 
@@ -698,7 +702,7 @@ class Client
      *
      * @param string $shipper
      *
-     * @return array<string, array>
+     * @return array<string,array<string,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -720,11 +724,11 @@ class Client
      * @param string|null $service
      * @param bool        $fullData
      *
-     * @return array<string, string|array|array<string, string|array>>
+     * @return array<string,string|array|array<string, string|array>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
-    public function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array
+    public function getAddServiceOptions(string $shipper, ?string $service = null, bool $fullData = false): array
     {
         $response = $this->requester->call(API::V1, $shipper, Request::ADD_SERVICE_OPTIONS . '/' . $service);
 

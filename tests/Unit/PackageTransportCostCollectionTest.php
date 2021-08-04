@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Model\Aggregates\PackageTransportCostCollection;
@@ -10,7 +12,7 @@ use RuntimeException;
 
 class PackageTransportCostCollectionTest extends AbstractTestCase
 {
-    public function testGetters()
+    public function testGetters(): void
     {
         $transportCosts = new PackageTransportCostCollection('toptrans');
 
@@ -24,7 +26,7 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
         $this->assertEquals('CZK', $transportCosts->getCurrencyCode());
     }
 
-    public function testThrowsErrorOnMissingShipper()
+    public function testThrowsErrorOnMissingShipper(): void
     {
         $this->expectException(RuntimeException::class);
 
@@ -33,7 +35,7 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
         $packages->getShipper();
     }
 
-    public function testThrowsErrorOnMissingShipperForCurrencyGetter()
+    public function testThrowsErrorOnMissingShipperForCurrencyGetter(): void
     {
         $this->expectException(RuntimeException::class);
 
@@ -42,7 +44,7 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
         $packages->getCurrencyCode();
     }
 
-    public function testThrowsErrorOnDefferentCurrencies()
+    public function testThrowsErrorOnDefferentCurrencies(): void
     {
         $this->expectException(RuntimeException::class);
 
@@ -54,7 +56,7 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
         $transportCosts->getTotalCost();
     }
 
-    public function testCollectionShipperFromFirstPackage()
+    public function testCollectionShipperFromFirstPackage(): void
     {
         $transportCosts = new PackageTransportCostCollection();
 
@@ -63,7 +65,7 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
         $this->assertEquals('toptrans', $transportCosts->getShipper());
     }
 
-    public function testDiffShipperThrowsError()
+    public function testDiffShipperThrowsError(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Package is from different shipper ("ppl" instead of "toptrans")');
@@ -74,7 +76,7 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
         $transportCosts->add(new PackageTransportCost('78923', 'ppl', 20, 'CZK'));
     }
 
-    public function testDiffShipperThrowsErrorWithOffsetSetMethod()
+    public function testDiffShipperThrowsErrorWithOffsetSetMethod(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Package is from different shipper ("ppl" instead of "toptrans")');
@@ -85,7 +87,7 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
         $transportCosts->offsetSet(2, new PackageTransportCost('78923', 'ppl', 20, 'CZK'));
     }
 
-    public function testSupportArrayAccess()
+    public function testSupportArrayAccess(): void
     {
         $transportCosts = new PackageTransportCostCollection('toptrans');
 
@@ -101,7 +103,7 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
         $this->assertFalse($transportCosts->offsetExists(1));
     }
 
-    public function testSupportIteratorAggregate()
+    public function testSupportIteratorAggregate(): void
     {
         $transportCosts = new PackageTransportCostCollection('toptrans');
 

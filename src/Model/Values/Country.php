@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Values;
+
+use function is_array;
 
 class Country
 {

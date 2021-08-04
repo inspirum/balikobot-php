@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use DateTime;
@@ -9,7 +11,7 @@ use Inspirum\Balikobot\Tests\AbstractTestCase;
 
 class PackageTest extends AbstractTestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $package = new Package(
             [
@@ -29,7 +31,7 @@ class PackageTest extends AbstractTestCase
         );
     }
 
-    public function testSupportArrayAccess()
+    public function testSupportArrayAccess(): void
     {
         $package = new Package();
 
@@ -45,7 +47,7 @@ class PackageTest extends AbstractTestCase
         $this->assertFalse($package->offsetExists('b'));
     }
 
-    public function testPackageSetters()
+    public function testPackageSetters(): void
     {
         $package = new Package();
 

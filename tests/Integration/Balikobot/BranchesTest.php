@@ -1,13 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Definitions\Shipper;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
+use function in_array;
+use function sprintf;
+use function strpos;
 
 class BranchesTest extends AbstractBalikobotTestCase
 {
-    public function testBranchesFilterByCountryCodes()
+    public function testBranchesFilterByCountryCodes(): void
     {
         $service  = $this->newBalikobot();
         $shippers = Shipper::all();

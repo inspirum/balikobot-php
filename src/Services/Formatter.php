@@ -1,6 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Services;
+
+use function array_key_exists;
+use function is_array;
 
 class Formatter
 {
@@ -12,8 +17,6 @@ class Formatter
     private $validator;
 
     /**
-     * Formatter constructor.
-     *
      * @param \Inspirum\Balikobot\Services\Validator $validator
      */
     public function __construct(Validator $validator)
@@ -29,7 +32,7 @@ class Formatter
      *
      * @return array<array<string,mixed>>
      */
-    public function normalizePostCodesResponse(array $response, string $country = null): array
+    public function normalizePostCodesResponse(array $response, ?string $country = null): array
     {
         $country = $response['country'] ?? $country;
 

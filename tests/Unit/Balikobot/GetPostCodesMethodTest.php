@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Generator;
@@ -8,7 +10,7 @@ use Inspirum\Balikobot\Services\Balikobot;
 
 class GetPostCodesMethodTest extends AbstractBalikobotTestCase
 {
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'    => 200,
@@ -32,7 +34,7 @@ class GetPostCodesMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(true);
     }
 
-    public function testResponseData()
+    public function testResponseData(): void
     {
         $service = $this->newMockedBalikobot(200, [
             'status'       => 200,
@@ -56,7 +58,7 @@ class GetPostCodesMethodTest extends AbstractBalikobotTestCase
 
         $this->assertInstanceOf(Generator::class, $postCodes);
 
-        /* @var \Inspirum\Balikobot\Model\Values\PostCode $postCode */
+        /** @var \Inspirum\Balikobot\Model\Values\PostCode $postCode */
         $postCode = $postCodes->current();
 
         $this->assertInstanceOf(PostCode::class, $postCode);

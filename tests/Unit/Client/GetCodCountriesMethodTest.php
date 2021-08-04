@@ -1,14 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
-use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
 class GetCodCountriesMethodTest extends AbstractClientTestCase
 {
-    public function testThrowsExceptionOnError()
+    public function testThrowsExceptionOnError(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -19,7 +20,7 @@ class GetCodCountriesMethodTest extends AbstractClientTestCase
         $client->getCodCountries('cp');
     }
 
-    public function testRequestShouldHaveStatus()
+    public function testRequestShouldHaveStatus(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -28,7 +29,7 @@ class GetCodCountriesMethodTest extends AbstractClientTestCase
         $client->getCodCountries('cp');
     }
 
-    public function testThrowsExceptionOnBadStatusCode()
+    public function testThrowsExceptionOnBadStatusCode(): void
     {
         $this->expectException(BadRequestException::class);
 
@@ -39,7 +40,7 @@ class GetCodCountriesMethodTest extends AbstractClientTestCase
         $client->getCodCountries('cp');
     }
 
-    public function testMakeRequest()
+    public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'        => 200,
@@ -58,7 +59,7 @@ class GetCodCountriesMethodTest extends AbstractClientTestCase
         $this->assertTrue(true);
     }
 
-    public function testEmptyArrayIsReturnedIfUnitsMissing()
+    public function testEmptyArrayIsReturnedIfUnitsMissing(): void
     {
         $client = $this->newMockedClient(200, [
             'status'        => 200,
@@ -70,7 +71,7 @@ class GetCodCountriesMethodTest extends AbstractClientTestCase
         $this->assertEquals([], $countries);
     }
 
-    public function testOnlyCountriesDataAreReturned()
+    public function testOnlyCountriesDataAreReturned(): void
     {
         $client = $this->newMockedClient(200, [
             'status'        => 200,

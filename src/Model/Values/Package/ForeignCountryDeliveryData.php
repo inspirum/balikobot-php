@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Values\Package;
 
 use Inspirum\Balikobot\Definitions\Option;
@@ -14,7 +16,7 @@ trait ForeignCountryDeliveryData
      *
      * @return void
      */
-    abstract public function offsetSet($key, $value);
+    abstract public function offsetSet($key, $value): void;
 
     /**
      * @param string $invoiceNumber

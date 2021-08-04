@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Model\Aggregates;
 
 use ArrayAccess;
@@ -7,6 +9,12 @@ use ArrayIterator;
 use Countable;
 use Inspirum\Balikobot\Model\Values\Package;
 use IteratorAggregate;
+use function array_key_exists;
+use function array_map;
+use function count;
+use function substr;
+use function time;
+use function uniqid;
 
 /**
  * @implements \ArrayAccess<int,\Inspirum\Balikobot\Model\Values\Package>
@@ -76,7 +84,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      */
     public function toArray(): array
     {
-        return array_map(function (Package $package) {
+        return array_map(static function (Package $package) {
             return $package->toArray();
         }, $this->packages);
     }
@@ -98,7 +106,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return bool
      */
-    public function offsetExists($key)
+    public function offsetExists($key): bool
     {
         return array_key_exists($key, $this->packages);
     }
@@ -110,7 +118,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return \Inspirum\Balikobot\Model\Values\Package
      */
-    public function offsetGet($key)
+    public function offsetGet($key): Package
     {
         return $this->packages[$key];
     }
@@ -123,7 +131,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return void
      */
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value): void
     {
         $this->packages[$key] = $value;
     }
@@ -135,7 +143,7 @@ class PackageCollection implements ArrayAccess, Countable, IteratorAggregate
      *
      * @return void
      */
-    public function offsetUnset($key)
+    public function offsetUnset($key): void
     {
         unset($this->packages[$key]);
     }

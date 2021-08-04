@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Model\Values\PostCode;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Tests\AbstractTestCase;
 
 class PostcodeTest extends AbstractTestCase
 {
-    public function testStaticConstructor()
+    public function testStaticConstructor(): void
     {
         $postcode = PostCode::newInstanceFromData(
             'cp',
@@ -30,7 +32,7 @@ class PostcodeTest extends AbstractTestCase
         $this->assertTrue($postcode->isMorningDelivery());
     }
 
-    public function testStaticConstructorWithMissingData()
+    public function testStaticConstructorWithMissingData(): void
     {
         $postcode = PostCode::newInstanceFromData(
             'cp',

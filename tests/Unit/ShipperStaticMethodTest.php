@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Definitions\Shipper;
@@ -7,7 +9,7 @@ use Inspirum\Balikobot\Tests\AbstractTestCase;
 
 class ShipperStaticMethodTest extends AbstractTestCase
 {
-    public function testFullBranchesSupport()
+    public function testFullBranchesSupport(): void
     {
         $fullBranchesSupport = Shipper::hasFullBranchesSupport('cp', 'NP');
 
