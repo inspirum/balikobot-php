@@ -6,14 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## v6.0.0 (planned)
-### Removed
-- Deprecated some **GEIS_\_&ast;** service type constants
-### Changed
-- Added opt-out option to Requester SSL verification [#14](https://github.com/inspirum/balikobot-php/pull/14)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.6.0...master)
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.5.0...master)
+## [v5.5.0 (2021-07-21)](https://github.com/inspirum/balikobot-php/compare/v5.5.0...v5.6.0)
 ### Added
 - Added support for new options from documentation **v1.933** (2021-07-29)
   - Add **AIRWAY** shipper
