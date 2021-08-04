@@ -1252,7 +1252,7 @@ interface Client {
     
   function getActivatedManipulationUnits(string $shipper, bool $fullData = false): array;
     
-  function getBranches( string $shipper, ?string $service, bool $fullBranchRequest = false, string $country = null): array;
+  function getBranches(string $shipper, ?string $service, string $country = null, bool $fullBranchRequest = false, bool $gzip = false): array;
     
   function getBranchesForLocation(string $shipper, string $country, string $city, string $postcode = null, string $street = null, int $maxResults = null, float $radius = null, string $type = null): array;
     
