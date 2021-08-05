@@ -60,7 +60,7 @@
       "@phpunit --testsuite=Integration"
     ],
     "test:coverage": [
-      "@phpunit --coverage-html=./build/coverage"
+      "@phpunit --coverage-text --coverage-html=./build/coverage"
     ],
     "style:lint": [
       "@parallel-lint src tests"
