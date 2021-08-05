@@ -10,15 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added support for new options from documentation **v1.931** (2021-07-20)
     - Added option to get compressed response in GZIP (by parameter `?gzip=1`)
-    - Added new optional parameter `$gzip` to method [RequesterInterface](./src/Contracts/RequesterInterface.php)`call()` (and [Requester](./src/Services/Requester.php))
-    - Added new optional parameter `$gzip` to method [Client](./src/Services/Client.php) `getBranches()` 
+    - Added new optional parameter #6 **gzip** to method [RequesterInterface](./src/Contracts/RequesterInterface.php)`call()` (and [Requester](./src/Services/Requester.php))
+    - Added new optional parameter #5 **gzip** to method [Client](./src/Services/Client.php) `getBranches()` 
 - Enable strict types (`declare(strict_types=1)`)
+- Added [**Status**](./src/Definitions/Status.php) helper methods for status determinations
 ### Changed
 - Support only **PHP 8.0+**
-- Changed option to Requester SSL verification [#14](https://github.com/inspirum/balikobot-php/pull/14) to opt-out (enabled by default)
-- Changed order of [Client](./src/Services/Client.php) `getBranches()` method (switch **fullBranchesRequest** and **country** parameter)
+- Changed option to Requester SSL verification to opt-out (enabled by default) [#14](https://github.com/inspirum/balikobot-php/pull/14)
+- Changed order of [Client](./src/Services/Client.php) `getBranches()` method (switch #3 **fullBranchesRequest** and #4 **country** parameters)
 ### Removed
-- Removed deprecated **GEIS_\_&ast;** service type constants
+- Removed deprecated **GEIS\_&ast;** service type constants
 
 
 ## [v5.6.0 (2021-08-04)](https://github.com/inspirum/balikobot-php/compare/v5.5.0...v5.6.0)
@@ -104,7 +105,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added **ZASILKOVNA_FR_COLIS_PRIVE_HD** service type
 - Added **FOFR_PALETTE** service type
 ### Deprecated
-- Deprecated some **GEIS_\_&ast;** service type constants
+- Deprecated some **GEIS\_&ast;** service type constants
 
 
 ## [v5.0.0 (2021-02-01)](https://github.com/inspirum/balikobot-php/compare/v4.5.0...v5.0.0)

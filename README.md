@@ -127,11 +127,24 @@ Inspirum\Balikobot\Model\Values\PackageStatus {
   'type'        => 'event'
 }
 */
+
+if (Status::isError($status->getId())) {
+  // handle package delivery error
+}
+
+if ($status->getId() === Status::COD_PAID) {
+  // CoD has been credited to the sender's account
+}
+
+if (Status::isDelivered($status->getId())) {
+  // handle delivered package 
+}
 ```
 
 #### Import branches
 
 ```php
+// get only branches for Zasilkovna in CZ/SK
 $branches = $balikobot->getBranchesForShipperForCountries(
   Shipper::ZASILKOVNA, 
   [Country::CZECH_REPUBLIC, Country::SLOVAKIA]
@@ -178,7 +191,7 @@ composer require inspirum/balikobot
 ```
 or add a requirement to your `composer.json`:
 ```json
-"inspirum/balikobot": "^5.0"
+"inspirum/balikobot": "^6.0"
 ```
 
 
