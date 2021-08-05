@@ -6,18 +6,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.6.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.0.0...master)
+
+
+## [v6.0.0 (2021-08-05)](https://github.com/inspirum/balikobot-php/compare/v5.6.0...v6.0.0)
 ### Added
 - Added support for new options from documentation **v1.931** (2021-07-20)
     - Added option to get compressed response in GZIP (by parameter `?gzip=1`)
-    - Added new optional parameter #6 **gzip** to method [RequesterInterface](./src/Contracts/RequesterInterface.php)`call()` (and [Requester](./src/Services/Requester.php))
-    - Added new optional parameter #5 **gzip** to method [Client](./src/Services/Client.php) `getBranches()` 
+    - Added new optional parameter #6 **gzip** to method [**RequesterInterface**](./src/Contracts/RequesterInterface.php)`call()` (and [**Requester**](./src/Services/Requester.php))
+    - Added new optional parameter #5 **gzip** to method [**Client**](./src/Services/Client.php) `getBranches()` 
 - Enable strict types (`declare(strict_types=1)`)
 - Added [**Status**](./src/Definitions/Status.php) helper methods for status determinations
 ### Changed
 - Support only **PHP 8.0+**
 - Changed option to Requester SSL verification to opt-out (enabled by default) [#14](https://github.com/inspirum/balikobot-php/pull/14)
-- Changed order of [Client](./src/Services/Client.php) `getBranches()` method (switch #3 **fullBranchesRequest** and #4 **country** parameters)
+- Changed order of [**Client**](./src/Services/Client.php) `getBranches()` method (switch #3 **fullBranchesRequest** and #4 **country** parameters)
 ### Removed
 - Removed deprecated **GEIS\_&ast;** service type constants
 
@@ -266,7 +269,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added options to get **labelsUrL** from **ADD** request
 - Added **labelsUrL** attribute to [**OrderedPackageCollection**](./src/Model/Aggregates/OrderedPackageCollection.php)
-- [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php) implements **\ArrayAccess** interface
+- [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php) implements `\ArrayAccess` interface
 ### Changed
 - Support multiple **EID** in [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php)
 ### Removed
