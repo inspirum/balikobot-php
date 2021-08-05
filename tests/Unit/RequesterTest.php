@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
+namespace Inspirum\Balikobot\Tests\Unit;
 
 use Inspirum\Balikobot\Services\Requester;
 use Inspirum\Balikobot\Tests\AbstractTestCase;

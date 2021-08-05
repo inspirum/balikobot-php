@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
+namespace Inspirum\Balikobot\Tests\Unit;
 
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
