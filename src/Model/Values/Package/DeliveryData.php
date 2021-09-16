@@ -190,6 +190,16 @@ trait DeliveryData
     }
 
     /**
+     * @param string $countryCode
+     *
+     * @return void
+     */
+    public function setDelCountryCode(string $countryCode): void
+    {
+        $this->offsetSet(Option::DEL_EXWORKS_COUNTRY_CODE, $countryCode);
+    }
+
+    /**
      * @param bool $comfort
      *
      * @return void

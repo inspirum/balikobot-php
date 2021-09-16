@@ -103,8 +103,16 @@ final class Option
      */
     public const DEL_EXWORKS_ZIP = 'del_exworks_zip';
 
+    /**
+     * Country code required for del_exworks = 4
+     * string
+     *
+     * @var string
+     */
+    public const DEL_EXWORKS_COUNTRY_CODE = 'del_exworks_country_code';
+
     /***
-     * Ppackage COD price
+     * Package COD price
      * float
      *
      * @var string
