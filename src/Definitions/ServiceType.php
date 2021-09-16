@@ -882,6 +882,13 @@ final class ServiceType
     public const ZASILKOVNA_DE_HERMES_HD = '6373';
 
     /**
+     * DE Home Delivery HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DE_HOME_DELIVERY_HD = '13613';
+
+    /**
      * DK Post Nord Home
      *
      * @var string
@@ -2654,6 +2661,7 @@ final class ServiceType
             self::ZASILKOVNA_DE_POST_HD,
             self::ZASILKOVNA_DE_HERMES_PP,
             self::ZASILKOVNA_DE_HERMES_HD,
+            self::ZASILKOVNA_DE_HOME_DELIVERY_HD,
             self::ZASILKOVNA_DK_POST_NORD_HD,
             self::ZASILKOVNA_DK_POST_NORD_PP,
             self::ZASILKOVNA_EE_OMNIVA_HD,
