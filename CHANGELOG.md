@@ -6,7 +6,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.0.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.1.0...master)
+
+
+## [v6.1.0 (2021-09-16)](https://github.com/inspirum/balikobot-php/compare/v6.0.0...v6.1.0)
+### Added
+- Added support for new options from documentation **v1.934** (2021-08-07)
+  - Added **del_exworks_country_code** attribute
+- Added **ZASILKOVNA_DK_DAO_HD** service type
+- Added **ZASILKOVNA_DK_DAO_PP** service type
+- Added **ZASILKOVNA_ES_MRW_PP** service type
+- Added **ZASILKOVNA_HR_OVERSEAS_PP** service type
+- Added **ZASILKOVNA_IT_BARTOLINI_PP** service type
+- Added **ZASILKOVNA_PT_MRW_PP** service type
 
 
 ## [v6.0.0 (2021-08-05)](https://github.com/inspirum/balikobot-php/compare/v5.6.0...v6.0.0)
