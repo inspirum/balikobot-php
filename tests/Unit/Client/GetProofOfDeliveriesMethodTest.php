@@ -85,7 +85,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://apiv2.balikobot.cz/cp/pod',
+                'https://api.balikobot.cz/cp/pod',
                 [
                     0 => [
                         'id' => 1,
@@ -220,7 +220,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://apiv2.balikobot.cz/cp/pod',
+                'https://api.balikobot.cz/cp/pod',
                 [
                     0 => [
                         'id' => 1,

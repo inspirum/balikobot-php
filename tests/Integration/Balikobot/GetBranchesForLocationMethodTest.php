@@ -14,16 +14,16 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         $service = $this->newBalikobot();
 
         $branches = $service->getBranchesForLocation(
-            Shipper::UPS,
-            Country::CZECH_REPUBLIC,
-            'Praha',
+            Shipper::DHLPARCEL,
+            Country::GERMANY,
+            'Berlin',
             null,
-            'Pražská',
+            'Berlin',
             4,
             40.3
         );
 
-        /* @var \Inspirum\Balikobot\Model\Values\Branch $branch */
+        /** @var \Inspirum\Balikobot\Model\Values\Branch $branch */
         $branch = $branches->current();
 
         $this->assertInstanceOf(Branch::class, $branch);
@@ -39,7 +39,7 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
             $branches->valid();
             $this->assertTrue(false, 'BRANCHLOCATOR request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(404, $exception->getStatusCode());
+            $this->assertEquals(413, $exception->getStatusCode());
         }
     }
 }
