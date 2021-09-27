@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.6.0...master)
 
 
+## [v5.7.0 (2021-09-27)](https://github.com/inspirum/balikobot-php/compare/v5.6.0...v5.7.0)
+### Added
+- Added **ZASILKOVNA_DE_HOME_DELIVERY_HD** service type
+- Added **ZASILKOVNA_DK_DAO_HD** service type
+- Added **ZASILKOVNA_DK_DAO_PP** service type
+- Added **ZASILKOVNA_ES_MRW_PP** service type
+- Added **ZASILKOVNA_HR_OVERSEAS_PP** service type
+- Added **ZASILKOVNA_IT_BARTOLINI_PP** service type
+- Added **ZASILKOVNA_PT_MRW_PP** service type
+
+
 ## [v5.6.0 (2021-08-04)](https://github.com/inspirum/balikobot-php/compare/v5.5.0...v5.6.0)
 ### Added
 - Added support for new options from documentation **v1.933** (2021-07-29)
