@@ -943,6 +943,13 @@ final class ServiceType
     public const ZASILKOVNA_DE_HERMES_HD = '6373';
 
     /**
+     * DE Home Delivery HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DE_HOME_DELIVERY_HD = '13613';
+
+    /**
      * DK Post Nord Home
      *
      * @var string
@@ -954,6 +961,20 @@ final class ServiceType
      * @var string
      */
     public const ZASILKOVNA_DK_POST_NORD_PP = '4994';
+
+    /**
+     * DK DAO HD
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DK_DAO_HD = '9725';
+
+    /**
+     * DK DAO PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_DK_DAO_PP = '9726';
 
     /**
      * EE Omniva Home
@@ -989,6 +1010,14 @@ final class ServiceType
      * @var string
      */
     public const ZASILKOVNA_ES_MRW_HD = '4653';
+
+
+    /**
+     * ES MRW Pickup Point
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_ES_MRW_PP = '4654';
 
     /**
      * FI Post Nord Home
@@ -1089,6 +1118,13 @@ final class ServiceType
     public const ZASILKOVNA_HR_OVERSEAS_HD = '10618';
 
     /**
+     * HR Overseas PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_HR_OVERSEAS_PP = '10619';
+
+    /**
      * Chorvatsko DPD Home
      *
      * @var string
@@ -1171,6 +1207,13 @@ final class ServiceType
      * @var string
      */
     public const ZASILKOVNA_IT_BARTOLINI_HD = '9103';
+
+    /**
+     * IT Bartolini PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_IT_BARTOLINI_PP = '9104';
 
     /**
      * Itálie GLS
@@ -1290,6 +1333,13 @@ final class ServiceType
      * @var string
      */
     public const ZASILKOVNA_PT_MRW_HD = '4655';
+
+    /**
+     * PT MRW PP
+     *
+     * @var string
+     */
+    public const ZASILKOVNA_PT_MRW_PP = '4656';
 
     /**
      * RO - best delivery solution
@@ -2715,13 +2765,17 @@ final class ServiceType
             self::ZASILKOVNA_DE_POST_HD,
             self::ZASILKOVNA_DE_HERMES_PP,
             self::ZASILKOVNA_DE_HERMES_HD,
+            self::ZASILKOVNA_DE_HOME_DELIVERY_HD,
             self::ZASILKOVNA_DK_POST_NORD_HD,
             self::ZASILKOVNA_DK_POST_NORD_PP,
+            self::ZASILKOVNA_DK_DAO_HD,
+            self::ZASILKOVNA_DK_DAO_PP,
             self::ZASILKOVNA_EE_OMNIVA_HD,
             self::ZASILKOVNA_EE_OMNIVA_PP,
             self::ZASILKOVNA_EE_OMNIVA_BOX,
             self::ZASILKOVNA_ES_CORREOS_HD,
             self::ZASILKOVNA_ES_MRW_HD,
+            self::ZASILKOVNA_ES_MRW_PP,
             self::ZASILKOVNA_FI_POST_NORD_HP,
             self::ZASILKOVNA_FI_POST_NORD_PP,
             self::ZASILKOVNA_FR_COLIS_PRIVE_HD,
@@ -2736,6 +2790,7 @@ final class ServiceType
             self::ZASILKOVNA_GR_ACS_PP,
             self::ZASILKOVNA_GR_SPEEDY_HD,
             self::ZASILKOVNA_HR_OVERSEAS_HD,
+            self::ZASILKOVNA_HR_OVERSEAS_PP,
             self::ZASILKOVNA_HR_DPD_HD,
             self::ZASILKOVNA_HR_POST_PP,
             self::ZASILKOVNA_HR_POST_HD,
@@ -2748,6 +2803,7 @@ final class ServiceType
             // self::ZASILKOVNA_IE_HERMES_HD,
             self::ZASILKOVNA_IE_ANPOST_HD,
             self::ZASILKOVNA_IT_BARTOLINI_HD,
+            self::ZASILKOVNA_IT_BARTOLINI_PP,
             self::ZASILKOVNA_IT_GLS_HD,
             self::ZASILKOVNA_LT_OMNIVA_BOX,
             self::ZASILKOVNA_LT_OMNIVA_HD,
@@ -2765,6 +2821,7 @@ final class ServiceType
             self::ZASILKOVNA_PL_INPOST_PACZKOMATY_BOX,
             self::ZASILKOVNA_PL_INPOST_HD,
             self::ZASILKOVNA_PT_MRW_HD,
+            self::ZASILKOVNA_PT_MRW_PP,
             self::ZASILKOVNA_RO_COURIER_HD,
             self::ZASILKOVNA_RO_URGENT_CARGUS_HD,
             self::ZASILKOVNA_RO_SAMEDAY_BOX,
