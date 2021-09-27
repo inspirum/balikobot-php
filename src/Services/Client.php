@@ -633,7 +633,7 @@ class Client
     public function getProofOfDeliveries(string $shipper, array $carrierIds): array
     {
         $response = $this->requester->call(
-            API::V2V1,
+            API::V1,
             $shipper,
             Request::PROOF_OF_DELIVERY,
             $this->formatter->encapsulateIds($carrierIds, 'id'),
