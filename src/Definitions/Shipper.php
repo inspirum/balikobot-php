@@ -220,6 +220,13 @@ final class Shipper
     public const AIRWAY = 'airway';
 
     /**
+     * JAPO Transport
+     *
+     * @var string
+     */
+    public const JAPO = 'japo';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -257,6 +264,7 @@ final class Shipper
             self::KURIER,
             self::DBSCHENKER,
             self::AIRWAY,
+            self::JAPO,
         ];
     }
 

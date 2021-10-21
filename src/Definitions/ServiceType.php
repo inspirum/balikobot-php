@@ -2421,6 +2421,13 @@ final class ServiceType
     public const AIRWAY_NEXT_WEEKDAY = '9';
 
     /**
+     * JAPO Standard
+     *
+     * @var string
+     */
+    public const JAPO_STANDARD = 'STANDARD';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -3034,6 +3041,16 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function japo(): array
+    {
+        return [
+            self::JAPO_STANDARD,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -3071,6 +3088,7 @@ final class ServiceType
             Shipper::KURIER       => self::kurier(),
             Shipper::DBSCHENKER   => self::dbschenker(),
             Shipper::AIRWAY       => self::airway(),
+            Shipper::JAPO         => self::japo(),
         ];
     }
 }

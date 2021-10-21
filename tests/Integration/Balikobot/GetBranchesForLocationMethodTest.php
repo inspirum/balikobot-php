@@ -16,7 +16,7 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         $service = $this->newBalikobot();
 
         $branches = $service->getBranchesForLocation(
-            Shipper::DHLPARCEL,
+            Shipper::PBH,
             Country::GERMANY,
             'Berlin',
             null,
