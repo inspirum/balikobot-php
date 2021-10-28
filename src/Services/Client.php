@@ -305,8 +305,8 @@ class Client
         float $weight,
         int $packageCount,
         ?string $message = null,
-    ): void {
-        $this->requester->call(API::V2V1, $shipper, Request::ORDER_PICKUP, [
+    ) {
+        $response = $this->requester->call(API::V2V1, $shipper, Request::ORDER_PICKUP, [
             'date'          => $dateFrom->format('Y-m-d'),
             'time_from'     => $dateFrom->format('H:s'),
             'time_to'       => $dateTo->format('H:s'),
@@ -314,6 +314,8 @@ class Client
             'package_count' => $packageCount,
             'message'       => $message,
         ]);
+
+        return $response;
     }
 
     /**
