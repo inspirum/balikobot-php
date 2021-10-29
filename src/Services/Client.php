@@ -294,7 +294,7 @@ class Client
      * @param int         $packageCount
      * @param string|null $message
      *
-     * @return void
+     * @return array<string,int|string|array>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
