@@ -268,7 +268,7 @@ class Balikobot
             $response['track_url'],
             $response['label_url'],
             $response['carrier_id_swap'],
-            $response['pieces'],
+            $response['pieces']
         );
 
         $options              = $response;

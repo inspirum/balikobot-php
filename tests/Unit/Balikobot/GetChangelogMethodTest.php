@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Balikobot\Request;
 
-use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Balikobot;
-use Inspirum\Balikobot\Services\Client;
-use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
+use Inspirum\Balikobot\Tests\Unit\Balikobot\AbstractBalikobotTestCase;
 
-class GetChangelogMethodTest extends AbstractClientTestCase
+class GetChangelogMethodTest extends AbstractBalikobotTestCase
 {
     public function testMakeRequest(): void
     {
