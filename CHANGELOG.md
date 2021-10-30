@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added support for new options from documentation **v1.935** (2021-10-15)
   - Added **JAPO** shipper
+### Changed
+- Throw exception for **ORDERPICKUP** request response with additional message [#17](https://github.com/inspirum/balikobot-php/pull/17)
 
 
 ## [v6.1.0 (2021-09-16)](https://github.com/inspirum/balikobot-php/compare/v6.0.0...v6.1.0)
