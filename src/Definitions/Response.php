@@ -16,6 +16,7 @@ final class Response
         401 => 'Unauthorized - nejspíš chyba na straně Balikobotu',
         403 => 'Přepravce není pro použité klíče aktivovaný.',
         404 => 'Zásilka neexistuje, nebo již byla zpracována.',
+        405 => 'Zásilka byla již odeslána ke svozu',
         406 => 'Nedorazila žádná data ke zpracování nebo nemůžou být akceptována.',
         409 => 'Konfigurační soubor daného dopravce nebo profil není vyplněn/konflikt mezi přijatými daty u zásilky.',
         413 => 'Špatný formát dat.',
