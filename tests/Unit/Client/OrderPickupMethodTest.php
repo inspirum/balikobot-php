@@ -41,6 +41,18 @@ class OrderPickupMethodTest extends AbstractClientTestCase
         $client->orderPickup('cp', new DateTime(), new DateTime('+4 HOURS'), 1, 2);
     }
 
+    public function testThrowsExceptionOnMessage(): void
+    {
+        $this->expectException(BadRequestException::class);
+
+        $client = $this->newMockedClient(200, [
+            'status' => 200,
+            'message' => 'Tato metoda není u dopravce podporována.',
+        ]);
+
+        $client->orderPickup('cp', new DateTime(), new DateTime('+4 HOURS'), 1, 2);
+    }
+
     public function testMakeRequest(): void
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [

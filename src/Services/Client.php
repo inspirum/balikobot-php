@@ -8,7 +8,9 @@ use DateTime;
 use Inspirum\Balikobot\Contracts\RequesterInterface;
 use Inspirum\Balikobot\Definitions\API;
 use Inspirum\Balikobot\Definitions\Request;
+use Inspirum\Balikobot\Exceptions\BadRequestException;
 use function array_filter;
+use function array_key_exists;
 use function count;
 
 class Client
@@ -306,7 +308,7 @@ class Client
         int $packageCount,
         ?string $message = null,
     ): void {
-        $this->requester->call(API::V2V1, $shipper, Request::ORDER_PICKUP, [
+        $response = $this->requester->call(API::V2V1, $shipper, Request::ORDER_PICKUP, [
             'date'          => $dateFrom->format('Y-m-d'),
             'time_from'     => $dateFrom->format('H:s'),
             'time_to'       => $dateTo->format('H:s'),
@@ -314,6 +316,10 @@ class Client
             'package_count' => $packageCount,
             'message'       => $message,
         ]);
+
+        if (array_key_exists('message', $response)) {
+            throw new BadRequestException($response, 400, null, $response['message']);
+        }
     }
 
     /**
