@@ -95,7 +95,7 @@ class RequesterTest extends AbstractTestCase
             'status' => 200,
             'test'   => 1596,
         ];
-        $compressed = gzcompress(json_encode($expected));
+        $compressed = (string) gzcompress((string) json_encode($expected));
 
         $requester = $this->newRequesterWithMockedRequestMethod(200, $compressed);
 
@@ -113,7 +113,7 @@ class RequesterTest extends AbstractTestCase
             'status' => 200,
             'test'   => 1596,
         ];
-        $compressed = gzcompress(json_encode($expected));
+        $compressed = (string) gzcompress((string) json_encode($expected));
 
         $requester = $this->newRequesterWithMockedRequestMethod(200, $compressed);
 

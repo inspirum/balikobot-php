@@ -23,8 +23,8 @@ abstract class AbstractBalikobotTestCase extends AbstractTestCase
     {
         return new Balikobot(
             new Requester(
-                $apiUser ?: getenv('BALIKOBOT_API_USER'),
-                $apiKey ?: getenv('BALIKOBOT_API_KEY')
+                $apiUser ?? (string) getenv('BALIKOBOT_API_USER'),
+                $apiKey ?? (string) getenv('BALIKOBOT_API_KEY')
             )
         );
     }

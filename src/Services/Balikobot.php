@@ -328,7 +328,7 @@ class Balikobot
      * @param string $shipper
      * @param bool   $fullData
      *
-     * @return array<string|array>
+     * @return array<string|array<mixed,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -343,7 +343,7 @@ class Balikobot
      * @param string $shipper
      * @param bool   $fullData
      *
-     * @return array<string|array>
+     * @return array<string|array<mixed,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -613,7 +613,7 @@ class Balikobot
      * @param string $shipper
      * @param bool   $fullData
      *
-     * @return array<string|array>
+     * @return array<string|array<mixed,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -767,7 +767,7 @@ class Balikobot
      * @param string|null $service
      * @param bool        $fullData
      *
-     * @return array<string,string|array|array<string, string|array>>
+     * @return array<string,string|array<string,string|array<mixed,mixed>>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */

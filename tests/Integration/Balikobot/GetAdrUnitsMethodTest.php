@@ -35,9 +35,9 @@ class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
         $this->assertTrue(count($units) > 0);
         foreach ($units as $id => $unit) {
             $this->assertTrue(is_array($unit));
-            $this->assertTrue(is_numeric($unit['id']));
-            $this->assertTrue(is_string($unit['name']));
-            $this->assertTrue($unit['code'] === (string) $id);
+            $this->assertTrue(is_array($unit) && is_numeric($unit['id']));
+            $this->assertTrue(is_array($unit) && is_string($unit['name']));
+            $this->assertTrue(is_array($unit) && $unit['code'] === (string) $id);
         }
     }
 

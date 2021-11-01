@@ -49,7 +49,7 @@ trait ForeignCountryDeliveryData
     }
 
     /**
-     * @param array<string,string> $contentData
+     * @param array<string,string|int|float|bool> $contentData
      *
      * @return void
      */

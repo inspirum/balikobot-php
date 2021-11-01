@@ -55,7 +55,7 @@ class PackageTest extends AbstractTestCase
         $package->setOrderNumber(1);
         $package->setRealOrderId('RealOrderID');
         $package->setServiceType('NP');
-        $package->setServices([1, 2, 3]);
+        $package->setServices(['1', '2', '3']);
         $package->setBranchId('ID678');
         $package->setPrice(2000);
         $package->setDelInsurance(true);

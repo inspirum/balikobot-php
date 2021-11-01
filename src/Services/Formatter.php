@@ -92,7 +92,7 @@ class Formatter
     {
         $formattedResponse = [];
 
-        foreach ($response ?? [] as $i => $responseItems) {
+        foreach ($response as $i => $responseItems) {
             $this->validator->validateResponseStatus($responseItems, $response);
 
             $formattedResponse[$i] = [];

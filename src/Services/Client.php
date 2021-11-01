@@ -275,7 +275,7 @@ class Client
      * @param string $shipper
      * @param string $orderId
      *
-     * @return array<string,int|string|array>
+     * @return array<string,int|string|array<mixed,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -301,12 +301,12 @@ class Client
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
     public function orderPickup(
-        string $shipper,
+        string   $shipper,
         DateTime $dateFrom,
         DateTime $dateTo,
-        float $weight,
-        int $packageCount,
-        ?string $message = null,
+        float    $weight,
+        int      $packageCount,
+        ?string  $message = null,
     ): void {
         $response = $this->requester->call(API::V2V1, $shipper, Request::ORDER_PICKUP, [
             'date'          => $dateFrom->format('Y-m-d'),
@@ -360,7 +360,7 @@ class Client
      * @param string $shipper
      * @param bool   $fullData
      *
-     * @return array<string,string|array>
+     * @return array<string,string|array<mixed,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -381,7 +381,7 @@ class Client
      * @param string $shipper
      * @param bool   $fullData
      *
-     * @return array<string,string|array>
+     * @return array<string,string|array<mixed,mixed>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -449,13 +449,13 @@ class Client
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
     public function getBranchesForLocation(
-        string $shipper,
-        string $country,
-        string $city,
+        string  $shipper,
+        string  $country,
+        string  $city,
         ?string $postcode = null,
         ?string $street = null,
-        ?int $maxResults = null,
-        ?float $radius = null,
+        ?int    $maxResults = null,
+        ?float  $radius = null,
         ?string $type = null,
     ): array {
         $response = $this->requester->call(
@@ -539,8 +539,8 @@ class Client
     /**
      * Check package(s) data
      *
-     * @param string               $shipper
-     * @param array<array<string>> $packages
+     * @param string                     $shipper
+     * @param array<array<string,mixed>> $packages
      *
      * @return void
      *
@@ -731,7 +731,7 @@ class Client
      * @param string|null $service
      * @param bool        $fullData
      *
-     * @return array<string,string|array|array<string, string|array>>
+     * @return array<string,string|array<string,string|array<mixed,mixed>>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */

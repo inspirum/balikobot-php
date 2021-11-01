@@ -52,7 +52,7 @@ class Validator
             return;
         }
 
-        $this->validateStatus((int) ($responseItem['status'] ?? 500), $response ?: $responseItem);
+        $this->validateStatus((int) ($responseItem['status'] ?? 500), $response ?? $responseItem);
     }
 
     /**

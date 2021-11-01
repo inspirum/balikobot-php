@@ -1,10 +1,41 @@
 includes:
 	- vendor/phpstan/phpstan-mockery/extension.neon
 parameters:
+	paths:
+		- src
+		- tests
+	level: 8
 	ignoreErrors:
 		-
-			message: '#Parameter \#2 \$packageIds of static method Inspirum\\Balikobot\\Model\\Values\\OrderedShipment::newInstanceFromData\(\) expects array<string>, array\|int\|string given#'
+			message: '#Parameter \#2 \$packageIds of static method Inspirum\\Balikobot\\Model\\Values\\OrderedShipment::newInstanceFromData\(\) expects array<string>, array<int\|string, mixed>\|int\|string given#'
 			path: %currentWorkingDirectory%/src/Services/Balikobot.php
 		-
 			message: '#Parameter \#2 \$data of static method Inspirum\\Balikobot\\Model\\Values\\OrderedPackage::newInstanceFromData\(\) expects array<string, mixed>, int\|string given#'
 			path: %currentWorkingDirectory%/src/Services/Balikobot.php
+		-
+			message: '#Method Inspirum\\Balikobot\\Services\\Client::getPackageInfo\(\) should return array<string, int\|string> but returns array<int\|string, mixed>#'
+			path: %currentWorkingDirectory%/src/Services/Client.php
+		-
+			message: '#Method Inspirum\\Balikobot\\Services\\Client::getPackageInfoByCarrierId\(\) should return array<string, int\|string> but returns array<int\|string, mixed>#'
+			path: %currentWorkingDirectory%/src/Services/Client.php
+		-
+			message: '#Method Inspirum\\Balikobot\\Services\\Client::orderShipment\(\) should return array<string, int\|string> but returns array<int\|string, mixed>#'
+			path: %currentWorkingDirectory%/src/Services/Client.php
+		-
+			message: '#Method Inspirum\\Balikobot\\Services\\Client::getOrder\(\) should return array<string, array<int\|string, mixed>\|int\|string> but returns array<int\|string, mixed>#'
+			path: %currentWorkingDirectory%/src/Services/Client.php
+		-
+			message: '#Method Inspirum\\Balikobot\\Services\\Client::getActivatedServices\(\) should return array<string, mixed> but returns array<int\|string, mixed>#'
+			path: %currentWorkingDirectory%/src/Services/Client.php
+		-
+			message: '#Method Inspirum\\Balikobot\\Services\\Client::getChangelog\(\) should return array<string, mixed> but returns array<int\|string, mixed>#'
+			path: %currentWorkingDirectory%/src/Services/Client.php
+		-
+			message: '#Parameter \#1 \$items of method Inspirum\\Balikobot\\Services\\Validator::validateResponseItemHasAttribute\(\) expects array<int, array<string, mixed>>, array<int\|string, mixed> given#'
+			path: %currentWorkingDirectory%/src/Services/Client.php
+		-
+			message: '#Call to function is\_int\(\) with string will always evaluate to false#'
+			path: %currentWorkingDirectory%/tests/Integration/Balikobot/*Test.php
+		-
+			message: '#Result of \|\| is always true#'
+			path: %currentWorkingDirectory%/tests/Integration/Balikobot/GetAddServiceOptionsMethodTest.php

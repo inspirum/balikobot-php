@@ -643,7 +643,6 @@ final class Option
 
     /**
      * Invoice number
-     *
      * string
      *
      * @var string
@@ -659,7 +658,7 @@ final class Option
     public const OPEN_BEFORE_PAYMENT = 'open_before_payment';
 
     /**
-     * Customeryou can try the goods before taking them
+     * Customer can try the goods before taking them
      * bool
      *
      * @var string
