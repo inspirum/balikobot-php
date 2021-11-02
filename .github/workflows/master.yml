@@ -33,8 +33,8 @@ jobs:
         run: composer install --prefer-dist --no-interaction --no-progress
       - name: Run linters
         run: |
-          vendor/bin/phpcs --standard=./ruleset.xml src/
-          vendor/bin/phpstan analyse -l max -c phpstan.neon.dist src/
+          vendor/bin/phpcs --standard=./ruleset.xml src tests
+          vendor/bin/phpstan analyse -c phpstan.neon.dist
       - name: Run tests
         run: |
           vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
