@@ -36,9 +36,9 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
 
         $transportCosts = $service->getTransportCosts($packages);
 
-        $this->assertEquals(1, $transportCosts->count());
-        $this->assertNotEmpty($transportCosts[0]->getTotalCost());
-        $this->assertEquals(Shipper::TOPTRANS, $transportCosts->getShipper());
+        self::assertEquals(1, $transportCosts->count());
+        self::assertNotEmpty($transportCosts[0]->getTotalCost());
+        self::assertEquals(Shipper::TOPTRANS, $transportCosts->getShipper());
     }
 
     public function testInvalidRequest(): void
@@ -63,10 +63,10 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getTransportCosts($packages);
-            $this->assertTrue(false, 'ADD request should thrown exception');
+            self::assertTrue(false, 'ADD request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(400, $exception->getStatusCode());
-            $this->assertTrue(isset($exception->getErrors()[0]['mu_type_one']));
+            self::assertEquals(400, $exception->getStatusCode());
+            self::assertTrue(isset($exception->getErrors()[0]['mu_type_one']));
         }
     }
 }

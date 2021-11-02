@@ -19,11 +19,11 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
         $transportCosts->add(new PackageTransportCost('34567', 'toptrans', 500, 'CZK'));
         $transportCosts->add(new PackageTransportCost('78923', 'toptrans', 20, 'CZK'));
 
-        $this->assertEquals('toptrans', $transportCosts->getShipper());
-        $this->assertEquals(2, $transportCosts->count());
-        $this->assertEquals(['34567', '78923'], $transportCosts->getBatchIds());
-        $this->assertEquals(520, $transportCosts->getTotalCost());
-        $this->assertEquals('CZK', $transportCosts->getCurrencyCode());
+        self::assertEquals('toptrans', $transportCosts->getShipper());
+        self::assertEquals(2, $transportCosts->count());
+        self::assertEquals(['34567', '78923'], $transportCosts->getBatchIds());
+        self::assertEquals(520, $transportCosts->getTotalCost());
+        self::assertEquals('CZK', $transportCosts->getCurrencyCode());
     }
 
     public function testThrowsErrorOnMissingShipper(): void
@@ -62,7 +62,7 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
 
         $transportCosts->add(new PackageTransportCost('34567', 'toptrans', 500, 'CZK'));
 
-        $this->assertEquals('toptrans', $transportCosts->getShipper());
+        self::assertEquals('toptrans', $transportCosts->getShipper());
     }
 
     public function testDiffShipperThrowsError(): void
@@ -94,13 +94,13 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
         $transportCosts->offsetSet(1, new PackageTransportCost('34567', 'toptrans', 500, 'CZK'));
         $transportCosts->offsetSet(4, new PackageTransportCost('78923', 'toptrans', 20, 'CZK'));
 
-        $this->assertEquals('78923', $transportCosts->offsetGet(4)->getBatchId());
-        $this->assertEquals(2, $transportCosts->count());
-        $this->assertTrue($transportCosts->offsetExists(1));
+        self::assertEquals('78923', $transportCosts->offsetGet(4)->getBatchId());
+        self::assertEquals(2, $transportCosts->count());
+        self::assertTrue($transportCosts->offsetExists(1));
 
         $transportCosts->offsetUnset(1);
 
-        $this->assertFalse($transportCosts->offsetExists(1));
+        self::assertFalse($transportCosts->offsetExists(1));
     }
 
     public function testSupportIteratorAggregate(): void
@@ -112,7 +112,7 @@ class PackageTransportCostCollectionTest extends AbstractTestCase
 
         $iterator = $transportCosts->getIterator();
 
-        $this->assertEquals(2, $iterator->count());
-        $this->assertEquals('34567', $iterator->current()->getBatchId());
+        self::assertEquals(2, $iterator->count());
+        self::assertEquals('34567', $iterator->current()->getBatchId());
     }
 }

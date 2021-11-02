@@ -60,7 +60,7 @@ class GetActivatedServicesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testOnlyPackagesDataAreReturned(): void
@@ -77,7 +77,7 @@ class GetActivatedServicesMethodTest extends AbstractClientTestCase
 
         $packages = $client->getActivatedServices('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'active_parcel' => true,
                 'active_cargo'  => false,

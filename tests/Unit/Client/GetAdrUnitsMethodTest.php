@@ -56,7 +56,7 @@ class GetAdrUnitsMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/adrunits', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfUnitsMissing(): void
@@ -68,7 +68,7 @@ class GetAdrUnitsMethodTest extends AbstractClientTestCase
 
         $units = $client->getAdrUnits('cp');
 
-        $this->assertEquals([], $units);
+        self::assertEquals([], $units);
     }
 
     public function testOnlyUnitsDataAreReturned(): void
@@ -90,7 +90,7 @@ class GetAdrUnitsMethodTest extends AbstractClientTestCase
 
         $units = $client->getAdrUnits('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 1   => 'KM',
                 876 => 'M',
@@ -119,7 +119,7 @@ class GetAdrUnitsMethodTest extends AbstractClientTestCase
 
         $units = $client->getAdrUnits('cp', fullData: true);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 1   => [
                     'code' => 1,

@@ -32,7 +32,7 @@ class GetOverviewMethodTest extends AbstractClientTestCase
 
         $order = $client->getOverview('cp');
 
-        $this->assertNotEmpty($order);
+        self::assertNotEmpty($order);
     }
 
     public function testThrowsExceptionOnBadStatusCode(): void
@@ -59,6 +59,6 @@ class GetOverviewMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/overview', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

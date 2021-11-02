@@ -19,14 +19,14 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
 
         $options = $service->getAddServiceOptions(Shipper::CP);
 
-        $this->assertTrue(count($options) > 0);
+        self::assertTrue(count($options) > 0);
         foreach ($options as $serviceType => $serviceOptions) {
-            $this->assertTrue(is_string($serviceType));
-            $this->assertTrue(is_array($serviceOptions));
+            self::assertTrue(is_string($serviceType));
+            self::assertTrue(is_array($serviceOptions));
             if (is_array($serviceOptions)) {
                 foreach ($serviceOptions as $code => $option) {
-                    $this->assertTrue(is_int($code) || is_string($code));
-                    $this->assertTrue(is_string($option));
+                    self::assertTrue(is_int($code) || is_string($code));
+                    self::assertTrue(is_string($option));
                 }
             }
         }
@@ -38,10 +38,10 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
 
         $options = $service->getAddServiceOptions(Shipper::CP, ServiceType::CP_CE);
 
-        $this->assertTrue(count($options) > 0);
+        self::assertTrue(count($options) > 0);
         foreach ($options as $code => $option) {
-            $this->assertTrue(is_int($code));
-            $this->assertTrue(is_string($option));
+            self::assertTrue(is_int($code));
+            self::assertTrue(is_string($option));
         }
     }
 
@@ -51,15 +51,15 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
 
         $options = $service->getAddServiceOptions(Shipper::CP, fullData: true);
 
-        $this->assertTrue(count($options) > 0);
+        self::assertTrue(count($options) > 0);
         foreach ($options as $serviceType => $serviceOptions) {
-            $this->assertTrue(is_string($serviceType));
-            $this->assertTrue(is_array($serviceOptions));
+            self::assertTrue(is_string($serviceType));
+            self::assertTrue(is_array($serviceOptions));
             if (is_array($serviceOptions)) {
                 foreach ($serviceOptions as $code => $option) {
-                    $this->assertTrue(is_array($option));
-                    $this->assertTrue(is_array($option) && is_string($option['name']));
-                    $this->assertTrue(is_array($option) && $option['code'] === (string) $code);
+                    self::assertTrue(is_array($option));
+                    self::assertTrue(is_array($option) && is_string($option['name']));
+                    self::assertTrue(is_array($option) && $option['code'] === (string) $code);
                 }
             }
         }
@@ -71,11 +71,11 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
 
         $options = $service->getAddServiceOptions(Shipper::CP, ServiceType::CP_CE, fullData: true);
 
-        $this->assertTrue(count($options) > 0);
+        self::assertTrue(count($options) > 0);
         foreach ($options as $code => $option) {
-            $this->assertTrue(is_array($option));
-            $this->assertTrue(is_array($option) && is_string($option['name']));
-            $this->assertTrue(is_array($option) && $option['code'] === (string) $code);
+            self::assertTrue(is_array($option));
+            self::assertTrue(is_array($option) && is_string($option['name']));
+            self::assertTrue(is_array($option) && $option['code'] === (string) $code);
         }
     }
 }

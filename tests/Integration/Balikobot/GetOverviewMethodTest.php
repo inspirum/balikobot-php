@@ -14,6 +14,6 @@ class GetOverviewMethodTest extends AbstractBalikobotTestCase
 
         $packages = $service->getOverview(Shipper::ZASILKOVNA);
 
-        $this->assertGreaterThanOrEqual(1, $packages->count());
+        self::assertGreaterThanOrEqual(1, $packages->count());
     }
 }

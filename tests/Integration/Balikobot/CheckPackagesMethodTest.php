@@ -34,7 +34,7 @@ class CheckPackagesMethodTest extends AbstractBalikobotTestCase
 
         $service->checkPackages($packages);
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMissingBranchId(): void
@@ -58,10 +58,10 @@ class CheckPackagesMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->checkPackages($packages);
-            $this->assertTrue(false, 'CHECK request should thrown exception');
+            self::assertTrue(false, 'CHECK request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(400, $exception->getStatusCode());
-            $this->assertTrue(isset($exception->getErrors()[0]['branch_id']));
+            self::assertEquals(400, $exception->getStatusCode());
+            self::assertTrue(isset($exception->getErrors()[0]['branch_id']));
         }
     }
 }

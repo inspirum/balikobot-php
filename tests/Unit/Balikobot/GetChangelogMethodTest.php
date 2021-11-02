@@ -46,6 +46,6 @@ class GetChangelogMethodTest extends AbstractBalikobotTestCase
             ['https://apiv2.balikobot.cz/changelog', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

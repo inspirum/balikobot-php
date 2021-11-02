@@ -15,6 +15,6 @@ class GetCountriesMethodTest extends AbstractBalikobotTestCase
 
         $countries = $service->getCountries(Shipper::CP);
 
-        $this->assertTrue(count($countries) > 0);
+        self::assertTrue(count($countries) > 0);
     }
 }

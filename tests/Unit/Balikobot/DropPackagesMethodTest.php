@@ -38,7 +38,7 @@ class DropPackagesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestForSinglePackage(): void
@@ -65,6 +65,6 @@ class DropPackagesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

@@ -119,7 +119,7 @@ class OrderB2AShipmentMethodTest extends AbstractClientTestCase
             ['https://api.balikobot.cz/ppl/b2a', [['data' => [1, 2, 3], 'test' => false]]]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testOnlyPackagesDataAreReturned(): void
@@ -141,7 +141,7 @@ class OrderB2AShipmentMethodTest extends AbstractClientTestCase
 
         $packages = $client->orderB2AShipment('ppl', [['eid' => '0001'], ['eid' => '0002']]);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 0 => [
                     'package_id'     => '24',

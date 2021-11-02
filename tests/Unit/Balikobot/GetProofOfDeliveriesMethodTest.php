@@ -37,7 +37,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseDataW(): void
@@ -54,7 +54,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
 
         $link = $service->getProofOfDelivery($package);
 
-        $this->assertEquals('https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs', $link);
+        self::assertEquals('https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs', $link);
     }
 
     public function testMakeRequestWithMultiplePackages(): void
@@ -93,7 +93,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseDataWithMultiplePackages(): void
@@ -116,8 +116,8 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
 
         $links = $service->getProofOfDeliveries($packages);
 
-        $this->assertCount(2, $links);
-        $this->assertEquals('https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs', $links[0]);
-        $this->assertEquals('https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFa', $links[1]);
+        self::assertCount(2, $links);
+        self::assertEquals('https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs', $links[0]);
+        self::assertEquals('https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFa', $links[1]);
     }
 }

@@ -38,7 +38,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
 
         $service->getProofOfDeliveries($orderPackages);
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testInvalidRequest(): void
@@ -51,9 +51,9 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getProofOfDeliveries($packages);
-            $this->assertTrue(false, 'POD request should thrown exception');
+            self::assertTrue(false, 'POD request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(404, $exception->getStatusCode());
+            self::assertEquals(404, $exception->getStatusCode());
         }
     }
 }

@@ -301,12 +301,12 @@ class Client
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
     public function orderPickup(
-        string   $shipper,
+        string $shipper,
         DateTime $dateFrom,
         DateTime $dateTo,
-        float    $weight,
-        int      $packageCount,
-        ?string  $message = null,
+        float $weight,
+        int $packageCount,
+        ?string $message = null,
     ): void {
         $response = $this->requester->call(API::V2V1, $shipper, Request::ORDER_PICKUP, [
             'date'          => $dateFrom->format('Y-m-d'),
@@ -449,13 +449,13 @@ class Client
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
     public function getBranchesForLocation(
-        string  $shipper,
-        string  $country,
-        string  $city,
+        string $shipper,
+        string $country,
+        string $city,
         ?string $postcode = null,
         ?string $street = null,
-        ?int    $maxResults = null,
-        ?float  $radius = null,
+        ?int $maxResults = null,
+        ?float $radius = null,
         ?string $type = null,
     ): array {
         $response = $this->requester->call(

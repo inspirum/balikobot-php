@@ -22,14 +22,14 @@ class OrderedPackageTest extends AbstractTestCase
             'pieces'          => ['1', '2'],
         ]);
 
-        $this->assertEquals('cp', $orderedPackage->getShipper());
-        $this->assertEquals('0001', $orderedPackage->getBatchId());
-        $this->assertEquals('1234', $orderedPackage->getPackageId());
-        $this->assertEquals('02IID', $orderedPackage->getCarrierId());
-        $this->assertEquals('/track', $orderedPackage->getTrackUrl());
-        $this->assertEquals('/labels', $orderedPackage->getLabelUrl());
-        $this->assertEquals('23', $orderedPackage->getCarrierIdSwap());
-        $this->assertEquals(['1', '2'], $orderedPackage->getPieces());
+        self::assertEquals('cp', $orderedPackage->getShipper());
+        self::assertEquals('0001', $orderedPackage->getBatchId());
+        self::assertEquals('1234', $orderedPackage->getPackageId());
+        self::assertEquals('02IID', $orderedPackage->getCarrierId());
+        self::assertEquals('/track', $orderedPackage->getTrackUrl());
+        self::assertEquals('/labels', $orderedPackage->getLabelUrl());
+        self::assertEquals('23', $orderedPackage->getCarrierIdSwap());
+        self::assertEquals(['1', '2'], $orderedPackage->getPieces());
     }
 
     public function testStaticConstructorWithMissingData(): void
@@ -42,14 +42,14 @@ class OrderedPackageTest extends AbstractTestCase
             'label_url'    => '/labels',
         ]);
 
-        $this->assertEquals('cp', $orderedPackage->getShipper());
-        $this->assertEquals('0001', $orderedPackage->getBatchId());
-        $this->assertEquals('1234', $orderedPackage->getPackageId());
-        $this->assertEquals('02IID', $orderedPackage->getCarrierId());
-        $this->assertEquals(null, $orderedPackage->getTrackUrl());
-        $this->assertEquals('/labels', $orderedPackage->getLabelUrl());
-        $this->assertEquals(null, $orderedPackage->getCarrierIdSwap());
-        $this->assertEquals([], $orderedPackage->getPieces());
+        self::assertEquals('cp', $orderedPackage->getShipper());
+        self::assertEquals('0001', $orderedPackage->getBatchId());
+        self::assertEquals('1234', $orderedPackage->getPackageId());
+        self::assertEquals('02IID', $orderedPackage->getCarrierId());
+        self::assertEquals(null, $orderedPackage->getTrackUrl());
+        self::assertEquals('/labels', $orderedPackage->getLabelUrl());
+        self::assertEquals(null, $orderedPackage->getCarrierIdSwap());
+        self::assertEquals([], $orderedPackage->getPieces());
     }
 
     public function testStaticConstructorWithMissingCarrierId(): void
@@ -60,14 +60,14 @@ class OrderedPackageTest extends AbstractTestCase
             'package_id'   => '1234',
         ]);
 
-        $this->assertEquals('cp', $orderedPackage->getShipper());
-        $this->assertEquals('0001', $orderedPackage->getBatchId());
-        $this->assertEquals('1234', $orderedPackage->getPackageId());
-        $this->assertEquals('', $orderedPackage->getCarrierId());
-        $this->assertEquals(null, $orderedPackage->getTrackUrl());
-        $this->assertEquals(null, $orderedPackage->getLabelUrl());
-        $this->assertEquals(null, $orderedPackage->getCarrierIdSwap());
-        $this->assertEquals([], $orderedPackage->getPieces());
+        self::assertEquals('cp', $orderedPackage->getShipper());
+        self::assertEquals('0001', $orderedPackage->getBatchId());
+        self::assertEquals('1234', $orderedPackage->getPackageId());
+        self::assertEquals('', $orderedPackage->getCarrierId());
+        self::assertEquals(null, $orderedPackage->getTrackUrl());
+        self::assertEquals(null, $orderedPackage->getLabelUrl());
+        self::assertEquals(null, $orderedPackage->getCarrierIdSwap());
+        self::assertEquals([], $orderedPackage->getPieces());
     }
 
     public function testStaticConstructorWithFinalTrackUrl(): void
@@ -80,15 +80,15 @@ class OrderedPackageTest extends AbstractTestCase
             'track_url_final'  => 'https://online.gls-slovakia.sk/tt_page.php',
         ]);
 
-        $this->assertEquals('cp', $orderedPackage->getShipper());
-        $this->assertEquals('0001', $orderedPackage->getBatchId());
-        $this->assertEquals('1234', $orderedPackage->getPackageId());
-        $this->assertEquals('', $orderedPackage->getCarrierId());
-        $this->assertEquals(null, $orderedPackage->getTrackUrl());
-        $this->assertEquals(null, $orderedPackage->getLabelUrl());
-        $this->assertEquals(null, $orderedPackage->getCarrierIdSwap());
-        $this->assertEquals('00605444103', $orderedPackage->getFinalCarrierId());
-        $this->assertEquals('https://online.gls-slovakia.sk/tt_page.php', $orderedPackage->getFinalTrackUrl());
-        $this->assertEquals([], $orderedPackage->getPieces());
+        self::assertEquals('cp', $orderedPackage->getShipper());
+        self::assertEquals('0001', $orderedPackage->getBatchId());
+        self::assertEquals('1234', $orderedPackage->getPackageId());
+        self::assertEquals('', $orderedPackage->getCarrierId());
+        self::assertEquals(null, $orderedPackage->getTrackUrl());
+        self::assertEquals(null, $orderedPackage->getLabelUrl());
+        self::assertEquals(null, $orderedPackage->getCarrierIdSwap());
+        self::assertEquals('00605444103', $orderedPackage->getFinalCarrierId());
+        self::assertEquals('https://online.gls-slovakia.sk/tt_page.php', $orderedPackage->getFinalTrackUrl());
+        self::assertEquals([], $orderedPackage->getPieces());
     }
 }

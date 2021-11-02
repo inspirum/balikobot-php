@@ -36,7 +36,7 @@ class GetLabelsMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -52,6 +52,6 @@ class GetLabelsMethodTest extends AbstractBalikobotTestCase
 
         $labelsUrl = $service->getLabels($packages);
 
-        $this->assertEquals('https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.', $labelsUrl);
+        self::assertEquals('https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.', $labelsUrl);
     }
 }

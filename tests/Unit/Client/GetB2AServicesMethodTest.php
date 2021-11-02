@@ -58,7 +58,7 @@ class GetB2AServicesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfServiceTypesMissing(): void
@@ -69,7 +69,7 @@ class GetB2AServicesMethodTest extends AbstractClientTestCase
 
         $services = $client->getB2AServices('ppl');
 
-        $this->assertEquals([], $services);
+        self::assertEquals([], $services);
     }
 
     public function testOnlyUnitsDataAreReturned(): void
@@ -84,7 +84,7 @@ class GetB2AServicesMethodTest extends AbstractClientTestCase
 
         $services = $client->getB2AServices('ppl');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 '1'  => 'PPL Parcel Business CZ',
                 '11' => 'PPL Parcel Import SK',

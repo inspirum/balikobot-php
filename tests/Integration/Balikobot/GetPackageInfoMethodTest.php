@@ -36,7 +36,7 @@ class GetPackageInfoMethodTest extends AbstractBalikobotTestCase
 
         $service->getPackageInfo($orderPackages->offsetGet(0));
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testInvalidRequest(): void
@@ -47,9 +47,9 @@ class GetPackageInfoMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getPackageInfo($package);
-            $this->assertTrue(false, 'PACKAGE request should thrown exception');
+            self::assertTrue(false, 'PACKAGE request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(404, $exception->getStatusCode());
+            self::assertEquals(404, $exception->getStatusCode());
         }
     }
 }

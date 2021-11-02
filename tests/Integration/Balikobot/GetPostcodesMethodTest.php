@@ -19,8 +19,8 @@ class GetPostcodesMethodTest extends AbstractBalikobotTestCase
         /** @var \Inspirum\Balikobot\Model\Values\PostCode $postCode */
         $postCode = $postCodes->current();
 
-        $this->assertInstanceOf(PostCode::class, $postCode);
-        $this->assertNotEmpty($postCode->getPostcode());
+        self::assertInstanceOf(PostCode::class, $postCode);
+        self::assertNotEmpty($postCode->getPostcode());
     }
 
     public function testInvalidRequest(): void
@@ -29,6 +29,6 @@ class GetPostcodesMethodTest extends AbstractBalikobotTestCase
 
         $branches = $service->getBranchesForShipperService(Shipper::TOPTRANS, ServiceType::TOPTRANS_NOTICE);
         $branches->valid();
-        $this->assertNull($branches->current());
+        self::assertNull($branches->current());
     }
 }

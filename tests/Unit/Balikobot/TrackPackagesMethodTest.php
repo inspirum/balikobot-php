@@ -53,7 +53,7 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -98,14 +98,14 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
 
         $statuses = $service->trackPackage($package);
 
-        $this->assertEquals(3, count($statuses));
-        $this->assertEquals(2, $statuses[0]->getGroupId());
-        $this->assertEquals(2.2, $statuses[0]->getId());
-        $this->assertEquals(new DateTime('2018-11-08 18:00:00'), $statuses[1]->getDate());
-        $this->assertEquals('Obdrženy údaje k zásilce.', $statuses[2]->getDescription());
-        $this->assertEquals('Zásilka zatím nebyla předána dopravci.', $statuses[2]->getName());
-        $this->assertEquals('notification', $statuses[1]->getType());
-        $this->assertEquals(1.2, $statuses[1]->getId());
+        self::assertEquals(3, count($statuses));
+        self::assertEquals(2, $statuses[0]->getGroupId());
+        self::assertEquals(2.2, $statuses[0]->getId());
+        self::assertEquals(new DateTime('2018-11-08 18:00:00'), $statuses[1]->getDate());
+        self::assertEquals('Obdrženy údaje k zásilce.', $statuses[2]->getDescription());
+        self::assertEquals('Zásilka zatím nebyla předána dopravci.', $statuses[2]->getName());
+        self::assertEquals('notification', $statuses[1]->getType());
+        self::assertEquals(1.2, $statuses[1]->getId());
     }
 
     public function testMakeRequestWithMultiplePackages(): void
@@ -165,7 +165,7 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseDataWithMultiplePackages(): void
@@ -227,16 +227,16 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
 
         $statuses = $service->trackPackages($packages);
 
-        $this->assertCount(2, $statuses);
-        $this->assertCount(3, $statuses[0]);
-        $this->assertEquals(2, $statuses[0][0]->getGroupId());
-        $this->assertEquals(2.2, $statuses[0][0]->getId());
-        $this->assertEquals(new DateTime('2018-11-08 18:00:00'), $statuses[0][1]->getDate());
-        $this->assertEquals('Obdrženy údaje k zásilce.', $statuses[0][2]->getDescription());
-        $this->assertEquals('Zásilka zatím nebyla předána dopravci.', $statuses[0][2]->getName());
-        $this->assertEquals(1.2, $statuses[0][1]->getId());
-        $this->assertEquals(1.1, $statuses[1][0]->getId());
-        $this->assertEquals(new DateTime('2018-11-08 14:18:06'), $statuses[1][0]->getDate());
+        self::assertCount(2, $statuses);
+        self::assertCount(3, $statuses[0]);
+        self::assertEquals(2, $statuses[0][0]->getGroupId());
+        self::assertEquals(2.2, $statuses[0][0]->getId());
+        self::assertEquals(new DateTime('2018-11-08 18:00:00'), $statuses[0][1]->getDate());
+        self::assertEquals('Obdrženy údaje k zásilce.', $statuses[0][2]->getDescription());
+        self::assertEquals('Zásilka zatím nebyla předána dopravci.', $statuses[0][2]->getName());
+        self::assertEquals(1.2, $statuses[0][1]->getId());
+        self::assertEquals(1.1, $statuses[1][0]->getId());
+        self::assertEquals(new DateTime('2018-11-08 14:18:06'), $statuses[1][0]->getDate());
     }
 
     public function testThrowsExceptionWhenNoReturnStatus(): void

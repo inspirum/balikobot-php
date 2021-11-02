@@ -58,7 +58,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithService(): void
@@ -79,7 +79,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfServiceTypesMissing(): void
@@ -90,7 +90,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
 
         $services = $client->getAddServiceOptions('cp');
 
-        $this->assertEquals([], $services);
+        self::assertEquals([], $services);
     }
 
     public function testOnlyServicesDataAreReturned(): void
@@ -112,7 +112,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
 
         $options = $client->getAddServiceOptions('cp', 'CE');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 '10' => 'Neskladně',
                 '44' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
@@ -140,7 +140,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
 
         $options = $client->getAddServiceOptions('cp', 'CE', fullData: true);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 '10' => [
                     'code' => '10',
@@ -193,7 +193,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
 
         $options = $client->getAddServiceOptions('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'CE' => [
                     '10' => 'Neskladně',
@@ -246,7 +246,7 @@ class GetAddServiceOptionsMethodTest extends AbstractClientTestCase
 
         $options = $client->getAddServiceOptions('cp', fullData: true);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'CE' => [
                     '10' => [

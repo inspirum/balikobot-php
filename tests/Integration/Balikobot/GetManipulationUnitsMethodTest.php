@@ -18,10 +18,10 @@ class GetManipulationUnitsMethodTest extends AbstractBalikobotTestCase
 
         $units = $service->getManipulationUnits(Shipper::PPL);
 
-        $this->assertTrue(count($units) > 0);
+        self::assertTrue(count($units) > 0);
         foreach ($units as $id => $unit) {
-            $this->assertTrue(is_int($id));
-            $this->assertTrue(is_string($unit));
+            self::assertTrue(is_int($id));
+            self::assertTrue(is_string($unit));
         }
     }
 
@@ -31,11 +31,11 @@ class GetManipulationUnitsMethodTest extends AbstractBalikobotTestCase
 
         $units = $service->getManipulationUnits(Shipper::PPL, fullData: true);
 
-        $this->assertTrue(count($units) > 0);
+        self::assertTrue(count($units) > 0);
         foreach ($units as $id => $unit) {
-            $this->assertTrue(is_array($unit));
-            $this->assertTrue(is_array($unit) && is_string($unit['name']));
-            $this->assertTrue(is_array($unit) && $unit['code'] === $id);
+            self::assertTrue(is_array($unit));
+            self::assertTrue(is_array($unit) && is_string($unit['name']));
+            self::assertTrue(is_array($unit) && $unit['code'] === $id);
         }
     }
 
@@ -45,6 +45,6 @@ class GetManipulationUnitsMethodTest extends AbstractBalikobotTestCase
 
         $units = $service->getManipulationUnits(Shipper::CP);
 
-        $this->assertTrue(count($units) === 0);
+        self::assertTrue(count($units) === 0);
     }
 }

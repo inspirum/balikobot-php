@@ -28,7 +28,7 @@ class GetPackageInfoByCarrierIdMethodTest extends AbstractClientTestCase
 
         $status = $client->getPackageInfoByCarrierId('cp', 'N0123');
 
-        $this->assertNotEmpty($status);
+        self::assertNotEmpty($status);
     }
 
     public function testThrowsExceptionOnBadStatusCode(): void
@@ -60,6 +60,6 @@ class GetPackageInfoByCarrierIdMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

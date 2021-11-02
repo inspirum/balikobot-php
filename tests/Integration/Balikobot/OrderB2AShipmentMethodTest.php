@@ -33,8 +33,8 @@ class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
 
         $orderPackages = $service->orderB2AShipment($packages);
 
-        $this->assertCount(1, $orderPackages->getPackageIds());
-        $this->assertEquals(Shipper::PPL, $orderPackages->getShipper());
+        self::assertCount(1, $orderPackages->getPackageIds());
+        self::assertEquals(Shipper::PPL, $orderPackages->getShipper());
     }
 
     public function testMissingBranchId(): void
@@ -53,10 +53,10 @@ class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->orderB2AShipment($packages);
-            $this->assertTrue(false, 'B2A request should thrown exception');
+            self::assertTrue(false, 'B2A request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(400, $exception->getStatusCode());
-            $this->assertTrue(isset($exception->getErrors()[0]['rec_city']));
+            self::assertEquals(400, $exception->getStatusCode());
+            self::assertTrue(isset($exception->getErrors()[0]['rec_city']));
         }
     }
 }

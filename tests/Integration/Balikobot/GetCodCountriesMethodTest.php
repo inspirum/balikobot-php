@@ -15,6 +15,6 @@ class GetCodCountriesMethodTest extends AbstractBalikobotTestCase
 
         $countries = $service->getCodCountries(Shipper::CP);
 
-        $this->assertTrue(count($countries) > 0);
+        self::assertTrue(count($countries) > 0);
     }
 }

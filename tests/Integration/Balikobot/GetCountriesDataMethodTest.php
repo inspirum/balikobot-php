@@ -16,15 +16,15 @@ class GetCountriesDataMethodTest extends AbstractBalikobotTestCase
 
         $countries = $service->getCountriesData();
 
-        $this->assertTrue(count($countries) > 0);
+        self::assertTrue(count($countries) > 0);
         foreach ($countries as $id => $country) {
-            $this->assertInstanceOf(Country::class, $country);
-            $this->assertTrue($country->getCode() === $id);
-            $this->assertTrue(is_string($country->getName('cs')));
-            $this->assertTrue(is_string($country->getName('en')));
-            $this->assertTrue(is_string($country->getCurrencyCode()));
-            $this->assertTrue(is_string($country->getPhonePrefix()));
-            $this->assertTrue(is_string($country->getContinent()));
+            self::assertInstanceOf(Country::class, $country);
+            self::assertTrue($country->getCode() === $id);
+            self::assertTrue(is_string($country->getName('cs')));
+            self::assertTrue(is_string($country->getName('en')));
+            self::assertTrue(is_string($country->getCurrencyCode()));
+            self::assertTrue(is_string($country->getPhonePrefix()));
+            self::assertTrue(is_string($country->getContinent()));
         }
     }
 }

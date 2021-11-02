@@ -38,10 +38,10 @@ class OrderShipmentMethodTest extends AbstractBalikobotTestCase
 
         $orderedShipment = $service->orderShipment($orderPackages);
 
-        $this->assertEquals(Shipper::CP, $orderedShipment->getShipper());
-        $this->assertNotEmpty($orderedShipment->getOrderId());
+        self::assertEquals(Shipper::CP, $orderedShipment->getShipper());
+        self::assertNotEmpty($orderedShipment->getOrderId());
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testInvalidRequest(): void
@@ -54,9 +54,9 @@ class OrderShipmentMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->orderShipment($packages);
-            $this->assertTrue(false, 'ORDER request should thrown exception');
+            self::assertTrue(false, 'ORDER request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(406, $exception->getStatusCode());
+            self::assertEquals(406, $exception->getStatusCode());
         }
     }
 }

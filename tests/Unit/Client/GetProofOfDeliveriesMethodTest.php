@@ -31,7 +31,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
 
         $status = $client->getProofOfDelivery('cp', '1');
 
-        $this->assertNotEmpty($status);
+        self::assertNotEmpty($status);
     }
 
     public function testThrowsExceptionOnBadStatusCode(): void
@@ -95,7 +95,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testDataAreReturnedInFormat(): void
@@ -110,7 +110,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
 
         $link = $client->getProofOfDelivery('cp', '1');
 
-        $this->assertEquals('https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs', $link);
+        self::assertEquals('https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs', $link);
     }
 
     public function testThrowsExceptionOnErrorWithMultiplePackages(): void
@@ -143,7 +143,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
 
         $status = $client->getProofOfDeliveries('cp', ['1', '5', '6']);
 
-        $this->assertNotEmpty($status);
+        self::assertNotEmpty($status);
     }
 
     public function testThrowsExceptionOnBadStatusCodeWithMultiplePackages(): void
@@ -233,7 +233,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testDataAreReturnedInFormatWithMultiplePackages(): void
@@ -256,7 +256,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
 
         $links = $client->getProofOfDeliveries('cp', ['1', '6', '5']);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 0 => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
                 1 => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFa',

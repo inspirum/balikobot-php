@@ -23,7 +23,7 @@ class GetOverviewMethodTest extends AbstractBalikobotTestCase
             ['https://apiv2.balikobot.cz/ppl/overview', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -47,9 +47,9 @@ class GetOverviewMethodTest extends AbstractBalikobotTestCase
 
         $orderedPackages = $service->getOverview('ppl');
 
-        $this->assertEquals(2, $orderedPackages->count());
-        $this->assertEquals(['42719', '42720'], $orderedPackages->getPackageIds());
-        $this->assertEquals('NP1504102247M', $orderedPackages[1]->getCarrierId());
-        $this->assertEquals('0001', $orderedPackages[0]->getBatchId());
+        self::assertEquals(2, $orderedPackages->count());
+        self::assertEquals(['42719', '42720'], $orderedPackages->getPackageIds());
+        self::assertEquals('NP1504102247M', $orderedPackages[1]->getCarrierId());
+        self::assertEquals('0001', $orderedPackages[0]->getBatchId());
     }
 }

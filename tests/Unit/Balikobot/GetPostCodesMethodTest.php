@@ -31,7 +31,7 @@ class GetPostCodesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithCountry(): void
@@ -55,7 +55,7 @@ class GetPostCodesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -80,23 +80,23 @@ class GetPostCodesMethodTest extends AbstractBalikobotTestCase
 
         $postCodes = $service->getPostCodes('cp', 'NP');
 
-        $this->assertInstanceOf(Generator::class, $postCodes);
+        self::assertInstanceOf(Generator::class, $postCodes);
 
         /** @var \Inspirum\Balikobot\Model\Values\PostCode $postCode */
         $postCode = $postCodes->current();
 
-        $this->assertInstanceOf(PostCode::class, $postCode);
-        $this->assertEquals('35002', $postCode->getPostcode());
+        self::assertInstanceOf(PostCode::class, $postCode);
+        self::assertEquals('35002', $postCode->getPostcode());
 
         $postCodes->next();
         $postCode = $postCodes->current();
 
-        $this->assertInstanceOf(PostCode::class, $postCode);
-        $this->assertEquals('19000', $postCode->getPostcode());
+        self::assertInstanceOf(PostCode::class, $postCode);
+        self::assertEquals('19000', $postCode->getPostcode());
 
         $postCodes->next();
         $postCode = $postCodes->current();
 
-        $this->assertEquals(null, $postCode);
+        self::assertEquals(null, $postCode);
     }
 }

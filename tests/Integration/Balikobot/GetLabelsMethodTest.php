@@ -38,7 +38,7 @@ class GetLabelsMethodTest extends AbstractBalikobotTestCase
 
         $service->getLabels($orderPackages);
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testInvalidRequest(): void
@@ -51,9 +51,9 @@ class GetLabelsMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getLabels($packages);
-            $this->assertTrue(false, 'LABELS request should thrown exception');
+            self::assertTrue(false, 'LABELS request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(406, $exception->getStatusCode());
+            self::assertEquals(406, $exception->getStatusCode());
         }
     }
 }

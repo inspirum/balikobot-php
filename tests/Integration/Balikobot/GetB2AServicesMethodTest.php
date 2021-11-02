@@ -17,10 +17,10 @@ class GetB2AServicesMethodTest extends AbstractBalikobotTestCase
 
         $services = $service->getB2AServices(Shipper::PPL);
 
-        $this->assertTrue(count($services) > 0);
+        self::assertTrue(count($services) > 0);
         foreach ($services as $id => $unit) {
-            $this->assertTrue(is_int($id));
-            $this->assertTrue(is_string($unit));
+            self::assertTrue(is_int($id));
+            self::assertTrue(is_string($unit));
         }
     }
 }

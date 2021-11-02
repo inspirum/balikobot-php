@@ -60,7 +60,7 @@ class OrderShipmentMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testOnlyOrderDataAreReturned(): void
@@ -76,7 +76,7 @@ class OrderShipmentMethodTest extends AbstractClientTestCase
 
         $order = $client->orderShipment('cp', ['1']);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'labels_url'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
                 'order_id'     => 29,

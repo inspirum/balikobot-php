@@ -46,6 +46,6 @@ class CheckPackagesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

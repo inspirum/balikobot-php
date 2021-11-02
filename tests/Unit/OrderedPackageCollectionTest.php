@@ -19,10 +19,10 @@ class OrderedPackageCollectionTest extends AbstractTestCase
         $packages->add(new OrderedPackage('1', 'cp', '0001', '1234'));
         $packages->add(new OrderedPackage('2', 'cp', '0001', '5678'));
 
-        $this->assertEquals('cp', $packages->getShipper());
-        $this->assertEquals(['1', '2'], $packages->getPackageIds());
-        $this->assertEquals(['1234', '5678'], $packages->getCarrierIds());
-        $this->assertEquals(2, $packages->count());
+        self::assertEquals('cp', $packages->getShipper());
+        self::assertEquals(['1', '2'], $packages->getPackageIds());
+        self::assertEquals(['1234', '5678'], $packages->getCarrierIds());
+        self::assertEquals(2, $packages->count());
     }
 
     public function testThrowsErrorOnMissingShipper(): void
@@ -40,7 +40,7 @@ class OrderedPackageCollectionTest extends AbstractTestCase
 
         $packages->add(new OrderedPackage('1', 'cp', '0001', '1234'));
 
-        $this->assertEquals('cp', $packages->getShipper());
+        self::assertEquals('cp', $packages->getShipper());
     }
 
     public function testDiffShipperThrowsError(): void
@@ -72,13 +72,13 @@ class OrderedPackageCollectionTest extends AbstractTestCase
         $packages->offsetSet(1, new OrderedPackage('1', 'cp', '0001', '1234'));
         $packages->offsetSet(4, new OrderedPackage('2', 'cp', '0001', '5678'));
 
-        $this->assertEquals(2, $packages->offsetGet(4)->getPackageId());
-        $this->assertEquals(2, $packages->count());
-        $this->assertTrue($packages->offsetExists(1));
+        self::assertEquals(2, $packages->offsetGet(4)->getPackageId());
+        self::assertEquals(2, $packages->count());
+        self::assertTrue($packages->offsetExists(1));
 
         $packages->offsetUnset(1);
 
-        $this->assertFalse($packages->offsetExists(1));
+        self::assertFalse($packages->offsetExists(1));
     }
 
     public function testSupportIteratorAggregate(): void
@@ -90,18 +90,18 @@ class OrderedPackageCollectionTest extends AbstractTestCase
 
         $iterator = $packages->getIterator();
 
-        $this->assertEquals(2, $iterator->count());
-        $this->assertEquals('6', $iterator->current()->getPackageId());
+        self::assertEquals(2, $iterator->count());
+        self::assertEquals('6', $iterator->current()->getPackageId());
     }
 
     public function testLabelsUrl(): void
     {
         $packages = new OrderedPackageCollection();
 
-        $this->assertNull($packages->getLabelsUrl());
+        self::assertNull($packages->getLabelsUrl());
 
         $packages->setLabelsUrl('https://pdf.balikobot.cz/ups/eNorMTIwt9A1NbYwMwdcMBAZAoC.');
 
-        $this->assertEquals('https://pdf.balikobot.cz/ups/eNorMTIwt9A1NbYwMwdcMBAZAoC.', $packages->getLabelsUrl());
+        self::assertEquals('https://pdf.balikobot.cz/ups/eNorMTIwt9A1NbYwMwdcMBAZAoC.', $packages->getLabelsUrl());
     }
 }

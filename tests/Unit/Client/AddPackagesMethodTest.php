@@ -151,7 +151,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testOnlyPackagesDataAreReturned(): void
@@ -181,7 +181,7 @@ class AddPackagesMethodTest extends AbstractClientTestCase
 
         $packages = $client->addPackages('cp', [['eid' => '0001'], ['eid' => '0002']]);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 0 => [
                     'eid'          => '0001',
@@ -233,6 +233,6 @@ class AddPackagesMethodTest extends AbstractClientTestCase
 
         $client->addPackages('cp', [['eid' => '0001'], ['eid' => '0002']], $labelsUrl);
 
-        $this->assertEquals('https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.', $labelsUrl);
+        self::assertEquals('https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.', $labelsUrl);
     }
 }

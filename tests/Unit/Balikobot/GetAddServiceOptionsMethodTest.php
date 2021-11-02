@@ -27,7 +27,7 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithService(): void
@@ -49,7 +49,7 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -71,7 +71,7 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
 
         $options = $service->getAddServiceOptions('cp', 'CE');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 '10' => 'Neskladně',
                 '44' => 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
@@ -118,7 +118,7 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
 
         $options = $service->getAddServiceOptions('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'CE' => [
                     '10' => 'Neskladně',

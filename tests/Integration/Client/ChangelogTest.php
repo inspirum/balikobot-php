@@ -20,7 +20,7 @@ class ChangelogTest extends AbstractClientTestCase
         if ($actual > $expected) {
             $this->addWarning(sprintf('Package not supporting latest changes [%s > %s]', $actual, $expected));
         } else {
-            $this->assertTrue(true);
+            self::assertTrue(true);
         }
     }
 }

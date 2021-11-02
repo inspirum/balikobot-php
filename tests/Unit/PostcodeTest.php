@@ -23,13 +23,13 @@ class PostcodeTest extends AbstractTestCase
             ]
         );
 
-        $this->assertEquals('cp', $postcode->getShipper());
-        $this->assertEquals('NP', $postcode->getService());
-        $this->assertEquals('17000', $postcode->getPostcode());
-        $this->assertEquals('18000', $postcode->getPostcodeEnd());
-        $this->assertEquals('CZ', $postcode->getCountry());
-        $this->assertEquals('Prague', $postcode->getCity());
-        $this->assertTrue($postcode->isMorningDelivery());
+        self::assertEquals('cp', $postcode->getShipper());
+        self::assertEquals('NP', $postcode->getService());
+        self::assertEquals('17000', $postcode->getPostcode());
+        self::assertEquals('18000', $postcode->getPostcodeEnd());
+        self::assertEquals('CZ', $postcode->getCountry());
+        self::assertEquals('Prague', $postcode->getCity());
+        self::assertTrue($postcode->isMorningDelivery());
     }
 
     public function testStaticConstructorWithMissingData(): void
@@ -42,12 +42,12 @@ class PostcodeTest extends AbstractTestCase
             ]
         );
 
-        $this->assertEquals('cp', $postcode->getShipper());
-        $this->assertEquals(null, $postcode->getService());
-        $this->assertEquals('17000', $postcode->getPostcode());
-        $this->assertEquals(null, $postcode->getPostcodeEnd());
-        $this->assertEquals(null, $postcode->getCountry());
-        $this->assertEquals(null, $postcode->getCity());
-        $this->assertFalse($postcode->isMorningDelivery());
+        self::assertEquals('cp', $postcode->getShipper());
+        self::assertEquals(null, $postcode->getService());
+        self::assertEquals('17000', $postcode->getPostcode());
+        self::assertEquals(null, $postcode->getPostcodeEnd());
+        self::assertEquals(null, $postcode->getCountry());
+        self::assertEquals(null, $postcode->getCity());
+        self::assertFalse($postcode->isMorningDelivery());
     }
 }

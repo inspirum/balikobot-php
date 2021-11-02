@@ -29,7 +29,7 @@ class GetActivatedServicesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -46,7 +46,7 @@ class GetActivatedServicesMethodTest extends AbstractBalikobotTestCase
 
         $services = $service->getActivatedServices('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'active_parcel' => true,
                 'active_cargo'  => false,

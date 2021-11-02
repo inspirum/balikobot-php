@@ -20,7 +20,7 @@ class DropPackagesMethodTest extends AbstractClientTestCase
 
         $client->dropPackage('cp', '1');
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testThrowsExceptionOnError(): void
@@ -69,7 +69,7 @@ class DropPackagesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/drop', ['package_ids' => ['1', '4', '876']]]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testDoesNotMakeRequestWithNoData(): void
@@ -82,6 +82,6 @@ class DropPackagesMethodTest extends AbstractClientTestCase
 
         $requester->shouldNotHaveReceived('request');
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

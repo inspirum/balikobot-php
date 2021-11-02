@@ -40,7 +40,7 @@ class OrderShipmentMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -61,11 +61,11 @@ class OrderShipmentMethodTest extends AbstractBalikobotTestCase
 
         $orderedShipment = $service->orderShipment($packages);
 
-        $this->assertEquals('ppl', $orderedShipment->getShipper());
-        $this->assertEquals(['1', '2'], $orderedShipment->getPackageIds());
-        $this->assertEquals('http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..', $orderedShipment->getFileUrl());
-        $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ', $orderedShipment->getLabelsUrl());
-        $this->assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.', $orderedShipment->getHandoverUrl());
-        $this->assertEquals('29', $orderedShipment->getOrderId());
+        self::assertEquals('ppl', $orderedShipment->getShipper());
+        self::assertEquals(['1', '2'], $orderedShipment->getPackageIds());
+        self::assertEquals('http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..', $orderedShipment->getFileUrl());
+        self::assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ', $orderedShipment->getLabelsUrl());
+        self::assertEquals('http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.', $orderedShipment->getHandoverUrl());
+        self::assertEquals('29', $orderedShipment->getOrderId());
     }
 }

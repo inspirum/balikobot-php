@@ -39,11 +39,11 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
 
         $count = 0;
         foreach ($service->getBranchesForShipperServiceForCountries('ppl', '1', ['DE', 'CZ', 'SK']) as $branch) {
-            $this->assertNotEmpty($branch->getZip());
+            self::assertNotEmpty($branch->getZip());
             $count++;
         }
 
-        $this->assertEquals(8, $count);
+        self::assertEquals(8, $count);
     }
 
     public function testGetBranchesForShipperServiceCallAllServicesWithCountriesWithoutAPISupport(): void
@@ -62,11 +62,11 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
 
         $count = 0;
         foreach ($service->getBranchesForShipperServiceForCountries('cp', 'NP', ['DE', 'CZ', 'SK']) as $branch) {
-            $this->assertNotEmpty($branch->getZip());
+            self::assertNotEmpty($branch->getZip());
             $count++;
         }
 
-        $this->assertEquals(4, $count);
+        self::assertEquals(4, $count);
     }
 
     public function testGetBranchesForShipperCallWithCountriesWithoutAPISupport(): void
@@ -102,11 +102,11 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
                 ['DE', 'CZ', 'SK']
             ) as $branch
         ) {
-            $this->assertNotEmpty($branch->getZip());
+            self::assertNotEmpty($branch->getZip());
             $count++;
         }
 
-        $this->assertEquals(8, $count);
+        self::assertEquals(8, $count);
     }
 
     public function testGetBranchesForShipperCallAllServices(): void
@@ -127,11 +127,11 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
 
         $count = 0;
         foreach ($service->getBranchesForShipper('cp') as $branch) {
-            $this->assertNotEmpty($branch->getZip());
+            self::assertNotEmpty($branch->getZip());
             $count++;
         }
 
-        $this->assertEquals(5, $count);
+        self::assertEquals(5, $count);
     }
 
     public function testGetBranchesForShipperCallAllServicesWithCountries(): void
@@ -156,11 +156,11 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
 
         $count = 0;
         foreach ($service->getBranchesForShipperForCountries('cp', ['DE', 'SK']) as $branch) {
-            $this->assertNotEmpty($branch->getZip());
+            self::assertNotEmpty($branch->getZip());
             $count++;
         }
 
-        $this->assertEquals(5, $count);
+        self::assertEquals(5, $count);
     }
 
     public function testGetBranchesForShipperCallForEmptyServices(): void
@@ -180,11 +180,11 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
 
         $count = 0;
         foreach ($service->getBranchesForShipper('zasilkovna') as $branch) {
-            $this->assertNotEmpty($branch->getZip());
+            self::assertNotEmpty($branch->getZip());
             $count++;
         }
 
-        $this->assertEquals(2, $count);
+        self::assertEquals(2, $count);
     }
 
     public function testGetBranchesCallAllShippers(): void
@@ -205,11 +205,11 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
 
         $count = 0;
         foreach ($service->getBranches() as $branch) {
-            $this->assertNotEmpty($branch->getZip());
+            self::assertNotEmpty($branch->getZip());
             $count++;
         }
 
-        $this->assertEquals(2, $count);
+        self::assertEquals(2, $count);
     }
 
     public function testGetBranchesCallAllShippersWithCountries(): void
@@ -234,11 +234,11 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
 
         $count = 0;
         foreach ($service->getBranchesForCountries(['SK', 'CZ']) as $branch) {
-            $this->assertNotEmpty($branch->getZip());
+            self::assertNotEmpty($branch->getZip());
             $count++;
         }
 
-        $this->assertEquals(3, $count);
+        self::assertEquals(3, $count);
     }
 
     public function testFullBranchesMakeRequest(): void
@@ -262,7 +262,7 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testBranchesWithCountryMakeRequest(): void
@@ -286,7 +286,7 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -307,24 +307,24 @@ class GetBranchesMethodTest extends AbstractBalikobotTestCase
 
         $branches = $service->getBranchesForShipperService('cp', 'NP');
 
-        $this->assertInstanceOf(Generator::class, $branches);
+        self::assertInstanceOf(Generator::class, $branches);
 
         /** @var \Inspirum\Balikobot\Model\Values\Branch $branch */
         $branch = $branches->current();
 
-        $this->assertInstanceOf(Branch::class, $branch);
-        $this->assertEquals('1', $branch->getId());
+        self::assertInstanceOf(Branch::class, $branch);
+        self::assertEquals('1', $branch->getId());
 
         $branches->next();
         $branch = $branches->current();
 
-        $this->assertInstanceOf(Branch::class, $branch);
-        $this->assertEquals('876', $branch->getId());
+        self::assertInstanceOf(Branch::class, $branch);
+        self::assertEquals('876', $branch->getId());
 
         $branches->next();
         $branch = $branches->current();
 
-        $this->assertEquals(null, $branch);
+        self::assertEquals(null, $branch);
     }
 
     /**

@@ -56,7 +56,7 @@ class GetLabelsMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/labels', ['package_ids' => ['1', '7', '876']]]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testOnlyLabelUrlIsReturned(): void
@@ -68,6 +68,6 @@ class GetLabelsMethodTest extends AbstractClientTestCase
 
         $labelsUrl = $client->getLabels('cp', []);
 
-        $this->assertEquals('https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.', $labelsUrl);
+        self::assertEquals('https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.', $labelsUrl);
     }
 }

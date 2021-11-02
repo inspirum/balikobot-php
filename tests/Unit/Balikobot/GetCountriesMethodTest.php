@@ -27,7 +27,7 @@ class GetCountriesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -55,7 +55,7 @@ class GetCountriesMethodTest extends AbstractBalikobotTestCase
 
         $units = $service->getCountries('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 1 => [
                     'CZ',

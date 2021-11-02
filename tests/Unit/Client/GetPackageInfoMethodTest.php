@@ -28,7 +28,7 @@ class GetPackageInfoMethodTest extends AbstractClientTestCase
 
         $status = $client->getPackageInfo('cp', '1');
 
-        $this->assertNotEmpty($status);
+        self::assertNotEmpty($status);
     }
 
     public function testThrowsExceptionOnBadStatusCode(): void
@@ -60,6 +60,6 @@ class GetPackageInfoMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

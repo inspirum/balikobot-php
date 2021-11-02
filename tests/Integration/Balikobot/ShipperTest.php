@@ -53,7 +53,7 @@ class ShipperTest extends AbstractBalikobotTestCase
             'japo',
         ];
 
-        $this->assertEqualsCanonicalizing($supportedShippers, $shippers);
+        self::assertEqualsCanonicalizing($supportedShippers, $shippers);
     }
 
     public function testPackageSupportAllShippersServices(): void
@@ -67,7 +67,7 @@ class ShipperTest extends AbstractBalikobotTestCase
         foreach ($shippers as $shipper) {
             $services = array_map('strval', array_keys($service->getServices($shipper)));
 
-            $this->assertEqualsCanonicalizing(
+            self::assertEqualsCanonicalizing(
                 $supportedServices[$shipper],
                 $services,
                 sprintf('Shipper services are not equal for shipper "%s".', $shipper)

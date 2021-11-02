@@ -27,7 +27,7 @@ class GetManipulationUnitsMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -49,7 +49,7 @@ class GetManipulationUnitsMethodTest extends AbstractBalikobotTestCase
 
         $units = $service->getManipulationUnits('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 1   => 'KM',
                 876 => 'M',

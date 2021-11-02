@@ -22,12 +22,12 @@ class OrderedShipmentTest extends AbstractTestCase
             ]
         );
 
-        $this->assertEquals('cp', $orderedShipment->getShipper());
-        $this->assertEquals('1234', $orderedShipment->getOrderId());
-        $this->assertEquals('/handover', $orderedShipment->getHandoverUrl());
-        $this->assertEquals('/labels', $orderedShipment->getLabelsUrl());
-        $this->assertEquals('/file', $orderedShipment->getFileUrl());
-        $this->assertEquals(['1', '67'], $orderedShipment->getPackageIds());
+        self::assertEquals('cp', $orderedShipment->getShipper());
+        self::assertEquals('1234', $orderedShipment->getOrderId());
+        self::assertEquals('/handover', $orderedShipment->getHandoverUrl());
+        self::assertEquals('/labels', $orderedShipment->getLabelsUrl());
+        self::assertEquals('/file', $orderedShipment->getFileUrl());
+        self::assertEquals(['1', '67'], $orderedShipment->getPackageIds());
     }
 
     public function testStaticConstructorWithMissingData(): void
@@ -42,11 +42,11 @@ class OrderedShipmentTest extends AbstractTestCase
             ]
         );
 
-        $this->assertEquals('cp', $orderedShipment->getShipper());
-        $this->assertEquals('1234', $orderedShipment->getOrderId());
-        $this->assertEquals('/handover', $orderedShipment->getHandoverUrl());
-        $this->assertEquals('/labels', $orderedShipment->getLabelsUrl());
-        $this->assertEquals(null, $orderedShipment->getFileUrl());
-        $this->assertEquals(['1', '67'], $orderedShipment->getPackageIds());
+        self::assertEquals('cp', $orderedShipment->getShipper());
+        self::assertEquals('1234', $orderedShipment->getOrderId());
+        self::assertEquals('/handover', $orderedShipment->getHandoverUrl());
+        self::assertEquals('/labels', $orderedShipment->getLabelsUrl());
+        self::assertEquals(null, $orderedShipment->getFileUrl());
+        self::assertEquals(['1', '67'], $orderedShipment->getPackageIds());
     }
 }

@@ -58,7 +58,7 @@ class GetServicesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfServiceTypesMissing(): void
@@ -69,7 +69,7 @@ class GetServicesMethodTest extends AbstractClientTestCase
 
         $services = $client->getServices('cp');
 
-        $this->assertEquals([], $services);
+        self::assertEquals([], $services);
     }
 
     public function testOnlyUnitsDataAreReturned(): void
@@ -90,7 +90,7 @@ class GetServicesMethodTest extends AbstractClientTestCase
 
         $services = $client->getServices('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'NP' => 'NP - Balík Na poštu',
                 'RR' => 'RR - Doporučená zásilka Ekonomická',

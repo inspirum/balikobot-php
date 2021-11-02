@@ -51,7 +51,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
 
         $status = $client->trackPackage('cp', '1');
 
-        $this->assertNotEmpty($status);
+        self::assertNotEmpty($status);
     }
 
     public function testThrowsExceptionOnBadStatusCode(): void
@@ -114,7 +114,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testDataAreReturnedInV3Format(): void
@@ -141,7 +141,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
 
         $status = $client->trackPackage('cp', '1');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 [
                     'date'          => '2018-11-07 14:15:01',
@@ -176,7 +176,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
 
         $status = $client->trackPackage('cp', '1');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 [
                     'date'          => '2018-11-07 14:15:01',
@@ -260,7 +260,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
 
         $status = $client->trackPackages('cp', ['3', '4', '5']);
 
-        $this->assertNotEmpty($status);
+        self::assertNotEmpty($status);
     }
 
     public function testThrowsExceptionOnBadPackageIndexes(): void
@@ -472,7 +472,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testGlsOnlyReturnsLastPackageStatusesWithMultiplePackages(): void
@@ -509,8 +509,8 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
 
         $statuses = $client->trackPackages('gls', ['1', '3']);
 
-        $this->assertEquals([], $statuses[0]);
-        $this->assertEquals(
+        self::assertEquals([], $statuses[0]);
+        self::assertEquals(
             [
                 [
                     'date'          => '2018-11-07 14:15:01',
@@ -567,7 +567,7 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
 
         $status = $client->trackPackages('cp', ['1', '2']);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 0 => [],
                 1 => [

@@ -19,8 +19,8 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
 
         $statuses = $service->trackPackagesLastStatus($packages);
 
-        $this->assertCount(2, $statuses);
-        $this->assertGreaterThan(1.0, $statuses[0]->getId());
-        $this->assertGreaterThan(1.0, $statuses[1]->getId());
+        self::assertCount(2, $statuses);
+        self::assertGreaterThan(1.0, $statuses[0]->getId());
+        self::assertGreaterThan(1.0, $statuses[1]->getId());
     }
 }

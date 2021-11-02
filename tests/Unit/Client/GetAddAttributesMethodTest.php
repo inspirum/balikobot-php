@@ -58,7 +58,7 @@ class GetAddAttributesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfServiceTypesMissing(): void
@@ -69,7 +69,7 @@ class GetAddAttributesMethodTest extends AbstractClientTestCase
 
         $services = $client->getAddAttributes('cp');
 
-        $this->assertEquals([], $services);
+        self::assertEquals([], $services);
     }
 
     public function testOnlyServicesDataAreReturned(): void
@@ -97,7 +97,7 @@ class GetAddAttributesMethodTest extends AbstractClientTestCase
 
         $services = $client->getAddAttributes('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'eid'      => [
                     'name'       => 'eid',

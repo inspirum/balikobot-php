@@ -19,10 +19,10 @@ class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
 
         $units = $service->getAdrUnits(Shipper::TOPTRANS);
 
-        $this->assertTrue(count($units) > 0);
+        self::assertTrue(count($units) > 0);
         foreach ($units as $id => $unit) {
-            $this->assertTrue(is_int($id));
-            $this->assertTrue(is_string($unit));
+            self::assertTrue(is_int($id));
+            self::assertTrue(is_string($unit));
         }
     }
 
@@ -32,12 +32,12 @@ class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
 
         $units = $service->getAdrUnits(Shipper::TOPTRANS, fullData: true);
 
-        $this->assertTrue(count($units) > 0);
+        self::assertTrue(count($units) > 0);
         foreach ($units as $id => $unit) {
-            $this->assertTrue(is_array($unit));
-            $this->assertTrue(is_array($unit) && is_numeric($unit['id']));
-            $this->assertTrue(is_array($unit) && is_string($unit['name']));
-            $this->assertTrue(is_array($unit) && $unit['code'] === (string) $id);
+            self::assertTrue(is_array($unit));
+            self::assertTrue(is_array($unit) && is_numeric($unit['id']));
+            self::assertTrue(is_array($unit) && is_string($unit['name']));
+            self::assertTrue(is_array($unit) && $unit['code'] === (string) $id);
         }
     }
 
@@ -47,6 +47,6 @@ class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
 
         $units = $service->getAdrUnits(Shipper::CP);
 
-        $this->assertTrue(count($units) === 0);
+        self::assertTrue(count($units) === 0);
     }
 }

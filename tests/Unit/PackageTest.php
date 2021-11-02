@@ -21,7 +21,7 @@ class PackageTest extends AbstractTestCase
             ]
         );
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'a'    => 1,
                 'eid'  => '7890',
@@ -38,13 +38,13 @@ class PackageTest extends AbstractTestCase
         $package->offsetSet('a', 2);
         $package->offsetSet('b', false);
 
-        $this->assertEquals(2, $package->offsetGet('a'));
-        $this->assertEquals(false, $package->offsetGet('b'));
-        $this->assertTrue($package->offsetExists('b'));
+        self::assertEquals(2, $package->offsetGet('a'));
+        self::assertEquals(false, $package->offsetGet('b'));
+        self::assertTrue($package->offsetExists('b'));
 
         $package->offsetUnset('b');
 
-        $this->assertFalse($package->offsetExists('b'));
+        self::assertFalse($package->offsetExists('b'));
     }
 
     public function testPackageSetters(): void
@@ -168,7 +168,7 @@ class PackageTest extends AbstractTestCase
         $package->setContentMRN('1234');
         $package->setEADPdf('base64:ead');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 Option::EID                           => 'eid',
                 Option::ORDER_NUMBER                  => 1,

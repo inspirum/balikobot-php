@@ -56,7 +56,7 @@ class GetActivatedManipulationUnitsMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/activatedmanipulationunits', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfUnitsMissing(): void
@@ -68,7 +68,7 @@ class GetActivatedManipulationUnitsMethodTest extends AbstractClientTestCase
 
         $units = $client->getActivatedManipulationUnits('cp');
 
-        $this->assertEquals([], $units);
+        self::assertEquals([], $units);
     }
 
     public function testOnlyUnitsDataAreReturned(): void
@@ -90,7 +90,7 @@ class GetActivatedManipulationUnitsMethodTest extends AbstractClientTestCase
 
         $units = $client->getActivatedManipulationUnits('cp');
 
-        $this->assertEquals([1 => 'KM', 876 => 'M'], $units);
+        self::assertEquals([1 => 'KM', 876 => 'M'], $units);
     }
 
     public function testFullDataAreReturned(): void
@@ -113,7 +113,7 @@ class GetActivatedManipulationUnitsMethodTest extends AbstractClientTestCase
 
         $units = $client->getActivatedManipulationUnits('cp', fullData: true);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 1   => [
                     'code' => 1,

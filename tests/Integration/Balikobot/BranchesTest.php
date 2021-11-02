@@ -21,9 +21,9 @@ class BranchesTest extends AbstractBalikobotTestCase
             try {
                 $branches = $service->getBranchesForShipperForCountries($shipper, ['DE', 'SK']);
                 foreach ($branches as $branch) {
-                    $this->assertNotEmpty($branch->getId());
-                    $this->assertNotEmpty($branch->getBranchId());
-                    $this->assertTrue(
+                    self::assertNotEmpty($branch->getId());
+                    self::assertNotEmpty($branch->getBranchId());
+                    self::assertTrue(
                         in_array($branch->getCountry(), ['SK', 'DE']),
                         sprintf('Country %s code should be DE/SK', $branch->getCountry() ?? '[null]')
                     );

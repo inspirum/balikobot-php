@@ -41,6 +41,6 @@ class AuthorizationTest extends AbstractBalikobotTestCase
 
         $orderedPackages = $service->addPackages($packages);
 
-        $this->assertNotEmpty($orderedPackages[0]->getPackageId());
+        self::assertNotEmpty($orderedPackages[0]->getPackageId());
     }
 }

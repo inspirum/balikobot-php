@@ -13,30 +13,30 @@ class ShipperStaticMethodTest extends AbstractTestCase
     {
         $fullBranchesSupport = Shipper::hasFullBranchesSupport('cp', 'NP');
 
-        $this->assertTrue($fullBranchesSupport);
+        self::assertTrue($fullBranchesSupport);
 
         $fullBranchesSupport = Shipper::hasFullBranchesSupport('zasilkovna', null);
 
-        $this->assertTrue($fullBranchesSupport);
+        self::assertTrue($fullBranchesSupport);
 
         $fullBranchesSupport = Shipper::hasFullBranchesSupport('zasilkovna', 'VMCZ');
 
-        $this->assertTrue($fullBranchesSupport);
+        self::assertTrue($fullBranchesSupport);
 
         $fullBranchesSupport = Shipper::hasFullBranchesSupport('pbh', '6');
 
-        $this->assertTrue($fullBranchesSupport);
+        self::assertTrue($fullBranchesSupport);
 
         $fullBranchesSupport = Shipper::hasFullBranchesSupport('pbh', '15');
 
-        $this->assertTrue($fullBranchesSupport);
+        self::assertTrue($fullBranchesSupport);
 
         $fullBranchesSupport = Shipper::hasFullBranchesSupport('cp', 'RR');
 
-        $this->assertFalse($fullBranchesSupport);
+        self::assertFalse($fullBranchesSupport);
 
         $fullBranchesSupport = Shipper::hasFullBranchesSupport('ulozenka', null);
 
-        $this->assertFalse($fullBranchesSupport);
+        self::assertFalse($fullBranchesSupport);
     }
 }

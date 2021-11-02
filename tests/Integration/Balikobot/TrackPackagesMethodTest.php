@@ -19,8 +19,8 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
 
         $statuses = $service->trackPackages($packages);
 
-        $this->assertCount(2, $statuses);
-        $this->assertGreaterThan(1.0, $statuses[0][0]->getId());
-        $this->assertGreaterThan(1.0, $statuses[1][0]->getId());
+        self::assertCount(2, $statuses);
+        self::assertGreaterThan(1.0, $statuses[0][0]->getId());
+        self::assertGreaterThan(1.0, $statuses[1][0]->getId());
     }
 }

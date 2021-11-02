@@ -44,38 +44,38 @@ class BranchTest extends AbstractTestCase
             'max_weight'            => '5',
         ]);
 
-        $this->assertEquals('cp', $branch->getShipper());
-        $this->assertEquals('NP', $branch->getServiceType());
-        $this->assertEquals('1234', $branch->getId());
-        $this->assertEquals('type', $branch->getType());
-        $this->assertEquals('name', $branch->getName());
-        $this->assertEquals('city', $branch->getCity());
-        $this->assertEquals('street 27/8', $branch->getStreet());
-        $this->assertEquals('zip', $branch->getZip());
-        $this->assertEquals('country', $branch->getCountry());
-        $this->assertEquals('city_part', $branch->getCityPart());
-        $this->assertEquals('district', $branch->getDistrict());
-        $this->assertEquals('region', $branch->getRegion());
-        $this->assertEquals('currency', $branch->getCurrency());
-        $this->assertEquals('photo_small', $branch->getPhotoSmall());
-        $this->assertEquals('photo_big', $branch->getPhotoBig());
-        $this->assertEquals('url', $branch->getUrl());
-        $this->assertEquals(123.45, $branch->getLatitude());
-        $this->assertEquals(67.890, $branch->getLongitude());
-        $this->assertEquals('directions_global', $branch->getDirectionsGlobal());
-        $this->assertEquals('directions_car', $branch->getDirectionsCar());
-        $this->assertEquals('directions_public', $branch->getDirectionsPublic());
-        $this->assertEquals(false, $branch->getWheelchairAccessible());
-        $this->assertEquals(true, $branch->getClaimAssistant());
-        $this->assertEquals(true, $branch->getDressingRoom());
-        $this->assertEquals('opening_monday', $branch->getOpeningMonday());
-        $this->assertEquals('opening_tuesday', $branch->getOpeningTuesday());
-        $this->assertEquals('opening_wednesday', $branch->getOpeningWednesday());
-        $this->assertEquals('opening_thursday', $branch->getOpeningThursday());
-        $this->assertEquals('opening_friday', $branch->getOpeningFriday());
-        $this->assertEquals('opening_saturday', $branch->getOpeningSaturday());
-        $this->assertEquals('opening_sunday', $branch->getOpeningSunday());
-        $this->assertEquals(5.0, $branch->getMaxWeight());
+        self::assertEquals('cp', $branch->getShipper());
+        self::assertEquals('NP', $branch->getServiceType());
+        self::assertEquals('1234', $branch->getId());
+        self::assertEquals('type', $branch->getType());
+        self::assertEquals('name', $branch->getName());
+        self::assertEquals('city', $branch->getCity());
+        self::assertEquals('street 27/8', $branch->getStreet());
+        self::assertEquals('zip', $branch->getZip());
+        self::assertEquals('country', $branch->getCountry());
+        self::assertEquals('city_part', $branch->getCityPart());
+        self::assertEquals('district', $branch->getDistrict());
+        self::assertEquals('region', $branch->getRegion());
+        self::assertEquals('currency', $branch->getCurrency());
+        self::assertEquals('photo_small', $branch->getPhotoSmall());
+        self::assertEquals('photo_big', $branch->getPhotoBig());
+        self::assertEquals('url', $branch->getUrl());
+        self::assertEquals(123.45, $branch->getLatitude());
+        self::assertEquals(67.890, $branch->getLongitude());
+        self::assertEquals('directions_global', $branch->getDirectionsGlobal());
+        self::assertEquals('directions_car', $branch->getDirectionsCar());
+        self::assertEquals('directions_public', $branch->getDirectionsPublic());
+        self::assertEquals(false, $branch->getWheelchairAccessible());
+        self::assertEquals(true, $branch->getClaimAssistant());
+        self::assertEquals(true, $branch->getDressingRoom());
+        self::assertEquals('opening_monday', $branch->getOpeningMonday());
+        self::assertEquals('opening_tuesday', $branch->getOpeningTuesday());
+        self::assertEquals('opening_wednesday', $branch->getOpeningWednesday());
+        self::assertEquals('opening_thursday', $branch->getOpeningThursday());
+        self::assertEquals('opening_friday', $branch->getOpeningFriday());
+        self::assertEquals('opening_saturday', $branch->getOpeningSaturday());
+        self::assertEquals('opening_sunday', $branch->getOpeningSunday());
+        self::assertEquals(5.0, $branch->getMaxWeight());
     }
 
     public function testBranchUid(): void
@@ -86,8 +86,8 @@ class BranchTest extends AbstractTestCase
             'id'         => '1234',
         ]);
 
-        $this->assertEquals('KMBA01081885107', $branch->getId());
-        $this->assertEquals('2-ppl-branch-KMBA01081885107', $branch->getUId());
+        self::assertEquals('KMBA01081885107', $branch->getId());
+        self::assertEquals('2-ppl-branch-KMBA01081885107', $branch->getUId());
     }
 
     public function testStaticConstructorWithMissingData(): void
@@ -96,38 +96,38 @@ class BranchTest extends AbstractTestCase
             'zip' => 'zip',
         ]);
 
-        $this->assertEquals('ppl', $branch->getShipper());
-        $this->assertEquals('1', $branch->getServiceType());
-        $this->assertEquals(null, $branch->getId());
-        $this->assertEquals('branch', $branch->getType());
-        $this->assertEquals('zip', $branch->getName());
-        $this->assertEquals(null, $branch->getCity());
-        $this->assertEquals(null, $branch->getStreet());
-        $this->assertEquals('zip', $branch->getZip());
-        $this->assertEquals(null, $branch->getCountry());
-        $this->assertEquals(null, $branch->getCityPart());
-        $this->assertEquals(null, $branch->getDistrict());
-        $this->assertEquals(null, $branch->getRegion());
-        $this->assertEquals(null, $branch->getCurrency());
-        $this->assertEquals(null, $branch->getPhotoSmall());
-        $this->assertEquals(null, $branch->getPhotoBig());
-        $this->assertEquals(null, $branch->getUrl());
-        $this->assertEquals(null, $branch->getLatitude());
-        $this->assertEquals(null, $branch->getLongitude());
-        $this->assertEquals(null, $branch->getDirectionsGlobal());
-        $this->assertEquals(null, $branch->getDirectionsCar());
-        $this->assertEquals(null, $branch->getDirectionsPublic());
-        $this->assertEquals(null, $branch->getWheelchairAccessible());
-        $this->assertEquals(null, $branch->getClaimAssistant());
-        $this->assertEquals(null, $branch->getDressingRoom());
-        $this->assertEquals(null, $branch->getOpeningMonday());
-        $this->assertEquals(null, $branch->getOpeningTuesday());
-        $this->assertEquals(null, $branch->getOpeningWednesday());
-        $this->assertEquals(null, $branch->getOpeningThursday());
-        $this->assertEquals(null, $branch->getOpeningFriday());
-        $this->assertEquals(null, $branch->getOpeningSaturday());
-        $this->assertEquals(null, $branch->getOpeningSunday());
-        $this->assertEquals(null, $branch->getMaxWeight());
+        self::assertEquals('ppl', $branch->getShipper());
+        self::assertEquals('1', $branch->getServiceType());
+        self::assertEquals(null, $branch->getId());
+        self::assertEquals('branch', $branch->getType());
+        self::assertEquals('zip', $branch->getName());
+        self::assertEquals(null, $branch->getCity());
+        self::assertEquals(null, $branch->getStreet());
+        self::assertEquals('zip', $branch->getZip());
+        self::assertEquals(null, $branch->getCountry());
+        self::assertEquals(null, $branch->getCityPart());
+        self::assertEquals(null, $branch->getDistrict());
+        self::assertEquals(null, $branch->getRegion());
+        self::assertEquals(null, $branch->getCurrency());
+        self::assertEquals(null, $branch->getPhotoSmall());
+        self::assertEquals(null, $branch->getPhotoBig());
+        self::assertEquals(null, $branch->getUrl());
+        self::assertEquals(null, $branch->getLatitude());
+        self::assertEquals(null, $branch->getLongitude());
+        self::assertEquals(null, $branch->getDirectionsGlobal());
+        self::assertEquals(null, $branch->getDirectionsCar());
+        self::assertEquals(null, $branch->getDirectionsPublic());
+        self::assertEquals(null, $branch->getWheelchairAccessible());
+        self::assertEquals(null, $branch->getClaimAssistant());
+        self::assertEquals(null, $branch->getDressingRoom());
+        self::assertEquals(null, $branch->getOpeningMonday());
+        self::assertEquals(null, $branch->getOpeningTuesday());
+        self::assertEquals(null, $branch->getOpeningWednesday());
+        self::assertEquals(null, $branch->getOpeningThursday());
+        self::assertEquals(null, $branch->getOpeningFriday());
+        self::assertEquals(null, $branch->getOpeningSaturday());
+        self::assertEquals(null, $branch->getOpeningSunday());
+        self::assertEquals(null, $branch->getMaxWeight());
     }
 
     public function testStaticConstructorWithMissingDataForCPNP(): void
@@ -136,38 +136,38 @@ class BranchTest extends AbstractTestCase
             'zip' => 'zip',
         ]);
 
-        $this->assertEquals('cp', $branch->getShipper());
-        $this->assertEquals('NP', $branch->getServiceType());
-        $this->assertEquals(null, $branch->getId());
-        $this->assertEquals('branch', $branch->getType());
-        $this->assertEquals('zip', $branch->getName());
-        $this->assertEquals(null, $branch->getCity());
-        $this->assertEquals(null, $branch->getStreet());
-        $this->assertEquals('zip', $branch->getZip());
-        $this->assertEquals('CZ', $branch->getCountry());
-        $this->assertEquals(null, $branch->getCityPart());
-        $this->assertEquals(null, $branch->getDistrict());
-        $this->assertEquals(null, $branch->getRegion());
-        $this->assertEquals(null, $branch->getCurrency());
-        $this->assertEquals(null, $branch->getPhotoSmall());
-        $this->assertEquals(null, $branch->getPhotoBig());
-        $this->assertEquals(null, $branch->getUrl());
-        $this->assertEquals(null, $branch->getLatitude());
-        $this->assertEquals(null, $branch->getLongitude());
-        $this->assertEquals(null, $branch->getDirectionsGlobal());
-        $this->assertEquals(null, $branch->getDirectionsCar());
-        $this->assertEquals(null, $branch->getDirectionsPublic());
-        $this->assertEquals(null, $branch->getWheelchairAccessible());
-        $this->assertEquals(null, $branch->getClaimAssistant());
-        $this->assertEquals(null, $branch->getDressingRoom());
-        $this->assertEquals(null, $branch->getOpeningMonday());
-        $this->assertEquals(null, $branch->getOpeningTuesday());
-        $this->assertEquals(null, $branch->getOpeningWednesday());
-        $this->assertEquals(null, $branch->getOpeningThursday());
-        $this->assertEquals(null, $branch->getOpeningFriday());
-        $this->assertEquals(null, $branch->getOpeningSaturday());
-        $this->assertEquals(null, $branch->getOpeningSunday());
-        $this->assertEquals(null, $branch->getMaxWeight());
+        self::assertEquals('cp', $branch->getShipper());
+        self::assertEquals('NP', $branch->getServiceType());
+        self::assertEquals(null, $branch->getId());
+        self::assertEquals('branch', $branch->getType());
+        self::assertEquals('zip', $branch->getName());
+        self::assertEquals(null, $branch->getCity());
+        self::assertEquals(null, $branch->getStreet());
+        self::assertEquals('zip', $branch->getZip());
+        self::assertEquals('CZ', $branch->getCountry());
+        self::assertEquals(null, $branch->getCityPart());
+        self::assertEquals(null, $branch->getDistrict());
+        self::assertEquals(null, $branch->getRegion());
+        self::assertEquals(null, $branch->getCurrency());
+        self::assertEquals(null, $branch->getPhotoSmall());
+        self::assertEquals(null, $branch->getPhotoBig());
+        self::assertEquals(null, $branch->getUrl());
+        self::assertEquals(null, $branch->getLatitude());
+        self::assertEquals(null, $branch->getLongitude());
+        self::assertEquals(null, $branch->getDirectionsGlobal());
+        self::assertEquals(null, $branch->getDirectionsCar());
+        self::assertEquals(null, $branch->getDirectionsPublic());
+        self::assertEquals(null, $branch->getWheelchairAccessible());
+        self::assertEquals(null, $branch->getClaimAssistant());
+        self::assertEquals(null, $branch->getDressingRoom());
+        self::assertEquals(null, $branch->getOpeningMonday());
+        self::assertEquals(null, $branch->getOpeningTuesday());
+        self::assertEquals(null, $branch->getOpeningWednesday());
+        self::assertEquals(null, $branch->getOpeningThursday());
+        self::assertEquals(null, $branch->getOpeningFriday());
+        self::assertEquals(null, $branch->getOpeningSaturday());
+        self::assertEquals(null, $branch->getOpeningSunday());
+        self::assertEquals(null, $branch->getMaxWeight());
     }
 
     public function testStaticConstructorFallbackName(): void
@@ -177,9 +177,9 @@ class BranchTest extends AbstractTestCase
             'address' => 'address',
         ]);
 
-        $this->assertEquals('zip', $branch->getName());
-        $this->assertEquals('branch', $branch->getType());
-        $this->assertEquals('address', $branch->getStreet());
+        self::assertEquals('zip', $branch->getName());
+        self::assertEquals('branch', $branch->getType());
+        self::assertEquals('address', $branch->getStreet());
     }
 
     public function testStaticConstructorStreetNumber(): void
@@ -191,7 +191,7 @@ class BranchTest extends AbstractTestCase
             'orientation_number' => '896',
         ]);
 
-        $this->assertEquals('street 8/896', $branch->getStreet());
+        self::assertEquals('street 8/896', $branch->getStreet());
 
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'                => 'zip',
@@ -200,7 +200,7 @@ class BranchTest extends AbstractTestCase
             'orientation_number' => '0',
         ]);
 
-        $this->assertEquals('street 8', $branch->getStreet());
+        self::assertEquals('street 8', $branch->getStreet());
 
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'                => 'zip',
@@ -208,7 +208,7 @@ class BranchTest extends AbstractTestCase
             'orientation_number' => '897',
         ]);
 
-        $this->assertEquals('street 897', $branch->getStreet());
+        self::assertEquals('street 897', $branch->getStreet());
 
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'          => 'zip',
@@ -216,7 +216,7 @@ class BranchTest extends AbstractTestCase
             'house_number' => '2',
         ]);
 
-        $this->assertEquals('street 2', $branch->getStreet());
+        self::assertEquals('street 2', $branch->getStreet());
 
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'                => 'zip',
@@ -225,7 +225,7 @@ class BranchTest extends AbstractTestCase
             'orientation_number' => '3',
         ]);
 
-        $this->assertEquals('street 1 2/3', $branch->getStreet());
+        self::assertEquals('street 1 2/3', $branch->getStreet());
 
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'                => 'zip',
@@ -234,7 +234,7 @@ class BranchTest extends AbstractTestCase
             'orientation_number' => '3',
         ]);
 
-        $this->assertEquals('address', $branch->getStreet());
+        self::assertEquals('address', $branch->getStreet());
 
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'                => 'zip',
@@ -243,7 +243,7 @@ class BranchTest extends AbstractTestCase
             'orientation_number' => '4',
         ]);
 
-        $this->assertEquals('3/4', $branch->getStreet());
+        self::assertEquals('3/4', $branch->getStreet());
 
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'                => 'zip',
@@ -253,7 +253,7 @@ class BranchTest extends AbstractTestCase
             'orientation_number' => '0',
         ]);
 
-        $this->assertEquals('Vrbovec 146', $branch->getStreet());
+        self::assertEquals('Vrbovec 146', $branch->getStreet());
 
         $branch = Branch::newInstanceFromData('cp', 'NP', [
             'zip'                => 'zip',
@@ -264,7 +264,7 @@ class BranchTest extends AbstractTestCase
             'orientation_number' => '0',
         ]);
 
-        $this->assertEquals('Vrbovec 147', $branch->getStreet());
+        self::assertEquals('Vrbovec 147', $branch->getStreet());
     }
 
     public function testBranchIdResolver(): void
@@ -275,7 +275,7 @@ class BranchTest extends AbstractTestCase
             'zip'  => '110 00',
         ]);
 
-        $this->assertEquals('11000', $branch->getBranchId());
+        self::assertEquals('11000', $branch->getBranchId());
 
         $branch = Branch::newInstanceFromData('sp', 'NP', [
             'id'   => '11',
@@ -283,7 +283,7 @@ class BranchTest extends AbstractTestCase
             'zip'  => '110 00',
         ]);
 
-        $this->assertEquals('11000', $branch->getBranchId());
+        self::assertEquals('11000', $branch->getBranchId());
 
         $branch = Branch::newInstanceFromData('ulozenka', '7', [
             'id'   => '11',
@@ -291,7 +291,7 @@ class BranchTest extends AbstractTestCase
             'zip'  => '110 00',
         ]);
 
-        $this->assertEquals('11000', $branch->getBranchId());
+        self::assertEquals('11000', $branch->getBranchId());
 
         $branch = Branch::newInstanceFromData('ppl', 'NP', [
             'id'   => 'KM1234',
@@ -299,7 +299,7 @@ class BranchTest extends AbstractTestCase
             'zip'  => '110 00',
         ]);
 
-        $this->assertEquals('1234', $branch->getBranchId());
+        self::assertEquals('1234', $branch->getBranchId());
 
         $branch = Branch::newInstanceFromData('ppl', 'NP', [
             'id'   => 'K1M234',
@@ -307,7 +307,7 @@ class BranchTest extends AbstractTestCase
             'zip'  => '110 00',
         ]);
 
-        $this->assertEquals('K1M234', $branch->getBranchId());
+        self::assertEquals('K1M234', $branch->getBranchId());
 
         $branch = Branch::newInstanceFromData('intime', 'NP', [
             'id'   => '11',
@@ -315,7 +315,7 @@ class BranchTest extends AbstractTestCase
             'zip'  => '110 00',
         ]);
 
-        $this->assertEquals('Branch Name', $branch->getBranchId());
+        self::assertEquals('Branch Name', $branch->getBranchId());
 
         $branch = Branch::newInstanceFromData('zasilkovna', null, [
             'id'   => '167',
@@ -323,6 +323,6 @@ class BranchTest extends AbstractTestCase
             'zip'  => '110 00',
         ]);
 
-        $this->assertEquals('167', $branch->getBranchId());
+        self::assertEquals('167', $branch->getBranchId());
     }
 }

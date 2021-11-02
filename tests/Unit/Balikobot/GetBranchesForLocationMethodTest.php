@@ -37,7 +37,7 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithTypeParameter(): void
@@ -75,7 +75,7 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -96,23 +96,23 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
 
         $branches = $service->getBranchesForLocation('ups', 'CZ', 'Praha', null, 'Pražská', 4, 40.3);
 
-        $this->assertInstanceOf(Generator::class, $branches);
+        self::assertInstanceOf(Generator::class, $branches);
 
         /** @var \Inspirum\Balikobot\Model\Values\Branch $branch */
         $branch = $branches->current();
 
-        $this->assertInstanceOf(Branch::class, $branch);
-        $this->assertEquals('1', $branch->getId());
+        self::assertInstanceOf(Branch::class, $branch);
+        self::assertEquals('1', $branch->getId());
 
         $branches->next();
         $branch = $branches->current();
 
-        $this->assertInstanceOf(Branch::class, $branch);
-        $this->assertEquals('876', $branch->getId());
+        self::assertInstanceOf(Branch::class, $branch);
+        self::assertEquals('876', $branch->getId());
 
         $branches->next();
         $branch = $branches->current();
 
-        $this->assertEquals(null, $branch);
+        self::assertEquals(null, $branch);
     }
 }

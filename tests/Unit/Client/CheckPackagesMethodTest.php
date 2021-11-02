@@ -65,6 +65,6 @@ class CheckPackagesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 }

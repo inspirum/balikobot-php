@@ -58,7 +58,7 @@ class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -88,11 +88,11 @@ class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
 
         $orderedPackages = $service->orderB2AShipment($packages);
 
-        $this->assertEquals(2, $orderedPackages->count());
-        $this->assertEquals(['21', '22'], $orderedPackages->getPackageIds());
-        $this->assertEquals('NP1504102247M', $orderedPackages[1]->getCarrierId());
-        $this->assertEquals('0001', $orderedPackages[0]->getBatchId());
-        $this->assertEquals('0002', $orderedPackages[1]->getBatchId());
+        self::assertEquals(2, $orderedPackages->count());
+        self::assertEquals(['21', '22'], $orderedPackages->getPackageIds());
+        self::assertEquals('NP1504102247M', $orderedPackages[1]->getCarrierId());
+        self::assertEquals('0001', $orderedPackages[0]->getBatchId());
+        self::assertEquals('0002', $orderedPackages[1]->getBatchId());
     }
 
     public function testResponseDataWithoutCarrierId(): void
@@ -118,9 +118,9 @@ class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
 
         $orderedPackages = $service->orderB2AShipment($packages);
 
-        $this->assertEquals(2, $orderedPackages->count());
-        $this->assertEquals(['21', '22'], $orderedPackages->getPackageIds());
-        $this->assertEquals('0001', $orderedPackages[0]->getBatchId());
-        $this->assertEquals('0002', $orderedPackages[1]->getBatchId());
+        self::assertEquals(2, $orderedPackages->count());
+        self::assertEquals(['21', '22'], $orderedPackages->getPackageIds());
+        self::assertEquals('0001', $orderedPackages[0]->getBatchId());
+        self::assertEquals('0002', $orderedPackages[1]->getBatchId());
     }
 }

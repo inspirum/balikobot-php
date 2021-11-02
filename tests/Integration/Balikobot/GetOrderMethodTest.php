@@ -38,7 +38,7 @@ class GetOrderMethodTest extends AbstractBalikobotTestCase
 
         $orderedShipmentData = $service->getOrder($orderedShipment->getShipper(), $orderedShipment->getOrderId());
 
-        $this->assertEquals($orderedShipment, $orderedShipmentData);
+        self::assertEquals($orderedShipment, $orderedShipmentData);
     }
 
     public function testInvalidRequest(): void
@@ -47,9 +47,9 @@ class GetOrderMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getOrder(Shipper::ZASILKOVNA, '1234');
-            $this->assertTrue(false, 'ORDERVIEW request should thrown exception');
+            self::assertTrue(false, 'ORDERVIEW request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(404, $exception->getStatusCode());
+            self::assertEquals(404, $exception->getStatusCode());
         }
     }
 }

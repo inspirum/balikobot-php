@@ -27,7 +27,7 @@ class GetAddAttributesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -55,7 +55,7 @@ class GetAddAttributesMethodTest extends AbstractBalikobotTestCase
 
         $units = $service->getAddAttributes('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'eid'      => [
                     'name'       => 'eid',

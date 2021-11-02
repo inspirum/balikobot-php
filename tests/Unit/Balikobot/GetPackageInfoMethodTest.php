@@ -29,7 +29,7 @@ class GetPackageInfoMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -51,16 +51,16 @@ class GetPackageInfoMethodTest extends AbstractBalikobotTestCase
 
         $package = $service->getPackageInfo($orderedPackage);
 
-        $this->assertArrayNotHasKey('package_id', $package->toArray());
-        $this->assertArrayNotHasKey('eshop_id', $package->toArray());
-        $this->assertArrayNotHasKey('carrier_id', $package->toArray());
-        $this->assertArrayNotHasKey('track_url', $package->toArray());
-        $this->assertArrayNotHasKey('label_url', $package->toArray());
-        $this->assertArrayNotHasKey('carrier_id_swap', $package->toArray());
-        $this->assertArrayNotHasKey('pieces', $package->toArray());
-        $this->assertEquals('0001', $package->getEID());
-        $this->assertEquals('180001', $package->offsetGet('real_order_id'));
-        $this->assertEquals(2, $package->offsetGet('order_number'));
-        $this->assertEquals('0001', $package->offsetGet('eid'));
+        self::assertArrayNotHasKey('package_id', $package->toArray());
+        self::assertArrayNotHasKey('eshop_id', $package->toArray());
+        self::assertArrayNotHasKey('carrier_id', $package->toArray());
+        self::assertArrayNotHasKey('track_url', $package->toArray());
+        self::assertArrayNotHasKey('label_url', $package->toArray());
+        self::assertArrayNotHasKey('carrier_id_swap', $package->toArray());
+        self::assertArrayNotHasKey('pieces', $package->toArray());
+        self::assertEquals('0001', $package->getEID());
+        self::assertEquals('180001', $package->offsetGet('real_order_id'));
+        self::assertEquals(2, $package->offsetGet('order_number'));
+        self::assertEquals('0001', $package->offsetGet('eid'));
     }
 }

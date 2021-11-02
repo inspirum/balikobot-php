@@ -59,7 +59,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithCountry(): void
@@ -81,7 +81,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfPostCodesMissing(): void
@@ -93,7 +93,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
 
         $postcodes = $client->getPostCodes('cp', 'NP');
 
-        $this->assertEquals([], $postcodes);
+        self::assertEquals([], $postcodes);
     }
 
     public function testDataAreReturnedFromResponseType1(): void
@@ -118,7 +118,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
 
         $postcodes = $client->getPostCodes('cp', 'NP');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 [
                     'postcode'     => '35002',
@@ -161,7 +161,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
 
         $postcodes = $client->getPostCodes('cp', 'NP');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 [
                     'postcode'     => '10000',
@@ -200,7 +200,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
 
         $postcodes = $client->getPostCodes('cp', 'NP');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 [
                     'postcode'     => '25999',
@@ -233,7 +233,7 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
 
         $postcodes = $client->getPostCodes('cp', 'NP');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 [
                     'postcode'     => null,

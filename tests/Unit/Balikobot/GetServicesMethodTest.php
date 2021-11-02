@@ -26,7 +26,7 @@ class GetServicesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -47,7 +47,7 @@ class GetServicesMethodTest extends AbstractBalikobotTestCase
 
         $services = $service->getServices('ppl');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'NP' => 'NP - Balík Na poštu',
                 'RR' => 'RR - Doporučená zásilka Ekonomická',

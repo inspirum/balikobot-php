@@ -28,7 +28,7 @@ class GetOrderMethodTest extends AbstractClientTestCase
 
         $order = $client->getOrder('cp', '1');
 
-        $this->assertNotEmpty($order);
+        self::assertNotEmpty($order);
     }
 
     public function testThrowsExceptionOnBadStatusCode(): void
@@ -57,7 +57,7 @@ class GetOrderMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/orderview/1', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testOnlyOrderDataAreReturned(): void
@@ -73,7 +73,7 @@ class GetOrderMethodTest extends AbstractClientTestCase
 
         $order = $client->getOrder('cp', '1');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'order_id'     => 29,
                 'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',

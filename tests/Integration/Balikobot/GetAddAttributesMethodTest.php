@@ -18,13 +18,13 @@ class GetAddAttributesMethodTest extends AbstractBalikobotTestCase
 
         $attributes = $service->getAddAttributes(Shipper::CP);
 
-        $this->assertTrue(count($attributes) > 0);
+        self::assertTrue(count($attributes) > 0);
         foreach ($attributes as $name => $attribute) {
-            $this->assertTrue(is_string($name));
-            $this->assertTrue(is_array($attribute));
-            $this->assertTrue(array_key_exists('name', $attribute));
-            $this->assertTrue(array_key_exists('data_type', $attribute));
-            $this->assertTrue(array_key_exists('max_length', $attribute));
+            self::assertTrue(is_string($name));
+            self::assertTrue(is_array($attribute));
+            self::assertTrue(array_key_exists('name', $attribute));
+            self::assertTrue(array_key_exists('data_type', $attribute));
+            self::assertTrue(array_key_exists('max_length', $attribute));
         }
     }
 }

@@ -72,7 +72,7 @@ class RequesterTest extends AbstractTestCase
 
         $response = $requester->call('v1', 'cp', 'test', shouldHaveStatus: false);
 
-        $this->assertEquals($expected, $response);
+        self::assertEquals($expected, $response);
     }
 
     public function testUncompressedData(): void
@@ -86,7 +86,7 @@ class RequesterTest extends AbstractTestCase
 
         $response = $requester->call('v1', 'zasilkovna', 'branches/service/VMCZ/country/CZ', gzip: false);
 
-        $this->assertEquals($expected, $response);
+        self::assertEquals($expected, $response);
     }
 
     public function testCompressedData(): void
@@ -101,7 +101,7 @@ class RequesterTest extends AbstractTestCase
 
         $response = $requester->call('v1', 'zasilkovna', 'branches/service/VMCZ/country/CZ', gzip: true);
 
-        $this->assertEquals($expected, $response);
+        self::assertEquals($expected, $response);
     }
 
     public function testCompressedDataFailed(): void
@@ -131,6 +131,6 @@ class RequesterTest extends AbstractTestCase
 
         $response = $requester->call('v1', 'zasilkovna', 'branches/service/VMCZ/country/CZ', gzip: true);
 
-        $this->assertEquals($expected, $response);
+        self::assertEquals($expected, $response);
     }
 }

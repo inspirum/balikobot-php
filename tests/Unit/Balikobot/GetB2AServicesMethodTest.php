@@ -26,7 +26,7 @@ class GetB2AServicesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -41,7 +41,7 @@ class GetB2AServicesMethodTest extends AbstractBalikobotTestCase
 
         $services = $service->getB2AServices('ppl');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 '1'  => 'PPL Parcel Business CZ',
                 '11' => 'PPL Parcel Import SK',

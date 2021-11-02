@@ -56,7 +56,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/branches/service/NP', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithService(): void
@@ -75,7 +75,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/branches/service/NP', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestFullbranches(): void
@@ -94,7 +94,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/fullbranches/service/NP', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithCountry(): void
@@ -113,7 +113,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/branches/service/NP/country/DE', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithCountryWithoutService(): void
@@ -132,7 +132,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/zasilkovna/branches/country/DE', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestCompressed(): void
@@ -151,7 +151,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/branches/service/NP?gzip=1', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithServiceCompressed(): void
@@ -170,7 +170,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/branches/service/NP?gzip=1', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestFullbranchesCompressed(): void
@@ -189,7 +189,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/fullbranches/service/NP?gzip=1', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithCountryCompressed(): void
@@ -208,7 +208,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/branches/service/NP/country/DE?gzip=1', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testMakeRequestWithCountryWithoutServiceCompressed(): void
@@ -227,7 +227,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/zasilkovna/branches/country/DE?gzip=1', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfUnitsMissing(): void
@@ -239,7 +239,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
 
         $branches = $client->getBranches('cp', 'NP');
 
-        $this->assertEquals([], $branches);
+        self::assertEquals([], $branches);
     }
 
     public function testOnlyBranchesDataAreReturned(): void
@@ -260,7 +260,7 @@ class GetBranchesMethodTest extends AbstractClientTestCase
 
         $branches = $client->getBranches('cp', 'NP');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 [
                     'code' => 1,

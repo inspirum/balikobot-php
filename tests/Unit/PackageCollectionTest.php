@@ -16,7 +16,7 @@ class PackageCollectionTest extends AbstractTestCase
 
         $packages->add(new Package(['test' => 1]));
 
-        $this->assertNotEmpty($packages->offsetGet(0)->getEid());
+        self::assertNotEmpty($packages->offsetGet(0)->getEid());
     }
 
     public function testCreateUniqueEid(): void
@@ -31,9 +31,9 @@ class PackageCollectionTest extends AbstractTestCase
         $packages2->add($package);
         $packages3->add($package);
 
-        $this->assertTrue($packages1->offsetGet(0)->getEid() !== $packages2->offsetGet(0)->getEid());
-        $this->assertTrue($packages1->offsetGet(0)->getEid() !== $packages3->offsetGet(0)->getEid());
-        $this->assertTrue($packages2->offsetGet(0)->getEid() !== $packages3->offsetGet(0)->getEid());
+        self::assertTrue($packages1->offsetGet(0)->getEid() !== $packages2->offsetGet(0)->getEid());
+        self::assertTrue($packages1->offsetGet(0)->getEid() !== $packages3->offsetGet(0)->getEid());
+        self::assertTrue($packages2->offsetGet(0)->getEid() !== $packages3->offsetGet(0)->getEid());
     }
 
     public function testAddedPackagesHasUniqueEid(): void
@@ -43,12 +43,12 @@ class PackageCollectionTest extends AbstractTestCase
         $packages->add(new Package(['test' => 1]));
         $packages->add(new Package(['test' => 2]));
 
-        $this->assertNotEmpty($packages->offsetGet(0)->getEID());
-        $this->assertNotEmpty($packages->offsetGet(1)->getEID());
-        $this->assertTrue($packages->offsetGet(0)->getEID() !== $packages->offsetGet(1)->getEID());
+        self::assertNotEmpty($packages->offsetGet(0)->getEID());
+        self::assertNotEmpty($packages->offsetGet(1)->getEID());
+        self::assertTrue($packages->offsetGet(0)->getEID() !== $packages->offsetGet(1)->getEID());
 
-        $this->assertEquals('cp', $packages->getShipper());
-        $this->assertEquals(2, $packages->count());
+        self::assertEquals('cp', $packages->getShipper());
+        self::assertEquals(2, $packages->count());
     }
 
     public function testAddedPackagesAreClones(): void
@@ -63,7 +63,7 @@ class PackageCollectionTest extends AbstractTestCase
 
         $packages->add($package);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 0 => [
                     'eid'  => '0001',
@@ -85,7 +85,7 @@ class PackageCollectionTest extends AbstractTestCase
         $packages->add(new Package(['test' => 1, 'eid' => '0002']));
         $packages->add(new Package(['test' => 2, 'eid' => '0001']));
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 0 => [
                     'eid'  => '0002',
@@ -107,17 +107,17 @@ class PackageCollectionTest extends AbstractTestCase
         $packages->add(new Package(['test' => 1, 'eid' => '0001']));
         $packages->add(new Package(['test' => 2, 'eid' => '0002']));
 
-        $this->assertEquals('0002', $packages->offsetGet(1)->getEID());
-        $this->assertEquals(2, $packages->count());
-        $this->assertTrue($packages->offsetExists(1));
+        self::assertEquals('0002', $packages->offsetGet(1)->getEID());
+        self::assertEquals(2, $packages->count());
+        self::assertTrue($packages->offsetExists(1));
 
         $packages->offsetUnset(1);
 
-        $this->assertFalse($packages->offsetExists(1));
+        self::assertFalse($packages->offsetExists(1));
 
         $packages->offsetSet(2, new Package(['test' => 3, 'eid' => '0003']));
-        $this->assertFalse($packages->offsetExists(1));
-        $this->assertTrue($packages->offsetExists(2));
+        self::assertFalse($packages->offsetExists(1));
+        self::assertTrue($packages->offsetExists(2));
     }
 
     public function testSupportIteratorAggregate(): void
@@ -129,7 +129,7 @@ class PackageCollectionTest extends AbstractTestCase
 
         $iterator = $packages->getIterator();
 
-        $this->assertEquals(2, $iterator->count());
-        $this->assertEquals('0001', $iterator->current()->getEID());
+        self::assertEquals(2, $iterator->count());
+        self::assertEquals('0001', $iterator->current()->getEID());
     }
 }

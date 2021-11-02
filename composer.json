@@ -69,7 +69,7 @@
       "@phpcs src tests"
     ],
     "style:phpstan": [
-      "@phpstan -l 8 src"
+      "@phpstan -l 8 src tests"
     ],
     "style:check": [
       "@style:lint",

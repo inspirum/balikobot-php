@@ -56,7 +56,7 @@ class GetCountriesDataMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/getCountriesData', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfUnitsMissing(): void
@@ -68,7 +68,7 @@ class GetCountriesDataMethodTest extends AbstractClientTestCase
 
         $countries = $client->getCountriesData();
 
-        $this->assertEquals([], $countries);
+        self::assertEquals([], $countries);
     }
 
     public function testOnlyCountriesDataAreReturned(): void
@@ -97,7 +97,7 @@ class GetCountriesDataMethodTest extends AbstractClientTestCase
 
         $countries = $client->getCountriesData();
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'AD' => [
                     'name_en'      => 'Andorra',

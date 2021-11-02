@@ -39,14 +39,14 @@ class PackageTransportCostTest extends AbstractTestCase
             ],
         ]);
 
-        $this->assertEquals('toptrans', $transportCost->getShipper());
-        $this->assertEquals('8316699909', $transportCost->getBatchId());
-        $this->assertEquals(2598.5, $transportCost->getTotalCost());
-        $this->assertEquals('CZK', $transportCost->getCurrencyCode());
-        $this->assertCount(5, $transportCost->getCostsBreakdown());
-        $this->assertEquals('Avizace telefonem na vykládce: Ano', $transportCost->getCostsBreakdown()[3]->getName());
-        $this->assertEquals(100, $transportCost->getCostsBreakdown()[2]->getCost());
-        $this->assertEquals('CZK', $transportCost->getCostsBreakdown()[0]->getCurrencyCode());
+        self::assertEquals('toptrans', $transportCost->getShipper());
+        self::assertEquals('8316699909', $transportCost->getBatchId());
+        self::assertEquals(2598.5, $transportCost->getTotalCost());
+        self::assertEquals('CZK', $transportCost->getCurrencyCode());
+        self::assertCount(5, $transportCost->getCostsBreakdown());
+        self::assertEquals('Avizace telefonem na vykládce: Ano', $transportCost->getCostsBreakdown()[3]->getName());
+        self::assertEquals(100, $transportCost->getCostsBreakdown()[2]->getCost());
+        self::assertEquals('CZK', $transportCost->getCostsBreakdown()[0]->getCurrencyCode());
     }
 
     public function testStaticConstructorWithMissingData(): void
@@ -57,10 +57,10 @@ class PackageTransportCostTest extends AbstractTestCase
             'currency'    => 'CZK',
         ]);
 
-        $this->assertEquals('toptrans', $transportCost->getShipper());
-        $this->assertEquals('8316699909', $transportCost->getBatchId());
-        $this->assertEquals(2598.5, $transportCost->getTotalCost());
-        $this->assertEquals('CZK', $transportCost->getCurrencyCode());
-        $this->assertCount(0, $transportCost->getCostsBreakdown());
+        self::assertEquals('toptrans', $transportCost->getShipper());
+        self::assertEquals('8316699909', $transportCost->getBatchId());
+        self::assertEquals(2598.5, $transportCost->getTotalCost());
+        self::assertEquals('CZK', $transportCost->getCurrencyCode());
+        self::assertCount(0, $transportCost->getCostsBreakdown());
     }
 }

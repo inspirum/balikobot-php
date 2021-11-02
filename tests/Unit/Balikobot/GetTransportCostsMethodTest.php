@@ -68,7 +68,7 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -108,12 +108,12 @@ class GetTransportCostsMethodTest extends AbstractBalikobotTestCase
 
         $transportCosts = $service->getTransportCosts($packages);
 
-        $this->assertEquals(2, $transportCosts->count());
-        $this->assertEquals(['8316699909', '9636699909'], $transportCosts->getBatchIds());
-        $this->assertEquals('8316699909', $transportCosts[0]->getBatchId());
-        $this->assertEquals(1200, $transportCosts[0]->getTotalCost());
-        $this->assertEquals('9636699909', $transportCosts[1]->getBatchId());
-        $this->assertEquals(800, $transportCosts[1]->getTotalCost());
-        $this->assertEquals(2000, $transportCosts->getTotalCost());
+        self::assertEquals(2, $transportCosts->count());
+        self::assertEquals(['8316699909', '9636699909'], $transportCosts->getBatchIds());
+        self::assertEquals('8316699909', $transportCosts[0]->getBatchId());
+        self::assertEquals(1200, $transportCosts[0]->getTotalCost());
+        self::assertEquals('9636699909', $transportCosts[1]->getBatchId());
+        self::assertEquals(800, $transportCosts[1]->getTotalCost());
+        self::assertEquals(2000, $transportCosts->getTotalCost());
     }
 }

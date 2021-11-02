@@ -34,8 +34,8 @@ class AddPackagesMethodTest extends AbstractBalikobotTestCase
 
         $orderPackages = $service->addPackages($packages);
 
-        $this->assertCount(1, $orderPackages->getPackageIds());
-        $this->assertEquals(Shipper::ZASILKOVNA, $orderPackages->getShipper());
+        self::assertCount(1, $orderPackages->getPackageIds());
+        self::assertEquals(Shipper::ZASILKOVNA, $orderPackages->getShipper());
     }
 
     public function testMissingBranchId(): void
@@ -59,10 +59,10 @@ class AddPackagesMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->addPackages($packages);
-            $this->assertTrue(false, 'ADD request should thrown exception');
+            self::assertTrue(false, 'ADD request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(400, $exception->getStatusCode());
-            $this->assertTrue(isset($exception->getErrors()[0]['branch_id']));
+            self::assertEquals(400, $exception->getStatusCode());
+            self::assertTrue(isset($exception->getErrors()[0]['branch_id']));
         }
     }
 }

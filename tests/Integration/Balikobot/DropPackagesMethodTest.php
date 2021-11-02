@@ -38,7 +38,7 @@ class DropPackagesMethodTest extends AbstractBalikobotTestCase
 
         $service->dropPackages($orderPackages);
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testInvalidRequest(): void
@@ -51,11 +51,11 @@ class DropPackagesMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->dropPackages($packages);
-            $this->assertTrue(false, 'DROP request should thrown exception');
+            self::assertTrue(false, 'DROP request should thrown exception');
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(400, $exception->getStatusCode());
-            $this->assertTrue(isset($exception->getErrors()[0]['status']));
-            $this->assertEquals(
+            self::assertEquals(400, $exception->getStatusCode());
+            self::assertTrue(isset($exception->getErrors()[0]['status']));
+            self::assertEquals(
                 'Zásilka neexistuje, nebo již byla zpracována.',
                 $exception->getErrors()[0]['status']
             );

@@ -28,7 +28,7 @@ class GetCountriesDataMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -65,17 +65,17 @@ class GetCountriesDataMethodTest extends AbstractBalikobotTestCase
 
         $countries = $service->getCountriesData();
 
-        $this->assertCount(3, $countries);
-        $this->assertEquals('Andorra', $countries['AD']->getName('cs'));
-        $this->assertEquals('United Arab Emirates', $countries['AE']->getName('en'));
-        $this->assertEquals(['cs', 'en'], array_keys($countries['AE']->getNames()));
-        $this->assertEquals('Spojené arabské emiráty', $countries['AE']->getName('cs'));
-        $this->assertEquals('AD', $countries['AD']->getCode());
-        $this->assertEquals('+376', $countries['AD']->getPhonePrefix());
-        $this->assertEquals(['+1787', '+1939'], $countries['PR']->getPhonePrefixes());
-        $this->assertEquals('+1787', $countries['PR']->getPhonePrefix());
-        $this->assertEquals('EUR', $countries['AD']->getCurrencyCode());
-        $this->assertEquals('Europe', $countries['AD']->getContinent());
-        $this->assertEquals('Asia', $countries['AE']->getContinent());
+        self::assertCount(3, $countries);
+        self::assertEquals('Andorra', $countries['AD']->getName('cs'));
+        self::assertEquals('United Arab Emirates', $countries['AE']->getName('en'));
+        self::assertEquals(['cs', 'en'], array_keys($countries['AE']->getNames()));
+        self::assertEquals('Spojené arabské emiráty', $countries['AE']->getName('cs'));
+        self::assertEquals('AD', $countries['AD']->getCode());
+        self::assertEquals('+376', $countries['AD']->getPhonePrefix());
+        self::assertEquals(['+1787', '+1939'], $countries['PR']->getPhonePrefixes());
+        self::assertEquals('+1787', $countries['PR']->getPhonePrefix());
+        self::assertEquals('EUR', $countries['AD']->getCurrencyCode());
+        self::assertEquals('Europe', $countries['AD']->getContinent());
+        self::assertEquals('Asia', $countries['AE']->getContinent());
     }
 }

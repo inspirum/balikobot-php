@@ -25,7 +25,7 @@ class ExceptionsTest extends AbstractClientTestCase
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(409, $exception->getStatusCode());
+            self::assertEquals(409, $exception->getStatusCode());
         }
     }
 
@@ -38,7 +38,7 @@ class ExceptionsTest extends AbstractClientTestCase
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(419, $exception->getStatusCode());
+            self::assertEquals(419, $exception->getStatusCode());
         }
     }
 
@@ -54,8 +54,8 @@ class ExceptionsTest extends AbstractClientTestCase
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(['test' => 1, 'errors' => ['id' => 404]], $exception->getResponse());
-            $this->assertEquals('{"test":1,"errors":{"id":404}}', $exception->getResponseAsString());
+            self::assertEquals(['test' => 1, 'errors' => ['id' => 404]], $exception->getResponse());
+            self::assertEquals('{"test":1,"errors":{"id":404}}', $exception->getResponseAsString());
         }
     }
 
@@ -79,7 +79,7 @@ class ExceptionsTest extends AbstractClientTestCase
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(
+            self::assertEquals(
                 [
                     0 => [
                         'status'   => 'Špatný formát dat.',
@@ -113,7 +113,7 @@ class ExceptionsTest extends AbstractClientTestCase
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(
+            self::assertEquals(
                 [
                     0 => [
                         'status'   => 'Špatný formát dat.',
@@ -147,7 +147,7 @@ class ExceptionsTest extends AbstractClientTestCase
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(
+            self::assertEquals(
                 'Operace neproběhla v pořádku, zkontrolujte konkrétní data.' . "\n" .
                 '[0][status]: Špatný formát dat.' . "\n" .
                 '[0][id]: Nespecifikovaná chyba.' . "\n" .
@@ -173,7 +173,7 @@ class ExceptionsTest extends AbstractClientTestCase
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(
+            self::assertEquals(
                 [
                     0 => [
                         'status' => 'Nedorazila žádná data ke zpracování nebo nemůžou být akceptována.',
@@ -202,7 +202,7 @@ class ExceptionsTest extends AbstractClientTestCase
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(
+            self::assertEquals(
                 [
                     0 => [
                         'eid' => 'Eshop ID je delší než je maximální povolená délka.',
@@ -250,7 +250,7 @@ class ExceptionsTest extends AbstractClientTestCase
         try {
             $client->addPackages('cp', []);
         } catch (ExceptionInterface $exception) {
-            $this->assertEquals(
+            self::assertEquals(
                 [
                     0 => [
                         'rec_zip' => 'Nepovolené PSČ příjemce.',

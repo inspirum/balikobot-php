@@ -41,7 +41,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -61,9 +61,9 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
 
         $status = $service->trackPackageLastStatus($package);
 
-        $this->assertEquals(1.1, $status->getId());
-        $this->assertEquals(null, $status->getDate());
-        $this->assertEquals('Zásilka byla doručena příjemci.', $status->getName());
+        self::assertEquals(1.1, $status->getId());
+        self::assertEquals(null, $status->getDate());
+        self::assertEquals('Zásilka byla doručena příjemci.', $status->getName());
     }
 
     public function testMakeRequestWithMultiplePackages(): void
@@ -106,7 +106,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseDataWithMultiplePackages(): void
@@ -134,12 +134,12 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
 
         $statuses = $service->trackPackagesLastStatus($packages);
 
-        $this->assertCount(2, $statuses);
-        $this->assertEquals(1.1, $statuses[0]->getId());
-        $this->assertEquals(null, $statuses[0]->getDate());
-        $this->assertEquals('Zásilka byla doručena příjemci.', $statuses[0]->getName());
-        $this->assertEquals(2.1, $statuses[1]->getId());
-        $this->assertEquals(null, $statuses[1]->getDate());
-        $this->assertEquals('Zásilka nebyla doručena příjemci.', $statuses[1]->getName());
+        self::assertCount(2, $statuses);
+        self::assertEquals(1.1, $statuses[0]->getId());
+        self::assertEquals(null, $statuses[0]->getDate());
+        self::assertEquals('Zásilka byla doručena příjemci.', $statuses[0]->getName());
+        self::assertEquals(2.1, $statuses[1]->getId());
+        self::assertEquals(null, $statuses[1]->getDate());
+        self::assertEquals('Zásilka nebyla doručena příjemci.', $statuses[1]->getName());
     }
 }

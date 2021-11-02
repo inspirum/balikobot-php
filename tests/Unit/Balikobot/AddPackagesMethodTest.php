@@ -64,7 +64,7 @@ class AddPackagesMethodTest extends AbstractBalikobotTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testResponseData(): void
@@ -99,12 +99,12 @@ class AddPackagesMethodTest extends AbstractBalikobotTestCase
 
         $orderedPackages = $service->addPackages($packages);
 
-        $this->assertEquals(2, $orderedPackages->count());
-        $this->assertEquals(['42719', '42720'], $orderedPackages->getPackageIds());
-        $this->assertEquals('NP1504102247M', $orderedPackages[1]->getCarrierId());
-        $this->assertEquals('0001', $orderedPackages[0]->getBatchId());
-        $this->assertEquals('0002', $orderedPackages[1]->getBatchId());
-        $this->assertEquals(
+        self::assertEquals(2, $orderedPackages->count());
+        self::assertEquals(['42719', '42720'], $orderedPackages->getPackageIds());
+        self::assertEquals('NP1504102247M', $orderedPackages[1]->getCarrierId());
+        self::assertEquals('0001', $orderedPackages[0]->getBatchId());
+        self::assertEquals('0002', $orderedPackages[1]->getBatchId());
+        self::assertEquals(
             'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.',
             $orderedPackages->getLabelsUrl()
         );

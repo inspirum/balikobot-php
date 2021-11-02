@@ -35,7 +35,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractClientTestCase
 
         $status = $client->trackPackageLastStatus('cp', '1');
 
-        $this->assertNotEmpty($status);
+        self::assertNotEmpty($status);
     }
 
     public function testThrowsExceptionOnBadStatusCode(): void
@@ -105,7 +105,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testDataAreReturnedInV3Format(): void
@@ -124,7 +124,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractClientTestCase
 
         $status = $client->trackPackageLastStatus('cp', '1');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'name'          => 'Zásilka byla doručena příjemci.',
                 'name_internal' => 'Zásilka byla doručena příjemci.',
@@ -174,7 +174,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractClientTestCase
 
         $status = $client->trackPackagesLastStatus('cp', ['1', '5', '6']);
 
-        $this->assertNotEmpty($status);
+        self::assertNotEmpty($status);
     }
 
     public function testThrowsExceptionOnBadStatusCodeWithMultiplePackages(): void
@@ -276,7 +276,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testDataAreReturnedInV2FormatWithMultiplePackages(): void
@@ -307,7 +307,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractClientTestCase
 
         $status = $client->trackPackagesLastStatus('cp', ['1', '6', '5']);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 0 => [
                     'name'          => 'Zásilka byla doručena příjemci.',

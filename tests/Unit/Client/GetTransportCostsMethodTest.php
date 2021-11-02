@@ -154,7 +154,7 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testOnlyPackagesDataAreReturned(): void
@@ -189,7 +189,7 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
 
         $packages = $client->getTransportCosts('toptrans', [['eid' => '0001'], ['eid' => '0002']]);
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 0 => [
                     'eid'             => '8316699909',

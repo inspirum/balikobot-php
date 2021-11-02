@@ -65,7 +65,7 @@ class GetBranchesForLocatotionMethodTest extends AbstractClientTestCase
             ]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfUnitsMissing(): void
@@ -77,7 +77,7 @@ class GetBranchesForLocatotionMethodTest extends AbstractClientTestCase
 
         $branches = $client->getBranchesForLocation('ups', 'CZ', 'Praha');
 
-        $this->assertEquals([], $branches);
+        self::assertEquals([], $branches);
     }
 
     public function testOnlyBranchesDataAreReturned(): void
@@ -98,7 +98,7 @@ class GetBranchesForLocatotionMethodTest extends AbstractClientTestCase
 
         $branches = $client->getBranchesForLocation('ups', 'CZ', 'Praha');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 [
                     'code' => 1,

@@ -56,7 +56,7 @@ class GetCodCountriesMethodTest extends AbstractClientTestCase
             ['https://apiv2.balikobot.cz/cp/cod4services', []]
         );
 
-        $this->assertTrue(true);
+        self::assertTrue(true);
     }
 
     public function testEmptyArrayIsReturnedIfUnitsMissing(): void
@@ -68,7 +68,7 @@ class GetCodCountriesMethodTest extends AbstractClientTestCase
 
         $countries = $client->getCodCountries('cp');
 
-        $this->assertEquals([], $countries);
+        self::assertEquals([], $countries);
     }
 
     public function testOnlyCountriesDataAreReturned(): void
@@ -111,7 +111,7 @@ class GetCodCountriesMethodTest extends AbstractClientTestCase
 
         $countries = $client->getCodCountries('cp');
 
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'DR'  => [
                     'CZ' => [
