@@ -18,6 +18,6 @@ class GetActivatedServicesMethodTest extends AbstractBalikobotTestCase
 
         self::assertTrue(isset($services['active_parcel']) === false || is_bool($services['active_parcel']));
         self::assertTrue(isset($services['active_cargo']) === false || is_bool($services['active_cargo']));
-        self::assertTrue(count($services['service_types']) > 0);
+        self::assertTrue(is_array($services['service_types']) && count($services['service_types']) > 0);
     }
 }

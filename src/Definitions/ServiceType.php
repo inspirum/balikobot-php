@@ -2682,7 +2682,7 @@ final class ServiceType
     }
 
     /**
-     * @return array<mixed>
+     * @return array<string>
      */
     public static function zasilkovna(): array
     {
