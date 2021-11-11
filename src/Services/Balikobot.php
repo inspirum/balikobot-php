@@ -775,4 +775,16 @@ class Balikobot
     {
         return $this->client->getAddServiceOptions($shipper, $service, $fullData);
     }
+
+    /**
+     * Method for obtaining info about used API keys
+     *
+     * @return array<string,mixed>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getAccountInfo(): array
+    {
+        return $this->client->getAccountInfo();
+    }
 }

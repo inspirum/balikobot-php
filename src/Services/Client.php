@@ -755,4 +755,18 @@ class Client
             $fullData === false ? 'name' : null,
         );
     }
+
+    /**
+     * Method for obtaining info about used API keys
+     *
+     * @return array<string,mixed>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getAccountInfo(): array
+    {
+        $response = $this->requester->call(API::V2V1, '', Request::INFO_WHO_AM_I);
+
+        return $this->formatter->withoutStatus($response);
+    }
 }

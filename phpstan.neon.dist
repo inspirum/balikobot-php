@@ -31,6 +31,9 @@ parameters:
 			message: '#Method Inspirum\\Balikobot\\Services\\Client::getChangelog\(\) should return array<string, mixed> but returns array<int\|string, mixed>#'
 			path: %currentWorkingDirectory%/src/Services/Client.php
 		-
+			message: '#Method Inspirum\\Balikobot\\Services\\Client::getAccountInfo\(\) should return array<string, mixed> but returns array<int\|string, mixed>#'
+			path: %currentWorkingDirectory%/src/Services/Client.php
+		-
 			message: '#Parameter \#1 \$items of method Inspirum\\Balikobot\\Services\\Validator::validateResponseItemHasAttribute\(\) expects array<int, array<string, mixed>>, array<int\|string, mixed> given#'
 			path: %currentWorkingDirectory%/src/Services/Client.php
 		-

@@ -209,4 +209,11 @@ final class Request
      * @var string
      */
     public const ADD_ATTRIBUTES = 'addattributes';
+
+    /**
+     * Method for obtaining info about used API keys
+     *
+     * @var string
+     */
+    public const INFO_WHO_AM_I = 'info/whoami';
 }
