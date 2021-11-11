@@ -391,7 +391,9 @@ Method **getServices** returns a list of services that can be used by the shippe
 The client normalizes the response by returning only **service_type** array.
 
 ```php
-$services = $client->getServices('cp');
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$services = $client->getServices(Shipper::CP);
 
 /*
 var_dump($services);
@@ -998,6 +1000,28 @@ var_dump($orderedPackages);
 ```
 
 
+### **BA2SERVICES**
+
+Method **getB2AServices** returns a list of services that can be used by the shipper for B2A.
+
+The client normalizes the response by returning only **service_type** array.
+
+```php
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$services = $client->getB2AServices(Shipper::PPL);
+
+/*
+var_dump($services);
+[
+  '1'  =>'PPL Parcel Business CZ'
+  '11' =>'PPL Parcel Import SK'
+  ...
+]
+*/
+```
+
+
 ### **POD**
 
 Method **getProofOfDeliveries** returns PDF links with signed consignment delivery document by the recipient.
@@ -1215,6 +1239,51 @@ var_dump($options);
 ```
 
 
+### **WHOAMI**
+
+Method **getAccountInfo** obtain info about used API keys.
+
+The client normalizes the response by returning only account data (drop **status** attribute).
+
+
+```php
+$info = $client->getAccountInfo();
+
+/*
+var_dump($info);
+[
+  'account' => [
+    'name'           => 'Balikobot-Test_obchod.cz',
+    'contact_person' => 'DPD_2',
+    'street'         => 'Kovářská 12',
+    'city'           => 'Praha 9',
+    'zip'            => '19000',
+    'country'        => 'CZ',
+    'email'          => 'info@balikobot.cz',
+    'url'            => 'http://www.balikobot_test2.cz',
+    'phone'          => '+420123456789',
+  ],
+  'live_account' => false,
+  'carriers' => [
+    0 => [
+      'name' => 'Česká pošta',
+      'slug' => 'cp',
+    ],
+    1 => [
+      'name' => 'PPL',
+      'slug' => 'ppl',
+    ],
+    2 => [
+      'name' => 'DPD',
+      'slug' => 'dpd',
+    ],
+    ...
+  ],
+]
+*/
+```
+
+
 ## All available methods
 
 ```php
@@ -1285,6 +1354,8 @@ interface Client {
   function getAddAttributes(string $shipper): array;
   
   function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array;
+  
+  function getAccountInfo(): array;
 }
 ```
 
