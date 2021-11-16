@@ -197,7 +197,7 @@ or add a requirement to your `composer.json`:
 
 ## Version
 
-Support all options for Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v1.937** *(2021-10-25)*.
+Support all options for Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v1.941** *(2021-11-09)*.
 
 If you want to use older API [v1][link-api], please use `^4.0` version.
 
