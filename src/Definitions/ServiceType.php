@@ -2428,6 +2428,76 @@ final class ServiceType
     public const JAPO_STANDARD = 'STANDARD';
 
     /**
+     * Liftago Express
+     *
+     * @var string
+     */
+    public const LIFTAGO_EXPRESS = 'express';
+
+    /**
+     * Liftago Standard
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD = 'standard';
+
+    /**
+     * Liftago Standard 6-8h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_8 = 'standard-6-8';
+
+    /**
+     * Liftago Standard 8-10h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_10 = 'standard-8-10';
+
+    /**
+     * Liftago Standard 10-12h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_12 = 'standard-10-12';
+
+    /**
+     * Liftago Standard 12-14h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_14 = 'standard-12-14';
+
+    /**
+     * Liftago Standard 14-16h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_16 = 'standard-14-16';
+
+    /**
+     * Liftago Standard 16-18h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_18 = 'standard-16-18';
+
+    /**
+     * Liftago Standard 18-20h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_20 = 'standard-18-20';
+
+    /**
+     * Liftago Standard 20-22h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_22 = 'standard-20-22';
+
+    /**
      * @return array<string>
      */
     public static function cp(): array
@@ -2702,14 +2772,14 @@ final class ServiceType
             self::ZASILKOVNA_BG_SPEEDY_PP,
             self::ZASILKOVNA_BG_SPEEDY_HD,
             self::ZASILKOVNA_BG_ECONT_BOX,
-            self::ZASILKOVNA_CZ_POST_HD,
+            // self::ZASILKOVNA_CZ_POST_HD,
             self::ZASILKOVNA_CZ_EXPRESS_PRAHA_HD,
             self::ZASILKOVNA_CZ_EXPRESS_BRNO_HD,
             self::ZASILKOVNA_CZ_EXPRESS_OSTRAVA_HD,
             self::ZASILKOVNA_CZ_COURIER_HD,
-            self::ZASILKOVNA_DE_POST_HD,
+            // self::ZASILKOVNA_DE_POST_HD,
             self::ZASILKOVNA_DE_HERMES_PP,
-            self::ZASILKOVNA_DE_HERMES_HD,
+            // self::ZASILKOVNA_DE_HERMES_HD,
             self::ZASILKOVNA_DE_HOME_DELIVERY_HD,
             self::ZASILKOVNA_DK_POST_NORD_HD,
             self::ZASILKOVNA_DK_POST_NORD_PP,
@@ -2727,20 +2797,20 @@ final class ServiceType
             self::ZASILKOVNA_FR_MONDIAL_PP,
             self::ZASILKOVNA_FR_COLISSIMO_PP,
             self::ZASILKOVNA_FR_COLISSIMO_HD,
-            self::ZASILKOVNA_GB_HERMES_HD,
+            // self::ZASILKOVNA_GB_HERMES_HD,
             self::ZASILKOVNA_GB_ROYAL_MAIL_24_HD,
             self::ZASILKOVNA_GB_ROYAL_MAIL_48_HD,
             self::ZASILKOVNA_GR_TAXYDROMIKI,
             self::ZASILKOVNA_GR_ACS_HD,
             self::ZASILKOVNA_GR_ACS_PP,
-            self::ZASILKOVNA_GR_SPEEDY_HD,
+            // self::ZASILKOVNA_GR_SPEEDY_HD,
             self::ZASILKOVNA_HR_OVERSEAS_HD,
             self::ZASILKOVNA_HR_OVERSEAS_PP,
             self::ZASILKOVNA_HR_DPD_HD,
             self::ZASILKOVNA_HR_POST_PP,
             self::ZASILKOVNA_HR_POST_HD,
             //self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
-            self::ZASILKOVNA_HU_DPD_HD,
+            // self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
             self::ZASILKOVNA_HU_POST_HD,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
@@ -2759,18 +2829,18 @@ final class ServiceType
             self::ZASILKOVNA_NL_DHL_HD,
             self::ZASILKOVNA_NL_POST_HD,
             self::ZASILKOVNA_NL_DHL_PP,
-            self::ZASILKOVNA_PL_POST_24_HD,
-            self::ZASILKOVNA_PL_POST_48_HD,
-            self::ZASILKOVNA_PL_DPD_HD,
+            // self::ZASILKOVNA_PL_POST_24_HD,
+            // self::ZASILKOVNA_PL_POST_48_HD,
+            // self::ZASILKOVNA_PL_DPD_HD,
             self::ZASILKOVNA_PL_COURIER_HD,
             self::ZASILKOVNA_PL_INPOST_PACZKOMATY_BOX,
-            self::ZASILKOVNA_PL_INPOST_HD,
+            // self::ZASILKOVNA_PL_INPOST_HD,
             self::ZASILKOVNA_PT_MRW_HD,
             self::ZASILKOVNA_PT_MRW_PP,
             self::ZASILKOVNA_RO_COURIER_HD,
             self::ZASILKOVNA_RO_URGENT_CARGUS_HD,
             self::ZASILKOVNA_RO_SAMEDAY_BOX,
-            self::ZASILKOVNA_RO_DPD_HD,
+            // self::ZASILKOVNA_RO_DPD_HD,
             self::ZASILKOVNA_RO_SAMEDAY_HD,
             self::ZASILKOVNA_RO_FAN_COURIER_HD,
             self::ZASILKOVNA_RU_POST_PP,
@@ -3051,6 +3121,25 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function liftago(): array
+    {
+        return [
+            self::LIFTAGO_EXPRESS,
+            self::LIFTAGO_STANDARD,
+            self::LIFTAGO_STANDARD_8,
+            self::LIFTAGO_STANDARD_10,
+            self::LIFTAGO_STANDARD_12,
+            self::LIFTAGO_STANDARD_14,
+            self::LIFTAGO_STANDARD_16,
+            self::LIFTAGO_STANDARD_18,
+            self::LIFTAGO_STANDARD_20,
+            self::LIFTAGO_STANDARD_22,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -3089,6 +3178,7 @@ final class ServiceType
             Shipper::DBSCHENKER   => self::dbschenker(),
             Shipper::AIRWAY       => self::airway(),
             Shipper::JAPO         => self::japo(),
+            Shipper::LIFTAGO      => self::liftago(),
         ];
     }
 }

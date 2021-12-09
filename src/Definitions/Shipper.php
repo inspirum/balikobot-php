@@ -227,6 +227,13 @@ final class Shipper
     public const JAPO = 'japo';
 
     /**
+     * Liftago
+     *
+     * @var string
+     */
+    public const LIFTAGO = 'liftago';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -265,6 +272,7 @@ final class Shipper
             self::DBSCHENKER,
             self::AIRWAY,
             self::JAPO,
+            self::LIFTAGO,
         ];
     }
 
