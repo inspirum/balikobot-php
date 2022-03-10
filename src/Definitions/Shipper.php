@@ -234,6 +234,13 @@ final class Shipper
     public const LIFTAGO = 'liftago';
 
     /**
+     * Magyar posta
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA = 'magyarposta';
+
+    /**
      * All supported shipper services.
      *
      * @return array<string>
@@ -273,6 +280,7 @@ final class Shipper
             self::AIRWAY,
             self::JAPO,
             self::LIFTAGO,
+            self::MAGYARPOSTA,
         ];
     }
 

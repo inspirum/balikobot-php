@@ -52,6 +52,7 @@ class ShipperTest extends AbstractBalikobotTestCase
             'airway',
             'japo',
             'liftago',
+            'magyarposta',
         ];
 
         self::assertEqualsCanonicalizing($supportedShippers, $shippers);

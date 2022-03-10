@@ -2497,6 +2497,50 @@ final class ServiceType
      */
     public const LIFTAGO_STANDARD_22 = 'standard-20-22';
 
+
+
+    /**
+     * MPL Business parcel (Domestic)
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_MPL_BUSINESS = 'A_175_UZL';
+
+    /**
+     * MPL Postal Parcel (Domestic)
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_MPL_POST = 'A_177_MPC';
+
+    /**
+     * International priority postal parcel
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_INTERNATIONAL_PRIORITY = 'A_122_ECS';
+
+    /**
+     * International postal parcel
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_INTERNATIONAL = 'A_121_CSG';
+
+    /**
+     * Europe+ parcel
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_EUROPE_PLUS = 'A_123_EUP';
+
+    /**
+     * MPL Europe Standard
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_EUROPE_STANDARD = 'A_125_HAR';
+
     /**
      * @return array<string>
      */
@@ -3140,6 +3184,21 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function magyarposta(): array
+    {
+        return [
+            self::MAGYARPOSTA_MPL_BUSINESS,
+            self::MAGYARPOSTA_MPL_POST,
+            self::MAGYARPOSTA_INTERNATIONAL_PRIORITY,
+            self::MAGYARPOSTA_INTERNATIONAL,
+            self::MAGYARPOSTA_EUROPE_PLUS,
+            self::MAGYARPOSTA_EUROPE_STANDARD,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -3179,6 +3238,7 @@ final class ServiceType
             Shipper::AIRWAY       => self::airway(),
             Shipper::JAPO         => self::japo(),
             Shipper::LIFTAGO      => self::liftago(),
+            Shipper::MAGYARPOSTA  => self::magyarposta(),
         ];
     }
 }
