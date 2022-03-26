@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **CARRIERS/MY** request
 - Added **DBSCHENKER_LPA** service type
 ### Changed
-- Added support for `carrier_id` has integer type value for ordered package
+- Added support for `carrier_id` with a integer value type for ordered package
 
 
 ## [v6.3.0 (2021-11-16)](https://github.com/inspirum/balikobot-php/compare/v6.2.0...v6.3.0)
