@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **FULLADRUNITS** request
 - Added support for new options from documentation **v1.955** (2022-03-24)
   - Added **CARRIERS/MY** request
+- Added **DBSCHENKER_LPA** service type
 ### Changed
 - Added support for `carrier_id` has integer type value for ordered package
 
