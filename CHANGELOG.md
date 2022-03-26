@@ -6,10 +6,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.3.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.4.0...master)
+
+
+## [v6.4.0 (2022-03-26)](https://github.com/inspirum/balikobot-php/compare/v6.3.0...v6.4.0)
 ### Added
 - Added support for new options from documentation **v1.944** (2021-12-07)
   - Added **LIFTAGO** shipper
+- Added support for new options from documentation **v1.949** (2022-02-04)
+  - Added **MAGYARPOSTA** shipper
+- Added support for new options from documentation **v1.952** (2022-03-09)
+  - Added **FULLADRUNITS** request
+- Added support for new options from documentation **v1.955** (2022-03-24)
+  - Added **CARRIERS/MY** request
+### Changed
+- Added support for `carrier_id` has integer type value for ordered package
 
 
 ## [v6.3.0 (2021-11-16)](https://github.com/inspirum/balikobot-php/compare/v6.2.0...v6.3.0)
@@ -161,9 +172,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Removed parameter #2 **country** from [**Client**](./src/Services/Client.php) `getServices()` method
 - Removed parameter #3 **version** from [**Client**](./src/Services/Client.php) `getServices()` method
 - Removed parameter #5 **version** from [**Client**](./src/Services/Client.php) `getBranches()` method
-- Removed [**Shipper**](./src/Model/Values/Shipper.php) `resolveAddRequestVersion()` method
-- Removed [**Shipper**](./src/Model/Values/Shipper.php) `resolveServicesRequestVersion()` method
-- Removed [**Shipper**](./src/Model/Values/Shipper.php) `resolveBranchesRequestVersion()` method
+- Removed [**Shipper**](./src/Definitions/Shipper.php) `resolveAddRequestVersion()` method
+- Removed [**Shipper**](./src/Definitions/Shipper.php) `resolveServicesRequestVersion()` method
+- Removed [**Shipper**](./src/Definitions/Shipper.php) `resolveBranchesRequestVersion()` method
 - Removed parameter #2 **country** from [**Balikobot**](./src/Services/Balikobot.php) `getServices()` method
 - Removed **ZASILKOVNA\_&ast;** service type constants
 
