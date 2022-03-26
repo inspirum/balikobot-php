@@ -223,4 +223,11 @@ final class Request
      * @var string
      */
     public const INFO_WHO_AM_I = 'info/whoami';
+
+    /**
+     * Method for obtaining a list of active carriers.
+     *
+     * @var string
+     */
+    public const CARRIER_MY = 'carriers/my';
 }

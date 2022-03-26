@@ -811,4 +811,16 @@ class Balikobot
     {
         return $this->client->getAccountInfo();
     }
+
+    /**
+     * Get list of active carriers
+     *
+     * @return array<string>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getActiveShippers(): array
+    {
+        return $this->client->getActiveShippers();
+    }
 }

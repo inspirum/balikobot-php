@@ -789,4 +789,18 @@ class Client
 
         return $this->formatter->withoutStatus($response);
     }
+
+    /**
+     * Get list of active carriers
+     *
+     * @return array<string>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getActiveShippers(): array
+    {
+        $response = $this->requester->call(API::V2V1, '', Request::CARRIER_MY);
+
+        return $response['carriers'];
+    }
 }

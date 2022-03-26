@@ -84,5 +84,10 @@
     "phpcs": "./vendor/bin/phpcs -p -s --standard=./ruleset.xml --extensions=php --colors --report-width=140 --runtime-set ignore_errors_on_exit 1",
     "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon.dist",
     "phpcbf": "./vendor/bin/phpcbf -p --standard=./ruleset.xml --extensions=php --runtime-set ignore_errors_on_exit 1"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   }
 }
