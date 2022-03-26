@@ -573,6 +573,26 @@ class Client
     }
 
     /**
+     * Returns available detailed manipulation units for the given shipper
+     *
+     * @param string $shipper
+     *
+     * @return array<string,array<string,mixed>>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getFullAdrUnits(string $shipper): array
+    {
+        $response = $this->requester->call(API::V2V1, $shipper, Request::FULL_ADR_UNITS);
+
+        return $this->formatter->normalizeResponseItems(
+            $response['units'] ?? [],
+            'code',
+            null,
+        );
+    }
+
+    /**
      * Returns available activated services for the given shipper
      *
      * @param string $shipper

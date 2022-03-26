@@ -154,6 +154,13 @@ final class Request
     public const ADR_UNITS = 'adrunits';
 
     /**
+     * Detailed list of ADR units
+     *
+     * @var string
+     */
+    public const FULL_ADR_UNITS = 'fulladrunits';
+
+    /**
      * List of activated services for production API keys
      *
      * @var string

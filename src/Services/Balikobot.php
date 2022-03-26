@@ -10,6 +10,7 @@ use Inspirum\Balikobot\Definitions\Shipper;
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
 use Inspirum\Balikobot\Model\Aggregates\PackageCollection;
 use Inspirum\Balikobot\Model\Aggregates\PackageTransportCostCollection;
+use Inspirum\Balikobot\Model\Values\AdrUnit;
 use Inspirum\Balikobot\Model\Values\Branch;
 use Inspirum\Balikobot\Model\Values\Country;
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
@@ -620,6 +621,29 @@ class Balikobot
     public function getAdrUnits(string $shipper, bool $fullData = false): array
     {
         return $this->client->getAdrUnits($shipper, $fullData);
+    }
+
+    /**
+     * Returns available detailed manipulation units for the given shipper
+     *
+     * @param string $shipper
+     * @param bool   $fullData
+     *
+     * @return array<string,\Inspirum\Balikobot\Model\Values\AdrUnit>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getFullAdrUnits(string $shipper): array
+    {
+        $response = $this->client->getFullAdrUnits($shipper);
+
+        $units = [];
+
+        foreach ($response as $code => $unit) {
+            $units[$code] = AdrUnit::newInstanceFromData($shipper, $unit);
+        }
+
+        return $units;
     }
 
     /**
