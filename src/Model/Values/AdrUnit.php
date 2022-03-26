@@ -37,7 +37,7 @@ class AdrUnit
     private ?string $packaging;
 
     /**
-     * @var string
+     * @var string|null
      */
     private ?string $tunnelCode;
 
@@ -53,7 +53,7 @@ class AdrUnit
      * @param string      $name
      * @param string      $class
      * @param string|null $packaging
-     * @param string      $tunnelCode
+     * @param string|null $tunnelCode
      * @param string      $transportCategory
      */
     public function __construct(

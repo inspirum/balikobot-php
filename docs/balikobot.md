@@ -85,7 +85,7 @@ Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection {
 
 Drop created packages from Balikobot with **dropPackage** or **dropPackages** method.
 
-These methods has no return value, only throws exception on error, same as [**DROP**](./client.md#drop) request.
+These methods have no return value, only throws exception on error, same as [**DROP**](./client.md#drop) request.
 
 ```php
 $orderedPackages = $balikobot->addPackages($packages);
@@ -238,6 +238,8 @@ use Inspirum\Balikobot\Model\Values\PackageStatus;
 interface Balikobot {
 
   function getShippers(): array;
+  
+  function getActiveShippers(): array;
 
   function addPackages(PackageCollection $packages): OrderedPackageCollection;
 
@@ -294,6 +296,8 @@ interface Balikobot {
   function checkPackages(PackageCollection $packages): void;
 
   function getAdrUnits(string $shipper, bool $fullData = false): array;
+  
+  function getFullAdrUnits(string $shipper): array;
 
   function getActivatedServices(string $shipper): array;
 

@@ -53,6 +53,18 @@ class Balikobot
     }
 
     /**
+     * Get list of active carriers
+     *
+     * @return array<string>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getActiveShippers(): array
+    {
+        return $this->client->getActiveShippers();
+    }
+
+    /**
      * Add packages
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\PackageCollection $packages
@@ -125,7 +137,7 @@ class Balikobot
      *
      * @param \Inspirum\Balikobot\Model\Values\OrderedPackage $package
      *
-     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>|\Inspirum\Balikobot\Model\Values\PackageStatus[]
+     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -142,7 +154,7 @@ class Balikobot
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      *
-     * @return array<array<\Inspirum\Balikobot\Model\Values\PackageStatus>>|\Inspirum\Balikobot\Model\Values\PackageStatus[][]
+     * @return array<array<\Inspirum\Balikobot\Model\Values\PackageStatus>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -181,7 +193,7 @@ class Balikobot
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      *
-     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>|\Inspirum\Balikobot\Model\Values\PackageStatus[]
+     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -193,7 +205,7 @@ class Balikobot
     }
 
     /**
-     * Create package statuses collection for package
+     * Create package status collection for package
      *
      * @param array<array<string,float|string|null>> $response
      *
@@ -809,17 +821,5 @@ class Balikobot
     public function getAccountInfo(): array
     {
         return $this->client->getAccountInfo();
-    }
-
-    /**
-     * Get list of active carriers
-     *
-     * @return array<string>
-     *
-     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
-     */
-    public function getActiveShippers(): array
-    {
-        return $this->client->getActiveShippers();
     }
 }

@@ -31,7 +31,7 @@ class GetFullAdrUnitsMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getFullAdrUnits(Shipper::CP);
-            self::assertTrue(false, 'FULLADRUNITS request should thrown exception');
+            self::fail('FULLADRUNITS request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(404, $exception->getStatusCode());
         }

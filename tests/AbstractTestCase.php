@@ -15,7 +15,7 @@ use function json_encode;
 abstract class AbstractTestCase extends PHPUnitTestCase
 {
     /**
-     * Setup the test environment, before each test.
+     * Set up the test environment, before each test.
      *
      * @return void
      */
@@ -42,11 +42,11 @@ abstract class AbstractTestCase extends PHPUnitTestCase
      * @param int                 $statusCode
      * @param array<mixed>|string $data
      *
-     * @return \Inspirum\Balikobot\Services\Requester|\Mockery\MockInterface
+     * @return \Inspirum\Balikobot\Services\Requester&\Mockery\MockInterface
      */
     protected function newRequesterWithMockedRequestMethod(int $statusCode, array|string $data): MockInterface
     {
-        /** @var \Inspirum\Balikobot\Services\Requester|\Mockery\MockInterface $requester */
+        /** @var \Inspirum\Balikobot\Services\Requester&\Mockery\MockInterface $requester */
         $requester = Mockery::mock(Requester::class . '[request]', ['test', 'test']);
 
         if (is_array($data)) {

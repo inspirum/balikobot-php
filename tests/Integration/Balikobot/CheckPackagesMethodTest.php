@@ -58,7 +58,7 @@ class CheckPackagesMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->checkPackages($packages);
-            self::assertTrue(false, 'CHECK request should thrown exception');
+            self::fail('CHECK request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(400, $exception->getStatusCode());
             self::assertTrue(isset($exception->getErrors()[0]['branch_id']));

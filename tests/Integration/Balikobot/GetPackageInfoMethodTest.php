@@ -47,7 +47,7 @@ class GetPackageInfoMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getPackageInfo($package);
-            self::assertTrue(false, 'PACKAGE request should thrown exception');
+            self::fail('PACKAGE request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(404, $exception->getStatusCode());
         }

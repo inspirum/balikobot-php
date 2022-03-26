@@ -46,7 +46,7 @@ class GetActivatedManipulationUnitsMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getActivatedManipulationUnits(Shipper::CP);
-            self::assertTrue(false, 'ACTIVATEDMANIPULATIONUNITS request should thrown exception');
+            self::fail('ACTIVATEDMANIPULATIONUNITS request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(501, $exception->getStatusCode());
         }

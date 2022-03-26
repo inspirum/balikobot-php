@@ -59,7 +59,7 @@ class AddPackagesMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->addPackages($packages);
-            self::assertTrue(false, 'ADD request should thrown exception');
+            self::fail('ADD request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(400, $exception->getStatusCode());
             self::assertTrue(isset($exception->getErrors()[0]['branch_id']));

@@ -53,7 +53,7 @@ class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->orderB2AShipment($packages);
-            self::assertTrue(false, 'B2A request should thrown exception');
+            self::fail('B2A request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(400, $exception->getStatusCode());
             self::assertTrue(isset($exception->getErrors()[0]['rec_city']));

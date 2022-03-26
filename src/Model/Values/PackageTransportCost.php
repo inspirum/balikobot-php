@@ -99,7 +99,7 @@ class PackageTransportCost
     }
 
     /**
-     * @return array<\Inspirum\Balikobot\Model\Values\PackageTransportCostPart>|\Inspirum\Balikobot\Model\Values\PackageTransportCostPart[]
+     * @return array<\Inspirum\Balikobot\Model\Values\PackageTransportCostPart>
      */
     public function getCostsBreakdown(): array
     {

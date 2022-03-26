@@ -1435,7 +1435,7 @@ final class ServiceType
     public const ZASILKOVNA_US_FEDEX_ECONOMY_HD = '8289';
 
     /**
-     * US Fedex HD Priority
+     * US FedEx HD Priority
      *
      * @var string
      */

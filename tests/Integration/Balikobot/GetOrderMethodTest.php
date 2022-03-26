@@ -47,7 +47,7 @@ class GetOrderMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getOrder(Shipper::ZASILKOVNA, '1234');
-            self::assertTrue(false, 'ORDERVIEW request should thrown exception');
+            self::fail('ORDERVIEW request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(404, $exception->getStatusCode());
         }

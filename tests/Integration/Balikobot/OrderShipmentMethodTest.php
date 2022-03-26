@@ -54,7 +54,7 @@ class OrderShipmentMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->orderShipment($packages);
-            self::assertTrue(false, 'ORDER request should thrown exception');
+            self::fail('ORDER request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(406, $exception->getStatusCode());
         }

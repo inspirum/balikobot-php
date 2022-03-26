@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Tests\Unit\Balikobot\Request;
+namespace Inspirum\Balikobot\Tests\Unit\Balikobot;
 
 use Inspirum\Balikobot\Services\Balikobot;
-use Inspirum\Balikobot\Tests\Unit\Balikobot\AbstractBalikobotTestCase;
 
 class GetAccountInfoMethodTest extends AbstractBalikobotTestCase
 {
