@@ -206,7 +206,7 @@ class OrderedPackage
             (string) $data['package_id'],
             $shipper,
             $data['eid'],
-            $data['carrier_id'] ?? '',
+            (string) ($data['carrier_id'] ?? ''),
             $data['track_url'] ?? null,
             $data['label_url'] ?? null,
             $data['carrier_id_swap'] ?? null,
