@@ -14,11 +14,9 @@ class GetActiveShippersMethodTest extends AbstractClientTestCase
     {
         $this->expectException(BadRequestException::class);
 
-        $client = $this->newMockedClient(
-            400, [
+        $client = $this->newMockedClient(400, [
             'status' => 200,
-            ]
-        );
+        ]);
 
         $client->getActiveShippers();
     }
@@ -36,8 +34,7 @@ class GetActiveShippersMethodTest extends AbstractClientTestCase
     {
         $this->expectException(BadRequestException::class);
 
-        $client = $this->newMockedClient(
-            200, [
+        $client = $this->newMockedClient(200, [
             'status'       => 400,
             'carriers'      => [
                 'cp',
@@ -46,16 +43,14 @@ class GetActiveShippersMethodTest extends AbstractClientTestCase
                 'geis',
                 'gls',
             ],
-            ]
-        );
+        ]);
 
         $client->getActiveShippers();
     }
 
     public function testMakeRequest(): void
     {
-        $requester = $this->newRequesterWithMockedRequestMethod(
-            200, [
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'       => 200,
             'carriers'      => [
                 'cp',
@@ -64,8 +59,7 @@ class GetActiveShippersMethodTest extends AbstractClientTestCase
                 'geis',
                 'gls',
             ],
-            ]
-        );
+        ]);
 
         $client = new Client($requester);
 
@@ -81,8 +75,7 @@ class GetActiveShippersMethodTest extends AbstractClientTestCase
 
     public function testOnlyShippersAreReturned(): void
     {
-        $client = $this->newMockedClient(
-            200, [
+        $client = $this->newMockedClient(200, [
             'status' => 200,
             'carriers'      => [
                 'cp',
@@ -91,8 +84,7 @@ class GetActiveShippersMethodTest extends AbstractClientTestCase
                 'geis',
                 'gls',
             ],
-            ]
-        );
+        ]);
 
         $shippers = $client->getActiveShippers();
 
@@ -104,7 +96,7 @@ class GetActiveShippersMethodTest extends AbstractClientTestCase
                 'geis',
                 'gls',
             ],
-            $shippers
+            $shippers,
         );
     }
 }

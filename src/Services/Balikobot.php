@@ -627,7 +627,6 @@ class Balikobot
      * Returns available detailed manipulation units for the given shipper
      *
      * @param string $shipper
-     * @param bool   $fullData
      *
      * @return array<string,\Inspirum\Balikobot\Model\Values\AdrUnit>
      *
@@ -716,7 +715,7 @@ class Balikobot
     }
 
     /**
-     * Obtain the price of carriage at consignment level
+     * Get the price of carriage at consignment level
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\PackageCollection $packages
      *
@@ -759,7 +758,7 @@ class Balikobot
     }
 
     /**
-     * Method for obtaining news in the Balikobot API
+     * Get news in the Balikobot API
      *
      * @return array<string,mixed>
      *
@@ -771,7 +770,7 @@ class Balikobot
     }
 
     /**
-     * Method for obtaining a list of additional services by individual transport services
+     * Get list of additional services by individual transport services
      *
      * @param string $shipper
      *
@@ -785,7 +784,7 @@ class Balikobot
     }
 
     /**
-     * Method for obtaining a list of additional services by individual transport services
+     * Get list of additional services by individual transport services
      *
      * @param string      $shipper
      * @param string|null $service
@@ -801,7 +800,7 @@ class Balikobot
     }
 
     /**
-     * Method for obtaining info about used API keys
+     * Get info about used API keys
      *
      * @return array<string,mixed>
      *

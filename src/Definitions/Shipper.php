@@ -340,7 +340,6 @@ final class Shipper
         $supportedShippers = [
             self::PPL,
             self::DPD,
-            self::GEIS,
             self::GLS,
         ];
 

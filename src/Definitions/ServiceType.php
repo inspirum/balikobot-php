@@ -2358,6 +2358,13 @@ final class ServiceType
     public const DBSCHENKER_PART_LOAD = '72';
 
     /**
+     * DB Schenker Parcel
+     *
+     * @var string
+     */
+    public const DBSCHENKER_LPA = 'LPA';
+
+    /**
      * Airway Express
      *
      * @var string
@@ -2560,7 +2567,7 @@ final class ServiceType
             self::CP_BN,
             self::CP_NB,
             self::CP_DT,
-            self::CP_DS,
+            // self::CP_DS,
             self::CP_EE,
             // self::CP_BE,
             self::CP_RZP,
@@ -2853,8 +2860,8 @@ final class ServiceType
             self::ZASILKOVNA_HR_DPD_HD,
             self::ZASILKOVNA_HR_POST_PP,
             self::ZASILKOVNA_HR_POST_HD,
-            //self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
-            // self::ZASILKOVNA_HU_DPD_HD,
+            // self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
+            self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
             self::ZASILKOVNA_HU_POST_HD,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
@@ -3133,6 +3140,7 @@ final class ServiceType
             self::DBSCHENKER_SYSTEM_FIX_13,
             self::DBSCHENKER_FULL_LOAD,
             self::DBSCHENKER_PART_LOAD,
+            self::DBSCHENKER_LPA,
         ];
     }
 

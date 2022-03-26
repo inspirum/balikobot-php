@@ -10,12 +10,10 @@ class GetActiveShippersMethodTest extends AbstractBalikobotTestCase
 {
     public function testMakeRequest(): void
     {
-        $requester = $this->newRequesterWithMockedRequestMethod(
-            200, [
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             'carriers'  => [],
-            ]
-        );
+        ]);
 
         $service = new Balikobot($requester);
 
@@ -26,7 +24,7 @@ class GetActiveShippersMethodTest extends AbstractBalikobotTestCase
             [
                 'https://apiv2.balikobot.cz/carriers/my',
                 [],
-            ]
+            ],
         );
 
         self::assertTrue(true);
@@ -34,8 +32,7 @@ class GetActiveShippersMethodTest extends AbstractBalikobotTestCase
 
     public function testResponseData(): void
     {
-        $service = $this->newMockedBalikobot(
-            200, [
+        $service = $this->newMockedBalikobot(200, [
             'status' => 200,
             'carriers'      => [
                 'cp',
@@ -44,8 +41,7 @@ class GetActiveShippersMethodTest extends AbstractBalikobotTestCase
                 'geis',
                 'gls',
             ],
-            ]
-        );
+        ]);
 
         $units = $service->getActiveShippers();
 
@@ -57,7 +53,7 @@ class GetActiveShippersMethodTest extends AbstractBalikobotTestCase
                 'geis',
                 'gls',
             ],
-            $units
+            $units,
         );
     }
 }

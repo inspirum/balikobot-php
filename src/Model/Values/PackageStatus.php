@@ -109,7 +109,7 @@ class PackageStatus
     {
         try {
             $date = $data['date'] ? new DateTime($data['date']) : null;
-        } catch (Throwable $exception) {
+        } catch (Throwable) {
             $date = null;
         }
 

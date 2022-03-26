@@ -674,7 +674,7 @@ class Client
     }
 
     /**
-     * Obtain the price of carriage at consignment level
+     * Get the price of carriage at consignment level
      *
      * @param string                     $shipper
      * @param array<array<string,mixed>> $packages
@@ -711,7 +711,7 @@ class Client
     }
 
     /**
-     * Method for obtaining news in the Balikobot API
+     * Get news in the Balikobot API
      *
      * @return array<string,mixed>
      *
@@ -725,7 +725,7 @@ class Client
     }
 
     /**
-     * Method for easier carrier integration, obtaining list of available input attributes for the ADD method
+     * Get list of available input attributes for the ADD method
      *
      * @param string $shipper
      *
@@ -745,7 +745,7 @@ class Client
     }
 
     /**
-     * Method for obtaining a list of additional services by individual transport services
+     * Get list of additional services by individual transport services
      *
      * @param string      $shipper
      * @param string|null $service
@@ -777,7 +777,7 @@ class Client
     }
 
     /**
-     * Method for obtaining info about used API keys
+     * Get info about used API keys
      *
      * @return array<string,mixed>
      *

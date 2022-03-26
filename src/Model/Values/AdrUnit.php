@@ -146,7 +146,7 @@ class AdrUnit
      * @param string              $shipper
      * @param array<string,mixed> $data
      *
-     * @return \Inspirum\Balikobot\Model\Values\AdrUnit<
+     * @return \Inspirum\Balikobot\Model\Values\AdrUnit
      */
     public static function newInstanceFromData(string $shipper, array $data): self
     {

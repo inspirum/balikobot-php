@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Definitions\Shipper;
+use function array_diff;
 use function count;
+use function implode;
+use function sprintf;
 
 class GetActiveShippersMethodTest extends AbstractBalikobotTestCase
 {

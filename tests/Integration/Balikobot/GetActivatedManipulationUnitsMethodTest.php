@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
+use Inspirum\Balikobot\Contracts\ExceptionInterface;
 use Inspirum\Balikobot\Definitions\Shipper;
 use function count;
 use function is_array;
@@ -43,8 +44,11 @@ class GetActivatedManipulationUnitsMethodTest extends AbstractBalikobotTestCase
     {
         $service = $this->newBalikobot();
 
-        $units = $service->getActivatedManipulationUnits(Shipper::CP);
-
-        self::assertTrue(count($units) === 0);
+        try {
+            $service->getActivatedManipulationUnits(Shipper::CP);
+            self::assertTrue(false, 'ACTIVATEDMANIPULATIONUNITS request should thrown exception');
+        } catch (ExceptionInterface $exception) {
+            self::assertEquals(501, $exception->getStatusCode());
+        }
     }
 }
