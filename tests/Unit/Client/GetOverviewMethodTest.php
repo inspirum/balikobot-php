@@ -48,16 +48,14 @@ class GetOverviewMethodTest extends AbstractClientTestCase
 
     public function testMakeRequest(): void
     {
-        $requester = $this->newRequesterWithMockedRequestMethod(200, []);
+        $requester = $this->newRequesterWithMockedRequestMethod(200, [], [
+            'https://apiv2.balikobot.cz/cp/overview',
+            [],
+        ]);
 
         $client = new Client($requester);
 
         $client->getOverview('cp');
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/overview', []]
-        );
 
         self::assertTrue(true);
     }

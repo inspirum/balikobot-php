@@ -46,19 +46,14 @@ class GetActivatedServicesMethodTest extends AbstractClientTestCase
                 'DR' => 'DR - Balík Do ruky',
                 'RR' => 'RR - Doporučená zásilka',
             ],
+        ], [
+            'https://apiv2.balikobot.cz/cp/activatedservices',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getActivatedServices('cp');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/activatedservices',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

@@ -13,19 +13,14 @@ class GetActivatedManipulationUnitsMethodTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             'units'  => [],
+        ], [
+            'https://apiv2.balikobot.cz/ppl/activatedmanipulationunits',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getActivatedManipulationUnits('ppl');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/activatedmanipulationunits',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

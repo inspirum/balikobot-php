@@ -32,6 +32,22 @@ class AddPackagesMethodTest extends AbstractBalikobotTestCase
                     'status'       => '200',
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/ppl/add',
+            [
+                'packages' => [
+                    0 => [
+                        'eid'      => '0001',
+                        'vs'       => '0001',
+                        'rec_name' => 'Name',
+                    ],
+                    1 => [
+                        'eid'   => '0001',
+                        'vs'    => '0002',
+                        'price' => 2000,
+                    ],
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -42,27 +58,6 @@ class AddPackagesMethodTest extends AbstractBalikobotTestCase
         $packages->add(new Package(['vs' => '0002', 'eid' => '0001', 'price' => 2000]));
 
         $service->addPackages($packages);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/add',
-                [
-                    'packages' => [
-                        0 => [
-                            'eid'      => '0001',
-                            'vs'       => '0001',
-                            'rec_name' => 'Name',
-                        ],
-                        1 => [
-                            'eid'   => '0001',
-                            'vs'    => '0002',
-                            'price' => 2000,
-                        ],
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

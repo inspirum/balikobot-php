@@ -17,19 +17,14 @@ class GetOrderMethodTest extends AbstractBalikobotTestCase
             'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
             'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
             'package_ids'  => ['1', '4', '65'],
+        ], [
+            'https://apiv2.balikobot.cz/cp/orderview/1',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getOrder('cp', '1');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/orderview/1',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

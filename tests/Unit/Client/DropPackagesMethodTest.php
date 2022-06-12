@@ -7,16 +7,14 @@ namespace Inspirum\Balikobot\Tests\Unit\Client;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
 use Inspirum\Balikobot\Services\Requester;
-use Mockery;
 
 class DropPackagesMethodTest extends AbstractClientTestCase
 {
     public function testDropPackagesIsProxyToDropPackageMethod(): void
     {
-        /** @var \Inspirum\Balikobot\Services\Client|\Mockery\MockInterface $client */
-        $client = Mockery::mock(Client::class . '[dropPackages]', [new Requester('test', 'test')]);
+        $client = $this->createPartialMock(Client::class, ['dropPackages']);
 
-        $client->shouldReceive('dropPackages')->with('cp', ['1'])->once()->andReturns();
+        $client->expects(self::once())->method('dropPackages')->with('cp', ['1']);
 
         $client->dropPackage('cp', '1');
 
@@ -58,29 +56,23 @@ class DropPackagesMethodTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
-        ]);
+        ], ['https://apiv2.balikobot.cz/cp/drop', ['package_ids' => ['1', '4', '876']]]);
 
         $client = new Client($requester);
 
         $client->dropPackages('cp', ['1', '4', '876']);
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/drop', ['package_ids' => ['1', '4', '876']]]
-        );
 
         self::assertTrue(true);
     }
 
     public function testDoesNotMakeRequestWithNoData(): void
     {
-        $requester = $this->newRequesterWithMockedRequestMethod(404, []);
+        $requester = $this->createMock(Requester::class);
+        $requester->expects(self::never())->method('request');
 
         $client = new Client($requester);
 
         $client->dropPackages('cp', []);
-
-        $requester->shouldNotHaveReceived('request');
 
         self::assertTrue(true);
     }

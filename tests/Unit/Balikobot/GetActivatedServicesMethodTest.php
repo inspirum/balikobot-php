@@ -15,19 +15,14 @@ class GetActivatedServicesMethodTest extends AbstractBalikobotTestCase
             'active_parcel' => true,
             'active_cargo'  => false,
             'service_types' => [],
+        ], [
+            'https://apiv2.balikobot.cz/cp/activatedservices',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getActivatedServices('cp');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/activatedservices',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

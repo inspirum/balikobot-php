@@ -38,16 +38,14 @@ class GetAccountInfoMethodTest extends AbstractBalikobotTestCase
                     'slug' => 'dpd',
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/info/whoami',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getAccountInfo();
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/info/whoami', []]
-        );
 
         self::assertTrue(true);
     }

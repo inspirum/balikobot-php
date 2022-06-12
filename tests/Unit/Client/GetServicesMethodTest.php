@@ -44,19 +44,14 @@ class GetServicesMethodTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/cp/services',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getServices('cp');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/services',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

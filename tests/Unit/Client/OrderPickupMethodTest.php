@@ -57,6 +57,16 @@ class OrderPickupMethodTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/cp/orderpickup',
+            [
+                'date'          => '2018-10-10',
+                'time_from'     => '14:00',
+                'time_to'       => '20:00',
+                'weight'        => 1,
+                'package_count' => 2,
+                'message'       => 'TEST',
+            ],
         ]);
 
         $client = new Client($requester);
@@ -68,21 +78,6 @@ class OrderPickupMethodTest extends AbstractClientTestCase
             1,
             2,
             'TEST'
-        );
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/orderpickup',
-                [
-                    'date'          => '2018-10-10',
-                    'time_from'     => '14:00',
-                    'time_to'       => '20:00',
-                    'weight'        => 1,
-                    'package_count' => 2,
-                    'message'       => 'TEST',
-                ],
-            ]
         );
 
         self::assertTrue(true);

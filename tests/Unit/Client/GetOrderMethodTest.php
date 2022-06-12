@@ -46,16 +46,14 @@ class GetOrderMethodTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/cp/orderview/1',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getOrder('cp', '1');
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/orderview/1', []]
-        );
 
         self::assertTrue(true);
     }

@@ -13,19 +13,14 @@ class GetCountriesMethodTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'        => 200,
             'service_types' => [],
+        ], [
+            'https://apiv2.balikobot.cz/cp/countries4service',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getCountries('cp');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/countries4service',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

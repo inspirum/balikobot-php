@@ -44,21 +44,16 @@ class OrderShipmentMethodTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/cp/order',
+            [
+                'package_ids' => ['1', '4'],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->orderShipment('cp', ['1', '4']);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/order',
-                [
-                    'package_ids' => ['1', '4'],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

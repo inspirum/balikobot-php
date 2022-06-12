@@ -107,16 +107,19 @@ class OrderB2AShipmentMethodTest extends AbstractClientTestCase
                 'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
+        ], [
+            'https://api.balikobot.cz/ppl/b2a',
+            [
+                0 => [
+                    'data' => [1, 2, 3],
+                    'test' => false,
+                ],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->orderB2AShipment('ppl', [['data' => [1, 2, 3], 'test' => false]]);
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://api.balikobot.cz/ppl/b2a', [['data' => [1, 2, 3], 'test' => false]]]
-        );
 
         self::assertTrue(true);
     }

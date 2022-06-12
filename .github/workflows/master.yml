@@ -33,12 +33,12 @@ jobs:
         run: composer install --prefer-dist --no-interaction --no-progress
       - name: Run linters
         run: |
-          vendor/bin/phpcs --standard=./ruleset.xml src tests
+          vendor/bin/phpcs src tests
           vendor/bin/phpstan analyse -c phpstan.neon.dist
       - name: Run tests
         run: |
           vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
-          if [[ "${{ matrix.php }}" == '8.0' ]]; then
+          if [[ "${{ matrix.php }}" == '8.1' ]]; then
             composer require --dev --no-interaction --no-progress --quiet scrutinizer/ocular
             vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
           fi

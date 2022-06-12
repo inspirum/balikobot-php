@@ -58,16 +58,14 @@ class GetActiveShippersMethodTest extends AbstractClientTestCase
                 'geis',
                 'gls',
             ],
+        ], [
+            'https://apiv2.balikobot.cz/carriers/my',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getActiveShippers();
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/carriers/my', []]
-        );
 
         self::assertTrue(true);
     }

@@ -13,19 +13,14 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'services' => [],
+        ], [
+            'https://api.balikobot.cz/ppl/addserviceoptions',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getAddServiceOptions('ppl');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/ppl/addserviceoptions',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }
@@ -35,19 +30,14 @@ class GetAddServiceOptionsMethodTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'services' => [],
+        ], [
+            'https://api.balikobot.cz/cp/addserviceoptions/CE',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getAddServiceOptions('cp', 'CE');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/cp/addserviceoptions/CE',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

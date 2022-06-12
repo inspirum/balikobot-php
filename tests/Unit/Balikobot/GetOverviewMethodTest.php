@@ -12,16 +12,14 @@ class GetOverviewMethodTest extends AbstractBalikobotTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'packages' => [],
+        ], [
+            'https://apiv2.balikobot.cz/ppl/overview',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getOverview('ppl');
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/ppl/overview', []]
-        );
 
         self::assertTrue(true);
     }

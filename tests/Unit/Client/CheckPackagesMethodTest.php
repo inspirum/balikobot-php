@@ -44,26 +44,21 @@ class CheckPackagesMethodTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/cp/check',
+            [
+                'packages' => [
+                    [
+                        'data' => [1, 2, 3],
+                        'test' => false,
+                    ],
+                ],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->checkPackages('cp', [['data' => [1, 2, 3], 'test' => false]]);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/check',
-                [
-                    'packages' => [
-                        [
-                            'data' => [1, 2, 3],
-                            'test' => false,
-                        ],
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

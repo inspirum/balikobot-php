@@ -45,16 +45,14 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
+        ], [
+            'https://apiv2.balikobot.cz/cp/branches/service/NP',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getBranches('cp', 'NP');
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/branches/service/NP', []]
-        );
 
         self::assertTrue(true);
     }
@@ -64,16 +62,11 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
-        ]);
+        ], ['https://apiv2.balikobot.cz/cp/branches/service/NP', []]);
 
         $client = new Client($requester);
 
         $client->getBranches('cp', 'NP');
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/branches/service/NP', []]
-        );
 
         self::assertTrue(true);
     }
@@ -83,16 +76,11 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
-        ]);
+        ], ['https://apiv2.balikobot.cz/cp/fullbranches/service/NP', []]);
 
         $client = new Client($requester);
 
         $client->getBranches('cp', 'NP', fullBranchesRequest: true);
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/fullbranches/service/NP', []]
-        );
 
         self::assertTrue(true);
     }
@@ -102,16 +90,11 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
-        ]);
+        ], ['https://apiv2.balikobot.cz/cp/branches/service/NP/country/DE', []]);
 
         $client = new Client($requester);
 
         $client->getBranches('cp', 'NP', 'DE');
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/branches/service/NP/country/DE', []]
-        );
 
         self::assertTrue(true);
     }
@@ -121,16 +104,11 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
-        ]);
+        ], ['https://apiv2.balikobot.cz/zasilkovna/branches/country/DE', []]);
 
         $client = new Client($requester);
 
         $client->getBranches('zasilkovna', null, 'DE');
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/zasilkovna/branches/country/DE', []]
-        );
 
         self::assertTrue(true);
     }
@@ -140,16 +118,11 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
-        ]);
+        ], ['https://apiv2.balikobot.cz/cp/branches/service/NP?gzip=1', []]);
 
         $client = new Client($requester);
 
         $client->getBranches('cp', 'NP', gzip: true);
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/branches/service/NP?gzip=1', []]
-        );
 
         self::assertTrue(true);
     }
@@ -159,16 +132,11 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
-        ]);
+        ], ['https://apiv2.balikobot.cz/cp/branches/service/NP?gzip=1', []]);
 
         $client = new Client($requester);
 
         $client->getBranches('cp', 'NP', gzip: true);
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/branches/service/NP?gzip=1', []]
-        );
 
         self::assertTrue(true);
     }
@@ -178,16 +146,11 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
-        ]);
+        ], ['https://apiv2.balikobot.cz/cp/fullbranches/service/NP?gzip=1', []]);
 
         $client = new Client($requester);
 
         $client->getBranches('cp', 'NP', fullBranchesRequest: true, gzip: true);
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/fullbranches/service/NP?gzip=1', []]
-        );
 
         self::assertTrue(true);
     }
@@ -197,16 +160,11 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
-        ]);
+        ], ['https://apiv2.balikobot.cz/cp/branches/service/NP/country/DE?gzip=1', []]);
 
         $client = new Client($requester);
 
         $client->getBranches('cp', 'NP', 'DE', gzip: true);
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/branches/service/NP/country/DE?gzip=1', []]
-        );
 
         self::assertTrue(true);
     }
@@ -216,16 +174,11 @@ class GetBranchesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
-        ]);
+        ], ['https://apiv2.balikobot.cz/zasilkovna/branches/country/DE?gzip=1', []]);
 
         $client = new Client($requester);
 
         $client->getBranches('zasilkovna', null, 'DE', gzip: true);
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/zasilkovna/branches/country/DE?gzip=1', []]
-        );
 
         self::assertTrue(true);
     }

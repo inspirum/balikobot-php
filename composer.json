@@ -24,13 +24,10 @@
     "guzzlehttp/psr7": "^2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.0",
-    "squizlabs/php_codesniffer": "^3.6",
-    "mockery/mockery": "^1.4",
-    "phpstan/phpstan": "^1.0",
-    "phpstan/phpstan-mockery": "^1.0",
-    "php-parallel-lint/php-parallel-lint": "^1.3",
-    "doctrine/coding-standard": "^9.0"
+    "inspirum/coding-standard": "^1.0",
+    "phpstan/phpstan": "^1.6",
+    "phpunit/phpunit": "^9.5",
+    "squizlabs/php_codesniffer": "^3.6"
   },
   "autoload": {
     "psr-4": {
@@ -42,16 +39,23 @@
       "Inspirum\\Balikobot\\Tests\\": "tests"
     }
   },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
   "scripts": {
     "test": [
-      "@style:lint",
       "@style:phpcs",
       "@test:unit",
       "@style:phpstan",
-      "@test:integration"
+      "@test:integration",
+      "@check:requirement",
+      "@check:unused"
     ],
     "test:test": [
-      "@phpunit"
+      "@test:unit",
+      "@test:integration"
     ],
     "test:unit": [
       "@phpunit --testsuite=Unit"
@@ -60,34 +64,36 @@
       "@phpunit --testsuite=Integration"
     ],
     "test:coverage": [
-      "@phpunit --coverage-text --coverage-html=./build/coverage"
+      "@phpunit --coverage-text --coverage-html=var/phpunit/coverage"
     ],
-    "style:lint": [
-      "@parallel-lint src tests"
+    "test:infection": [
+      "@infection"
     ],
     "style:phpcs": [
-      "@phpcs src tests"
+      "@phpcs"
     ],
     "style:phpstan": [
-      "@phpstan -l 8 src tests"
+      "@phpstan -l 8"
     ],
     "style:check": [
-      "@style:lint",
       "@style:phpcs",
       "@style:phpstan"
     ],
     "style:fix": [
       "@phpcbf src tests"
     ],
+    "check:requirement": [
+      "@composerRequireChecker"
+    ],
+    "check:unused": [
+      "@composerUnused"
+    ],
     "phpunit": "./vendor/bin/phpunit",
-    "parallel-lint": "./vendor/bin/parallel-lint",
-    "phpcs": "./vendor/bin/phpcs -p -s --standard=./ruleset.xml --extensions=php --colors --report-width=140 --runtime-set ignore_errors_on_exit 1",
+    "phpcs": "./vendor/bin/phpcs -p -s --extensions=php --colors --report-width=140 --parallel=50 || true",
     "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon.dist",
-    "phpcbf": "./vendor/bin/phpcbf -p --standard=./ruleset.xml --extensions=php --runtime-set ignore_errors_on_exit 1"
-  },
-  "config": {
-    "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
-    }
+    "phpcbf": "./vendor/bin/phpcbf -p --extensions=php --parallel=50",
+    "infection": "./tools/infection",
+    "composerRequireChecker": "./tools/composer-require-checker check",
+    "composerUnused": "./tools/composer-unused"
   }
 }

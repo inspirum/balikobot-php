@@ -134,24 +134,19 @@ class GetTransportCostsMethodTest extends AbstractClientTestCase
                 ],
                 'status'          => '200',
             ],
+        ], [
+            'https://api.balikobot.cz/toptrans/transportcosts',
+            [
+                [
+                    'data' => [1, 2, 3],
+                    'test' => false,
+                ],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->getTransportCosts('toptrans', [['data' => [1, 2, 3], 'test' => false]]);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/toptrans/transportcosts',
-                [
-                    [
-                        'data' => [1, 2, 3],
-                        'test' => false,
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

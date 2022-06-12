@@ -12,19 +12,14 @@ class GetB2AServicesMethodTest extends AbstractBalikobotTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/ppl/b2a/services',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getB2AServices('ppl');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/b2a/services',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

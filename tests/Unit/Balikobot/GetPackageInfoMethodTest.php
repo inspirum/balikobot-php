@@ -13,6 +13,9 @@ class GetPackageInfoMethodTest extends AbstractBalikobotTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/ppl/package/carrier_id/1234',
+            [],
         ]);
 
         $service = new Balikobot($requester);
@@ -20,14 +23,6 @@ class GetPackageInfoMethodTest extends AbstractBalikobotTestCase
         $orderedPackage = new OrderedPackage('1', 'ppl', '0001', '1234');
 
         $service->getPackageInfo($orderedPackage);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/package/carrier_id/1234',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

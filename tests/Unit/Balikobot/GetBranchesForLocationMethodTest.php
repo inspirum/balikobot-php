@@ -15,6 +15,15 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
+        ], [
+            'https://apiv2.balikobot.cz/ups/branchlocator',
+            [
+                'country'     => 'CZ',
+                'city'        => 'Praha',
+                'street'      => 'Pražská',
+                'max_results' => 4,
+                'radius'      => 40.3,
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -22,20 +31,6 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         $branches = $service->getBranchesForLocation('ups', 'CZ', 'Praha', null, 'Pražská', 4, 40.3);
 
         $branches->valid();
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ups/branchlocator',
-                [
-                    'country'     => 'CZ',
-                    'city'        => 'Praha',
-                    'street'      => 'Pražská',
-                    'max_results' => 4,
-                    'radius'      => 40.3,
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }
@@ -45,6 +40,14 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
+        ], [
+            'https://apiv2.balikobot.cz/pbh/branchlocator',
+            [
+                'country' => 'DE',
+                'city'    => 'Berlin',
+                'street'  => 'Schönwalder',
+                'type'    => 'postfiliale',
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -61,19 +64,6 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         );
 
         $branches->valid();
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/pbh/branchlocator',
-                [
-                    'country' => 'DE',
-                    'city'    => 'Berlin',
-                    'street'  => 'Schönwalder',
-                    'type'    => 'postfiliale',
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

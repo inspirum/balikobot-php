@@ -87,23 +87,18 @@ class TrackPackagesLastStatusMethodTest extends AbstractClientTestCase
                     'status_text' => 'Zásilka byla doručena příjemci.',
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/v2/cp/trackstatus',
+            [
+                'carrier_ids' => [
+                    '1',
+                ],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->trackPackageLastStatus('cp', '1');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/v2/cp/trackstatus',
-                [
-                    'carrier_ids' => [
-                        '1',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }
@@ -257,24 +252,19 @@ class TrackPackagesLastStatusMethodTest extends AbstractClientTestCase
                     'status_text' => 'Obdrženy údaje k zásilce.',
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/v2/cp/trackstatus',
+            [
+                'carrier_ids' => [
+                    '1',
+                    '6',
+                ],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->trackPackagesLastStatus('cp', ['1', '6']);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/v2/cp/trackstatus',
-                [
-                    'carrier_ids' => [
-                        '1',
-                        '6',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

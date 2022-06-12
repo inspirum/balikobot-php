@@ -14,6 +14,14 @@ class DropPackagesMethodTest extends AbstractBalikobotTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/ppl/drop',
+            [
+                'package_ids' => [
+                    '1',
+                    '2',
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -25,19 +33,6 @@ class DropPackagesMethodTest extends AbstractBalikobotTestCase
 
         $service->dropPackages($packages);
 
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/drop',
-                [
-                    'package_ids' => [
-                        '1',
-                        '2',
-                    ],
-                ],
-            ]
-        );
-
         self::assertTrue(true);
     }
 
@@ -45,6 +40,13 @@ class DropPackagesMethodTest extends AbstractBalikobotTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/ppl/drop',
+            [
+                'package_ids' => [
+                    '1',
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -52,18 +54,6 @@ class DropPackagesMethodTest extends AbstractBalikobotTestCase
         $package = new OrderedPackage('1', 'ppl', '0001', '1234');
 
         $service->dropPackage($package);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/drop',
-                [
-                    'package_ids' => [
-                        '1',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

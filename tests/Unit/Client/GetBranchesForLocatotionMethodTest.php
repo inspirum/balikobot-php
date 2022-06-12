@@ -45,25 +45,20 @@ class GetBranchesForLocatotionMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'branches' => [],
+        ], [
+            'https://apiv2.balikobot.cz/ups/branchlocator',
+            [
+                'country'     => 'CZ',
+                'city'        => 'Praha',
+                'street'      => 'Pražská',
+                'max_results' => 4,
+                'radius'      => 40.3,
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->getBranchesForLocation('ups', 'CZ', 'Praha', street: 'Pražská', maxResults: 4, radius: 40.3);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ups/branchlocator',
-                [
-                    'country'     => 'CZ',
-                    'city'        => 'Praha',
-                    'street'      => 'Pražská',
-                    'max_results' => 4,
-                    'radius'      => 40.3,
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

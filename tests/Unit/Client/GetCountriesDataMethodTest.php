@@ -45,16 +45,14 @@ class GetCountriesDataMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'        => 200,
             'service_types' => [],
+        ], [
+            'https://apiv2.balikobot.cz/getCountriesData',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getCountriesData();
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/getCountriesData', []]
-        );
 
         self::assertTrue(true);
     }

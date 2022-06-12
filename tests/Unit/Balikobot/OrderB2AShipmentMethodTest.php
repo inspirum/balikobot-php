@@ -28,6 +28,20 @@ class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
                 'status_message' => 'OK, přeprava byla objednána.',
                 'status'         => '200',
             ],
+        ], [
+            'https://api.balikobot.cz/geis/b2a',
+            [
+                0 => [
+                    'eid'         => '0001',
+                    'mu_type'     => 'EP',
+                    'pickup_date' => '2019-07-12',
+                ],
+                1 => [
+                    'eid'         => '0001',
+                    'mu_type'     => 'UV',
+                    'pickup_date' => '2019-07-12',
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -38,25 +52,6 @@ class OrderB2AShipmentMethodTest extends AbstractBalikobotTestCase
         $packages->add(new Package(['eid' => '0001', 'mu_type' => 'UV', 'pickup_date' => '2019-07-12']));
 
         $service->orderB2AShipment($packages);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/geis/b2a',
-                [
-                    0 => [
-                        'eid'         => '0001',
-                        'mu_type'     => 'EP',
-                        'pickup_date' => '2019-07-12',
-                    ],
-                    1 => [
-                        'eid'         => '0001',
-                        'mu_type'     => 'UV',
-                        'pickup_date' => '2019-07-12',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

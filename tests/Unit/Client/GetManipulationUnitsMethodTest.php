@@ -45,16 +45,14 @@ class GetManipulationUnitsMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
             'units'  => [],
+        ], [
+            'https://apiv2.balikobot.cz/cp/manipulationunits',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getManipulationUnits('cp');
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/manipulationunits', []]
-        );
 
         self::assertTrue(true);
     }

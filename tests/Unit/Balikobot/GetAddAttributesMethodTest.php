@@ -13,19 +13,14 @@ class GetAddAttributesMethodTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'   => 200,
             'services' => [],
+        ], [
+            'https://api.balikobot.cz/ppl/addattributes',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getAddAttributes('ppl');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/ppl/addattributes',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

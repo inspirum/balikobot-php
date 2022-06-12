@@ -44,19 +44,14 @@ class GetAddAttributesMethodTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://api.balikobot.cz/cp/addattributes',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getAddAttributes('cp');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/cp/addattributes',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

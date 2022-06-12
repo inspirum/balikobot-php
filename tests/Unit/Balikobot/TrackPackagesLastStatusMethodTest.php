@@ -21,6 +21,13 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
                     'status_text' => 'Zásilka byla doručena příjemci.',
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/v2/ppl/trackstatus',
+            [
+                'carrier_ids' => [
+                    '1234',
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -28,18 +35,6 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
         $package = new OrderedPackage('1', 'ppl', '0001', '1234');
 
         $service->trackPackageLastStatus($package);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/v2/ppl/trackstatus',
-                [
-                    'carrier_ids' => [
-                        '1234',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }
@@ -83,6 +78,14 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
                     'status_text' => 'Zásilka byla doručena příjemci.',
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/v2/ppl/trackstatus',
+            [
+                'carrier_ids' => [
+                    '1236',
+                    '1234',
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -92,19 +95,6 @@ class TrackPackagesLastStatusMethodTest extends AbstractBalikobotTestCase
         $packages->add(new OrderedPackage('2', 'ppl', '0001', '1234'));
 
         $service->trackPackagesLastStatus($packages);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/v2/ppl/trackstatus',
-                [
-                    'carrier_ids' => [
-                        '1236',
-                        '1234',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

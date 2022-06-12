@@ -96,16 +96,14 @@ class GetAccountInfoMethodTest extends AbstractClientTestCase
                     'slug' => 'dpd',
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/info/whoami',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getAccountInfo();
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/info/whoami', []]
-        );
 
         self::assertTrue(true);
     }

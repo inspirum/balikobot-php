@@ -96,23 +96,18 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
                     ],
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/v2/cp/track',
+            [
+                'carrier_ids' => [
+                    '1',
+                ],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->trackPackage('cp', '1');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/v2/cp/track',
-                [
-                    'carrier_ids' => [
-                        '1',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }
@@ -452,25 +447,20 @@ class TrackPackagesMethodTest extends AbstractClientTestCase
                     ],
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/v2/cp/track',
+            [
+                'carrier_ids' => [
+                    '1',
+                    '33',
+                    '4',
+                ],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->trackPackages('cp', ['1', '33', '4']);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/v2/cp/track',
-                [
-                    'carrier_ids' => [
-                        '1',
-                        '33',
-                        '4',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

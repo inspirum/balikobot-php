@@ -46,19 +46,14 @@ class GetPackageInfoByCarrierIdMethodTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/cp/package/carrier_id/N0123',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getPackageInfoByCarrierId('cp', 'N0123');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/package/carrier_id/N0123',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

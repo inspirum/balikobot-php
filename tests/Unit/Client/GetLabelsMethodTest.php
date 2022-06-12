@@ -45,16 +45,16 @@ class GetLabelsMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'     => 200,
             'labels_url' => 'http://pdf.balikobot.cz/dpd/eNorMdY1NFwwXDAELgE2',
+        ], [
+            'https://apiv2.balikobot.cz/cp/labels',
+            [
+                'package_ids' => ['1', '7', '876'],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->getLabels('cp', ['1', '7', '876']);
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/cp/labels', ['package_ids' => ['1', '7', '876']]]
-        );
 
         self::assertTrue(true);
     }

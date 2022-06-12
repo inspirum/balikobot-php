@@ -15,6 +15,9 @@ class GetPostCodesMethodTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'    => 200,
             'zip_codes' => [],
+        ], [
+            'https://apiv2.balikobot.cz/ppl/zipcodes/7',
+            [],
         ]);
 
         $service = new Balikobot($requester);
@@ -22,14 +25,6 @@ class GetPostCodesMethodTest extends AbstractBalikobotTestCase
         $postCodes = $service->getPostCodes('ppl', '7');
 
         $postCodes->valid();
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/zipcodes/7',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }
@@ -39,6 +34,9 @@ class GetPostCodesMethodTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'    => 200,
             'zip_codes' => [],
+        ], [
+            'https://apiv2.balikobot.cz/ppl/zipcodes/7/CZ',
+            [],
         ]);
 
         $service = new Balikobot($requester);
@@ -46,14 +44,6 @@ class GetPostCodesMethodTest extends AbstractBalikobotTestCase
         $postCodes = $service->getPostCodes('ppl', '7', 'CZ');
 
         $postCodes->valid();
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/zipcodes/7/CZ',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

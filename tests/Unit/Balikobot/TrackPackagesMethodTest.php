@@ -33,6 +33,13 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
                     ],
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/v2/ppl/track',
+            [
+                'carrier_ids' => [
+                    '1234',
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -40,18 +47,6 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
         $package = new OrderedPackage('1', 'ppl', '0001', '1234');
 
         $service->trackPackage($package);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/v2/ppl/track',
-                [
-                    'carrier_ids' => [
-                        '1234',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }
@@ -142,6 +137,14 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
                     ],
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/v2/ppl/track',
+            [
+                'carrier_ids' => [
+                    '1236',
+                    '1234',
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -151,19 +154,6 @@ class TrackPackagesMethodTest extends AbstractBalikobotTestCase
         $packages->add(new OrderedPackage('2', 'ppl', '0001', '1234'));
 
         $service->trackPackages($packages);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/v2/ppl/track',
-                [
-                    'carrier_ids' => [
-                        '1236',
-                        '1234',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

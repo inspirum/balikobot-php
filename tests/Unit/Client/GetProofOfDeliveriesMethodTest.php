@@ -77,23 +77,18 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
                 'status'   => 200,
                 'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
             ],
+        ], [
+            'https://api.balikobot.cz/cp/pod',
+            [
+                0 => [
+                    'id' => 1,
+                ],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->getProofOfDelivery('cp', '1');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/cp/pod',
-                [
-                    0 => [
-                        'id' => 1,
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }
@@ -212,26 +207,21 @@ class GetProofOfDeliveriesMethodTest extends AbstractClientTestCase
                 'status'   => 200,
                 'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
             ],
+        ], [
+            'https://api.balikobot.cz/cp/pod',
+            [
+                0 => [
+                    'id' => 1,
+                ],
+                1 => [
+                    'id' => 6,
+                ],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->getProofOfDeliveries('cp', ['1', '6']);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/cp/pod',
-                [
-                    0 => [
-                        'id' => 1,
-                    ],
-                    1 => [
-                        'id' => 6,
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

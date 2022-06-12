@@ -46,19 +46,14 @@ class GetPackageInfoMethodTest extends AbstractClientTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/cp/package/1',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getPackageInfo('cp', '1');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/package/1',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

@@ -1,10 +1,10 @@
 includes:
-	- vendor/phpstan/phpstan-mockery/extension.neon
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
 parameters:
+	level: 8
 	paths:
 		- src
 		- tests
-	level: 8
 	ignoreErrors:
 		-
 			message: '#Parameter \#2 \$packageIds of static method Inspirum\\Balikobot\\Model\\Values\\OrderedShipment::newInstanceFromData\(\) expects array<string>, array<int\|string, mixed>\|int\|string given#'

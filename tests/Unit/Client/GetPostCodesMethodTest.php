@@ -45,19 +45,14 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'    => 200,
             'zip_codes' => [],
+        ], [
+            'https://apiv2.balikobot.cz/cp/zipcodes/NP',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getPostCodes('cp', 'NP');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/zipcodes/NP',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }
@@ -67,19 +62,14 @@ class GetPostCodesMethodTest extends AbstractClientTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'    => 200,
             'zip_codes' => [],
+        ], [
+            'https://apiv2.balikobot.cz/cp/zipcodes/NP/CZ',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getPostCodes('cp', 'NP', 'CZ');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/zipcodes/NP/CZ',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

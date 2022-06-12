@@ -73,16 +73,14 @@ class GetChangelogMethodTest extends AbstractClientTestCase
                     ],
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/changelog',
+            [],
         ]);
 
         $client = new Client($requester);
 
         $client->getChangelog();
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/changelog', []]
-        );
 
         self::assertTrue(true);
     }

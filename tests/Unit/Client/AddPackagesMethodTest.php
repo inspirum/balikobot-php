@@ -129,26 +129,21 @@ class AddPackagesMethodTest extends AbstractClientTestCase
                     'status'       => '200',
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/cp/add',
+            [
+                'packages' => [
+                    [
+                        'data' => [1, 2, 3],
+                        'test' => false,
+                    ],
+                ],
+            ],
         ]);
 
         $client = new Client($requester);
 
         $client->addPackages('cp', [['data' => [1, 2, 3], 'test' => false]]);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/add',
-                [
-                    'packages' => [
-                        [
-                            'data' => [1, 2, 3],
-                            'test' => false,
-                        ],
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

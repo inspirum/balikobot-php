@@ -34,16 +34,14 @@ class GetChangelogMethodTest extends AbstractBalikobotTestCase
                     ],
                 ],
             ],
+        ], [
+            'https://apiv2.balikobot.cz/changelog',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getChangelog();
-
-        $requester->shouldHaveReceived(
-            'request',
-            ['https://apiv2.balikobot.cz/changelog', []]
-        );
 
         self::assertTrue(true);
     }

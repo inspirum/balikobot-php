@@ -17,6 +17,13 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
                 'status'   => 200,
                 'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
             ],
+        ], [
+            'https://api.balikobot.cz/ppl/pod',
+            [
+                0 => [
+                    'id' => '1236',
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -24,18 +31,6 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
         $package = new OrderedPackage('1', 'ppl', '0001', '1236');
 
         $service->getProofOfDelivery($package);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/ppl/pod',
-                [
-                    0 => [
-                        'id' => '1236',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }
@@ -68,6 +63,16 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
                 'status'   => 200,
                 'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
             ],
+        ], [
+            'https://api.balikobot.cz/ppl/pod',
+            [
+                0 => [
+                    'id' => '1236',
+                ],
+                1 => [
+                    'id' => '1234',
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -77,21 +82,6 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
         $packages->add(new OrderedPackage('2', 'ppl', '0001', '1234'));
 
         $service->getProofOfDeliveries($packages);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://api.balikobot.cz/ppl/pod',
-                [
-                    0 => [
-                        'id' => '1236',
-                    ],
-                    1 => [
-                        'id' => '1234',
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

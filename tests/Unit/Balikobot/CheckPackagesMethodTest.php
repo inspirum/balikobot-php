@@ -14,6 +14,22 @@ class CheckPackagesMethodTest extends AbstractBalikobotTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/ppl/check',
+            [
+                'packages' => [
+                    0 => [
+                        'eid'      => '0001',
+                        'vs'       => '0001',
+                        'rec_name' => 'Name',
+                    ],
+                    1 => [
+                        'eid'   => '0001',
+                        'vs'    => '0002',
+                        'price' => 2000,
+                    ],
+                ],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -24,27 +40,6 @@ class CheckPackagesMethodTest extends AbstractBalikobotTestCase
         $packages->add(new Package(['vs' => '0002', 'eid' => '0001', 'price' => 2000]));
 
         $service->checkPackages($packages);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/check',
-                [
-                    'packages' => [
-                        0 => [
-                            'eid'      => '0001',
-                            'vs'       => '0001',
-                            'rec_name' => 'Name',
-                        ],
-                        1 => [
-                            'eid'   => '0001',
-                            'vs'    => '0002',
-                            'price' => 2000,
-                        ],
-                    ],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }

@@ -12,19 +12,14 @@ class GetServicesMethodTest extends AbstractBalikobotTestCase
     {
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status' => 200,
+        ], [
+            'https://apiv2.balikobot.cz/ppl/services',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getServices('ppl');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/services',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

@@ -13,19 +13,14 @@ class GetCodCountriesMethodTest extends AbstractBalikobotTestCase
         $requester = $this->newRequesterWithMockedRequestMethod(200, [
             'status'        => 200,
             'service_types' => [],
+        ], [
+            'https://apiv2.balikobot.cz/cp/cod4services',
+            [],
         ]);
 
         $service = new Balikobot($requester);
 
         $service->getCodCountries('cp');
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/cp/cod4services',
-                [],
-            ]
-        );
 
         self::assertTrue(true);
     }

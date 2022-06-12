@@ -19,6 +19,11 @@ class OrderShipmentMethodTest extends AbstractBalikobotTestCase
             'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
             'labels_url'   => 'http://pdf.balikobot.cz/cp/eNoz0jW0XDBcMAHtXDDJ',
             'package_ids'  => ['1', '2'],
+        ], [
+            'https://apiv2.balikobot.cz/ppl/order',
+            [
+                'package_ids' => ['1', '2'],
+            ],
         ]);
 
         $service = new Balikobot($requester);
@@ -29,16 +34,6 @@ class OrderShipmentMethodTest extends AbstractBalikobotTestCase
         $packages->add(new OrderedPackage('2', 'ppl', '0001', '5678'));
 
         $service->orderShipment($packages);
-
-        $requester->shouldHaveReceived(
-            'request',
-            [
-                'https://apiv2.balikobot.cz/ppl/order',
-                [
-                    'package_ids' => ['1', '2'],
-                ],
-            ]
-        );
 
         self::assertTrue(true);
     }
