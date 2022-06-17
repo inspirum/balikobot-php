@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Exceptions;
+namespace Inspirum\Balikobot\Exception;
 
-use Inspirum\Balikobot\Contracts\ExceptionInterface;
 use Inspirum\Balikobot\Definitions\Response;
 use RuntimeException;
 use Throwable;
@@ -12,7 +11,7 @@ use function implode;
 use function json_encode;
 use function sprintf;
 
-abstract class AbstractException extends RuntimeException implements ExceptionInterface
+abstract class BaseException extends RuntimeException implements Exception
 {
     /**
      * Response data
@@ -57,7 +56,7 @@ abstract class AbstractException extends RuntimeException implements ExceptionIn
 
         // overwrite default message
         if ($message === null) {
-            $message = Response::$statusCodesErrors[$statusCode] ?? 'Operace neproběhla v pořádku.';
+            $message = Response::STATUS_CODE_ERRORS[$statusCode] ?? 'Operace neproběhla v pořádku.';
             $message = $this->getMessageWithErrors($message);
         }
 

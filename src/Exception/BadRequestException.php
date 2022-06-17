@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Exceptions;
+namespace Inspirum\Balikobot\Exception;
 
 use Inspirum\Balikobot\Definitions\Response;
 use Throwable;
 use function is_array;
 use function is_numeric;
 
-class BadRequestException extends AbstractException
+class BadRequestException extends BaseException
 {
     /**
      * BadRequestException constructor
@@ -135,14 +135,14 @@ class BadRequestException extends AbstractException
     {
         // get error message from code
         if ($key === 'status') {
-            return Response::$statusCodesErrors[$code] ?? Response::$statusCodesErrors[500];
+            return Response::STATUS_CODE_ERRORS[$code] ?? Response::STATUS_CODE_ERRORS[500];
         }
 
-        if (isset(Response::$packageDataKeyErrors[$code][$key])) {
-            return Response::$packageDataKeyErrors[$code][$key];
+        if (isset(Response::PACKAGE_DATA_KEY_ERRORS[$code][$key])) {
+            return Response::PACKAGE_DATA_KEY_ERRORS[$code][$key];
         }
 
-        return Response::$packageDataErrors[$code] ?? 'Nespecifikovaná chyba.';
+        return Response::PACKAGE_DATA_ERRORS[$code] ?? 'Nespecifikovaná chyba.';
     }
 
     /**

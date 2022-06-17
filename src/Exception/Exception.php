@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Contracts;
+namespace Inspirum\Balikobot\Exception;
 
 use Throwable;
 
-interface ExceptionInterface extends Throwable
+interface Exception extends Throwable
 {
     /**
      * Get response HTTP status code

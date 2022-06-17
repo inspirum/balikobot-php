@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Exceptions;
+namespace Inspirum\Balikobot\Exception;
 
 use Throwable;
 
-class UnauthorizedException extends AbstractException
+class UnauthorizedException extends BaseException
 {
     /**
      * UnauthorizedException constructor
