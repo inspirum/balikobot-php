@@ -2504,8 +2504,6 @@ final class ServiceType
      */
     public const LIFTAGO_STANDARD_22 = 'standard-20-22';
 
-
-
     /**
      * MPL Business parcel (Domestic)
      *
@@ -2548,9 +2546,7 @@ final class ServiceType
      */
     public const MAGYARPOSTA_EUROPE_STANDARD = 'A_125_HAR';
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function cp(): array
     {
         return [
@@ -2582,9 +2578,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function dpd(): array
     {
         return [
@@ -2599,9 +2593,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function dhl(): array
     {
         return [
@@ -2615,9 +2607,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function geis(): array
     {
         return [
@@ -2630,9 +2620,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function gls(): array
     {
         return [
@@ -2645,9 +2633,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function intime(): array
     {
         return [
@@ -2665,9 +2651,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function pbh(): array
     {
         return [
@@ -2700,9 +2684,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function ppl(): array
     {
         return [
@@ -2719,9 +2701,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function sp(): array
     {
         return [
@@ -2738,9 +2718,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function sps(): array
     {
         return [
@@ -2751,9 +2729,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function topTrans(): array
     {
         return [
@@ -2766,9 +2742,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function ulozenka(): array
     {
         return [
@@ -2789,9 +2763,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function ups(): array
     {
         return [
@@ -2802,9 +2774,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function zasilkovna(): array
     {
         return [
@@ -2914,9 +2884,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function tnt(): array
     {
         return [
@@ -2940,9 +2908,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function gw(): array
     {
         return [
@@ -2958,9 +2924,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function gwcz(): array
     {
         return [
@@ -2972,9 +2936,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function messenger(): array
     {
         return [
@@ -2991,9 +2953,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function dhlde(): array
     {
         return [
@@ -3005,9 +2965,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function fedex(): array
     {
         return [
@@ -3016,9 +2974,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function fofr(): array
     {
         return [
@@ -3032,9 +2988,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function dachser(): array
     {
         return [
@@ -3051,9 +3005,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function dhlparcel(): array
     {
         return [
@@ -3061,9 +3013,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function raben(): array
     {
         return [
@@ -3076,9 +3026,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function spring(): array
     {
         return [
@@ -3088,9 +3036,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function dsv(): array
     {
         return [
@@ -3099,9 +3045,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function dhlfreightec(): array
     {
         return [
@@ -3112,9 +3056,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function kurier(): array
     {
         return [
@@ -3124,9 +3066,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function dbschenker(): array
     {
         return [
@@ -3144,9 +3084,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function airway(): array
     {
         return [
@@ -3162,9 +3100,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function japo(): array
     {
         return [
@@ -3172,9 +3108,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function liftago(): array
     {
         return [
@@ -3191,9 +3125,7 @@ final class ServiceType
         ];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public static function magyarposta(): array
     {
         return [
@@ -3214,39 +3146,39 @@ final class ServiceType
     public static function all(): array
     {
         return [
-            Shipper::CP           => self::cp(),
-            Shipper::DPD          => self::dpd(),
-            Shipper::DHL          => self::dhl(),
-            Shipper::GEIS         => self::geis(),
-            Shipper::GLS          => self::gls(),
-            Shipper::INTIME       => self::intime(),
-            Shipper::PBH          => self::pbh(),
-            Shipper::PPL          => self::ppl(),
-            Shipper::SP           => self::sp(),
-            Shipper::SPS          => self::sps(),
-            Shipper::TOPTRANS     => self::topTrans(),
-            Shipper::ULOZENKA     => self::ulozenka(),
-            Shipper::UPS          => self::ups(),
-            Shipper::ZASILKOVNA   => self::zasilkovna(),
-            Shipper::TNT          => self::tnt(),
-            Shipper::GW           => self::gw(),
-            Shipper::GWCZ         => self::gwcz(),
-            Shipper::MESSENGER    => self::messenger(),
-            Shipper::DHLDE        => self::dhlde(),
-            Shipper::FEDEX        => self::fedex(),
-            Shipper::FOFR         => self::fofr(),
-            Shipper::DACHSER      => self::dachser(),
-            Shipper::DHLPARCEL    => self::dhlparcel(),
-            Shipper::RABEN        => self::raben(),
-            Shipper::SPRING       => self::spring(),
-            Shipper::DSV          => self::dsv(),
-            Shipper::DHLFREIGHTEC => self::dhlfreightec(),
-            Shipper::KURIER       => self::kurier(),
-            Shipper::DBSCHENKER   => self::dbschenker(),
-            Shipper::AIRWAY       => self::airway(),
-            Shipper::JAPO         => self::japo(),
-            Shipper::LIFTAGO      => self::liftago(),
-            Shipper::MAGYARPOSTA  => self::magyarposta(),
+            Carrier::CP->value           => self::cp(),
+            Carrier::DPD->value          => self::dpd(),
+            Carrier::DHL->value          => self::dhl(),
+            Carrier::GEIS->value         => self::geis(),
+            Carrier::GLS->value          => self::gls(),
+            Carrier::INTIME->value       => self::intime(),
+            Carrier::PBH->value          => self::pbh(),
+            Carrier::PPL->value          => self::ppl(),
+            Carrier::SP->value           => self::sp(),
+            Carrier::SPS->value          => self::sps(),
+            Carrier::TOPTRANS->value     => self::topTrans(),
+            Carrier::ULOZENKA->value     => self::ulozenka(),
+            Carrier::UPS->value          => self::ups(),
+            Carrier::ZASILKOVNA->value   => self::zasilkovna(),
+            Carrier::TNT->value          => self::tnt(),
+            Carrier::GW->value           => self::gw(),
+            Carrier::GWCZ->value         => self::gwcz(),
+            Carrier::MESSENGER->value    => self::messenger(),
+            Carrier::DHLDE->value        => self::dhlde(),
+            Carrier::FEDEX->value        => self::fedex(),
+            Carrier::FOFR->value         => self::fofr(),
+            Carrier::DACHSER->value      => self::dachser(),
+            Carrier::DHLPARCEL->value    => self::dhlparcel(),
+            Carrier::RABEN->value        => self::raben(),
+            Carrier::SPRING->value       => self::spring(),
+            Carrier::DSV->value          => self::dsv(),
+            Carrier::DHLFREIGHTEC->value => self::dhlfreightec(),
+            Carrier::KURIER->value       => self::kurier(),
+            Carrier::DBSCHENKER->value   => self::dbschenker(),
+            Carrier::AIRWAY->value       => self::airway(),
+            Carrier::JAPO->value         => self::japo(),
+            Carrier::LIFTAGO->value      => self::liftago(),
+            Carrier::MAGYARPOSTA->value  => self::magyarposta(),
         ];
     }
 }

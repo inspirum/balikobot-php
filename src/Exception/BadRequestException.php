@@ -9,7 +9,7 @@ use Throwable;
 use function is_array;
 use function is_numeric;
 
-class BadRequestException extends BaseException
+final class BadRequestException extends BaseException
 {
     /**
      * BadRequestException constructor

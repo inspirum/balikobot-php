@@ -6,10 +6,7 @@ namespace Inspirum\Balikobot\Definitions;
 
 final class Response
 {
-    /**
-     * @var array<int,string>
-     */
-    public static array $statusCodesErrors = [
+    public const STATUS_CODE_ERRORS = [
         200 => 'OK, operace proběhla v pořádku.',
         208 => 'Položka s doloženým ID již existuje. Data, která jsou navrácena, patří k původnímu záznamu.',
         400 => 'Operace neproběhla v pořádku, zkontrolujte konkrétní data.',
@@ -26,20 +23,14 @@ final class Response
         500 => 'Nepodařilo se rozeznat chybový stav.',
     ];
 
-    /**
-     * @var array<int,string>
-     */
-    public static array $packageDataErrors = [
+    public const PACKAGE_DATA_ERRORS = [
         406 => 'Nedorazila žádná data ke zpracování.',
         409 => 'Nepovolená kombinace služeb dobírky a výměnné zásilky.',
         413 => 'Špatný formát dat.',
         416 => 'Datum má špatný formát nebo není povoleno.',
     ];
 
-    /**
-     * @var array<int,array<string,string>>
-     */
-    public static array $packageDataKeyErrors = [
+    public const PACKAGE_DATA_KEY_ERRORS = [
         406 => [
             'eid'           => 'Nedorazilo eshop ID.',
             'service_type'  => 'Nedorazilo ID vybrané služby přepravce.',

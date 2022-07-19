@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
-use Inspirum\Balikobot\Client\CurlRequester;
+use Inspirum\Balikobot\Client\DefaultCurlRequester;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use RuntimeException;
 
@@ -14,7 +14,7 @@ class CurlRequesterTest extends BaseTestCase
     {
         $this->expectException(RuntimeException::class);
 
-        $requester = new CurlRequester('test', 'test');
+        $requester = new DefaultCurlRequester('test', 'test');
 
         $requester->request('dummy');
     }

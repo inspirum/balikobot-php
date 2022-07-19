@@ -6,13 +6,17 @@ namespace Inspirum\Balikobot\Tests\Unit\Service;
 
 use DateTimeImmutable;
 use Inspirum\Balikobot\Client\DefaultClient;
+use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Response\Validator;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Exception\BadRequestException;
-use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
-use Inspirum\Balikobot\Model\DefaultPackageStatusFactory;
-use Inspirum\Balikobot\Model\PackageStatus;
-use Inspirum\Balikobot\Model\Values\OrderedPackage;
-use Inspirum\Balikobot\Response\Validator;
+use Inspirum\Balikobot\Model\Package\Package;
+use Inspirum\Balikobot\Model\Package\PackageCollection;
+use Inspirum\Balikobot\Model\Status\DefaultPackageStatusFactory;
+use Inspirum\Balikobot\Model\Status\Status;
+use Inspirum\Balikobot\Model\Status\StatusCollection;
+use Inspirum\Balikobot\Model\Status\Statuses;
+use Inspirum\Balikobot\Model\Status\StatusesCollection;
 use Inspirum\Balikobot\Service\DefaultTrackService;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
@@ -20,19 +24,18 @@ use Throwable;
 final class DefaultTrackServiceTest extends BaseTestCase
 {
     /**
-     * @param array<mixed, mixed>                                                        $response
-     * @param array<string>                                                              $carrierIds
-     * @param array<int, array<\Inspirum\Balikobot\Model\PackageStatus>>|\Throwable|null $result
-     * @param array<mixed, mixed>|null                                                   $request
+     * @param array<mixed,mixed>      $response
+     * @param array<string>           $carrierIds
+     * @param array<mixed,mixed>|null $request
      *
      * @dataProvider providesTestTrackPackagesByIds
      */
     public function testTrackPackagesByIds(
         int $statusCode,
         array $response,
-        string $carrier,
+        CarrierType $carrier,
         array $carrierIds,
-        array|Throwable|null $result,
+        StatusesCollection|Throwable|null $result,
         ?array $request = null,
     ): void {
         if ($result instanceof Throwable) {
@@ -50,7 +53,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
     }
 
     /**
-     * @return iterable<array<mixed, mixed>>
+     * @return iterable<array<mixed,mixed>>
      */
     public function providesTestTrackPackagesByIds(): iterable
     {
@@ -84,24 +87,31 @@ final class DefaultTrackServiceTest extends BaseTestCase
             ],
             'carrier'    => Carrier::CP,
             'carrierIds' => ['1'],
-            'result'     => [
-                0 => [
-                    new PackageStatus(
-                        2.2,
-                        'Zásilka je v přepravě.',
-                        'Doručování zásilky',
-                        'event',
-                        new DateTimeImmutable('2018-11-07 14:15:01'),
-                    ),
-                    new PackageStatus(
-                        1.2,
-                        'Zásilka byla doručena příjemci.',
-                        'Dodání zásilky. (77072 - Depo Olomouc 72)',
-                        'event',
-                        new DateTimeImmutable('2018-11-08 18:00:00'),
-                    ),
-                ],
-            ],
+            'result'     => new StatusesCollection(
+                Carrier::CP,
+                [
+                    new Statuses(Carrier::CP, '1', [
+                        new Status(
+                            Carrier::CP,
+                            '1',
+                            2.2,
+                            'Zásilka je v přepravě.',
+                            'Doručování zásilky',
+                            'event',
+                            new DateTimeImmutable('2018-11-07 14:15:01'),
+                        ),
+                        new Status(
+                            Carrier::CP,
+                            '1',
+                            1.2,
+                            'Zásilka byla doručena příjemci.',
+                            'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                            'event',
+                            new DateTimeImmutable('2018-11-08 18:00:00'),
+                        ),
+                    ]),
+                ]
+            ),
         ];
 
         yield 'missing_data_error' => [
@@ -347,49 +357,68 @@ final class DefaultTrackServiceTest extends BaseTestCase
         $service = $this->createPartialMock(DefaultTrackService::class, ['trackPackagesByIds']);
 
         $expectedStatuses = [
-            0 => [
-                new PackageStatus(1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
-            ],
-            1 => [
-                new PackageStatus(1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
-                new PackageStatus(2.0, 'name', 'desc', 'event', new DateTimeImmutable()),
-            ],
+            new StatusesCollection(
+                Carrier::PPL,
+                [
+                    new Statuses(Carrier::PPL, '1234', [
+                        new Status(Carrier::PPL, '1234', 1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
+                    ]),
+                ]
+            ),
+            new StatusesCollection(
+                Carrier::CP,
+                [
+                    new Statuses(Carrier::CP, '3456', [
+                        new Status(Carrier::CP, '3456', 1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
+                    ]),
+                ]
+            ),
+            new StatusesCollection(
+                Carrier::CP,
+                [
+                    new Statuses(Carrier::CP, 'Z123', [
+                        new Status(Carrier::ZASILKOVNA, 'Z123', 1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
+                    ]),
+                    new Statuses(Carrier::CP, 'Z234', [
+                        new Status(Carrier::ZASILKOVNA, 'Z234', 2.0, 'name', 'desc', 'event', new DateTimeImmutable()),
+                    ]),
+                ]
+            ),
         ];
 
         $service->expects(self::exactly(3))->method('trackPackagesByIds')->withConsecutive(
             [Carrier::PPL, ['1234']],
             [Carrier::CP, ['3456']],
             [Carrier::ZASILKOVNA, ['Z123', 'Z234']],
-        )->willReturn($expectedStatuses);
+        )->willReturn(...$expectedStatuses);
 
-        $actualStatuses = $service->trackPackage(new OrderedPackage('1', '0001', Carrier::PPL, '1234'));
-        self::assertSame($expectedStatuses[0], $actualStatuses);
+        $actualStatuses = $service->trackPackage(new Package(Carrier::PPL, '1', '0001', '1234'));
+        self::assertSame($expectedStatuses[0][0], $actualStatuses);
 
         $actualStatuses = $service->trackPackageById(Carrier::CP, '3456');
-        self::assertSame($expectedStatuses[0], $actualStatuses);
+        self::assertSame($expectedStatuses[1][0], $actualStatuses);
 
-        $packages = new OrderedPackageCollection();
-        $packages->add(new OrderedPackage('1', '0001', Carrier::ZASILKOVNA, 'Z123'));
-        $packages->add(new OrderedPackage('2', '0001', Carrier::ZASILKOVNA, 'Z234'));
+        $packages = new PackageCollection();
+        $packages->add(new Package(Carrier::ZASILKOVNA, '1', '0001', 'Z123'));
+        $packages->add(new Package(Carrier::ZASILKOVNA, '2', '0001', 'Z234'));
 
         $actualStatuses = $service->trackPackages($packages);
-        self::assertSame($expectedStatuses, $actualStatuses);
+        self::assertSame($expectedStatuses[2], $actualStatuses);
     }
 
     /**
-     * @param array<mixed, mixed>                                                 $response
-     * @param array<string>                                                       $carrierIds
-     * @param array<int, \Inspirum\Balikobot\Model\PackageStatus>|\Throwable|null $result
-     * @param array<mixed, mixed>|null                                            $request
+     * @param array<mixed,mixed>      $response
+     * @param array<string>           $carrierIds
+     * @param array<mixed,mixed>|null $request
      *
      * @dataProvider providesTestTrackPackagesLastStatusesByIds
      */
     public function testTrackPackagesLastStatusesByIds(
         int $statusCode,
         array $response,
-        string $carrier,
+        CarrierType $carrier,
         array $carrierIds,
-        array|Throwable|null $result,
+        StatusCollection|Throwable|null $result,
         ?array $request = null,
     ): void {
         if ($result instanceof Throwable) {
@@ -407,7 +436,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
     }
 
     /**
-     * @return iterable<array<mixed, mixed>>
+     * @return iterable<array<mixed,mixed>>
      */
     public function providesTestTrackPackagesLastStatusesByIds(): iterable
     {
@@ -422,7 +451,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                         'status_text' => 'Zásilka byla doručena příjemci.',
                     ],
                     1 => [
-                        'carrier_id'  => '1',
+                        'carrier_id'  => '2',
                         'status'      => 200,
                         'status_id'   => 2.2,
                         'status_text' => 'Zásilka je v přepravě.',
@@ -431,22 +460,29 @@ final class DefaultTrackServiceTest extends BaseTestCase
             ],
             'carrier'    => Carrier::CP,
             'carrierIds' => ['1', '2'],
-            'result'     => [
-                new PackageStatus(
-                    1.2,
-                    'Zásilka byla doručena příjemci.',
-                    'Zásilka byla doručena příjemci.',
-                    'event',
-                    null,
-                ),
-                new PackageStatus(
-                    2.2,
-                    'Zásilka je v přepravě.',
-                    'Zásilka je v přepravě.',
-                    'event',
-                    null,
-                ),
-            ],
+            'result'     => new StatusCollection(
+                Carrier::CP,
+                [
+                    new Status(
+                        Carrier::CP,
+                        '1',
+                        1.2,
+                        'Zásilka byla doručena příjemci.',
+                        'Zásilka byla doručena příjemci.',
+                        'event',
+                        null,
+                    ),
+                    new Status(
+                        Carrier::CP,
+                        '2',
+                        2.2,
+                        'Zásilka je v přepravě.',
+                        'Zásilka je v přepravě.',
+                        'event',
+                        null,
+                    ),
+                ],
+            ),
         ];
 
         yield 'missing_data_error' => [
@@ -545,8 +581,8 @@ final class DefaultTrackServiceTest extends BaseTestCase
                         'status_text' => 'Zásilka byla doručena příjemci.',
                     ],
                     1 => [
-                        'carrier_id'     => '1234',
-                        'status'         => 404,
+                        'carrier_id' => '1234',
+                        'status'     => 404,
                     ],
                 ],
             ],
@@ -561,28 +597,36 @@ final class DefaultTrackServiceTest extends BaseTestCase
         $service = $this->createPartialMock(DefaultTrackService::class, ['trackPackagesLastStatusesByIds']);
 
         $expectedStatuses = [
-            0 => new PackageStatus(1.1, 'name1', 'name1', 'event', null),
-            1 => new PackageStatus(2.1, 'name2', 'name2', 'event', null),
+            new StatusCollection(Carrier::PPL, [
+                0 => new Status(Carrier::PPL, '1234', 1.1, 'name1', 'name1', 'event', null),
+            ]),
+            new StatusCollection(Carrier::CP, [
+                0 => new Status(Carrier::CP, '3456', 1.1, 'name1', 'name1', 'event', null),
+            ]),
+            new StatusCollection(Carrier::ZASILKOVNA, [
+                0 => new Status(Carrier::ZASILKOVNA, 'Z123', 1.1, 'name1', 'name1', 'event', null),
+                1 => new Status(Carrier::ZASILKOVNA, 'Z234', 2.1, 'name2', 'name2', 'event', null),
+            ]),
         ];
 
         $service->expects(self::exactly(3))->method('trackPackagesLastStatusesByIds')->withConsecutive(
             [Carrier::PPL, ['1234']],
             [Carrier::CP, ['3456']],
             [Carrier::ZASILKOVNA, ['Z123', 'Z234']],
-        )->willReturn($expectedStatuses);
+        )->willReturnOnConsecutiveCalls(...$expectedStatuses);
 
-        $actualStatuses = $service->trackPackageLastStatus(new OrderedPackage('1', '0001', Carrier::PPL, '1234'));
-        self::assertSame($expectedStatuses[0], $actualStatuses);
+        $actualStatuses = $service->trackPackageLastStatus(new Package(Carrier::PPL, '1', '0001', '1234'));
+        self::assertSame($expectedStatuses[0][0], $actualStatuses);
 
         $actualStatuses = $service->trackPackageLastStatusById(Carrier::CP, '3456');
-        self::assertSame($expectedStatuses[0], $actualStatuses);
+        self::assertSame($expectedStatuses[1][0], $actualStatuses);
 
-        $packages = new OrderedPackageCollection();
-        $packages->add(new OrderedPackage('1', '0001', Carrier::ZASILKOVNA, 'Z123'));
-        $packages->add(new OrderedPackage('2', '0001', Carrier::ZASILKOVNA, 'Z234'));
+        $packages = new PackageCollection();
+        $packages->add(new Package(Carrier::ZASILKOVNA, '1', '0001', 'Z123'));
+        $packages->add(new Package(Carrier::ZASILKOVNA, '2', '0001', 'Z234'));
 
         $actualStatuses = $service->trackPackagesLastStatuses($packages);
-        self::assertSame($expectedStatuses, $actualStatuses);
+        self::assertSame($expectedStatuses[2], $actualStatuses);
     }
 
     /**
@@ -594,8 +638,8 @@ final class DefaultTrackServiceTest extends BaseTestCase
         $requester     = $this->newRequester($statusCode, $response, $request);
         $validator     = new Validator();
         $client        = new DefaultClient($requester, $validator);
-        $statusFactory = new DefaultPackageStatusFactory();
+        $statusFactory = new DefaultPackageStatusFactory($validator);
 
-        return new DefaultTrackService($client, $validator, $statusFactory);
+        return new DefaultTrackService($client, $statusFactory);
     }
 }

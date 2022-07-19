@@ -4,7 +4,8 @@
   "keywords": [
     "inspirum",
     "inspishop",
-    "balikobot"
+    "balikobot",
+    "api-client"
   ],
   "homepage": "https://github.com/inspirum/balikobot-php",
   "license": "MIT",
@@ -17,18 +18,21 @@
     }
   ],
   "require": {
-    "php": ">=8.0",
+    "php": ">=8.1",
     "ext-curl": "*",
     "ext-json": "*",
     "psr/http-message": "^1.0",
-    "guzzlehttp/psr7": "^2.0"
+    "guzzlehttp/psr7": "^2.0",
+    "inspirum/arrayable": "^1.0"
   },
   "require-dev": {
-    "inspirum/coding-standard": "^1.0",
-    "phpstan/phpstan": "^1.6",
+    "inspirum/coding-standard": "^1.1",
+    "phpstan/phpstan": "^1.8",
     "phpunit/phpunit": "^9.5",
-    "squizlabs/php_codesniffer": "^3.6"
+    "squizlabs/php_codesniffer": "^3.7"
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "Inspirum\\Balikobot\\": "src"
@@ -89,7 +93,7 @@
       "@composerUnused"
     ],
     "phpunit": "./vendor/bin/phpunit",
-    "phpcs": "./vendor/bin/phpcs -p -s --extensions=php --colors --report-width=140 --parallel=50 || true",
+    "phpcs": "./vendor/bin/phpcs -p -s --extensions=php --colors --report-width=140 --parallel=50",
     "phpstan": "./vendor/bin/phpstan analyse -c phpstan.neon.dist",
     "phpcbf": "./vendor/bin/phpcbf -p --extensions=php --parallel=50",
     "infection": "./tools/infection",

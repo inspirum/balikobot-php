@@ -4,81 +4,73 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Service;
 
-use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
-use Inspirum\Balikobot\Model\PackageStatus;
-use Inspirum\Balikobot\Model\Values\OrderedPackage;
+use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Model\Package\Package;
+use Inspirum\Balikobot\Model\Package\PackageCollection;
+use Inspirum\Balikobot\Model\Status\Status;
+use Inspirum\Balikobot\Model\Status\StatusCollection;
+use Inspirum\Balikobot\Model\Status\Statuses;
+use Inspirum\Balikobot\Model\Status\StatusesCollection;
 
 interface TrackService
 {
     /**
      * Track package
      *
-     * @return array<\Inspirum\Balikobot\Model\PackageStatus>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackage(OrderedPackage $package): array;
+    public function trackPackage(Package $package): Statuses;
 
     /**
      * Tracks a package by carrier ID
      *
-     * @return array<\Inspirum\Balikobot\Model\PackageStatus>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackageById(string $carrier, string $carrierId): array;
+    public function trackPackageById(CarrierType $carrier, string $carrierId): Statuses;
 
     /**
      * Track packages
      *
-     * @return array<array<int, \Inspirum\Balikobot\Model\PackageStatus>>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackages(OrderedPackageCollection $packages): array;
+    public function trackPackages(PackageCollection $packages): StatusesCollection;
 
     /**
-     * Tracks a packages by carrier IDs
+     * Track packages by carrier IDs
      *
      * @param array<string> $carrierIds
      *
-     * @return array<int, array<\Inspirum\Balikobot\Model\PackageStatus>>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackagesByIds(string $carrier, array $carrierIds): array;
+    public function trackPackagesByIds(CarrierType $carrier, array $carrierIds): StatusesCollection;
 
     /**
      * Track package last status
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackageLastStatus(OrderedPackage $package): PackageStatus;
+    public function trackPackageLastStatus(Package $package): Status;
 
     /**
      * Track package last status by carrier ID
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackageLastStatusById(string $carrier, string $carrierId): PackageStatus;
+    public function trackPackageLastStatusById(CarrierType $carrier, string $carrierId): Status;
 
     /**
      * Track packages last statuses
      *
-     * @return array<\Inspirum\Balikobot\Model\PackageStatus>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackagesLastStatuses(OrderedPackageCollection $packages): array;
+    public function trackPackagesLastStatuses(PackageCollection $packages): StatusCollection;
 
     /**
      * Tracks a package, get the last info
      *
      * @param array<string> $carrierIds
      *
-     * @return array<\Inspirum\Balikobot\Model\PackageStatus>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackagesLastStatusesByIds(string $carrier, array $carrierIds): array;
+    public function trackPackagesLastStatusesByIds(CarrierType $carrier, array $carrierIds): StatusCollection;
 }

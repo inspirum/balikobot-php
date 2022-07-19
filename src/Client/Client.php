@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Client;
 
+use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Method;
+use Inspirum\Balikobot\Client\Request\Version;
+
 interface Client
 {
     /**
@@ -11,14 +15,14 @@ interface Client
      *
      * @param array<mixed,mixed> $data
      *
-     * @return array<mixed,mixed>
+     * @return array<string,mixed>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function call(
-        string $version,
-        ?string $carrier,
-        string $request,
+        Version $version,
+        ?CarrierType $carrier,
+        Method $request,
         array $data = [],
         string $path = '',
         bool $shouldHaveStatus = true,

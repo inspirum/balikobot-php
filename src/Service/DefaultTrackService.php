@@ -5,52 +5,43 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Service;
 
 use Inspirum\Balikobot\Client\Client;
+use Inspirum\Balikobot\Client\Request\CarrierType;
 use Inspirum\Balikobot\Definitions\Request;
 use Inspirum\Balikobot\Definitions\Version;
-use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
-use Inspirum\Balikobot\Model\PackageStatus;
-use Inspirum\Balikobot\Model\PackageStatusFactory;
-use Inspirum\Balikobot\Model\Values\OrderedPackage;
-use Inspirum\Balikobot\Response\Validator;
-use function count;
+use Inspirum\Balikobot\Model\Package\Package;
+use Inspirum\Balikobot\Model\Package\PackageCollection;
+use Inspirum\Balikobot\Model\Status\PackageStatusFactory;
+use Inspirum\Balikobot\Model\Status\Status;
+use Inspirum\Balikobot\Model\Status\StatusCollection;
+use Inspirum\Balikobot\Model\Status\Statuses;
+use Inspirum\Balikobot\Model\Status\StatusesCollection;
+use OutOfBoundsException;
 
 class DefaultTrackService implements TrackService
 {
     public function __construct(
         private Client $client,
-        private Validator $validator,
         private PackageStatusFactory $packageStatusFactory,
     ) {
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function trackPackage(OrderedPackage $package): array
+    public function trackPackage(Package $package): Statuses
     {
         return $this->trackPackageById($package->carrier, $package->carrierId);
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function trackPackageById(string $carrier, string $carrierId): array
+    public function trackPackageById(CarrierType $carrier, string $carrierId): Statuses
     {
-        return $this->trackPackagesByIds($carrier, [$carrierId])[0];
+        return $this->trackPackagesByIds($carrier, [$carrierId])->getForCarrierId($carrierId) ?? throw new OutOfBoundsException();
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function trackPackages(OrderedPackageCollection $packages): array
+    public function trackPackages(PackageCollection $packages): StatusesCollection
     {
         return $this->trackPackagesByIds($packages->getCarrier(), $packages->getCarrierIds());
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function trackPackagesByIds(string $carrier, array $carrierIds): array
+    /** @inheritDoc */
+    public function trackPackagesByIds(CarrierType $carrier, array $carrierIds): StatusesCollection
     {
         $response = $this->client->call(
             Version::V2V2,
@@ -60,44 +51,26 @@ class DefaultTrackService implements TrackService
             shouldHaveStatus: false,
         );
 
-        $packages = $response['packages'] ?? [];
-        $this->validator->validateIndexes($packages, count($carrierIds));
-
-        $statuses = [];
-        foreach ($packages as $packageIndex => $package) {
-            $this->validator->validateResponseStatus($package, $response);
-
-            $statuses[(int) $packageIndex] = [];
-            foreach ($package['states'] ?? [] as $status) {
-                $statuses[(int) $packageIndex][] = $this->packageStatusFactory->createFromStatusData($status, $response);
-            }
-        }
-
-        return $statuses;
+        return $this->packageStatusFactory->createCollection($carrier, $carrierIds, $response);
     }
 
-    public function trackPackageLastStatus(OrderedPackage $package): PackageStatus
+    public function trackPackageLastStatus(Package $package): Status
     {
         return $this->trackPackageLastStatusById($package->carrier, $package->carrierId);
     }
 
-    public function trackPackageLastStatusById(string $carrier, string $carrierId): PackageStatus
+    public function trackPackageLastStatusById(CarrierType $carrier, string $carrierId): Status
     {
-        return $this->trackPackagesLastStatusesByIds($carrier, [$carrierId])[0];
+        return $this->trackPackagesLastStatusesByIds($carrier, [$carrierId])->getForCarrierId($carrierId) ?? throw new OutOfBoundsException();
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function trackPackagesLastStatuses(OrderedPackageCollection $packages): array
+    public function trackPackagesLastStatuses(PackageCollection $packages): StatusCollection
     {
         return $this->trackPackagesLastStatusesByIds($packages->getCarrier(), $packages->getCarrierIds());
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function trackPackagesLastStatusesByIds(string $carrier, array $carrierIds): array
+    /** @inheritDoc */
+    public function trackPackagesLastStatusesByIds(CarrierType $carrier, array $carrierIds): StatusCollection
     {
         $response = $this->client->call(
             Version::V2V2,
@@ -107,16 +80,6 @@ class DefaultTrackService implements TrackService
             shouldHaveStatus: false,
         );
 
-        $packages = $response['packages'] ?? [];
-        $this->validator->validateIndexes($packages, count($carrierIds));
-
-        $statuses = [];
-        foreach ($packages as $packageIndex => $status) {
-            $this->validator->validateResponseStatus($status, $response);
-
-            $statuses[(int) $packageIndex] = $this->packageStatusFactory->createFromLastStatusData($status, $response);
-        }
-
-        return $statuses;
+        return $this->packageStatusFactory->createLastStatusCollection($carrier, $carrierIds, $response);
     }
 }

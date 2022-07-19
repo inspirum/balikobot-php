@@ -358,7 +358,7 @@ final class Option
     /**
      * Manipulation unit code
      *
-     * @see Client::getManipulationUnits()
+     * @see RawClient::getManipulationUnits()
      *
      * @var string
      */
@@ -375,7 +375,7 @@ final class Option
     /**
      * Manipulation unit code
      *
-     * @see Client::getManipulationUnits()
+     * @see RawClient::getManipulationUnits()
      *
      * @var string
      */

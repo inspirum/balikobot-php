@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Exception;
 
 use Throwable;
 
-class UnauthorizedException extends BaseException
+final class UnauthorizedException extends BaseException
 {
     /**
      * UnauthorizedException constructor

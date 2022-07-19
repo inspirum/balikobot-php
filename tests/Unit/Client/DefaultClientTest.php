@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Client\DefaultClient;
+use Inspirum\Balikobot\Client\Response\Validator;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Request;
 use Inspirum\Balikobot\Definitions\Version;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Exception\UnauthorizedException;
-use Inspirum\Balikobot\Response\Validator;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
 use function gzcompress;
@@ -21,8 +21,8 @@ use function json_encode;
 final class DefaultClientTest extends BaseTestCase
 {
     /**
-     * @param array<mixed, mixed>|string          $response
-     * @param \Throwable|array<mixed, mixed>|bool $result
+     * @param array<mixed,mixed>|string          $response
+     * @param \Throwable|array<mixed,mixed>|bool $result
      *
      * @dataProvider providesTestCall()
      */
@@ -50,7 +50,7 @@ final class DefaultClientTest extends BaseTestCase
     }
 
     /**
-     * @return iterable<array<mixed, mixed>>
+     * @return iterable<array<mixed,mixed>>
      */
     public function providesTestCall(): iterable
     {
@@ -172,7 +172,7 @@ final class DefaultClientTest extends BaseTestCase
     }
 
     /**
-     * @return iterable<array<mixed, mixed>>
+     * @return iterable<array<mixed,mixed>>
      */
     public function providerCallException(): iterable
     {
