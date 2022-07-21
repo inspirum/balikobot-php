@@ -21,7 +21,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
      */
     public function testCreateFromStatusData(Carrier $carrier, string $carrierId, array $data, Status $expectedStatus): void
     {
-        $factory = $this->newDefaultPackageStatusFactory();
+        $factory = $this->newDefaultStatusFactory();
 
         $status = $factory->create($carrier, $carrierId, $data);
 
@@ -71,7 +71,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
     }
 
-    private function newDefaultPackageStatusFactory(): StatusFactory
+    private function newDefaultStatusFactory(): StatusFactory
     {
         $validator = new Validator();
 

@@ -25,7 +25,7 @@ final class DefaultAttributeFactoryTest extends BaseTestCase
             $this->expectExceptionMessage($result->getMessage());
         }
 
-        $factory = $this->newDefaultUnitFactory();
+        $factory = $this->newDefaultAttributeFactory();
 
         $collection = $factory->createCollection($carrier, $data);
 
@@ -82,7 +82,7 @@ final class DefaultAttributeFactoryTest extends BaseTestCase
         ];
     }
 
-    private function newDefaultUnitFactory(): DefaultAttributeFactory
+    private function newDefaultAttributeFactory(): DefaultAttributeFactory
     {
         return new DefaultAttributeFactory();
     }

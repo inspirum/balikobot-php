@@ -5,238 +5,70 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Service;
 
 use DateTimeImmutable;
-use Inspirum\Balikobot\Client\DefaultClient;
+use Inspirum\Balikobot\Client\Client;
 use Inspirum\Balikobot\Client\Request\Carrier;
-use Inspirum\Balikobot\Client\Response\Validator;
 use Inspirum\Balikobot\Definitions\CarrierType;
-use Inspirum\Balikobot\Exception\BadRequestException;
+use Inspirum\Balikobot\Definitions\Request;
+use Inspirum\Balikobot\Definitions\VersionType;
 use Inspirum\Balikobot\Model\Account\Account;
-use Inspirum\Balikobot\Model\Account\DefaultAccountFactory;
+use Inspirum\Balikobot\Model\Account\AccountFactory;
 use Inspirum\Balikobot\Model\Carrier\Carrier as CarrierModel;
 use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
-use Inspirum\Balikobot\Model\Carrier\DefaultCarrierFactory;
+use Inspirum\Balikobot\Model\Carrier\CarrierFactory;
 use Inspirum\Balikobot\Model\Changelog\Changelog;
 use Inspirum\Balikobot\Model\Changelog\ChangelogCollection;
+use Inspirum\Balikobot\Model\Changelog\ChangelogFactory;
 use Inspirum\Balikobot\Model\Changelog\ChangelogStatus;
 use Inspirum\Balikobot\Model\Changelog\ChangelogStatusCollection;
-use Inspirum\Balikobot\Model\Changelog\DefaultChangelogFactory;
-use Inspirum\Balikobot\Model\Method\DefaultMethodFactory;
 use Inspirum\Balikobot\Model\Method\Method;
 use Inspirum\Balikobot\Model\Method\MethodCollection;
 use Inspirum\Balikobot\Service\DefaultInfoService;
-use Inspirum\Balikobot\Service\InfoService;
-use Inspirum\Balikobot\Tests\BaseTestCase;
-use Throwable;
 
-final class DefaultInfoServiceTest extends BaseTestCase
+final class DefaultInfoServiceTest extends BaseServiceTest
 {
-    /**
-     * @param array<mixed,mixed>      $response
-     * @param array<mixed,mixed>|null $request
-     *
-     * @dataProvider providesTestAccountInfo
-     */
-    public function testAccountInfo(
-        int $statusCode,
-        array $response,
-        Account|Throwable|null $result,
-        ?array $request = null,
-    ): void {
-        if ($result instanceof Throwable) {
-            $this->expectException($result::class);
-            $this->expectExceptionMessage($result->getMessage());
-        }
-
-        $service = $this->newInfoService($statusCode, $response, $request);
-
-        $res = $service->getAccountInfo();
-
-        if ($result !== null) {
-            self::assertEquals($result, $res);
-        }
-    }
-
-    /**
-     * @return iterable<array<mixed,mixed>>
-     */
-    public function providesTestAccountInfo(): iterable
+    public function testGetAccountInfo(): void
     {
-        yield 'response_without_status' => [
-            'statusCode' => 200,
-            'response'   => [
-                'account'      => [
-                    'name'           => 'Balikobot-Test_obchod.cz',
-                    'contact_person' => 'DPD_2',
-                    'street'         => 'Kovářská 12',
-                    'city'           => 'Praha 9',
-                    'zip'            => '19000',
-                    'country'        => 'CZ',
-                    'email'          => 'info@balikobot.cz',
-                    'url'            => 'http://www.balikobot_test2.cz',
-                    'phone'          => '+420123456789',
-                ],
-                'live_account' => false,
-                'carriers'     => [
-                    [
-                        'name' => 'Česká pošta',
-                        'slug' => 'cp',
-                    ],
-                    [
-                        'name' => 'PPL',
-                        'slug' => 'ppl',
-                    ],
-                    [
-                        'name' => 'DPD',
-                        'slug' => 'dpd',
-                    ],
-                ],
+        $response       = [
+            'status'       => 200,
+            'account'      => [
+                'name'           => 'Balikobot-Test_obchod.cz',
+                'contact_person' => 'DPD_2',
+                'street'         => 'Kovářská 12',
+                'city'           => 'Praha 9',
+                'zip'            => '19000',
+                'country'        => 'CZ',
+                'email'          => 'info@balikobot.cz',
+                'url'            => 'http://www.balikobot_test2.cz',
+                'phone'          => '+420123456789',
             ],
-            'result'     => new BadRequestException([], 500),
-            'request'    => null,
-        ];
-
-        yield 'valid_request' => [
-            'statusCode' => 200,
-            'response'   => [
-                'status'       => 200,
-                'account'      => [
-                    'name'           => 'Balikobot-Test_obchod.cz',
-                    'contact_person' => 'DPD_2',
-                    'street'         => 'Kovářská 12',
-                    'city'           => 'Praha 9',
-                    'zip'            => '19000',
-                    'country'        => 'CZ',
-                    'email'          => 'info@balikobot.cz',
-                    'url'            => 'http://www.balikobot_test2.cz',
-                    'phone'          => '+420123456789',
+            'live_account' => false,
+            'carriers'     => [
+                [
+                    'name' => 'Česká pošta',
+                    'slug' => 'cp',
                 ],
-                'live_account' => false,
-                'carriers'     => [
-                    [
-                        'name' => 'Česká pošta',
-                        'slug' => 'cp',
-                    ],
-                    [
-                        'name' => 'PPL',
-                        'slug' => 'ppl',
-                    ],
-                    [
-                        'name' => 'DPD',
-                        'slug' => 'dpd',
-                    ],
+                [
+                    'name' => 'PPL',
+                    'slug' => 'ppl',
                 ],
-            ],
-            'result'     => new Account(
-                'Balikobot-Test_obchod.cz',
-                'DPD_2',
-                'info@balikobot.cz',
-                '+420123456789',
-                'http://www.balikobot_test2.cz',
-                'Kovářská 12',
-                'Praha 9',
-                '19000',
-                'CZ',
-                false,
-                new CarrierCollection([
-                    new CarrierModel(
-                        'cp',
-                        'Česká pošta',
-                    ),
-                    new CarrierModel(
-                        'ppl',
-                        'PPL',
-                    ),
-                    new CarrierModel(
-                        'dpd',
-                        'DPD',
-                    ),
-                ])
-            ),
-            'request'    => [
-                'https://apiv2.balikobot.cz/info/whoami',
+                [
+                    'name' => 'DPD',
+                    'slug' => 'dpd',
+                ],
             ],
         ];
-    }
-
-    /**
-     * @param array<mixed,mixed>      $response
-     * @param array<mixed,mixed>|null $request
-     *
-     * @dataProvider providesTestGetCarriers
-     */
-    public function testGetCarriers(
-        int $statusCode,
-        array $response,
-        CarrierCollection|Throwable|null $result,
-        ?array $request = null,
-    ): void {
-        if ($result instanceof Throwable) {
-            $this->expectException($result::class);
-            $this->expectExceptionMessage($result->getMessage());
-        }
-
-        $service = $this->newInfoService($statusCode, $response, $request);
-
-        $res = $service->getCarriers();
-
-        if ($result !== null) {
-            self::assertEquals($result, $res);
-        }
-    }
-
-    /**
-     * @return iterable<array<mixed,mixed>>
-     */
-    public function providesTestGetCarriers(): iterable
-    {
-        yield 'response_without_status' => [
-            'statusCode' => 200,
-            'response'   => [
-                'carriers' => [
-                    [
-                        'name'     => 'Česká pošta',
-                        'slug'     => 'cp',
-                        'endpoint' => 'https://api.balikobot.cz/cp',
-                    ],
-                    [
-                        'name'     => 'PPL',
-                        'slug'     => 'ppl',
-                        'endpoint' => 'https://api.balikobot.cz/ppl',
-                    ],
-                    [
-                        'name'     => 'Magyar Posta',
-                        'slug'     => 'magyarposta',
-                        'endpoint' => 'https://api.balikobot.cz/magyarposta',
-                    ],
-                ],
-            ],
-            'result'     => new BadRequestException([], 500),
-            'request'    => null,
-        ];
-
-        yield 'valid_request' => [
-            'statusCode' => 200,
-            'response'   => [
-                'status'   => 200,
-                'carriers' => [
-                    [
-                        'name'     => 'Česká pošta',
-                        'slug'     => 'cp',
-                        'endpoint' => 'https://api.balikobot.cz/cp',
-                    ],
-                    [
-                        'name'     => 'PPL',
-                        'slug'     => 'ppl',
-                        'endpoint' => 'https://api.balikobot.cz/ppl',
-                    ],
-                    [
-                        'name'     => 'Magyar Posta',
-                        'slug'     => 'magyarposta',
-                        'endpoint' => 'https://api.balikobot.cz/magyarposta',
-                    ],
-                ],
-            ],
-            'result'     => new CarrierCollection([
+        $expectedResult = new Account(
+            'Balikobot-Test_obchod.cz',
+            'DPD_2',
+            'info@balikobot.cz',
+            '+420123456789',
+            'http://www.balikobot_test2.cz',
+            'Kovářská 12',
+            'Praha 9',
+            '19000',
+            'CZ',
+            false,
+            new CarrierCollection([
                 new CarrierModel(
                     'cp',
                     'Česká pošta',
@@ -246,272 +78,244 @@ final class DefaultInfoServiceTest extends BaseTestCase
                     'PPL',
                 ),
                 new CarrierModel(
-                    'magyarposta',
-                    'Magyar Posta',
+                    'dpd',
+                    'DPD',
                 ),
-            ]),
-            'request'    => [
-                'https://apiv2.balikobot.cz/info/carriers',
-            ],
-        ];
+            ])
+        );
+
+        $service = $this->newDefaultInfoService(
+            client: $this->mockClient([VersionType::V2V1, null, Request::INFO_WHO_AM_I], $response),
+            accountFactory: $this->mockAccountFactory($response, $expectedResult),
+        );
+
+        $actualResult = $service->getAccountInfo();
+
+        self::assertSame($expectedResult, $actualResult);
     }
 
-    /**
-     * @param array<mixed,mixed>      $response
-     * @param array<mixed,mixed>|null $request
-     *
-     * @dataProvider providesTestGetCarrier
-     */
-    public function testGetCarrier(
-        int $statusCode,
-        Carrier $carrier,
-        array $response,
-        Carrier|Throwable|null $result,
-        ?array $request = null,
-    ): void {
-        if ($result instanceof Throwable) {
-            $this->expectException($result::class);
-            $this->expectExceptionMessage($result->getMessage());
-        }
-
-        $service = $this->newInfoService($statusCode, $response, $request);
-
-        $res = $service->getCarrier($carrier);
-
-        if ($result !== null) {
-            self::assertEquals($result, $res);
-        }
-    }
-
-    /**
-     * @return iterable<array<mixed,mixed>>
-     */
-    public function providesTestGetCarrier(): iterable
+    public function testGetCarriers(): void
     {
-        yield 'response_without_status' => [
-            'statusCode' => 200,
-            'carrier'    => CarrierType::ZASILKOVNA,
-            'response'   => [
-                'name'                 => 'Zásilkovna',
-                'v2_methods_available' => true,
-                'methods'              => [
-                    [
-                        'method'   => 'ADD',
-                        'endpoint' => 'https://api.balikobot.cz/zasilkovna/add',
-                    ],
-                    [
-                        'method'   => 'TRACKSTATUS',
-                        'endpoint' => 'https://api.balikobot.cz/zasilkovna/trackstatus',
-                    ],
-                ],
-                'v2_methods'           => [
-                    [
-                        'method'   => 'ADD',
-                        'endpoint' => 'https://api.balikobot.cz/v2/zasilkovna/add',
-                    ],
-                    [
-                        'method'   => 'DROP',
-                        'endpoint' => 'https://api.balikobot.cz/v2/zasilkovna/drop',
-                    ],
-                ],
-            ],
-            'result'     => new BadRequestException([], 500),
-            'request'    => null,
-        ];
-
-        yield 'valid_request' => [
-            'statusCode' => 200,
-            'carrier'    => CarrierType::ZASILKOVNA,
-            'response'   => [
-                'status'               => 200,
-                'name'                 => 'Zásilkovna',
-                'v2_methods_available' => true,
-                'methods'              => [
-                    [
-                        'method'   => 'ADD',
-                        'endpoint' => 'https://api.balikobot.cz/zasilkovna/add',
-                    ],
-                    [
-                        'method'   => 'TRACKSTATUS',
-                        'endpoint' => 'https://api.balikobot.cz/zasilkovna/trackstatus',
-                    ],
-                ],
-                'v2_methods'           => [
-                    [
-                        'method'   => 'ADD',
-                        'endpoint' => 'https://api.balikobot.cz/v2/zasilkovna/add',
-                    ],
-                    [
-                        'method'   => 'DROP',
-                        'endpoint' => 'https://api.balikobot.cz/v2/zasilkovna/drop',
-                    ],
-                ],
-            ],
-            'result'     => new CarrierModel(
-                'zasilkovna',
-                'Zásilkovna',
+        $response       = [
+            'status'   => 200,
+            'carriers' => [
                 [
-                    'https://apiv2.balikobot.cz'    => new MethodCollection([
-                        new Method('ADD'),
-                        new Method('TRACKSTATUS'),
-                    ]),
-                    'https://apiv2.balikobot.cz/v2' => new MethodCollection([
-                        new Method('ADD'),
-                        new Method('DROP'),
-                    ]),
-                ]
+                    'name'     => 'Česká pošta',
+                    'slug'     => 'cp',
+                    'endpoint' => 'https://api.balikobot.cz/cp',
+                ],
+                [
+                    'name'     => 'PPL',
+                    'slug'     => 'ppl',
+                    'endpoint' => 'https://api.balikobot.cz/ppl',
+                ],
+                [
+                    'name'     => 'Magyar Posta',
+                    'slug'     => 'magyarposta',
+                    'endpoint' => 'https://api.balikobot.cz/magyarposta',
+                ],
+            ],
+        ];
+        $expectedResult = new CarrierCollection([
+            new CarrierModel(
+                'cp',
+                'Česká pošta',
             ),
-            'request'    => [
-                'https://apiv2.balikobot.cz/info/carriers/zasilkovna',
+            new CarrierModel(
+                'ppl',
+                'PPL',
+            ),
+            new CarrierModel(
+                'magyarposta',
+                'Magyar Posta',
+            ),
+        ]);
+
+        $service = $this->newDefaultInfoService(
+            client: $this->mockClient([VersionType::V2V1, null, Request::INFO_CARRIERS], $response),
+            carrierFactory: $this->mockCarrierFactory(null, $response, $expectedResult),
+        );
+
+        $actualResult = $service->getCarriers();
+
+        self::assertSame($expectedResult, $actualResult);
+    }
+
+    public function testGetCarrier(): void
+    {
+        $carrier        = CarrierType::ZASILKOVNA;
+        $response       = [
+            'status'               => 200,
+            'name'                 => 'Zásilkovna',
+            'v2_methods_available' => true,
+            'methods'              => [
+                [
+                    'method'   => 'ADD',
+                    'endpoint' => 'https://api.balikobot.cz/zasilkovna/add',
+                ],
+                [
+                    'method'   => 'TRACKSTATUS',
+                    'endpoint' => 'https://api.balikobot.cz/zasilkovna/trackstatus',
+                ],
+            ],
+            'v2_methods'           => [
+                [
+                    'method'   => 'ADD',
+                    'endpoint' => 'https://api.balikobot.cz/v2/zasilkovna/add',
+                ],
+                [
+                    'method'   => 'DROP',
+                    'endpoint' => 'https://api.balikobot.cz/v2/zasilkovna/drop',
+                ],
             ],
         ];
+        $expectedResult = new CarrierModel(
+            'zasilkovna',
+            'Zásilkovna',
+            [
+                'https://apiv2.balikobot.cz'    => new MethodCollection([
+                    new Method('ADD'),
+                    new Method('TRACKSTATUS'),
+                ]),
+                'https://apiv2.balikobot.cz/v2' => new MethodCollection([
+                    new Method('ADD'),
+                    new Method('DROP'),
+                ]),
+            ]
+        );
+
+        $service = $this->newDefaultInfoService(
+            client: $this->mockClient([VersionType::V2V1, null, Request::INFO_CARRIERS, [], $carrier->getValue()], $response),
+            carrierFactory: $this->mockCarrierFactory($carrier, $response, $expectedResult),
+        );
+
+        $actualResult = $service->getCarrier($carrier);
+
+        self::assertSame($expectedResult, $actualResult);
     }
 
-    /**
-     * @param array<mixed,mixed>      $response
-     * @param array<mixed,mixed>|null $request
-     *
-     * @dataProvider providesTestGetChangelog
-     */
-    public function testGetChangelog(
-        int $statusCode,
-        array $response,
-        ChangelogCollection|Throwable|null $result,
-        ?array $request = null,
-    ): void {
-        if ($result instanceof Throwable) {
-            $this->expectException($result::class);
-            $this->expectExceptionMessage($result->getMessage());
-        }
-
-        $service = $this->newInfoService($statusCode, $response, $request);
-
-        $res = $service->getChangelog();
-
-        if ($result !== null) {
-            self::assertEquals($result, $res);
-        }
-    }
-
-    /**
-     * @return iterable<array<mixed,mixed>>
-     */
-    public function providesTestGetChangelog(): iterable
+    public function testGetChangelog(): void
     {
-        yield 'response_without_status' => [
-            'statusCode' => 200,
-            'response'   => [
-                'api_v1_documentation_cz' => 'https://balikobot.docs.apiary.io/',
-                'api_v2_documentation_cz' => 'https://balikobotv2.docs.apiary.io/',
-                'api_v1_documentation_en' => 'https://balikoboteng.docs.apiary.io/',
-                'api_v2_documentation_en' => 'https://balikobotv2eng.docs.apiary.io/',
-                'version'                 => '1.900',
-                'date'                    => '2020-12-18',
-                'versions'                => [
-                    0 => [
-                        'version' => '1.900',
-                        'date'    => '2020-12-18',
-                        'changes' => [
-                            0 => [
-                                'name'        => 'ADD Zásilkovna',
-                                'description' => '- delivery_costs a delivery_costs_eur - přidání GB',
-                            ],
-                            1 => [
-                                'name'        => 'ADD PbH',
-                                'description' => '- content data - přidání GB',
-                            ],
+        $response       = [
+            'status'                  => 200,
+            'status_message'          => 'Operace proběhla v pořádku.',
+            'api_v1_documentation_cz' => 'https://balikobot.docs.apiary.io/',
+            'api_v2_documentation_cz' => 'https://balikobotv2.docs.apiary.io/',
+            'api_v1_documentation_en' => 'https://balikoboteng.docs.apiary.io/',
+            'api_v2_documentation_en' => 'https://balikobotv2eng.docs.apiary.io/',
+            'version'                 => '1.900',
+            'date'                    => '2020-12-18',
+            'versions'                => [
+                0 => [
+                    'version' => '1.900',
+                    'date'    => '2020-12-18',
+                    'changes' => [
+                        0 => [
+                            'name'        => 'ADD Zásilkovna',
+                            'description' => '- delivery_costs a delivery_costs_eur - přidání GB',
+                        ],
+                        1 => [
+                            'name'        => 'ADD PbH',
+                            'description' => '- content data - přidání GB',
+                        ],
+                    ],
+                ],
+                1 => [
+                    'version' => '1.899',
+                    'date'    => '2020-12-07',
+                    'changes' => [
+                        0 => [
+                            'name'        => 'ADD Gebrüder Weiss Česká republika',
+                            'description' => '- nový atribut rec_floor_number - číslo patra',
                         ],
                     ],
                 ],
             ],
-            'result'     => new BadRequestException([], 500),
-            'request'    => null,
         ];
+        $expectedResult = new ChangelogCollection([
+            new Changelog(
+                '1.900',
+                new DateTimeImmutable('2020-12-18'),
+                new ChangelogStatusCollection([
+                    new ChangelogStatus(
+                        'ADD Zásilkovna',
+                        '- delivery_costs a delivery_costs_eur - přidání GB',
+                    ),
+                    new ChangelogStatus(
+                        'ADD PbH',
+                        '- content data - přidání GB',
+                    ),
+                ])
+            ),
+            new Changelog(
+                '1.899',
+                new DateTimeImmutable('2020-12-07'),
+                new ChangelogStatusCollection([
+                    new ChangelogStatus(
+                        'ADD Gebrüder Weiss Česká republika',
+                        '- nový atribut rec_floor_number - číslo patra',
+                    ),
+                ])
+            ),
+        ]);
 
-        yield 'valid_request' => [
-            'statusCode' => 200,
-            'response'   => [
-                'status'                  => 200,
-                'status_message'          => 'Operace proběhla v pořádku.',
-                'api_v1_documentation_cz' => 'https://balikobot.docs.apiary.io/',
-                'api_v2_documentation_cz' => 'https://balikobotv2.docs.apiary.io/',
-                'api_v1_documentation_en' => 'https://balikoboteng.docs.apiary.io/',
-                'api_v2_documentation_en' => 'https://balikobotv2eng.docs.apiary.io/',
-                'version'                 => '1.900',
-                'date'                    => '2020-12-18',
-                'versions'                => [
-                    0 => [
-                        'version' => '1.900',
-                        'date'    => '2020-12-18',
-                        'changes' => [
-                            0 => [
-                                'name'        => 'ADD Zásilkovna',
-                                'description' => '- delivery_costs a delivery_costs_eur - přidání GB',
-                            ],
-                            1 => [
-                                'name'        => 'ADD PbH',
-                                'description' => '- content data - přidání GB',
-                            ],
-                        ],
-                    ],
-                    1 => [
-                        'version' => '1.899',
-                        'date'    => '2020-12-07',
-                        'changes' => [
-                            0 => [
-                                'name'        => 'ADD Gebrüder Weiss Česká republika',
-                                'description' => '- nový atribut rec_floor_number - číslo patra',
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-            'result'     => new ChangelogCollection([
-                new Changelog(
-                    '1.900',
-                    new DateTimeImmutable('2020-12-18'),
-                    new ChangelogStatusCollection([
-                        new ChangelogStatus(
-                            'ADD Zásilkovna',
-                            '- delivery_costs a delivery_costs_eur - přidání GB',
-                        ),
-                        new ChangelogStatus(
-                            'ADD PbH',
-                            '- content data - přidání GB',
-                        ),
-                    ])
-                ),
-                new Changelog(
-                    '1.899',
-                    new DateTimeImmutable('2020-12-07'),
-                    new ChangelogStatusCollection([
-                        new ChangelogStatus(
-                            'ADD Gebrüder Weiss Česká republika',
-                            '- nový atribut rec_floor_number - číslo patra',
-                        ),
-                    ])
-                ),
-            ]),
-            'request'    => [
-                'https://apiv2.balikobot.cz/changelog',
-            ],
-        ];
+        $service = $this->newDefaultInfoService(
+            client: $this->mockClient([VersionType::V2V1, null, Request::CHANGELOG], $response),
+            changelogFactory: $this->mockChangelogFactory($response, $expectedResult),
+        );
+
+        $actualResult = $service->getChangelog();
+
+        self::assertSame($expectedResult, $actualResult);
     }
 
     /**
-     * @param array<mixed,mixed>|string $response
-     * @param array<mixed,mixed>|null   $request
+     * @param array<string,mixed> $data
      */
-    private function newInfoService(int $statusCode, array|string $response, ?array $request = null): InfoService
+    private function mockAccountFactory(array $data, Account $response): AccountFactory
     {
-        $requester        = $this->newRequester($statusCode, $response, $request);
-        $validator        = new Validator();
-        $client           = new DefaultClient($requester, $validator);
-        $methodFactory    = new DefaultMethodFactory();
-        $carrierFactory   = new DefaultCarrierFactory($methodFactory);
-        $accountFactory   = new DefaultAccountFactory($carrierFactory);
-        $changelogFactory = new DefaultChangelogFactory();
+        $serviceFactory = $this->createMock(AccountFactory::class);
+        $serviceFactory->expects(self::once())->method('create')->with($data)->willReturn($response);
 
-        return new DefaultInfoService($client, $accountFactory, $carrierFactory, $changelogFactory);
+        return $serviceFactory;
+    }
+
+    /**
+     * @param array<string,mixed> $data
+     */
+    private function mockCarrierFactory(?Carrier $carrier, array $data, CarrierCollection|CarrierModel $response): CarrierFactory
+    {
+        $serviceFactory = $this->createMock(CarrierFactory::class);
+        $serviceFactory->expects(self::once())
+                       ->method($response instanceof CarrierModel ? 'create' : 'createCollection')
+                       ->with(...($response instanceof CarrierModel ? [$carrier, $data] : [$data]))
+                       ->willReturn($response);
+
+        return $serviceFactory;
+    }
+
+    /**
+     * @param array<string,mixed> $data
+     */
+    private function mockChangelogFactory(array $data, ChangelogCollection $response): ChangelogFactory
+    {
+        $serviceFactory = $this->createMock(ChangelogFactory::class);
+        $serviceFactory->expects(self::once())->method('createCollection')->with($data)->willReturn($response);
+
+        return $serviceFactory;
+    }
+
+    private function newDefaultInfoService(
+        Client $client,
+        ?AccountFactory $accountFactory = null,
+        ?CarrierFactory $carrierFactory = null,
+        ?ChangelogFactory $changelogFactory = null,
+    ): DefaultInfoService {
+        return new DefaultInfoService(
+            $client,
+            $accountFactory ?? $this->createMock(AccountFactory::class),
+            $carrierFactory ?? $this->createMock(CarrierFactory::class),
+            $changelogFactory ?? $this->createMock(ChangelogFactory::class),
+        );
     }
 }

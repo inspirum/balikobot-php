@@ -25,7 +25,7 @@ final class DefaultManipulationUnitFactoryTest extends BaseTestCase
             $this->expectExceptionMessage($result->getMessage());
         }
 
-        $factory = $this->newDefaultUnitFactory();
+        $factory = $this->newDefaultManipulationUnitFactory();
 
         $collection = $factory->createCollection($carrier, $data);
 
@@ -68,7 +68,7 @@ final class DefaultManipulationUnitFactoryTest extends BaseTestCase
         ];
     }
 
-    private function newDefaultUnitFactory(): DefaultManipulationUnitFactory
+    private function newDefaultManipulationUnitFactory(): DefaultManipulationUnitFactory
     {
         return new DefaultManipulationUnitFactory();
     }

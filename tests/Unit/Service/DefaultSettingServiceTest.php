@@ -34,11 +34,9 @@ use Inspirum\Balikobot\Model\Service\ServiceOptionCollection;
 use Inspirum\Balikobot\Model\ZipCode\ZipCode;
 use Inspirum\Balikobot\Model\ZipCode\ZipCodeFactory;
 use Inspirum\Balikobot\Service\DefaultSettingService;
-use Inspirum\Balikobot\Tests\BaseTestCase;
-use function array_replace;
 use function sprintf;
 
-final class DefaultSettingServiceTest extends BaseTestCase
+final class DefaultSettingServiceTest extends BaseServiceTest
 {
     public function testGetServices(): void
     {
@@ -510,28 +508,6 @@ final class DefaultSettingServiceTest extends BaseTestCase
         $actualResult = $service->getAddServiceOptionsForService($carrier, $serviceType);
 
         self::assertSame($expectedResult, $actualResult);
-    }
-
-    /**
-     * @param array<mixed>        $arguments
-     * @param array<string,mixed> $response
-     */
-    private function mockClient(array $arguments, array $response): Client
-    {
-        $arguments = array_replace([
-            null,
-            null,
-            null,
-            [],
-            null,
-            true,
-            false,
-        ], $arguments);
-
-        $client = $this->createMock(Client::class);
-        $client->expects(self::once())->method('call')->with(...$arguments)->willReturn($response);
-
-        return $client;
     }
 
     /**

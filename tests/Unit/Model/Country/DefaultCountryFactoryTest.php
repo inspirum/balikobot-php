@@ -24,7 +24,7 @@ final class DefaultCountryFactoryTest extends BaseTestCase
             $this->expectExceptionMessage($result->getMessage());
         }
 
-        $factory = $this->newDefaultUnitFactory();
+        $factory = $this->newDefaultCountryFactory();
 
         $collection = $factory->createCollection($data);
 
@@ -93,7 +93,7 @@ final class DefaultCountryFactoryTest extends BaseTestCase
         ];
     }
 
-    private function newDefaultUnitFactory(): DefaultCountryFactory
+    private function newDefaultCountryFactory(): DefaultCountryFactory
     {
         return new DefaultCountryFactory();
     }

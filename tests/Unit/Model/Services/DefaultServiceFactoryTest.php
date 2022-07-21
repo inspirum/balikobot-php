@@ -29,7 +29,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
             $this->expectExceptionMessage($result->getMessage());
         }
 
-        $factory = $this->newDefaultUnitFactory();
+        $factory = $this->newDefaultServiceFactory();
 
         $collection = $factory->createCollection($carrier, $data);
 
@@ -294,7 +294,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
         ];
     }
 
-    private function newDefaultUnitFactory(): DefaultServiceFactory
+    private function newDefaultServiceFactory(): DefaultServiceFactory
     {
         return new DefaultServiceFactory(new DefaultCountryFactory());
     }

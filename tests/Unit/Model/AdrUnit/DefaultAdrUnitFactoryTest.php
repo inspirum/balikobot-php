@@ -25,7 +25,7 @@ final class DefaultAdrUnitFactoryTest extends BaseTestCase
             $this->expectExceptionMessage($result->getMessage());
         }
 
-        $factory = $this->newDefaultUnitFactory();
+        $factory = $this->newDefaultAdrUnitFactory();
 
         $collection = $factory->createCollection($carrier, $data);
 
@@ -90,7 +90,7 @@ final class DefaultAdrUnitFactoryTest extends BaseTestCase
         ];
     }
 
-    private function newDefaultUnitFactory(): DefaultAdrUnitFactory
+    private function newDefaultAdrUnitFactory(): DefaultAdrUnitFactory
     {
         return new DefaultAdrUnitFactory();
     }

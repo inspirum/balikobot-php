@@ -18,16 +18,16 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
      * @param array<string,mixed>                              $data
      * @param array<\Inspirum\Balikobot\Model\ZipCode\ZipCode> $result
      *
-     * @dataProvider providesTestCreateCollection
+     * @dataProvider providesTestCreateIterator
      */
-    public function testCreateCollection(Carrier $carrier, Service $service, ?string $country, array $data, array|Throwable $result): void
+    public function testCreateIterator(Carrier $carrier, Service $service, ?string $country, array $data, array|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
             $this->expectExceptionMessage($result->getMessage());
         }
 
-        $factory = $this->newDefaultUnitFactory();
+        $factory = $this->newDefaultZipCodeFactory();
 
         $iterator = $factory->createIterator($carrier, $service, $country, $data);
 
@@ -37,7 +37,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public function providesTestCreateIterator(): iterable
     {
         yield 'type_zip' => [
             'carrier' => Carrier::from('cp'),
@@ -195,7 +195,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
         ];
     }
 
-    private function newDefaultUnitFactory(): DefaultZipCodeFactory
+    private function newDefaultZipCodeFactory(): DefaultZipCodeFactory
     {
         return new DefaultZipCodeFactory();
     }
