@@ -6,12 +6,13 @@ namespace Inspirum\Balikobot\Tests\Unit\Service;
 
 use DateTimeImmutable;
 use Inspirum\Balikobot\Client\DefaultClient;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Client\Response\Validator;
 use Inspirum\Balikobot\Definitions\CarrierType;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Account\Account;
 use Inspirum\Balikobot\Model\Account\DefaultAccountFactory;
-use Inspirum\Balikobot\Model\Carrier\Carrier;
+use Inspirum\Balikobot\Model\Carrier\Carrier as CarrierModel;
 use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
 use Inspirum\Balikobot\Model\Carrier\DefaultCarrierFactory;
 use Inspirum\Balikobot\Model\Changelog\Changelog;
@@ -137,15 +138,15 @@ final class DefaultInfoServiceTest extends BaseTestCase
                 'CZ',
                 false,
                 new CarrierCollection([
-                    new Carrier(
+                    new CarrierModel(
                         'cp',
                         'Česká pošta',
                     ),
-                    new Carrier(
+                    new CarrierModel(
                         'ppl',
                         'PPL',
                     ),
-                    new Carrier(
+                    new CarrierModel(
                         'dpd',
                         'DPD',
                     ),
@@ -236,15 +237,15 @@ final class DefaultInfoServiceTest extends BaseTestCase
                 ],
             ],
             'result'     => new CarrierCollection([
-                new Carrier(
+                new CarrierModel(
                     'cp',
                     'Česká pošta',
                 ),
-                new Carrier(
+                new CarrierModel(
                     'ppl',
                     'PPL',
                 ),
-                new Carrier(
+                new CarrierModel(
                     'magyarposta',
                     'Magyar Posta',
                 ),
@@ -346,7 +347,7 @@ final class DefaultInfoServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'     => new Carrier(
+            'result'     => new CarrierModel(
                 'zasilkovna',
                 'Zásilkovna',
                 [

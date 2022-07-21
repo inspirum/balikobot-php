@@ -23,16 +23,16 @@ use Inspirum\Balikobot\Model\Country\CodCountry;
 use Inspirum\Balikobot\Model\Country\Country as CountryModel;
 use Inspirum\Balikobot\Model\Country\CountryCollection;
 use Inspirum\Balikobot\Model\Country\CountryFactory;
-use Inspirum\Balikobot\Model\PostCode\PostCode;
-use Inspirum\Balikobot\Model\PostCode\PostCodeFactory;
+use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit;
+use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection;
+use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitFactory;
 use Inspirum\Balikobot\Model\Service\Service as ServiceModel;
 use Inspirum\Balikobot\Model\Service\ServiceCollection;
 use Inspirum\Balikobot\Model\Service\ServiceFactory;
 use Inspirum\Balikobot\Model\Service\ServiceOption;
 use Inspirum\Balikobot\Model\Service\ServiceOptionCollection;
-use Inspirum\Balikobot\Model\Unit\Unit;
-use Inspirum\Balikobot\Model\Unit\UnitCollection;
-use Inspirum\Balikobot\Model\Unit\UnitFactory;
+use Inspirum\Balikobot\Model\ZipCode\ZipCode;
+use Inspirum\Balikobot\Model\ZipCode\ZipCodeFactory;
 use Inspirum\Balikobot\Service\DefaultSettingService;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use function array_replace;
@@ -146,9 +146,9 @@ final class DefaultSettingServiceTest extends BaseTestCase
             ],
         ];
 
-        $expectedResult = new UnitCollection($carrier, [
-            new Unit('KARTON', 'KARTON'),
-            new Unit('KUS', 'KUS'),
+        $expectedResult = new ManipulationUnitCollection($carrier, [
+            new ManipulationUnit('KARTON', 'KARTON'),
+            new ManipulationUnit('KUS', 'KUS'),
         ]);
 
         $service = $this->newDefaultSettingService(
@@ -177,9 +177,9 @@ final class DefaultSettingServiceTest extends BaseTestCase
             ],
         ];
 
-        $expectedResult = new UnitCollection($carrier, [
-            new Unit('KARTON', 'KARTON'),
-            new Unit('PALETA', 'PALETA'),
+        $expectedResult = new ManipulationUnitCollection($carrier, [
+            new ManipulationUnit('KARTON', 'KARTON'),
+            new ManipulationUnit('PALETA', 'PALETA'),
         ]);
 
         $service = $this->newDefaultSettingService(
@@ -320,7 +320,7 @@ final class DefaultSettingServiceTest extends BaseTestCase
             ],
         ];
         $expectedResult = new ArrayIterator([
-            new PostCode(
+            new ZipCode(
                 $carrier,
                 $serviceType,
                 '79862',
@@ -329,7 +329,7 @@ final class DefaultSettingServiceTest extends BaseTestCase
                 'CZ',
                 false,
             ),
-            new PostCode(
+            new ZipCode(
                 $carrier,
                 $serviceType,
                 '79907',
@@ -342,10 +342,10 @@ final class DefaultSettingServiceTest extends BaseTestCase
 
         $service = $this->newDefaultSettingService(
             client: $this->mockClient([VersionType::V2V1, $carrier, Request::ZIP_CODES, [], sprintf('%s/%s', $serviceType->getValue(), $country)], $response),
-            postCodeFactory: $this->mockPostCodeFactory($carrier, $serviceType, $country, $response, $expectedResult),
+            zipCodeFactory: $this->mockPostCodeFactory($carrier, $serviceType, $country, $response, $expectedResult),
         );
 
-        $actualResult = $service->getPostCodes($carrier, $serviceType, $country);
+        $actualResult = $service->getZipCodes($carrier, $serviceType, $country);
 
         self::assertSame($expectedResult, $actualResult);
     }
@@ -549,9 +549,9 @@ final class DefaultSettingServiceTest extends BaseTestCase
     /**
      * @param array<string,mixed> $data
      */
-    private function mockUnitFactory(Carrier $carrier, array $data, UnitCollection $response): UnitFactory
+    private function mockUnitFactory(Carrier $carrier, array $data, ManipulationUnitCollection $response): ManipulationUnitFactory
     {
-        $serviceFactory = $this->createMock(UnitFactory::class);
+        $serviceFactory = $this->createMock(ManipulationUnitFactory::class);
         $serviceFactory->expects(self::once())->method('createCollection')->with($carrier, $data)->willReturn($response);
 
         return $serviceFactory;
@@ -569,8 +569,8 @@ final class DefaultSettingServiceTest extends BaseTestCase
     }
 
     /**
-     * @param array<string,mixed>                                   $data
-     * @param iterable<\Inspirum\Balikobot\Model\PostCode\PostCode> $response
+     * @param array<string,mixed>                                 $data
+     * @param iterable<\Inspirum\Balikobot\Model\ZipCode\ZipCode> $response
      */
     private function mockPostCodeFactory(
         Carrier $carrier,
@@ -578,8 +578,8 @@ final class DefaultSettingServiceTest extends BaseTestCase
         ?string $country,
         array $data,
         iterable $response
-    ): PostCodeFactory {
-        $serviceFactory = $this->createMock(PostCodeFactory::class);
+    ): ZipCodeFactory {
+        $serviceFactory = $this->createMock(ZipCodeFactory::class);
         $serviceFactory->expects(self::once())->method('createIterator')->with($carrier, $service, $country, $data)->willReturn($response);
 
         return $serviceFactory;
@@ -610,18 +610,18 @@ final class DefaultSettingServiceTest extends BaseTestCase
     private function newDefaultSettingService(
         Client $client,
         ?ServiceFactory $serviceFactory = null,
-        ?UnitFactory $unitFactory = null,
+        ?ManipulationUnitFactory $unitFactory = null,
         ?CountryFactory $countryFactory = null,
-        ?PostCodeFactory $postCodeFactory = null,
+        ?ZipCodeFactory $zipCodeFactory = null,
         ?AdrUnitFactory $adrUnitFactory = null,
         ?AttributeFactory $attributeFactory = null,
     ): DefaultSettingService {
         return new DefaultSettingService(
             $client,
             $serviceFactory ?? $this->createMock(ServiceFactory::class),
-            $unitFactory ?? $this->createMock(UnitFactory::class),
+            $unitFactory ?? $this->createMock(ManipulationUnitFactory::class),
             $countryFactory ?? $this->createMock(CountryFactory::class),
-            $postCodeFactory ?? $this->createMock(PostCodeFactory::class),
+            $zipCodeFactory ?? $this->createMock(ZipCodeFactory::class),
             $adrUnitFactory ?? $this->createMock(AdrUnitFactory::class),
             $attributeFactory ?? $this->createMock(AttributeFactory::class),
         );

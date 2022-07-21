@@ -10,9 +10,9 @@ use Inspirum\Balikobot\Definitions\Request;
 use Inspirum\Balikobot\Definitions\VersionType;
 use Inspirum\Balikobot\Model\Package\Package;
 use Inspirum\Balikobot\Model\Package\PackageCollection;
-use Inspirum\Balikobot\Model\Status\PackageStatusFactory;
 use Inspirum\Balikobot\Model\Status\Status;
 use Inspirum\Balikobot\Model\Status\StatusCollection;
+use Inspirum\Balikobot\Model\Status\StatusFactory;
 use Inspirum\Balikobot\Model\Status\Statuses;
 use Inspirum\Balikobot\Model\Status\StatusesCollection;
 use OutOfBoundsException;
@@ -21,7 +21,7 @@ class DefaultTrackService implements TrackService
 {
     public function __construct(
         private Client $client,
-        private PackageStatusFactory $packageStatusFactory,
+        private StatusFactory $packageStatusFactory,
     ) {
     }
 

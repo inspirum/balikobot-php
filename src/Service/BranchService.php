@@ -80,7 +80,7 @@ interface BranchService
         Carrier $carrier,
         string $country,
         string $city,
-        ?string $postcode = null,
+        ?string $zipCode = null,
         ?string $street = null,
         ?int $maxResults = null,
         ?float $radius = null,

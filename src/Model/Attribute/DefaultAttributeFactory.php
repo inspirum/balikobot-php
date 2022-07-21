@@ -15,7 +15,7 @@ final class DefaultAttributeFactory implements AttributeFactory
         return new Attribute(
             $data['name'],
             $data['data_type'],
-            $data['max_length'],
+            (string) $data['max_length'],
         );
     }
 

@@ -1,0 +1,97 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Inspirum\Balikobot\Tests\Unit\Model\AdrUnit;
+
+use Inspirum\Balikobot\Model\AdrUnit\AdrUnit;
+use Inspirum\Balikobot\Model\AdrUnit\AdrUnitCollection;
+use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnitFactory;
+use Inspirum\Balikobot\Model\Carrier\Carrier;
+use Inspirum\Balikobot\Tests\BaseTestCase;
+use Throwable;
+
+final class DefaultAdrUnitFactoryTest extends BaseTestCase
+{
+    /**
+     * @param array<string,mixed> $data
+     *
+     * @dataProvider providesTestCreateCollection
+     */
+    public function testCreateCollection(Carrier $carrier, array $data, AdrUnitCollection|Throwable $result): void
+    {
+        if ($result instanceof Throwable) {
+            $this->expectException($result::class);
+            $this->expectExceptionMessage($result->getMessage());
+        }
+
+        $factory = $this->newDefaultUnitFactory();
+
+        $collection = $factory->createCollection($carrier, $data);
+
+        self::assertEquals($result, $collection);
+    }
+
+    /**
+     * @return iterable<array<string,mixed>>
+     */
+    public function providesTestCreateCollection(): iterable
+    {
+        yield 'valid' => [
+            'carrier' => Carrier::from('ppl'),
+            'data'    => [
+                'status' => 200,
+                'units'  => [
+                    [
+                        'id'                 => '299',
+                        'code'               => '432',
+                        'name'               => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely',
+                        'class'              => '1',
+                        'packaging'          => null,
+                        'tunnel_code'        => 'E',
+                        'transport_category' => '4',
+                    ],
+                    [
+                        'id'                 => '377',
+                        'code'               => '1001',
+                        'name'               => 'ACETYLÉN, ROZPUŠTĚNÝ',
+                        'class'              => '2',
+                        'packaging'          => 'A',
+                        'tunnel_code'        => null,
+                        'transport_category' => '2',
+                    ],
+                ],
+            ],
+            'result'  => new AdrUnitCollection(
+                Carrier::from('ppl'),
+                [
+                    new AdrUnit(
+                        Carrier::from('ppl'),
+                        '299',
+                        '432',
+                        'PŘEDMĚTY PYROTECHNICKÉ pro technické účely',
+                        '1',
+                        null,
+                        'E',
+                        '4',
+                    ),
+                    new AdrUnit(
+                        Carrier::from('ppl'),
+                        '377',
+                        '1001',
+                        'ACETYLÉN, ROZPUŠTĚNÝ',
+                        '2',
+                        'A',
+                        null,
+                        '2',
+                    ),
+                ],
+            ),
+        ];
+    }
+
+    private function newDefaultUnitFactory(): DefaultAdrUnitFactory
+    {
+        return new DefaultAdrUnitFactory();
+    }
+}

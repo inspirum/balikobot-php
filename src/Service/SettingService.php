@@ -8,9 +8,10 @@ use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Model\AdrUnit\AdrUnitCollection;
 use Inspirum\Balikobot\Model\Attribute\AttributeCollection;
 use Inspirum\Balikobot\Model\Country\CountryCollection;
+use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection;
 use Inspirum\Balikobot\Model\Service\Service;
 use Inspirum\Balikobot\Model\Service\ServiceCollection;
-use Inspirum\Balikobot\Model\Unit\UnitCollection;
+use Iterator;
 
 interface SettingService
 {
@@ -40,14 +41,14 @@ interface SettingService
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getManipulationUnits(Carrier $carrier): UnitCollection;
+    public function getManipulationUnits(Carrier $carrier): ManipulationUnitCollection;
 
     /**
      * Get activated manipulation units for carrier
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getActivatedManipulationUnits(Carrier $carrier): UnitCollection;
+    public function getActivatedManipulationUnits(Carrier $carrier): ManipulationUnitCollection;
 
     /**
      * Get available countries by service type
@@ -73,11 +74,11 @@ interface SettingService
     /**
      * Get post codes for carrier and its service type (and optionally by country)
      *
-     * @return iterable<\Inspirum\Balikobot\Model\PostCode\PostCode>
+     * @return \Iterator<\Inspirum\Balikobot\Model\ZipCode\ZipCode>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getPostCodes(Carrier $carrier, Service $service, ?string $country = null): iterable;
+    public function getZipCodes(Carrier $carrier, Service $service, ?string $country = null): Iterator;
 
     /**
      * Get ADR units for carrier

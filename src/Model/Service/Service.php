@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Service;
 
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\Service;
+use Inspirum\Balikobot\Client\Request\Service as RequestService;
+use Inspirum\Balikobot\Model\Country\CodCountry;
+use function array_map;
 
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
  */
-final class Service extends BaseModel implements Service
+final class Service extends BaseModel implements RequestService
 {
     /**
      * @param array<string>|null                                       $countries
@@ -41,9 +43,9 @@ final class Service extends BaseModel implements Service
         return [
             'type'         => $this->type,
             'name'         => $this->name,
-            'options'      => $this->options?->toArray(),
+            'options'      => $this->options?->__toArray(),
             'countries'    => $this->countries,
-            'codCountries' => $this->codCountries,
+            'codCountries' => $this->codCountries !== null ? array_map(static fn(CodCountry $country): array => $country->__toArray(), $this->codCountries) : null,
         ];
     }
 }

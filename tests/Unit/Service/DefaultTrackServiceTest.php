@@ -12,7 +12,7 @@ use Inspirum\Balikobot\Definitions\CarrierType;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Package\Package;
 use Inspirum\Balikobot\Model\Package\PackageCollection;
-use Inspirum\Balikobot\Model\Status\DefaultPackageStatusFactory;
+use Inspirum\Balikobot\Model\Status\DefaultStatusFactory;
 use Inspirum\Balikobot\Model\Status\Status;
 use Inspirum\Balikobot\Model\Status\StatusCollection;
 use Inspirum\Balikobot\Model\Status\Statuses;
@@ -638,7 +638,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
         $requester     = $this->newRequester($statusCode, $response, $request);
         $validator     = new Validator();
         $client        = new DefaultClient($requester, $validator);
-        $statusFactory = new DefaultPackageStatusFactory($validator);
+        $statusFactory = new DefaultStatusFactory($validator);
 
         return new DefaultTrackService($client, $statusFactory);
     }

@@ -14,12 +14,13 @@ use Inspirum\Balikobot\Model\Attribute\AttributeCollection;
 use Inspirum\Balikobot\Model\Attribute\AttributeFactory;
 use Inspirum\Balikobot\Model\Country\CountryCollection;
 use Inspirum\Balikobot\Model\Country\CountryFactory;
-use Inspirum\Balikobot\Model\PostCode\PostCodeFactory;
+use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection;
+use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitFactory;
 use Inspirum\Balikobot\Model\Service\Service;
 use Inspirum\Balikobot\Model\Service\ServiceCollection;
 use Inspirum\Balikobot\Model\Service\ServiceFactory;
-use Inspirum\Balikobot\Model\Unit\UnitCollection;
-use Inspirum\Balikobot\Model\Unit\UnitFactory;
+use Inspirum\Balikobot\Model\ZipCode\ZipCodeFactory;
+use Iterator;
 use function sprintf;
 
 class DefaultSettingService implements SettingService
@@ -27,9 +28,9 @@ class DefaultSettingService implements SettingService
     public function __construct(
         private Client $client,
         private ServiceFactory $serviceFactory,
-        private UnitFactory $unitFactory,
+        private ManipulationUnitFactory $unitFactory,
         private CountryFactory $countryFactory,
-        private PostCodeFactory $postCodeFactory,
+        private ZipCodeFactory $postCodeFactory,
         private AdrUnitFactory $adrUnitFactory,
         private AttributeFactory $attributeFactory,
     ) {
@@ -56,14 +57,14 @@ class DefaultSettingService implements SettingService
         return $this->serviceFactory->createCollection($carrier, $response);
     }
 
-    public function getManipulationUnits(Carrier $carrier): UnitCollection
+    public function getManipulationUnits(Carrier $carrier): ManipulationUnitCollection
     {
         $response = $this->client->call(VersionType::V2V1, $carrier, Request::MANIPULATION_UNITS);
 
         return $this->unitFactory->createCollection($carrier, $response);
     }
 
-    public function getActivatedManipulationUnits(Carrier $carrier): UnitCollection
+    public function getActivatedManipulationUnits(Carrier $carrier): ManipulationUnitCollection
     {
         $response = $this->client->call(VersionType::V2V1, $carrier, Request::ACTIVATED_MANIPULATION_UNITS);
 
@@ -91,8 +92,7 @@ class DefaultSettingService implements SettingService
         return $this->countryFactory->createCollection($response);
     }
 
-    /** @inheritDoc */
-    public function getPostCodes(Carrier $carrier, Service $service, ?string $country = null): iterable
+    public function getZipCodes(Carrier $carrier, Service $service, ?string $country = null): Iterator
     {
         $response = $this->client->call(VersionType::V2V1, $carrier, Request::ZIP_CODES, path: sprintf('%s/%s', $service->getValue(), $country));
 

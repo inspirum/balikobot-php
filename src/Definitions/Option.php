@@ -164,7 +164,7 @@ final class Option
     public const REC_CITY = 'rec_city';
 
     /**
-     * Delivery address postcode
+     * Delivery address zipcode
      *
      * @var string
      */

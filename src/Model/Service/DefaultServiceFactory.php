@@ -20,15 +20,11 @@ final class DefaultServiceFactory implements ServiceFactory
     public function create(Carrier $carrier, array $data): Service
     {
         return new Service(
-            $data['service_type'],
+            (string) $data['service_type'],
             $data['service_type_name'] ?? ($data['name'] ?? null),
-            $this->createOptionCollection($carrier, $data),
-            array_key_exists('countries', $data)
-                ? $this->countryFactory->createCodeCollection($data)
-                : null,
-            array_key_exists('cod_countries', $data)
-                ? $this->countryFactory->createCodCountryCollection($data)
-                : null,
+            array_key_exists('services', $data) ? $this->createOptionCollection($carrier, $data) : null,
+            array_key_exists('countries', $data) ? $this->countryFactory->createCodeCollection($data) : null,
+            array_key_exists('cod_countries', $data) ? $this->countryFactory->createCodCountryCollection($data) : null,
         );
     }
 
