@@ -6,8 +6,8 @@ namespace Inspirum\Balikobot\Tests\Unit\Service;
 
 use DateTimeImmutable;
 use Inspirum\Balikobot\Client\DefaultClient;
-use Inspirum\Balikobot\Client\Request\CarrierType;
 use Inspirum\Balikobot\Client\Response\Validator;
+use Inspirum\Balikobot\Definitions\CarrierType;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Account\Account;
 use Inspirum\Balikobot\Model\Account\DefaultAccountFactory;
@@ -31,7 +31,6 @@ final class DefaultInfoServiceTest extends BaseTestCase
 {
     /**
      * @param array<mixed,mixed>      $response
-     * @param array<string>           $carrierIds
      * @param array<mixed,mixed>|null $request
      *
      * @dataProvider providesTestAccountInfo
@@ -160,7 +159,6 @@ final class DefaultInfoServiceTest extends BaseTestCase
 
     /**
      * @param array<mixed,mixed>      $response
-     * @param array<string>           $carrierIds
      * @param array<mixed,mixed>|null $request
      *
      * @dataProvider providesTestGetCarriers
@@ -259,14 +257,13 @@ final class DefaultInfoServiceTest extends BaseTestCase
 
     /**
      * @param array<mixed,mixed>      $response
-     * @param array<string>           $carrierIds
      * @param array<mixed,mixed>|null $request
      *
      * @dataProvider providesTestGetCarrier
      */
     public function testGetCarrier(
         int $statusCode,
-        CarrierType $carrier,
+        Carrier $carrier,
         array $response,
         Carrier|Throwable|null $result,
         ?array $request = null,
@@ -292,7 +289,7 @@ final class DefaultInfoServiceTest extends BaseTestCase
     {
         yield 'response_without_status' => [
             'statusCode' => 200,
-            'carrier'    => \Inspirum\Balikobot\Definitions\Carrier::ZASILKOVNA,
+            'carrier'    => CarrierType::ZASILKOVNA,
             'response'   => [
                 'name'                 => 'Zásilkovna',
                 'v2_methods_available' => true,
@@ -323,7 +320,7 @@ final class DefaultInfoServiceTest extends BaseTestCase
 
         yield 'valid_request' => [
             'statusCode' => 200,
-            'carrier'    => \Inspirum\Balikobot\Definitions\Carrier::ZASILKOVNA,
+            'carrier'    => CarrierType::ZASILKOVNA,
             'response'   => [
                 'status'               => 200,
                 'name'                 => 'Zásilkovna',
@@ -371,7 +368,6 @@ final class DefaultInfoServiceTest extends BaseTestCase
 
     /**
      * @param array<mixed,mixed>      $response
-     * @param array<string>           $carrierIds
      * @param array<mixed,mixed>|null $request
      *
      * @dataProvider providesTestGetChangelog

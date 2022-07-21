@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Package;
 
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Model\WithCarrierId;
 
 /**
@@ -17,7 +17,7 @@ class Package extends BaseModel implements WithCarrierId
      * @param array<string> $pieces
      */
     public function __construct(
-        public readonly CarrierType $carrier,
+        public readonly Carrier $carrier,
         public readonly string $packageId,
         public readonly string $batchId,
         public readonly string $carrierId,
@@ -30,7 +30,7 @@ class Package extends BaseModel implements WithCarrierId
     ) {
     }
 
-    public function getCarrier(): CarrierType
+    public function getCarrier(): Carrier
     {
         return $this->carrier;
     }

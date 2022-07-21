@@ -14,7 +14,7 @@ final class Attribute extends BaseModel
     public function __construct(
         public readonly string $name,
         public readonly string $dataType,
-        public readonly string $maxLength,
+        public readonly ?string $maxLength,
     ) {
     }
 

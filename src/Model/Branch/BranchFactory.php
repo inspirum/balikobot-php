@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Branch;
 
-use Inspirum\Balikobot\Client\Request\CarrierType;
-use Inspirum\Balikobot\Client\Request\ServiceType;
+use Inspirum\Balikobot\Client\Request\Carrier;
+use Inspirum\Balikobot\Client\Request\Service;
 
 interface BranchFactory
 {
@@ -14,5 +14,5 @@ interface BranchFactory
      *
      * @param array<string,mixed> $data
      */
-    public function createFromData(CarrierType $carrier, ?ServiceType $service, array $data): Branch;
+    public function createFromData(Carrier $carrier, ?Service $service, array $data): Branch;
 }

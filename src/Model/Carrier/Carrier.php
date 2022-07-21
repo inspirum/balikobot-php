@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Carrier;
 
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier as RequestCarrier;
 use Inspirum\Balikobot\Client\Request\Version;
 use Inspirum\Balikobot\Model\Method\MethodCollection;
 use function array_map;
@@ -13,7 +13,7 @@ use function array_map;
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
  */
-final class Carrier extends BaseModel implements CarrierType
+final class Carrier extends BaseModel implements RequestCarrier
 {
     /**
      * @param array<string,\Inspirum\Balikobot\Model\Method\MethodCollection> $methods

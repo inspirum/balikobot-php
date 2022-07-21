@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Status;
 
 use DateTimeImmutable;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Client\Response\Validator;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Throwable;
@@ -24,7 +24,7 @@ final class DefaultPackageStatusFactory implements PackageStatusFactory
     }
 
     /** @inheritDoc */
-    public function create(CarrierType $carrier, string $carrierId, array $data, array $response = []): Status
+    public function create(Carrier $carrier, string $carrierId, array $data, array $response = []): Status
     {
         try {
             return new Status(
@@ -42,7 +42,7 @@ final class DefaultPackageStatusFactory implements PackageStatusFactory
     }
 
     /** @inheritDoc */
-    public function createLastStatus(CarrierType $carrier, array $data, array $response = []): Status
+    public function createLastStatus(Carrier $carrier, array $data, array $response = []): Status
     {
         $this->validator->validateResponseStatus($data, $response);
 
@@ -62,7 +62,7 @@ final class DefaultPackageStatusFactory implements PackageStatusFactory
     }
 
     /** @inheritDoc */
-    public function createCollection(CarrierType $carrier, array $carrierIds, array $data): StatusesCollection
+    public function createCollection(Carrier $carrier, array $carrierIds, array $data): StatusesCollection
     {
         $packages = $data['packages'] ?? [];
         $this->validator->validateIndexes($packages, count($carrierIds));
@@ -81,7 +81,7 @@ final class DefaultPackageStatusFactory implements PackageStatusFactory
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    private function createStatuses(CarrierType $carrier, array $data, array $response = []): Statuses
+    private function createStatuses(Carrier $carrier, array $data, array $response = []): Statuses
     {
         $this->validator->validateResponseStatus($data, $response);
         assert(is_string($data['carrier_id']));
@@ -98,7 +98,7 @@ final class DefaultPackageStatusFactory implements PackageStatusFactory
     }
 
     /** @inheritDoc */
-    public function createLastStatusCollection(CarrierType $carrier, array $carrierIds, array $data): StatusCollection
+    public function createLastStatusCollection(Carrier $carrier, array $carrierIds, array $data): StatusCollection
     {
         $packages = $data['packages'] ?? [];
         $this->validator->validateIndexes($packages, count($carrierIds));

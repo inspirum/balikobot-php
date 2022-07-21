@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Client;
 
 use GuzzleHttp\Psr7\InflateStream;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Client\Request\Method;
 use Inspirum\Balikobot\Client\Request\Version;
 use Inspirum\Balikobot\Client\Response\Validator;
@@ -30,10 +30,10 @@ final class DefaultClient implements Client
     /** @inheritDoc */
     public function call(
         Version $version,
-        ?CarrierType $carrier,
+        ?Carrier $carrier,
         Method $request,
         array $data = [],
-        string $path = '',
+        ?string $path = null,
         bool $shouldHaveStatus = true,
         bool $gzip = false,
     ): array {
@@ -50,9 +50,9 @@ final class DefaultClient implements Client
         return $parsedContent;
     }
 
-    private function resolveUrl(string $version, ?string $carrier, string $request, string $path, bool $gzip): string
+    private function resolveUrl(string $version, ?string $carrier, string $request, ?string $path, bool $gzip): string
     {
-        $url = sprintf('%s/%s/%s', $carrier, $request, $path);
+        $url = sprintf('%s/%s/%s', $carrier, $request, $path ?? '');
         $url = trim(str_replace('//', '/', $url), '/');
 
         if ($gzip) {

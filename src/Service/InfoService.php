@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Service;
 
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Model\Account\Account;
-use Inspirum\Balikobot\Model\Carrier\Carrier;
+use Inspirum\Balikobot\Model\Carrier\Carrier as CarrierModel;
 use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
 use Inspirum\Balikobot\Model\Changelog\ChangelogCollection;
 
@@ -31,7 +31,7 @@ interface InfoService
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getCarrier(CarrierType $carrier): Carrier;
+    public function getCarrier(Carrier $carrier): CarrierModel;
 
     /**
      * Get news in the Balikobot API

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Service;
 
 use Inspirum\Balikobot\Client\Client;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Definitions\Request;
-use Inspirum\Balikobot\Definitions\Version;
+use Inspirum\Balikobot\Definitions\VersionType;
 use Inspirum\Balikobot\Model\Package\Package;
 use Inspirum\Balikobot\Model\Package\PackageCollection;
 use Inspirum\Balikobot\Model\Status\PackageStatusFactory;
@@ -30,7 +30,7 @@ class DefaultTrackService implements TrackService
         return $this->trackPackageById($package->carrier, $package->carrierId);
     }
 
-    public function trackPackageById(CarrierType $carrier, string $carrierId): Statuses
+    public function trackPackageById(Carrier $carrier, string $carrierId): Statuses
     {
         return $this->trackPackagesByIds($carrier, [$carrierId])->getForCarrierId($carrierId) ?? throw new OutOfBoundsException();
     }
@@ -41,10 +41,10 @@ class DefaultTrackService implements TrackService
     }
 
     /** @inheritDoc */
-    public function trackPackagesByIds(CarrierType $carrier, array $carrierIds): StatusesCollection
+    public function trackPackagesByIds(Carrier $carrier, array $carrierIds): StatusesCollection
     {
         $response = $this->client->call(
-            Version::V2V2,
+            VersionType::V2V2,
             $carrier,
             Request::TRACK,
             ['carrier_ids' => $carrierIds],
@@ -59,7 +59,7 @@ class DefaultTrackService implements TrackService
         return $this->trackPackageLastStatusById($package->carrier, $package->carrierId);
     }
 
-    public function trackPackageLastStatusById(CarrierType $carrier, string $carrierId): Status
+    public function trackPackageLastStatusById(Carrier $carrier, string $carrierId): Status
     {
         return $this->trackPackagesLastStatusesByIds($carrier, [$carrierId])->getForCarrierId($carrierId) ?? throw new OutOfBoundsException();
     }
@@ -70,10 +70,10 @@ class DefaultTrackService implements TrackService
     }
 
     /** @inheritDoc */
-    public function trackPackagesLastStatusesByIds(CarrierType $carrier, array $carrierIds): StatusCollection
+    public function trackPackagesLastStatusesByIds(Carrier $carrier, array $carrierIds): StatusCollection
     {
         $response = $this->client->call(
-            Version::V2V2,
+            VersionType::V2V2,
             $carrier,
             Request::TRACK_STATUS,
             ['carrier_ids' => $carrierIds],

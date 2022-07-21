@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Status;
 
 use Inspirum\Arrayable\BaseCollection;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Model\WithCarrierId;
 use InvalidArgumentException;
 use function sprintf;
@@ -19,7 +19,7 @@ final class Statuses extends BaseCollection implements WithCarrierId
      * @param array<\Inspirum\Balikobot\Model\Status\Status> $states
      */
     public function __construct(
-        private CarrierType $carrier,
+        private Carrier $carrier,
         private string $carrierId,
         array $states,
     ) {
@@ -60,7 +60,7 @@ final class Statuses extends BaseCollection implements WithCarrierId
         }
     }
 
-    public function getCarrier(): CarrierType
+    public function getCarrier(): Carrier
     {
         return $this->carrier;
     }

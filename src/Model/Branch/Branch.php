@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Branch;
 
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\CarrierType;
-use Inspirum\Balikobot\Client\Request\ServiceType;
+use Inspirum\Balikobot\Client\Request\Carrier;
+use Inspirum\Balikobot\Client\Request\Service;
 
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
@@ -14,8 +14,8 @@ use Inspirum\Balikobot\Client\Request\ServiceType;
 class Branch extends BaseModel
 {
     public function __construct(
-        public readonly CarrierType $carrier,
-        public readonly ?ServiceType $service,
+        public readonly Carrier $carrier,
+        public readonly ?Service $service,
         public readonly string $branchId,
         public readonly ?string $id,
         public readonly ?string $uid,

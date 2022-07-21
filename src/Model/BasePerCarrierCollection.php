@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model;
 
 use Inspirum\Arrayable\BaseCollection;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use InvalidArgumentException;
 use RuntimeException;
 use function array_map;
@@ -25,7 +25,7 @@ abstract class BasePerCarrierCollection extends BaseCollection implements PerCar
      * @param array<TKey, TValue> $items
      */
     public function __construct(
-        private ?CarrierType $carrier = null,
+        private ?Carrier $carrier = null,
         array $items = [],
     ) {
         parent::__construct([]);
@@ -38,7 +38,7 @@ abstract class BasePerCarrierCollection extends BaseCollection implements PerCar
     /**
      * @throws \RuntimeException
      */
-    public function getCarrier(): CarrierType
+    public function getCarrier(): Carrier
     {
         return $this->carrier ?? throw new RuntimeException('Collection is empty');
     }

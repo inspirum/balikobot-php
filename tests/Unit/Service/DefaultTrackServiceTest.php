@@ -6,9 +6,9 @@ namespace Inspirum\Balikobot\Tests\Unit\Service;
 
 use DateTimeImmutable;
 use Inspirum\Balikobot\Client\DefaultClient;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Client\Response\Validator;
-use Inspirum\Balikobot\Definitions\Carrier;
+use Inspirum\Balikobot\Definitions\CarrierType;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Package\Package;
 use Inspirum\Balikobot\Model\Package\PackageCollection;
@@ -33,7 +33,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
     public function testTrackPackagesByIds(
         int $statusCode,
         array $response,
-        CarrierType $carrier,
+        Carrier $carrier,
         array $carrierIds,
         StatusesCollection|Throwable|null $result,
         ?array $request = null,
@@ -85,14 +85,14 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::CP,
+            'carrier'    => CarrierType::CP,
             'carrierIds' => ['1'],
             'result'     => new StatusesCollection(
-                Carrier::CP,
+                CarrierType::CP,
                 [
-                    new Statuses(Carrier::CP, '1', [
+                    new Statuses(CarrierType::CP, '1', [
                         new Status(
-                            Carrier::CP,
+                            CarrierType::CP,
                             '1',
                             2.2,
                             'Zásilka je v přepravě.',
@@ -101,7 +101,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                             new DateTimeImmutable('2018-11-07 14:15:01'),
                         ),
                         new Status(
-                            Carrier::CP,
+                            CarrierType::CP,
                             '1',
                             1.2,
                             'Zásilka byla doručena příjemci.',
@@ -119,7 +119,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
             'response'   => [
                 'status' => 200,
             ],
-            'carrier'    => Carrier::CP,
+            'carrier'    => CarrierType::CP,
             'carrierIds' => ['1', '2'],
             'result'     => new BadRequestException([], 400),
         ];
@@ -180,7 +180,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::CP,
+            'carrier'    => CarrierType::CP,
             'carrierIds' => ['3', '4', '5'],
             'result'     => null,
             'request'    => [
@@ -251,7 +251,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::CP,
+            'carrier'    => CarrierType::CP,
             'carrierIds' => ['3', '4', '5'],
             'result'     => new BadRequestException([], 400),
         ];
@@ -277,7 +277,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::PPL,
+            'carrier'    => CarrierType::PPL,
             'carrierIds' => ['1', '3'],
             'result'     => new BadRequestException([], 400),
         ];
@@ -308,7 +308,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::PPL,
+            'carrier'    => CarrierType::PPL,
             'carrierIds' => ['1', '3'],
             'result'     => new BadRequestException([], 503),
         ];
@@ -346,7 +346,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::CP,
+            'carrier'    => CarrierType::CP,
             'carrierIds' => ['1', '2'],
             'result'     => new BadRequestException([], 400),
         ];
@@ -358,49 +358,49 @@ final class DefaultTrackServiceTest extends BaseTestCase
 
         $expectedStatuses = [
             new StatusesCollection(
-                Carrier::PPL,
+                CarrierType::PPL,
                 [
-                    new Statuses(Carrier::PPL, '1234', [
-                        new Status(Carrier::PPL, '1234', 1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
+                    new Statuses(CarrierType::PPL, '1234', [
+                        new Status(CarrierType::PPL, '1234', 1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
                     ]),
                 ]
             ),
             new StatusesCollection(
-                Carrier::CP,
+                CarrierType::CP,
                 [
-                    new Statuses(Carrier::CP, '3456', [
-                        new Status(Carrier::CP, '3456', 1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
+                    new Statuses(CarrierType::CP, '3456', [
+                        new Status(CarrierType::CP, '3456', 1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
                     ]),
                 ]
             ),
             new StatusesCollection(
-                Carrier::CP,
+                CarrierType::CP,
                 [
-                    new Statuses(Carrier::CP, 'Z123', [
-                        new Status(Carrier::ZASILKOVNA, 'Z123', 1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
+                    new Statuses(CarrierType::CP, 'Z123', [
+                        new Status(CarrierType::ZASILKOVNA, 'Z123', 1.1, 'name', 'desc', 'event', new DateTimeImmutable()),
                     ]),
-                    new Statuses(Carrier::CP, 'Z234', [
-                        new Status(Carrier::ZASILKOVNA, 'Z234', 2.0, 'name', 'desc', 'event', new DateTimeImmutable()),
+                    new Statuses(CarrierType::CP, 'Z234', [
+                        new Status(CarrierType::ZASILKOVNA, 'Z234', 2.0, 'name', 'desc', 'event', new DateTimeImmutable()),
                     ]),
                 ]
             ),
         ];
 
         $service->expects(self::exactly(3))->method('trackPackagesByIds')->withConsecutive(
-            [Carrier::PPL, ['1234']],
-            [Carrier::CP, ['3456']],
-            [Carrier::ZASILKOVNA, ['Z123', 'Z234']],
+            [CarrierType::PPL, ['1234']],
+            [CarrierType::CP, ['3456']],
+            [CarrierType::ZASILKOVNA, ['Z123', 'Z234']],
         )->willReturn(...$expectedStatuses);
 
-        $actualStatuses = $service->trackPackage(new Package(Carrier::PPL, '1', '0001', '1234'));
+        $actualStatuses = $service->trackPackage(new Package(CarrierType::PPL, '1', '0001', '1234'));
         self::assertSame($expectedStatuses[0][0], $actualStatuses);
 
-        $actualStatuses = $service->trackPackageById(Carrier::CP, '3456');
+        $actualStatuses = $service->trackPackageById(CarrierType::CP, '3456');
         self::assertSame($expectedStatuses[1][0], $actualStatuses);
 
         $packages = new PackageCollection();
-        $packages->add(new Package(Carrier::ZASILKOVNA, '1', '0001', 'Z123'));
-        $packages->add(new Package(Carrier::ZASILKOVNA, '2', '0001', 'Z234'));
+        $packages->add(new Package(CarrierType::ZASILKOVNA, '1', '0001', 'Z123'));
+        $packages->add(new Package(CarrierType::ZASILKOVNA, '2', '0001', 'Z234'));
 
         $actualStatuses = $service->trackPackages($packages);
         self::assertSame($expectedStatuses[2], $actualStatuses);
@@ -416,7 +416,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
     public function testTrackPackagesLastStatusesByIds(
         int $statusCode,
         array $response,
-        CarrierType $carrier,
+        Carrier $carrier,
         array $carrierIds,
         StatusCollection|Throwable|null $result,
         ?array $request = null,
@@ -458,13 +458,13 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::CP,
+            'carrier'    => CarrierType::CP,
             'carrierIds' => ['1', '2'],
             'result'     => new StatusCollection(
-                Carrier::CP,
+                CarrierType::CP,
                 [
                     new Status(
-                        Carrier::CP,
+                        CarrierType::CP,
                         '1',
                         1.2,
                         'Zásilka byla doručena příjemci.',
@@ -473,7 +473,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                         null,
                     ),
                     new Status(
-                        Carrier::CP,
+                        CarrierType::CP,
                         '2',
                         2.2,
                         'Zásilka je v přepravě.',
@@ -490,7 +490,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
             'response'   => [
                 'status' => 200,
             ],
-            'carrier'    => Carrier::CP,
+            'carrier'    => CarrierType::CP,
             'carrierIds' => ['1', '2'],
             'result'     => new BadRequestException([], 400),
         ];
@@ -514,7 +514,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::CP,
+            'carrier'    => CarrierType::CP,
             'carrierIds' => ['1', '3'],
             'result'     => null,
             'request'    => [
@@ -546,7 +546,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::CP,
+            'carrier'    => CarrierType::CP,
             'carrierIds' => ['3', '4'],
             'result'     => new BadRequestException([], 400),
         ];
@@ -564,7 +564,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::PPL,
+            'carrier'    => CarrierType::PPL,
             'carrierIds' => ['1', '3'],
             'result'     => new BadRequestException([], 400),
         ];
@@ -586,7 +586,7 @@ final class DefaultTrackServiceTest extends BaseTestCase
                     ],
                 ],
             ],
-            'carrier'    => Carrier::PPL,
+            'carrier'    => CarrierType::PPL,
             'carrierIds' => ['1', '3'],
             'result'     => new BadRequestException([], 404),
         ];
@@ -597,33 +597,33 @@ final class DefaultTrackServiceTest extends BaseTestCase
         $service = $this->createPartialMock(DefaultTrackService::class, ['trackPackagesLastStatusesByIds']);
 
         $expectedStatuses = [
-            new StatusCollection(Carrier::PPL, [
-                0 => new Status(Carrier::PPL, '1234', 1.1, 'name1', 'name1', 'event', null),
+            new StatusCollection(CarrierType::PPL, [
+                0 => new Status(CarrierType::PPL, '1234', 1.1, 'name1', 'name1', 'event', null),
             ]),
-            new StatusCollection(Carrier::CP, [
-                0 => new Status(Carrier::CP, '3456', 1.1, 'name1', 'name1', 'event', null),
+            new StatusCollection(CarrierType::CP, [
+                0 => new Status(CarrierType::CP, '3456', 1.1, 'name1', 'name1', 'event', null),
             ]),
-            new StatusCollection(Carrier::ZASILKOVNA, [
-                0 => new Status(Carrier::ZASILKOVNA, 'Z123', 1.1, 'name1', 'name1', 'event', null),
-                1 => new Status(Carrier::ZASILKOVNA, 'Z234', 2.1, 'name2', 'name2', 'event', null),
+            new StatusCollection(CarrierType::ZASILKOVNA, [
+                0 => new Status(CarrierType::ZASILKOVNA, 'Z123', 1.1, 'name1', 'name1', 'event', null),
+                1 => new Status(CarrierType::ZASILKOVNA, 'Z234', 2.1, 'name2', 'name2', 'event', null),
             ]),
         ];
 
         $service->expects(self::exactly(3))->method('trackPackagesLastStatusesByIds')->withConsecutive(
-            [Carrier::PPL, ['1234']],
-            [Carrier::CP, ['3456']],
-            [Carrier::ZASILKOVNA, ['Z123', 'Z234']],
+            [CarrierType::PPL, ['1234']],
+            [CarrierType::CP, ['3456']],
+            [CarrierType::ZASILKOVNA, ['Z123', 'Z234']],
         )->willReturnOnConsecutiveCalls(...$expectedStatuses);
 
-        $actualStatuses = $service->trackPackageLastStatus(new Package(Carrier::PPL, '1', '0001', '1234'));
+        $actualStatuses = $service->trackPackageLastStatus(new Package(CarrierType::PPL, '1', '0001', '1234'));
         self::assertSame($expectedStatuses[0][0], $actualStatuses);
 
-        $actualStatuses = $service->trackPackageLastStatusById(Carrier::CP, '3456');
+        $actualStatuses = $service->trackPackageLastStatusById(CarrierType::CP, '3456');
         self::assertSame($expectedStatuses[1][0], $actualStatuses);
 
         $packages = new PackageCollection();
-        $packages->add(new Package(Carrier::ZASILKOVNA, '1', '0001', 'Z123'));
-        $packages->add(new Package(Carrier::ZASILKOVNA, '2', '0001', 'Z234'));
+        $packages->add(new Package(CarrierType::ZASILKOVNA, '1', '0001', 'Z123'));
+        $packages->add(new Package(CarrierType::ZASILKOVNA, '2', '0001', 'Z234'));
 
         $actualStatuses = $service->trackPackagesLastStatuses($packages);
         self::assertSame($expectedStatuses[2], $actualStatuses);

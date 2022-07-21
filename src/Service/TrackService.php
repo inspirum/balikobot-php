@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Service;
 
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Model\Package\Package;
 use Inspirum\Balikobot\Model\Package\PackageCollection;
 use Inspirum\Balikobot\Model\Status\Status;
@@ -26,7 +26,7 @@ interface TrackService
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackageById(CarrierType $carrier, string $carrierId): Statuses;
+    public function trackPackageById(Carrier $carrier, string $carrierId): Statuses;
 
     /**
      * Track packages
@@ -42,7 +42,7 @@ interface TrackService
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackagesByIds(CarrierType $carrier, array $carrierIds): StatusesCollection;
+    public function trackPackagesByIds(Carrier $carrier, array $carrierIds): StatusesCollection;
 
     /**
      * Track package last status
@@ -56,7 +56,7 @@ interface TrackService
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackageLastStatusById(CarrierType $carrier, string $carrierId): Status;
+    public function trackPackageLastStatusById(Carrier $carrier, string $carrierId): Status;
 
     /**
      * Track packages last statuses
@@ -72,5 +72,5 @@ interface TrackService
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function trackPackagesLastStatusesByIds(CarrierType $carrier, array $carrierIds): StatusCollection;
+    public function trackPackagesLastStatusesByIds(Carrier $carrier, array $carrierIds): StatusCollection;
 }

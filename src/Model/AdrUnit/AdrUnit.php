@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\AdrUnit;
 
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
@@ -13,7 +13,7 @@ use Inspirum\Balikobot\Client\Request\CarrierType;
 class AdrUnit extends BaseModel
 {
     public function __construct(
-        public readonly CarrierType $carrier,
+        public readonly Carrier $carrier,
         public readonly string $id,
         public readonly string $code,
         public readonly string $name,

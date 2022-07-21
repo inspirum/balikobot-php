@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Service;
 
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Model\Country\CountryFactory;
 use function array_key_exists;
 use function array_map;
@@ -17,7 +17,7 @@ final class DefaultServiceFactory implements ServiceFactory
     }
 
     /** @inheritDoc */
-    public function create(CarrierType $carrier, array $data): Service
+    public function create(Carrier $carrier, array $data): Service
     {
         return new Service(
             $data['service_type'],
@@ -33,7 +33,7 @@ final class DefaultServiceFactory implements ServiceFactory
     }
 
     /** @inheritDoc */
-    public function createCollection(CarrierType $carrier, array $data): ServiceCollection
+    public function createCollection(Carrier $carrier, array $data): ServiceCollection
     {
         return new ServiceCollection(
             $carrier,
@@ -57,7 +57,7 @@ final class DefaultServiceFactory implements ServiceFactory
     /**
      * @param array<string,mixed> $data
      */
-    private function createOptionCollection(CarrierType $carrier, array $data): ServiceOptionCollection
+    private function createOptionCollection(Carrier $carrier, array $data): ServiceOptionCollection
     {
         return new ServiceOptionCollection(
             array_map(fn(array $data): ServiceOption => $this->createOption($data), $data['services'] ?? [])

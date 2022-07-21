@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\PackageData;
 
 use Inspirum\Arrayable\BaseCollection;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use function substr;
 use function time;
 use function uniqid;
@@ -19,7 +19,7 @@ class PackageDataCollection extends BaseCollection
      * @param array<\Inspirum\Balikobot\Model\PackageData\PackageData> $packages
      */
     public function __construct(
-        private CarrierType $carrier,
+        private Carrier $carrier,
         array $packages = [],
     ) {
         parent::__construct([]);
@@ -29,7 +29,7 @@ class PackageDataCollection extends BaseCollection
         }
     }
 
-    public function getCarrier(): CarrierType
+    public function getCarrier(): Carrier
     {
         return $this->carrier;
     }

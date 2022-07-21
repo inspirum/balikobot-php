@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Model\Status;
 
 use DateTimeInterface;
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Model\WithCarrierId;
 
 /**
@@ -15,7 +15,7 @@ use Inspirum\Balikobot\Model\WithCarrierId;
 final class Status extends BaseModel implements WithCarrierId
 {
     public function __construct(
-        public readonly CarrierType $carrier,
+        public readonly Carrier $carrier,
         public readonly string $carrierId,
         public readonly float $id,
         public readonly string $name,
@@ -25,7 +25,7 @@ final class Status extends BaseModel implements WithCarrierId
     ) {
     }
 
-    public function getCarrier(): CarrierType
+    public function getCarrier(): Carrier
     {
         return $this->carrier;
     }

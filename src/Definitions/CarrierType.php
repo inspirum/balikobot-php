@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Definitions;
 
-use Inspirum\Balikobot\Client\Request\CarrierType;
-use Inspirum\Balikobot\Client\Request\ServiceType;
+use Inspirum\Balikobot\Client\Request\Carrier;
+use Inspirum\Balikobot\Client\Request\Service;
 
-enum Carrier: string implements CarrierType
+enum CarrierType: string implements Carrier
 {
     case CP           = 'cp';
     case DPD          = 'dpd';
@@ -48,13 +48,13 @@ enum Carrier: string implements CarrierType
         return $this->value;
     }
 
-    public static function hasBranchCountryFilterSupport(CarrierType $carrier, ?ServiceType $service): bool
+    public static function hasBranchCountryFilterSupport(Carrier $carrier, ?Service $service): bool
     {
         // TODO:
         return false;
     }
 
-    public static function hasFullBranchesSupport(CarrierType $carrier, ?ServiceType $service): bool
+    public static function hasFullBranchesSupport(Carrier $carrier, ?Service $service): bool
     {
         // TODO:
         return false;

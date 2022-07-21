@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\TransportCost;
 
 use Inspirum\Arrayable\BaseCollection;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use RuntimeException;
 use function array_map;
 
@@ -15,12 +15,12 @@ use function array_map;
 class TransportCostCollection extends BaseCollection
 {
     public function __construct(
-        private ?CarrierType $carrier,
+        private ?Carrier $carrier,
     ) {
         parent::__construct([]);
     }
 
-    public function getCarrier(): CarrierType
+    public function getCarrier(): Carrier
     {
         return $this->carrier ?? throw new RuntimeException('Collection is empty');
     }

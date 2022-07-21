@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\TransportCost;
 
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 use function array_map;
 
 final class DefaultTransportCostFactory implements TransportCostFactory
 {
     /** @inheritDoc */
-    public function create(CarrierType $carrier, array $data): TransportCost
+    public function create(Carrier $carrier, array $data): TransportCost
     {
         return new TransportCost(
             $data['eid'],
@@ -22,7 +22,7 @@ final class DefaultTransportCostFactory implements TransportCostFactory
     }
 
     /** @inheritDoc */
-    public function createCollection(CarrierType $carrier, array $data): TransportCostCollection
+    public function createCollection(Carrier $carrier, array $data): TransportCostCollection
     {
         unset($data['status']);
 

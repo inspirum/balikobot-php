@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Client\Request;
 
 use Stringable;
 
-interface ServiceType extends Stringable
+interface Service extends Stringable
 {
     public function getValue(): string;
 }

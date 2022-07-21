@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Service;
 
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\ServiceType;
+use Inspirum\Balikobot\Client\Request\Service;
 
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
  */
-final class Service extends BaseModel implements ServiceType
+final class Service extends BaseModel implements Service
 {
     /**
      * @param array<string>|null                                       $countries

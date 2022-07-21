@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\OrderedShipment;
 
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
@@ -17,7 +17,7 @@ class OrderedShipment extends BaseModel
      */
     public function __construct(
         public readonly string $orderId,
-        public readonly CarrierType $carrier,
+        public readonly Carrier $carrier,
         public readonly array $packageIds,
         public readonly string $handoverUrl,
         public readonly string $labelsUrl,

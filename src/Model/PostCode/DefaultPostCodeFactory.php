@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\PostCode;
 
-use Inspirum\Balikobot\Client\Request\CarrierType;
-use Inspirum\Balikobot\Client\Request\ServiceType;
+use Inspirum\Balikobot\Client\Request\Carrier;
+use Inspirum\Balikobot\Client\Request\Service;
 
 final class DefaultPostCodeFactory implements PostCodeFactory
 {
     /** @inheritDoc */
-    public function create(CarrierType $carrier, ?ServiceType $service, array $data): PostCode
+    public function create(Carrier $carrier, ?Service $service, array $data): PostCode
     {
         return new PostCode(
             $carrier,
@@ -21,5 +21,17 @@ final class DefaultPostCodeFactory implements PostCodeFactory
             $data['country'] ?? null,
             (bool) ($data['1B'] ?? false),
         );
+    }
+
+    /** @inheritDoc */
+    public function createIterator(Carrier $carrier, ?Service $service, ?string $country, array $data): iterable
+    {
+        $country = $data['country'] ?? $country;
+
+        foreach ($data['zip_codes'] ?? [] as $item) {
+            $item['country'] ??= $country;
+
+            yield $this->create($carrier, $service, $item);
+        }
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Unit;
 
+use Inspirum\Balikobot\Client\Request\Carrier;
 use function array_map;
 
 final class DefaultUnitFactory implements UnitFactory
@@ -15,9 +16,10 @@ final class DefaultUnitFactory implements UnitFactory
     }
 
     /** @inheritDoc */
-    public function createCollection(array $data): UnitCollection
+    public function createCollection(Carrier $carrierType, array $data): UnitCollection
     {
         return new UnitCollection(
+            $carrierType,
             array_map(fn(array $unit): Unit => $this->create($unit), $data['units'] ?? []),
         );
     }

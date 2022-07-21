@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Definitions;
 
-enum Version: string implements \Inspirum\Balikobot\Client\Request\Version
+use Inspirum\Balikobot\Client\Request\Version;
+
+enum VersionType: string implements Version
 {
     case V1V1 = 'https://api.balikobot.cz';
     case V1V2 = 'https://api.balikobot.cz/v2';

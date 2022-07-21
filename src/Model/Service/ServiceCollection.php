@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Service;
 
 use Inspirum\Arrayable\BaseCollection;
-use Inspirum\Balikobot\Client\Request\CarrierType;
-use Inspirum\Balikobot\Client\Request\ServiceType;
+use Inspirum\Balikobot\Client\Request\Carrier;
+use Inspirum\Balikobot\Client\Request\Service;
 use function array_map;
 
 /**
@@ -18,7 +18,7 @@ final class ServiceCollection extends BaseCollection
      * @param array<int,\Inspirum\Balikobot\Model\Service\Service> $services
      */
     public function __construct(
-        private readonly CarrierType $carrier,
+        private readonly Carrier $carrier,
         private readonly array $services,
         private readonly ?bool $parcel = null,
         private readonly ?bool $cargo = null,
@@ -26,17 +26,17 @@ final class ServiceCollection extends BaseCollection
         parent::__construct($this->services);
     }
 
-    public function getCarrier(): CarrierType
+    public function getCarrier(): Carrier
     {
         return $this->carrier;
     }
 
     /**
-     * @return array<\Inspirum\Balikobot\Client\Request\ServiceType>
+     * @return array<\Inspirum\Balikobot\Client\Request\Service>
      */
     public function getServiceTypes(): array
     {
-        return array_map(static fn(Service $service): ServiceType => $service, $this->services);
+        return array_map(static fn(Service $service): Service => $service, $this->services);
     }
 
     public function supportsParcel(): ?bool

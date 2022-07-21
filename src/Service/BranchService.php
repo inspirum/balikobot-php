@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Service;
 
-use Inspirum\Balikobot\Definitions\Carrier;
+use Inspirum\Balikobot\Client\Request\Carrier;
+use Inspirum\Balikobot\Client\Request\Service;
 
 interface BranchService
 {
     /**
      * Get all available branches
      *
-     * @return iterable<\Inspirum\Balikobot\Model\Branch>
+     * @return iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -22,61 +23,61 @@ interface BranchService
      *
      * @param array<string> $countries
      *
-     * @return iterable<\Inspirum\Balikobot\Model\Branch>
+     * @return iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getBranchesForCountries(array $countries): iterable;
 
     /**
-     * Get all available branches for given shipper
+     * Get all available branches for carrier
      *
-     * @return iterable<\Inspirum\Balikobot\Model\Branch>
+     * @return iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranchesForCarrier(string $carrier): iterable;
+    public function getBranchesForCarrier(Carrier $carrier): iterable;
 
     /**
-     * Get all available branches for given shipper for countries
+     * Get all available branches for carrier and countries
      *
      * @param array<string> $countries
      *
-     * @return iterable<\Inspirum\Balikobot\Model\Branch>
+     * @return iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranchesForCarrierAndCountries(string $carrier, array $countries): iterable;
+    public function getBranchesForCarrierAndCountries(Carrier $carrier, array $countries): iterable;
 
     /**
-     * Get all available branches for given shipper and service type for countries
+     * Get all available branches for carrier and service type
+     *
+     * @return iterable<\Inspirum\Balikobot\Model\Branch\Branch>
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    public function getBranchesForCarrierService(Carrier $carrier, ?Service $service): iterable;
+
+    /**
+     * Get all available branches for carrier, service type and countries
      *
      * @param array<string> $countries
      *
-     * @return iterable<\Inspirum\Balikobot\Model\Branch>
+     * @return iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranchesForCarrierServiceAndCountries(string $carrier, ?string $service, array $countries): iterable;
+    public function getBranchesForCarrierServiceAndCountries(Carrier $carrier, ?Service $service, array $countries): iterable;
 
     /**
-     * Get all available branches for given shipper and service type
+     * Get all available branches for carrier in specific location
      *
-     * @return iterable<\Inspirum\Balikobot\Model\Branch>
-     *
-     * @throws \Inspirum\Balikobot\Exception\Exception
-     */
-    public function getBranchesForShipperServiceAndCountry(string $carrier, ?string $service, ?string $country = null): iterable;
-
-    /**
-     * Get all available branches for given shipper
-     *
-     * @return iterable<\Inspirum\Balikobot\Model\Branch>
+     * @return iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getBranchesForLocation(
-        string $carrier,
+        Carrier $carrier,
         string $country,
         string $city,
         ?string $postcode = null,

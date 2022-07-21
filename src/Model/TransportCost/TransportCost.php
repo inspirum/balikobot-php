@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\TransportCost;
 
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\CarrierType;
+use Inspirum\Balikobot\Client\Request\Carrier;
 
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
@@ -17,7 +17,7 @@ class TransportCost extends BaseModel
      */
     public function __construct(
         public readonly string $batchId,
-        public readonly CarrierType $carrier,
+        public readonly Carrier $carrier,
         public readonly float $totalCost,
         public readonly string $currencyCode,
         public readonly array $costsBreakdown = []
