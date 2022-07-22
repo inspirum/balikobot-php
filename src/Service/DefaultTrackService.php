@@ -17,11 +17,11 @@ use Inspirum\Balikobot\Model\Status\Statuses;
 use Inspirum\Balikobot\Model\Status\StatusesCollection;
 use OutOfBoundsException;
 
-class DefaultTrackService implements TrackService
+final class DefaultTrackService implements TrackService
 {
     public function __construct(
         private Client $client,
-        private StatusFactory $packageStatusFactory,
+        private StatusFactory $statusFactory,
     ) {
     }
 
@@ -51,7 +51,7 @@ class DefaultTrackService implements TrackService
             shouldHaveStatus: false,
         );
 
-        return $this->packageStatusFactory->createCollection($carrier, $carrierIds, $response);
+        return $this->statusFactory->createCollection($carrier, $carrierIds, $response);
     }
 
     public function trackPackageLastStatus(Package $package): Status
@@ -80,6 +80,6 @@ class DefaultTrackService implements TrackService
             shouldHaveStatus: false,
         );
 
-        return $this->packageStatusFactory->createLastStatusCollection($carrier, $carrierIds, $response);
+        return $this->statusFactory->createLastStatusCollection($carrier, $carrierIds, $response);
     }
 }

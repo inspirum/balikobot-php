@@ -115,7 +115,7 @@ abstract class BasePerCarrierCollection extends BaseCollection implements PerCar
             return;
         }
 
-        if ($this->carrier !== $item->getCarrier()) {
+        if ($this->carrier->getValue() !== $item->getCarrier()->getValue()) {
             throw new InvalidArgumentException(
                 sprintf(
                     'Item carrier mismatch ("%s" instead "%s")',

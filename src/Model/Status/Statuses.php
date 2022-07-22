@@ -21,7 +21,7 @@ final class Statuses extends BaseCollection implements WithCarrierId
     public function __construct(
         private Carrier $carrier,
         private string $carrierId,
-        array $states,
+        array $states = [],
     ) {
         parent::__construct([]);
 
@@ -49,6 +49,16 @@ final class Statuses extends BaseCollection implements WithCarrierId
      */
     private function validateCarrierId(Status $item): void
     {
+        if ($this->carrier->getValue() !== $item->getCarrier()->getValue()) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Item carrier mismatch ("%s" instead "%s")',
+                    $item->getCarrier()->getValue(),
+                    $this->carrier->getValue(),
+                )
+            );
+        }
+
         if ($this->carrierId !== $item->getCarrierId()) {
             throw new InvalidArgumentException(
                 sprintf(

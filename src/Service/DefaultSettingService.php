@@ -92,6 +92,9 @@ class DefaultSettingService implements SettingService
         return $this->countryFactory->createCollection($response);
     }
 
+    /**
+     * @return \Iterator<\Inspirum\Balikobot\Model\ZipCode\ZipCode>
+     */
     public function getZipCodes(Carrier $carrier, Service $service, ?string $country = null): Iterator
     {
         $response = $this->client->call(VersionType::V2V1, $carrier, Request::ZIP_CODES, path: sprintf('%s/%s', $service->getValue(), $country));
