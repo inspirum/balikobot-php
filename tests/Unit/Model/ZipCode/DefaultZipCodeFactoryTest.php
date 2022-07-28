@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\ZipCode;
 
-use Inspirum\Balikobot\Model\Carrier\Carrier;
-use Inspirum\Balikobot\Model\Service\Service;
+use Inspirum\Balikobot\Model\ZipCode\DefaultZipCode;
 use Inspirum\Balikobot\Model\ZipCode\DefaultZipCodeFactory;
-use Inspirum\Balikobot\Model\ZipCode\ZipCode;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
 use function iterator_to_array;
@@ -20,7 +18,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
      *
      * @dataProvider providesTestCreateIterator
      */
-    public function testCreateIterator(Carrier $carrier, Service $service, ?string $country, array $data, array|Throwable $result): void
+    public function testCreateIterator(string $carrier, string $service, ?string $country, array $data, array|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -40,8 +38,8 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
     public function providesTestCreateIterator(): iterable
     {
         yield 'type_zip' => [
-            'carrier' => Carrier::from('cp'),
-            'service' => Service::from('NP'),
+            'carrier' => 'cp',
+            'service' => 'NP',
             'country' => null,
             'data'    => [
                 'status'       => 200,
@@ -61,18 +59,18 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
                 ],
             ],
             'result'  => [
-                new ZipCode(
-                    Carrier::from('cp'),
-                    Service::from('NP'),
+                new DefaultZipCode(
+                    'cp',
+                    'NP',
                     '35002',
                     null,
                     null,
                     'CZ',
                     false,
                 ),
-                new ZipCode(
-                    Carrier::from('cp'),
-                    Service::from('NP'),
+                new DefaultZipCode(
+                    'cp',
+                    'NP',
                     '19000',
                     null,
                     null,
@@ -83,8 +81,8 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
         ];
 
         yield 'type_range' => [
-            'carrier' => Carrier::from('ppl'),
-            'service' => Service::from('1'),
+            'carrier' => 'ppl',
+            'service' => '1',
             'country' => null,
             'data'    => [
                 'status'       => 200,
@@ -104,18 +102,18 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
                 ],
             ],
             'result'  => [
-                new ZipCode(
-                    Carrier::from('ppl'),
-                    Service::from('1'),
+                new DefaultZipCode(
+                    'ppl',
+                    '1',
                     '10000',
                     '10199',
                     null,
                     'CZ',
                     false,
                 ),
-                new ZipCode(
-                    Carrier::from('ppl'),
-                    Service::from('1'),
+                new DefaultZipCode(
+                    'ppl',
+                    '1',
                     '35000',
                     '35299',
                     null,
@@ -126,8 +124,8 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
         ];
 
         yield 'type_range_2' => [
-            'carrier' => Carrier::from('ppl'),
-            'service' => Service::from('1'),
+            'carrier' => 'ppl',
+            'service' => '1',
             'country' => null,
             'data'    => [
                 'status'       => 200,
@@ -143,9 +141,9 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
                 ],
             ],
             'result'  => [
-                new ZipCode(
-                    Carrier::from('ppl'),
-                    Service::from('1'),
+                new DefaultZipCode(
+                    'ppl',
+                    '1',
                     '25999',
                     '25999',
                     'AIXIRIVALL',
@@ -156,8 +154,8 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
         ];
 
         yield 'type_city' => [
-            'carrier' => Carrier::from('ppl'),
-            'service' => Service::from('1'),
+            'carrier' => 'ppl',
+            'service' => '1',
             'country' => 'AE',
             'data'    => [
                 'status'       => 200,
@@ -173,18 +171,18 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
                 ],
             ],
             'result'  => [
-                new ZipCode(
-                    Carrier::from('ppl'),
-                    Service::from('1'),
+                new DefaultZipCode(
+                    'ppl',
+                    '1',
                     '',
                     null,
                     'ABU DHABI',
                     'AE',
                     false,
                 ),
-                new ZipCode(
-                    Carrier::from('ppl'),
-                    Service::from('1'),
+                new DefaultZipCode(
+                    'ppl',
+                    '1',
                     '',
                     null,
                     'AJMAN CITY',

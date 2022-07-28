@@ -6,10 +6,12 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Carrier;
 
 use Inspirum\Balikobot\Model\Carrier\Carrier;
 use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
+use Inspirum\Balikobot\Model\Carrier\DefaultCarrier;
+use Inspirum\Balikobot\Model\Carrier\DefaultCarrierCollection;
 use Inspirum\Balikobot\Model\Carrier\DefaultCarrierFactory;
+use Inspirum\Balikobot\Model\Method\DefaultMethod;
+use Inspirum\Balikobot\Model\Method\DefaultMethodCollection;
 use Inspirum\Balikobot\Model\Method\DefaultMethodFactory;
-use Inspirum\Balikobot\Model\Method\Method;
-use Inspirum\Balikobot\Model\Method\MethodCollection;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
 
@@ -60,16 +62,16 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result' => new CarrierCollection([
-                new Carrier(
+            'result' => new DefaultCarrierCollection([
+                new DefaultCarrier(
                     'cp',
                     'Česká pošta',
                 ),
-                new Carrier(
+                new DefaultCarrier(
                     'ppl',
                     'PPL',
                 ),
-                new Carrier(
+                new DefaultCarrier(
                     'magyarposta',
                     'Magyar Posta',
                 ),
@@ -82,7 +84,7 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
      *
      * @dataProvider providesTestCreate
      */
-    public function testCreate(Carrier $carrier, array $data, Carrier|Throwable $result): void
+    public function testCreate(string $carrier, array $data, Carrier|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -102,7 +104,7 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
     public function providesTestCreate(): iterable
     {
         yield 'valid' => [
-            'carrier' => Carrier::from('zasilkovna'),
+            'carrier' => 'zasilkovna',
             'data'    => [
                 'status'               => 200,
                 'name'                 => 'Zásilkovna',
@@ -128,17 +130,17 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new Carrier(
+            'result'  => new DefaultCarrier(
                 'zasilkovna',
                 'Zásilkovna',
                 [
-                    'https://apiv2.balikobot.cz'    => new MethodCollection([
-                        new Method('ADD'),
-                        new Method('TRACKSTATUS'),
+                    'https://apiv2.balikobot.cz'    => new DefaultMethodCollection([
+                        new DefaultMethod('ADD'),
+                        new DefaultMethod('TRACKSTATUS'),
                     ]),
-                    'https://apiv2.balikobot.cz/v2' => new MethodCollection([
-                        new Method('ADD'),
-                        new Method('DROP'),
+                    'https://apiv2.balikobot.cz/v2' => new DefaultMethodCollection([
+                        new DefaultMethod('ADD'),
+                        new DefaultMethod('DROP'),
                     ]),
                 ]
             ),

@@ -4,45 +4,33 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Account;
 
-use Inspirum\Arrayable\BaseModel;
+use Inspirum\Arrayable\Model;
 use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-final class Account extends BaseModel
+interface Account extends Model
 {
-    public function __construct(
-        public readonly string $name,
-        public readonly string $contactPerson,
-        public readonly string $email,
-        public readonly string $phone,
-        public readonly string $url,
-        public readonly string $street,
-        public readonly string $city,
-        public readonly string $zip,
-        public readonly string $country,
-        public readonly bool $live,
-        public readonly CarrierCollection $carriers,
-    ) {
-    }
+    public function getName(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'name'          => $this->name,
-            'contactPerson' => $this->contactPerson,
-            'email'         => $this->email,
-            'phone'         => $this->phone,
-            'url'           => $this->url,
-            'street'        => $this->street,
-            'city'          => $this->city,
-            'zip'           => $this->zip,
-            'country'       => $this->country,
-            'live'          => $this->live,
-            'carriers'      => $this->carriers->toArray(),
+    public function getContactPerson(): string;
 
-        ];
-    }
+    public function getEmail(): string;
+
+    public function getPhone(): string;
+
+    public function getUrl(): string;
+
+    public function getStreet(): string;
+
+    public function getCity(): string;
+
+    public function getZipCode(): string;
+
+    public function getCountry(): string;
+
+    public function isLive(): bool;
+
+    public function getCarriers(): CarrierCollection;
 }

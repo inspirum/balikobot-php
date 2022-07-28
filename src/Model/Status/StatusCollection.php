@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Status;
 
-use Inspirum\Balikobot\Model\BasePerCarrierCollection;
+use Inspirum\Arrayable\Collection;
+use Inspirum\Balikobot\Model\PerCarrierCollection;
 
 /**
- * @extends \Inspirum\Balikobot\Model\BasePerCarrierCollection<string,mixed,int,\Inspirum\Balikobot\Model\Status\Status>
+ * @extends \Inspirum\Arrayable\Collection<string,mixed,int,\Inspirum\Balikobot\Model\Status\Status>
+ * @extends \Inspirum\Balikobot\Model\PerCarrierCollection<\Inspirum\Balikobot\Model\Status\Status>
  */
-final class StatusCollection extends BasePerCarrierCollection
+interface StatusCollection extends Collection, PerCarrierCollection
 {
+    /**
+     * @return array<int,\Inspirum\Balikobot\Model\Status\Status>
+     */
+    public function getStatuses(): array;
 }

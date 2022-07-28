@@ -4,37 +4,23 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\TransportCost;
 
-use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\Carrier;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-class TransportCost extends BaseModel
+interface TransportCost extends Model
 {
-    /**
-     * @param array<\Inspirum\Balikobot\Model\TransportCost\TransportCostPart> $costsBreakdown
-     */
-    public function __construct(
-        public readonly string $batchId,
-        public readonly Carrier $carrier,
-        public readonly float $totalCost,
-        public readonly string $currencyCode,
-        public readonly array $costsBreakdown = []
-    ) {
-    }
+    public function getBatchId(): string;
+
+    public function getCarrier(): string;
+
+    public function getTotalCost(): float;
+
+    public function getCurrencyCode(): string;
 
     /**
-     * @return array<string,mixed>
+     * @return array<\Inspirum\Balikobot\Model\TransportCost\TransportCostPart>
      */
-    public function __toArray(): array
-    {
-        return [
-            'batchId'        => $this->batchId,
-            'carrier'        => $this->carrier->getValue(),
-            'totalCost'      => $this->totalCost,
-            'currencyCode'   => $this->currencyCode,
-            'costsBreakdown' => $this->costsBreakdown,
-        ];
-    }
+    public function getCostsBreakdown(): array;
 }

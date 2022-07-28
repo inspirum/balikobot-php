@@ -6,8 +6,6 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Branch;
 
 use Inspirum\Balikobot\Model\Branch\BranchFactory;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchFactory;
-use Inspirum\Balikobot\Model\Carrier\Carrier;
-use Inspirum\Balikobot\Model\Service\Service;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 
 final class DefaultBranchFactoryTest extends BaseTestCase
@@ -16,7 +14,7 @@ final class DefaultBranchFactoryTest extends BaseTestCase
     {
         $factory = $this->newDefaultBranchFactory();
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'id'                    => '1234',
             'type'                  => 'type',
             'name'                  => 'name',
@@ -49,218 +47,225 @@ final class DefaultBranchFactoryTest extends BaseTestCase
             'max_weight'            => '5',
         ]);
 
-        self::assertSame('cp', $branch->carrier->getValue());
-        self::assertSame('NP', $branch->service?->getValue());
-        self::assertSame('1234', $branch->id);
-        self::assertSame('type', $branch->type);
-        self::assertSame('name', $branch->name);
-        self::assertSame('city', $branch->city);
-        self::assertSame('street 27/8', $branch->street);
-        self::assertSame('zip', $branch->zip);
-        self::assertSame('country', $branch->country);
-        self::assertSame('city_part', $branch->cityPart);
-        self::assertSame('district', $branch->district);
-        self::assertSame('region', $branch->region);
-        self::assertSame('currency', $branch->currency);
-        self::assertSame('photo_small', $branch->photoSmall);
-        self::assertSame('photo_big', $branch->photoBig);
-        self::assertSame('url', $branch->url);
-        self::assertSame(123.45, $branch->latitude);
-        self::assertSame(67.890, $branch->longitude);
-        self::assertSame('directions_global', $branch->directionsGlobal);
-        self::assertSame('directions_car', $branch->directionsCar);
-        self::assertSame('directions_public', $branch->directionsPublic);
-        self::assertSame(false, $branch->wheelchairAccessible);
-        self::assertSame(true, $branch->claimAssistant);
-        self::assertSame(true, $branch->dressingRoom);
-        self::assertSame('opening_monday', $branch->openingMonday);
-        self::assertSame('opening_tuesday', $branch->openingTuesday);
-        self::assertSame('opening_wednesday', $branch->openingWednesday);
-        self::assertSame('opening_thursday', $branch->openingThursday);
-        self::assertSame('opening_friday', $branch->openingFriday);
-        self::assertSame('opening_saturday', $branch->openingSaturday);
-        self::assertSame('opening_sunday', $branch->openingSunday);
-        self::assertSame(5.0, $branch->maxWeight);
+        self::assertSame('cp', $branch->getCarrier());
+        self::assertSame('NP', $branch->getService());
+        self::assertSame('1234', $branch->getId());
+        self::assertSame('type', $branch->getType());
+        self::assertSame('name', $branch->getName());
+        self::assertSame('city', $branch->getCity());
+        self::assertSame('street 27/8', $branch->getStreet());
+        self::assertSame('zip', $branch->getZip());
+        self::assertSame('country', $branch->getCountry());
+        self::assertSame('city_part', $branch->getCityPart());
+        self::assertSame('district', $branch->getDistrict());
+        self::assertSame('region', $branch->getRegion());
+        self::assertSame('currency', $branch->getCurrency());
+        self::assertSame('photo_small', $branch->getPhotoSmall());
+        self::assertSame('photo_big', $branch->getPhotoBig());
+        self::assertSame('url', $branch->getUrl());
+        self::assertSame(123.45, $branch->getLatitude());
+        self::assertSame(67.890, $branch->getLongitude());
+        self::assertSame('directions_global', $branch->getDirectionsGlobal());
+        self::assertSame('directions_car', $branch->getDirectionsCar());
+        self::assertSame('directions_public', $branch->getDirectionsPublic());
+        self::assertSame(false, $branch->getWheelchairAccessible());
+        self::assertSame(true, $branch->getClaimAssistant());
+        self::assertSame(true, $branch->getDressingRoom());
+        self::assertSame('opening_monday', $branch->getOpeningMonday());
+        self::assertSame('opening_tuesday', $branch->getOpeningTuesday());
+        self::assertSame('opening_wednesday', $branch->getOpeningWednesday());
+        self::assertSame('opening_thursday', $branch->getOpeningThursday());
+        self::assertSame('opening_friday', $branch->getOpeningFriday());
+        self::assertSame('opening_saturday', $branch->getOpeningSaturday());
+        self::assertSame('opening_sunday', $branch->getOpeningSunday());
+        self::assertSame(5.0, $branch->getMaxWeight());
+        self::assertSame([
+            'carrier'  => 'cp',
+            'service'  => 'NP',
+            'branchId' => 'zip',
+            'id'       => '1234',
+            'uid'      => null,
+        ], $branch->__toArray());
     }
 
     public function testBranchUid(): void
     {
         $factory = $this->newDefaultBranchFactory();
 
-        $branch = $factory->createFromData(Carrier::from('ppl'), Service::from('2'), [
+        $branch = $factory->create('ppl', '2', [
             'branch_uid' => '2-ppl-branch-KMBA01081885107',
             'branch_id'  => 'KMBA01081885107',
             'id'         => '1234',
         ]);
 
-        self::assertSame('KMBA01081885107', $branch->id);
-        self::assertSame('2-ppl-branch-KMBA01081885107', $branch->uid);
+        self::assertSame('KMBA01081885107', $branch->getId());
+        self::assertSame('2-ppl-branch-KMBA01081885107', $branch->getUid());
     }
 
     public function testStaticConstructorWithMissingData(): void
     {
         $factory = $this->newDefaultBranchFactory();
 
-        $branch = $factory->createFromData(Carrier::from('ppl'), Service::from('1'), [
+        $branch = $factory->create('ppl', '1', [
             'zip' => 'zip',
         ]);
 
-        self::assertSame('ppl', $branch->carrier->getValue());
-        self::assertSame('1', $branch->service?->getValue());
-        self::assertSame(null, $branch->id);
-        self::assertSame('branch', $branch->type);
-        self::assertSame('zip', $branch->name);
-        self::assertSame('', $branch->city);
-        self::assertSame('', $branch->street);
-        self::assertSame('zip', $branch->zip);
-        self::assertSame(null, $branch->country);
-        self::assertSame(null, $branch->cityPart);
-        self::assertSame(null, $branch->district);
-        self::assertSame(null, $branch->region);
-        self::assertSame(null, $branch->currency);
-        self::assertSame(null, $branch->photoSmall);
-        self::assertSame(null, $branch->photoBig);
-        self::assertSame(null, $branch->url);
-        self::assertSame(null, $branch->latitude);
-        self::assertSame(null, $branch->longitude);
-        self::assertSame(null, $branch->directionsGlobal);
-        self::assertSame(null, $branch->directionsCar);
-        self::assertSame(null, $branch->directionsPublic);
-        self::assertSame(null, $branch->wheelchairAccessible);
-        self::assertSame(null, $branch->claimAssistant);
-        self::assertSame(null, $branch->dressingRoom);
-        self::assertSame(null, $branch->openingMonday);
-        self::assertSame(null, $branch->openingTuesday);
-        self::assertSame(null, $branch->openingWednesday);
-        self::assertSame(null, $branch->openingThursday);
-        self::assertSame(null, $branch->openingFriday);
-        self::assertSame(null, $branch->openingSaturday);
-        self::assertSame(null, $branch->openingSunday);
-        self::assertSame(null, $branch->maxWeight);
+        self::assertSame('ppl', $branch->getCarrier());
+        self::assertSame('1', $branch->getService());
+        self::assertSame(null, $branch->getId());
+        self::assertSame('branch', $branch->getType());
+        self::assertSame('zip', $branch->getName());
+        self::assertSame('', $branch->getCity());
+        self::assertSame('', $branch->getStreet());
+        self::assertSame('zip', $branch->getZip());
+        self::assertSame(null, $branch->getCountry());
+        self::assertSame(null, $branch->getCityPart());
+        self::assertSame(null, $branch->getDistrict());
+        self::assertSame(null, $branch->getRegion());
+        self::assertSame(null, $branch->getCurrency());
+        self::assertSame(null, $branch->getPhotoSmall());
+        self::assertSame(null, $branch->getPhotoBig());
+        self::assertSame(null, $branch->getUrl());
+        self::assertSame(null, $branch->getLatitude());
+        self::assertSame(null, $branch->getLongitude());
+        self::assertSame(null, $branch->getDirectionsGlobal());
+        self::assertSame(null, $branch->getDirectionsCar());
+        self::assertSame(null, $branch->getDirectionsPublic());
+        self::assertSame(null, $branch->getWheelchairAccessible());
+        self::assertSame(null, $branch->getClaimAssistant());
+        self::assertSame(null, $branch->getDressingRoom());
+        self::assertSame(null, $branch->getOpeningMonday());
+        self::assertSame(null, $branch->getOpeningTuesday());
+        self::assertSame(null, $branch->getOpeningWednesday());
+        self::assertSame(null, $branch->getOpeningThursday());
+        self::assertSame(null, $branch->getOpeningFriday());
+        self::assertSame(null, $branch->getOpeningSaturday());
+        self::assertSame(null, $branch->getOpeningSunday());
+        self::assertSame(null, $branch->getmaxWeight());
     }
 
     public function testStaticConstructorWithMissingDataForCPNP(): void
     {
         $factory = $this->newDefaultBranchFactory();
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip' => 'zip',
         ]);
 
-        self::assertSame('cp', $branch->carrier->getValue());
-        self::assertSame('NP', $branch->service?->getValue());
-        self::assertSame(null, $branch->id);
-        self::assertSame('branch', $branch->type);
-        self::assertSame('zip', $branch->name);
-        self::assertSame('', $branch->city);
-        self::assertSame('', $branch->street);
-        self::assertSame('zip', $branch->zip);
-        self::assertSame('CZ', $branch->country);
-        self::assertSame(null, $branch->cityPart);
-        self::assertSame(null, $branch->district);
-        self::assertSame(null, $branch->region);
-        self::assertSame(null, $branch->currency);
-        self::assertSame(null, $branch->photoSmall);
-        self::assertSame(null, $branch->photoBig);
-        self::assertSame(null, $branch->url);
-        self::assertSame(null, $branch->latitude);
-        self::assertSame(null, $branch->longitude);
-        self::assertSame(null, $branch->directionsGlobal);
-        self::assertSame(null, $branch->directionsCar);
-        self::assertSame(null, $branch->directionsPublic);
-        self::assertSame(null, $branch->wheelchairAccessible);
-        self::assertSame(null, $branch->claimAssistant);
-        self::assertSame(null, $branch->dressingRoom);
-        self::assertSame(null, $branch->openingMonday);
-        self::assertSame(null, $branch->openingTuesday);
-        self::assertSame(null, $branch->openingWednesday);
-        self::assertSame(null, $branch->openingThursday);
-        self::assertSame(null, $branch->openingFriday);
-        self::assertSame(null, $branch->openingSaturday);
-        self::assertSame(null, $branch->openingSunday);
-        self::assertSame(null, $branch->maxWeight);
+        self::assertSame('cp', $branch->getCarrier());
+        self::assertSame('NP', $branch->getservice());
+        self::assertSame(null, $branch->getId());
+        self::assertSame('branch', $branch->getType());
+        self::assertSame('zip', $branch->getName());
+        self::assertSame('', $branch->getCity());
+        self::assertSame('', $branch->getStreet());
+        self::assertSame('zip', $branch->getZip());
+        self::assertSame('CZ', $branch->getCountry());
+        self::assertSame(null, $branch->getCityPart());
+        self::assertSame(null, $branch->getDistrict());
+        self::assertSame(null, $branch->getRegion());
+        self::assertSame(null, $branch->getCurrency());
+        self::assertSame(null, $branch->getPhotoSmall());
+        self::assertSame(null, $branch->getPhotoBig());
+        self::assertSame(null, $branch->getUrl());
+        self::assertSame(null, $branch->getLatitude());
+        self::assertSame(null, $branch->getLongitude());
+        self::assertSame(null, $branch->getDirectionsGlobal());
+        self::assertSame(null, $branch->getDirectionsCar());
+        self::assertSame(null, $branch->getDirectionsPublic());
+        self::assertSame(null, $branch->getWheelchairAccessible());
+        self::assertSame(null, $branch->getClaimAssistant());
+        self::assertSame(null, $branch->getDressingRoom());
+        self::assertSame(null, $branch->getOpeningMonday());
+        self::assertSame(null, $branch->getOpeningTuesday());
+        self::assertSame(null, $branch->getOpeningWednesday());
+        self::assertSame(null, $branch->getOpeningThursday());
+        self::assertSame(null, $branch->getOpeningFriday());
+        self::assertSame(null, $branch->getOpeningSaturday());
+        self::assertSame(null, $branch->getOpeningSunday());
+        self::assertSame(null, $branch->getmaxWeight());
     }
 
     public function testStaticConstructorFallbackName(): void
     {
         $factory = $this->newDefaultBranchFactory();
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip'     => 'zip',
             'address' => 'address',
         ]);
 
-        self::assertSame('zip', $branch->name);
-        self::assertSame('branch', $branch->type);
-        self::assertSame('address', $branch->street);
+        self::assertSame('zip', $branch->getName());
+        self::assertSame('branch', $branch->getType());
+        self::assertSame('address', $branch->getStreet());
     }
 
     public function testStaticConstructorStreetNumber(): void
     {
         $factory = $this->newDefaultBranchFactory();
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip'                => 'zip',
             'street'             => 'street',
             'house_number'       => '8',
             'orientation_number' => '896',
         ]);
 
-        self::assertSame('street 8/896', $branch->street);
+        self::assertSame('street 8/896', $branch->getStreet());
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip'                => 'zip',
             'street'             => 'street',
             'house_number'       => '8',
             'orientation_number' => '0',
         ]);
 
-        self::assertSame('street 8', $branch->street);
+        self::assertSame('street 8', $branch->getStreet());
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip'                => 'zip',
             'street'             => 'street',
             'orientation_number' => '897',
         ]);
 
-        self::assertSame('street 897', $branch->street);
+        self::assertSame('street 897', $branch->getStreet());
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip'          => 'zip',
             'street'       => 'street',
             'house_number' => '2',
         ]);
 
-        self::assertSame('street 2', $branch->street);
+        self::assertSame('street 2', $branch->getStreet());
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip'                => 'zip',
             'street'             => 'street 1',
             'house_number'       => '2',
             'orientation_number' => '3',
         ]);
 
-        self::assertSame('street 1 2/3', $branch->street);
+        self::assertSame('street 1 2/3', $branch->getStreet());
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip'                => 'zip',
             'address'            => 'address',
             'house_number'       => '2',
             'orientation_number' => '3',
         ]);
 
-        self::assertSame('address', $branch->street);
+        self::assertSame('address', $branch->getStreet());
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip'                => 'zip',
             'street'             => '',
             'house_number'       => '3',
             'orientation_number' => '4',
         ]);
 
-        self::assertSame('3/4', $branch->street);
+        self::assertSame('3/4', $branch->getStreet());
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip'                => 'zip',
             'city'               => 'Vrbovec',
             'street'             => '',
@@ -268,9 +273,9 @@ final class DefaultBranchFactoryTest extends BaseTestCase
             'orientation_number' => '0',
         ]);
 
-        self::assertSame('Vrbovec 146', $branch->street);
+        self::assertSame('Vrbovec 146', $branch->getStreet());
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'zip'                => 'zip',
             'city'               => 'Vrbovec',
             'street'             => '',
@@ -279,68 +284,68 @@ final class DefaultBranchFactoryTest extends BaseTestCase
             'orientation_number' => '0',
         ]);
 
-        self::assertSame('Vrbovec 147', $branch->street);
+        self::assertSame('Vrbovec 147', $branch->getStreet());
     }
 
     public function testBranchIdResolver(): void
     {
         $factory = $this->newDefaultBranchFactory();
 
-        $branch = $factory->createFromData(Carrier::from('cp'), Service::from('NP'), [
+        $branch = $factory->create('cp', 'NP', [
             'id'   => 11,
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
 
-        self::assertSame('11000', $branch->branchId);
+        self::assertSame('11000', $branch->getBranchId());
 
-        $branch = $factory->createFromData(Carrier::from('sp'), Service::from('NP'), [
+        $branch = $factory->create('sp', 'NP', [
             'id'   => '11',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
 
-        self::assertSame('11000', $branch->branchId);
+        self::assertSame('11000', $branch->getBranchId());
 
-        $branch = $factory->createFromData(Carrier::from('ulozenka'), Service::from('7'), [
+        $branch = $factory->create('ulozenka', '7', [
             'id'   => '11',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
 
-        self::assertSame('11000', $branch->branchId);
+        self::assertSame('11000', $branch->getBranchId());
 
-        $branch = $factory->createFromData(Carrier::from('ppl'), Service::from('NP'), [
+        $branch = $factory->create('ppl', 'NP', [
             'id'   => 'KM1234',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
 
-        self::assertSame('1234', $branch->branchId);
+        self::assertSame('1234', $branch->getBranchId());
 
-        $branch = $factory->createFromData(Carrier::from('ppl'), Service::from('NP'), [
+        $branch = $factory->create('ppl', 'NP', [
             'id'   => 'K1M234',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
 
-        self::assertSame('K1M234', $branch->branchId);
+        self::assertSame('K1M234', $branch->getBranchId());
 
-        $branch = $factory->createFromData(Carrier::from('intime'), Service::from('NP'), [
+        $branch = $factory->create('intime', 'NP', [
             'id'   => '11',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
 
-        self::assertSame('Branch Name', $branch->branchId);
+        self::assertSame('Branch Name', $branch->getBranchId());
 
-        $branch = $factory->createFromData(Carrier::from('zasilkovna'), null, [
+        $branch = $factory->create('zasilkovna', null, [
             'id'   => '167',
             'name' => 'Branch Name',
             'zip'  => '110 00',
         ]);
 
-        self::assertSame('167', $branch->branchId);
+        self::assertSame('167', $branch->getBranchId());
     }
 
     private function newDefaultBranchFactory(): BranchFactory

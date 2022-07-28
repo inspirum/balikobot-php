@@ -4,45 +4,30 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Country;
 
-use Inspirum\Arrayable\BaseModel;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-class Country extends BaseModel
+interface Country extends Model
 {
     /**
-     * @param array<string,string> $names
-     * @param array<string>        $phonePrefixes
+     * @return array<string>
      */
-    public function __construct(
-        public readonly array $names,
-        public readonly string $code,
-        public readonly string $currencyCode,
-        public readonly array $phonePrefixes,
-        public readonly string $continent
-    ) {
-    }
+    public function getNames(): array;
 
-    public function getName(string $locale): ?string
-    {
-        return $this->names[$locale] ?? null;
-    }
+    public function getName(string $locale): ?string;
 
-    public function getPhonePrefix(): string
-    {
-        return $this->phonePrefixes[0];
-    }
+    public function getCode(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'names'         => $this->names,
-            'code'          => $this->code,
-            'currencyCode'  => $this->currencyCode,
-            'phonePrefixes' => $this->phonePrefixes,
-            'continent'     => $this->continent,
-        ];
-    }
+    public function getCurrencyCode(): string;
+
+    /**
+     * @return array<string>
+     */
+    public function getPhonePrefixes(): array;
+
+    public function getPhonePrefix(): string;
+
+    public function getContinent(): string;
 }

@@ -5,20 +5,19 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\ManipulationUnit;
 
 use DateTimeImmutable;
-use Inspirum\Balikobot\Model\Carrier\Carrier;
-use Inspirum\Balikobot\Model\Status\Status;
-use Inspirum\Balikobot\Model\Status\Statuses;
-use Inspirum\Balikobot\Model\Status\StatusesCollection;
+use Inspirum\Balikobot\Model\Status\DefaultStatus;
+use Inspirum\Balikobot\Model\Status\DefaultStatuses;
+use Inspirum\Balikobot\Model\Status\DefaultStatusesCollection;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 
 final class StatusesCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = Carrier::from('cp');
-        $collection    = new StatusesCollection($carrier, [
-            new Statuses($carrier, '3', [
-                new Status(
+        $carrier       = 'cp';
+        $items         = [
+            new DefaultStatuses($carrier, '3', [
+                new DefaultStatus(
                     $carrier,
                     '3',
                     2.2,
@@ -27,7 +26,7 @@ final class StatusesCollectionTest extends BaseTestCase
                     'event',
                     new DateTimeImmutable('2018-11-07 14:15:01'),
                 ),
-                new Status(
+                new DefaultStatus(
                     $carrier,
                     '3',
                     1.2,
@@ -37,8 +36,8 @@ final class StatusesCollectionTest extends BaseTestCase
                     new DateTimeImmutable('2018-11-08 18:00:00'),
                 ),
             ]),
-            new Statuses($carrier, '4', [
-                new Status(
+            new DefaultStatuses($carrier, '4', [
+                new DefaultStatus(
                     $carrier,
                     '4',
                     2.2,
@@ -48,7 +47,8 @@ final class StatusesCollectionTest extends BaseTestCase
                     new DateTimeImmutable('2018-11-07 14:15:01'),
                 ),
             ]),
-        ]);
+        ];
+        $collection    = new DefaultStatusesCollection($carrier, $items);
         $expectedArray = [
             [
                 'carrier'   => 'cp',
@@ -92,6 +92,7 @@ final class StatusesCollectionTest extends BaseTestCase
         ];
 
         self::assertSame($carrier, $collection->getCarrier());
+        self::assertSame($items, $collection->getStatuses());
         self::assertSame($expectedArray, $collection->__toArray());
     }
 }

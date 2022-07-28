@@ -15,7 +15,7 @@ final class DefaultAccountFactory implements AccountFactory
     /** @inheritDoc */
     public function create(array $response): Account
     {
-        return new Account(
+        return new DefaultAccount(
             $response['account']['name'],
             $response['account']['contact_person'],
             $response['account']['email'],

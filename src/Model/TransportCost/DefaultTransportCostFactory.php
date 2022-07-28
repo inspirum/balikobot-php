@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\TransportCost;
 
-use Inspirum\Balikobot\Client\Request\Carrier;
 use function array_map;
+use function array_values;
 
 final class DefaultTransportCostFactory implements TransportCostFactory
 {
     /** @inheritDoc */
-    public function create(Carrier $carrier, array $data): TransportCost
+    public function create(string $carrier, array $data): TransportCost
     {
-        return new TransportCost(
+        return new DefaultTransportCost(
             $data['eid'],
             $carrier,
             $data['costs_total'],
             $data['currency'],
-            array_map(static fn(array $part) => new TransportCostPart($part['name'], $part['cost'], $data['currency']), $data['costs_breakdown'] ?? [])
+            array_map(static fn(array $part) => new DefaultTransportCostPart($part['name'], $part['cost'], $data['currency']), $data['costs_breakdown'] ?? [])
         );
     }
 
     /** @inheritDoc */
-    public function createCollection(Carrier $carrier, array $data): TransportCostCollection
+    public function createCollection(string $carrier, array $data): TransportCostCollection
     {
         unset($data['status']);
 
@@ -30,13 +30,6 @@ final class DefaultTransportCostFactory implements TransportCostFactory
 
 //        $this->validator->validateResponseItemHasAttribute($data, 'eid', $data);
 
-        $transportCosts = new TransportCostCollection($carrier);
-
-        foreach ($data as $package) {
-            $transportCost = $this->create($carrier, $package);
-            $transportCosts->offsetAdd($transportCost);
-        }
-
-        return $transportCosts;
+        return new DefaultTransportCostCollection($carrier, array_values(array_map(fn(array $package): TransportCost => $this->create($carrier, $package), $data)));
     }
 }

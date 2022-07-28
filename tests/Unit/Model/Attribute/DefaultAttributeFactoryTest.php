@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\Attribute;
 
-use Inspirum\Balikobot\Model\Attribute\Attribute;
 use Inspirum\Balikobot\Model\Attribute\AttributeCollection;
+use Inspirum\Balikobot\Model\Attribute\DefaultAttribute;
+use Inspirum\Balikobot\Model\Attribute\DefaultAttributeCollection;
 use Inspirum\Balikobot\Model\Attribute\DefaultAttributeFactory;
-use Inspirum\Balikobot\Model\Carrier\Carrier;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
 
@@ -18,7 +18,7 @@ final class DefaultAttributeFactoryTest extends BaseTestCase
      *
      * @dataProvider providesTestCreateCollection
      */
-    public function testCreateCollection(Carrier $carrier, array $data, AttributeCollection|Throwable $result): void
+    public function testCreateCollection(string $carrier, array $data, AttributeCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -38,7 +38,7 @@ final class DefaultAttributeFactoryTest extends BaseTestCase
     public function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
-            'carrier' => Carrier::from('cp'),
+            'carrier' => 'cp',
             'data'    => [
                 'status' => 200,
                 'attributes' => [
@@ -59,20 +59,20 @@ final class DefaultAttributeFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new AttributeCollection(
-                Carrier::from('cp'),
+            'result'  => new DefaultAttributeCollection(
+                'cp',
                 [
-                    new Attribute(
+                    new DefaultAttribute(
                         'eid',
                         'string',
                         '40',
                     ),
-                    new Attribute(
+                    new DefaultAttribute(
                         'services',
                         'plus_separated_values',
                         null,
                     ),
-                    new Attribute(
+                    new DefaultAttribute(
                         'volume',
                         'float',
                         '9.20',

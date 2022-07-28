@@ -12,7 +12,7 @@ final class DefaultCountryFactory implements CountryFactory
     /** @inheritDoc */
     public function create(array $data): Country
     {
-        return new Country(
+        return new DefaultCountry(
             [
                 'cs' => $data['name_cz'],
                 'en' => $data['name_en'],
@@ -27,7 +27,7 @@ final class DefaultCountryFactory implements CountryFactory
     /** @inheritDoc */
     public function createCollection(array $data): CountryCollection
     {
-        return new CountryCollection(
+        return new DefaultCountryCollection(
             array_map(fn(array $country): Country => $this->create($country), $data['countries'] ?? [])
         );
     }
@@ -43,7 +43,7 @@ final class DefaultCountryFactory implements CountryFactory
     {
         $codCountries = [];
         foreach ($data['cod_countries'] ?? [] as $countryCode => $country) {
-            $codCountries[] = new CodCountry(
+            $codCountries[] = new DefaultCodCountry(
                 $countryCode,
                 $country['currency'],
                 $country['max_price'],

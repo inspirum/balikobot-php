@@ -23,7 +23,7 @@
     "ext-json": "*",
     "psr/http-message": "^1.0",
     "guzzlehttp/psr7": "^2.0",
-    "inspirum/arrayable": "^1.0"
+    "inspirum/arrayable": "^1.1"
   },
   "require-dev": {
     "inspirum/coding-standard": "^1.1",

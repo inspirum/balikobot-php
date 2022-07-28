@@ -16,6 +16,6 @@ class CurlRequesterTest extends BaseTestCase
 
         $requester = new DefaultCurlRequester('test', 'test');
 
-        $requester->request('dummy');
+        $requester->request('dummy', ['test' => true]);
     }
 }

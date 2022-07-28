@@ -4,26 +4,17 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\ManipulationUnit;
 
-use Inspirum\Arrayable\BaseCollection;
-use Inspirum\Balikobot\Client\Request\Carrier;
+use Inspirum\Arrayable\Collection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
+ * @extends \Inspirum\Arrayable\Collection<string,mixed,int,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
  */
-final class ManipulationUnitCollection extends BaseCollection
+interface ManipulationUnitCollection extends Collection
 {
-    /**
-     * @param array<int,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit> $items
-     */
-    public function __construct(
-        private Carrier $carrier,
-        array $items = [],
-    ) {
-        parent::__construct($items);
-    }
+    public function getCarrier(): string;
 
-    public function getCarrier(): Carrier
-    {
-        return $this->carrier;
-    }
+    /**
+     * @return array<int,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
+     */
+    public function getUnits(): array;
 }

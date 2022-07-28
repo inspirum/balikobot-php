@@ -4,27 +4,16 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Country;
 
-use Inspirum\Arrayable\BaseModel;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-class CodCountry extends BaseModel
+interface CodCountry extends Model
 {
-    public function __construct(
-        public readonly string $code,
-        public readonly string $currencyCode,
-        public readonly float $maxPrice,
-    ) {
-    }
+    public function getCode(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'code'         => $this->code,
-            'currencyCode' => $this->currencyCode,
-            'maxPrice'     => $this->maxPrice,
-        ];
-    }
+    public function getCurrencyCode(): string;
+
+    public function getMaxPrice(): float;
 }

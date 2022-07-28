@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\Method;
 
+use Inspirum\Balikobot\Model\Method\DefaultMethod;
+use Inspirum\Balikobot\Model\Method\DefaultMethodCollection;
 use Inspirum\Balikobot\Model\Method\DefaultMethodFactory;
-use Inspirum\Balikobot\Model\Method\Method;
 use Inspirum\Balikobot\Model\Method\MethodCollection;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
@@ -47,9 +48,9 @@ final class DefaultMethodFactoryTest extends BaseTestCase
                     'endpoint' => 'https://api.balikobot.cz/zasilkovna/trackstatus',
                 ],
             ],
-            'result'  =>  new MethodCollection([
-                new Method('ADD'),
-                new Method('TRACKSTATUS'),
+            'result'  =>  new DefaultMethodCollection([
+                new DefaultMethod('ADD'),
+                new DefaultMethod('TRACKSTATUS'),
             ]),
         ];
     }

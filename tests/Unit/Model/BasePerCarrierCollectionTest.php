@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\ManipulationUnit;
 
 use Inspirum\Balikobot\Model\BasePerCarrierCollection;
-use Inspirum\Balikobot\Model\Carrier\Carrier;
-use Inspirum\Balikobot\Model\Status\Status;
+use Inspirum\Balikobot\Model\Status\DefaultStatus;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use InvalidArgumentException;
 use RuntimeException;
@@ -15,9 +14,9 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
 {
     public function testGetter(): void
     {
-        $carrier    = Carrier::from('cp');
+        $carrier    = 'cp';
         $items      = [
-            new Status(
+            new DefaultStatus(
                 $carrier,
                 '1',
                 1.0,
@@ -26,7 +25,7 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
                 'event',
                 null,
             ),
-            new Status(
+            new DefaultStatus(
                 $carrier,
                 '2',
                 1.0,
@@ -35,7 +34,7 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
                 'event',
                 null,
             ),
-            new Status(
+            new DefaultStatus(
                 $carrier,
                 '3',
                 1.0,
@@ -70,9 +69,9 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
         $collection = new class () extends BasePerCarrierCollection {
         };
 
-        $carrier = Carrier::from('ppl');
+        $carrier = 'ppl';
 
-        $collection->add(new Status(
+        $collection->add(new DefaultStatus(
             $carrier,
             '1',
             1.0,
@@ -90,12 +89,12 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
         self::expectException(InvalidArgumentException::class);
         self::expectExceptionMessage('Item carrier mismatch');
 
-        $carrier    = Carrier::from('ppl');
+        $carrier    = 'ppl';
         $collection = new class ($carrier) extends BasePerCarrierCollection {
         };
 
-        $collection->add(new Status(
-            Carrier::from('cp'),
+        $collection->add(new DefaultStatus(
+            'cp',
             '1',
             1.0,
             'name',
@@ -110,10 +109,10 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
         self::expectException(InvalidArgumentException::class);
         self::expectExceptionMessage('Item carrier mismatch');
 
-        $carrier    = Carrier::from('ppl');
+        $carrier    = 'ppl';
         $collection = new class ($carrier, [
-            new Status(
-                Carrier::from('ppl'),
+            new DefaultStatus(
+                'ppl',
                 '1',
                 1.0,
                 'name',
@@ -124,8 +123,8 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
         ]) extends BasePerCarrierCollection {
         };
 
-        $collection->offsetSet(0, new Status(
-            Carrier::from('cp'),
+        $collection->offsetSet(0, new DefaultStatus(
+            'cp',
             '1',
             1.0,
             'name',

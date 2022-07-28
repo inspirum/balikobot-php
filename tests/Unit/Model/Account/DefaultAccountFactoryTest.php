@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\Account;
 
 use Inspirum\Balikobot\Model\Account\Account;
+use Inspirum\Balikobot\Model\Account\DefaultAccount;
 use Inspirum\Balikobot\Model\Account\DefaultAccountFactory;
-use Inspirum\Balikobot\Model\Carrier\Carrier;
-use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
+use Inspirum\Balikobot\Model\Carrier\DefaultCarrier;
+use Inspirum\Balikobot\Model\Carrier\DefaultCarrierCollection;
 use Inspirum\Balikobot\Model\Carrier\DefaultCarrierFactory;
 use Inspirum\Balikobot\Model\Method\DefaultMethodFactory;
 use Inspirum\Balikobot\Tests\BaseTestCase;
@@ -69,7 +70,7 @@ final class DefaultAccountFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'     => new Account(
+            'result'     => new DefaultAccount(
                 'Balikobot-Test_obchod.cz',
                 'DPD_2',
                 'info@balikobot.cz',
@@ -80,16 +81,16 @@ final class DefaultAccountFactoryTest extends BaseTestCase
                 '19000',
                 'CZ',
                 false,
-                new CarrierCollection([
-                    new Carrier(
+                new DefaultCarrierCollection([
+                    new DefaultCarrier(
                         'cp',
                         'Česká pošta',
                     ),
-                    new Carrier(
+                    new DefaultCarrier(
                         'ppl',
                         'PPL',
                     ),
-                    new Carrier(
+                    new DefaultCarrier(
                         'dpd',
                         'DPD',
                     ),

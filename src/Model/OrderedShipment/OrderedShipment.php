@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\OrderedShipment;
 
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\Carrier;
 
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
@@ -16,12 +15,12 @@ class OrderedShipment extends BaseModel
      * @param array<string> $packageIds
      */
     public function __construct(
-        public readonly string $orderId,
-        public readonly Carrier $carrier,
-        public readonly array $packageIds,
-        public readonly string $handoverUrl,
-        public readonly string $labelsUrl,
-        public readonly ?string $fileUrl = null
+        private string $orderId,
+        private string $carrier,
+        private array $packageIds,
+        private string $handoverUrl,
+        private string $labelsUrl,
+        private ?string $fileUrl = null
     ) {
     }
 
@@ -29,7 +28,7 @@ class OrderedShipment extends BaseModel
     public function __toArray(): array
     {
         return [
-            'carrier' => $this->carrier->getValue(),
+            'carrier' => $this->carrier,
             'orderId' => $this->orderId,
             'packageIds' => $this->packageIds,
             'handoverUrl' => $this->handoverUrl,

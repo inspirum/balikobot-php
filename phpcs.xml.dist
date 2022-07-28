@@ -3,5 +3,7 @@
     <arg value="sp"/>
     <file>src</file>
     <file>tests</file>
-    <rule ref="InspirumCodingStandard"/>
+    <rule ref="InspirumCodingStandard" >
+        <exclude name="SlevomatCodingStandard.Commenting.UselessInheritDocComment.UselessInheritDocComment"/>
+    </rule>
 </ruleset>

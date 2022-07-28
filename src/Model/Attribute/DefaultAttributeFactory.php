@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Attribute;
 
-use Inspirum\Balikobot\Client\Request\Carrier;
 use function array_map;
 
 final class DefaultAttributeFactory implements AttributeFactory
@@ -12,7 +11,7 @@ final class DefaultAttributeFactory implements AttributeFactory
     /** @inheritDoc */
     public function create(array $data): Attribute
     {
-        return new Attribute(
+        return new DefaultAttribute(
             $data['name'],
             $data['data_type'],
             (string) $data['max_length'],
@@ -20,9 +19,9 @@ final class DefaultAttributeFactory implements AttributeFactory
     }
 
     /** @inheritDoc */
-    public function createCollection(Carrier $carrier, array $data): AttributeCollection
+    public function createCollection(string $carrier, array $data): AttributeCollection
     {
-        return new AttributeCollection(
+        return new DefaultAttributeCollection(
             $carrier,
             array_map(fn(array $attribute): Attribute => $this->create($attribute), $data['attributes'] ?? []),
         );

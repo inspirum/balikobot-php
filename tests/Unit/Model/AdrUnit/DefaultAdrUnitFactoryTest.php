@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\AdrUnit;
 
-use Inspirum\Balikobot\Model\AdrUnit\AdrUnit;
 use Inspirum\Balikobot\Model\AdrUnit\AdrUnitCollection;
+use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnit;
+use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnitCollection;
 use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnitFactory;
-use Inspirum\Balikobot\Model\Carrier\Carrier;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
 
@@ -18,7 +18,7 @@ final class DefaultAdrUnitFactoryTest extends BaseTestCase
      *
      * @dataProvider providesTestCreateCollection
      */
-    public function testCreateCollection(Carrier $carrier, array $data, AdrUnitCollection|Throwable $result): void
+    public function testCreateCollection(string $carrier, array $data, AdrUnitCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -38,7 +38,7 @@ final class DefaultAdrUnitFactoryTest extends BaseTestCase
     public function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
-            'carrier' => Carrier::from('ppl'),
+            'carrier' => 'ppl',
             'data'    => [
                 'status' => 200,
                 'units'  => [
@@ -62,11 +62,11 @@ final class DefaultAdrUnitFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new AdrUnitCollection(
-                Carrier::from('ppl'),
+            'result'  => new DefaultAdrUnitCollection(
+                'ppl',
                 [
-                    new AdrUnit(
-                        Carrier::from('ppl'),
+                    new DefaultAdrUnit(
+                        'ppl',
                         '299',
                         '432',
                         'PŘEDMĚTY PYROTECHNICKÉ pro technické účely',
@@ -75,8 +75,8 @@ final class DefaultAdrUnitFactoryTest extends BaseTestCase
                         'E',
                         '4',
                     ),
-                    new AdrUnit(
-                        Carrier::from('ppl'),
+                    new DefaultAdrUnit(
+                        'ppl',
                         '377',
                         '1001',
                         'ACETYLÉN, ROZPUŠTĚNÝ',

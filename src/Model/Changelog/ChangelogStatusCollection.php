@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Changelog;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\Collection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,string,int,\Inspirum\Balikobot\Model\Changelog\ChangelogStatus>
+ * @extends \Inspirum\Arrayable\Collection<string,string,int,\Inspirum\Balikobot\Model\Changelog\ChangelogStatus>
  */
-final class ChangelogStatusCollection extends BaseCollection
+interface ChangelogStatusCollection extends Collection
 {
+    /**
+     * @return array<int,\Inspirum\Balikobot\Model\Changelog\ChangelogStatus>
+     */
+    public function getStatuses(): array;
 }

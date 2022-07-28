@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Service;
 
-use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Model\Country\CountryFactory;
 use function array_key_exists;
 use function array_map;
@@ -17,9 +16,9 @@ final class DefaultServiceFactory implements ServiceFactory
     }
 
     /** @inheritDoc */
-    public function create(Carrier $carrier, array $data): Service
+    public function create(string $carrier, array $data): Service
     {
-        return new Service(
+        return new DefaultService(
             (string) $data['service_type'],
             $data['service_type_name'] ?? ($data['name'] ?? null),
             array_key_exists('services', $data) ? $this->createOptionCollection($carrier, $data) : null,
@@ -29,9 +28,9 @@ final class DefaultServiceFactory implements ServiceFactory
     }
 
     /** @inheritDoc */
-    public function createCollection(Carrier $carrier, array $data): ServiceCollection
+    public function createCollection(string $carrier, array $data): ServiceCollection
     {
-        return new ServiceCollection(
+        return new DefaultServiceCollection(
             $carrier,
             array_map(fn(array $service): Service => $this->create($carrier, $service), $data['service_types'] ?? []),
             $data['active_parcel'] ?? null,
@@ -44,7 +43,7 @@ final class DefaultServiceFactory implements ServiceFactory
      */
     public function createOption(array $data): ServiceOption
     {
-        return new ServiceOption(
+        return new DefaultServiceOption(
             $data['code'],
             $data['name'],
         );
@@ -53,9 +52,9 @@ final class DefaultServiceFactory implements ServiceFactory
     /**
      * @param array<string,mixed> $data
      */
-    private function createOptionCollection(Carrier $carrier, array $data): ServiceOptionCollection
+    private function createOptionCollection(string $carrier, array $data): ServiceOptionCollection
     {
-        return new ServiceOptionCollection(
+        return new DefaultServiceOptionCollection(
             array_map(fn(array $data): ServiceOption => $this->createOption($data), $data['services'] ?? [])
         );
     }

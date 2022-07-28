@@ -4,28 +4,12 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Method;
 
-use Inspirum\Arrayable\BaseModel;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-final class Method extends BaseModel implements \Inspirum\Balikobot\Client\Request\Method
+interface Method extends Model, \Inspirum\Balikobot\Client\Request\Method
 {
-    public function __construct(
-        public readonly string $code,
-    ) {
-    }
-
-    public function getValue(): string
-    {
-        return $this->code;
-    }
-
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'code' => $this->code,
-        ];
-    }
+    public function getCode(): string;
 }

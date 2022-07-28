@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Branch;
 
-use Inspirum\Balikobot\Client\Request\Carrier;
-use Inspirum\Balikobot\Client\Request\Service;
-use Inspirum\Balikobot\Definitions\CarrierType;
+use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\ServiceType;
+use Iterator;
 use function sprintf;
 use function str_replace;
 use function trim;
 
-class DefaultBranchFactory implements BranchFactory
+final class DefaultBranchFactory implements BranchFactory
 {
     /** @inheritDoc */
-    public function createFromData(Carrier $carrier, ?Service $service, array $data): Branch
+    public function create(string $carrier, ?string $service, array $data): Branch
     {
-        if ($carrier->getValue() === CarrierType::CP->getValue() && $service?->getValue() === ServiceType::CP_NP) {
+        if ($carrier === Carrier::CP && $service === ServiceType::CP_NP) {
             $data['country'] ??= 'CZ';
         }
 
@@ -40,7 +39,7 @@ class DefaultBranchFactory implements BranchFactory
         $zip  = $data['zip'] ?? '00000';
         $name = $data['name'] ?? $zip;
 
-        return new Branch(
+        return new DefaultBranch(
             $carrier,
             $service,
             $this->resolveBranchId($carrier, $service, [
@@ -83,24 +82,34 @@ class DefaultBranchFactory implements BranchFactory
     }
 
     /**
+     * @inheritDoc
+     */
+    public function createIterator(string $carrier, ?string $service, array $data): Iterator
+    {
+        foreach ($data['branches'] ?? [] as $branch) {
+            yield $this->create($carrier, $service, $branch);
+        }
+    }
+
+    /**
      * @param array<string,mixed> $data
      */
-    private function resolveBranchId(Carrier $carrier, ?Service $service, array $data): string
+    private function resolveBranchId(string $carrier, ?string $service, array $data): string
     {
         // get key used in branch_id when calling add request
         if (
-            $carrier->getValue() === CarrierType::CP->getValue()
-            || $carrier->getValue() === CarrierType::SP->getValue()
-            || ($carrier->getValue() === CarrierType::ULOZENKA->getValue() && $service?->getValue() === ServiceType::ULOZENKA_CP_NP)
+            $carrier === Carrier::CP
+            || $carrier === Carrier::SP
+            || ($carrier === Carrier::ULOZENKA && $service === ServiceType::ULOZENKA_CP_NP)
         ) {
             return str_replace(' ', '', $data['zip']);
         }
 
-        if ($carrier->getValue() === CarrierType::PPL->getValue()) {
+        if ($carrier === Carrier::PPL) {
             return str_replace('KM', '', (string) $data['id']);
         }
 
-        if ($carrier->getValue() === CarrierType::INTIME->getValue()) {
+        if ($carrier === Carrier::INTIME) {
             return $data['name'];
         }
 

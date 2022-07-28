@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\Changelog;
 
 use DateTimeImmutable;
-use Inspirum\Balikobot\Model\Changelog\Changelog;
 use Inspirum\Balikobot\Model\Changelog\ChangelogCollection;
-use Inspirum\Balikobot\Model\Changelog\ChangelogStatus;
-use Inspirum\Balikobot\Model\Changelog\ChangelogStatusCollection;
+use Inspirum\Balikobot\Model\Changelog\DefaultChangelog;
+use Inspirum\Balikobot\Model\Changelog\DefaultChangelogCollection;
 use Inspirum\Balikobot\Model\Changelog\DefaultChangelogFactory;
+use Inspirum\Balikobot\Model\Changelog\DefaultChangelogStatus;
+use Inspirum\Balikobot\Model\Changelog\DefaultChangelogStatusCollection;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
 
@@ -76,26 +77,26 @@ final class DefaultChangelogFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'     => new ChangelogCollection([
-                new Changelog(
+            'result'     => new DefaultChangelogCollection([
+                new DefaultChangelog(
                     '1.900',
                     new DateTimeImmutable('2020-12-18'),
-                    new ChangelogStatusCollection([
-                        new ChangelogStatus(
+                    new DefaultChangelogStatusCollection([
+                        new DefaultChangelogStatus(
                             'ADD Zásilkovna',
                             '- delivery_costs a delivery_costs_eur - přidání GB',
                         ),
-                        new ChangelogStatus(
+                        new DefaultChangelogStatus(
                             'ADD PbH',
                             '- content data - přidání GB',
                         ),
                     ])
                 ),
-                new Changelog(
+                new DefaultChangelog(
                     '1.899',
                     new DateTimeImmutable('2020-12-07'),
-                    new ChangelogStatusCollection([
-                        new ChangelogStatus(
+                    new DefaultChangelogStatusCollection([
+                        new DefaultChangelogStatus(
                             'ADD Gebrüder Weiss Česká republika',
                             '- nový atribut rec_floor_number - číslo patra',
                         ),

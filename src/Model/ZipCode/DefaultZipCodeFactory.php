@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\ZipCode;
 
-use Inspirum\Balikobot\Client\Request\Carrier;
-use Inspirum\Balikobot\Client\Request\Service;
 use Iterator;
 
 final class DefaultZipCodeFactory implements ZipCodeFactory
 {
     /** @inheritDoc */
-    public function create(Carrier $carrier, ?Service $service, array $data): ZipCode
+    public function create(string $carrier, ?string $service, array $data): ZipCode
     {
-        return new ZipCode(
+        return new DefaultZipCode(
             $carrier,
             $service,
             $data['zip'] ?? ($data['zip_start'] ?? null),
@@ -25,7 +23,7 @@ final class DefaultZipCodeFactory implements ZipCodeFactory
     }
 
     /** @inheritDoc */
-    public function createIterator(Carrier $carrier, ?Service $service, ?string $country, array $data): Iterator
+    public function createIterator(string $carrier, ?string $service, ?string $country, array $data): Iterator
     {
         $country = $data['country'] ?? $country;
 

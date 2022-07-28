@@ -4,37 +4,24 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\ZipCode;
 
-use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\Carrier;
-use Inspirum\Balikobot\Client\Request\Service;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-class ZipCode extends BaseModel
+interface ZipCode extends Model
 {
-    public function __construct(
-        public readonly Carrier $carrier,
-        public readonly ?Service $service,
-        public readonly ?string $zipCode,
-        public readonly ?string $zipCodeEnd,
-        public readonly ?string $city,
-        public readonly ?string $country,
-        public readonly bool $morningDelivery
-    ) {
-    }
+    public function getCarrier(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'carrier'         => $this->carrier->getValue(),
-            'service'         => $this->service?->getValue(),
-            'zipCode'         => $this->zipCode,
-            'zipCodeEnt'      => $this->zipCodeEnd,
-            'city'            => $this->city,
-            'country'         => $this->country,
-            'morningDelivery' => $this->morningDelivery,
-        ];
-    }
+    public function getService(): ?string;
+
+    public function getZipCode(): ?string;
+
+    public function getZipCodeEnd(): ?string;
+
+    public function getCity(): ?string;
+
+    public function getCountry(): ?string;
+
+    public function isMorningDelivery(): bool;
 }

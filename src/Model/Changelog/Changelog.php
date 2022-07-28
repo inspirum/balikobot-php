@@ -5,27 +5,16 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Changelog;
 
 use DateTimeInterface;
-use Inspirum\Arrayable\BaseModel;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-final class Changelog extends BaseModel
+interface Changelog extends Model
 {
-    public function __construct(
-        public readonly string $version,
-        public readonly DateTimeInterface $date,
-        public readonly ChangelogStatusCollection $changes,
-    ) {
-    }
+    public function getVersion(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'code'    => $this->version,
-            'date'    => $this->date->format('Y-m-d'),
-            'changes' => $this->changes->toArray(),
-        ];
-    }
+    public function getDate(): DateTimeInterface;
+
+    public function getChanges(): ChangelogStatusCollection;
 }

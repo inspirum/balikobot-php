@@ -4,25 +4,14 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Service;
 
-use Inspirum\Arrayable\BaseModel;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,string>
+ * @extends \Inspirum\Arrayable\Model<string,string>
  */
-final class ServiceOption extends BaseModel
+interface ServiceOption extends Model
 {
-    public function __construct(
-        public readonly string $code,
-        public readonly string $name,
-    ) {
-    }
+    public function getCode(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'code' => $this->code,
-            'name' => $this->name,
-        ];
-    }
+    public function getName(): string;
 }

@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Carrier;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\Collection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\Carrier\Carrier>
+ * @extends \Inspirum\Arrayable\Collection<string,mixed,int,\Inspirum\Balikobot\Model\Carrier\Carrier>
  */
-final class CarrierCollection extends BaseCollection
+interface CarrierCollection extends Collection
 {
+    /**
+     * @return array<int,\Inspirum\Balikobot\Model\Carrier\Carrier>
+     */
+    public function getCarriers(): array;
 }

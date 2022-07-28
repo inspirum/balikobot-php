@@ -12,7 +12,7 @@ final class DefaultChangelogFactory implements ChangelogFactory
     /** @inheritDoc */
     public function create(array $data): Changelog
     {
-        return new Changelog(
+        return new DefaultChangelog(
             $data['version'],
             new DateTimeImmutable($data['date']),
             $this->createStatusCollection($data),
@@ -22,7 +22,7 @@ final class DefaultChangelogFactory implements ChangelogFactory
     /** @inheritDoc */
     public function createCollection(array $data): ChangelogCollection
     {
-        return new ChangelogCollection(
+        return new DefaultChangelogCollection(
             array_map(fn(array $version): Changelog => $this->create($version), $data['versions']),
         );
     }
@@ -32,7 +32,7 @@ final class DefaultChangelogFactory implements ChangelogFactory
      */
     private function createStatus(array $data): ChangelogStatus
     {
-        return new ChangelogStatus(
+        return new DefaultChangelogStatus(
             $data['name'],
             $data['description'],
         );
@@ -43,7 +43,7 @@ final class DefaultChangelogFactory implements ChangelogFactory
      */
     private function createStatusCollection(array $data): ChangelogStatusCollection
     {
-        return new ChangelogStatusCollection(
+        return new DefaultChangelogStatusCollection(
             array_map(fn(array $change): ChangelogStatus => $this->createStatus($change), $data['changes'])
         );
     }

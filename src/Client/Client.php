@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Client;
 
-use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Client\Request\Method;
 use Inspirum\Balikobot\Client\Request\Version;
 
@@ -21,7 +20,7 @@ interface Client
      */
     public function call(
         Version $version,
-        ?Carrier $carrier,
+        ?string $carrier,
         Method $request,
         array $data = [],
         ?string $path = null,

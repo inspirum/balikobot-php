@@ -4,62 +4,78 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Branch;
 
-use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\Carrier;
-use Inspirum\Balikobot\Client\Request\Service;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-class Branch extends BaseModel
+interface Branch extends Model
 {
-    public function __construct(
-        public readonly Carrier $carrier,
-        public readonly ?Service $service,
-        public readonly string $branchId,
-        public readonly ?string $id,
-        public readonly ?string $uid,
-        public readonly string $type,
-        public readonly string $name,
-        public readonly string $city,
-        public readonly string $street,
-        public readonly string $zip,
-        public readonly ?string $country = null,
-        public readonly ?string $cityPart = null,
-        public readonly ?string $district = null,
-        public readonly ?string $region = null,
-        public readonly ?string $currency = null,
-        public readonly ?string $photoSmall = null,
-        public readonly ?string $photoBig = null,
-        public readonly ?string $url = null,
-        public readonly ?float $latitude = null,
-        public readonly ?float $longitude = null,
-        public readonly ?string $directionsGlobal = null,
-        public readonly ?string $directionsCar = null,
-        public readonly ?string $directionsPublic = null,
-        public readonly ?bool $wheelchairAccessible = null,
-        public readonly ?bool $claimAssistant = null,
-        public readonly ?bool $dressingRoom = null,
-        public readonly ?string $openingMonday = null,
-        public readonly ?string $openingTuesday = null,
-        public readonly ?string $openingWednesday = null,
-        public readonly ?string $openingThursday = null,
-        public readonly ?string $openingFriday = null,
-        public readonly ?string $openingSaturday = null,
-        public readonly ?string $openingSunday = null,
-        public readonly ?float $maxWeight = null
-    ) {
-    }
+    public function getCarrier(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'carrier'  => $this->carrier->getValue(),
-            'service'  => $this->service,
-            'branchId' => $this->branchId,
-            'id'       => $this->id,
-            'uid'      => $this->uid,
-        ];
-    }
+    public function getService(): ?string;
+
+    public function getBranchId(): string;
+
+    public function getId(): ?string;
+
+    public function getUid(): ?string;
+
+    public function getType(): string;
+
+    public function getName(): string;
+
+    public function getCity(): string;
+
+    public function getStreet(): string;
+
+    public function getZip(): string;
+
+    public function getCountry(): ?string;
+
+    public function getCityPart(): ?string;
+
+    public function getDistrict(): ?string;
+
+    public function getRegion(): ?string;
+
+    public function getCurrency(): ?string;
+
+    public function getPhotoSmall(): ?string;
+
+    public function getPhotoBig(): ?string;
+
+    public function getUrl(): ?string;
+
+    public function getLatitude(): ?float;
+
+    public function getLongitude(): ?float;
+
+    public function getDirectionsGlobal(): ?string;
+
+    public function getDirectionsCar(): ?string;
+
+    public function getDirectionsPublic(): ?string;
+
+    public function getWheelchairAccessible(): ?bool;
+
+    public function getClaimAssistant(): ?bool;
+
+    public function getDressingRoom(): ?bool;
+
+    public function getOpeningMonday(): ?string;
+
+    public function getOpeningTuesday(): ?string;
+
+    public function getOpeningWednesday(): ?string;
+
+    public function getOpeningThursday(): ?string;
+
+    public function getOpeningFriday(): ?string;
+
+    public function getOpeningSaturday(): ?string;
+
+    public function getOpeningSunday(): ?string;
+
+    public function getMaxWeight(): ?float;
 }

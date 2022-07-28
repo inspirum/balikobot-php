@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Package;
 
-use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Model\BasePerCarrierCollection;
 use function array_map;
 
@@ -14,14 +13,14 @@ use function array_map;
 class PackageCollection extends BasePerCarrierCollection
 {
     /**
-     * @param array<\Inspirum\Balikobot\Model\Package\Package> $packages
+     * @param array<\Inspirum\Balikobot\Model\Package\Package> $items
      */
     public function __construct(
-        ?Carrier $carrier = null,
-        array $packages = [],
+        ?string $carrier = null,
+        array $items = [],
         private ?string $labelsUrl = null,
     ) {
-        parent::__construct($carrier, $packages);
+        parent::__construct($carrier, $items);
     }
 
     /**
@@ -29,7 +28,7 @@ class PackageCollection extends BasePerCarrierCollection
      */
     public function getPackageIds(): array
     {
-        return array_map(static fn(Package $package) => $package->packageId, $this->items);
+        return array_map(static fn(Package $package) => $package->getPackageId(), $this->items);
     }
 
     public function getLabelsUrl(): ?string

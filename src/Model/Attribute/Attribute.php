@@ -4,27 +4,16 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Attribute;
 
-use Inspirum\Arrayable\BaseModel;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-final class Attribute extends BaseModel
+interface Attribute extends Model
 {
-    public function __construct(
-        public readonly string $name,
-        public readonly string $dataType,
-        public readonly ?string $maxLength,
-    ) {
-    }
+    public function getName(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'name' => $this->name,
-            'dataType' => $this->dataType,
-            'maxLength' => $this->maxLength,
-        ];
-    }
+    public function getDataType(): string;
+
+    public function getMaxLength(): ?string;
 }

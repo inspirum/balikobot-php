@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Package;
 
-use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Client\Response\Validator;
 use function count;
 
@@ -16,7 +15,7 @@ final class DefaultPackageFactory implements PackageFactory
     }
 
     /** @inheritDoc */
-    public function create(Carrier $carrier, array $data): Package
+    public function create(string $carrier, array $data): Package
     {
         return new Package(
             $carrier,
@@ -33,7 +32,7 @@ final class DefaultPackageFactory implements PackageFactory
     }
 
     /** @inheritDoc */
-    public function createCollection(Carrier $carrier, ?array $packages, array $data): PackageCollection
+    public function createCollection(string $carrier, ?array $packages, array $data): PackageCollection
     {
         $packagesResponse = $data['packages'] ?? [];
         if ($packages !== null) {

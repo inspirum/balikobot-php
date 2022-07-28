@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Status;
 
 use DateTimeImmutable;
-use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Client\Response\Validator;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Throwable;
@@ -24,10 +23,10 @@ final class DefaultStatusFactory implements StatusFactory
     }
 
     /** @inheritDoc */
-    public function create(Carrier $carrier, string $carrierId, array $data, array $response = []): Status
+    public function create(string $carrier, string $carrierId, array $data, array $response = []): Status
     {
         try {
-            return new Status(
+            return new DefaultStatus(
                 $carrier,
                 $carrierId,
                 (float) ($data['status_id_v2'] ?? $data['status_id']),
@@ -42,12 +41,12 @@ final class DefaultStatusFactory implements StatusFactory
     }
 
     /** @inheritDoc */
-    public function createLastStatus(Carrier $carrier, array $data, array $response = []): Status
+    public function createLastStatus(string $carrier, array $data, array $response = []): Status
     {
         $this->validator->validateResponseStatus($data, $response);
 
         try {
-            return new Status(
+            return new DefaultStatus(
                 $carrier,
                 (string) $data['carrier_id'],
                 (float) $data['status_id'],
@@ -62,12 +61,12 @@ final class DefaultStatusFactory implements StatusFactory
     }
 
     /** @inheritDoc */
-    public function createCollection(Carrier $carrier, array $carrierIds, array $data): StatusesCollection
+    public function createCollection(string $carrier, array $carrierIds, array $data): StatusesCollection
     {
         $packages = $data['packages'] ?? [];
         $this->validator->validateIndexes($packages, count($carrierIds));
 
-        $statuses = new StatusesCollection($carrier, array_map(
+        $statuses = new DefaultStatusesCollection($carrier, array_map(
             fn(array $status): Statuses => $this->createStatuses($carrier, $status, $data),
             $packages,
         ));
@@ -81,13 +80,13 @@ final class DefaultStatusFactory implements StatusFactory
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    private function createStatuses(Carrier $carrier, array $data, array $response = []): Statuses
+    private function createStatuses(string $carrier, array $data, array $response = []): Statuses
     {
         $this->validator->validateResponseStatus($data, $response);
         assert(is_string($data['carrier_id']));
         assert(is_array($data['states'] ?? []));
 
-        return new Statuses(
+        return new DefaultStatuses(
             $carrier,
             (string) $data['carrier_id'],
             array_map(
@@ -98,12 +97,12 @@ final class DefaultStatusFactory implements StatusFactory
     }
 
     /** @inheritDoc */
-    public function createLastStatusCollection(Carrier $carrier, array $carrierIds, array $data): StatusCollection
+    public function createLastStatusCollection(string $carrier, array $carrierIds, array $data): StatusCollection
     {
         $packages = $data['packages'] ?? [];
         $this->validator->validateIndexes($packages, count($carrierIds));
 
-        $statuses = new StatusCollection($carrier, array_map(
+        $statuses = new DefaultStatusCollection($carrier, array_map(
             fn(array $status): Status => $this->createLastStatus($carrier, $status, $data),
             $packages,
         ));

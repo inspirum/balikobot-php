@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\ManipulationUnit;
 
-use Inspirum\Balikobot\Client\Request\Carrier;
-
 interface ManipulationUnitFactory
 {
     /**
@@ -16,5 +14,5 @@ interface ManipulationUnitFactory
     /**
      * @param array<string,mixed> $data
      */
-    public function createCollection(Carrier $carrierType, array $data): ManipulationUnitCollection;
+    public function createCollection(string $carrier, array $data): ManipulationUnitCollection;
 }

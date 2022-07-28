@@ -4,27 +4,16 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\TransportCost;
 
-use Inspirum\Arrayable\BaseModel;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-class TransportCostPart extends BaseModel
+interface TransportCostPart extends Model
 {
-    public function __construct(
-        private string $name,
-        private float $cost,
-        private string $currencyCode,
-    ) {
-    }
+    public function getName(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'name'         => $this->name,
-            'cost'         => $this->cost,
-            'currencyCode' => $this->currencyCode,
-        ];
-    }
+    public function getCost(): float;
+
+    public function getCurrencyCode(): string;
 }

@@ -4,25 +4,14 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\ManipulationUnit;
 
-use Inspirum\Arrayable\BaseModel;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-final class ManipulationUnit extends BaseModel
+interface ManipulationUnit extends Model
 {
-    public function __construct(
-        public readonly string $code,
-        public readonly string $name,
-    ) {
-    }
+    public function getCode(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'code' => $this->code,
-            'name' => $this->name,
-        ];
-    }
+    public function getName(): string;
 }

@@ -4,11 +4,15 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Method;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\Collection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\Method\Method>
+ * @extends \Inspirum\Arrayable\Collection<string,mixed,int,\Inspirum\Balikobot\Model\Method\Method>
  */
-final class MethodCollection extends BaseCollection
+interface MethodCollection extends Collection
 {
+    /**
+     * @return array<int,\Inspirum\Balikobot\Model\Method\Method>
+     */
+    public function getMethods(): array;
 }

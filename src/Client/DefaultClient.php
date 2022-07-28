@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Client;
 
 use GuzzleHttp\Psr7\InflateStream;
-use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Client\Request\Method;
 use Inspirum\Balikobot\Client\Request\Version;
 use Inspirum\Balikobot\Client\Response\Validator;
@@ -30,14 +29,14 @@ final class DefaultClient implements Client
     /** @inheritDoc */
     public function call(
         Version $version,
-        ?Carrier $carrier,
+        ?string $carrier,
         Method $request,
         array $data = [],
         ?string $path = null,
         bool $shouldHaveStatus = true,
         bool $gzip = false,
     ): array {
-        $url = $this->resolveUrl($version->getValue(), $carrier?->getValue(), $request->getValue(), $path, $gzip);
+        $url = $this->resolveUrl($version->getValue(), $carrier, $request->getValue(), $path, $gzip);
 
         $response = $this->requester->request($url, $data);
 

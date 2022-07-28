@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Attribute;
 
-use Inspirum\Balikobot\Client\Request\Carrier;
-
 interface AttributeFactory
 {
     /**
@@ -16,5 +14,5 @@ interface AttributeFactory
     /**
      * @param array<string,mixed> $data
      */
-    public function createCollection(Carrier $carrier, array $data): AttributeCollection;
+    public function createCollection(string $carrier, array $data): AttributeCollection;
 }

@@ -4,25 +4,14 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Changelog;
 
-use Inspirum\Arrayable\BaseModel;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,string>
+ * @extends \Inspirum\Arrayable\Model<string,string>
  */
-final class ChangelogStatus extends BaseModel
+interface ChangelogStatus extends Model
 {
-    public function __construct(
-        public readonly string $name,
-        public readonly string $description,
-    ) {
-    }
+    public function getName(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'name'        => $this->name,
-            'description' => $this->description,
-        ];
-    }
+    public function getDescription(): string;
 }

@@ -13,7 +13,7 @@ final class DefaultMethodFactory implements MethodFactory
      */
     public function create(array $data): Method
     {
-        return new Method($data['method']);
+        return new DefaultMethod($data['method']);
     }
 
     /**
@@ -21,6 +21,6 @@ final class DefaultMethodFactory implements MethodFactory
      */
     public function createCollection(array $data): MethodCollection
     {
-        return new MethodCollection(array_map(fn(array $method): Method => $this->create($method), $data));
+        return new DefaultMethodCollection(array_map(fn(array $method): Method => $this->create($method), $data));
     }
 }

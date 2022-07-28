@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Client\DefaultClient;
-use Inspirum\Balikobot\Client\Request\Carrier;
 use Inspirum\Balikobot\Client\Request\Method;
 use Inspirum\Balikobot\Client\Request\Version;
 use Inspirum\Balikobot\Client\Response\Validator;
-use Inspirum\Balikobot\Definitions\CarrierType;
-use Inspirum\Balikobot\Definitions\Request;
+use Inspirum\Balikobot\Definitions\Carrier;
+use Inspirum\Balikobot\Definitions\RequestType;
 use Inspirum\Balikobot\Definitions\VersionType;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Exception\Exception;
@@ -30,7 +29,7 @@ final class DefaultClientTest extends BaseTestCase
      */
     public function testRequest(
         Version $version,
-        ?Carrier $carrier,
+        ?string $carrier,
         Method $request,
         array $data,
         ?string $path,
@@ -48,8 +47,8 @@ final class DefaultClientTest extends BaseTestCase
     {
         yield 'v2v1' => [
             'version' => VersionType::V2V1,
-            'carrier' => CarrierType::CP,
-            'request' => Request::ADD,
+            'carrier' => Carrier::CP,
+            'request' => RequestType::ADD,
             'data'    => [
                 [
                     'eid'   => 1,
@@ -63,8 +62,8 @@ final class DefaultClientTest extends BaseTestCase
 
         yield 'v2v2' => [
             'version' => VersionType::V2V2,
-            'carrier' => CarrierType::ZASILKOVNA,
-            'request' => Request::SERVICES,
+            'carrier' => Carrier::ZASILKOVNA,
+            'request' => RequestType::SERVICES,
             'data'    => [],
             'path'    => null,
             'url' =>  'https://apiv2.balikobot.cz/v2/zasilkovna/services',
@@ -73,16 +72,16 @@ final class DefaultClientTest extends BaseTestCase
         yield 'carrier_null' => [
             'version' => VersionType::V2V1,
             'carrier' => null,
-            'request' => Request::INFO_CARRIERS,
+            'request' => RequestType::INFO_CARRIERS,
             'data'    => [],
-            'path'    => CarrierType::CP->getValue(),
+            'path'    => Carrier::CP,
             'url' =>  'https://apiv2.balikobot.cz/info/carriers/cp',
         ];
 
         yield 'path' => [
             'version' => VersionType::V2V1,
-            'carrier' => CarrierType::PPL,
-            'request' => Request::ZIP_CODES,
+            'carrier' => Carrier::PPL,
+            'request' => RequestType::ZIP_CODES,
             'data'    => [],
             'path'    => '1/CZ',
             'url' =>   'https://apiv2.balikobot.cz/ppl/zipcodes/1/CZ',
@@ -90,8 +89,8 @@ final class DefaultClientTest extends BaseTestCase
 
         yield 'v1v1' => [
             'version' => VersionType::V1V1,
-            'carrier' => CarrierType::TOPTRANS,
-            'request' => Request::ADD_SERVICE_OPTIONS,
+            'carrier' => Carrier::TOPTRANS,
+            'request' => RequestType::ADD_SERVICE_OPTIONS,
             'data'    => [],
             'path'    => null,
             'url' =>  'https://api.balikobot.cz/toptrans/addserviceoptions',
@@ -118,7 +117,7 @@ final class DefaultClientTest extends BaseTestCase
 
         $client = $this->newDefaultClient($statusCode, $response);
 
-        $actualResponse = $client->call(VersionType::V1V1, CarrierType::CP, Request::ADD, shouldHaveStatus: $shouldHaveStatus, gzip: $gzip);
+        $actualResponse = $client->call(VersionType::V1V1, Carrier::CP, RequestType::ADD, shouldHaveStatus: $shouldHaveStatus, gzip: $gzip);
 
         if ($result === true) {
             self::assertSame($response, $actualResponse);
@@ -233,7 +232,7 @@ final class DefaultClientTest extends BaseTestCase
         $client = $this->newDefaultClient($statusCode, $response);
 
         try {
-            $client->call(VersionType::V1V1, CarrierType::CP, Request::ADD);
+            $client->call(VersionType::V1V1, Carrier::CP, RequestType::ADD);
         } catch (Exception $exception) {
             self::assertInstanceOf($result::class, $exception);
             self::assertSame($result->getStatusCode(), $exception->getStatusCode());

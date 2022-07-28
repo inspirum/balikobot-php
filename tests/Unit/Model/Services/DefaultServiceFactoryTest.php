@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\Service;
 
-use Inspirum\Balikobot\Model\Carrier\Carrier;
-use Inspirum\Balikobot\Model\Country\CodCountry;
+use Inspirum\Balikobot\Model\Country\DefaultCodCountry;
 use Inspirum\Balikobot\Model\Country\DefaultCountryFactory;
+use Inspirum\Balikobot\Model\Service\DefaultService;
+use Inspirum\Balikobot\Model\Service\DefaultServiceCollection;
 use Inspirum\Balikobot\Model\Service\DefaultServiceFactory;
-use Inspirum\Balikobot\Model\Service\Service;
+use Inspirum\Balikobot\Model\Service\DefaultServiceOption;
+use Inspirum\Balikobot\Model\Service\DefaultServiceOptionCollection;
 use Inspirum\Balikobot\Model\Service\ServiceCollection;
-use Inspirum\Balikobot\Model\Service\ServiceOption;
-use Inspirum\Balikobot\Model\Service\ServiceOptionCollection;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
 
@@ -22,7 +22,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
      *
      * @dataProvider providesTestCreateCollection
      */
-    public function testCreateCollection(Carrier $carrier, array $data, ServiceCollection|Throwable $result): void
+    public function testCreateCollection(string $carrier, array $data, ServiceCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -42,7 +42,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
     public function providesTestCreateCollection(): iterable
     {
         yield 'services' => [
-            'carrier' => Carrier::from('cp'),
+            'carrier' => 'cp',
             'data'    => [
                 'status'        => 200,
                 'service_types' => [
@@ -56,14 +56,14 @@ final class DefaultServiceFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new ServiceCollection(
-                Carrier::from('cp'),
+            'result'  => new DefaultServiceCollection(
+                'cp',
                 [
-                    new Service(
+                    new DefaultService(
                         'NP',
                         'NP - Balík Na poštu',
                     ),
-                    new Service(
+                    new DefaultService(
                         'RR',
                         'RR - Doporučená zásilka Ekonomická',
                     ),
@@ -72,7 +72,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
         ];
 
         yield 'activated_services' => [
-            'carrier' => Carrier::from('ppl'),
+            'carrier' => 'ppl',
             'data'    => [
                 'status'        => 200,
                 'active_parcel' => true,
@@ -88,14 +88,14 @@ final class DefaultServiceFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new ServiceCollection(
-                Carrier::from('ppl'),
+            'result'  => new DefaultServiceCollection(
+                'ppl',
                 [
-                    new Service(
+                    new DefaultService(
                         '2',
                         'PPL Parcel Connect',
                     ),
-                    new Service(
+                    new DefaultService(
                         '3',
                         'PPL Parcel CZ Dopolední balík',
                     ),
@@ -106,7 +106,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
         ];
 
         yield 'cod_countries' => [
-            'carrier' => Carrier::from('cp'),
+            'carrier' => 'cp',
             'data'    => [
                 'status'        => 200,
                 'service_types' => [
@@ -138,35 +138,35 @@ final class DefaultServiceFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new ServiceCollection(
-                Carrier::from('cp'),
+            'result'  => new DefaultServiceCollection(
+                'cp',
                 [
-                    new Service(
+                    new DefaultService(
                         'DR',
                         null,
                         codCountries: [
-                            new CodCountry(
+                            new DefaultCodCountry(
                                 'CZ',
                                 'CZK',
                                 10000,
                             ),
                         ],
                     ),
-                    new Service(
+                    new DefaultService(
                         'VZP',
                         null,
                         codCountries: [
-                            new CodCountry(
+                            new DefaultCodCountry(
                                 'UA',
                                 'UAH',
                                 36000,
                             ),
-                            new CodCountry(
+                            new DefaultCodCountry(
                                 'LV',
                                 'USD',
                                 2000,
                             ),
-                            new CodCountry(
+                            new DefaultCodCountry(
                                 'HU',
                                 'EUR',
                                 2500,
@@ -178,7 +178,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
         ];
 
         yield 'countries' => [
-            'carrier' => Carrier::from('ppl'),
+            'carrier' => 'ppl',
             'data'    => [
                 'status'        => 200,
                 'service_types' => [
@@ -199,10 +199,10 @@ final class DefaultServiceFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new ServiceCollection(
-                Carrier::from('ppl'),
+            'result'  => new DefaultServiceCollection(
+                'ppl',
                 [
-                    new Service(
+                    new DefaultService(
                         '1',
                         null,
                         countries: [
@@ -211,7 +211,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
                             'DE',
                         ],
                     ),
-                    new Service(
+                    new DefaultService(
                         '4',
                         null,
                         countries:[
@@ -224,7 +224,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
         ];
 
         yield 'service_options' => [
-            'carrier' => Carrier::from('cp'),
+            'carrier' => 'cp',
             'data'    => [
                 'status'        => 200,
                 'service_types' => [
@@ -258,32 +258,32 @@ final class DefaultServiceFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new ServiceCollection(
-                Carrier::from('cp'),
+            'result'  => new DefaultServiceCollection(
+                'cp',
                 [
-                    new Service(
+                    new DefaultService(
                         'CE',
                         'CE - Obchodní balík do zahraničí',
-                        options: new ServiceOptionCollection([
-                            new ServiceOption(
+                        options: new DefaultServiceOptionCollection([
+                            new DefaultServiceOption(
                                 '10',
                                 'Neskladně',
                             ),
-                            new ServiceOption(
+                            new DefaultServiceOption(
                                 '44',
                                 'Zboží s VDD (pouze pro zásilky do ciziny s celní zónou)',
                             ),
                         ]),
                     ),
-                    new Service(
+                    new DefaultService(
                         'CV',
                         '',
-                        options: new ServiceOptionCollection([
-                            new ServiceOption(
+                        options: new DefaultServiceOptionCollection([
+                            new DefaultServiceOption(
                                 '3',
                                 'Dodejka',
                             ),
-                            new ServiceOption(
+                            new DefaultServiceOption(
                                 '4',
                                 'Dobírka Pk A/MZ dobírka',
                             ),

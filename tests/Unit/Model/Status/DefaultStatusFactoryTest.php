@@ -7,11 +7,13 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Status;
 use DateTimeImmutable;
 use Inspirum\Balikobot\Client\Response\Validator;
 use Inspirum\Balikobot\Exception\BadRequestException;
-use Inspirum\Balikobot\Model\Carrier\Carrier;
+use Inspirum\Balikobot\Model\Status\DefaultStatus;
+use Inspirum\Balikobot\Model\Status\DefaultStatusCollection;
 use Inspirum\Balikobot\Model\Status\DefaultStatusFactory;
+use Inspirum\Balikobot\Model\Status\DefaultStatuses;
+use Inspirum\Balikobot\Model\Status\DefaultStatusesCollection;
 use Inspirum\Balikobot\Model\Status\Status;
 use Inspirum\Balikobot\Model\Status\StatusCollection;
-use Inspirum\Balikobot\Model\Status\Statuses;
 use Inspirum\Balikobot\Model\Status\StatusesCollection;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
@@ -24,7 +26,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
      *
      * @dataProvider providesTestCreateCollection
      */
-    public function testCreateCollection(Carrier $carrier, array $carrierId, array $data, StatusesCollection|Throwable $result): void
+    public function testCreateCollection(string $carrier, array $carrierId, array $data, StatusesCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -44,7 +46,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     public function providesTestCreateCollection(): iterable
     {
         yield 'missing_data_error' => [
-            'carrier'    => Carrier::from('cp'),
+            'carrier'    => 'cp',
             'carrierIds' => ['1', '2'],
             'data'       => [
                 'status' => 200,
@@ -54,7 +56,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'valid' => [
-            'carrier'    => Carrier::from('cp'),
+            'carrier'    => 'cp',
             'carrierIds' => ['3', '4', '5'],
             'data'       => [
                 'packages' => [
@@ -110,10 +112,10 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'     => new StatusesCollection(Carrier::from('cp'), [
-                new Statuses(Carrier::from('cp'), '3', [
-                    new Status(
-                        Carrier::from('cp'),
+            'result'     => new DefaultStatusesCollection('cp', [
+                new DefaultStatuses('cp', '3', [
+                    new DefaultStatus(
+                        'cp',
                         '3',
                         2.2,
                         'Zásilka je v přepravě.',
@@ -121,8 +123,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                         'event',
                         new DateTimeImmutable('2018-11-07 14:15:01'),
                     ),
-                    new Status(
-                        Carrier::from('cp'),
+                    new DefaultStatus(
+                        'cp',
                         '3',
                         1.2,
                         'Zásilka byla doručena příjemci.',
@@ -131,9 +133,9 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                         new DateTimeImmutable('2018-11-08 18:00:00'),
                     ),
                 ]),
-                new Statuses(Carrier::from('cp'), '4', [
-                    new Status(
-                        Carrier::from('cp'),
+                new DefaultStatuses('cp', '4', [
+                    new DefaultStatus(
+                        'cp',
                         '4',
                         2.2,
                         'Zásilka je v přepravě.',
@@ -142,9 +144,9 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                         new DateTimeImmutable('2018-11-07 14:15:01'),
                     ),
                 ]),
-                new Statuses(Carrier::from('cp'), '5', [
-                    new Status(
-                        Carrier::from('cp'),
+                new DefaultStatuses('cp', '5', [
+                    new DefaultStatus(
+                        'cp',
                         '5',
                         1.2,
                         'Zásilka byla doručena příjemci.',
@@ -157,7 +159,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_index_error' => [
-            'carrier'    => Carrier::from('cp'),
+            'carrier'    => 'cp',
             'carrierIds' => ['3', '4', '5'],
             'response'   => [
                 'packages' => [
@@ -218,7 +220,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_index_missing_error' => [
-            'carrier'    => Carrier::from('ppl'),
+            'carrier'    => 'ppl',
             'carrierIds' => ['1', '3'],
             'response'   => [
                 'status'   => 200,
@@ -244,7 +246,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_status_error' => [
-            'carrier'    => Carrier::from('ppl'),
+            'carrier'    => 'ppl',
             'carrierIds' => ['1', '3'],
             'response'   => [
                 'status'   => 200,
@@ -275,7 +277,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_status_data_error' => [
-            'carrier'    => Carrier::from('cp'),
+            'carrier'    => 'cp',
             'carrierIds' => ['1', '2'],
             'response'   => [
                 'status'   => 200,
@@ -319,7 +321,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
      *
      * @dataProvider providesTestCreateLastStatusCollection
      */
-    public function testCreateLastStatusCollection(Carrier $carrier, array $carrierId, array $data, StatusCollection|Throwable $result): void
+    public function testCreateLastStatusCollection(string $carrier, array $carrierId, array $data, StatusCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -339,7 +341,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     public function providesTestCreateLastStatusCollection(): iterable
     {
         yield 'valid' => [
-            'carrier'    => Carrier::from('cp'),
+            'carrier'    => 'cp',
             'carrierIds' => ['1', '2'],
             'response'   => [
                 'packages' => [
@@ -357,11 +359,11 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'     => new StatusCollection(
-                Carrier::from('cp'),
+            'result'     => new DefaultStatusCollection(
+                'cp',
                 [
-                    new Status(
-                        Carrier::from('cp'),
+                    new DefaultStatus(
+                        'cp',
                         '1',
                         1.2,
                         'Zásilka byla doručena příjemci.',
@@ -369,8 +371,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                         'event',
                         null,
                     ),
-                    new Status(
-                        Carrier::from('cp'),
+                    new DefaultStatus(
+                        'cp',
                         '2',
                         2.2,
                         'Zásilka je v přepravě.',
@@ -383,7 +385,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'missing_data_error' => [
-            'carrier'    => Carrier::from('cp'),
+            'carrier'    => 'cp',
             'carrierIds' => ['1', '2'],
             'response'   => [
                 'status' => 200,
@@ -392,7 +394,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_index_error' => [
-            'carrier'    => Carrier::from('cp'),
+            'carrier'    => 'cp',
             'carrierIds' => ['3', '4'],
             'response'   => [
                 'packages' => [
@@ -414,7 +416,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_index_missing_error' => [
-            'carrier'    => Carrier::from('ppl'),
+            'carrier'    => 'ppl',
             'carrierIds' => ['1', '3'],
             'response'   => [
                 'status'   => 200,
@@ -431,7 +433,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_status_error' => [
-            'carrier'    => Carrier::from('ppl'),
+            'carrier'    => 'ppl',
             'carrierIds' => ['1', '3'],
             'response'   => [
                 'status'   => 200,
@@ -457,7 +459,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
      *
      * @dataProvider providesTestCreate
      */
-    public function testCreate(Carrier $carrier, string $carrierId, array $data, Status|Throwable $result): void
+    public function testCreate(string $carrier, string $carrierId, array $data, Status|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -477,7 +479,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     public function providesTestCreate(): iterable
     {
         yield 'v2' => [
-            'carrier' => Carrier::from('cp'),
+            'carrier' => 'cp',
             'carrierId' => '1',
             'data'   => [
                 'date'          => '2018-11-07 14:15:01',
@@ -486,8 +488,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                 'status_id'     => 2.1,
                 'type'          => 'notification',
             ],
-            'result' => new Status(
-                Carrier::from('cp'),
+            'result' => new DefaultStatus(
+                'cp',
                 '1',
                 2.1,
                 'Zásilka byla doručena příjemci.',
@@ -498,14 +500,14 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'missing_data' => [
-            'carrier' => Carrier::from('cp'),
+            'carrier' => 'cp',
             'carrierId' => '2',
             'data'   => [
                 'name'      => 'Doručení',
                 'status_id' => 2,
             ],
-            'result' => new Status(
-                Carrier::from('cp'),
+            'result' => new DefaultStatus(
+                'cp',
                 '2',
                 2.0,
                 'Doručení',
@@ -516,7 +518,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'v3' => [
-            'carrier' => Carrier::from('cp'),
+            'carrier' => 'cp',
             'carrierId' => '3',
             'data'   => [
                 'date'           => '2018-11-08 14:18:01',
@@ -526,8 +528,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                 'status_id_v2'   => 2.3,
                 'type'           => 'event',
             ],
-            'result' => new Status(
-                Carrier::from('cp'),
+            'result' => new DefaultStatus(
+                'cp',
                 '3',
                 2.3,
                 'Zásilka byla doručena příjemci.',
@@ -543,7 +545,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
      *
      * @dataProvider providesTestCreateLastStatus
      */
-    public function testCreateLastStatus(Carrier $carrier, array $data, Status|Throwable $result): void
+    public function testCreateLastStatus(string $carrier, array $data, Status|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -563,15 +565,15 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     public function providesTestCreateLastStatus(): iterable
     {
         yield 'valid' => [
-            'carrier' => Carrier::from('cp'),
+            'carrier' => 'cp',
             'data'   => [
                 'carrier_id'  => '1',
                 'status'      => 200,
                 'status_id'   => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
-            'result' => new Status(
-                Carrier::from('cp'),
+            'result' => new DefaultStatus(
+                'cp',
                 '1',
                 1.2,
                 'Zásilka byla doručena příjemci.',
@@ -582,7 +584,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'invalid' => [
-            'carrier' => Carrier::from('cp'),
+            'carrier' => 'cp',
             'data'   => [
                 'status' => 200,
             ],

@@ -4,37 +4,26 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\AdrUnit;
 
-use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\Carrier;
+use Inspirum\Arrayable\Model;
 
 /**
- * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
+ * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-class AdrUnit extends BaseModel
+interface AdrUnit extends Model
 {
-    public function __construct(
-        public readonly Carrier $carrier,
-        public readonly string $id,
-        public readonly string $code,
-        public readonly string $name,
-        public readonly string $class,
-        public readonly ?string $packaging,
-        public readonly ?string $tunnelCode,
-        public readonly string $transportCategory
-    ) {
-    }
+    public function getCarrier(): string;
 
-    /** @inheritDoc */
-    public function __toArray(): array
-    {
-        return [
-            'id' => $this->id,
-            'code' => $this->code,
-            'name' => $this->name,
-            'class' => $this->class,
-            'packaging' => $this->packaging,
-            'tunnelCode' => $this->tunnelCode,
-            'transportCategory' => $this->transportCategory,
-        ];
-    }
+    public function getId(): string;
+
+    public function getCode(): string;
+
+    public function getName(): string;
+
+    public function getClass(): string;
+
+    public function getPackaging(): ?string;
+
+    public function getTunnelCode(): ?string;
+
+    public function getTransportCategory(): string;
 }

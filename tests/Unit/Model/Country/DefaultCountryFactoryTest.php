@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\Country;
 
-use Inspirum\Balikobot\Model\Country\Country;
 use Inspirum\Balikobot\Model\Country\CountryCollection;
+use Inspirum\Balikobot\Model\Country\DefaultCountry;
+use Inspirum\Balikobot\Model\Country\DefaultCountryCollection;
 use Inspirum\Balikobot\Model\Country\DefaultCountryFactory;
 use Inspirum\Balikobot\Tests\BaseTestCase;
 use Throwable;
@@ -61,9 +62,9 @@ final class DefaultCountryFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new CountryCollection(
+            'result'  => new DefaultCountryCollection(
                 [
-                    new Country(
+                    new DefaultCountry(
                         [
                             'cs' => 'Andorra',
                             'en' => 'Andorra',
@@ -75,7 +76,7 @@ final class DefaultCountryFactoryTest extends BaseTestCase
                         ],
                         'Europe',
                     ),
-                    new Country(
+                    new DefaultCountry(
                         [
                             'cs' => 'Portoriko',
                             'en' => 'Puerto Rico',
