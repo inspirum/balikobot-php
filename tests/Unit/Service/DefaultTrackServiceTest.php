@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Service;
 
 use Inspirum\Balikobot\Client\Client;
+use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\RequestType;
 use Inspirum\Balikobot\Definitions\VersionType;
 use Inspirum\Balikobot\Model\Package\Package;
@@ -21,7 +22,7 @@ final class DefaultTrackServiceTest extends BaseServiceTest
 {
     public function testTrackPackages(): void
     {
-        $carrier        = 'cp';
+        $carrier        = Carrier::CP;
         $carrierIds     = ['1', '2'];
         $response       = $this->mockClientResponse();
         $expectedResult = $this->createMock(StatusesCollection::class);
@@ -52,7 +53,7 @@ final class DefaultTrackServiceTest extends BaseServiceTest
 
     public function testTrackPackage(): void
     {
-        $carrier                  = 'cp';
+        $carrier                  =  Carrier::CP;
         $carrierId                = '3';
         $response                 = $this->mockClientResponse();
         $expectedResult           = $this->createMock(Statuses::class);
@@ -85,7 +86,7 @@ final class DefaultTrackServiceTest extends BaseServiceTest
 
     public function testTrackPackagesLastStatuses(): void
     {
-        $carrier        = 'cp';
+        $carrier        =  Carrier::CP;
         $carrierIds     = ['1', '2'];
         $response       = $this->mockClientResponse();
         $expectedResult = $this->createMock(StatusCollection::class);
@@ -116,7 +117,7 @@ final class DefaultTrackServiceTest extends BaseServiceTest
 
     public function testTrackPackageLastStatus(): void
     {
-        $carrier                  = 'cp';
+        $carrier                  =  Carrier::CP;
         $carrierId                = '2';
         $response                 = $this->mockClientResponse();
         $expectedResult           = $this->createMock(Status::class);

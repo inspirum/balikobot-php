@@ -50,7 +50,7 @@ final class DefaultInfoServiceTest extends BaseServiceTest
 
     public function testGetCarrier(): void
     {
-        $carrier        = 'zasilkovna';
+        $carrier        = \Inspirum\Balikobot\Definitions\Carrier::ZASILKOVNA;
         $response       = $this->mockClientResponse();
         $expectedResult = $this->createMock(Carrier::class);
 

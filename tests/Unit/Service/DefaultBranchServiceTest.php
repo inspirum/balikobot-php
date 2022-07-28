@@ -6,8 +6,10 @@ namespace Inspirum\Balikobot\Tests\Unit\Service;
 
 use ArrayIterator;
 use Inspirum\Balikobot\Client\Client;
+use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Country;
 use Inspirum\Balikobot\Definitions\RequestType;
+use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\VersionType;
 use Inspirum\Balikobot\Model\Branch\Branch;
 use Inspirum\Balikobot\Model\Branch\BranchFactory;
@@ -20,32 +22,33 @@ use function array_merge;
 use function array_values;
 use function count;
 use function iterator_to_array;
+use function sprintf;
 
 final class DefaultBranchServiceTest extends BaseServiceTest
 {
     public function testGetBranches(): void
     {
-        $carriers     = [
-            'cp',
-            'zasilkovna',
+        $carriers  = [
+            Carrier::CP,
+            Carrier::ZASILKOVNA,
         ];
-        $serviceTypes = [
+        $services  = [
             [
-                'NP',
-                'RR',
+                ServiceType::CP_NP,
+                ServiceType::CP_RR,
             ],
             [
-                'VMCZ',
-                'VMHU',
+                ServiceType::ZASILKOVNA_VMCZ,
+                ServiceType::ZASILKOVNA_VMHU,
             ],
         ];
-        $responses    = [
+        $responses = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $items        = [
+        $items     = [
             [
                 $this->mockBranch(),
             ],
@@ -60,14 +63,14 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ],
         ];
 
-        $service = $this->newDefaultBranchService(
+        $branchService = $this->newDefaultBranchService(
             client: $this->mockClientMultipleCalls([
                 [
                     VersionType::V2V1,
                     $carriers[0],
                     RequestType::BRANCHES,
                     [],
-                    'service/NP',
+                    sprintf('service/%s', $services[0][0]),
                     true,
                     true,
                 ],
@@ -76,7 +79,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carriers[0],
                     RequestType::BRANCHES,
                     [],
-                    'service/RR',
+                    sprintf('service/%s', $services[0][1]),
                     true,
                     true,
                 ],
@@ -85,7 +88,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carriers[1],
                     RequestType::FULL_BRANCHES,
                     [],
-                    'service/VMCZ',
+                    sprintf('service/%s', $services[1][0]),
                     true,
                     true,
                 ],
@@ -94,18 +97,18 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carriers[1],
                     RequestType::FULL_BRANCHES,
                     [],
-                    'service/VMHU',
+                    sprintf('service/%s', $services[1][1]),
                     true,
                     true,
                 ],
             ], $responses),
             carrierProvider: $this->mockCarrierProvider($carriers),
-            serviceProvider: $this->mockServiceProvider($carriers, $serviceTypes),
+            serviceProvider: $this->mockServiceProvider($carriers, $services),
             branchFactory: $this->mockBranchFactory([
-                [$carriers[0], $serviceTypes[0][0], $responses[0]],
-                [$carriers[0], $serviceTypes[0][1], $responses[1]],
-                [$carriers[1], $serviceTypes[1][0], $responses[2]],
-                [$carriers[1], $serviceTypes[1][1], $responses[3]],
+                [$carriers[0], $services[0][0], $responses[0]],
+                [$carriers[0], $services[0][1], $responses[1]],
+                [$carriers[1], $services[1][0], $responses[2]],
+                [$carriers[1], $services[1][1], $responses[3]],
             ], [
                 new ArrayIterator($items[0]),
                 new ArrayIterator($items[1]),
@@ -113,10 +116,10 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                 new ArrayIterator($items[3]),
             ]),
             branchResolver: $this->mockBranchResolver([
-                [$carriers[0], $serviceTypes[0][0]],
-                [$carriers[0], $serviceTypes[0][1]],
-                [$carriers[1], $serviceTypes[1][0]],
-                [$carriers[1], $serviceTypes[1][1]],
+                [$carriers[0], $services[0][0]],
+                [$carriers[0], $services[0][1]],
+                [$carriers[1], $services[1][0]],
+                [$carriers[1], $services[1][1]],
             ], [
                 false,
                 false,
@@ -125,7 +128,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ]),
         );
 
-        $actualResult = $service->getBranches();
+        $actualResult = $branchService->getBranches();
 
         $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
 
@@ -134,25 +137,25 @@ final class DefaultBranchServiceTest extends BaseServiceTest
 
     public function testGetBranchesForCountries(): void
     {
-        $carriers     = [
-            'cp',
-            'zasilkovna',
+        $carriers  = [
+            Carrier::CP,
+            Carrier::ZASILKOVNA,
         ];
-        $serviceTypes = [
+        $services  = [
             [
-                'NP',
-                'RR',
+                ServiceType::CP_NP,
+                ServiceType::CP_RR,
             ],
             [
-                'VMCZ',
-                'VMHU',
+                ServiceType::ZASILKOVNA_VMCZ,
+                ServiceType::ZASILKOVNA_VMHU,
             ],
         ];
-        $countries    = [
+        $countries = [
             Country::CZECH_REPUBLIC,
             Country::HUNGARY,
         ];
-        $responses    = [
+        $responses = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
             $this->mockClientResponse(),
@@ -160,7 +163,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $items        = [
+        $items     = [
             [
                 $this->mockBranch(Country::CZECH_REPUBLIC),
             ],
@@ -185,14 +188,14 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ],
         ];
 
-        $service = $this->newDefaultBranchService(
+        $branchService = $this->newDefaultBranchService(
             client: $this->mockClientMultipleCalls([
                 [
                     VersionType::V2V1,
                     $carriers[0],
                     RequestType::BRANCHES,
                     [],
-                    'service/NP',
+                    sprintf('service/%s', $services[0][0]),
                     true,
                     true,
                 ],
@@ -201,7 +204,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carriers[0],
                     RequestType::BRANCHES,
                     [],
-                    'service/RR',
+                    sprintf('service/%s', $services[0][1]),
                     true,
                     true,
                 ],
@@ -210,7 +213,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carriers[1],
                     RequestType::FULL_BRANCHES,
                     [],
-                    'service/VMCZ/country/CZ',
+                    sprintf('service/%s/country/%s', $services[1][0], $countries[0]),
                     true,
                     true,
                 ],
@@ -219,7 +222,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carriers[1],
                     RequestType::FULL_BRANCHES,
                     [],
-                    'service/VMCZ/country/HU',
+                    sprintf('service/%s/country/%s', $services[1][0], $countries[1]),
                     true,
                     true,
                 ],
@@ -228,7 +231,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carriers[1],
                     RequestType::FULL_BRANCHES,
                     [],
-                    'service/VMHU/country/CZ',
+                    sprintf('service/%s/country/%s', $services[1][1], $countries[0]),
                     true,
                     true,
                 ],
@@ -237,20 +240,20 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carriers[1],
                     RequestType::FULL_BRANCHES,
                     [],
-                    'service/VMHU/country/HU',
+                    sprintf('service/%s/country/%s', $services[1][1], $countries[1]),
                     true,
                     true,
                 ],
             ], $responses),
             carrierProvider: $this->mockCarrierProvider($carriers),
-            serviceProvider: $this->mockServiceProvider($carriers, $serviceTypes),
+            serviceProvider: $this->mockServiceProvider($carriers, $services),
             branchFactory: $this->mockBranchFactory([
-                [$carriers[0], $serviceTypes[0][0], $responses[0]],
-                [$carriers[0], $serviceTypes[0][1], $responses[1]],
-                [$carriers[1], $serviceTypes[1][0], $responses[2]],
-                [$carriers[1], $serviceTypes[1][0], $responses[3]],
-                [$carriers[1], $serviceTypes[1][1], $responses[4]],
-                [$carriers[1], $serviceTypes[1][1], $responses[5]],
+                [$carriers[0], $services[0][0], $responses[0]],
+                [$carriers[0], $services[0][1], $responses[1]],
+                [$carriers[1], $services[1][0], $responses[2]],
+                [$carriers[1], $services[1][0], $responses[3]],
+                [$carriers[1], $services[1][1], $responses[4]],
+                [$carriers[1], $services[1][1], $responses[5]],
             ], [
                 new ArrayIterator($items[0]),
                 new ArrayIterator($items[1]),
@@ -260,12 +263,12 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                 new ArrayIterator($items[5]),
             ]),
             branchResolver: $this->mockBranchResolver([
-                [$carriers[0], $serviceTypes[0][0]],
-                [$carriers[0], $serviceTypes[0][1]],
-                [$carriers[1], $serviceTypes[1][0]],
-                [$carriers[1], $serviceTypes[1][0]],
-                [$carriers[1], $serviceTypes[1][1]],
-                [$carriers[1], $serviceTypes[1][1]],
+                [$carriers[0], $services[0][0]],
+                [$carriers[0], $services[0][1]],
+                [$carriers[1], $services[1][0]],
+                [$carriers[1], $services[1][0]],
+                [$carriers[1], $services[1][1]],
+                [$carriers[1], $services[1][1]],
             ], [
                 false,
                 false,
@@ -285,7 +288,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
 
         // array<int, array<int, array<string, mixed> >>,
         // array<int, array<int, array<string, mixed>|string>> given.
-        $actualResult = $service->getBranchesForCountries($countries);
+        $actualResult = $branchService->getBranchesForCountries($countries);
 
         unset($items[4][1]);
         unset($items[5][2]);
@@ -296,18 +299,18 @@ final class DefaultBranchServiceTest extends BaseServiceTest
 
     public function testGetBranchesForCarrier(): void
     {
-        $carrier      = 'cp';
-        $serviceTypes = [
-            'NP',
-            'RR',
-            'NB',
+        $carrier   = Carrier::CP;
+        $services  = [
+            ServiceType::CP_NP,
+            ServiceType::CP_RR,
+            ServiceType::CP_NB,
         ];
-        $responses    = [
+        $responses = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $items        = [
+        $items     = [
             [
                 $this->mockBranch(),
             ],
@@ -322,14 +325,14 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ],
         ];
 
-        $service = $this->newDefaultBranchService(
+        $branchService = $this->newDefaultBranchService(
             client: $this->mockClientMultipleCalls([
                 [
                     VersionType::V2V1,
                     $carrier,
                     RequestType::BRANCHES,
                     [],
-                    'service/NP',
+                    sprintf('service/%s', $services[0]),
                     true,
                     true,
                 ],
@@ -338,7 +341,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carrier,
                     RequestType::FULL_BRANCHES,
                     [],
-                    'service/RR',
+                    sprintf('service/%s', $services[1]),
                     true,
                     true,
                 ],
@@ -347,25 +350,25 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carrier,
                     RequestType::BRANCHES,
                     [],
-                    'service/NB',
+                    sprintf('service/%s', $services[2]),
                     true,
                     true,
                 ],
             ], $responses),
-            serviceProvider: $this->mockServiceProvider([$carrier], [$serviceTypes]),
+            serviceProvider: $this->mockServiceProvider([$carrier], [$services]),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $serviceTypes[0], $responses[0]],
-                [$carrier, $serviceTypes[1], $responses[1]],
-                [$carrier, $serviceTypes[2], $responses[2]],
+                [$carrier, $services[0], $responses[0]],
+                [$carrier, $services[1], $responses[1]],
+                [$carrier, $services[2], $responses[2]],
             ], [
                 new ArrayIterator($items[0]),
                 new ArrayIterator($items[1]),
                 new ArrayIterator($items[2]),
             ]),
             branchResolver: $this->mockBranchResolver([
-                [$carrier, $serviceTypes[0]],
-                [$carrier, $serviceTypes[1]],
-                [$carrier, $serviceTypes[2]],
+                [$carrier, $services[0]],
+                [$carrier, $services[1]],
+                [$carrier, $services[2]],
             ], [
                 false,
                 true,
@@ -373,7 +376,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ]),
         );
 
-        $actualResult = $service->getBranchesForCarrier($carrier);
+        $actualResult = $branchService->getBranchesForCarrier($carrier);
 
         $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
 
@@ -382,23 +385,23 @@ final class DefaultBranchServiceTest extends BaseServiceTest
 
     public function testGetBranchesForCarrierAndCountries(): void
     {
-        $carrier      = 'cp';
-        $serviceTypes = [
-            'NP',
-            'RR',
-            'NB',
+        $carrier   = Carrier::CP;
+        $services  = [
+            ServiceType::CP_NP,
+            ServiceType::CP_RR,
+            ServiceType::CP_NB,
         ];
-        $countries    = [
+        $countries = [
             Country::HUNGARY,
             Country::AUSTRIA,
         ];
-        $responses    = [
+        $responses = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $items        = [
+        $items     = [
             [
                 $this->mockBranch(Country::HUNGARY),
             ],
@@ -416,14 +419,14 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ],
         ];
 
-        $service = $this->newDefaultBranchService(
+        $branchService = $this->newDefaultBranchService(
             client: $this->mockClientMultipleCalls([
                 [
                     VersionType::V2V1,
                     $carrier,
                     RequestType::FULL_BRANCHES,
                     [],
-                    'service/NP',
+                    sprintf('service/%s', $services[0]),
                     true,
                     true,
                 ],
@@ -432,7 +435,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carrier,
                     RequestType::BRANCHES,
                     [],
-                    'service/RR/country/HU',
+                    sprintf('service/%s/country/%s', $services[1], $countries[0]),
                     true,
                     true,
                 ],
@@ -441,7 +444,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carrier,
                     RequestType::BRANCHES,
                     [],
-                    'service/RR/country/AT',
+                    sprintf('service/%s/country/%s', $services[1], $countries[1]),
                     true,
                     true,
                 ],
@@ -450,17 +453,17 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carrier,
                     RequestType::FULL_BRANCHES,
                     [],
-                    'service/NB',
+                    sprintf('service/%s', $services[2]),
                     true,
                     true,
                 ],
             ], $responses),
-            serviceProvider: $this->mockServiceProvider([$carrier], [$serviceTypes]),
+            serviceProvider: $this->mockServiceProvider([$carrier], [$services]),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $serviceTypes[0], $responses[0]],
-                [$carrier, $serviceTypes[1], $responses[1]],
-                [$carrier, $serviceTypes[1], $responses[2]],
-                [$carrier, $serviceTypes[2], $responses[3]],
+                [$carrier, $services[0], $responses[0]],
+                [$carrier, $services[1], $responses[1]],
+                [$carrier, $services[1], $responses[2]],
+                [$carrier, $services[2], $responses[3]],
             ], [
                 new ArrayIterator($items[0]),
                 new ArrayIterator($items[1]),
@@ -468,10 +471,10 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                 new ArrayIterator($items[3]),
             ]),
             branchResolver: $this->mockBranchResolver([
-                [$carrier, $serviceTypes[0]],
-                [$carrier, $serviceTypes[1]],
-                [$carrier, $serviceTypes[1]],
-                [$carrier, $serviceTypes[2]],
+                [$carrier, $services[0]],
+                [$carrier, $services[1]],
+                [$carrier, $services[1]],
+                [$carrier, $services[2]],
             ], [
                 true,
                 false,
@@ -485,7 +488,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ]),
         );
 
-        $actualResult = $service->getBranchesForCarrierAndCountries($carrier, $countries);
+        $actualResult = $branchService->getBranchesForCarrierAndCountries($carrier, $countries);
 
         unset($items[3][1]);
         $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
@@ -495,38 +498,38 @@ final class DefaultBranchServiceTest extends BaseServiceTest
 
     public function testGetBranchesForCarrierService(): void
     {
-        $carrier     = 'cp';
-        $serviceType = 'NP';
-        $response    = $this->mockClientResponse();
-        $items       = [
+        $carrier  = Carrier::CP;
+        $service  = ServiceType::CP_NP;
+        $response = $this->mockClientResponse();
+        $items    = [
             $this->mockBranch(),
             $this->mockBranch(),
             $this->mockBranch(),
         ];
 
-        $service = $this->newDefaultBranchService(
+        $branchService = $this->newDefaultBranchService(
             client: $this->mockClient([
                 VersionType::V2V1,
                 $carrier,
                 RequestType::FULL_BRANCHES,
                 [],
-                'service/NP',
+                sprintf('service/%s', $service),
                 true,
                 true,
             ], $response),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $serviceType, $response],
+                [$carrier, $service, $response],
             ], [
                 new ArrayIterator($items),
             ]),
             branchResolver: $this->mockBranchResolver([
-                [$carrier, $serviceType],
+                [$carrier, $service],
             ], [
                 true,
             ]),
         );
 
-        $actualResult   = $service->getBranchesForCarrierService($carrier, $serviceType);
+        $actualResult   = $branchService->getBranchesForCarrierService($carrier, $service);
         $expectedResult = new ArrayIterator($items);
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
@@ -534,16 +537,16 @@ final class DefaultBranchServiceTest extends BaseServiceTest
 
     public function testGetBranchesForCarrierWithoutService(): void
     {
-        $carrier     = 'cp';
-        $serviceType = null;
-        $response    = $this->mockClientResponse();
-        $items       = [
+        $carrier  = Carrier::CP;
+        $service  = null;
+        $response = $this->mockClientResponse();
+        $items    = [
             $this->mockBranch(),
             $this->mockBranch(),
             $this->mockBranch(),
         ];
 
-        $service = $this->newDefaultBranchService(
+        $branchService = $this->newDefaultBranchService(
             client: $this->mockClient([
                 VersionType::V2V1,
                 $carrier,
@@ -554,18 +557,18 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                 true,
             ], $response),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $serviceType, $response],
+                [$carrier, $service, $response],
             ], [
                 new ArrayIterator($items),
             ]),
             branchResolver: $this->mockBranchResolver([
-                [$carrier, $serviceType],
+                [$carrier, $service],
             ], [
                 true,
             ]),
         );
 
-        $actualResult   = $service->getBranchesForCarrierService($carrier, $serviceType);
+        $actualResult   = $branchService->getBranchesForCarrierService($carrier, $service);
         $expectedResult = new ArrayIterator($items);
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
@@ -573,37 +576,37 @@ final class DefaultBranchServiceTest extends BaseServiceTest
 
     public function testGetBranchesForCarrierServiceAndCountries(): void
     {
-        $carrier     = 'cp';
-        $serviceType = 'NP';
-        $countries   = [
+        $carrier   = Carrier::CP;
+        $service   = ServiceType::CP_NP;
+        $countries = [
             Country::CZECH_REPUBLIC,
             Country::SLOVAKIA,
         ];
-        $response    = $this->mockClientResponse();
-        $items       = [
+        $response  = $this->mockClientResponse();
+        $items     = [
             $this->mockBranch(Country::CZECH_REPUBLIC),
             $this->mockBranch(Country::CZECH_REPUBLIC),
             $this->mockBranch(Country::GREENLAND),
             $this->mockBranch(Country::SLOVAKIA),
         ];
 
-        $service = $this->newDefaultBranchService(
+        $branchService = $this->newDefaultBranchService(
             client: $this->mockClient([
                 VersionType::V2V1,
                 $carrier,
                 RequestType::FULL_BRANCHES,
                 [],
-                'service/NP',
+                sprintf('service/%s', $service),
                 true,
                 true,
             ], $response),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $serviceType, $response],
+                [$carrier, $service, $response],
             ], [
                 new ArrayIterator($items),
             ]),
             branchResolver: $this->mockBranchResolver([
-                [$carrier, $serviceType],
+                [$carrier, $service],
             ], [
                 true,
             ], [
@@ -611,7 +614,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ]),
         );
 
-        $actualResult = $service->getBranchesForCarrierServiceAndCountries($carrier, $serviceType, $countries);
+        $actualResult = $branchService->getBranchesForCarrierServiceAndCountries($carrier, $service, $countries);
 
         unset($items[2]);
         $expectedResult = new ArrayIterator(array_values($items));
@@ -621,17 +624,17 @@ final class DefaultBranchServiceTest extends BaseServiceTest
 
     public function testGetBranchesForCarrierServiceAndCountriesWithCountryFilterSupport(): void
     {
-        $carrier     = 'cp';
-        $serviceType = 'NP';
-        $countries   = [
+        $carrier   = Carrier::CP;
+        $service   = ServiceType::CP_NP;
+        $countries = [
             Country::CZECH_REPUBLIC,
             Country::SLOVAKIA,
         ];
-        $responses   = [
+        $responses = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $items       = [
+        $items     = [
             [
                 $this->mockBranch(Country::CZECH_REPUBLIC),
                 $this->mockBranch(Country::CZECH_REPUBLIC),
@@ -642,14 +645,14 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ],
         ];
 
-        $service = $this->newDefaultBranchService(
+        $branchService = $this->newDefaultBranchService(
             client: $this->mockClientMultipleCalls([
                 [
                     VersionType::V2V1,
                     $carrier,
                     RequestType::BRANCHES,
                     [],
-                    'service/NP/country/CZ',
+                    sprintf('service/%s/country/%s', $service, $countries[0]),
                     true,
                     true,
                 ],
@@ -658,21 +661,21 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     $carrier,
                     RequestType::BRANCHES,
                     [],
-                    'service/NP/country/SK',
+                    sprintf('service/%s/country/%s', $service, $countries[1]),
                     true,
                     true,
                 ],
             ], $responses),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $serviceType, $responses[0]],
-                [$carrier, $serviceType, $responses[1]],
+                [$carrier, $service, $responses[0]],
+                [$carrier, $service, $responses[1]],
             ], [
                 new ArrayIterator($items[0]),
                 new ArrayIterator($items[1]),
             ]),
             branchResolver: $this->mockBranchResolver([
-                [$carrier, $serviceType],
-                [$carrier, $serviceType],
+                [$carrier, $service],
+                [$carrier, $service],
             ], [
                 false,
                 false,
@@ -682,7 +685,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ]),
         );
 
-        $actualResult = $service->getBranchesForCarrierServiceAndCountries($carrier, $serviceType, $countries);
+        $actualResult = $branchService->getBranchesForCarrierServiceAndCountries($carrier, $service, $countries);
 
         unset($items[0][2]);
         $expectedResult = new ArrayIterator(array_merge(...$items));
@@ -692,13 +695,13 @@ final class DefaultBranchServiceTest extends BaseServiceTest
 
     public function testGetBranchesForLocation(): void
     {
-        $carrier        = 'ups';
+        $carrier        = Carrier::UPS;
         $country        = Country::CZECH_REPUBLIC;
         $city           = 'Prague';
         $response       = $this->mockClientResponse();
         $expectedResult = $this->createMock(ArrayIterator::class);
 
-        $service = $this->newDefaultBranchService(
+        $branchService = $this->newDefaultBranchService(
             client: $this->mockClient([
                 VersionType::V2V1,
                 $carrier,
@@ -711,7 +714,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             branchFactory: $this->mockBranchFactory([[$carrier, null, $response]], [$expectedResult]),
         );
 
-        $actualResult = $service->getBranchesForLocation($carrier, $country, $city);
+        $actualResult = $branchService->getBranchesForLocation($carrier, $country, $city);
 
         self::assertSame($expectedResult, $actualResult);
     }
@@ -727,7 +730,7 @@ final class DefaultBranchServiceTest extends BaseServiceTest
     }
 
     /**
-     * @param array<array<(string|array<string, mixed>|null)>>         $arguments
+     * @param array<array<string|array<string,mixed>|null>>            $arguments
      * @param array<iterable<\Inspirum\Balikobot\Model\Branch\Branch>> $responses
      */
     private function mockBranchFactory(array $arguments, array $responses): BranchFactory

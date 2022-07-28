@@ -85,7 +85,7 @@ final class DefaultStatuses extends BaseCollection implements Statuses
     }
 
     /**
-     * @return array<string,string|array<string, mixed>>
+     * @return array<string,string|array<string,mixed>>
      */
     public function __toArray(): array
     {

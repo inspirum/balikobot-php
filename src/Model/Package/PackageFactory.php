@@ -12,8 +12,8 @@ interface PackageFactory
     public function create(string $carrier, array $data): Package;
 
     /**
-     * @param array<int, array<string,mixed>>|null $packages
-     * @param array<string,mixed>                  $data
+     * @param array<int,array<string,mixed>>|null $packages
+     * @param array<string,mixed>                 $data
      */
     public function createCollection(string $carrier, ?array $packages, array $data): PackageCollection;
 }

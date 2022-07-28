@@ -21,7 +21,7 @@ use function sprintf;
 abstract class BasePerCarrierCollection extends BaseCollection implements PerCarrierCollection
 {
     /**
-     * @param array<TKey, TValue> $items
+     * @param array<TKey,TValue> $items
      */
     public function __construct(
         private ?string $carrier = null,

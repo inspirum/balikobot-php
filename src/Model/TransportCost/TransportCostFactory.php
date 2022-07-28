@@ -14,5 +14,5 @@ interface TransportCostFactory
     /**
      * @param array<string,mixed> $data
      */
-    public function createCollection(string $carrier, array $data): TransportCostCollection;
+    public function createCollection(string $carrier, ?array $packages, array $data): TransportCostCollection;
 }

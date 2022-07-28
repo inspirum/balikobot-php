@@ -4,11 +4,18 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\TransportCost;
 
+use Inspirum\Balikobot\Client\Response\Validator;
 use function array_map;
 use function array_values;
+use function count;
 
 final class DefaultTransportCostFactory implements TransportCostFactory
 {
+    public function __construct(
+        private Validator $validator,
+    ) {
+    }
+
     /** @inheritDoc */
     public function create(string $carrier, array $data): TransportCost
     {
@@ -22,13 +29,15 @@ final class DefaultTransportCostFactory implements TransportCostFactory
     }
 
     /** @inheritDoc */
-    public function createCollection(string $carrier, array $data): TransportCostCollection
+    public function createCollection(string $carrier, ?array $packages, array $data): TransportCostCollection
     {
         unset($data['status']);
 
-//        $this->validator->validateIndexes($data, count($packages));
+        if ($packages !== null) {
+            $this->validator->validateIndexes($data, count($packages));
+        }
 
-//        $this->validator->validateResponseItemHasAttribute($data, 'eid', $data);
+        $this->validator->validateResponseItemHasAttribute($data, 'eid', $data);
 
         return new DefaultTransportCostCollection($carrier, array_values(array_map(fn(array $package): TransportCost => $this->create($carrier, $package), $data)));
     }

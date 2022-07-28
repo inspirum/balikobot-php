@@ -22,10 +22,10 @@ abstract class BaseServiceTest extends BaseTestCase
     }
 
     /**
-     * @param array<mixed>        $arguments
-     * @param array<string,mixed> $response
+     * @param array<mixed>             $arguments
+     * @param array<string,mixed>|null $response
      */
-    protected function mockClient(array $arguments, array $response): Client
+    protected function mockClient(array $arguments, ?array $response): Client
     {
         $arguments = array_replace([
             null,
@@ -38,7 +38,11 @@ abstract class BaseServiceTest extends BaseTestCase
         ], $arguments);
 
         $client = $this->createMock(Client::class);
-        $client->expects(self::once())->method('call')->with(...$arguments)->willReturn($response);
+        if ($response !== null) {
+            $client->expects(self::once())->method('call')->with(...$arguments)->willReturn($response);
+        } else {
+            $client->expects(self::never())->method('call');
+        }
 
         return $client;
     }
