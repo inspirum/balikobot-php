@@ -9,7 +9,7 @@ final class DefaultOrderedShipmentFactory implements OrderedShipmentFactory
     /** @inheritDoc */
     public function create(string $carrier, array $packageIds, array $data): OrderedShipment
     {
-        return new OrderedShipment(
+        return new DefaultOrderedShipment(
             $data['order_id'],
             $carrier,
             $packageIds,

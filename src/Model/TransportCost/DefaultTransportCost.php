@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\TransportCost;
 
 use Inspirum\Arrayable\BaseModel;
+use function array_map;
 
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
@@ -59,7 +60,7 @@ class DefaultTransportCost extends BaseModel implements TransportCost
             'carrier'        => $this->carrier,
             'totalCost'      => $this->totalCost,
             'currencyCode'   => $this->currencyCode,
-            'costsBreakdown' => $this->costsBreakdown,
+            'costsBreakdown' => array_map(static fn(TransportCostPart $costPart): array => $costPart->__toArray(), $this->costsBreakdown),
         ];
     }
 }

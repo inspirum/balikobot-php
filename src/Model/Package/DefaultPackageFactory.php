@@ -17,7 +17,7 @@ final class DefaultPackageFactory implements PackageFactory
     /** @inheritDoc */
     public function create(string $carrier, array $data): Package
     {
-        return new Package(
+        return new DefaultPackage(
             $carrier,
             (string) $data['package_id'],
             $data['eid'],
@@ -39,7 +39,7 @@ final class DefaultPackageFactory implements PackageFactory
             $this->validator->validateIndexes($packagesResponse, count($packages));
         }
 
-        $orderedPackages = new PackageCollection(
+        $orderedPackages = new DefaultPackageCollection(
             $carrier,
             labelsUrl: $data['labels_url'] ?? null,
         );

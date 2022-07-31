@@ -12,7 +12,8 @@ interface TransportCostFactory
     public function create(string $carrier, array $data): TransportCost;
 
     /**
-     * @param array<string,mixed> $data
+     * @param array<int,array<string,mixed>> $packages
+     * @param array<string,mixed>            $data
      */
     public function createCollection(string $carrier, ?array $packages, array $data): TransportCostCollection;
 }

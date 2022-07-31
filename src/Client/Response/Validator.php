@@ -15,7 +15,6 @@ final class Validator
     /**
      * Validate status code
      *
-     * @param int                $statusCode
      * @param array<mixed,mixed> $response
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
@@ -38,9 +37,6 @@ final class Validator
      *
      * @param array<mixed,mixed>      $responseItem
      * @param array<mixed,mixed>|null $response
-     * @param bool                    $shouldHaveStatus
-     *
-     * @return void
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -59,11 +55,8 @@ final class Validator
     /**
      * Validate that every response item has given attribute
      *
-     * @param array<int,array<string,mixed>> $items
-     * @param string                         $attribute
-     * @param array<mixed,mixed>             $response
-     *
-     * @return void
+     * @param array<array<string,mixed>> $items
+     * @param array<mixed,mixed>         $response
      *
      * @throws \Inspirum\Balikobot\Exception\BadRequestException
      */

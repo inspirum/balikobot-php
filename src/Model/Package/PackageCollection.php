@@ -4,35 +4,22 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Package;
 
-use Inspirum\Balikobot\Model\BasePerCarrierCollection;
-use function array_map;
+use Inspirum\Balikobot\Model\PerCarrierCollection;
 
 /**
- * @extends \Inspirum\Balikobot\Model\BasePerCarrierCollection<string,mixed,int,\Inspirum\Balikobot\Model\Package\Package>
+ * @extends \Inspirum\Balikobot\Model\PerCarrierCollection<\Inspirum\Balikobot\Model\Package\Package>
  */
-class PackageCollection extends BasePerCarrierCollection
+interface PackageCollection extends PerCarrierCollection
 {
     /**
-     * @param array<\Inspirum\Balikobot\Model\Package\Package> $items
+     * @return array<\Inspirum\Balikobot\Model\Package\Package>
      */
-    public function __construct(
-        ?string $carrier = null,
-        array $items = [],
-        private ?string $labelsUrl = null,
-    ) {
-        parent::__construct($carrier, $items);
-    }
+    public function getPackages(): array;
 
     /**
      * @return array<string>
      */
-    public function getPackageIds(): array
-    {
-        return array_map(static fn(Package $package) => $package->getPackageId(), $this->items);
-    }
+    public function getPackageIds(): array;
 
-    public function getLabelsUrl(): ?string
-    {
-        return $this->labelsUrl;
-    }
+    public function getLabelsUrl(): ?string;
 }

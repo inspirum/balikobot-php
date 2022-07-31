@@ -21,6 +21,6 @@ final class DefaultPackageDataFactory implements PackageDataFactory
             $data['pieces']
         );
 
-        return new PackageData($data);
+        return new DefaultPackageData($data);
     }
 }

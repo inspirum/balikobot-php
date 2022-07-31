@@ -4,12 +4,93 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\Branch;
 
+use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Model\Branch\BranchFactory;
+use Inspirum\Balikobot\Model\Branch\DefaultBranch;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchFactory;
 use Inspirum\Balikobot\Tests\BaseTestCase;
+use Throwable;
+use function iterator_to_array;
 
 final class DefaultBranchFactoryTest extends BaseTestCase
 {
+    /**
+     * @param array<string,mixed>                                       $data
+     * @param array<\Inspirum\Balikobot\Model\Branch\Branch>|\Throwable $result
+     *
+     * @dataProvider providesTestCreateIterator
+     */
+    public function testCreateIterator(string $carrier, ?string $service, array $data, array|Throwable $result): void
+    {
+        if ($result instanceof Throwable) {
+            $this->expectException($result::class);
+            $this->expectExceptionMessage($result->getMessage());
+        }
+
+        $factory = $this->newDefaultBranchFactory();
+
+        $iterator = $factory->createIterator($carrier, $service, $data);
+
+        self::assertEquals($result, iterator_to_array($iterator));
+    }
+
+    /**
+     * @return iterable<array<string,mixed>>
+     */
+    public function providesTestCreateIterator(): iterable
+    {
+        yield 'valid' => [
+            'carrier' => Carrier::CP,
+            'service' => null,
+            'data'    => [
+                'branches' => [
+                    [
+                        'id'     => '1234',
+                        'type'   => 'type1',
+                        'name'   => 'name1',
+                        'city'   => 'city1',
+                        'street' => 'street 27/8',
+                        'zip'    => '11000',
+                    ],
+                    [
+                        'id'     => '1235',
+                        'type'   => 'type2',
+                        'name'   => 'name2',
+                        'city'   => 'city2',
+                        'street' => 'street 27/9',
+                        'zip'    => '12000',
+                    ],
+                ],
+            ],
+            'result'  => [
+                new DefaultBranch(
+                    Carrier::CP,
+                    null,
+                    '11000',
+                    '1234',
+                    null,
+                    'type1',
+                    'name1',
+                    'city1',
+                    'street 27/8',
+                    '11000',
+                ),
+                new DefaultBranch(
+                    Carrier::CP,
+                    null,
+                    '12000',
+                    '1235',
+                    null,
+                    'type2',
+                    'name2',
+                    'city2',
+                    'street 27/9',
+                    '12000',
+                ),
+            ],
+        ];
+    }
+
     public function testStaticConstructor(): void
     {
         $factory = $this->newDefaultBranchFactory();

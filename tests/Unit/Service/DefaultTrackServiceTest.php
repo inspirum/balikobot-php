@@ -8,8 +8,9 @@ use Inspirum\Balikobot\Client\Client;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\RequestType;
 use Inspirum\Balikobot\Definitions\VersionType;
+use Inspirum\Balikobot\Model\Package\DefaultPackage;
+use Inspirum\Balikobot\Model\Package\DefaultPackageCollection;
 use Inspirum\Balikobot\Model\Package\Package;
-use Inspirum\Balikobot\Model\Package\PackageCollection;
 use Inspirum\Balikobot\Model\Status\Status;
 use Inspirum\Balikobot\Model\Status\StatusCollection;
 use Inspirum\Balikobot\Model\Status\StatusFactory;
@@ -41,7 +42,7 @@ final class DefaultTrackServiceTest extends BaseServiceTest
             statusFactory: $this->mockStatusFactory($carrier, $carrierIds, $response, $expectedResult),
         );
 
-        $actualResult = $service->trackPackages(new PackageCollection($carrier, array_map(static fn(string $carrierId): Package => new Package(
+        $actualResult = $service->trackPackages(new DefaultPackageCollection($carrier, array_map(static fn(string $carrierId): Package => new DefaultPackage(
             $carrier,
             '1',
             '1',
@@ -74,7 +75,7 @@ final class DefaultTrackServiceTest extends BaseServiceTest
             statusFactory: $this->mockStatusFactory($carrier, [$carrierId], $response, $expectedResultCollection),
         );
 
-        $actualResult = $service->trackPackage(new Package(
+        $actualResult = $service->trackPackage(new DefaultPackage(
             $carrier,
             '1',
             '1',
@@ -105,7 +106,7 @@ final class DefaultTrackServiceTest extends BaseServiceTest
             statusFactory: $this->mockStatusFactory($carrier, $carrierIds, $response, $expectedResult),
         );
 
-        $actualResult = $service->trackPackagesLastStatuses(new PackageCollection($carrier, array_map(static fn(string $carrierId): Package => new Package(
+        $actualResult = $service->trackPackagesLastStatuses(new DefaultPackageCollection($carrier, array_map(static fn(string $carrierId): Package => new DefaultPackage(
             $carrier,
             '1',
             '1',
@@ -138,7 +139,7 @@ final class DefaultTrackServiceTest extends BaseServiceTest
             statusFactory: $this->mockStatusFactory($carrier, [$carrierId], $response, $expectedResultCollection),
         );
 
-        $actualResult = $service->trackPackageLastStatus(new Package(
+        $actualResult = $service->trackPackageLastStatus(new DefaultPackage(
             $carrier,
             '1',
             '1',

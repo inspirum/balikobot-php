@@ -215,6 +215,13 @@ final class DefaultClientTest extends BaseTestCase
             'result'           => true,
             'gzip'             => true,
         ];
+
+        yield 'parse_error' => [
+            'statusCode'       => 404,
+            'response'         => 's\x/\*',
+            'shouldHaveStatus' => false,
+            'result'           => new BadRequestException([], 404),
+        ];
     }
 
     /**
