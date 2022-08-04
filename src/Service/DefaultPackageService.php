@@ -61,9 +61,7 @@ final class DefaultPackageService implements PackageService
         $this->dropPackagesByPackageIds($carrier, [$packageId]);
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function dropPackagesByPackageIds(string $carrier, array $packageIds): void
     {
         if (count($packageIds) > 0) {
@@ -76,9 +74,7 @@ final class DefaultPackageService implements PackageService
         return $this->orderShipmentByPackageIds($packages->getCarrier(), $packages->getPackageIds());
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function orderShipmentByPackageIds(string $carrier, array $packageIds): OrderedShipment
     {
         $response = $this->client->call(VersionType::V2V1, $carrier, RequestType::ORDER, ['package_ids' => $packageIds]);
@@ -105,9 +101,7 @@ final class DefaultPackageService implements PackageService
         return $this->getLabelsByPackageIds($packages->getCarrier(), $packages->getPackageIds());
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function getLabelsByPackageIds(string $carrier, array $packageIds): string
     {
         $response = $this->client->call(VersionType::V2V1, $carrier, RequestType::LABELS, ['package_ids' => $packageIds]);
@@ -154,9 +148,7 @@ final class DefaultPackageService implements PackageService
         return $this->getProofOfDeliveryByCarrierId($package->getCarrier(), $package->getCarrierId());
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function getProofOfDeliveries(PackageCollection $packages): array
     {
         return $this->getProofOfDeliveriesByCarrierIds($packages->getCarrier(), $packages->getCarrierIds());
@@ -167,9 +159,7 @@ final class DefaultPackageService implements PackageService
         return $this->getProofOfDeliveriesByCarrierIds($carrier, [$carrierId])[0];
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function getProofOfDeliveriesByCarrierIds(string $carrier, array $carrierIds): array
     {
         $response = $this->client->call(

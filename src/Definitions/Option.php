@@ -242,7 +242,7 @@ final class Option
     /**
      * Manipulation unit code
      *
-     * @see Client::getManipulationUnits()
+     * @see \Inspirum\Balikobot\Service\SettingService::getManipulationUnits()
      */
     public const MU_TYPE = 'mu_type';
 
@@ -255,7 +255,7 @@ final class Option
     /**
      * Manipulation unit code
      *
-     * @see Client::getManipulationUnits()
+     * @see \Inspirum\Balikobot\Service\SettingService::getManipulationUnits()
      */
     public const MU_TYPE_ONE = 'mu_type_one';
 
@@ -268,7 +268,7 @@ final class Option
     /**
      * Manipulation unit code
      *
-     * @see RawClient::getManipulationUnits()
+     * @see \Inspirum\Balikobot\Service\SettingService::getManipulationUnits()
      */
     public const MU_TYPE_TWO = 'mu_type_two';
 
@@ -281,7 +281,7 @@ final class Option
     /**
      * Manipulation unit code
      *
-     * @see RawClient::getManipulationUnits()
+     * @see \Inspirum\Balikobot\Service\SettingService::getManipulationUnits()
      */
     public const MU_TYPE_THREE = 'mu_type_three';
 
