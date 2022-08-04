@@ -4,21 +4,27 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\ZipCode;
 
+use ArrayIterator;
+use Inspirum\Balikobot\Definitions\Carrier;
+use Inspirum\Balikobot\Definitions\Country;
+use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Model\ZipCode\DefaultZipCode;
 use Inspirum\Balikobot\Model\ZipCode\DefaultZipCodeFactory;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Model\ZipCode\DefaultZipCodeIterator;
+use Inspirum\Balikobot\Model\ZipCode\ZipCodeIterator;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
+use Traversable;
 use function iterator_to_array;
 
 final class DefaultZipCodeFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string,mixed>                              $data
-     * @param array<\Inspirum\Balikobot\Model\ZipCode\ZipCode> $result
+     * @param array<string,mixed> $data
      *
      * @dataProvider providesTestCreateIterator
      */
-    public function testCreateIterator(string $carrier, string $service, ?string $country, array $data, array|Throwable $result): void
+    public function testCreateIterator(string $carrier, string $service, ?string $country, array $data, ZipCodeIterator|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -29,7 +35,10 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
 
         $iterator = $factory->createIterator($carrier, $service, $country, $data);
 
-        self::assertEquals($result, iterator_to_array($iterator));
+        self::assertEquals($result, $iterator);
+        if ($result instanceof Traversable) {
+            self::assertEquals(iterator_to_array($result), iterator_to_array($iterator));
+        }
     }
 
     /**
@@ -38,8 +47,8 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
     public function providesTestCreateIterator(): iterable
     {
         yield 'type_zip' => [
-            'carrier' => 'cp',
-            'service' => 'NP',
+            'carrier' => Carrier::CP,
+            'service' => ServiceType::CP_NP,
             'country' => null,
             'data'    => [
                 'status'       => 200,
@@ -58,31 +67,35 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => [
-                new DefaultZipCode(
-                    'cp',
-                    'NP',
-                    '35002',
-                    null,
-                    null,
-                    'CZ',
-                    false,
-                ),
-                new DefaultZipCode(
-                    'cp',
-                    'NP',
-                    '19000',
-                    null,
-                    null,
-                    'CZ',
-                    true,
-                ),
-            ],
+            'result'  => new DefaultZipCodeIterator(
+                Carrier::CP,
+                ServiceType::CP_NP,
+                new ArrayIterator([
+                    new DefaultZipCode(
+                        'cp',
+                        'NP',
+                        '35002',
+                        null,
+                        null,
+                        'CZ',
+                        false,
+                    ),
+                    new DefaultZipCode(
+                        'cp',
+                        'NP',
+                        '19000',
+                        null,
+                        null,
+                        'CZ',
+                        true,
+                    ),
+                ]),
+            ),
         ];
 
         yield 'type_range' => [
-            'carrier' => 'ppl',
-            'service' => '1',
+            'carrier' => Carrier::PPL,
+            'service' => ServiceType::PPL_PARCEL_BUSSINESS_CZ,
             'country' => null,
             'data'    => [
                 'status'       => 200,
@@ -101,31 +114,35 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => [
-                new DefaultZipCode(
-                    'ppl',
-                    '1',
-                    '10000',
-                    '10199',
-                    null,
-                    'CZ',
-                    false,
-                ),
-                new DefaultZipCode(
-                    'ppl',
-                    '1',
-                    '35000',
-                    '35299',
-                    null,
-                    'CZ',
-                    false,
-                ),
-            ],
+            'result'  => new DefaultZipCodeIterator(
+                Carrier::PPL,
+                ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+                new ArrayIterator([
+                    new DefaultZipCode(
+                        'ppl',
+                        '1',
+                        '10000',
+                        '10199',
+                        null,
+                        'CZ',
+                        false,
+                    ),
+                    new DefaultZipCode(
+                        'ppl',
+                        '1',
+                        '35000',
+                        '35299',
+                        null,
+                        'CZ',
+                        false,
+                    ),
+                ]),
+            ),
         ];
 
         yield 'type_range_2' => [
-            'carrier' => 'ppl',
-            'service' => '1',
+            'carrier' => Carrier::PPL,
+            'service' => ServiceType::PPL_PARCEL_BUSSINESS_CZ,
             'country' => null,
             'data'    => [
                 'status'       => 200,
@@ -140,23 +157,27 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => [
-                new DefaultZipCode(
-                    'ppl',
-                    '1',
-                    '25999',
-                    '25999',
-                    'AIXIRIVALL',
-                    'AD',
-                    false,
-                ),
-            ],
+            'result'  => new DefaultZipCodeIterator(
+                Carrier::PPL,
+                ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+                new ArrayIterator([
+                    new DefaultZipCode(
+                        'ppl',
+                        '1',
+                        '25999',
+                        '25999',
+                        'AIXIRIVALL',
+                        'AD',
+                        false,
+                    ),
+                ]),
+            ),
         ];
 
         yield 'type_city' => [
-            'carrier' => 'ppl',
-            'service' => '1',
-            'country' => 'AE',
+            'carrier' => Carrier::PPL,
+            'service' => ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+            'country' => Country::UNITED_ARAB_EMIRATES,
             'data'    => [
                 'status'       => 200,
                 'service_type' => '1',
@@ -170,26 +191,30 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => [
-                new DefaultZipCode(
-                    'ppl',
-                    '1',
-                    '',
-                    null,
-                    'ABU DHABI',
-                    'AE',
-                    false,
-                ),
-                new DefaultZipCode(
-                    'ppl',
-                    '1',
-                    '',
-                    null,
-                    'AJMAN CITY',
-                    'AE',
-                    false,
-                ),
-            ],
+            'result'  => new DefaultZipCodeIterator(
+                Carrier::PPL,
+                ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+                new ArrayIterator([
+                    new DefaultZipCode(
+                        'ppl',
+                        '1',
+                        '',
+                        null,
+                        'ABU DHABI',
+                        'AE',
+                        false,
+                    ),
+                    new DefaultZipCode(
+                        'ppl',
+                        '1',
+                        '',
+                        null,
+                        'AJMAN CITY',
+                        'AE',
+                        false,
+                    ),
+                ]),
+            ),
         ];
     }
 

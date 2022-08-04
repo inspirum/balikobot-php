@@ -12,7 +12,7 @@ use Inspirum\Balikobot\Model\Service\DefaultServiceFactory;
 use Inspirum\Balikobot\Model\Service\DefaultServiceOption;
 use Inspirum\Balikobot\Model\Service\DefaultServiceOptionCollection;
 use Inspirum\Balikobot\Model\Service\ServiceCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultServiceFactoryTest extends BaseTestCase

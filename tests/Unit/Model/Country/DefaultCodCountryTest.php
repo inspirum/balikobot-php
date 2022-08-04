@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\Country;
 
 use Inspirum\Balikobot\Model\Country\DefaultCodCountry;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultCodCountryTest extends BaseTestCase
 {

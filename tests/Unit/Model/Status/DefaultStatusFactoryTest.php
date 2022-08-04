@@ -15,7 +15,7 @@ use Inspirum\Balikobot\Model\Status\DefaultStatusesCollection;
 use Inspirum\Balikobot\Model\Status\Status;
 use Inspirum\Balikobot\Model\Status\StatusCollection;
 use Inspirum\Balikobot\Model\Status\StatusesCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultStatusFactoryTest extends BaseTestCase

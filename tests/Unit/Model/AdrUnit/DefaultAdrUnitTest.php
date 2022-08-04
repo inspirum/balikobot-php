@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\AdrUnit;
 
 use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnit;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultAdrUnitTest extends BaseTestCase
 {

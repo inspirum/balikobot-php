@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Package;
 
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Model\Package\DefaultPackage;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultPackageTest extends BaseTestCase
 {

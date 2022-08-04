@@ -12,7 +12,7 @@ use Inspirum\Balikobot\Model\TransportCost\DefaultTransportCostCollection;
 use Inspirum\Balikobot\Model\TransportCost\DefaultTransportCostFactory;
 use Inspirum\Balikobot\Model\TransportCost\DefaultTransportCostPart;
 use Inspirum\Balikobot\Model\TransportCost\TransportCostCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultTransportCostFactoryTest extends BaseTestCase

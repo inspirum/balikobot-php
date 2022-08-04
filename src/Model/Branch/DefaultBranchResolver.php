@@ -27,6 +27,10 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::PPL,
             Carrier::DPD,
             Carrier::GLS,
+            Carrier::ULOZENKA,
+            Carrier::PBH,
+            Carrier::SPS,
+            Carrier::RABEN,
         ];
 
         return in_array($carrier, $supportedShippers);

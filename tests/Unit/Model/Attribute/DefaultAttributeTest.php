@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\Attribute;
 
 use Inspirum\Balikobot\Model\Attribute\DefaultAttribute;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultAttributeTest extends BaseTestCase
 {

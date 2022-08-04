@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\PackageData;
 use Inspirum\Balikobot\Model\PackageData\DefaultPackageData;
 use Inspirum\Balikobot\Model\PackageData\DefaultPackageDataFactory;
 use Inspirum\Balikobot\Model\PackageData\PackageData;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultPackageDataFactoryTest extends BaseTestCase

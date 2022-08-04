@@ -19,7 +19,7 @@ use Inspirum\Balikobot\Model\Service\Service;
 use Inspirum\Balikobot\Model\Service\ServiceCollection;
 use Inspirum\Balikobot\Model\Service\ServiceFactory;
 use Inspirum\Balikobot\Model\ZipCode\ZipCodeFactory;
-use Iterator;
+use Inspirum\Balikobot\Model\ZipCode\ZipCodeIterator;
 use function sprintf;
 
 final class DefaultSettingService implements SettingService
@@ -29,7 +29,7 @@ final class DefaultSettingService implements SettingService
         private ServiceFactory $serviceFactory,
         private ManipulationUnitFactory $unitFactory,
         private CountryFactory $countryFactory,
-        private ZipCodeFactory $postCodeFactory,
+        private ZipCodeFactory $zipCodeFactory,
         private AdrUnitFactory $adrUnitFactory,
         private AttributeFactory $attributeFactory,
     ) {
@@ -91,14 +91,12 @@ final class DefaultSettingService implements SettingService
         return $this->countryFactory->createCollection($response);
     }
 
-    /**
-     * @return \Iterator<\Inspirum\Balikobot\Model\ZipCode\ZipCode>
-     */
-    public function getZipCodes(string $carrier, string $service, ?string $country = null): Iterator
+    /** @inheritDoc */
+    public function getZipCodes(string $carrier, string $service, ?string $country = null): ZipCodeIterator
     {
         $response = $this->client->call(VersionType::V2V1, $carrier, RequestType::ZIP_CODES, path: sprintf('%s/%s', $service, $country));
 
-        return $this->postCodeFactory->createIterator($carrier, $service, $country, $response);
+        return $this->zipCodeFactory->createIterator($carrier, $service, $country, $response);
     }
 
     public function getAdrUnits(string $carrier): AdrUnitCollection

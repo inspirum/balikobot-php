@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Method;
 
 use Inspirum\Balikobot\Model\Method\DefaultMethod;
 use Inspirum\Balikobot\Model\Method\DefaultMethodCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultMethodCollectionTest extends BaseTestCase
 {

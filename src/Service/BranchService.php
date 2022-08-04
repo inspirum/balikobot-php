@@ -4,74 +4,60 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Service;
 
-use Traversable;
+use Inspirum\Balikobot\Model\Branch\BranchIterator;
 
 interface BranchService
 {
     /**
      * Get all available branches
      *
-     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranches(): Traversable;
+    public function getBranches(): BranchIterator;
 
     /**
      * Get all available branches for countries
      *
      * @param array<string> $countries
      *
-     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranchesForCountries(array $countries): Traversable;
+    public function getBranchesForCountries(array $countries): BranchIterator;
 
     /**
      * Get all available branches for carrier
      *
-     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranchesForCarrier(string $carrier): Traversable;
+    public function getBranchesForCarrier(string $carrier): BranchIterator;
 
     /**
      * Get all available branches for carrier and countries
      *
      * @param array<string> $countries
      *
-     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranchesForCarrierAndCountries(string $carrier, array $countries): Traversable;
+    public function getBranchesForCarrierAndCountries(string $carrier, array $countries): BranchIterator;
 
     /**
      * Get all available branches for carrier and service type
      *
-     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranchesForCarrierService(string $carrier, ?string $service): Traversable;
+    public function getBranchesForCarrierService(string $carrier, ?string $service): BranchIterator;
 
     /**
      * Get all available branches for carrier, service type and countries
      *
      * @param array<string> $countries
      *
-     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranchesForCarrierServiceAndCountries(string $carrier, ?string $service, array $countries): Traversable;
+    public function getBranchesForCarrierServiceAndCountries(string $carrier, ?string $service, array $countries): BranchIterator;
 
     /**
      * Get all available branches for carrier in specific location
-     *
-     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -84,5 +70,5 @@ interface BranchService
         ?int $maxResults = null,
         ?float $radius = null,
         ?string $type = null,
-    ): Traversable;
+    ): BranchIterator;
 }

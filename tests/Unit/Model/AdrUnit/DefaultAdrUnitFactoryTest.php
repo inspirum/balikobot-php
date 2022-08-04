@@ -8,7 +8,7 @@ use Inspirum\Balikobot\Model\AdrUnit\AdrUnitCollection;
 use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnit;
 use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnitCollection;
 use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnitFactory;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultAdrUnitFactoryTest extends BaseTestCase

@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Account;
 use Inspirum\Balikobot\Model\Account\DefaultAccount;
 use Inspirum\Balikobot\Model\Carrier\DefaultCarrier;
 use Inspirum\Balikobot\Model\Carrier\DefaultCarrierCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultAccountTest extends BaseTestCase
 {

@@ -8,6 +8,7 @@ use Inspirum\Balikobot\Client\Client;
 use Inspirum\Balikobot\Definitions\RequestType;
 use Inspirum\Balikobot\Definitions\VersionType;
 use Inspirum\Balikobot\Model\Branch\BranchFactory;
+use Inspirum\Balikobot\Model\Branch\BranchIterator;
 use Inspirum\Balikobot\Model\Branch\BranchResolver;
 use Inspirum\Balikobot\Provider\CarrierProvider;
 use Inspirum\Balikobot\Provider\ServiceProvider;
@@ -28,7 +29,17 @@ final class DefaultBranchService implements BranchService
     }
 
     /** @inheritDoc */
-    public function getBranches(): Traversable
+    public function getBranches(): BranchIterator
+    {
+        return $this->branchFactory->wrapIterator(null, null, null, $this->generateBranches());
+    }
+
+    /**
+     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    private function generateBranches(): Traversable
     {
         foreach ($this->carrierProvider->getCarriers() as $carrier) {
             foreach ($this->getBranchesForCarrier($carrier) as $branch) {
@@ -38,7 +49,19 @@ final class DefaultBranchService implements BranchService
     }
 
     /** @inheritDoc */
-    public function getBranchesForCountries(array $countries): Traversable
+    public function getBranchesForCountries(array $countries): BranchIterator
+    {
+        return $this->branchFactory->wrapIterator(null, null, $countries, $this->generateBranchesForCountries($countries));
+    }
+
+    /**
+     * @param array<string> $countries
+     *
+     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    private function generateBranchesForCountries(array $countries): Traversable
     {
         foreach ($this->carrierProvider->getCarriers() as $carrier) {
             foreach ($this->getBranchesForCarrierAndCountries($carrier, $countries) as $branch) {
@@ -48,17 +71,39 @@ final class DefaultBranchService implements BranchService
     }
 
     /** @inheritDoc */
-    public function getBranchesForCarrier(string $carrier): Traversable
+    public function getBranchesForCarrier(string $carrier): BranchIterator
+    {
+        return $this->branchFactory->wrapIterator($carrier, null, null, $this->generateBranchesForCarrier($carrier));
+    }
+
+    /**
+     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    private function generateBranchesForCarrier(string $carrier): Traversable
     {
         foreach ($this->serviceProvider->getServices($carrier) as $service) {
-            foreach ($this->loadBranchesForCarrierServiceAndCountry($carrier, $service, null) as $branch) {
+            foreach ($this->getBranchesForCarrierServiceAndCountry($carrier, $service, null) as $branch) {
                 yield $branch;
             }
         }
     }
 
     /** @inheritDoc */
-    public function getBranchesForCarrierAndCountries(string $carrier, array $countries): Traversable
+    public function getBranchesForCarrierAndCountries(string $carrier, array $countries): BranchIterator
+    {
+        return $this->branchFactory->wrapIterator($carrier, null, $countries, $this->generateBranchesForCarrierAndCountries($carrier, $countries));
+    }
+
+    /**
+     * @param array<string> $countries
+     *
+     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    private function generateBranchesForCarrierAndCountries(string $carrier, array $countries): Traversable
     {
         foreach ($this->serviceProvider->getServices($carrier) as $service) {
             foreach ($this->getBranchesForCarrierServiceAndCountries($carrier, $service, $countries) as $branch) {
@@ -68,13 +113,25 @@ final class DefaultBranchService implements BranchService
     }
 
     /** @inheritDoc */
-    public function getBranchesForCarrierService(string $carrier, ?string $service): Traversable
+    public function getBranchesForCarrierService(string $carrier, ?string $service): BranchIterator
     {
-        return $this->loadBranchesForCarrierServiceAndCountry($carrier, $service, null);
+        return $this->getBranchesForCarrierServiceAndCountry($carrier, $service, null);
     }
 
     /** @inheritDoc */
-    public function getBranchesForCarrierServiceAndCountries(string $carrier, ?string $service, array $countries): Traversable
+    public function getBranchesForCarrierServiceAndCountries(string $carrier, ?string $service, array $countries): BranchIterator
+    {
+        return $this->branchFactory->wrapIterator($carrier, $service, $countries, $this->generateBranchesForCarrierServiceAndCountries($carrier, $service, $countries));
+    }
+
+    /**
+     * @param array<string> $countries
+     *
+     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    private function generateBranchesForCarrierServiceAndCountries(string $carrier, ?string $service, array $countries): Traversable
     {
         foreach ($this->loadBranchesForCarrierServiceAndCountries($carrier, $service, $countries) as $branch) {
             if (in_array($branch->getCountry(), $countries, true)) {
@@ -93,20 +150,18 @@ final class DefaultBranchService implements BranchService
     private function loadBranchesForCarrierServiceAndCountries(string $carrier, ?string $service, array $countries): Traversable
     {
         if ($this->branchResolver->hasBranchCountryFilterSupport($carrier, $service) === false) {
-            return yield from $this->loadBranchesForCarrierServiceAndCountry($carrier, $service, null);
+            return yield from $this->getBranchesForCarrierServiceAndCountry($carrier, $service, null);
         }
 
         foreach ($countries as $country) {
-            yield from $this->loadBranchesForCarrierServiceAndCountry($carrier, $service, $country);
+            yield from $this->getBranchesForCarrierServiceAndCountry($carrier, $service, $country);
         }
     }
 
     /**
-     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    private function loadBranchesForCarrierServiceAndCountry(string $carrier, ?string $service, ?string $country): Traversable
+    private function getBranchesForCarrierServiceAndCountry(string $carrier, ?string $service, ?string $country): BranchIterator
     {
         $usedRequest = $this->branchResolver->hasFullBranchesSupport($carrier, $service) ? RequestType::FULL_BRANCHES : RequestType::BRANCHES;
 
@@ -123,7 +178,7 @@ final class DefaultBranchService implements BranchService
 
         $response = $this->client->call(VersionType::V2V1, $carrier, $usedRequest, path: implode('/', $paths), gzip: true);
 
-        return $this->branchFactory->createIterator($carrier, $service, $response);
+        return $this->branchFactory->createIterator($carrier, $service, $country !== null ? [$country] : null, $response);
     }
 
     /** @inheritDoc */
@@ -136,7 +191,7 @@ final class DefaultBranchService implements BranchService
         ?int $maxResults = null,
         ?float $radius = null,
         ?string $type = null,
-    ): Traversable {
+    ): BranchIterator {
         $response = $this->client->call(
             VersionType::V2V1,
             $carrier,
@@ -154,6 +209,6 @@ final class DefaultBranchService implements BranchService
             )
         );
 
-        return $this->branchFactory->createIterator($carrier, null, $response);
+        return $this->branchFactory->createIterator($carrier, null, [$country], $response);
     }
 }

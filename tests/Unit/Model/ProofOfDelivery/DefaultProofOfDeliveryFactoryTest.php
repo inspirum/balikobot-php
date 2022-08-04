@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\ProofOfDelivery;
 use Inspirum\Balikobot\Client\Response\Validator;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\ProofOfDelivery\DefaultProofOfDeliveryFactory;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase

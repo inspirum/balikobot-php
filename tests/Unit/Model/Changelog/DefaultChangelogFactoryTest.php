@@ -11,7 +11,7 @@ use Inspirum\Balikobot\Model\Changelog\DefaultChangelogCollection;
 use Inspirum\Balikobot\Model\Changelog\DefaultChangelogFactory;
 use Inspirum\Balikobot\Model\Changelog\DefaultChangelogStatus;
 use Inspirum\Balikobot\Model\Changelog\DefaultChangelogStatusCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultChangelogFactoryTest extends BaseTestCase

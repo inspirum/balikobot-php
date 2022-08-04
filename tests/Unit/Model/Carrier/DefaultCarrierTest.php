@@ -8,7 +8,7 @@ use Inspirum\Balikobot\Definitions\VersionType;
 use Inspirum\Balikobot\Model\Carrier\DefaultCarrier;
 use Inspirum\Balikobot\Model\Method\DefaultMethod;
 use Inspirum\Balikobot\Model\Method\DefaultMethodCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultCarrierTest extends BaseTestCase
 {

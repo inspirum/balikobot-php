@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\ManipulationUnit;
 
 use Inspirum\Balikobot\Model\ManipulationUnit\DefaultManipulationUnit;
 use Inspirum\Balikobot\Model\ManipulationUnit\DefaultManipulationUnitCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultManipulationUnitCollectionTest extends BaseTestCase
 {

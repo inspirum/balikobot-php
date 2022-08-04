@@ -25,7 +25,7 @@ use Inspirum\Balikobot\Model\TransportCost\TransportCostFactory;
 use Inspirum\Balikobot\Service\DefaultPackageService;
 use function sprintf;
 
-final class DefaultPackageServiceTest extends BaseServiceTest
+final class DefaultPackageServiceTest extends BaseServiceTestCase
 {
     public function testAddPackages(): void
     {

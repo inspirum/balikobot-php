@@ -14,7 +14,7 @@ use Inspirum\Balikobot\Definitions\VersionType;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Exception\UnauthorizedException;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 use function gzcompress;
 use function is_array;

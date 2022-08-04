@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\ManipulationUnit;
 use DateTimeImmutable;
 use Inspirum\Balikobot\Model\Status\DefaultStatus;
 use Inspirum\Balikobot\Model\Status\DefaultStatuses;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use InvalidArgumentException;
 
 final class DefaultStatusesTest extends BaseTestCase

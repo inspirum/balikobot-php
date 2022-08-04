@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Provider;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Provider\DefaultServiceProvider;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultServiceProviderTest extends BaseTestCase
 {

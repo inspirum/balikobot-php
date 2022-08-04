@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Provider;
 
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Provider\DefaultCarrierProvider;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultCarrierProviderTest extends BaseTestCase
 {

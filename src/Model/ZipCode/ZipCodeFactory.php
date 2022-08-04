@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\ZipCode;
 
-use Iterator;
-
 interface ZipCodeFactory
 {
     /**
@@ -15,8 +13,6 @@ interface ZipCodeFactory
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @return \Iterator<\Inspirum\Balikobot\Model\ZipCode\ZipCode>
      */
-    public function createIterator(string $carrier, ?string $service, ?string $country, array $data): Iterator;
+    public function createIterator(string $carrier, ?string $service, ?string $country, array $data): ZipCodeIterator;
 }

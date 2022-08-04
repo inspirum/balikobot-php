@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Tests\Integration\Client;
+namespace Inspirum\Balikobot\Tests\Integration;
 
 use function sprintf;
 
-class ChangelogTest extends AbstractClientTestCase
+class ChangelogTest extends BaseTestCase
 {
     public function testLatestChangesSupport(): void
     {
-        $service = $this->newClient();
+        $infoService = $this->newDefaultInfoService();
 
-        $changelog = $service->getChangelog();
+        $changelog = $infoService->getChangelog();
 
         $expected = '1.955';
-        $actual   = $changelog['version'];
+        $actual   = $changelog->getLatestVersion();
 
         if ($actual > $expected) {
             $this->addWarning(sprintf('Package not supporting latest changes [%s > %s]', $actual, $expected));
         } else {
-            self::assertTrue(true);
+            self::assertSame($expected, $actual);
         }
     }
 }

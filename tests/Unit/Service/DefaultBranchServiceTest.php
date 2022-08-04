@@ -14,9 +14,11 @@ use Inspirum\Balikobot\Definitions\VersionType;
 use Inspirum\Balikobot\Model\Branch\Branch;
 use Inspirum\Balikobot\Model\Branch\BranchFactory;
 use Inspirum\Balikobot\Model\Branch\BranchResolver;
+use Inspirum\Balikobot\Model\Branch\DefaultBranchIterator;
 use Inspirum\Balikobot\Provider\CarrierProvider;
 use Inspirum\Balikobot\Provider\ServiceProvider;
 use Inspirum\Balikobot\Service\DefaultBranchService;
+use Traversable;
 use function array_map;
 use function array_merge;
 use function array_values;
@@ -24,7 +26,7 @@ use function count;
 use function iterator_to_array;
 use function sprintf;
 
-final class DefaultBranchServiceTest extends BaseServiceTest
+final class DefaultBranchServiceTest extends BaseServiceTestCase
 {
     public function testGetBranches(): void
     {
@@ -105,15 +107,15 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             carrierProvider: $this->mockCarrierProvider($carriers),
             serviceProvider: $this->mockServiceProvider($carriers, $services),
             branchFactory: $this->mockBranchFactory([
-                [$carriers[0], $services[0][0], $responses[0]],
-                [$carriers[0], $services[0][1], $responses[1]],
-                [$carriers[1], $services[1][0], $responses[2]],
-                [$carriers[1], $services[1][1], $responses[3]],
+                [$carriers[0], $services[0][0], null, $responses[0]],
+                [$carriers[0], $services[0][1], null, $responses[1]],
+                [$carriers[1], $services[1][0], null, $responses[2]],
+                [$carriers[1], $services[1][1], null, $responses[3]],
             ], [
-                new ArrayIterator($items[0]),
-                new ArrayIterator($items[1]),
-                new ArrayIterator($items[2]),
-                new ArrayIterator($items[3]),
+                new DefaultBranchIterator($carriers[0], $services[0][0], null, new ArrayIterator($items[0])),
+                new DefaultBranchIterator($carriers[0], $services[0][1], null, new ArrayIterator($items[1])),
+                new DefaultBranchIterator($carriers[1], $services[1][0], null, new ArrayIterator($items[2])),
+                new DefaultBranchIterator($carriers[1], $services[1][1], null, new ArrayIterator($items[3])),
             ]),
             branchResolver: $this->mockBranchResolver([
                 [$carriers[0], $services[0][0]],
@@ -133,6 +135,9 @@ final class DefaultBranchServiceTest extends BaseServiceTest
         $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
+        self::assertSame(null, $actualResult->getCarrier());
+        self::assertSame(null, $actualResult->getService());
+        self::assertSame(null, $actualResult->getCountries());
     }
 
     public function testGetBranchesForCountries(): void
@@ -248,19 +253,19 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             carrierProvider: $this->mockCarrierProvider($carriers),
             serviceProvider: $this->mockServiceProvider($carriers, $services),
             branchFactory: $this->mockBranchFactory([
-                [$carriers[0], $services[0][0], $responses[0]],
-                [$carriers[0], $services[0][1], $responses[1]],
-                [$carriers[1], $services[1][0], $responses[2]],
-                [$carriers[1], $services[1][0], $responses[3]],
-                [$carriers[1], $services[1][1], $responses[4]],
-                [$carriers[1], $services[1][1], $responses[5]],
+                [$carriers[0], $services[0][0], null, $responses[0]],
+                [$carriers[0], $services[0][1], null, $responses[1]],
+                [$carriers[1], $services[1][0], [$countries[0]], $responses[2]],
+                [$carriers[1], $services[1][0], [$countries[1]], $responses[3]],
+                [$carriers[1], $services[1][1], [$countries[0]], $responses[4]],
+                [$carriers[1], $services[1][1], [$countries[1]], $responses[5]],
             ], [
-                new ArrayIterator($items[0]),
-                new ArrayIterator($items[1]),
-                new ArrayIterator($items[2]),
-                new ArrayIterator($items[3]),
-                new ArrayIterator($items[4]),
-                new ArrayIterator($items[5]),
+                new DefaultBranchIterator($carriers[0], $services[0][0], null, new ArrayIterator($items[0])),
+                new DefaultBranchIterator($carriers[0], $services[0][1], null, new ArrayIterator($items[1])),
+                new DefaultBranchIterator($carriers[1], $services[1][0], [$countries[0]], new ArrayIterator($items[2])),
+                new DefaultBranchIterator($carriers[1], $services[1][0], [$countries[1]], new ArrayIterator($items[3])),
+                new DefaultBranchIterator($carriers[1], $services[1][1], [$countries[0]], new ArrayIterator($items[4])),
+                new DefaultBranchIterator($carriers[1], $services[1][1], [$countries[1]], new ArrayIterator($items[5])),
             ]),
             branchResolver: $this->mockBranchResolver([
                 [$carriers[0], $services[0][0]],
@@ -286,8 +291,6 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ]),
         );
 
-        // array<int, array<int, array<string, mixed> >>,
-        // array<int, array<int, array<string, mixed>|string>> given.
         $actualResult = $branchService->getBranchesForCountries($countries);
 
         unset($items[4][1]);
@@ -295,6 +298,9 @@ final class DefaultBranchServiceTest extends BaseServiceTest
         $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
+        self::assertSame(null, $actualResult->getCarrier());
+        self::assertSame(null, $actualResult->getService());
+        self::assertSame($countries, $actualResult->getCountries());
     }
 
     public function testGetBranchesForCarrier(): void
@@ -357,13 +363,13 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ], $responses),
             serviceProvider: $this->mockServiceProvider([$carrier], [$services]),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $services[0], $responses[0]],
-                [$carrier, $services[1], $responses[1]],
-                [$carrier, $services[2], $responses[2]],
+                [$carrier, $services[0], null, $responses[0]],
+                [$carrier, $services[1], null, $responses[1]],
+                [$carrier, $services[2], null, $responses[2]],
             ], [
-                new ArrayIterator($items[0]),
-                new ArrayIterator($items[1]),
-                new ArrayIterator($items[2]),
+                new DefaultBranchIterator($carrier, $services[0], null, new ArrayIterator($items[0])),
+                new DefaultBranchIterator($carrier, $services[1], null, new ArrayIterator($items[1])),
+                new DefaultBranchIterator($carrier, $services[2], null, new ArrayIterator($items[2])),
             ]),
             branchResolver: $this->mockBranchResolver([
                 [$carrier, $services[0]],
@@ -381,6 +387,9 @@ final class DefaultBranchServiceTest extends BaseServiceTest
         $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
+        self::assertSame($carrier, $actualResult->getCarrier());
+        self::assertSame(null, $actualResult->getService());
+        self::assertSame(null, $actualResult->getCountries());
     }
 
     public function testGetBranchesForCarrierAndCountries(): void
@@ -460,15 +469,15 @@ final class DefaultBranchServiceTest extends BaseServiceTest
             ], $responses),
             serviceProvider: $this->mockServiceProvider([$carrier], [$services]),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $services[0], $responses[0]],
-                [$carrier, $services[1], $responses[1]],
-                [$carrier, $services[1], $responses[2]],
-                [$carrier, $services[2], $responses[3]],
+                [$carrier, $services[0], null, $responses[0]],
+                [$carrier, $services[1], [$countries[0]], $responses[1]],
+                [$carrier, $services[1], [$countries[1]], $responses[2]],
+                [$carrier, $services[2], null, $responses[3]],
             ], [
-                new ArrayIterator($items[0]),
-                new ArrayIterator($items[1]),
-                new ArrayIterator($items[2]),
-                new ArrayIterator($items[3]),
+                new DefaultBranchIterator($carrier, $services[0], null, new ArrayIterator($items[0])),
+                new DefaultBranchIterator($carrier, $services[1], [$countries[0]], new ArrayIterator($items[1])),
+                new DefaultBranchIterator($carrier, $services[1], [$countries[1]], new ArrayIterator($items[2])),
+                new DefaultBranchIterator($carrier, $services[2], null, new ArrayIterator($items[3])),
             ]),
             branchResolver: $this->mockBranchResolver([
                 [$carrier, $services[0]],
@@ -494,6 +503,9 @@ final class DefaultBranchServiceTest extends BaseServiceTest
         $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
+        self::assertSame($carrier, $actualResult->getCarrier());
+        self::assertSame(null, $actualResult->getService());
+        self::assertSame($countries, $actualResult->getCountries());
     }
 
     public function testGetBranchesForCarrierService(): void
@@ -518,9 +530,9 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                 true,
             ], $response),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $service, $response],
+                [$carrier, $service, null, $response],
             ], [
-                new ArrayIterator($items),
+                new DefaultBranchIterator($carrier, $service, null, new ArrayIterator($items)),
             ]),
             branchResolver: $this->mockBranchResolver([
                 [$carrier, $service],
@@ -533,6 +545,9 @@ final class DefaultBranchServiceTest extends BaseServiceTest
         $expectedResult = new ArrayIterator($items);
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
+        self::assertSame($carrier, $actualResult->getCarrier());
+        self::assertSame($service, $actualResult->getService());
+        self::assertSame(null, $actualResult->getCountries());
     }
 
     public function testGetBranchesForCarrierWithoutService(): void
@@ -557,9 +572,9 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                 true,
             ], $response),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $service, $response],
+                [$carrier, $service, null, $response],
             ], [
-                new ArrayIterator($items),
+                new DefaultBranchIterator($carrier, $service, null, new ArrayIterator($items)),
             ]),
             branchResolver: $this->mockBranchResolver([
                 [$carrier, $service],
@@ -572,6 +587,9 @@ final class DefaultBranchServiceTest extends BaseServiceTest
         $expectedResult = new ArrayIterator($items);
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
+        self::assertSame($carrier, $actualResult->getCarrier());
+        self::assertSame($service, $actualResult->getService());
+        self::assertSame(null, $actualResult->getCountries());
     }
 
     public function testGetBranchesForCarrierServiceAndCountries(): void
@@ -601,9 +619,9 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                 true,
             ], $response),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $service, $response],
+                [$carrier, $service, null, $response],
             ], [
-                new ArrayIterator($items),
+                new DefaultBranchIterator($carrier, $service, null, new ArrayIterator($items)),
             ]),
             branchResolver: $this->mockBranchResolver([
                 [$carrier, $service],
@@ -620,6 +638,9 @@ final class DefaultBranchServiceTest extends BaseServiceTest
         $expectedResult = new ArrayIterator(array_values($items));
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
+        self::assertSame($carrier, $actualResult->getCarrier());
+        self::assertSame($service, $actualResult->getService());
+        self::assertSame($countries, $actualResult->getCountries());
     }
 
     public function testGetBranchesForCarrierServiceAndCountriesWithCountryFilterSupport(): void
@@ -667,11 +688,11 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                 ],
             ], $responses),
             branchFactory: $this->mockBranchFactory([
-                [$carrier, $service, $responses[0]],
-                [$carrier, $service, $responses[1]],
+                [$carrier, $service, [$countries[0]], $responses[0]],
+                [$carrier, $service, [$countries[1]], $responses[1]],
             ], [
-                new ArrayIterator($items[0]),
-                new ArrayIterator($items[1]),
+                new DefaultBranchIterator($carrier, $service, [$countries[0]], new ArrayIterator($items[0])),
+                new DefaultBranchIterator($carrier, $service, [$countries[1]], new ArrayIterator($items[1])),
             ]),
             branchResolver: $this->mockBranchResolver([
                 [$carrier, $service],
@@ -691,15 +712,22 @@ final class DefaultBranchServiceTest extends BaseServiceTest
         $expectedResult = new ArrayIterator(array_merge(...$items));
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
+        self::assertSame($carrier, $actualResult->getCarrier());
+        self::assertSame($service, $actualResult->getService());
+        self::assertSame($countries, $actualResult->getCountries());
     }
 
     public function testGetBranchesForLocation(): void
     {
-        $carrier        = Carrier::UPS;
-        $country        = Country::CZECH_REPUBLIC;
-        $city           = 'Prague';
-        $response       = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ArrayIterator::class);
+        $carrier  = Carrier::UPS;
+        $country  = Country::CZECH_REPUBLIC;
+        $city     = 'Prague';
+        $response = $this->mockClientResponse();
+        $items    = [
+            $this->mockBranch(Country::CZECH_REPUBLIC),
+            $this->mockBranch(Country::CZECH_REPUBLIC),
+            $this->mockBranch(),
+        ];
 
         $branchService = $this->newDefaultBranchService(
             client: $this->mockClient([
@@ -711,12 +739,21 @@ final class DefaultBranchServiceTest extends BaseServiceTest
                     'city'    => $city,
                 ],
             ], $response),
-            branchFactory: $this->mockBranchFactory([[$carrier, null, $response]], [$expectedResult]),
+            branchFactory: $this->mockBranchFactory([
+                [$carrier, null, [$country], $response],
+            ], [
+                new DefaultBranchIterator($carrier, null, [$country], new ArrayIterator($items)),
+            ]),
         );
 
         $actualResult = $branchService->getBranchesForLocation($carrier, $country, $city);
 
-        self::assertSame($expectedResult, $actualResult);
+        $expectedResult = new ArrayIterator($items);
+
+        self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
+        self::assertSame($carrier, $actualResult->getCarrier());
+        self::assertSame(null, $actualResult->getService());
+        self::assertSame([$country], $actualResult->getCountries());
     }
 
     private function mockBranch(?string $country = null): Branch
@@ -730,8 +767,8 @@ final class DefaultBranchServiceTest extends BaseServiceTest
     }
 
     /**
-     * @param array<array<string|array<string,mixed>|null>>            $arguments
-     * @param array<iterable<\Inspirum\Balikobot\Model\Branch\Branch>> $responses
+     * @param array<array<string|array<string>|array<string,mixed>|null>> $arguments
+     * @param array<\Inspirum\Balikobot\Model\Branch\BranchIterator>      $responses
      */
     private function mockBranchFactory(array $arguments, array $responses): BranchFactory
     {
@@ -739,6 +776,11 @@ final class DefaultBranchServiceTest extends BaseServiceTest
         $branchFactory->expects(self::exactly(count($arguments)))->method('createIterator')
                       ->withConsecutive(...$arguments)
                       ->willReturnOnConsecutiveCalls(...$responses);
+
+        $branchFactory->expects(self::any())->method('wrapIterator')
+                      ->willReturnCallback(static function (?string $carrier, ?string $service, ?array $countries, Traversable $iterator) {
+                          return new DefaultBranchIterator($carrier, $service, $countries, $iterator);
+                      });
 
         return $branchFactory;
     }

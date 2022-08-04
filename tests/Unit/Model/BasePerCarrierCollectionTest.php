@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\ManipulationUnit;
 
+use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Model\BasePerCarrierCollection;
 use Inspirum\Balikobot\Model\Status\DefaultStatus;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use InvalidArgumentException;
 use RuntimeException;
 
@@ -14,7 +15,7 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
 {
     public function testGetter(): void
     {
-        $carrier    = 'cp';
+        $carrier    = Carrier::CP;
         $items      = [
             new DefaultStatus(
                 $carrier,

@@ -8,7 +8,7 @@ use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Model\OrderedShipment\DefaultOrderedShipment;
 use Inspirum\Balikobot\Model\OrderedShipment\DefaultOrderedShipmentFactory;
 use Inspirum\Balikobot\Model\OrderedShipment\OrderedShipment;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultOrderedShipmentFactoryTest extends BaseTestCase

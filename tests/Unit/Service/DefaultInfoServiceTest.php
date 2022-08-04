@@ -16,19 +16,19 @@ use Inspirum\Balikobot\Model\Changelog\ChangelogCollection;
 use Inspirum\Balikobot\Model\Changelog\ChangelogFactory;
 use Inspirum\Balikobot\Service\DefaultInfoService;
 
-final class DefaultInfoServiceTest extends BaseServiceTest
+final class DefaultInfoServiceTest extends BaseServiceTestCase
 {
     public function testGetAccountInfo(): void
     {
         $response       = $this->mockClientResponse();
         $expectedResult = $this->createMock(Account::class);
 
-        $service = $this->newDefaultInfoService(
+        $infoService = $this->newDefaultInfoService(
             client: $this->mockClient([VersionType::V2V1, null, RequestType::INFO_WHO_AM_I], $response),
             accountFactory: $this->mockAccountFactory($response, $expectedResult),
         );
 
-        $actualResult = $service->getAccountInfo();
+        $actualResult = $infoService->getAccountInfo();
 
         self::assertSame($expectedResult, $actualResult);
     }
@@ -38,12 +38,12 @@ final class DefaultInfoServiceTest extends BaseServiceTest
         $response       = $this->mockClientResponse();
         $expectedResult = $this->createMock(CarrierCollection::class);
 
-        $service = $this->newDefaultInfoService(
+        $infoService = $this->newDefaultInfoService(
             client: $this->mockClient([VersionType::V2V1, null, RequestType::INFO_CARRIERS], $response),
             carrierFactory: $this->mockCarrierFactory(null, $response, $expectedResult),
         );
 
-        $actualResult = $service->getCarriers();
+        $actualResult = $infoService->getCarriers();
 
         self::assertSame($expectedResult, $actualResult);
     }
@@ -54,12 +54,12 @@ final class DefaultInfoServiceTest extends BaseServiceTest
         $response       = $this->mockClientResponse();
         $expectedResult = $this->createMock(Carrier::class);
 
-        $service = $this->newDefaultInfoService(
+        $infoService = $this->newDefaultInfoService(
             client: $this->mockClient([VersionType::V2V1, null, RequestType::INFO_CARRIERS, [], $carrier], $response),
             carrierFactory: $this->mockCarrierFactory($carrier, $response, $expectedResult),
         );
 
-        $actualResult = $service->getCarrier($carrier);
+        $actualResult = $infoService->getCarrier($carrier);
 
         self::assertSame($expectedResult, $actualResult);
     }
@@ -69,12 +69,12 @@ final class DefaultInfoServiceTest extends BaseServiceTest
         $response       = $this->mockClientResponse();
         $expectedResult = $this->createMock(ChangelogCollection::class);
 
-        $service = $this->newDefaultInfoService(
+        $infoService = $this->newDefaultInfoService(
             client: $this->mockClient([VersionType::V2V1, null, RequestType::CHANGELOG], $response),
             changelogFactory: $this->mockChangelogFactory($response, $expectedResult),
         );
 
-        $actualResult = $service->getChangelog();
+        $actualResult = $infoService->getChangelog();
 
         self::assertSame($expectedResult, $actualResult);
     }

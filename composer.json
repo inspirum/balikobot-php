@@ -70,6 +70,9 @@
     "test:coverage": [
       "@phpunit --coverage-text --coverage-html=var/phpunit/coverage"
     ],
+    "test:unit:coverage": [
+      "@phpunit --testsuite=Unit --coverage-text --coverage-html=var/phpunit/coverage"
+    ],
     "test:infection": [
       "@infection"
     ],

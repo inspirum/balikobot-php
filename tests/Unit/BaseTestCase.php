@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Tests;
+namespace Inspirum\Balikobot\Tests\Unit;
 
 use GuzzleHttp\Psr7\Response;
 use Inspirum\Balikobot\Client\Requester;

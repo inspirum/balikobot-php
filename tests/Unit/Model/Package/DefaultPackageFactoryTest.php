@@ -11,7 +11,7 @@ use Inspirum\Balikobot\Model\Package\DefaultPackage;
 use Inspirum\Balikobot\Model\Package\DefaultPackageCollection;
 use Inspirum\Balikobot\Model\Package\DefaultPackageFactory;
 use Inspirum\Balikobot\Model\Package\PackageCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultPackageFactoryTest extends BaseTestCase
@@ -168,6 +168,46 @@ final class DefaultPackageFactoryTest extends BaseTestCase
                 ],
             ],
             'result'   => new BadRequestException([], 404),
+        ];
+
+        yield 'b2a' => [
+            'carrier'  => Carrier::CP,
+            'packages' => [
+                [
+                    'eid' => '0001',
+                ],
+                [
+                    'eid' => '0002',
+                ],
+            ],
+            'data'     => [
+                0        => [
+                    'package_id' => '42718',
+                    'status'     => '200',
+                ],
+                1        => [
+                    'package_id' => '42721',
+                    'status'     => '200',
+                ],
+                'status' => 200,
+            ],
+            'result'   => new DefaultPackageCollection(
+                Carrier::CP,
+                [
+                    new DefaultPackage(
+                        Carrier::CP,
+                        '42718',
+                        '0001',
+                        '',
+                    ),
+                    new DefaultPackage(
+                        Carrier::CP,
+                        '42721',
+                        '0002',
+                        '',
+                    ),
+                ],
+            ),
         ];
     }
 

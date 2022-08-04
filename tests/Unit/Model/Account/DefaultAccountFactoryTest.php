@@ -11,7 +11,7 @@ use Inspirum\Balikobot\Model\Carrier\DefaultCarrier;
 use Inspirum\Balikobot\Model\Carrier\DefaultCarrierCollection;
 use Inspirum\Balikobot\Model\Carrier\DefaultCarrierFactory;
 use Inspirum\Balikobot\Model\Method\DefaultMethodFactory;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultAccountFactoryTest extends BaseTestCase

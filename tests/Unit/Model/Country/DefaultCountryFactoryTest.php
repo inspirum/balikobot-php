@@ -8,7 +8,7 @@ use Inspirum\Balikobot\Model\Country\CountryCollection;
 use Inspirum\Balikobot\Model\Country\DefaultCountry;
 use Inspirum\Balikobot\Model\Country\DefaultCountryCollection;
 use Inspirum\Balikobot\Model\Country\DefaultCountryFactory;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultCountryFactoryTest extends BaseTestCase

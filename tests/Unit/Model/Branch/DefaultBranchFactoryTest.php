@@ -4,23 +4,28 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\Branch;
 
+use ArrayIterator;
 use Inspirum\Balikobot\Definitions\Carrier;
+use Inspirum\Balikobot\Definitions\Country;
 use Inspirum\Balikobot\Model\Branch\BranchFactory;
+use Inspirum\Balikobot\Model\Branch\BranchIterator;
 use Inspirum\Balikobot\Model\Branch\DefaultBranch;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchFactory;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Model\Branch\DefaultBranchIterator;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
+use Traversable;
 use function iterator_to_array;
 
 final class DefaultBranchFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string,mixed>                                       $data
-     * @param array<\Inspirum\Balikobot\Model\Branch\Branch>|\Throwable $result
+     * @param array<string>       $countries
+     * @param array<string,mixed> $data
      *
      * @dataProvider providesTestCreateIterator
      */
-    public function testCreateIterator(string $carrier, ?string $service, array $data, array|Throwable $result): void
+    public function testCreateIterator(string $carrier, ?string $service, ?array $countries, array $data, BranchIterator|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -29,9 +34,12 @@ final class DefaultBranchFactoryTest extends BaseTestCase
 
         $factory = $this->newDefaultBranchFactory();
 
-        $iterator = $factory->createIterator($carrier, $service, $data);
+        $iterator = $factory->createIterator($carrier, $service, $countries, $data);
 
-        self::assertEquals($result, iterator_to_array($iterator));
+        self::assertEquals($result, $iterator);
+        if ($result instanceof Traversable) {
+            self::assertEquals(iterator_to_array($result), iterator_to_array($iterator));
+        }
     }
 
     /**
@@ -42,6 +50,7 @@ final class DefaultBranchFactoryTest extends BaseTestCase
         yield 'valid' => [
             'carrier' => Carrier::CP,
             'service' => null,
+            'countries' => null,
             'data'    => [
                 'branches' => [
                     [
@@ -62,32 +71,116 @@ final class DefaultBranchFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => [
-                new DefaultBranch(
-                    Carrier::CP,
-                    null,
-                    '11000',
-                    '1234',
-                    null,
-                    'type1',
-                    'name1',
-                    'city1',
-                    'street 27/8',
-                    '11000',
-                ),
-                new DefaultBranch(
-                    Carrier::CP,
-                    null,
-                    '12000',
-                    '1235',
-                    null,
-                    'type2',
-                    'name2',
-                    'city2',
-                    'street 27/9',
-                    '12000',
-                ),
+            'result'  => new DefaultBranchIterator(
+                Carrier::CP,
+                null,
+                null,
+                new ArrayIterator([
+                    new DefaultBranch(
+                        Carrier::CP,
+                        null,
+                        '11000',
+                        '1234',
+                        null,
+                        'type1',
+                        'name1',
+                        'city1',
+                        'street 27/8',
+                        '11000',
+                    ),
+                    new DefaultBranch(
+                        Carrier::CP,
+                        null,
+                        '12000',
+                        '1235',
+                        null,
+                        'type2',
+                        'name2',
+                        'city2',
+                        'street 27/9',
+                        '12000',
+                    ),
+                ]),
+            ),
+        ];
+    }
+
+    /**
+     * @param array<string>       $countries
+     * @param array<string,mixed> $data
+     *
+     * @dataProvider providesTestWrapIterator
+     */
+    public function testWrapIterator(string $carrier, ?string $service, ?array $countries, array $data, BranchIterator $result): void
+    {
+        $factory = $this->newDefaultBranchFactory();
+
+        $iterator = $factory->wrapIterator($carrier, $service, $countries, $result->getInnerIterator());
+
+        self::assertEquals($result, $iterator);
+        self::assertEquals(iterator_to_array($result), iterator_to_array($iterator));
+    }
+
+    /**
+     * @return iterable<array<string,mixed>>
+     */
+    public function providesTestWrapIterator(): iterable
+    {
+        yield 'valid' => [
+            'carrier' => Carrier::CP,
+            'service' => null,
+            'countries' => [Country::CZECH_REPUBLIC],
+            'data'    => [
+                'branches' => [
+                    [
+                        'id'     => '1234',
+                        'type'   => 'type1',
+                        'name'   => 'name1',
+                        'city'   => 'city1',
+                        'street' => 'street 27/8',
+                        'zip'    => '11000',
+                    ],
+                    [
+                        'id'     => '1235',
+                        'type'   => 'type2',
+                        'name'   => 'name2',
+                        'city'   => 'city2',
+                        'street' => 'street 27/9',
+                        'zip'    => '12000',
+                    ],
+                ],
             ],
+            'result'  => new DefaultBranchIterator(
+                Carrier::CP,
+                null,
+                [Country::CZECH_REPUBLIC],
+                new ArrayIterator([
+                    new DefaultBranch(
+                        Carrier::CP,
+                        null,
+                        '11000',
+                        '1234',
+                        null,
+                        'type1',
+                        'name1',
+                        'city1',
+                        'street 27/8',
+                        '11000',
+                    ),
+                    new DefaultBranch(
+                        Carrier::CP,
+                        null,
+                        '12000',
+                        '1235',
+                        null,
+                        'type2',
+                        'name2',
+                        'city2',
+                        'street 27/9',
+                        '12000',
+                    ),
+                ]),
+            ),
         ];
     }
 

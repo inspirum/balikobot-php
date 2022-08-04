@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Unit\Model\Attribute;
 
+use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Model\Attribute\AttributeCollection;
 use Inspirum\Balikobot\Model\Attribute\DefaultAttribute;
 use Inspirum\Balikobot\Model\Attribute\DefaultAttributeCollection;
 use Inspirum\Balikobot\Model\Attribute\DefaultAttributeFactory;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultAttributeFactoryTest extends BaseTestCase
@@ -38,7 +39,7 @@ final class DefaultAttributeFactoryTest extends BaseTestCase
     public function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
-            'carrier' => 'cp',
+            'carrier' => Carrier::CP,
             'data'    => [
                 'status' => 200,
                 'attributes' => [
@@ -60,7 +61,7 @@ final class DefaultAttributeFactoryTest extends BaseTestCase
                 ],
             ],
             'result'  => new DefaultAttributeCollection(
-                'cp',
+                Carrier::CP,
                 [
                     new DefaultAttribute(
                         'eid',

@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Branch;
 
+use Generator;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\ServiceType;
-use Iterator;
+use Traversable;
 use function sprintf;
 use function str_replace;
 use function trim;
@@ -81,10 +82,24 @@ final class DefaultBranchFactory implements BranchFactory
         );
     }
 
+    /** @inheritDoc */
+    public function createIterator(string $carrier, ?string $service, ?array $countries, array $data): BranchIterator
+    {
+        return new DefaultBranchIterator($carrier, $service, $countries, $this->generate($carrier, $service, $data));
+    }
+
+    /** @inheritDoc */
+    public function wrapIterator(?string $carrier, ?string $service, ?array $countries, Traversable $iterator): BranchIterator
+    {
+        return new DefaultBranchIterator($carrier, $service, $countries, $iterator);
+    }
+
     /**
-     * @inheritDoc
+     * @param array<string,mixed> $data
+     *
+     * @return \Generator<int,\Inspirum\Balikobot\Model\Branch\Branch>
      */
-    public function createIterator(string $carrier, ?string $service, array $data): Iterator
+    private function generate(string $carrier, ?string $service, array $data): Generator
     {
         foreach ($data['branches'] ?? [] as $branch) {
             yield $this->create($carrier, $service, $branch);

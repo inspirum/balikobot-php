@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\PackageData;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Model\PackageData\DefaultPackageData;
 use Inspirum\Balikobot\Model\PackageData\DefaultPackageDataCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultPackageDataCollectionTest extends BaseTestCase
 {

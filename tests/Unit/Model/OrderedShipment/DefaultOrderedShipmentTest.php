@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\OrderedShipment;
 
 use Inspirum\Balikobot\Model\OrderedShipment\DefaultOrderedShipment;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultOrderedShipmentTest extends BaseTestCase
 {

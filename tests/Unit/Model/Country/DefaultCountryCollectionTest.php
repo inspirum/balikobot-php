@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Country;
 
 use Inspirum\Balikobot\Model\Country\DefaultCountry;
 use Inspirum\Balikobot\Model\Country\DefaultCountryCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultCountryCollectionTest extends BaseTestCase
 {

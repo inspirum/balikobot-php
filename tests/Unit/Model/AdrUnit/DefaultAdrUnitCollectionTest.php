@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\AdrUnit;
 
 use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnit;
 use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnitCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultAdrUnitCollectionTest extends BaseTestCase
 {

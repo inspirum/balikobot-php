@@ -8,7 +8,7 @@ use Inspirum\Balikobot\Model\Method\DefaultMethod;
 use Inspirum\Balikobot\Model\Method\DefaultMethodCollection;
 use Inspirum\Balikobot\Model\Method\DefaultMethodFactory;
 use Inspirum\Balikobot\Model\Method\MethodCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultMethodFactoryTest extends BaseTestCase

@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Changelog;
 
 use Inspirum\Balikobot\Model\Changelog\DefaultChangelogStatus;
 use Inspirum\Balikobot\Model\Changelog\DefaultChangelogStatusCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultChangelogStatusCollectionTest extends BaseTestCase
 {

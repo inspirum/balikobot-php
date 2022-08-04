@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Service;
 
 use Inspirum\Balikobot\Client\Client;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use function array_map;
 use function array_replace;
 use function count;
 use function uniqid;
 
-abstract class BaseServiceTest extends BaseTestCase
+abstract class BaseServiceTestCase extends BaseTestCase
 {
     /**
      * @return array<string,mixed>

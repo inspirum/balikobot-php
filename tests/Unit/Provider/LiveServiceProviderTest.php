@@ -10,7 +10,7 @@ use Inspirum\Balikobot\Model\Service\DefaultService;
 use Inspirum\Balikobot\Model\Service\DefaultServiceCollection;
 use Inspirum\Balikobot\Provider\LiveServiceProvider;
 use Inspirum\Balikobot\Service\SettingService;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use function array_map;
 
 final class LiveServiceProviderTest extends BaseTestCase

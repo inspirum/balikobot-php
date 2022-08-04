@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Branch;
 
-use Iterator;
+use Traversable;
 
 interface BranchFactory
 {
@@ -14,9 +14,14 @@ interface BranchFactory
     public function create(string $carrier, ?string $service, array $data): Branch;
 
     /**
+     * @param array<string>       $countries
      * @param array<string,mixed> $data
-     *
-     * @return \Iterator<\Inspirum\Balikobot\Model\Branch\Branch>
      */
-    public function createIterator(string $carrier, ?string $service, array $data): Iterator;
+    public function createIterator(string $carrier, ?string $service, ?array $countries, array $data): BranchIterator;
+
+    /**
+     * @param array<string>                                         $countries
+     * @param \Traversable<\Inspirum\Balikobot\Model\Branch\Branch> $iterator
+     */
+    public function wrapIterator(?string $carrier, ?string $service, ?array $countries, Traversable $iterator): BranchIterator;
 }

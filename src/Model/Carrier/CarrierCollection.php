@@ -15,4 +15,9 @@ interface CarrierCollection extends Collection
      * @return array<int,\Inspirum\Balikobot\Model\Carrier\Carrier>
      */
     public function getCarriers(): array;
+
+    /**
+     * @return array<string>
+     */
+    public function getCarrierCodes(): array;
 }

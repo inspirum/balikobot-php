@@ -5,16 +5,17 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\ManipulationUnit;
 
 use DateTimeImmutable;
+use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Model\Status\DefaultStatus;
 use Inspirum\Balikobot\Model\Status\DefaultStatuses;
 use Inspirum\Balikobot\Model\Status\DefaultStatusesCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class StatusesCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = 'cp';
+        $carrier       = Carrier::CP;
         $items         = [
             new DefaultStatuses($carrier, '3', [
                 new DefaultStatus(

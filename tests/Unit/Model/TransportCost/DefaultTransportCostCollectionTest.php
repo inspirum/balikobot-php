@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\TransportCost;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Model\TransportCost\DefaultTransportCost;
 use Inspirum\Balikobot\Model\TransportCost\DefaultTransportCostCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use RuntimeException;
 
 final class DefaultTransportCostCollectionTest extends BaseTestCase

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\ZipCode;
 
-use Iterator;
+use Generator;
 
 final class DefaultZipCodeFactory implements ZipCodeFactory
 {
@@ -23,7 +23,17 @@ final class DefaultZipCodeFactory implements ZipCodeFactory
     }
 
     /** @inheritDoc */
-    public function createIterator(string $carrier, ?string $service, ?string $country, array $data): Iterator
+    public function createIterator(string $carrier, ?string $service, ?string $country, array $data): ZipCodeIterator
+    {
+        return new DefaultZipCodeIterator($carrier, $service, $this->generate($carrier, $service, $country, $data));
+    }
+
+    /**
+     * @param array<string,mixed> $data
+     *
+     * @return \Generator<\Inspirum\Balikobot\Model\ZipCode\ZipCode>
+     */
+    private function generate(string $carrier, ?string $service, ?string $country, array $data): Generator
     {
         $country = $data['country'] ?? $country;
 

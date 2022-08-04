@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Branch;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchResolver;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultBranchResolverTest extends BaseTestCase
 {

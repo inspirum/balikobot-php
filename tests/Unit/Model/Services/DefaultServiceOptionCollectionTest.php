@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Service;
 
 use Inspirum\Balikobot\Model\Service\DefaultServiceOption;
 use Inspirum\Balikobot\Model\Service\DefaultServiceOptionCollection;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultServiceOptionCollectionTest extends BaseTestCase
 {

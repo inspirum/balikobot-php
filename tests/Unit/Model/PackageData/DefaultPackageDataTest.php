@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\PackageData;
 use DateTimeImmutable;
 use Inspirum\Balikobot\Definitions\Option;
 use Inspirum\Balikobot\Model\PackageData\DefaultPackageData;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
 final class DefaultPackageDataTest extends BaseTestCase
 {

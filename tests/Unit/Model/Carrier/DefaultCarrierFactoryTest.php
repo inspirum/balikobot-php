@@ -12,7 +12,7 @@ use Inspirum\Balikobot\Model\Carrier\DefaultCarrierFactory;
 use Inspirum\Balikobot\Model\Method\DefaultMethod;
 use Inspirum\Balikobot\Model\Method\DefaultMethodCollection;
 use Inspirum\Balikobot\Model\Method\DefaultMethodFactory;
-use Inspirum\Balikobot\Tests\BaseTestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use Throwable;
 
 final class DefaultCarrierFactoryTest extends BaseTestCase
