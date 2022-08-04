@@ -113,13 +113,13 @@ final class DefaultBranchService implements BranchService
     }
 
     /** @inheritDoc */
-    public function getBranchesForCarrierService(string $carrier, ?string $service): BranchIterator
+    public function getBranchesForCarrierService(string $carrier, string $service): BranchIterator
     {
         return $this->getBranchesForCarrierServiceAndCountry($carrier, $service, null);
     }
 
     /** @inheritDoc */
-    public function getBranchesForCarrierServiceAndCountries(string $carrier, ?string $service, array $countries): BranchIterator
+    public function getBranchesForCarrierServiceAndCountries(string $carrier, string $service, array $countries): BranchIterator
     {
         return $this->branchFactory->wrapIterator($carrier, $service, $countries, $this->generateBranchesForCarrierServiceAndCountries($carrier, $service, $countries));
     }

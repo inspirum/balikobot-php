@@ -7,14 +7,14 @@ namespace Inspirum\Balikobot\Model\Status;
 interface StatusFactory
 {
     /**
-     * @param array<string,string|int|float> $data
-     * @param array<mixed,mixed>             $response
+     * @param array<string,mixed> $data
+     * @param array<mixed,mixed>  $response
      */
     public function create(string $carrier, string $carrierId, array $data, array $response = []): Status;
 
     /**
-     * @param array<string,string|int|float> $data
-     * @param array<mixed,mixed>             $response
+     * @param array<string,mixed> $data
+     * @param array<mixed,mixed>  $response
      */
     public function createLastStatus(string $carrier, array $data, array $response = []): Status;
 

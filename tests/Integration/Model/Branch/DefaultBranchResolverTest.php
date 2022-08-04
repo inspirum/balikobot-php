@@ -22,7 +22,7 @@ class DefaultBranchResolverTest extends BaseTestCase
     /**
      * @dataProvider providesCarrierServiceData
      */
-    public function testHasFullBranchesSupport(string $carrier, ?string $service): void
+    public function testHasFullBranchesSupport(string $carrier, string $service): void
     {
         $branchResolver = new DefaultBranchResolver();
 
@@ -49,7 +49,7 @@ class DefaultBranchResolverTest extends BaseTestCase
                 sprintf(
                     '%s/%s: %s',
                     $carrier,
-                    $service ?? 'NULL',
+                    $service,
                     $exception->getMessage()
                 )
             );
@@ -59,7 +59,7 @@ class DefaultBranchResolverTest extends BaseTestCase
     /**
      * @dataProvider providesCarrierServiceData
      */
-    public function testHasBranchCountryFilterSupport(string $carrier, ?string $service): void
+    public function testHasBranchCountryFilterSupport(string $carrier, string $service): void
     {
         $branchResolver = new DefaultBranchResolver();
 
@@ -99,7 +99,7 @@ class DefaultBranchResolverTest extends BaseTestCase
                 sprintf(
                     '%s/%s: %s',
                     $carrier,
-                    $service ?? 'NULL',
+                    $service,
                     $exception->getMessage()
                 )
             );
@@ -107,7 +107,7 @@ class DefaultBranchResolverTest extends BaseTestCase
     }
 
     /**
-     * @return iterable<array<string,string|null>>
+     * @return iterable<array<string,string>>
      */
     public function providesCarrierServiceData(): iterable
     {

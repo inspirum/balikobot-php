@@ -4,42 +4,23 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Status;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseModel;
 use InvalidArgumentException;
 use function sprintf;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<int,\Inspirum\Balikobot\Model\Status\Status>
+ * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
  */
-final class DefaultStatuses extends BaseCollection implements Statuses
+final class DefaultStatuses extends BaseModel implements Statuses
 {
-    /**
-     * @param array<\Inspirum\Balikobot\Model\Status\Status> $items
-     */
     public function __construct(
         private string $carrier,
         private string $carrierId,
-        array $items = [],
+        private StatusCollection $states,
     ) {
-        parent::__construct([]);
-
-        foreach ($items as $key => $value) {
-            $this->offsetSet($key, $value);
+        foreach ($states as $status) {
+            $this->validateCarrierId($status);
         }
-    }
-
-    public function offsetSet(mixed $key, mixed $value): void
-    {
-        $this->validateCarrierId($value);
-
-        parent::offsetSet($key, $value);
-    }
-
-    public function offsetAdd(mixed $value): void
-    {
-        $this->validateCarrierId($value);
-
-        parent::offsetAdd($value);
     }
 
     /**
@@ -78,21 +59,20 @@ final class DefaultStatuses extends BaseCollection implements Statuses
         return $this->carrierId;
     }
 
-    /** @inheritDoc */
-    public function getStates(): array
+    public function getStates(): StatusCollection
     {
-        return $this->items;
+        return $this->states;
     }
 
     /**
-     * @return array<string,string|array<string,mixed>>
+     * @return array<string,string|array<int,array<string,mixed>>>
      */
     public function __toArray(): array
     {
         return [
             'carrier'   => $this->carrier,
             'carrierId' => $this->carrierId,
-            'states'    => parent::__toArray(),
+            'states'    => $this->states->__toArray(),
         ];
     }
 }

@@ -550,48 +550,6 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
         self::assertSame(null, $actualResult->getCountries());
     }
 
-    public function testGetBranchesForCarrierWithoutService(): void
-    {
-        $carrier  = Carrier::CP;
-        $service  = null;
-        $response = $this->mockClientResponse();
-        $items    = [
-            $this->mockBranch(),
-            $this->mockBranch(),
-            $this->mockBranch(),
-        ];
-
-        $branchService = $this->newDefaultBranchService(
-            client: $this->mockClient([
-                VersionType::V2V1,
-                $carrier,
-                RequestType::FULL_BRANCHES,
-                [],
-                '',
-                true,
-                true,
-            ], $response),
-            branchFactory: $this->mockBranchFactory([
-                [$carrier, $service, null, $response],
-            ], [
-                new DefaultBranchIterator($carrier, $service, null, new ArrayIterator($items)),
-            ]),
-            branchResolver: $this->mockBranchResolver([
-                [$carrier, $service],
-            ], [
-                true,
-            ]),
-        );
-
-        $actualResult   = $branchService->getBranchesForCarrierService($carrier, $service);
-        $expectedResult = new ArrayIterator($items);
-
-        self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
-        self::assertSame($carrier, $actualResult->getCarrier());
-        self::assertSame($service, $actualResult->getService());
-        self::assertSame(null, $actualResult->getCountries());
-    }
-
     public function testGetBranchesForCarrierServiceAndCountries(): void
     {
         $carrier   = Carrier::CP;

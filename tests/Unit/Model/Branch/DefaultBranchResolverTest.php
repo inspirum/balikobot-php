@@ -55,7 +55,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
         yield 'cp_nb' => [
             'carrier' => Carrier::CP,
             'service' => ServiceType::CP_NB,
-            'result'  => false,
+            'result'  => true,
         ];
 
         yield 'pbh_mp' => [

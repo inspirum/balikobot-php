@@ -5,4 +5,13 @@ parameters:
 	paths:
 		- src
 		- tests
-	ignoreErrors: []
+	ignoreErrors:
+		-
+			message: '#^Parameter \#2 \$value of method Inspirum\\Balikobot\\Model\\BasePerCarrierCollection\<TItemKey of \(int\|string\),TItemValue,TKey of \(int\|string\),TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\>\:\:offsetSet\(\) expects TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId, Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId given\.$#'
+			path: src/Model/BasePerCarrierCollection.php
+		-
+			message: '#^Parameter \#1 \$ of callable callable\(TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\)\: bool expects TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId, Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId given\.$#'
+			path: src/Model/BasePerCarrierCollection.php
+		-
+			message: '#^Method Inspirum\\Balikobot\\Model\\BasePerCarrierCollection\:\:first\(\) should return \(TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\)\|null but returns Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\.$#'
+			path: src/Model/BasePerCarrierCollection.php

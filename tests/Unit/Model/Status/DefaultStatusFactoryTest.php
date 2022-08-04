@@ -6,6 +6,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Status;
 
 use DateTimeImmutable;
 use Inspirum\Balikobot\Client\Response\Validator;
+use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Status\DefaultStatus;
 use Inspirum\Balikobot\Model\Status\DefaultStatusCollection;
@@ -46,7 +47,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     public function providesTestCreateCollection(): iterable
     {
         yield 'missing_data_error' => [
-            'carrier'    => 'cp',
+            'carrier'    => Carrier::CP,
             'carrierIds' => ['1', '2'],
             'data'       => [
                 'status' => 200,
@@ -56,7 +57,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'valid' => [
-            'carrier'    => 'cp',
+            'carrier'    => Carrier::CP,
             'carrierIds' => ['3', '4', '5'],
             'data'       => [
                 'packages' => [
@@ -112,8 +113,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'     => new DefaultStatusesCollection('cp', [
-                new DefaultStatuses('cp', '3', [
+            'result'     => new DefaultStatusesCollection(Carrier::CP, [
+                new DefaultStatuses(Carrier::CP, '3', new DefaultStatusCollection(Carrier::CP, [
                     new DefaultStatus(
                         'cp',
                         '3',
@@ -132,8 +133,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                         'event',
                         new DateTimeImmutable('2018-11-08 18:00:00'),
                     ),
-                ]),
-                new DefaultStatuses('cp', '4', [
+                ])),
+                new DefaultStatuses('cp', '4', new DefaultStatusCollection(Carrier::CP, [
                     new DefaultStatus(
                         'cp',
                         '4',
@@ -143,8 +144,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                         'event',
                         new DateTimeImmutable('2018-11-07 14:15:01'),
                     ),
-                ]),
-                new DefaultStatuses('cp', '5', [
+                ])),
+                new DefaultStatuses('cp', '5', new DefaultStatusCollection(Carrier::CP, [
                     new DefaultStatus(
                         'cp',
                         '5',
@@ -154,7 +155,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                         'event',
                         new DateTimeImmutable('2018-11-08 18:00:00'),
                     ),
-                ]),
+                ])),
             ]),
         ];
 

@@ -45,7 +45,7 @@ interface BranchService
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranchesForCarrierService(string $carrier, ?string $service): BranchIterator;
+    public function getBranchesForCarrierService(string $carrier, string $service): BranchIterator;
 
     /**
      * Get all available branches for carrier, service type and countries
@@ -54,7 +54,7 @@ interface BranchService
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
-    public function getBranchesForCarrierServiceAndCountries(string $carrier, ?string $service, array $countries): BranchIterator;
+    public function getBranchesForCarrierServiceAndCountries(string $carrier, string $service, array $countries): BranchIterator;
 
     /**
      * Get all available branches for carrier in specific location

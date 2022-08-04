@@ -10,10 +10,7 @@ use Inspirum\Balikobot\Exception\BadRequestException;
 use Throwable;
 use function array_key_exists;
 use function array_map;
-use function assert;
 use function count;
-use function is_array;
-use function is_string;
 
 final class DefaultStatusFactory implements StatusFactory
 {
@@ -75,23 +72,21 @@ final class DefaultStatusFactory implements StatusFactory
     }
 
     /**
-     * @param array<string,string|int|array<string,string|int|float|array<string|mixed>>> $data
-     * @param array<mixed,mixed>                                                          $response
+     * @param array<mixed,mixed> $data
+     * @param array<mixed,mixed> $response
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     private function createStatuses(string $carrier, array $data, array $response = []): Statuses
     {
         $this->validator->validateResponseStatus($data, $response);
-        assert(is_string($data['carrier_id']));
-        assert(is_array($data['states'] ?? []));
 
         return new DefaultStatuses(
             $carrier,
             (string) $data['carrier_id'],
-            array_map(
-                fn(array $status): Status => $this->create($carrier, (string) $data['carrier_id'], $status, $response),
-                $data['states'] ?? [],
+            new DefaultStatusCollection(
+                $carrier,
+                array_map(fn(array $status): Status => $this->create($carrier, (string) $data['carrier_id'], $status, $response), $data['states'] ?? [])
             ),
         );
     }

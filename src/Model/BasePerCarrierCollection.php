@@ -14,7 +14,7 @@ use function sprintf;
  * @template TItemKey of array-key
  * @template TItemValue
  * @template TKey of array-key
- * @template TValue of (\Inspirum\Arrayable\Arrayable<TItemKey,TItemValue>&\Inspirum\Balikobot\Model\WithCarrierId)
+ * @template TValue of \Inspirum\Arrayable\Arrayable<TItemKey,TItemValue>&\Inspirum\Balikobot\Model\WithCarrierId
  * @extends  \Inspirum\Arrayable\BaseCollection<TItemKey,TItemValue,TKey,TValue>
  * @implements \Inspirum\Balikobot\Model\PerCarrierCollection<TValue>
  */

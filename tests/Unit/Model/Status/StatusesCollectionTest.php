@@ -7,6 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\ManipulationUnit;
 use DateTimeImmutable;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Model\Status\DefaultStatus;
+use Inspirum\Balikobot\Model\Status\DefaultStatusCollection;
 use Inspirum\Balikobot\Model\Status\DefaultStatuses;
 use Inspirum\Balikobot\Model\Status\DefaultStatusesCollection;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
@@ -17,7 +18,7 @@ final class StatusesCollectionTest extends BaseTestCase
     {
         $carrier       = Carrier::CP;
         $items         = [
-            new DefaultStatuses($carrier, '3', [
+            new DefaultStatuses($carrier, '3', new DefaultStatusCollection($carrier, [
                 new DefaultStatus(
                     $carrier,
                     '3',
@@ -36,8 +37,8 @@ final class StatusesCollectionTest extends BaseTestCase
                     'event',
                     new DateTimeImmutable('2018-11-08 18:00:00'),
                 ),
-            ]),
-            new DefaultStatuses($carrier, '4', [
+            ])),
+            new DefaultStatuses($carrier, '4', new DefaultStatusCollection($carrier, [
                 new DefaultStatus(
                     $carrier,
                     '4',
@@ -47,7 +48,7 @@ final class StatusesCollectionTest extends BaseTestCase
                     'event',
                     new DateTimeImmutable('2018-11-07 14:15:01'),
                 ),
-            ]),
+            ])),
         ];
         $collection    = new DefaultStatusesCollection($carrier, $items);
         $expectedArray = [
