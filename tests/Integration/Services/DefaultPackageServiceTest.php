@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Integration\Service;
 
 use DateTimeImmutable;
+use Inspirum\Balikobot\Definitions\AttributeType;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Country;
-use Inspirum\Balikobot\Definitions\Option;
 use Inspirum\Balikobot\Definitions\Response;
 use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Exception\Exception;
@@ -296,12 +296,12 @@ final class DefaultPackageServiceTest extends BaseTestCase
 
         $packageDataInfo = $packageService->getPackageInfo($package);
 
-        self::assertSame($packagesData[0][Option::BRANCH_ID], $packageDataInfo[Option::BRANCH_ID]);
-        self::assertSame($packagesData[0][Option::REC_NAME], $packageDataInfo[Option::REC_NAME]);
-        self::assertSame($packagesData[0][Option::REC_EMAIL], $packageDataInfo[Option::REC_EMAIL]);
+        self::assertSame($packagesData[0][AttributeType::BRANCH_ID], $packageDataInfo[AttributeType::BRANCH_ID]);
+        self::assertSame($packagesData[0][AttributeType::REC_NAME], $packageDataInfo[AttributeType::REC_NAME]);
+        self::assertSame($packagesData[0][AttributeType::REC_EMAIL], $packageDataInfo[AttributeType::REC_EMAIL]);
 
         self::assertSame($packagesData[0]->getEid(), $packageDataInfo->getEID());
-        $packageDataInfo->offsetUnset(Option::EID);
+        $packageDataInfo->offsetUnset(AttributeType::EID);
 
         $packageDataInfoByPackageId = $packageService->getPackageInfoByCarrierId($package->getCarrier(), $package->getCarrierId());
         $packageDataInfoByCarrierId = $packageService->getPackageInfoByPackageId($package->getCarrier(), $package->getPackageId());

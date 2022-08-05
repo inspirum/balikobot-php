@@ -7,8 +7,6 @@ namespace Inspirum\Balikobot\Tests\Integration\Service;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Tests\Integration\BaseTestCase;
 use function array_diff;
-use function count;
-use function implode;
 use function sprintf;
 
 final class DefaultInfoServiceTest extends BaseTestCase
@@ -32,8 +30,8 @@ final class DefaultInfoServiceTest extends BaseTestCase
 
         $unsupportedCarriers = array_diff($carriers->getCarrierCodes(), Carrier::all());
 
-        if (count($unsupportedCarriers) > 0) {
-            self::addWarning(sprintf('Unsupported shippers "%s"', implode(',', $unsupportedCarriers)));
+        foreach ($unsupportedCarriers as $unsupportedCarrier) {
+            self::addWarning(sprintf('Unsupported carrier "%s"', $unsupportedCarrier));
         }
     }
 

@@ -40,10 +40,9 @@ final class DefaultCarrier extends BaseModel implements Carrier
         return $this->methods;
     }
 
-    /** @inheritDoc */
-    public function getMethodsForVersion(Version $version): array
+    public function getMethodsForVersion(Version $version): MethodCollection
     {
-        return $this->methods[$version->getValue()]->__toArray();
+        return $this->methods[$version->getValue()];
     }
 
     /** @inheritDoc */

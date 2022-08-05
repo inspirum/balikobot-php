@@ -6,6 +6,7 @@ namespace Inspirum\Balikobot\Model\Carrier;
 
 use Inspirum\Arrayable\Model;
 use Inspirum\Balikobot\Client\Request\Version;
+use Inspirum\Balikobot\Model\Method\MethodCollection;
 
 /**
  * @extends \Inspirum\Arrayable\Model<string,mixed>
@@ -21,8 +22,5 @@ interface Carrier extends Model
      */
     public function getMethods(): array;
 
-    /**
-     * @return array<array<string,string>>
-     */
-    public function getMethodsForVersion(Version $version): array;
+    public function getMethodsForVersion(Version $version): MethodCollection;
 }

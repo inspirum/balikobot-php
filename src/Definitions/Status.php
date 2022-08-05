@@ -48,14 +48,14 @@ final class Status
      *
      * @var float
      */
-    public const HANDED_TO_FINAL_SHIPPER = 2.5;
+    public const HANDED_TO_FINAL_CARRIER = 2.5;
 
     /**
      * Cancellation by the carrier
      *
      * @var float
      */
-    public const CANCELLATION_BY_SHIPPER = 3.1;
+    public const CANCELLATION_BY_CARRIER = 3.1;
 
     /**
      * Cancellation by the recipient
@@ -90,7 +90,7 @@ final class Status
      *
      * @var float
      */
-    public const ERROR_SHIPPER = 0.1;
+    public const ERROR_CARRIER = 0.1;
 
     /**
      * Error on the part of the recipient
@@ -145,7 +145,7 @@ final class Status
     public static function isError(float $status): bool
     {
         return self::inStatuses($status, [
-            self::ERROR_SHIPPER,
+            self::ERROR_CARRIER,
             self::ERROR_RECIPIENT,
             self::ERROR_SENDER,
         ]);
@@ -165,7 +165,7 @@ final class Status
             self::PICKED_UP_FROM_SENDER,
             self::TRANSIT,
             self::READY_TO_PICK_UP,
-            self::HANDED_TO_FINAL_SHIPPER,
+            self::HANDED_TO_FINAL_CARRIER,
         ]);
     }
 

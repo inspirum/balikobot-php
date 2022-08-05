@@ -23,7 +23,7 @@ class LiveServiceProviderTest extends BaseTestCase
             self::assertEqualsCanonicalizing(
                 $expectedServices,
                 $services,
-                sprintf('Shipper services are not equal for carrier "%s".', $carrier)
+                sprintf('Carrier services are not equal for carrier "%s".', $carrier)
             );
         }
     }
