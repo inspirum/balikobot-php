@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Integration;
 
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Country;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Branch\BranchResolver;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchResolver;
@@ -111,8 +111,8 @@ class DefaultBranchResolverTest extends BaseTestCase
      */
     public function providesCarrierServiceData(): iterable
     {
-        foreach (Carrier::all() as $carrier) {
-            foreach (ServiceType::all()[$carrier] as $service) {
+        foreach (Carrier::getAll() as $carrier) {
+            foreach (Service::getForCarrier($carrier) ?? [] as $service) {
                 yield sprintf('%s-%s', $carrier, $service) => [
                     'carrier' => $carrier,
                     'service' => $service,
@@ -124,7 +124,7 @@ class DefaultBranchResolverTest extends BaseTestCase
     public function testBranchesFilterByCountryCodes(): void
     {
         $branchService = $this->newDefaultBranchService();
-        $carriers      = Carrier::all();
+        $carriers      = Carrier::getAll();
         $countries     = [Country::SLOVAKIA, Country::GERMANY];
 
         foreach ($carriers as $carrier) {

@@ -7,6 +7,7 @@ namespace Inspirum\Balikobot\Model\PackageData;
 use Inspirum\Arrayable\BaseModel;
 use Inspirum\Balikobot\Model\PackageData\Package\CommonData;
 use function array_key_exists;
+use function count;
 
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
@@ -47,6 +48,11 @@ abstract class BasePackageData extends BaseModel implements PackageData
     public function offsetUnset(mixed $key): void
     {
         unset($this->data[$key]);
+    }
+
+    public function count(): int
+    {
+        return count($this->data);
     }
 
     /** @inheritDoc */

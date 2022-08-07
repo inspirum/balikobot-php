@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\PackageData;
 
 use ArrayAccess;
+use Countable;
 use Inspirum\Arrayable\Model;
 
 /**
  * @extends \Inspirum\Arrayable\Model<string,mixed>
  * @extends \ArrayAccess<string,mixed>
  */
-interface PackageData extends Model, ArrayAccess
+interface PackageData extends Model, ArrayAccess, Countable
 {
     /**
      * @return array<string,mixed>

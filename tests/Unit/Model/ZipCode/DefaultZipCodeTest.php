@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\ZipCode;
 
 use Inspirum\Balikobot\Definitions\Carrier;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Model\ZipCode\DefaultZipCode;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
@@ -14,7 +14,7 @@ final class DefaultZipCodeTest extends BaseTestCase
     public function testModel(): void
     {
         $carrier       = Carrier::CP;
-        $service       = ServiceType::CP_NP;
+        $service       = Service::CP_NP;
         $model         = new DefaultZipCode(
             $carrier,
             $service,

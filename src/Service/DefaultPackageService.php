@@ -6,8 +6,8 @@ namespace Inspirum\Balikobot\Service;
 
 use DateTimeInterface;
 use Inspirum\Balikobot\Client\Client;
-use Inspirum\Balikobot\Definitions\RequestType;
-use Inspirum\Balikobot\Definitions\VersionType;
+use Inspirum\Balikobot\Definitions\Method;
+use Inspirum\Balikobot\Definitions\Version;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Label\LabelFactory;
 use Inspirum\Balikobot\Model\OrderedShipment\OrderedShipment;
@@ -41,7 +41,7 @@ final class DefaultPackageService implements PackageService
 
     public function addPackages(PackageDataCollection $packages): PackageCollection
     {
-        $response = $this->client->call(VersionType::V2V1, $packages->getCarrier(), RequestType::ADD, ['packages' => $packages->__toArray()]);
+        $response = $this->client->call(Version::V2V1, $packages->getCarrier(), Method::ADD, ['packages' => $packages->__toArray()]);
 
         return $this->packageFactory->createCollection($packages->getCarrier(), $packages->__toArray(), $response);
     }
@@ -65,7 +65,7 @@ final class DefaultPackageService implements PackageService
     public function dropPackagesByPackageIds(string $carrier, array $packageIds): void
     {
         if (count($packageIds) > 0) {
-            $this->client->call(VersionType::V2V1, $carrier, RequestType::DROP, ['package_ids' => $packageIds]);
+            $this->client->call(Version::V2V1, $carrier, Method::DROP, ['package_ids' => $packageIds]);
         }
     }
 
@@ -77,21 +77,21 @@ final class DefaultPackageService implements PackageService
     /** @inheritDoc */
     public function orderShipmentByPackageIds(string $carrier, array $packageIds): OrderedShipment
     {
-        $response = $this->client->call(VersionType::V2V1, $carrier, RequestType::ORDER, ['package_ids' => $packageIds]);
+        $response = $this->client->call(Version::V2V1, $carrier, Method::ORDER, ['package_ids' => $packageIds]);
 
         return $this->orderedShipmentFactory->create($carrier, $packageIds, $response);
     }
 
     public function getOrder(string $carrier, string $orderId): OrderedShipment
     {
-        $response = $this->client->call(VersionType::V2V1, $carrier, RequestType::ORDER_VIEW, path: $orderId, shouldHaveStatus: false);
+        $response = $this->client->call(Version::V2V1, $carrier, Method::ORDER_VIEW, path: $orderId, shouldHaveStatus: false);
 
         return $this->orderedShipmentFactory->create($carrier, $response['package_ids'], $response);
     }
 
     public function getOverview(string $carrier): PackageCollection
     {
-        $response = $this->client->call(VersionType::V2V1, $carrier, RequestType::OVERVIEW, shouldHaveStatus: false);
+        $response = $this->client->call(Version::V2V1, $carrier, Method::OVERVIEW, shouldHaveStatus: false);
 
         return $this->packageFactory->createCollection($carrier, null, $response);
     }
@@ -104,7 +104,7 @@ final class DefaultPackageService implements PackageService
     /** @inheritDoc */
     public function getLabelsByPackageIds(string $carrier, array $packageIds): string
     {
-        $response = $this->client->call(VersionType::V2V1, $carrier, RequestType::LABELS, ['package_ids' => $packageIds]);
+        $response = $this->client->call(Version::V2V1, $carrier, Method::LABELS, ['package_ids' => $packageIds]);
 
         return $this->labelFactory->create($response);
     }
@@ -120,7 +120,7 @@ final class DefaultPackageService implements PackageService
 
     public function getPackageInfoByPackageId(string $carrier, string $packageId): PackageData
     {
-        $response = $this->client->call(VersionType::V2V1, $carrier, RequestType::PACKAGE, path: $packageId, shouldHaveStatus: false);
+        $response = $this->client->call(Version::V2V1, $carrier, Method::PACKAGE, path: $packageId, shouldHaveStatus: false);
 
         return $this->packageDataFactory->create($response);
     }
@@ -128,9 +128,9 @@ final class DefaultPackageService implements PackageService
     public function getPackageInfoByCarrierId(string $carrier, string $carrierId): PackageData
     {
         $response = $this->client->call(
-            VersionType::V2V1,
+            Version::V2V1,
             $carrier,
-            RequestType::PACKAGE,
+            Method::PACKAGE,
             path: sprintf('carrier_id/%s', $carrierId),
             shouldHaveStatus: false,
         );
@@ -140,7 +140,7 @@ final class DefaultPackageService implements PackageService
 
     public function checkPackages(PackageDataCollection $packages): void
     {
-        $this->client->call(VersionType::V2V1, $packages->getCarrier(), RequestType::CHECK, ['packages' => $packages->__toArray()]);
+        $this->client->call(Version::V2V1, $packages->getCarrier(), Method::CHECK, ['packages' => $packages->__toArray()]);
     }
 
     public function getProofOfDelivery(Package $package): string
@@ -163,9 +163,9 @@ final class DefaultPackageService implements PackageService
     public function getProofOfDeliveriesByCarrierIds(string $carrier, array $carrierIds): array
     {
         $response = $this->client->call(
-            VersionType::V1V1,
+            Version::V1V1,
             $carrier,
-            RequestType::PROOF_OF_DELIVERY,
+            Method::PROOF_OF_DELIVERY,
             array_map(static fn(string $carrierId): array => ['id' => $carrierId], $carrierIds),
             shouldHaveStatus: false,
         );
@@ -175,14 +175,14 @@ final class DefaultPackageService implements PackageService
 
     public function getTransportCosts(PackageDataCollection $packages): TransportCostCollection
     {
-        $response = $this->client->call(VersionType::V1V1, $packages->getCarrier(), RequestType::TRANSPORT_COSTS, $packages->__toArray());
+        $response = $this->client->call(Version::V2V1, $packages->getCarrier(), Method::TRANSPORT_COSTS, ['packages' => $packages->__toArray()]);
 
         return $this->transportCostFactory->createCollection($packages->getCarrier(), $packages->__toArray(), $response);
     }
 
     public function orderB2AShipment(PackageDataCollection $packages): PackageCollection
     {
-        $response = $this->client->call(VersionType::V1V1, $packages->getCarrier(), RequestType::B2A, $packages->__toArray());
+        $response = $this->client->call(Version::V2V1, $packages->getCarrier(), Method::B2A, ['packages' => $packages->__toArray()]);
 
         return $this->packageFactory->createCollection($packages->getCarrier(), $packages->__toArray(), $response);
     }
@@ -195,7 +195,7 @@ final class DefaultPackageService implements PackageService
         int $packageCount,
         ?string $message = null,
     ): void {
-        $response = $this->client->call(VersionType::V2V1, $carrier, RequestType::ORDER_PICKUP, [
+        $response = $this->client->call(Version::V2V1, $carrier, Method::ORDER_PICKUP, [
             'date'          => $dateFrom->format('Y-m-d'),
             'time_from'     => $dateFrom->format('H:s'),
             'time_to'       => $dateTo->format('H:s'),
@@ -207,5 +207,22 @@ final class DefaultPackageService implements PackageService
         if (array_key_exists('message', $response)) {
             throw new BadRequestException($response, 400, null, $response['message']);
         }
+    }
+
+    public function orderB2CShipment(PackageDataCollection $packages): PackageCollection
+    {
+        $response = $this->client->call(Version::V2V1, $packages->getCarrier(), Method::B2C, ['packages' => $packages->__toArray()]);
+
+        return $this->packageFactory->createCollection($packages->getCarrier(), $packages->__toArray(), $response);
+    }
+
+    public function checkB2APackages(PackageDataCollection $packages): void
+    {
+        $this->client->call(Version::V2V1, $packages->getCarrier(), Method::B2A_CHECK, ['packages' => $packages->__toArray()]);
+    }
+
+    public function checkB2CPackages(PackageDataCollection $packages): void
+    {
+        $this->client->call(Version::V2V1, $packages->getCarrier(), Method::B2C_CHECK, ['packages' => $packages->__toArray()]);
     }
 }

@@ -9,7 +9,7 @@ use Inspirum\Arrayable\Model;
 /**
  * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-interface Method extends Model, \Inspirum\Balikobot\Client\Request\Method
+interface Method extends Model
 {
     public function getCode(): string;
 }

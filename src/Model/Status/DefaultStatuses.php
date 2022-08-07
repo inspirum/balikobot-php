@@ -28,16 +28,6 @@ final class DefaultStatuses extends BaseModel implements Statuses
      */
     private function validateCarrierId(Status $item): void
     {
-        if ($this->carrier !== $item->getCarrier()) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    'Item carrier mismatch ("%s" instead "%s")',
-                    $item->getCarrier(),
-                    $this->carrier,
-                )
-            );
-        }
-
         if ($this->carrierId !== $item->getCarrierId()) {
             throw new InvalidArgumentException(
                 sprintf(

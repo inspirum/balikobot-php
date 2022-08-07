@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Integration\Client;
 
-use Inspirum\Balikobot\Definitions\RequestType;
-use Inspirum\Balikobot\Definitions\VersionType;
+use Inspirum\Balikobot\Definitions\Method;
+use Inspirum\Balikobot\Definitions\Version;
 use Inspirum\Balikobot\Tests\Integration\BaseTestCase;
 use function json_decode;
 use function sprintf;
@@ -14,7 +14,7 @@ class DefaultCurlRequesterTest extends BaseTestCase
 {
     public function testSSLVerificationIsNotNeeded(): void
     {
-        $url = sprintf('%s/%s', VersionType::V2V1->getValue(), RequestType::CHANGELOG->getValue());
+        $url = sprintf('%s/%s', Version::V2V1, Method::CHANGELOG);
 
         $requesterWithSSL = $this->newDefaultCurlRequester(false);
         $firstVersion     = json_decode($requesterWithSSL->request($url)->getBody()->getContents(), true)['version'];

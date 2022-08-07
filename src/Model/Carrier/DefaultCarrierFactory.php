@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Carrier;
 
-use Inspirum\Balikobot\Definitions\VersionType;
+use Inspirum\Balikobot\Definitions\Version;
 use Inspirum\Balikobot\Model\Method\MethodFactory;
 use function array_filter;
 use function array_map;
@@ -20,8 +20,8 @@ final class DefaultCarrierFactory implements CarrierFactory
     public function create(string $carrier, array $data): Carrier
     {
         return new DefaultCarrier($carrier, $data['name'], array_map(fn(array $methods) => $this->methodFactory->createCollection($methods), array_filter([
-            VersionType::V2V1->getValue() => $data['methods'] ?? [],
-            VersionType::V2V2->getValue() => $data['v2_methods'] ?? [],
+            Version::V2V1 => $data['methods'] ?? [],
+            Version::V2V2 => $data['v2_methods'] ?? [],
         ])));
     }
 

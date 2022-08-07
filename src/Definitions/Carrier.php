@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Definitions;
 
-final class Carrier
+final class Carrier extends BaseEnum
 {
     /**
      * Česká pošta
@@ -172,44 +172,7 @@ final class Carrier
     public const MAGYARPOSTA = 'magyarposta';
 
     /**
-     * @return array<string>
+     * Sameday
      */
-    public static function all(): array
-    {
-        return [
-            self::CP,
-            self::DHL,
-            self::DPD,
-            self::GEIS,
-            self::GLS,
-            self::INTIME,
-            self::PBH,
-            self::PPL,
-            self::SP,
-            self::SPS,
-            self::TOPTRANS,
-            self::ULOZENKA,
-            self::UPS,
-            self::ZASILKOVNA,
-            self::TNT,
-            self::GW,
-            self::GWCZ,
-            self::MESSENGER,
-            self::DHLDE,
-            self::FEDEX,
-            self::FOFR,
-            self::DACHSER,
-            self::DHLPARCEL,
-            self::RABEN,
-            self::SPRING,
-            self::DSV,
-            self::DHLFREIGHTEC,
-            self::KURIER,
-            self::DBSCHENKER,
-            self::AIRWAY,
-            self::JAPO,
-            self::LIFTAGO,
-            self::MAGYARPOSTA,
-        ];
-    }
+    public const SAMEDAY = 'sameday';
 }

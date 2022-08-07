@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Integration;
 
-use Inspirum\Balikobot\Definitions\AttributeType;
+use Inspirum\Balikobot\Definitions\Attribute;
 use Inspirum\Balikobot\Definitions\Carrier;
-use Inspirum\Balikobot\Definitions\Request;
-use Inspirum\Balikobot\Definitions\VersionType;
-use Inspirum\Balikobot\Model\Attribute\Attribute;
-use Inspirum\Balikobot\Model\Method\Method;
-use ReflectionClass;
+use Inspirum\Balikobot\Definitions\Method;
+use Inspirum\Balikobot\Definitions\Version;
+use Inspirum\Balikobot\Model\Attribute\Attribute as AttributeModel;
+use Inspirum\Balikobot\Model\Method\Method as MethodModel;
 use function array_diff;
 use function array_map;
 use function array_merge;
 use function array_unique;
-use function array_values;
 use function sprintf;
+use function str_replace;
+use function strtolower;
 
 class ChangesSupportTest extends BaseTestCase
 {
@@ -26,7 +26,7 @@ class ChangesSupportTest extends BaseTestCase
 
         $changelog = $infoService->getChangelog();
 
-        $expected = '1.955';
+        $expected = '1.964';
         $actual   = $changelog->getLatestVersion();
 
         if ($actual > $expected) {
@@ -41,23 +41,23 @@ class ChangesSupportTest extends BaseTestCase
         $settingService = $this->newDefaultSettingService();
         $attributes     = [];
 
-        foreach (Carrier::all() as $carrier) {
+        foreach (Carrier::getAll() as $carrier) {
             $attributes[] = array_map(
-                static fn(Attribute $attribute): string => $attribute->getName(),
+                static fn(AttributeModel $attribute): string => $attribute->getName(),
                 $settingService->getAddAttributes($carrier)->getAttributes(),
             );
         }
 
-        $attributes = array_unique(array_merge(...$attributes));
-
-        $options             = new ReflectionClass(AttributeType::class);
-        $supportedAttributes = array_values($options->getConstants());
+        $attributes          = array_unique(array_merge(...$attributes));
+        $supportedAttributes = Attribute::getAll();
 
         $unsupportedAttributes = array_diff($attributes, $supportedAttributes);
 
         foreach ($unsupportedAttributes as $unsupportedAttribute) {
             self::addWarning(sprintf('Unsupported ADD attribute "%s"', $unsupportedAttribute));
         }
+
+        self::assertTrue(true);
     }
 
     public function testAllMethodsSupport(): void
@@ -65,22 +65,22 @@ class ChangesSupportTest extends BaseTestCase
         $infoService = $this->newDefaultInfoService();
         $methods     = [];
 
-        foreach (Carrier::all() as $carrier) {
+        foreach (Carrier::getAll() as $carrier) {
             $methods[] = array_map(
-                static fn(Method $method): string => $method->getCode(),
-                $infoService->getCarrier($carrier)->getMethodsForVersion(VersionType::V2V1)->getMethods(),
+                static fn(MethodModel $method): string => str_replace(' ', '/', strtolower($method->getCode())),
+                $infoService->getCarrier($carrier)->getMethodsForVersion(Version::V2V1)->getMethods(),
             );
         }
 
-        $methods = array_map('strtolower', array_unique(array_merge(...$methods)));
-
-        $options          = new ReflectionClass(Request::class);
-        $supportedMethods = array_map('strtolower', array_values($options->getConstants()));
+        $methods          = array_unique(array_merge(...$methods));
+        $supportedMethods = array_map('strtolower', Method::getAll());
 
         $unsupportedMethods = array_diff($methods, $supportedMethods);
 
         foreach ($unsupportedMethods as $unsupportedMethod) {
             self::addWarning(sprintf('Unsupported method "%s"', $unsupportedMethod));
         }
+
+        self::assertTrue(true);
     }
 }

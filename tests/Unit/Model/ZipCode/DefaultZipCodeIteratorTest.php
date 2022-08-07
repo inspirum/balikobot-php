@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\ZipCode;
 
 use ArrayIterator;
 use Inspirum\Balikobot\Definitions\Carrier;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Model\ZipCode\DefaultZipCode;
 use Inspirum\Balikobot\Model\ZipCode\DefaultZipCodeIterator;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
@@ -17,7 +17,7 @@ final class DefaultZipCodeIteratorTest extends BaseTestCase
     public function testIterator(): void
     {
         $carrier = Carrier::CP;
-        $service = ServiceType::CP_NP;
+        $service = Service::CP_NP;
         $items   = [
             new DefaultZipCode(
                 $carrier,

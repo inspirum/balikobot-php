@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Definitions;
 
-final class Region
+final class Region extends BaseEnum
 {
     /**
      * Alabama

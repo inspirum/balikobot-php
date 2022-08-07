@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Model\Branch;
 
 use Generator;
 use Inspirum\Balikobot\Definitions\Carrier;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Traversable;
 use function sprintf;
 use function str_replace;
@@ -17,7 +17,7 @@ final class DefaultBranchFactory implements BranchFactory
     /** @inheritDoc */
     public function create(string $carrier, ?string $service, array $data): Branch
     {
-        if ($carrier === Carrier::CP && $service === ServiceType::CP_NP) {
+        if ($carrier === Carrier::CP && $service === Service::CP_NP) {
             $data['country'] ??= 'CZ';
         }
 
@@ -115,7 +115,7 @@ final class DefaultBranchFactory implements BranchFactory
         if (
             $carrier === Carrier::CP
             || $carrier === Carrier::SP
-            || ($carrier === Carrier::ULOZENKA && $service === ServiceType::ULOZENKA_CP_NP)
+            || ($carrier === Carrier::ULOZENKA && $service === Service::ULOZENKA_CP_NP)
         ) {
             return str_replace(' ', '', $data['zip']);
         }

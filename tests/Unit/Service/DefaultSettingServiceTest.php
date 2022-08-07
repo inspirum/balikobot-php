@@ -7,9 +7,9 @@ namespace Inspirum\Balikobot\Tests\Unit\Service;
 use Inspirum\Balikobot\Client\Client;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Country;
-use Inspirum\Balikobot\Definitions\RequestType;
-use Inspirum\Balikobot\Definitions\ServiceType;
-use Inspirum\Balikobot\Definitions\VersionType;
+use Inspirum\Balikobot\Definitions\Method;
+use Inspirum\Balikobot\Definitions\Service;
+use Inspirum\Balikobot\Definitions\Version;
 use Inspirum\Balikobot\Model\AdrUnit\AdrUnitCollection;
 use Inspirum\Balikobot\Model\AdrUnit\AdrUnitFactory;
 use Inspirum\Balikobot\Model\Attribute\AttributeCollection;
@@ -18,7 +18,7 @@ use Inspirum\Balikobot\Model\Country\CountryCollection;
 use Inspirum\Balikobot\Model\Country\CountryFactory;
 use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection;
 use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitFactory;
-use Inspirum\Balikobot\Model\Service\Service;
+use Inspirum\Balikobot\Model\Service\Service as ServiceModel;
 use Inspirum\Balikobot\Model\Service\ServiceCollection;
 use Inspirum\Balikobot\Model\Service\ServiceFactory;
 use Inspirum\Balikobot\Model\ZipCode\ZipCodeFactory;
@@ -35,7 +35,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::SERVICES], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::SERVICES], $response),
             serviceFactory: $this->mockServiceFactory($carrier, $response, $expectedResult),
         );
 
@@ -51,7 +51,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::ACTIVATED_SERVICES], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::ACTIVATED_SERVICES], $response),
             serviceFactory: $this->mockServiceFactory($carrier, $response, $expectedResult),
         );
 
@@ -67,7 +67,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::B2A_SERVICES], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::B2A_SERVICES], $response),
             serviceFactory: $this->mockServiceFactory($carrier, $response, $expectedResult),
         );
 
@@ -83,7 +83,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(ManipulationUnitCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::MANIPULATION_UNITS], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::MANIPULATION_UNITS], $response),
             unitFactory: $this->mockUnitFactory($carrier, $response, $expectedResult),
         );
 
@@ -99,7 +99,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(ManipulationUnitCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::ACTIVATED_MANIPULATION_UNITS], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::ACTIVATED_MANIPULATION_UNITS], $response),
             unitFactory: $this->mockUnitFactory($carrier, $response, $expectedResult),
         );
 
@@ -115,7 +115,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::CASH_ON_DELIVERY_COUNTRIES], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::CASH_ON_DELIVERY_COUNTRIES], $response),
             serviceFactory: $this->mockServiceFactory($carrier, $response, $expectedResult),
         );
 
@@ -131,7 +131,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::COUNTRIES], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::COUNTRIES], $response),
             serviceFactory: $this->mockServiceFactory($carrier, $response, $expectedResult),
         );
 
@@ -146,7 +146,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(CountryCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, null, RequestType::GET_COUNTRIES_DATA], $response),
+            client: $this->mockClient([Version::V2V1, null, Method::GET_COUNTRIES_DATA], $response),
             countryFactory: $this->mockCountryFactory($response, $expectedResult),
         );
 
@@ -158,13 +158,13 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     public function testGetZipCodes(): void
     {
         $carrier        = Carrier::CP;
-        $serviceType    = ServiceType::CP_DR;
+        $serviceType    = Service::CP_DR;
         $country        = Country::CZECH_REPUBLIC;
         $response       = $this->mockClientResponse();
         $expectedResult = $this->createMock(ZipCodeIterator::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::ZIP_CODES, [], sprintf('%s/%s', $serviceType, $country)], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::ZIP_CODES, [], sprintf('%s/%s', $serviceType, $country)], $response),
             zipCodeFactory: $this->mockZipCodeFactory($carrier, $serviceType, $country, $response, $expectedResult),
         );
 
@@ -180,7 +180,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(AdrUnitCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::FULL_ADR_UNITS], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::FULL_ADR_UNITS], $response),
             adrUnitFactory: $this->mockAdrUnitFactory($carrier, $response, $expectedResult),
         );
 
@@ -196,7 +196,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(AttributeCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::ADD_ATTRIBUTES], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::ADD_ATTRIBUTES], $response),
             attributeFactory: $this->mockAttributeFactory($carrier, $response, $expectedResult),
         );
 
@@ -212,7 +212,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::ADD_SERVICE_OPTIONS], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::ADD_SERVICE_OPTIONS], $response),
             serviceFactory: $this->mockServiceFactory($carrier, $response, $expectedResult),
         );
 
@@ -224,12 +224,12 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     public function testGetAddServiceOptionsForService(): void
     {
         $carrier        = Carrier::CP;
-        $serviceType    = ServiceType::CP_DR;
+        $serviceType    = Service::CP_DR;
         $response       = $this->mockClientResponse();
-        $expectedResult = $this->createMock(Service::class);
+        $expectedResult = $this->createMock(ServiceModel::class);
 
         $settingService = $this->newDefaultSettingService(
-            client: $this->mockClient([VersionType::V2V1, $carrier, RequestType::ADD_SERVICE_OPTIONS, [], $serviceType], $response),
+            client: $this->mockClient([Version::V2V1, $carrier, Method::ADD_SERVICE_OPTIONS, [], $serviceType], $response),
             serviceFactory: $this->mockServiceFactory($carrier, $response, $expectedResult),
         );
 
@@ -241,10 +241,10 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     /**
      * @param array<string,mixed> $data
      */
-    private function mockServiceFactory(string $carrier, array $data, ServiceCollection|Service $response): ServiceFactory
+    private function mockServiceFactory(string $carrier, array $data, ServiceCollection|ServiceModel $response): ServiceFactory
     {
         $serviceFactory = $this->createMock(ServiceFactory::class);
-        $serviceFactory->expects(self::once())->method($response instanceof Service ? 'create' : 'createCollection')->with($carrier, $data)
+        $serviceFactory->expects(self::once())->method($response instanceof ServiceModel ? 'create' : 'createCollection')->with($carrier, $data)
                        ->willReturn($response);
 
         return $serviceFactory;

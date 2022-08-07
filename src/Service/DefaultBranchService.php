@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Service;
 
 use Inspirum\Balikobot\Client\Client;
-use Inspirum\Balikobot\Definitions\RequestType;
-use Inspirum\Balikobot\Definitions\VersionType;
+use Inspirum\Balikobot\Definitions\Method;
+use Inspirum\Balikobot\Definitions\Version;
 use Inspirum\Balikobot\Model\Branch\BranchFactory;
 use Inspirum\Balikobot\Model\Branch\BranchIterator;
 use Inspirum\Balikobot\Model\Branch\BranchResolver;
@@ -163,7 +163,7 @@ final class DefaultBranchService implements BranchService
      */
     private function getBranchesForCarrierServiceAndCountry(string $carrier, ?string $service, ?string $country): BranchIterator
     {
-        $usedRequest = $this->branchResolver->hasFullBranchesSupport($carrier, $service) ? RequestType::FULL_BRANCHES : RequestType::BRANCHES;
+        $usedRequest = $this->branchResolver->hasFullBranchesSupport($carrier, $service) ? Method::FULL_BRANCHES : Method::BRANCHES;
 
         $paths = [];
         if ($service !== null) {
@@ -176,7 +176,7 @@ final class DefaultBranchService implements BranchService
             $paths[] = $country;
         }
 
-        $response = $this->client->call(VersionType::V2V1, $carrier, $usedRequest, path: implode('/', $paths), gzip: true);
+        $response = $this->client->call(Version::V2V1, $carrier, $usedRequest, path: implode('/', $paths), gzip: true);
 
         return $this->branchFactory->createIterator($carrier, $service, $country !== null ? [$country] : null, $response);
     }
@@ -193,9 +193,9 @@ final class DefaultBranchService implements BranchService
         ?string $type = null,
     ): BranchIterator {
         $response = $this->client->call(
-            VersionType::V2V1,
+            Version::V2V1,
             $carrier,
-            RequestType::BRANCH_LOCATOR,
+            Method::BRANCH_LOCATOR,
             array_filter(
                 [
                     'country'     => $country,

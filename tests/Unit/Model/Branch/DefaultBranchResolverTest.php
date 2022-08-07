@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\Branch;
 
 use Inspirum\Balikobot\Definitions\Carrier;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchResolver;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 
@@ -36,13 +36,13 @@ final class DefaultBranchResolverTest extends BaseTestCase
 
         yield 'zasilkovna_vmcz' => [
             'carrier' => Carrier::ZASILKOVNA,
-            'service' => ServiceType::ZASILKOVNA_VMCZ,
+            'service' => Service::ZASILKOVNA_VMCZ,
             'result'  => true,
         ];
 
         yield 'cp_np' => [
             'carrier' => Carrier::CP,
-            'service' => ServiceType::CP_NP,
+            'service' => Service::CP_NP,
             'result'  => true,
         ];
 
@@ -54,19 +54,19 @@ final class DefaultBranchResolverTest extends BaseTestCase
 
         yield 'cp_nb' => [
             'carrier' => Carrier::CP,
-            'service' => ServiceType::CP_NB,
+            'service' => Service::CP_NB,
             'result'  => true,
         ];
 
         yield 'pbh_mp' => [
             'carrier' => Carrier::PBH,
-            'service' => ServiceType::PBH_MP,
+            'service' => Service::PBH_MP,
             'result'  => true,
         ];
 
         yield 'pbh_fan_kurier' => [
             'carrier' => Carrier::PBH,
-            'service' => ServiceType::PBH_FAN_KURIER,
+            'service' => Service::PBH_FAN_KURIER,
             'result'  => true,
         ];
 
@@ -78,7 +78,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
 
         yield 'pbh_cargus' => [
             'carrier' => Carrier::PBH,
-            'service' => ServiceType::PBH_CARGUS,
+            'service' => Service::PBH_CARGUS,
             'result'  => false,
         ];
     }
@@ -102,19 +102,19 @@ final class DefaultBranchResolverTest extends BaseTestCase
     {
         yield 'ppl' => [
             'carrier' => Carrier::PPL,
-            'service' => ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+            'service' => Service::PPL_PARCEL_BUSSINESS_CZ,
             'result'  => true,
         ];
 
         yield 'dpd' => [
             'carrier' => Carrier::DPD,
-            'service' => ServiceType::DPD_CLASSIC,
+            'service' => Service::DPD_CLASSIC,
             'result'  => true,
         ];
 
         yield 'gls' => [
             'carrier' => Carrier::GLS,
-            'service' => ServiceType::GLS_SHOP,
+            'service' => Service::GLS_SHOP,
             'result'  => true,
         ];
 

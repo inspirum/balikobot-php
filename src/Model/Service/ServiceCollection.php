@@ -18,6 +18,11 @@ interface ServiceCollection extends Collection
      */
     public function getServices(): array;
 
+    /**
+     * @return array<string>
+     */
+    public function getServiceCodes(): array;
+
     public function supportsParcel(): ?bool;
 
     public function supportsCargo(): ?bool;

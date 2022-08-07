@@ -31,14 +31,14 @@ final class DefaultTransportCostFactory implements TransportCostFactory
     /** @inheritDoc */
     public function createCollection(string $carrier, ?array $packages, array $data): TransportCostCollection
     {
-        unset($data['status']);
+        $packagesResponse = $data['packages'] ?? $data;
 
         if ($packages !== null) {
-            $this->validator->validateIndexes($data, count($packages));
+            $this->validator->validateIndexes($packagesResponse, count($packages));
         }
 
-        $this->validator->validateResponseItemHasAttribute($data, 'eid', $data);
+        $this->validator->validateResponseItemHasAttribute($packagesResponse, 'eid', $data);
 
-        return new DefaultTransportCostCollection($carrier, array_values(array_map(fn(array $package): TransportCost => $this->create($carrier, $package), $data)));
+        return new DefaultTransportCostCollection($carrier, array_values(array_map(fn(array $package): TransportCost => $this->create($carrier, $package), $packagesResponse)));
     }
 }

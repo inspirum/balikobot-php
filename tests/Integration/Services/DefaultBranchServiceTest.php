@@ -6,7 +6,7 @@ namespace Inspirum\Balikobot\Tests\Integration\Service;
 
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Country;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Tests\Integration\BaseTestCase;
 
@@ -16,13 +16,13 @@ final class DefaultBranchServiceTest extends BaseTestCase
     {
         $branchService = $this->newDefaultBranchService();
 
-        $branches = $branchService->getBranchesForCarrierService(Carrier::CP, ServiceType::CP_NB);
+        $branches = $branchService->getBranchesForCarrierService(Carrier::CP, Service::CP_NB);
 
         $branches->next();
         self::assertTrue($branches->valid());
         self::assertNotNull($branches->current());
 
-        $branches = $branchService->getBranchesForCarrierService(Carrier::CP, ServiceType::CP_BB);
+        $branches = $branchService->getBranchesForCarrierService(Carrier::CP, Service::CP_BB);
 
         $branches->next();
         self::assertFalse($branches->valid());

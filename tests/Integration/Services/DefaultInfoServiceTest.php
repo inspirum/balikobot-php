@@ -28,7 +28,7 @@ final class DefaultInfoServiceTest extends BaseTestCase
 
         self::assertNotEmpty($carriers);
 
-        $unsupportedCarriers = array_diff($carriers->getCarrierCodes(), Carrier::all());
+        $unsupportedCarriers = array_diff($carriers->getCarrierCodes(), Carrier::getAll());
 
         foreach ($unsupportedCarriers as $unsupportedCarrier) {
             self::addWarning(sprintf('Unsupported carrier "%s"', $unsupportedCarrier));

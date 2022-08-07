@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Integration\Service;
 
 use Inspirum\Balikobot\Definitions\Carrier;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Tests\Integration\BaseTestCase;
 
 final class DefaultSettingServiceTest extends BaseTestCase
@@ -90,7 +90,7 @@ final class DefaultSettingServiceTest extends BaseTestCase
     {
         $settingService = $this->newDefaultSettingService();
 
-        $zipCodes = $settingService->getZipCodes(Carrier::CP, ServiceType::CP_NB);
+        $zipCodes = $settingService->getZipCodes(Carrier::CP, Service::CP_NB);
 
         $zipCodes->next();
         self::assertTrue($zipCodes->valid());
@@ -129,7 +129,7 @@ final class DefaultSettingServiceTest extends BaseTestCase
     {
         $settingService = $this->newDefaultSettingService();
 
-        $service = $settingService->getAddServiceOptionsForService(Carrier::CP, ServiceType::CP_NP);
+        $service = $settingService->getAddServiceOptionsForService(Carrier::CP, Service::CP_NP);
 
         self::assertNotNull($service->getOptions());
     }

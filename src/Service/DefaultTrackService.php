@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Service;
 
 use Inspirum\Balikobot\Client\Client;
-use Inspirum\Balikobot\Definitions\RequestType;
-use Inspirum\Balikobot\Definitions\VersionType;
+use Inspirum\Balikobot\Definitions\Method;
+use Inspirum\Balikobot\Definitions\Version;
 use Inspirum\Balikobot\Model\Package\Package;
 use Inspirum\Balikobot\Model\Package\PackageCollection;
 use Inspirum\Balikobot\Model\Status\Status;
@@ -43,9 +43,9 @@ final class DefaultTrackService implements TrackService
     public function trackPackagesByIds(string $carrier, array $carrierIds): StatusesCollection
     {
         $response = $this->client->call(
-            VersionType::V2V2,
+            Version::V2V2,
             $carrier,
-            RequestType::TRACK,
+            Method::TRACK,
             ['carrier_ids' => $carrierIds],
             shouldHaveStatus: false,
         );
@@ -72,9 +72,9 @@ final class DefaultTrackService implements TrackService
     public function trackPackagesLastStatusesByIds(string $carrier, array $carrierIds): StatusCollection
     {
         $response = $this->client->call(
-            VersionType::V2V2,
+            Version::V2V2,
             $carrier,
-            RequestType::TRACK_STATUS,
+            Method::TRACK_STATUS,
             ['carrier_ids' => $carrierIds],
             shouldHaveStatus: false,
         );

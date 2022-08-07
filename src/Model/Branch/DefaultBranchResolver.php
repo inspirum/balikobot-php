@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Branch;
 
 use Inspirum\Balikobot\Definitions\Carrier;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use function in_array;
 
 final class DefaultBranchResolver implements BranchResolver
@@ -15,59 +15,63 @@ final class DefaultBranchResolver implements BranchResolver
         $supported = [
             Carrier::ZASILKOVNA => null,
             Carrier::CP         => [
-                ServiceType::CP_NP,
-                ServiceType::CP_NB,
+                Service::CP_NP,
+                Service::CP_NB,
             ],
             Carrier::PBH        => [
-                ServiceType::PBH_UPS,
-                ServiceType::PBH_SP,
-                ServiceType::PBH_MP,
-                ServiceType::PBH_RP,
-                ServiceType::PBH_CP_NP,
-                ServiceType::PBH_INPOST_KURIER,
-                ServiceType::PBH_FAN_KURIER,
-                ServiceType::PBH_SPEEDY,
-                ServiceType::PBH_NOBA_POSHTA,
-                ServiceType::PBH_ECONT,
+                Service::PBH_UPS,
+                Service::PBH_SP,
+                Service::PBH_MP,
+                Service::PBH_RP,
+                Service::PBH_CP_NP,
+                Service::PBH_INPOST_KURIER,
+                Service::PBH_FAN_KURIER,
+                Service::PBH_SPEEDY,
+                Service::PBH_NOBA_POSHTA,
+                Service::PBH_ECONT,
             ],
             Carrier::DPD        => [
-                ServiceType::DPD_PICKUP,
+                Service::DPD_PICKUP,
             ],
             Carrier::GLS        => [
-                ServiceType::GLS_SHOP,
-                ServiceType::GLS_GUARANTEED24_SHOP,
+                Service::GLS_SHOP,
+                Service::GLS_GUARANTEED24_SHOP,
             ],
             Carrier::INTIME     => [
-                ServiceType::INTIME_POSTOMAT_CZ,
-                ServiceType::INTIME_BOX_CZ,
-                ServiceType::INTIME_BOX_SK,
+                Service::INTIME_POSTOMAT_CZ,
+                Service::INTIME_BOX_CZ,
+                Service::INTIME_BOX_SK,
             ],
             Carrier::SPS        => [
-                ServiceType::SPS_EXPRESS,
-                ServiceType::SPS_INTERNATIONAL,
+                Service::SPS_EXPRESS,
+                Service::SPS_INTERNATIONAL,
             ],
             Carrier::SP         => [
-                ServiceType::SP_BZP,
-                ServiceType::SP_BZB,
-                ServiceType::SP_EXP,
-                ServiceType::SP_EXB,
-                ServiceType::SP_BNP,
-                ServiceType::SP_BNB,
+                Service::SP_BZP,
+                Service::SP_BZB,
+                Service::SP_EXP,
+                Service::SP_EXB,
+                Service::SP_BNP,
+                Service::SP_BNB,
             ],
             Carrier::ULOZENKA   => [
-                ServiceType::ULOZENKA_ULOZENKA,
-                ServiceType::ULOZENKA_DPD_PARCEL,
-                ServiceType::ULOZENKA_CP_NP,
-                ServiceType::ULOZENKA_PARTNER,
-                ServiceType::ULOZENKA_EXPRESS_SK,
-                ServiceType::ULOZENKA_BALIKOBOX_SK,
-                ServiceType::ULOZENKA_DEPO_SK,
+                Service::ULOZENKA_ULOZENKA,
+                Service::ULOZENKA_DPD_PARCEL,
+                Service::ULOZENKA_CP_NP,
+                Service::ULOZENKA_PARTNER,
+                Service::ULOZENKA_EXPRESS_SK,
+                Service::ULOZENKA_BALIKOBOX_SK,
+                Service::ULOZENKA_DEPO_SK,
             ],
             Carrier::PPL        => [
-                ServiceType::PPL_CONNECT,
-                ServiceType::PPL_PRIVATE,
-                ServiceType::PPL_PRIVATE_SMART_CZ,
-                ServiceType::PPL_PRIVATE_SMART_EU,
+                Service::PPL_CONNECT,
+                Service::PPL_PRIVATE,
+                Service::PPL_PRIVATE_SMART_CZ,
+                Service::PPL_PRIVATE_SMART_EU,
+            ],
+            Carrier::SAMEDAY        => [
+                Service::SAMEDAY_LOCKER_NEXT_DAY,
+                Service::SAMEDAY_LOCKER_RETURN,
             ],
         ];
 
@@ -94,6 +98,7 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::PBH,
             Carrier::SPS,
             Carrier::RABEN,
+            Carrier::SAMEDAY,
         ];
 
         return in_array($carrier, $supportedCarriers, true);

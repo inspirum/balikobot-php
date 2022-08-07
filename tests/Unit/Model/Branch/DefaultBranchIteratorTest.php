@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Branch;
 use ArrayIterator;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Country;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Model\Branch\DefaultBranch;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchIterator;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
@@ -18,7 +18,7 @@ final class DefaultBranchIteratorTest extends BaseTestCase
     public function testIterator(): void
     {
         $carrier   = Carrier::CP;
-        $service   = ServiceType::CP_NP;
+        $service   = Service::CP_NP;
         $countries = [
             Country::CZECH_REPUBLIC,
             Country::HUNGARY,
@@ -26,7 +26,7 @@ final class DefaultBranchIteratorTest extends BaseTestCase
         $items     = [
             new DefaultBranch(
                 Carrier::CP,
-                ServiceType::CP_NP,
+                Service::CP_NP,
                 '11000',
                 '1234',
                 null,
@@ -38,7 +38,7 @@ final class DefaultBranchIteratorTest extends BaseTestCase
             ),
             new DefaultBranch(
                 Carrier::CP,
-                ServiceType::CP_NP,
+                Service::CP_NP,
                 '12000',
                 '1235',
                 null,

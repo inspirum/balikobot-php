@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Definitions;
 
-final class AttributeType
+final class Attribute extends BaseEnum
 {
     /**
      * Eshop ID
@@ -117,6 +117,11 @@ final class AttributeType
      * Delivery address street
      */
     public const REC_STREET = 'rec_street';
+
+    /**
+     * Delivery address street addendum
+     */
+    public const REC_STREET_APPEND = 'rec_street_append';
 
     /**
      * Delivery address city
@@ -649,7 +654,7 @@ final class AttributeType
     public const CONTENT_INVOICE_NUMBER = 'content_invoice_number';
 
     /**
-     * Způsob proclení, může obsahovat hodnoty 'own' = vlastní celní prohlášení, 'create' nebo 'arrier'.
+     * Způsob proclení, může obsahovat hodnoty 'own' = vlastní celní prohlášení, 'create' nebo 'carrier'.
      * string
      */
     public const CONTENT_EAD = 'content_ead';
@@ -665,4 +670,266 @@ final class AttributeType
      * string
      */
     public const EAD_PDF = 'ead_pdf';
+
+    /**
+     * Customer fullname
+     */
+    public const SEN_NAME = 'sen_name';
+
+    /**
+     * Customer company name
+     */
+    public const SEN_FIRM = 'sen_firm';
+
+    /**
+     * Customer address street
+     */
+    public const SEN_STREET = 'sen_street';
+
+    /**
+     * Customer address city
+     */
+    public const SEN_CITY = 'sen_city';
+
+    /**
+     * Customer address zipcode
+     */
+    public const SEN_ZIP = 'sen_zip';
+
+    /**
+     * Customer address country code
+     * ISO 3166-1 alpha-2 http://cs.wikipedia.org/wiki/ISO_3166-1
+     */
+    public const SEN_COUNTRY = 'sen_country';
+
+    /**
+     * Customer address street addendum
+     */
+    public const SEN_STREET_APPEND = 'sen_street_append';
+
+    /**
+     * Customer email
+     */
+    public const SEN_EMAIL = 'sen_email';
+
+    /**
+     * Customer phone
+     */
+    public const SEN_PHONE = 'sen_phone';
+
+    /**
+     * Flag for shipment neutralization (invoicing of duties and taxes to a 3rd entity).
+     */
+    public const NEUTRALIZE = 'neutralize';
+
+    /**
+     * Jméno kontaktní osoby pro neutralizaci.
+     */
+    public const NEUTRALIZE_NAME = 'neutralize_name';
+
+    /**
+     * Název firmy pro neutralizaci.
+     */
+    public const NEUTRALIZE_FIRM = 'neutralize_firm';
+
+    /**
+     * Adresa (ulice + čp) subjektu pro neutralizaci
+     */
+    public const NEUTRALIZE_STREET = 'neutralize_street';
+
+    /**
+     * Adresa (město) subjektu pro neutralizaci
+     */
+    public const NEUTRALIZE_CITY = 'neutralize_city';
+
+    /**
+     * Adresa (PSČ) subjektu pro neutralizac
+     */
+    public const NEUTRALIZE_ZIP = 'neutralize_zip';
+
+    /**
+     * Adresa (kód země příjemce dle ISO 3166-1 alpha-2) subjektu pro neutralizaci
+     */
+    public const NEUTRALIZE_COUNTRY = 'neutralize_country';
+
+    /**
+     * Adresa (zkratka stát/okresu) subjektu pro neutralizaci
+     */
+    public const NEUTRALIZE_REGION = 'neutralize_region';
+
+    /**
+     * Kontaktní telefon subjektu pro neutralizaci
+     */
+    public const NEUTRALIZE_PHONE = 'neutralize_phone';
+
+    /**
+     * Kontaktní email subjektu pro neutralizaci
+     */
+    public const NEUTRALIZE_EMAIL = 'neutralize_email';
+
+    /**
+     * UPS ID účtu pro neutralizaci
+     */
+    public const NEUTRALIZE_ACCOUNT_NUMBER = 'neutralize_account_number';
+
+    /**
+     * Název banky
+     */
+    public const BANK_NAME = 'bank_name';
+
+    /**
+     * Jméno držitele účtu
+     */
+    public const BANK_ACCOUNT_HOLDER = 'bank_account_holder';
+
+    /**
+     * Číslo účtu ve formátu IBAN
+     */
+    public const IBAN = 'iban';
+
+    /**
+     * Číslo účtu ve formátu IBAN
+     */
+    public const SWIFT = 'swift';
+
+    /**
+     * Export accompanying document
+     */
+    public const DCL_PDF = 'dcl_pdf';
+
+    /**
+     * Datum plánované realizace doručení zásilky
+     */
+    public const DATE_DELIVERY = 'date_delivery';
+
+    /**
+     * Čas (formát HH:ii) určující kdy nejdříve je možné zásilku doručit adresátovi
+     */
+    public const DELIVERY_TIME_FROM = 'delivery_time_from';
+
+    /**
+     * Čas (formát HH:ii) určující kdy nejpozději je možné zásilku doručit adresátovi
+     */
+    public const DELIVERY_TIME_TO = 'delivery_time_to';
+
+    /**
+     * Velikost zásilky
+     */
+    public const SIZE = 'size';
+
+    /**
+     * Typ výdejního místa
+     */
+    public const BRANCH_TYPE = 'branch_type';
+
+    /**
+     * Typ exportu
+     */
+    public const CONTENT_TYPE = 'content_type';
+
+    /**
+     * Místo podání zásilek (město)
+     */
+    public const CONTENT_PLACE_OF_COMMITAL = 'content_place_of_commital';
+
+    /**
+     * Dodatečné poplatky pro celní prohlášku
+     */
+    public const CONTENT_ADDITIONAL_FEE = 'content_additional_fee';
+
+    /**
+     * Popis typu zboží v případě, že content_type = “OTHER“
+     */
+    public const CONTENT_TYPE_DESCRIPTION = 'content_type_description';
+
+    /**
+     * Plátce zásilky
+     */
+    public const PAYER = 'payer';
+
+    /**
+     * Pro vrácení url adresy s fakturou
+     */
+    public const GENERATE_INVOICE = 'generate_invoice';
+
+    /**
+     * Nakládací délka v paletových kusech
+     */
+    public const LOADING_LENGTH_PALLETS = 'loading_length_pallets';
+
+    /**
+     * Požadována nevyšší přepravní teplota
+     */
+    public const TRANSFORM_TEMP_TO = 'transform_temp_to';
+
+    /**
+     * Požadována nejnižší přepravní teplota
+     */
+    public const TRANSFORM_TEMP_FROM = 'transform_temp_from';
+
+    /**
+     * Povinný parametr pro mezinárodní zásilky
+     */
+    public const CONTENT_PRODUCE_CODE = 'content_produce_code';
+
+    /**
+     * dentifikační číslo plátce přepravy
+     */
+    public const SHIPPER_VAT = 'shipper_vat';
+
+    /**
+     * Místo pro obchodní podmínky
+     */
+    public const TERMS_OF_TRADE_LOCATION = 'terms_of_trade_location';
+
+    /**
+     * @deprecated
+     */
+    public const REC_CONTACT = 'rec_contact';
+
+    /**
+     * @deprecated
+     */
+
+    public const REC_BRANCH_ID = 'rec_branch_id';
+
+    /**
+     * @deprecated
+     */
+    public const SERVICE_TYPE_NUMBER = 'service_type_number';
+
+    /**
+     * @deprecated
+     */
+    public const IS_DUTIABLE = 'is_dutiable';
+
+    /**
+     * @deprecated
+     */
+    public const INS_PRICE = 'ins_price';
+
+    /**
+     * @deprecated
+     */
+    public const LABEL_IMAGE = 'label_image';
+
+    /**
+     * @deprecated
+     */
+    public const SHIPPING_DIRECTION = 'shipping_direction';
+
+    /**
+     * @deprecated
+     */
+    public const IS_LOCKERS = 'is_lockers';
+
+    /**
+     * @deprecated
+     */
+    public const LOCKERS_URL = 'lockers_url';
+
+    /**
+     * @deprecated
+     */
+    public const BOX_ID = 'box_id';
 }

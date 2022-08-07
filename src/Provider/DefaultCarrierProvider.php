@@ -11,6 +11,6 @@ final class DefaultCarrierProvider implements CarrierProvider
     /** @inheritDoc */
     public function getCarriers(): array
     {
-        return Carrier::all();
+        return Carrier::getAll();
     }
 }

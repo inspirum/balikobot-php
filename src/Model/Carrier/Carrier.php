@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Carrier;
 
 use Inspirum\Arrayable\Model;
-use Inspirum\Balikobot\Client\Request\Version;
 use Inspirum\Balikobot\Model\Method\MethodCollection;
 
 /**
@@ -22,5 +21,5 @@ interface Carrier extends Model
      */
     public function getMethods(): array;
 
-    public function getMethodsForVersion(Version $version): MethodCollection;
+    public function getMethodsForVersion(string $version): MethodCollection;
 }

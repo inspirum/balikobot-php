@@ -181,15 +181,17 @@ final class DefaultPackageFactoryTest extends BaseTestCase
                 ],
             ],
             'data'     => [
-                0        => [
-                    'package_id' => '42718',
-                    'status'     => '200',
+                'packages' => [
+                    [
+                        'package_id' => '42718',
+                        'status'     => '200',
+                    ],
+                    [
+                        'package_id' => '42721',
+                        'status'     => '200',
+                    ],
                 ],
-                1        => [
-                    'package_id' => '42721',
-                    'status'     => '200',
-                ],
-                'status' => 200,
+                'status'   => 200,
             ],
             'result'   => new DefaultPackageCollection(
                 Carrier::CP,

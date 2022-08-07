@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Carrier;
 
 use Inspirum\Arrayable\BaseModel;
-use Inspirum\Balikobot\Client\Request\Version;
 use Inspirum\Balikobot\Model\Method\MethodCollection;
 use function array_map;
 
@@ -40,9 +39,9 @@ final class DefaultCarrier extends BaseModel implements Carrier
         return $this->methods;
     }
 
-    public function getMethodsForVersion(Version $version): MethodCollection
+    public function getMethodsForVersion(string $version): MethodCollection
     {
-        return $this->methods[$version->getValue()];
+        return $this->methods[$version];
     }
 
     /** @inheritDoc */

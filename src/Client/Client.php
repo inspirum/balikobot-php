@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Client;
 
-use Inspirum\Balikobot\Client\Request\Method;
-use Inspirum\Balikobot\Client\Request\Version;
-
 interface Client
 {
     /**
@@ -19,9 +16,9 @@ interface Client
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function call(
-        Version $version,
+        string $baseUrl,
         ?string $carrier,
-        Method $request,
+        string $method,
         array $data = [],
         ?string $path = null,
         bool $shouldHaveStatus = true,

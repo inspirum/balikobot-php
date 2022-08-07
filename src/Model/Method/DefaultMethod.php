@@ -21,11 +21,6 @@ final class DefaultMethod extends BaseModel implements Method
         return $this->code;
     }
 
-    public function getValue(): string
-    {
-        return $this->code;
-    }
-
     /** @inheritDoc */
     public function __toArray(): array
     {

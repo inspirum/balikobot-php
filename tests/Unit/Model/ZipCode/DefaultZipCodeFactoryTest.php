@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\ZipCode;
 use ArrayIterator;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Country;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Model\ZipCode\DefaultZipCode;
 use Inspirum\Balikobot\Model\ZipCode\DefaultZipCodeFactory;
 use Inspirum\Balikobot\Model\ZipCode\DefaultZipCodeIterator;
@@ -48,7 +48,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
     {
         yield 'type_zip' => [
             'carrier' => Carrier::CP,
-            'service' => ServiceType::CP_NP,
+            'service' => Service::CP_NP,
             'country' => null,
             'data'    => [
                 'status'       => 200,
@@ -69,7 +69,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
             ],
             'result'  => new DefaultZipCodeIterator(
                 Carrier::CP,
-                ServiceType::CP_NP,
+                Service::CP_NP,
                 new ArrayIterator([
                     new DefaultZipCode(
                         'cp',
@@ -95,7 +95,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
 
         yield 'type_range' => [
             'carrier' => Carrier::PPL,
-            'service' => ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+            'service' => Service::PPL_PARCEL_BUSSINESS_CZ,
             'country' => null,
             'data'    => [
                 'status'       => 200,
@@ -116,7 +116,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
             ],
             'result'  => new DefaultZipCodeIterator(
                 Carrier::PPL,
-                ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+                Service::PPL_PARCEL_BUSSINESS_CZ,
                 new ArrayIterator([
                     new DefaultZipCode(
                         'ppl',
@@ -142,7 +142,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
 
         yield 'type_range_2' => [
             'carrier' => Carrier::PPL,
-            'service' => ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+            'service' => Service::PPL_PARCEL_BUSSINESS_CZ,
             'country' => null,
             'data'    => [
                 'status'       => 200,
@@ -159,7 +159,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
             ],
             'result'  => new DefaultZipCodeIterator(
                 Carrier::PPL,
-                ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+                Service::PPL_PARCEL_BUSSINESS_CZ,
                 new ArrayIterator([
                     new DefaultZipCode(
                         'ppl',
@@ -176,7 +176,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
 
         yield 'type_city' => [
             'carrier' => Carrier::PPL,
-            'service' => ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+            'service' => Service::PPL_PARCEL_BUSSINESS_CZ,
             'country' => Country::UNITED_ARAB_EMIRATES,
             'data'    => [
                 'status'       => 200,
@@ -193,7 +193,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
             ],
             'result'  => new DefaultZipCodeIterator(
                 Carrier::PPL,
-                ServiceType::PPL_PARCEL_BUSSINESS_CZ,
+                Service::PPL_PARCEL_BUSSINESS_CZ,
                 new ArrayIterator([
                     new DefaultZipCode(
                         'ppl',

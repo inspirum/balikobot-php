@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Package;
 
 use Inspirum\Balikobot\Client\Response\Validator;
-use Inspirum\Balikobot\Definitions\AttributeType;
+use Inspirum\Balikobot\Definitions\Attribute;
 use function count;
 
 final class DefaultPackageFactory implements PackageFactory
@@ -35,9 +35,7 @@ final class DefaultPackageFactory implements PackageFactory
     /** @inheritDoc */
     public function createCollection(string $carrier, ?array $packages, array $data): PackageCollection
     {
-        unset($data['status']);
-
-        $packagesResponse = $data['packages'] ?? $data;
+        $packagesResponse = $data['packages'];
         if ($packages !== null) {
             $this->validator->validateIndexes($packagesResponse, count($packages));
         }
@@ -50,7 +48,7 @@ final class DefaultPackageFactory implements PackageFactory
         foreach ($packagesResponse as $i => $package) {
             $this->validator->validateResponseStatus($package, $data, false);
 
-            $package[AttributeType::EID] ??= $packages[$i][AttributeType::EID] ?? null;
+            $package[Attribute::EID] ??= $packages[$i][Attribute::EID] ?? null;
 
             $orderedPackages->add($this->create($carrier, $package));
         }

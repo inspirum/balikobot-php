@@ -5,9 +5,14 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Model\PackageData;
 
 use DateTimeImmutable;
-use Inspirum\Balikobot\Definitions\AttributeType;
+use Inspirum\Balikobot\Definitions\Attribute;
 use Inspirum\Balikobot\Model\PackageData\DefaultPackageData;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use function array_diff;
+use function array_keys;
+use function count;
+use function implode;
+use function sprintf;
 
 final class DefaultPackageDataTest extends BaseTestCase
 {
@@ -59,6 +64,7 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setRecFirm('Firm');
         $package->setRecNamePatronymum('Patronymum');
         $package->setRecStreet('Street');
+        $package->setRecStreetAppend('12a');
         $package->setRecCity('City');
         $package->setRecZip('18900');
         $package->setRecRegion('Region');
@@ -67,6 +73,8 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setRecEmail('email@email.com');
         $package->setRecPhone('777666555');
         $package->setWeight(4.3);
+        $package->setSize('S');
+        $package->setLoadingLengthPallets(99.1);
         $package->setRequireFullAge(true);
         $package->setFullAgeMinimum('15');
         $package->setPassword('123456');
@@ -95,10 +103,14 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setWrapBackNote('WNote');
         $package->setAppDisp(true);
         $package->setDeliveryDate(new DateTimeImmutable('2018-10-10 10:00:01'));
+        $package->setDeliveryTimeFrom(new DateTimeImmutable('2018-10-10 10:00:01'));
+        $package->setDeliveryTimeTo(new DateTimeImmutable('2018-10-10 12:00:01'));
+        $package->setDateDelivery(new DateTimeImmutable('2018-10-11 11:00:01'));
         $package->setReturnTrack(true);
         $package->setBankAccountNumber('56789/0900');
         $package->setContent('content');
         $package->setTermsOfTrade('terms an terms');
+        $package->setTermsOfTradeLocation('Prague');
         $package->setInvoicePDF('base64:pdf');
         $package->setFullAgeData('FullAgeData');
         $package->setSatDelivery(true);
@@ -120,6 +132,11 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setPersDeliveryDepartment(false);
         $package->setPIN('1235');
         $package->setContentData(['a' => 1, 'test' => 4]);
+        $package->setContentType('DOCUMENT');
+        $package->setContentTypeDescription('contentTypeDesc');
+        $package->setContentAdditionalFee(3.45);
+        $package->setContentProductCode('999');
+        $package->setContentPlaceOfCommital('Brno');
         $package->setInvoiceNumber('23456789');
         $package->setOpenBeforePayment(true);
         $package->setTestBeforePayment(false);
@@ -158,126 +175,203 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setContentEAD('create');
         $package->setContentMRN('1234');
         $package->setEADPdf('base64:ead');
+        $package->setDCLPdf('base64:dcl');
+        $package->setSenName('SenName');
+        $package->setSenFirm('SenFirm');
+        $package->setSenStreet('SenStreet');
+        $package->setSenStreetAppend('12c');
+        $package->setSenCity('SenCity');
+        $package->setSenZip('19900');
+        $package->setSenCountry('Slovak');
+        $package->setSenEmail('email2@email.com');
+        $package->setSenPhone('777666333');
+        $package->setNeutralize(true);
+        $package->setNeutralizeName('NeutralizeName');
+        $package->setNeutralizeFirm('NeutralizeFirm');
+        $package->setNeutralizeStreet('NeutralizeStreet');
+        $package->setNeutralizeCity('NeutralizeCity');
+        $package->setNeutralizeZip('19900');
+        $package->setNeutralizeCountry('HU');
+        $package->setNeutralizeRegion('HU1');
+        $package->setNeutralizeEmail('email3@email.com');
+        $package->setNeutralizePhone('777666222');
+        $package->setNeutralizeAccountNumber('456789/0985');
+        $package->setBankName('CS');
+        $package->setBankAccountHolder('BankHolderName');
+        $package->setSWIFT('12345');
+        $package->setIBAN('6789');
+        $package->setBranchType('packstation');
+        $package->setGenerateInvoice(true);
+        $package->setPayer('2');
+        $package->setTransformTempFrom(5);
+        $package->setTransformTempTO(60);
+        $package->setShipperVat('21');
+
+        $unsupportedAttributes = array_diff(Attribute::getAll(), array_keys($package->getData()));
 
         self::assertEquals(
             [
-                AttributeType::EID                           => 'eid',
-                AttributeType::ORDER_NUMBER                  => 1,
-                AttributeType::REAL_ORDER_ID                 => 'RealOrderID',
-                AttributeType::SERVICE_TYPE                  => 'NP',
-                AttributeType::SERVICES                      => '1+2+3',
-                AttributeType::BRANCH_ID                     => 'ID678',
-                AttributeType::PRICE                         => 2000.0,
-                AttributeType::DEL_INSURANCE                 => 1,
-                AttributeType::DEL_EVENING                   => 0,
-                AttributeType::DEL_EXWORKS                   => 1,
-                AttributeType::COD_PRICE                     => 1789.0,
-                AttributeType::COD_CURRENCY                  => 'CZK',
-                AttributeType::VS                            => '67890',
-                AttributeType::REC_NAME                      => 'Name',
-                AttributeType::REC_FIRM                      => 'Firm',
-                AttributeType::REC_NAME_PATRONYMUM           => 'Patronymum',
-                AttributeType::REC_STREET                    => 'Street',
-                AttributeType::REC_CITY                      => 'City',
-                AttributeType::REC_ZIP                       => '18900',
-                AttributeType::REC_REGION                    => 'Region',
-                AttributeType::REC_COUNTRY                   => 'Czech',
-                AttributeType::REC_LOCALE_ID                 => '15',
-                AttributeType::REC_EMAIL                     => 'email@email.com',
-                AttributeType::REC_PHONE                     => '777666555',
-                AttributeType::WEIGHT                        => 4.3,
-                AttributeType::REQUIRE_FULL_AGE              => 1,
-                AttributeType::FULL_AGE_MINIMUM              => '15',
-                AttributeType::PASSWORD                      => '123456',
-                AttributeType::CREDIT_CARD                   => 1,
-                AttributeType::SMS_NOTIFICATION              => 0,
-                AttributeType::WIDTH                         => 1.3,
-                AttributeType::LENGTH                        => 14.1,
-                AttributeType::HEIGHT                        => 19.0,
-                AttributeType::NOTE                          => 'NOTE',
-                AttributeType::SWAP                          => 1,
-                AttributeType::SWAP_OPTION                   => 'Option',
-                AttributeType::VDL_SERVICE                   => 1,
-                AttributeType::VOLUME                        => 4.0,
-                AttributeType::MU_TYPE                       => 'MU_1',
-                AttributeType::PIECES_COUNT                  => 1,
-                AttributeType::MU_TYPE_ONE                   => 'MU_1',
-                AttributeType::PIECES_COUNT_ONE              => 1,
-                AttributeType::MU_TYPE_TWO                   => 'MU_2',
-                AttributeType::PIECES_COUNT_TWO              => 2,
-                AttributeType::MU_TYPE_THREE                 => 'MU_3',
-                AttributeType::PIECES_COUNT_THREE            => 3,
-                AttributeType::COMFORT_SERVICE               => 1,
-                AttributeType::COMFORT_SERVICE_PLUS          => 0,
-                AttributeType::OVER_DIMENSION                => 1,
-                AttributeType::WRAP_BACK_COUNT               => 6,
-                AttributeType::WRAP_BACK_NOTE                => 'WNote',
-                AttributeType::APP_DISP                      => 1,
-                AttributeType::DELIVERY_DATE                 => '2018-10-10',
-                AttributeType::RETURN_TRACK                  => 1,
-                AttributeType::BANK_ACCOUNT_NUMBER           => '56789/0900',
-                AttributeType::CONTENT                       => 'content',
-                AttributeType::TERMS_OF_TRADE                => 'terms an terms',
-                AttributeType::INVOICE_PDF                   => 'base64:pdf',
-                AttributeType::FULL_AGE_DATA                 => 'FullAgeData',
-                AttributeType::SAT_DELIVERY                  => 1,
-                AttributeType::GET_PIECES_NUMBERS            => 0,
-                AttributeType::RETURN_FULL_ERRORS            => 1,
-                AttributeType::CONTENT_ONE                   => 'Content1',
-                AttributeType::CONTENT_TWO                   => 'Content2',
-                AttributeType::CONTENT_THREE                 => 'Content3',
-                AttributeType::PHONE_DELIVERY_NOTIFICATION   => 1,
-                AttributeType::PHONE_ORDER_NOTIFICATION      => 0,
-                AttributeType::EMAIL_NOTIFICATION            => 1,
-                AttributeType::PHONE_NOTIFICATION            => 0,
-                AttributeType::B2C_NOTIFICATION              => 1,
-                AttributeType::NOTE_DRIVER                   => 'NoteDriver',
-                AttributeType::NOTE_CUSTOMER                 => 'NoteCustomer',
-                AttributeType::COMFORT_EXCLUSIVE_SERVICE     => 0,
-                AttributeType::PERS_DELIVERY_FLOOR           => 1,
-                AttributeType::PERS_DELIVERY_BUILDING        => 0,
-                AttributeType::PERS_DELIVERY_DEPARTMENT      => 0,
-                AttributeType::PIN                           => '1235',
-                AttributeType::CONTENT_DATA                  => ['a' => 1, 'test' => 4],
-                AttributeType::INVOICE_NUMBER                => '23456789',
-                AttributeType::OPEN_BEFORE_PAYMENT           => 1,
-                AttributeType::TEST_BEFORE_PAYMENT           => 0,
-                AttributeType::ADR_SERVICE                   => 1,
-                AttributeType::ADR_CONTENT                   => ['b' => '6'],
-                AttributeType::REC_HOUSE_NUMBER              => '18/B',
-                AttributeType::REC_BLOCK                     => '15',
-                AttributeType::REC_ENTERANCE                 => '189-12',
-                AttributeType::REC_FLOOR                     => '4',
-                AttributeType::REC_FLAT_NUMBER               => '1900',
-                AttributeType::DELIVERY_COSTS                => 15.1,
-                AttributeType::DELIVERY_COSTS_EUR            => 5.31,
-                AttributeType::REC_ID                        => '567890',
-                AttributeType::PICKUP_DATE                   => '2019-11-11',
-                AttributeType::PICKUP_TIME_FROM              => '10:00',
-                AttributeType::PICKUP_TIME_TO                => '18:10',
-                AttributeType::INS_CURRENCY                  => 'EUR',
-                AttributeType::DEL_EXWORKS_ACCOUNT_NUMBER    => '456789/0987',
-                AttributeType::DEL_EXWORKS_ZIP               => '17000',
-                AttributeType::DEL_EXWORKS_COUNTRY_CODE      => 'CZE',
-                AttributeType::REFERENCE                     => 'REFEREBCE',
-                AttributeType::SM1_SERVICE                   => true,
-                AttributeType::SM1_TEXT                      => 'TEST',
-                AttributeType::SM2_SERVICE                   => false,
-                AttributeType::RETURN_FINAL_CARRIER_ID       => 1,
-                AttributeType::BANK_CODE                     => '0800',
-                AttributeType::DECLARATION_COMMENTS          => 'Test',
-                AttributeType::DECLARATION_CHARGES_DISCOUNT  => 0.15,
-                AttributeType::DECLARATION_INSURANCE_CHARGES => 10,
-                AttributeType::DECLARATION_OTHER_CHARGES     => 99.9,
-                AttributeType::DECLARATION_TRANSPORT_CHARGES => 5.3,
-                AttributeType::IS_ALCOHOL                    => true,
-                AttributeType::CONTENT_ISSUE_DATE            => '2019-11-11',
-                AttributeType::CONTENT_INVOICE_NUMBER        => '1234567890',
-                AttributeType::CONTENT_EAD                   => 'create',
-                AttributeType::CONTENT_MRN                   => '1234',
-                AttributeType::EAD_PDF                       => 'base64:ead',
+                Attribute::EID                           => 'eid',
+                Attribute::ORDER_NUMBER                  => 1,
+                Attribute::REAL_ORDER_ID                 => 'RealOrderID',
+                Attribute::SERVICE_TYPE                  => 'NP',
+                Attribute::SERVICES                      => '1+2+3',
+                Attribute::BRANCH_ID                     => 'ID678',
+                Attribute::PRICE                         => 2000.0,
+                Attribute::DEL_INSURANCE                 => 1,
+                Attribute::DEL_EVENING                   => 0,
+                Attribute::DEL_EXWORKS                   => 1,
+                Attribute::COD_PRICE                     => 1789.0,
+                Attribute::COD_CURRENCY                  => 'CZK',
+                Attribute::VS                            => '67890',
+                Attribute::REC_NAME                      => 'Name',
+                Attribute::REC_FIRM                      => 'Firm',
+                Attribute::REC_NAME_PATRONYMUM           => 'Patronymum',
+                Attribute::REC_STREET                    => 'Street',
+                Attribute::REC_STREET_APPEND             => '12a',
+                Attribute::REC_CITY                      => 'City',
+                Attribute::REC_ZIP                       => '18900',
+                Attribute::REC_REGION                    => 'Region',
+                Attribute::REC_COUNTRY                   => 'Czech',
+                Attribute::REC_LOCALE_ID                 => '15',
+                Attribute::REC_EMAIL                     => 'email@email.com',
+                Attribute::REC_PHONE                     => '777666555',
+                Attribute::WEIGHT                        => 4.3,
+                Attribute::SIZE                          => 'S',
+                Attribute::LOADING_LENGTH_PALLETS        => 99.1,
+                Attribute::REQUIRE_FULL_AGE              => 1,
+                Attribute::FULL_AGE_MINIMUM              => '15',
+                Attribute::PASSWORD                      => '123456',
+                Attribute::CREDIT_CARD                   => 1,
+                Attribute::SMS_NOTIFICATION              => 0,
+                Attribute::WIDTH                         => 1.3,
+                Attribute::LENGTH                        => 14.1,
+                Attribute::HEIGHT                        => 19.0,
+                Attribute::NOTE                          => 'NOTE',
+                Attribute::SWAP                          => 1,
+                Attribute::SWAP_OPTION                   => 'Option',
+                Attribute::VDL_SERVICE                   => 1,
+                Attribute::VOLUME                        => 4.0,
+                Attribute::MU_TYPE                       => 'MU_1',
+                Attribute::PIECES_COUNT                  => 1,
+                Attribute::MU_TYPE_ONE                   => 'MU_1',
+                Attribute::PIECES_COUNT_ONE              => 1,
+                Attribute::MU_TYPE_TWO                   => 'MU_2',
+                Attribute::PIECES_COUNT_TWO              => 2,
+                Attribute::MU_TYPE_THREE                 => 'MU_3',
+                Attribute::PIECES_COUNT_THREE            => 3,
+                Attribute::COMFORT_SERVICE               => 1,
+                Attribute::COMFORT_SERVICE_PLUS          => 0,
+                Attribute::OVER_DIMENSION                => 1,
+                Attribute::WRAP_BACK_COUNT               => 6,
+                Attribute::WRAP_BACK_NOTE                => 'WNote',
+                Attribute::APP_DISP                      => 1,
+                Attribute::DELIVERY_DATE                 => '2018-10-10',
+                Attribute::DATE_DELIVERY                 => '2018-10-11',
+                Attribute::DELIVERY_TIME_FROM            => '10:00',
+                Attribute::DELIVERY_TIME_TO              => '12:00',
+                Attribute::RETURN_TRACK                  => 1,
+                Attribute::BANK_ACCOUNT_NUMBER           => '56789/0900',
+                Attribute::CONTENT                       => 'content',
+                Attribute::TERMS_OF_TRADE                => 'terms an terms',
+                Attribute::TERMS_OF_TRADE_LOCATION       => 'Prague',
+                Attribute::INVOICE_PDF                   => 'base64:pdf',
+                Attribute::FULL_AGE_DATA                 => 'FullAgeData',
+                Attribute::SAT_DELIVERY                  => 1,
+                Attribute::GET_PIECES_NUMBERS            => 0,
+                Attribute::RETURN_FULL_ERRORS            => 1,
+                Attribute::CONTENT_ONE                   => 'Content1',
+                Attribute::CONTENT_TWO                   => 'Content2',
+                Attribute::CONTENT_THREE                 => 'Content3',
+                Attribute::PHONE_DELIVERY_NOTIFICATION   => 1,
+                Attribute::PHONE_ORDER_NOTIFICATION      => 0,
+                Attribute::EMAIL_NOTIFICATION            => 1,
+                Attribute::PHONE_NOTIFICATION            => 0,
+                Attribute::B2C_NOTIFICATION              => 1,
+                Attribute::NOTE_DRIVER                   => 'NoteDriver',
+                Attribute::NOTE_CUSTOMER                 => 'NoteCustomer',
+                Attribute::COMFORT_EXCLUSIVE_SERVICE     => 0,
+                Attribute::PERS_DELIVERY_FLOOR           => 1,
+                Attribute::PERS_DELIVERY_BUILDING        => 0,
+                Attribute::PERS_DELIVERY_DEPARTMENT      => 0,
+                Attribute::PIN                           => '1235',
+                Attribute::CONTENT_DATA                  => ['a' => 1, 'test' => 4],
+                Attribute::CONTENT_TYPE                  => 'DOCUMENT',
+                Attribute::CONTENT_TYPE_DESCRIPTION      => 'contentTypeDesc',
+                Attribute::CONTENT_ADDITIONAL_FEE        => 3.45,
+                Attribute::CONTENT_PRODUCE_CODE          => '999',
+                Attribute::CONTENT_PLACE_OF_COMMITAL     => 'Brno',
+                Attribute::INVOICE_NUMBER                => '23456789',
+                Attribute::OPEN_BEFORE_PAYMENT           => 1,
+                Attribute::TEST_BEFORE_PAYMENT           => 0,
+                Attribute::ADR_SERVICE                   => 1,
+                Attribute::ADR_CONTENT                   => ['b' => '6'],
+                Attribute::REC_HOUSE_NUMBER              => '18/B',
+                Attribute::REC_BLOCK                     => '15',
+                Attribute::REC_ENTERANCE                 => '189-12',
+                Attribute::REC_FLOOR                     => '4',
+                Attribute::REC_FLAT_NUMBER               => '1900',
+                Attribute::DELIVERY_COSTS                => 15.1,
+                Attribute::DELIVERY_COSTS_EUR            => 5.31,
+                Attribute::REC_ID                        => '567890',
+                Attribute::PICKUP_DATE                   => '2019-11-11',
+                Attribute::PICKUP_TIME_FROM              => '10:00',
+                Attribute::PICKUP_TIME_TO                => '18:10',
+                Attribute::INS_CURRENCY                  => 'EUR',
+                Attribute::DEL_EXWORKS_ACCOUNT_NUMBER    => '456789/0987',
+                Attribute::DEL_EXWORKS_ZIP               => '17000',
+                Attribute::DEL_EXWORKS_COUNTRY_CODE      => 'CZE',
+                Attribute::REFERENCE                     => 'REFEREBCE',
+                Attribute::SM1_SERVICE                   => 1,
+                Attribute::SM1_TEXT                      => 'TEST',
+                Attribute::SM2_SERVICE                   => 0,
+                Attribute::RETURN_FINAL_CARRIER_ID       => 1,
+                Attribute::BANK_CODE                     => '0800',
+                Attribute::DECLARATION_COMMENTS          => 'Test',
+                Attribute::DECLARATION_CHARGES_DISCOUNT  => 0.15,
+                Attribute::DECLARATION_INSURANCE_CHARGES => 10.0,
+                Attribute::DECLARATION_OTHER_CHARGES     => 99.9,
+                Attribute::DECLARATION_TRANSPORT_CHARGES => 5.3,
+                Attribute::IS_ALCOHOL                    => 1,
+                Attribute::CONTENT_ISSUE_DATE            => '2019-11-11',
+                Attribute::CONTENT_INVOICE_NUMBER        => '1234567890',
+                Attribute::CONTENT_EAD                   => 'create',
+                Attribute::CONTENT_MRN                   => '1234',
+                Attribute::EAD_PDF                       => 'base64:ead',
+                Attribute::SEN_NAME                      => 'SenName',
+                Attribute::SEN_FIRM                      => 'SenFirm',
+                Attribute::SEN_STREET                    => 'SenStreet',
+                Attribute::SEN_STREET_APPEND             => '12c',
+                Attribute::SEN_CITY                      => 'SenCity',
+                Attribute::SEN_ZIP                       => '19900',
+                Attribute::SEN_COUNTRY                   => 'Slovak',
+                Attribute::SEN_EMAIL                     => 'email2@email.com',
+                Attribute::SEN_PHONE                     => '777666333',
+                Attribute::NEUTRALIZE                    => 1,
+                Attribute::NEUTRALIZE_NAME               => 'NeutralizeName',
+                Attribute::NEUTRALIZE_FIRM               => 'NeutralizeFirm',
+                Attribute::NEUTRALIZE_STREET             => 'NeutralizeStreet',
+                Attribute::NEUTRALIZE_CITY               => 'NeutralizeCity',
+                Attribute::NEUTRALIZE_ZIP                => '19900',
+                Attribute::NEUTRALIZE_COUNTRY            => 'HU',
+                Attribute::NEUTRALIZE_EMAIL              => 'email3@email.com',
+                Attribute::NEUTRALIZE_PHONE              => '777666222',
+                Attribute::NEUTRALIZE_REGION             => 'HU1',
+                Attribute::NEUTRALIZE_ACCOUNT_NUMBER     => '456789/0985',
+                Attribute::DCL_PDF                       => 'base64:dcl',
+                Attribute::BANK_NAME                     => 'CS',
+                Attribute::BANK_ACCOUNT_HOLDER           => 'BankHolderName',
+                Attribute::SWIFT                         => '12345',
+                Attribute::IBAN                          => '6789',
+                Attribute::BRANCH_TYPE                   => 'packstation',
+                Attribute::GENERATE_INVOICE              => 1,
+                Attribute::PAYER                         => '2',
+                Attribute::TRANSFORM_TEMP_FROM           => 5.0,
+                Attribute::TRANSFORM_TEMP_TO             => 60.0,
+                Attribute::SHIPPER_VAT                   => '21',
             ],
             $package->__toArray()
         );
+        self::assertCount(count(Attribute::getAll()) - 10, $package, sprintf('Missing: %s', implode(',', $unsupportedAttributes)));
     }
 }

@@ -100,6 +100,7 @@ final class DefaultServiceCollectionTest extends BaseTestCase
 
         self::assertSame($carrier, $collection->getCarrier());
         self::assertSame($items, $collection->getServices());
+        self::assertSame(['NP', 'RR'], $collection->getServiceCodes());
         self::assertSame(false, $collection->supportsParcel());
         self::assertSame(true, $collection->supportsCargo());
         self::assertSame($expectedArray, $collection->__toArray());

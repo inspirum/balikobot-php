@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Client;
 
 use GuzzleHttp\Psr7\InflateStream;
-use Inspirum\Balikobot\Client\Request\Method;
-use Inspirum\Balikobot\Client\Request\Version;
 use Inspirum\Balikobot\Client\Response\Validator;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use JsonException;
@@ -28,15 +26,15 @@ final class DefaultClient implements Client
 
     /** @inheritDoc */
     public function call(
-        Version $version,
+        string $baseUrl,
         ?string $carrier,
-        Method $request,
+        string $method,
         array $data = [],
         ?string $path = null,
         bool $shouldHaveStatus = true,
         bool $gzip = false,
     ): array {
-        $url = $this->resolveUrl($version->getValue(), $carrier, $request->getValue(), $path, $gzip);
+        $url = $this->resolveUrl($baseUrl, $carrier, $method, $path, $gzip);
 
         $response = $this->requester->request($url, $data);
 
@@ -49,16 +47,16 @@ final class DefaultClient implements Client
         return $parsedContent;
     }
 
-    private function resolveUrl(string $version, ?string $carrier, string $request, ?string $path, bool $gzip): string
+    private function resolveUrl(string $baseUrl, ?string $carrier, string $method, ?string $path, bool $gzip): string
     {
-        $url = sprintf('%s/%s/%s', $carrier, $request, $path ?? '');
+        $url = sprintf('%s/%s/%s', $carrier, $method, $path ?? '');
         $url = trim(str_replace('//', '/', $url), '/');
 
         if ($gzip) {
             $url = sprintf('%s?gzip=1', $url);
         }
 
-        return sprintf('%s/%s', $version, $url);
+        return sprintf('%s/%s', $baseUrl, $url);
     }
 
     /**

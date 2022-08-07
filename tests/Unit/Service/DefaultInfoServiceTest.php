@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Service;
 
 use Inspirum\Balikobot\Client\Client;
-use Inspirum\Balikobot\Definitions\RequestType;
-use Inspirum\Balikobot\Definitions\VersionType;
+use Inspirum\Balikobot\Definitions\Method;
+use Inspirum\Balikobot\Definitions\Version;
 use Inspirum\Balikobot\Model\Account\Account;
 use Inspirum\Balikobot\Model\Account\AccountFactory;
 use Inspirum\Balikobot\Model\Carrier\Carrier;
@@ -24,7 +24,7 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(Account::class);
 
         $infoService = $this->newDefaultInfoService(
-            client: $this->mockClient([VersionType::V2V1, null, RequestType::INFO_WHO_AM_I], $response),
+            client: $this->mockClient([Version::V2V1, null, Method::INFO_WHO_AM_I], $response),
             accountFactory: $this->mockAccountFactory($response, $expectedResult),
         );
 
@@ -39,7 +39,7 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(CarrierCollection::class);
 
         $infoService = $this->newDefaultInfoService(
-            client: $this->mockClient([VersionType::V2V1, null, RequestType::INFO_CARRIERS], $response),
+            client: $this->mockClient([Version::V2V1, null, Method::INFO_CARRIERS], $response),
             carrierFactory: $this->mockCarrierFactory(null, $response, $expectedResult),
         );
 
@@ -55,7 +55,7 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(Carrier::class);
 
         $infoService = $this->newDefaultInfoService(
-            client: $this->mockClient([VersionType::V2V1, null, RequestType::INFO_CARRIERS, [], $carrier], $response),
+            client: $this->mockClient([Version::V2V1, null, Method::INFO_CARRIERS, [], $carrier], $response),
             carrierFactory: $this->mockCarrierFactory($carrier, $response, $expectedResult),
         );
 
@@ -70,7 +70,7 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
         $expectedResult = $this->createMock(ChangelogCollection::class);
 
         $infoService = $this->newDefaultInfoService(
-            client: $this->mockClient([VersionType::V2V1, null, RequestType::CHANGELOG], $response),
+            client: $this->mockClient([Version::V2V1, null, Method::CHANGELOG], $response),
             changelogFactory: $this->mockChangelogFactory($response, $expectedResult),
         );
 

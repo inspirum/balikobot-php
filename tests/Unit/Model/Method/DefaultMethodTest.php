@@ -14,6 +14,5 @@ final class DefaultMethodTest extends BaseTestCase
         $model = new DefaultMethod('ADD');
 
         self::assertSame('ADD', $model->getCode());
-        self::assertSame('ADD', $model->getValue());
     }
 }

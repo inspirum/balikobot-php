@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Definitions;
 
-final class Currency
+final class Currency extends BaseEnum
 {
     /**
      * Dolar
@@ -170,46 +170,4 @@ final class Currency
      * Libra
      */
     public const GBP = 'GBP';
-
-    /**
-     * @return array<string>
-     */
-    public static function all(): array
-    {
-        return [
-            self::AUD,
-            self::BRL,
-            self::BGN,
-            self::CNY,
-            self::DKK,
-            self::EUR,
-            self::CZK,
-            self::PHP,
-            self::HKD,
-            self::HRK,
-            self::INR,
-            self::IDR,
-            self::ILS,
-            self::JPY,
-            self::ZAR,
-            self::KRW,
-            self::CAD,
-            self::HUF,
-            self::MYR,
-            self::MXN,
-            self::XDR,
-            self::NOK,
-            self::NZD,
-            self::PLN,
-            self::RON,
-            self::RUB,
-            self::SGD,
-            self::SEK,
-            self::CHF,
-            self::THB,
-            self::TRY,
-            self::USD,
-            self::GBP,
-        ];
-    }
 }

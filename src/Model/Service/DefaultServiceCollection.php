@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Service;
 
 use Inspirum\Arrayable\BaseCollection;
+use function array_map;
 
 /**
  * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\Service\Service>
@@ -32,6 +33,14 @@ final class DefaultServiceCollection extends BaseCollection implements ServiceCo
     public function getServices(): array
     {
         return $this->getItems();
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getServiceCodes(): array
+    {
+        return array_map(static fn(Service $service): string => $service->getType(), $this->getServices());
     }
 
     public function supportsParcel(): ?bool

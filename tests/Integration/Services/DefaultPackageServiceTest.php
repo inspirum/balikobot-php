@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Integration\Service;
 
 use DateTimeImmutable;
-use Inspirum\Balikobot\Definitions\AttributeType;
+use Inspirum\Balikobot\Definitions\Attribute;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Country;
 use Inspirum\Balikobot\Definitions\Response;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Model\Package\DefaultPackage;
 use Inspirum\Balikobot\Model\Package\DefaultPackageCollection;
@@ -24,7 +24,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::ZASILKOVNA_VMCZ);
+        $packageData->setServiceType(Service::ZASILKOVNA_VMCZ);
         $packageData->setBranchId('12');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -50,7 +50,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::ZASILKOVNA_VMCZ);
+        $packageData->setServiceType(Service::ZASILKOVNA_VMCZ);
         $packageData->setBranchId('X');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -79,7 +79,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::ZASILKOVNA_VMCZ);
+        $packageData->setServiceType(Service::ZASILKOVNA_VMCZ);
         $packageData->setBranchId('12');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -127,7 +127,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::CP_DR);
+        $packageData->setServiceType(Service::CP_DR);
         $packageData->setBranchId('12');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -177,7 +177,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::ZASILKOVNA_VMCZ);
+        $packageData->setServiceType(Service::ZASILKOVNA_VMCZ);
         $packageData->setBranchId('12');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -227,7 +227,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::ZASILKOVNA_VMCZ);
+        $packageData->setServiceType(Service::ZASILKOVNA_VMCZ);
         $packageData->setBranchId('12');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -276,7 +276,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::ZASILKOVNA_VMCZ);
+        $packageData->setServiceType(Service::ZASILKOVNA_VMCZ);
         $packageData->setBranchId('12');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -296,12 +296,12 @@ final class DefaultPackageServiceTest extends BaseTestCase
 
         $packageDataInfo = $packageService->getPackageInfo($package);
 
-        self::assertSame($packagesData[0][AttributeType::BRANCH_ID], $packageDataInfo[AttributeType::BRANCH_ID]);
-        self::assertSame($packagesData[0][AttributeType::REC_NAME], $packageDataInfo[AttributeType::REC_NAME]);
-        self::assertSame($packagesData[0][AttributeType::REC_EMAIL], $packageDataInfo[AttributeType::REC_EMAIL]);
+        self::assertSame($packagesData[0][Attribute::BRANCH_ID], $packageDataInfo[Attribute::BRANCH_ID]);
+        self::assertSame($packagesData[0][Attribute::REC_NAME], $packageDataInfo[Attribute::REC_NAME]);
+        self::assertSame($packagesData[0][Attribute::REC_EMAIL], $packageDataInfo[Attribute::REC_EMAIL]);
 
         self::assertSame($packagesData[0]->getEid(), $packageDataInfo->getEID());
-        $packageDataInfo->offsetUnset(AttributeType::EID);
+        $packageDataInfo->offsetUnset(Attribute::EID);
 
         $packageDataInfoByPackageId = $packageService->getPackageInfoByCarrierId($package->getCarrier(), $package->getCarrierId());
         $packageDataInfoByCarrierId = $packageService->getPackageInfoByPackageId($package->getCarrier(), $package->getPackageId());
@@ -334,7 +334,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::ZASILKOVNA_VMCZ);
+        $packageData->setServiceType(Service::ZASILKOVNA_VMCZ);
         $packageData->setBranchId('12');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -345,11 +345,11 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageData->setRecPhone('776555888');
         $packageData->setPrice(1000.00);
 
-        $packages = new DefaultPackageDataCollection(Carrier::ZASILKOVNA, [
+        $packagesData = new DefaultPackageDataCollection(Carrier::ZASILKOVNA, [
             $packageData,
         ]);
 
-        $packageService->checkPackages($packages);
+        $packageService->checkPackages($packagesData);
 
         self::assertTrue(true);
     }
@@ -359,7 +359,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::ZASILKOVNA_VMCZ);
+        $packageData->setServiceType(Service::ZASILKOVNA_VMCZ);
         $packageData->setBranchId('X');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -388,7 +388,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::UPS_EXPRESS);
+        $packageData->setServiceType(Service::UPS_EXPRESS);
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
         $packageData->setRecZip('12000');
@@ -437,7 +437,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::TOPTRANS_TOPTIME);
+        $packageData->setServiceType(Service::TOPTRANS_TOPTIME);
         $packageData->setBranchId('12');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -464,7 +464,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::TOPTRANS_PERSONAL);
+        $packageData->setServiceType(Service::TOPTRANS_PERSONAL);
         $packageData->setBranchId('12');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -485,7 +485,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             self::fail('TRANSPORTCOSTS request should thrown exception');
         } catch (Exception $exception) {
             self::assertEquals(400, $exception->getStatusCode());
-            self::assertTrue(isset($exception->getErrors()[0]['mu_type_one']));
+            self::assertTrue(isset($exception->getErrors()[0]['mu_type']), $exception->getResponseAsString());
         }
     }
 
@@ -494,7 +494,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::PPL_PARCEL_BUSSINESS_CZ);
+        $packageData->setServiceType(Service::PPL_PARCEL_BUSSINESS_CZ);
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
         $packageData->setRecZip('12000');
@@ -517,7 +517,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(ServiceType::PPL_PARCEL_BUSSINESS_CZ);
+        $packageData->setServiceType(Service::PPL_PARCEL_BUSSINESS_CZ);
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecZip('12000');
         $packageData->setRecStreet('Ulice');
@@ -582,6 +582,196 @@ final class DefaultPackageServiceTest extends BaseTestCase
             self::fail('ORDERPICKUP request should thrown exception');
         } catch (Exception $exception) {
             self::assertEquals(400, $exception->getStatusCode());
+        }
+    }
+
+    public function testOrderB2CShipment(): void
+    {
+        $packageService = $this->newDefaultPackageService();
+
+        $packageData = new DefaultPackageData();
+        $packageData->setServiceType(Service::TOPTRANS_TOPTIME);
+        $packageData->setBranchId('12');
+        $packageData->setRecName('Tomáš Novák');
+        $packageData->setRecEmail('tets@test.cz');
+        $packageData->setRecZip('12000');
+        $packageData->setRecStreet('Ulice');
+        $packageData->setRecCity('Praha');
+        $packageData->setRecCountry(Country::CZECH_REPUBLIC);
+        $packageData->setRecPhone('776555888');
+        $packageData->setSenName('Tomáš Novák');
+        $packageData->setSenEmail('tets@test.cz');
+        $packageData->setSenZip('12000');
+        $packageData->setSenStreet('Ulice');
+        $packageData->setSenCity('Praha');
+        $packageData->setSenCountry(Country::CZECH_REPUBLIC);
+        $packageData->setSenPhone('776555888');
+        $packageData->setPrice(1000.00);
+        $packageData->setWeight(1.0);
+        $packageData->setMuType('KUS');
+
+        $packagesData = new DefaultPackageDataCollection(Carrier::TOPTRANS, [
+            $packageData,
+        ]);
+
+        $orderPackages = $packageService->orderB2CShipment($packagesData);
+        self::assertCount(1, $orderPackages->getPackageIds());
+    }
+
+    public function testOrderB2CShipmentForInvalidData(): void
+    {
+        $packageService = $this->newDefaultPackageService();
+
+        $packageData = new DefaultPackageData();
+        $packageData->setServiceType(Service::TOPTRANS_TOPTIME);
+        $packageData->setBranchId('12');
+        $packageData->setRecName('Tomáš Novák');
+        $packageData->setRecEmail('tets@test.cz');
+        $packageData->setRecZip('12000');
+        $packageData->setRecStreet('Ulice');
+        $packageData->setRecCity('Praha');
+        $packageData->setRecCountry(Country::CZECH_REPUBLIC);
+        $packageData->setRecPhone('776555888');
+        $packageData->setSenEmail('tets@test.cz');
+        $packageData->setSenZip('12000');
+        $packageData->setSenStreet('Ulice');
+        $packageData->setSenCity('Praha');
+        $packageData->setSenCountry(Country::CZECH_REPUBLIC);
+        $packageData->setSenPhone('776555888');
+        $packageData->setPrice(1000.00);
+        $packageData->setWeight(1.0);
+        $packageData->setMuType('KUS');
+
+        $packagesData = new DefaultPackageDataCollection(Carrier::TOPTRANS, [
+            $packageData,
+        ]);
+
+        try {
+            $packageService->orderB2CShipment($packagesData);
+            self::fail('B2C request should thrown exception');
+        } catch (Exception $exception) {
+            self::assertEquals(400, $exception->getStatusCode());
+            self::assertTrue(isset($exception->getErrors()[0]['sen_name']), $exception->getResponseAsString());
+        }
+    }
+
+    public function testCheckB2APackages(): void
+    {
+        $packageService = $this->newDefaultPackageService();
+
+        $packageData = new DefaultPackageData();
+        $packageData->setServiceType(Service::PPL_PARCEL_BUSSINESS_CZ);
+        $packageData->setRecName('Tomáš Novák');
+        $packageData->setRecEmail('tets@test.cz');
+        $packageData->setRecZip('12000');
+        $packageData->setRecStreet('Ulice');
+        $packageData->setRecCity('Praha');
+        $packageData->setRecCountry(Country::CZECH_REPUBLIC);
+        $packageData->setRecPhone('776555888');
+        $packageData->setPrice(1000.00);
+
+        $packagesData = new DefaultPackageDataCollection(Carrier::PPL, [
+            $packageData,
+        ]);
+
+        $packageService->checkB2APackages($packagesData);
+
+        self::assertTrue(true);
+    }
+
+    public function testCheckB2APackagesInvalidData(): void
+    {
+        $packageService = $this->newDefaultPackageService();
+
+        $packageData = new DefaultPackageData();
+        $packageData->setServiceType(Service::PPL_PARCEL_BUSSINESS_CZ);
+        $packageData->setRecEmail('tets@test.cz');
+        $packageData->setRecZip('12000');
+        $packageData->setRecStreet('Ulice');
+        $packageData->setRecCity('Praha');
+        $packageData->setRecCountry(Country::CZECH_REPUBLIC);
+        $packageData->setRecPhone('776555888');
+
+        $packagesData = new DefaultPackageDataCollection(Carrier::PPL, [
+            $packageData,
+        ]);
+
+        try {
+            $packageService->checkB2APackages($packagesData);
+            self::fail('CHECKB2A request should thrown exception');
+        } catch (Exception $exception) {
+            self::assertEquals(400, $exception->getStatusCode());
+            self::assertTrue(isset($exception->getErrors()[0]['rec_name']), $exception->getResponseAsString());
+        }
+    }
+
+    public function testCheckB2CPackages(): void
+    {
+        $packageService = $this->newDefaultPackageService();
+
+        $packageData = new DefaultPackageData();
+        $packageData->setServiceType(Service::TOPTRANS_TOPTIME);
+        $packageData->setBranchId('12');
+        $packageData->setRecName('Tomáš Novák');
+        $packageData->setRecEmail('tets@test.cz');
+        $packageData->setRecZip('12000');
+        $packageData->setRecStreet('Ulice');
+        $packageData->setRecCity('Praha');
+        $packageData->setRecCountry(Country::CZECH_REPUBLIC);
+        $packageData->setRecPhone('776555888');
+        $packageData->setSenName('Tomáš Novák');
+        $packageData->setSenEmail('tets@test.cz');
+        $packageData->setSenZip('12000');
+        $packageData->setSenStreet('Ulice');
+        $packageData->setSenCity('Praha');
+        $packageData->setSenCountry(Country::CZECH_REPUBLIC);
+        $packageData->setSenPhone('776555888');
+        $packageData->setPrice(1000.00);
+        $packageData->setWeight(1.0);
+        $packageData->setMuType('KUS');
+
+        $packagesData = new DefaultPackageDataCollection(Carrier::TOPTRANS, [
+            $packageData,
+        ]);
+
+        $packageService->checkB2CPackages($packagesData);
+
+        self::assertTrue(true);
+    }
+
+    public function testCheckB2CPackagesInvalidData(): void
+    {
+        $packageService = $this->newDefaultPackageService();
+
+        $packageData = new DefaultPackageData();
+        $packageData->setServiceType(Service::TOPTRANS_TOPTIME);
+        $packageData->setBranchId('12');
+        $packageData->setRecName('Tomáš Novák');
+        $packageData->setRecEmail('tets@test.cz');
+        $packageData->setRecZip('12000');
+        $packageData->setRecStreet('Ulice');
+        $packageData->setRecCity('Praha');
+        $packageData->setRecCountry(Country::CZECH_REPUBLIC);
+        $packageData->setRecPhone('776555888');
+        $packageData->setSenName('Tomáš Novák');
+        $packageData->setSenZip('12000');
+        $packageData->setSenCity('Praha');
+        $packageData->setSenCountry(Country::CZECH_REPUBLIC);
+        $packageData->setSenPhone('776555888');
+        $packageData->setPrice(1000.00);
+        $packageData->setWeight(1.0);
+        $packageData->setMuType('KUS');
+
+        $packagesData = new DefaultPackageDataCollection(Carrier::TOPTRANS, [
+            $packageData,
+        ]);
+
+        try {
+            $packageService->checkB2CPackages($packagesData);
+            self::fail('CHECKB2C request should thrown exception');
+        } catch (Exception $exception) {
+            self::assertEquals(400, $exception->getStatusCode());
+            self::assertTrue(isset($exception->getErrors()[0]['sen_street']), $exception->getResponseAsString());
         }
     }
 }

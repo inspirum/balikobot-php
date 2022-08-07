@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Unit\Provider;
 
 use Inspirum\Balikobot\Definitions\Carrier;
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Model\Service\DefaultService;
 use Inspirum\Balikobot\Model\Service\DefaultServiceCollection;
 use Inspirum\Balikobot\Provider\LiveServiceProvider;
@@ -19,9 +19,9 @@ final class LiveServiceProviderTest extends BaseTestCase
     {
         $carrier          = Carrier::DPD;
         $expectedServices = [
-            ServiceType::DPD_CLASSIC,
-            ServiceType::DPD_EXPRESS_12,
-            ServiceType::DPD_EXPRESS_18,
+            Service::DPD_CLASSIC,
+            Service::DPD_EXPRESS_12,
+            Service::DPD_EXPRESS_18,
         ];
 
         $settingService = $this->createMock(SettingService::class);

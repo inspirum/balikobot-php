@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Definitions;
 
-final class Request
+final class Method extends BaseEnum
 {
     /**
      * Add a package
@@ -165,5 +165,25 @@ final class Request
     /**
      * Method for obtaining a list of active carriers.
      */
-    public const CARRIER_MY = 'carriers/my';
+    public const INFO_CARRIERS = 'info/carriers';
+
+    /**
+     * List of offered B2A services
+     */
+    public const B2A_SERVICES = 'b2a/services';
+
+    /**
+     * Order shipments from place B (typically supplier / previous consignee) to place C (different address of the client than the place of dispatch)
+     */
+    public const B2C = 'b2c';
+
+    /**
+     * Check add-package data for B2A
+     */
+    public const B2A_CHECK = 'checkb2a';
+
+    /**
+     * Check add-package data for B2c
+     */
+    public const B2C_CHECK = 'checkb2c';
 }

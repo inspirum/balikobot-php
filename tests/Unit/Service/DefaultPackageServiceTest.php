@@ -7,8 +7,8 @@ namespace Inspirum\Balikobot\Tests\Unit\Service;
 use DateTimeImmutable;
 use Inspirum\Balikobot\Client\Client;
 use Inspirum\Balikobot\Definitions\Carrier;
-use Inspirum\Balikobot\Definitions\RequestType;
-use Inspirum\Balikobot\Definitions\VersionType;
+use Inspirum\Balikobot\Definitions\Method;
+use Inspirum\Balikobot\Definitions\Version;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Label\LabelFactory;
 use Inspirum\Balikobot\Model\OrderedShipment\OrderedShipment;
@@ -43,9 +43,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::ADD,
+                Method::ADD,
                 [
                     'packages' => $packages,
                 ],
@@ -73,9 +73,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::DROP,
+                Method::DROP,
                 [
                     'package_ids' => $packageIds,
                 ],
@@ -97,9 +97,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::DROP,
+                Method::DROP,
                 [
                     'package_ids' => [$packageId],
                 ],
@@ -117,9 +117,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::DROP,
+                Method::DROP,
                 [
                     'package_ids' => [$packageId],
                 ],
@@ -140,9 +140,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::DROP,
+                Method::DROP,
                 [
                     'package_ids' => $packageIds,
                 ],
@@ -180,9 +180,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::ORDER,
+                Method::ORDER,
                 [
                     'package_ids' => $packageIds,
                 ],
@@ -207,9 +207,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::ORDER,
+                Method::ORDER,
                 [
                     'package_ids' => $packageIds,
                 ],
@@ -237,9 +237,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::ORDER_VIEW,
+                Method::ORDER_VIEW,
                 [],
                 $orderId,
                 false,
@@ -260,9 +260,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::OVERVIEW,
+                Method::OVERVIEW,
                 [],
                 null,
                 false,
@@ -291,9 +291,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::LABELS,
+                Method::LABELS,
                 [
                     'package_ids' => $packageIds,
                 ],
@@ -318,9 +318,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::LABELS,
+                Method::LABELS,
                 [
                     'package_ids' => $packageIds,
                 ],
@@ -350,9 +350,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::PACKAGE,
+                Method::PACKAGE,
                 [],
                 sprintf('carrier_id/%s', $carrierId),
                 false,
@@ -375,9 +375,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::PACKAGE,
+                Method::PACKAGE,
                 [],
                 $packageId,
                 false,
@@ -400,9 +400,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::PACKAGE,
+                Method::PACKAGE,
                 [],
                 sprintf('carrier_id/%s', $carrierId),
                 false,
@@ -430,9 +430,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::CHECK,
+                Method::CHECK,
                 [
                     'packages' => $packages,
                 ],
@@ -455,9 +455,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V1V1,
+                Version::V1V1,
                 $carrier,
-                RequestType::PROOF_OF_DELIVERY,
+                Method::PROOF_OF_DELIVERY,
                 [
                     ['id' => $carrierId],
                 ],
@@ -493,9 +493,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V1V1,
+                Version::V1V1,
                 $carrier,
-                RequestType::PROOF_OF_DELIVERY,
+                Method::PROOF_OF_DELIVERY,
                 [
                     ['id' => $carrierIds[0]],
                     ['id' => $carrierIds[1]],
@@ -521,9 +521,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V1V1,
+                Version::V1V1,
                 $carrier,
-                RequestType::PROOF_OF_DELIVERY,
+                Method::PROOF_OF_DELIVERY,
                 [
                     ['id' => $carrierId],
                 ],
@@ -555,9 +555,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V1V1,
+                Version::V1V1,
                 $carrier,
-                RequestType::PROOF_OF_DELIVERY,
+                Method::PROOF_OF_DELIVERY,
                 [
                     ['id' => $carrierIds[0]],
                     ['id' => $carrierIds[1]],
@@ -590,10 +590,10 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V1V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::TRANSPORT_COSTS,
-                $packages,
+                Method::TRANSPORT_COSTS,
+                ['packages' => $packages],
             ], $response),
             transportCostFactory: $this->mockTransportCostFactory($carrier, $packages, $response, $expectedResult)
         );
@@ -619,10 +619,10 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V1V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::B2A,
-                $packages,
+                Method::B2A,
+                ['packages' => $packages],
             ], $response),
             packageFactory: $this->mockPackageFactory($carrier, $packages, $response, $expectedResult)
         );
@@ -645,9 +645,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::ORDER_PICKUP,
+                Method::ORDER_PICKUP,
                 [
                     'date'          => $dateFrom->format('Y-m-d'),
                     'time_from'     => $dateFrom->format('H:s'),
@@ -689,9 +689,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
-                VersionType::V2V1,
+                Version::V2V1,
                 $carrier,
-                RequestType::ORDER_PICKUP,
+                Method::ORDER_PICKUP,
                 [
                     'date'          => $dateFrom->format('Y-m-d'),
                     'time_from'     => $dateFrom->format('H:s'),
@@ -711,6 +711,89 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
             $packageCount,
             $message,
         );
+    }
+
+    public function testOrderB2CShipment(): void
+    {
+        $carrier        = Carrier::PPL;
+        $packages       = [
+            $this->mockClientResponse(),
+            $this->mockClientResponse(),
+        ];
+        $response       = $this->mockClientResponse();
+        $expectedResult = $this->createMock(PackageCollection::class);
+
+        $collection = $this->createMock(PackageDataCollection::class);
+        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
+        $collection->expects(self::any())->method('__toArray')->willReturn($packages);
+
+        $packageService = $this->newDefaultPackageService(
+            client: $this->mockClient([
+                Version::V2V1,
+                $carrier,
+                Method::B2C,
+                ['packages' => $packages],
+            ], $response),
+            packageFactory: $this->mockPackageFactory($carrier, $packages, $response, $expectedResult)
+        );
+
+        $actualResult = $packageService->orderB2CShipment($collection);
+
+        self::assertSame($expectedResult, $actualResult);
+    }
+
+    public function testCheckB2APackages(): void
+    {
+        $carrier  = Carrier::TOPTRANS;
+        $packages = [
+            $this->mockClientResponse(),
+            $this->mockClientResponse(),
+        ];
+        $response = $this->mockClientResponse();
+
+        $collection = $this->createMock(PackageDataCollection::class);
+        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
+        $collection->expects(self::any())->method('__toArray')->willReturn($packages);
+
+        $packageService = $this->newDefaultPackageService(
+            client: $this->mockClient([
+                Version::V2V1,
+                $carrier,
+                Method::B2A_CHECK,
+                [
+                    'packages' => $packages,
+                ],
+            ], $response),
+        );
+
+        $packageService->checkB2APackages($collection);
+    }
+
+    public function testCheckB2CPackages(): void
+    {
+        $carrier  = Carrier::TOPTRANS;
+        $packages = [
+            $this->mockClientResponse(),
+            $this->mockClientResponse(),
+        ];
+        $response = $this->mockClientResponse();
+
+        $collection = $this->createMock(PackageDataCollection::class);
+        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
+        $collection->expects(self::any())->method('__toArray')->willReturn($packages);
+
+        $packageService = $this->newDefaultPackageService(
+            client: $this->mockClient([
+                Version::V2V1,
+                $carrier,
+                Method::B2C_CHECK,
+                [
+                    'packages' => $packages,
+                ],
+            ], $response),
+        );
+
+        $packageService->checkB2CPackages($collection);
     }
 
     /**

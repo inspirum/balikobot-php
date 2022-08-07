@@ -186,4 +186,25 @@ interface PackageService
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function orderB2AShipment(PackageDataCollection $packages): PackageCollection;
+
+    /**
+     * Order shipments from place B (typically supplier / previous consignee) to place C (address other than shipping point)
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    public function orderB2CShipment(PackageDataCollection $packages): PackageCollection;
+
+    /**
+     * Check if packages data are valid for B2A
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    public function checkB2APackages(PackageDataCollection $packages): void;
+
+    /**
+     * Check if packages data are valid for B2C
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    public function checkB2CPackages(PackageDataCollection $packages): void;
 }
