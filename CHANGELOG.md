@@ -7,6 +7,105 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.4.0...master)
+### Added
+- Major refactor for all package
+  - Added [**BranchService**](./src/Service/BranchService.php) service
+  - Added [**InfoService**](./src/Service/InfoService.php) service
+  - Added [**PackageService**](./src/Service/PackageService.php) service
+  - Added [**SettingService**](./src/Service/SettingService.php) service
+  - Added [**TrackService**](./src/Service/TrackService.php) service
+  - Added [**SettingService**](./src/Service/SettingService.php) service
+  - Added [**CarrierProvider**](./src/Service/CarrierProvider.php) service
+  - Added [**ServiceProvider**](./src/Service/ServiceProvider.php) service
+- Added support for new options from documentation **v1.957** (2022-04-14)
+  - Added **CHECKB2A**, **CHECKB2C** request
+- Added support for new options from documentation **v1.958** and **v1.959** (2022-04-20)
+  - Added **INFO/CARRIERS** request
+- Added support for new options from documentation **v1.962** (2022-07-17)
+  - Added **bank_name** attribute
+  - Added **bank_account_holder** attribute
+  - Added **iban** attribute
+  - Added **swift** attribute
+- Added support for new options from documentation **v1.963** (2022-07-27)
+  - Added **dcl_pdf** attribute
+- Added support for new options from documentation **v1.964** (2022-08-02)
+  - Added **SAMEDAY** shipper
+### Changed
+- Support only **PHP 8.1+**
+- Changed classnames and namespaces for most of the code base
+  - Moved [**Shipper**](./blob/6.x/Definitions/Shipper.php) to [**Carrier**](./src/Definitions/Carrier.php)
+  - Moved [**ServiceType**](./blob/6.x/Definitions/ServiceType.php) to [**Service**](./src/Definitions/Service.php)
+  - Moved [**Option**](./blob/6.x/Definitions/Option.php) to [**Attribute**](./src/Definitions/Attribute.php)
+  - Moved [**Request**](./blob/6.x/Definitions/Request.php) to [**Method**](./src/Definitions/Method.php)
+  - Moved [**Branch**](./blob/6.x/Model/Values/Branch.php) to [**Method**](./src/Model/Branch/Branch.php)
+  - Moved [**PackageCollection**](./blob/6.x/Model/Aggregates/PackageCollection.php) to [**PackageDataCollection**](./src/Model/PackageData/PackageDataCollection.php)
+  - More classes in [**Model**](./src/Model) namespace
+- Changed service type values
+  - Changed **ZASILKOVNA_GR_ACS_HD** service type value
+  - Changed **ZASILKOVNA_GR_ACS_PP** service type value
+  - Changed **ZASILKOVNA_US_FEDEX_PRIORITY_HD** service type value
+  - Changed **ZASILKOVNA_US_FEDEX_ECONOMY_HD** service type value
+  - Changed **ZASILKOVNA_BG_ECONT_HD** service type value
+  - Changed **ZASILKOVNA_BG_ECONT_BOX** service type value
+  - Changed **ZASILKOVNA_BG_ECONT_PP** service type value
+  - Changed **ZASILKOVNA_SI_POST_HD** service type value
+  - Changed **ZASILKOVNA_SI_POST_PP** service type value
+  - Changed **ZASILKOVNA_SI_POST_BOX** service type value
+  - Changed **ZASILKOVNA_CZ_EXPRESS_PRAHA_HD** service type value
+### Fixed
+- Added missing options from documentation
+  - Added **B2C** request
+  - Added **ZASILKOVNA_TR_FEDEX_ECONOMY_HD** service type
+  - Added **ZASILKOVNA_TR_FEDEX_PRIORITY_HD** service type
+  - Added **ZASILKOVNA_IL_FEDEX_PRIORITY_HD** service type
+  - Added **ZASILKOVNA_IL_FEDEX_ECONOMY_HD** service type
+  - Added **ZASILKOVNA_IL_FEDEX_ECONOMY_HD** service type
+  - Added **DHL_MEDICAL_EXPRESS** service type
+  - Added **GEIS_B2B** service type
+  - Added **PBH_EXPRESS_ONE** service type
+  - Added **MESSENGER_ECONOMY_BRNO** service type
+  - Added **sen_name** attribute
+  - Added **sen_firm** attribute
+  - Added **sen_street** attribute
+  - Added **sen_city** attribute
+  - Added **sen_zip** attribute
+  - Added **sen_country** attribute
+  - Added **sen_street_append** attribute
+  - Added **sen_email** attribute
+  - Added **sen_phone** attribute
+  - Added **neutralize** attribute
+  - Added **neutralize_name** attribute
+  - Added **neutralize_firm** attribute
+  - Added **neutralize_street** attribute
+  - Added **neutralize_city** attribute
+  - Added **neutralize_zip** attribute
+  - Added **neutralize_country** attribute
+  - Added **neutralize_region** attribute
+  - Added **neutralize_phone** attribute
+  - Added **neutralize_email** attribute
+  - Added **neutralize_account_number** attribute
+  - Added **date_delivery** attribute
+  - Added **delivery_time_from** attribute
+  - Added **delivery_time_to** attribute
+  - Added **size** attribute
+  - Added **date_delivery** attribute
+  - Added **branch_type** attribute
+  - Added **content_type** attribute
+  - Added **content_place_of_commital** attribute
+  - Added **content_additional_fee** attribute
+  - Added **content_type_description** attribute
+  - Added **generate_invoice** attribute
+  - Added **loading_length_pallets** attribute
+  - Added **transform_temp_to** attribute
+  - Added **transform_temp_from** attribute
+  - Added **content_produce_code** attribute
+  - Added **shipper_vat** attribute
+  - Added **terms_of_trade_location** attribute
+### Removed
+- Removed [**Client**](./blob/6.x/src/Services/Client.php) service
+- Removed [**Balikobot**](./blob/6.x/src/Services/Balikobot.php) service, replaced with [multiple services](./src/Service)
+- Removed [**Requester**](./blob/6.x/src/Services/Requester.php) service, replaced with [Client](./src/Client/Client.php) and [Requester](./src/Client/Requester.php)
+- Removed [**Formatter**](./blob/6.x/src/Services/Formatter.php) service
 
 
 ## [v6.4.0 (2022-03-26)](https://github.com/inspirum/balikobot-php/compare/v6.3.0...v6.4.0)
@@ -59,14 +158,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added support for new options from documentation **v1.931** (2021-07-20)
     - Added option to get compressed response in GZIP (by parameter `?gzip=1`)
-    - Added new optional parameter #6 **gzip** to method [**RequesterInterface**](./src/Contracts/RequesterInterface.php)`call()` (and [**Requester**](./src/Services/Requester.php))
-    - Added new optional parameter #5 **gzip** to method [**Client**](./src/Services/Client.php) `getBranches()` 
+    - Added new optional parameter #6 **gzip** to method [**RequesterInterface**](./blob/6.x/src/Contracts/RequesterInterface.php)`call()` (and [**Requester**](./blob/6.x/src/Services/Requester.php))
+    - Added new optional parameter #5 **gzip** to method [**Client**](./blob/6.x/src/Services/Client.php) `getBranches()` 
 - Enable strict types (`declare(strict_types=1)`)
-- Added [**Status**](./src/Definitions/Status.php) helper methods for status determinations
+- Added [**Status**](./blob/6.x/src/Definitions/Status.php) helper methods for status determinations
 ### Changed
 - Support only **PHP 8.0+**
 - Changed option to Requester SSL verification to opt-out (enabled by default) [#14](https://github.com/inspirum/balikobot-php/pull/14)
-- Changed order of [**Client**](./src/Services/Client.php) `getBranches()` method (switch #3 **fullBranchesRequest** and #4 **country** parameters)
+- Changed order of [**Client**](./blob/6.x/src/Services/Client.php) `getBranches()` method (switch #3 **fullBranchesRequest** and #4 **country** parameters)
 ### Removed
 - Removed deprecated **GEIS\_&ast;** service type constants
 
@@ -102,7 +201,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Added **PPL_PRIVATE_SMART_EU** service type
 ### Fixed
 - Fixed branches filter by countries if service type is `null` (and shipper does not support filter by both)  ([#12](https://github.com/inspirum/balikobot-php/issues/12))
-    - Added [**Shipper**](./src/Definitions/Shipper.php) `hasBranchCountryFilterSupport()` #2 **serviceCode** optional parameter
+    - Added [**Shipper**](./blob/6.x/src/Definitions/Shipper.php) `hasBranchCountryFilterSupport()` #2 **serviceCode** optional parameter
 
 
 ## [v5.3.0 (2021-06-21)](https://github.com/inspirum/balikobot-php/compare/v5.2.0...v5.3.0)
@@ -121,7 +220,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [v5.2.0 (2021-05-01)](https://github.com/inspirum/balikobot-php/compare/v5.1.0...v5.2.0)
 ### Added
-- Added [**Status**](./src/Definitions/Status.php) constants
+- Added [**Status**](./blob/6.x/src/Definitions/Status.php) constants
 - Added support for new options from documentation **v1.918** (2021-04-29)
     - Added **RABEN** shipper
 - Added support for new options from documentation **v1.915** (2021-04-19)
@@ -161,22 +260,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 > This release (^5.0) uses new refactored **API v2**
 ### Added
 - Added request/response format from [APIv2 documentation](https://balikobotv2.docs.apiary.io/#introduction/rozdil-api-v2-vs-api-v1)
-- Added [**Branch**](./src/Model/Values/Branch.php) #4 **uid** parameter to constructor
+- Added [**Branch**](./blob/6.x/src/Model/Values/Branch.php) #4 **uid** parameter to constructor
 ### Changed
 - Updated default API URL to `API::V2V1` (**apiv2.balikobot.cz**)
 ### Fixed
-- Fixed [**Country**](./src/Model/Values/Country.php) #4 **phonePrefix** parameter to `array` type
-- Fixed [**OrderedPackage**](./src/Model/Values/OrderedPackage.php) #1 **packageId** parameter to `string` type
-- Fixed [**Client**](./src/Services/Client.php) `getOrder()` method #2 **orderId** parameter from `int` to `string` type
+- Fixed [**Country**](./blob/6.x/src/Model/Values/Country.php) #4 **phonePrefix** parameter to `array` type
+- Fixed [**OrderedPackage**](./blob/6.x/src/Model/Values/OrderedPackage.php) #1 **packageId** parameter to `string` type
+- Fixed [**Client**](./blob/6.x/src/Services/Client.php) `getOrder()` method #2 **orderId** parameter from `int` to `string` type
 ### Removed
-- Removed parameter #3 **version** from [**Client**](./src/Services/Client.php) `addPackages()` method
-- Removed parameter #2 **country** from [**Client**](./src/Services/Client.php) `getServices()` method
-- Removed parameter #3 **version** from [**Client**](./src/Services/Client.php) `getServices()` method
-- Removed parameter #5 **version** from [**Client**](./src/Services/Client.php) `getBranches()` method
-- Removed [**Shipper**](./src/Definitions/Shipper.php) `resolveAddRequestVersion()` method
-- Removed [**Shipper**](./src/Definitions/Shipper.php) `resolveServicesRequestVersion()` method
-- Removed [**Shipper**](./src/Definitions/Shipper.php) `resolveBranchesRequestVersion()` method
-- Removed parameter #2 **country** from [**Balikobot**](./src/Services/Balikobot.php) `getServices()` method
+- Removed parameter #3 **version** from [**Client**](./blob/6.x/src/Services/Client.php) `addPackages()` method
+- Removed parameter #2 **country** from [**Client**](./blob/6.x/src/Services/Client.php) `getServices()` method
+- Removed parameter #3 **version** from [**Client**](./blob/6.x/src/Services/Client.php) `getServices()` method
+- Removed parameter #5 **version** from [**Client**](./blob/6.x/src/Services/Client.php) `getBranches()` method
+- Removed [**Shipper**](./blob/6.x/src/Definitions/Shipper.php) `resolveAddRequestVersion()` method
+- Removed [**Shipper**](./blob/6.x/src/Definitions/Shipper.php) `resolveServicesRequestVersion()` method
+- Removed [**Shipper**](./blob/6.x/src/Definitions/Shipper.php) `resolveBranchesRequestVersion()` method
+- Removed parameter #2 **country** from [**Balikobot**](./blob/6.x/src/Services/Balikobot.php) `getServices()` method
 - Removed **ZASILKOVNA\_&ast;** service type constants
 
 
@@ -227,13 +326,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Added **TRACK_STATUS** **v2** request
 - Added optional **fullData** parameter for **ADDRUNIT**, **MANIPULATIONUNITS**, **ACTIVATEDMANIPULATIONUNITS** methods
 ### Changed
-- Updated [**PackageStatus**](./src/Model/Values/PackageStatus.php) to support data from **TRACK** **v3**
+- Updated [**PackageStatus**](./blob/6.x/src/Model/Values/PackageStatus.php) to support data from **TRACK** **v3**
     - Method **getId** return `float` instead of `int` (attribute **status_id_v2**)
     - Method **getName** return new internal status name (attribute **name_balikobot**)
     - Added method **getGroupId** (attribute **status_id**)
     - Added method **getDescription** (attribute **name**)
     - Added method **getType** (attribute **type**)
-- Renamed [**Package**](./src/Model/Values/Package.php) method **setHeigth** to **setHeight**
+- Renamed [**Package**](./blob/6.x/src/Model/Values/Package.php) method **setHeigth** to **setHeight**
 ### Removed
 - Removed **ZASILKOVNA\_&ast;** service type constants
 - Removed **TOP_TRANS\_&ast;** service type constants
@@ -314,10 +413,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v2.0.0 (2020-03-15)](https://github.com/inspirum/balikobot-php/compare/v1.4.0...v2.0.0)
 ### Added
 - Added options to get **labelsUrL** from **ADD** request
-- Added **labelsUrL** attribute to [**OrderedPackageCollection**](./src/Model/Aggregates/OrderedPackageCollection.php)
-- [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php) implements `\ArrayAccess` interface
+- Added **labelsUrL** attribute to [**OrderedPackageCollection**](./blob/6.x/src/Model/Aggregates/OrderedPackageCollection.php)
+- [**PackageCollection**](./blob/6.x/src/Model/Aggregates/PackageCollection.php) implements `\ArrayAccess` interface
 ### Changed
-- Support multiple **EID** in [**PackageCollection**](./src/Model/Aggregates/PackageCollection.php)
+- Support multiple **EID** in [**PackageCollection**](./blob/6.x/src/Model/Aggregates/PackageCollection.php)
 ### Removed
 - Deprecated **date** and **note** parameters from **ORDER** request
 - Removed **DHLSK** shipper support
