@@ -17,44 +17,19 @@ final class DefaultBranchFactory implements BranchFactory
     /** @inheritDoc */
     public function create(string $carrier, ?string $service, array $data): Branch
     {
-        if ($carrier === Carrier::CP && $service === Service::CP_NP) {
-            $data['country'] ??= 'CZ';
-        }
-
-        if (isset($data['street']) && (isset($data['house_number']) || isset($data['orientation_number']))) {
-            $houseNumber       = (int) ($data['house_number'] ?? 0);
-            $orientationNumber = (int) ($data['orientation_number'] ?? 0);
-            $streetNumber      = trim(
-                sprintf(
-                    '%s/%s',
-                    $houseNumber > 0 ? $houseNumber : '',
-                    $orientationNumber > 0 ? $orientationNumber : ''
-                ),
-                '/'
-            );
-
-            $data['street'] = trim(sprintf('%s %s', $data['street'] ?: ($data['city'] ?? ''), $streetNumber));
-        }
-
-        $id   = $data['branch_id'] ?? (isset($data['id']) ? (string) $data['id'] : null);
-        $zip  = $data['zip'] ?? '00000';
-        $name = $data['name'] ?? $zip;
+        $data = $this->normalizeData($carrier, $service, $data);
 
         return new DefaultBranch(
             $carrier,
             $service,
-            $this->resolveBranchId($carrier, $service, [
-                'id' => $id,
-                'zip' => $zip,
-                'name' => $name,
-            ]),
-            $id,
+            $data['branch_id'],
+            $data['id'],
             $data['branch_uid'] ?? null,
-            $data['type'] ?? 'branch',
-            $name,
-            $data['city'] ?? '',
-            $data['street'] ?? ($data['address'] ?? ''),
-            $zip,
+            $data['type'],
+            $data['name'],
+            $data['city'],
+            $data['street'],
+            $data['zip'],
             $data['country'] ?? null,
             $data['city_part'] ?? null,
             $data['district'] ?? null,
@@ -63,14 +38,14 @@ final class DefaultBranchFactory implements BranchFactory
             $data['photo_small'] ?? null,
             $data['photo_big'] ?? null,
             $data['url'] ?? null,
-            (isset($data['latitude']) ? (float) trim((string) $data['latitude']) : null) ?: null,
-            (isset($data['longitude']) ? (float) trim((string) $data['longitude']) : null) ?: null,
+            $data['latitude'] ?? null,
+            $data['longitude'] ?? null,
             $data['directions_global'] ?? null,
             $data['directions_car'] ?? null,
             $data['directions_public'] ?? null,
-            isset($data['wheelchair_accessible']) ? (bool) $data['wheelchair_accessible'] : null,
-            isset($data['claim_assistant']) ? (bool) $data['claim_assistant'] : null,
-            isset($data['dressing_room']) ? (bool) $data['dressing_room'] : null,
+            $data['wheelchair_accessible'] ?? null,
+            $data['claim_assistant'] ?? null,
+            $data['dressing_room'] ?? null,
             $data['opening_monday'] ?? null,
             $data['opening_tuesday'] ?? null,
             $data['opening_wednesday'] ?? null,
@@ -78,7 +53,7 @@ final class DefaultBranchFactory implements BranchFactory
             $data['opening_friday'] ?? null,
             $data['opening_saturday'] ?? null,
             $data['opening_sunday'] ?? null,
-            isset($data['max_weight']) ? (float) $data['max_weight'] : null
+            $data['max_weight'] ?? null,
         );
     }
 
@@ -108,6 +83,47 @@ final class DefaultBranchFactory implements BranchFactory
 
     /**
      * @param array<string,mixed> $data
+     *
+     * @return  array<string,mixed>
+     */
+    private function normalizeData(string $carrier, ?string $service, array $data): array
+    {
+        $data['country']               = $this->resolveCountry($carrier, $service, $data);
+        $data['type']                ??= 'branch';
+        $data['city']                ??= '';
+        $data['zip']                 ??= '00000';
+        $data['street']                = $this->resolveStreet($data);
+        $data['id']                    = $data['branch_id'] ?? (isset($data['id']) ? (string) $data['id'] : null);
+        $data['name']                ??= $data['zip'];
+        $data['latitude']              = $this->castFloat($data, 'latitude');
+        $data['longitude']             = $this->castFloat($data, 'longitude');
+        $data['wheelchair_accessible'] = $this->castBool($data, 'wheelchair_accessible');
+        $data['claim_assistant']       = $this->castBool($data, 'claim_assistant');
+        $data['dressing_room']         = $this->castBool($data, 'dressing_room');
+        $data['max_weight']            = $this->castFloat($data, 'max_weight');
+        $data['branch_id']             = $this->resolveBranchId($carrier, $service, $data);
+
+        return $data;
+    }
+
+    /**
+     * @param array<string,mixed> $data
+     */
+    private function castBool(array $data, string $key): ?bool
+    {
+        return isset($data[$key]) ? (bool) $data[$key] : null;
+    }
+
+    /**
+     * @param array<string,mixed> $data
+     */
+    private function castFloat(array $data, string $key): ?float
+    {
+        return isset($data[$key]) ? (float) trim((string) $data[$key]) : null;
+    }
+
+    /**
+     * @param array<string,mixed> $data
      */
     private function resolveBranchId(string $carrier, ?string $service, array $data): string
     {
@@ -129,5 +145,42 @@ final class DefaultBranchFactory implements BranchFactory
         }
 
         return (string) $data['id'];
+    }
+
+    /**
+     * @param array<string,mixed> $data
+     */
+    private function resolveCountry(string $carrier, ?string $service, array $data): ?string
+    {
+        if ($carrier === Carrier::CP && $service === Service::CP_NP) {
+            $data['country'] ??= 'CZ';
+        }
+
+        return $data['country'] ?? null;
+    }
+
+    /**
+     * @param array<string,mixed> $data
+     */
+    private function resolveStreet(array $data): string
+    {
+        if (isset($data['street']) && (isset($data['house_number']) || isset($data['orientation_number']))) {
+            $houseNumber       = (int) ($data['house_number'] ?? 0);
+            $orientationNumber = (int) ($data['orientation_number'] ?? 0);
+            $streetNumber      = trim(
+                sprintf(
+                    '%s/%s',
+                    $houseNumber > 0 ? $houseNumber : '',
+                    $orientationNumber > 0 ? $orientationNumber : ''
+                ),
+                '/'
+            );
+
+            $data['street'] = trim(sprintf('%s %s', $data['street'] ?: ($data['city'] ?? ''), $streetNumber));
+        }
+
+        $data['street'] ??= $data['address'] ?? '';
+
+        return $data['street'];
     }
 }

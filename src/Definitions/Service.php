@@ -1057,7 +1057,25 @@ final class Service extends BaseEnum
      */
     public const ZASILKOVNA_IL_FEDEX_ECONOMY_HD = '19330';
 
+    /**
+     * EE Lithuanian Post HD
+     */
+    public const ZASILKOVNA_EE_LT_POST_HD = '18805';
 
+    /**
+     * LV Lithuanian Post HD
+     */
+    public const ZASILKOVNA_LV_LT_POST_HD = '18807';
+
+    /**
+     * LT Lithuanian Post HD
+     */
+    public const ZASILKOVNA_LT_POST_HD = '18808';
+
+    /**
+     * LT Lithuanian Post Box
+     */
+    public const ZASILKOVNA_LT_POST_BOX = '18809';
 
     /**
      * DHL
@@ -1885,7 +1903,7 @@ final class Service extends BaseEnum
     public const SAMEDAY_24H = '7';
 
     /**
-     * "Return Standard
+     * Return Standard
      */
     public const SAMEDAY_STANDARD_RETURN = '10';
 
@@ -2217,6 +2235,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_EE_OMNIVA_PP,
             self::ZASILKOVNA_EE_OMNIVA_BOX,
             self::ZASILKOVNA_ES_CORREOS_HD,
+            self::ZASILKOVNA_EE_LT_POST_HD,
             self::ZASILKOVNA_ES_MRW_HD,
             self::ZASILKOVNA_ES_MRW_PP,
             self::ZASILKOVNA_FI_POST_NORD_HP,
@@ -2256,6 +2275,9 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_LU_DPD_HD,
             self::ZASILKOVNA_LV_OMNIVA_BOX,
             self::ZASILKOVNA_LV_OMNIVA_HD,
+            self::ZASILKOVNA_LV_LT_POST_HD,
+            self::ZASILKOVNA_LT_POST_HD,
+            self::ZASILKOVNA_LT_POST_BOX,
             self::ZASILKOVNA_NL_DHL_HD,
             self::ZASILKOVNA_NL_POST_HD,
             self::ZASILKOVNA_NL_DHL_PP,
