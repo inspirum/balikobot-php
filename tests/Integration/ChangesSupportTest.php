@@ -18,7 +18,7 @@ use function sprintf;
 use function str_replace;
 use function strtolower;
 
-class ChangesSupportTest extends BaseTestCase
+final class ChangesSupportTest extends BaseTestCase
 {
     public function testLatestChangesSupport(): void
     {

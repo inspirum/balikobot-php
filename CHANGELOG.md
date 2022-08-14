@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.4.0...master)
 ### Added
-- Major refactor for all package
+- Major refactor for all package (final classes with interface, split logic to separate classes)
   - Added [**BranchService**](./src/Service/BranchService.php) service
   - Added [**InfoService**](./src/Service/InfoService.php) service
   - Added [**PackageService**](./src/Service/PackageService.php) service
@@ -30,15 +30,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **dcl_pdf** attribute
 - Added support for new options from documentation **v1.964** (2022-08-02)
   - Added **SAMEDAY** shipper
+- Added support for new options from documentation **v1.965** (2022-08-10)
+  - Added **note_invoice** attribute
 ### Changed
 - Support only **PHP 8.1+**
 - Changed classnames and namespaces for most of the code base
-  - Moved [**Shipper**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Definitions/Shipper.php) to [**Carrier**](./src/Definitions/Carrier.php)
-  - Moved [**ServiceType**](https://github.com/inspirum/balikobot-php/blob/6.x/Definitions/ServiceType.php) to [**Service**](./src/Definitions/Service.php)
-  - Moved [**Option**](https://github.com/inspirum/balikobot-php/blob/6.x/Definitions/Option.php) to [**Attribute**](./src/Definitions/Attribute.php)
-  - Moved [**Request**](https://github.com/inspirum/balikobot-php/blob/6.x/Definitions/Request.php) to [**Method**](./src/Definitions/Method.php)
-  - Moved [**Branch**](https://github.com/inspirum/balikobot-php/blob/6.x/Model/Values/Branch.php) to [**DefaultBranch**](./src/Model/Branch/DefaultBranch.php)
-  - Moved [**PackageCollection**](https://github.com/inspirum/balikobot-php/blob/6.x/Model/Aggregates/PackageCollection.php) to [**DefaultPackageDataCollection**](./src/Model/PackageData/DefaultPackageDataCollection.php)
+  - Moved [**Shipper**](https://github.com/inspirum/balikobot-php/blob/6.x/src/src/Definitions/Shipper.php) to [**Carrier**](./src/Definitions/Carrier.php)
+  - Moved [**ServiceType**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Definitions/ServiceType.php) to [**Service**](./src/Definitions/Service.php)
+  - Moved [**Option**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Definitions/Option.php) to [**Attribute**](./src/Definitions/Attribute.php)
+  - Moved [**Request**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Definitions/Request.php) to [**Method**](./src/Definitions/Method.php)
+  - Moved [**Branch**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Model/Values/Branch.php) to [**DefaultBranch**](./src/Model/Branch/DefaultBranch.php)
+  - Moved [**PostCode**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Model/Values/PostCode.php) to [**DefaultZipCode**](./src/Model/ZipCode/DefaultZipCode.php)
+  - Moved [**PackageCollection**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Model/Aggregates/PackageCollection.php) to [**DefaultPackageDataCollection**](./src/Model/PackageData/DefaultPackageDataCollection.php)
   - More classes in [**Model**](./src/Model) namespace
 - Changed service type values
   - Changed **ZASILKOVNA_GR_ACS_HD** service type value
@@ -108,7 +111,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 - Removed [**Client**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Services/Client.php) service
 - Removed [**Balikobot**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Services/Balikobot.php) service, replaced with [multiple services](./src/Service)
-- Removed [**Requester**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Services/Requester.php) service, replaced with [Client](./src/Client/Client.php) and [Requester](./src/Client/Requester.php)
+- Removed [**Requester**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Services/Requester.php) service, replaced with [**Client**](./src/Client/Client.php) and [**Requester**](./src/Client/Requester.php)
 - Removed [**Formatter**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Services/Formatter.php) service
 
 

@@ -11,7 +11,7 @@ use function array_map;
 /**
  * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\TransportCost\TransportCost>
  */
-class DefaultTransportCostCollection extends BaseCollection implements TransportCostCollection
+final class DefaultTransportCostCollection extends BaseCollection implements TransportCostCollection
 {
     /**
      * @param array<int,\Inspirum\Balikobot\Model\TransportCost\TransportCost> $items

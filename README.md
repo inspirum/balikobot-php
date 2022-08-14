@@ -10,13 +10,11 @@
 [![Total Downloads][ico-packagist-download]][link-packagist-download]
 [![Software License][ico-license]][link-licence]
 
-Offers implementation of Balikobot API v2 described in the [documentation](#version)
+Offers implementation of Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v1.965** *(2022-08-10)*.
 
-- Support for all API [requests](./docs/client.md#requests)
-- Simple add/track/drop package [methods](./docs/balikobot.md#packages)
-- All package options are accessible via setter and getter methods
-- The entire code is covered by unit and integration tests
-- Customizable [**Requester**](./src/Contracts/RequesterInterface.php) for easy functionality expandability (caching, etc.)
+> If you want to use older API [v1][link-api], please use [`^4.0`](https://github.com/inspirum/balikobot-php/tree/v4.5.0) version.
+
+More details are available in [changelog][link-changelog].
 
 
 ## Usage example
@@ -25,53 +23,39 @@ See more available methods' documentation in [Usage](#usage) section.
 
 > *All the code snippets shown here are modified for clarity, so they may not be executable.*
 
-
-#### Setup service
-
-```php
-// get credentials
-$apiUser = getenv('BALIKOBOT_API_USER');
-$apiKey  = getenv('BALIKOBOT_API_KEY');
-
-// init balikobot class
-$requester = new Requester($apiUser, $apiKey, sslVerify: true);
-$balikobot = new Balikobot($requester);
-```
-
-
 #### Create packages and order shipment
 
 ```php
 // create new package collection for specific shipper
-$packages = new PackageCollection(Shipper::CP);
+$packagesData = new DefaultPackageDataCollection(Carrier::CP);
 
 // create new package
-$package = new Package();
-$package->setServiceType(ServiceType::CP_NP);
-$package->setRecName('Josef Novák');
-$package->setRecZip('11000');
-$package->setRecCountry(Country::CZECH_REPUBLIC);
-$package->setRecPhone('776555888');
-$package->setCodPrice(1399.00);
-$package->setCodCurrency(Currency::CZK);
+$packageData = new DefaultPackageData();
+$packageData->setServiceType(Service::CP_NP);
+$packageData->setRecName('Josef Novák');
+$packageData->setRecZip('11000');
+$packageData->setRecCountry(Country::CZECH_REPUBLIC);
+$packageData->setRecPhone('776555888');
+$packageData->setCodPrice(1399.00);
+$packageData->setCodCurrency(Currency::CZK);
 
 // add package to collection
-$packages->add($package);
+$packagesData->add($packageData);
 
 // upload packages to balikobot
-$orderedPackages = $balikobot->addPackages($packages);
+$packages = $packageService->addPackages($packagesData);
 
 // save package IDs
 $data             = [];
-$data['packages'] = $orderedPackages->getPackageIds();
+$data['packages'] = $packages->getPackageIds();
 
 // save track URL for each package
-foreach($orderedPackages as $orderedPackage) {
-  $data['trackUrl'][] = $orderedPackage->getTrackUrl();
+foreach($packages as $package) {
+  $data['trackUrl'][] = $package->getTrackUrl();
 }
 
 // order shipment for packages
-$orderedShipment = $balikobot->orderShipment($orderedPackages);
+$orderedShipment = $packageService->orderShipment($orderedPackages);
 
 // save order ID and labels URL
 $data['orderId']     = $orderedShipment->getOrderId();
@@ -102,13 +86,13 @@ var_dump($data);
 ```php
 // check if packages data is valid
 try {
-    $balikobot->checkPackages($packages);
+    $packageService->checkPackages($packagesData);
 } catch (ExceptionInterface $exception) {
     return $exception->getErrors();
 }
 
 // drop packages if shipment is not ordered yet
-$balikobot->dropPackages($orderedPackages);
+$packageService->dropPackages($packages);
 ````
 
 
@@ -116,18 +100,20 @@ $balikobot->dropPackages($orderedPackages);
 
 ```php
 // track last package status
-$status = $balikobot->trackPackageLastStatus($orderedPackages[0]);
+$status = $trackService->trackPackageLastStatus($packages[0]);
 /*
 var_dump($status);
-Inspirum\Balikobot\Model\Values\PackageStatus {
-  'date'        => DateTime { '2018-07-02 09:15:01.000000' }
-  'id'          => 2.2
-  'name'        => 'Zásilka byla doručena příjemci.'
-  'description' => 'Dodání zásilky. (77072 - Depo Olomouc 72)'
-  'type'        => 'event'
+Inspirum\Balikobot\Model\Status\DefaultStatus {
+  private $carrier     => 'cp'
+  private $carrierId   => '1234'
+  private $id          => 2.2
+  private $name        => 'Zásilka byla doručena příjemci.'
+  private $description => 'Dodání zásilky. (77072 - Depo Olomouc 72)'
+  private $type        => 'event'
+  private $date        => DateTimeImmutable { '2018-07-02 09:15:01.000000' }
 }
 */
-
+        
 if (Status::isError($status->getId())) {
   // handle package delivery error
 }
@@ -145,7 +131,7 @@ if (Status::isDelivered($status->getId())) {
 
 ```php
 // get only branches for Zasilkovna in CZ/SK
-$branches = $balikobot->getBranchesForShipperForCountries(
+$branches = $branchService->getBranchesForCarrierAndCountries(
   Shipper::ZASILKOVNA, 
   [Country::CZECH_REPUBLIC, Country::SLOVAKIA]
 ); 
@@ -153,8 +139,8 @@ $branches = $balikobot->getBranchesForShipperForCountries(
 foreach($branches as $branch) {
   /*
   var_dump($branch);
-  Inspirum\Balikobot\Model\Values\Branch {
-    private $shipper  => 'zasilkovna'
+  Inspirum\Balikobot\Model\Branch\DefaultBranch {
+    private $carrier  => 'zasilkovna'
     private $service  => null
     private $branchId => '10000'
     private $uid      => 'VMCZ-zasilkovna-branch-10000'
@@ -177,11 +163,11 @@ foreach($branches as $branch) {
 
 ## System requirements
 
-* [PHP 8.0+](http://php.net/releases/8_0_0.php)
+* [PHP 8.1+](http://php.net/releases/8_1_0.php)
 * [ext-curl](http://php.net/curl)
 * [ext-json](http://php.net/json)
 
-If you are still using older PHP version, you can use this package in `^5.0` version (for PHP 7.1+).
+If you are still using older PHP version, you can use this package in [`^5.0`](https://github.com/inspirum/balikobot-php/tree/5.x) version (for PHP 7.1+).
 
 ## Installation
 
@@ -191,32 +177,55 @@ composer require inspirum/balikobot
 ```
 or add a requirement to your `composer.json`:
 ```json
-"inspirum/balikobot": "^6.0"
+"inspirum/balikobot": "^7.0"
 ```
 
+### Setup service
 
-## Version
+Available framework integrations:
 
-Support all options for Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v1.955** *(2022-03-24)*.
+- [Symfony](https://github.com/inspirum/balikobot-php-symfony)
 
-If you want to use older API [v1][link-api], please use `^4.0` version.
+But you can also use it without any framework implementation:
 
-More details are available in [changelog][link-changelog].
+```php
+use Inspirum\Balikobot\Client\DefaultCurlRequester;
+use Inspirum\Balikobot\Client\DefaultClient;
+use Inspirum\Balikobot\Client\Response\Validator;
+use Inspirum\Balikobot\Model\Status\DefaultStatusFactory;
+use Inspirum\Balikobot\Service\DefaultPackageService;
+use Inspirum\Balikobot\Service\DefaultTrackService;
 
+$apiUser = getenv('BALIKOBOT_API_USER');
+$apiKey  = getenv('BALIKOBOT_API_KEY');
+
+$requester = new DefaultCurlRequester($apiUser, $apiKey, sslVerify: true);
+$validator = new Validator();
+$client    = new DefaultClient($requester, $validator);
+
+$packageService = new DefaultPackageService(
+    $client,
+    // ... more arguments
+);
+
+$trackService = new DefaultTrackService(
+    $client,
+    new DefaultStatusFactory($validator),
+);
+// ...
+```
 
 ## Usage
 
-### [**Definitons**](./docs/definitions.md)
-
 The module contains several helper classes that contain most of the constants needed to work with the Balikobot API.
 
-### [**Client**](./docs/client.md)
-
-Support all options for Balikobot API described in given documentation.
-
-### [**Balikobot**](./docs/balikobot.md)
-
-Extension over Client that uses custom DTO classes as an input and output for its methods.
+- [**Definitons**](./docs/definitions.md)
+- [**Package service**](./docs/services.md)
+- [**Track service**](./docs/services.md)
+- [**Branch service**](./docs/services.md)
+- [**Setting service**](./docs/services.md)
+- [**Info service**](./docs/services.md)
+- [**Providers**](./docs/services.md)
 
 
 ## Testing

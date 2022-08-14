@@ -9,7 +9,7 @@ use Inspirum\Arrayable\BaseModel;
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
  */
-class DefaultOrderedShipment extends BaseModel implements OrderedShipment
+final class DefaultOrderedShipment extends BaseModel implements OrderedShipment
 {
     /**
      * @param array<string> $packageIds

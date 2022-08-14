@@ -10,7 +10,7 @@ use function array_map;
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
  */
-class DefaultTransportCost extends BaseModel implements TransportCost
+final class DefaultTransportCost extends BaseModel implements TransportCost
 {
     /**
      * @param array<\Inspirum\Balikobot\Model\TransportCost\TransportCostPart> $costsBreakdown

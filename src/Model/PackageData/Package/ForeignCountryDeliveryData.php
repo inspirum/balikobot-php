@@ -75,4 +75,9 @@ trait ForeignCountryDeliveryData
     {
         $this->offsetSet(Attribute::SWIFT, $bankAccount);
     }
+
+    public function setNoteInvoice(string $note): void
+    {
+        $this->offsetSet(Attribute::NOTE_INVOICE, $note);
+    }
 }

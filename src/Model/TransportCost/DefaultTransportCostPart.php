@@ -9,7 +9,7 @@ use Inspirum\Arrayable\BaseModel;
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
  */
-class DefaultTransportCostPart extends BaseModel implements TransportCostPart
+final class DefaultTransportCostPart extends BaseModel implements TransportCostPart
 {
     public function __construct(
         private string $name,

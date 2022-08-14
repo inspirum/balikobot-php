@@ -17,7 +17,7 @@ use function sprintf;
 use function str_contains;
 use function strtoupper;
 
-class DefaultBranchResolverTest extends BaseTestCase
+final class DefaultBranchResolverTest extends BaseTestCase
 {
     /**
      * @dataProvider providesCarrierServiceData

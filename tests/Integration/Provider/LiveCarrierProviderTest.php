@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Tests\Integration;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Provider\LiveCarrierProvider;
 
-class LiveCarrierProviderTest extends BaseTestCase
+final class LiveCarrierProviderTest extends BaseTestCase
 {
     public function testGetCarriers(): void
     {

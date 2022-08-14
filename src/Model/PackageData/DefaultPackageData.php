@@ -14,7 +14,7 @@ use Inspirum\Balikobot\Model\PackageData\Package\ParcelData;
 use Inspirum\Balikobot\Model\PackageData\Package\ParcelPackageData;
 use Inspirum\Balikobot\Model\PackageData\Package\SenCustomerData;
 
-class DefaultPackageData extends BasePackageData
+final class DefaultPackageData extends BasePackageData
 {
     use CashOnDeliveryData;
     use CustomerData;

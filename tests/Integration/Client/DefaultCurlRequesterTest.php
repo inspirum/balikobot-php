@@ -10,7 +10,7 @@ use Inspirum\Balikobot\Tests\Integration\BaseTestCase;
 use function json_decode;
 use function sprintf;
 
-class DefaultCurlRequesterTest extends BaseTestCase
+final class DefaultCurlRequesterTest extends BaseTestCase
 {
     public function testSSLVerificationIsNotNeeded(): void
     {

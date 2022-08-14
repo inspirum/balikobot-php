@@ -9,7 +9,7 @@ use Inspirum\Balikobot\Provider\LiveCarrierProvider;
 use Inspirum\Balikobot\Provider\LiveServiceProvider;
 use function sprintf;
 
-class LiveServiceProviderTest extends BaseTestCase
+final class LiveServiceProviderTest extends BaseTestCase
 {
     public function testGetServices(): void
     {

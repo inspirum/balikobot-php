@@ -883,6 +883,11 @@ final class Attribute extends BaseEnum
     public const TERMS_OF_TRADE_LOCATION = 'terms_of_trade_location';
 
     /**
+     * Poznámka na fakturu
+     */
+    public const NOTE_INVOICE = 'note_invoice';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

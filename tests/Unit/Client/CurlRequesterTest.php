@@ -8,7 +8,7 @@ use Inspirum\Balikobot\Client\DefaultCurlRequester;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use RuntimeException;
 
-class CurlRequesterTest extends BaseTestCase
+final class CurlRequesterTest extends BaseTestCase
 {
     public function testThrowsErrorOnRequestError(): void
     {

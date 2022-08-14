@@ -9,7 +9,7 @@ use Inspirum\Arrayable\BaseModel;
 /**
  * @extends \Inspirum\Arrayable\BaseModel<string,mixed>
  */
-class DefaultPackage extends BaseModel implements Package
+final class DefaultPackage extends BaseModel implements Package
 {
     /**
      * @param array<string> $pieces

@@ -10,7 +10,7 @@ use function array_map;
 /**
  * @extends \Inspirum\Balikobot\Model\BasePerCarrierCollection<string,mixed,int,\Inspirum\Balikobot\Model\Package\Package>
  */
-class DefaultPackageCollection extends BasePerCarrierCollection implements PackageCollection
+final class DefaultPackageCollection extends BasePerCarrierCollection implements PackageCollection
 {
     /**
      * @param array<\Inspirum\Balikobot\Model\Package\Package> $items
