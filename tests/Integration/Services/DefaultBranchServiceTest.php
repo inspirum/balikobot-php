@@ -34,11 +34,11 @@ final class DefaultBranchServiceTest extends BaseTestCase
         $branchService = $this->newDefaultBranchService();
 
         $branches = $branchService->getBranchesForLocation(
-            Carrier::PBH,
+            Carrier::UPS,
             Country::GERMANY,
             'Berlin',
-            null,
-            'Berlin',
+            '10787',
+            'Hardenbergplatz 8',
             4,
             40.3,
         );

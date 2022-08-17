@@ -6,6 +6,8 @@ namespace Inspirum\Balikobot\Service;
 
 use Inspirum\Balikobot\Model\AdrUnit\AdrUnitCollection;
 use Inspirum\Balikobot\Model\Attribute\AttributeCollection;
+use Inspirum\Balikobot\Model\Carrier\Carrier;
+use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
 use Inspirum\Balikobot\Model\Country\CountryCollection;
 use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection;
 use Inspirum\Balikobot\Model\Service\Service;
@@ -14,6 +16,20 @@ use Inspirum\Balikobot\Model\ZipCode\ZipCodeIterator;
 
 interface SettingService
 {
+    /**
+     * Get list of carriers
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    public function getCarriers(): CarrierCollection;
+
+    /**
+     * Get info about carrier
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    public function getCarrier(string $carrier): Carrier;
+
     /**
      * Get services for carrier
      *

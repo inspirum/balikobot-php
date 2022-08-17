@@ -26,7 +26,7 @@ See more available methods' documentation in [Usage](#usage) section.
 #### Create packages and order shipment
 
 ```php
-// create new package collection for specific shipper
+// create new package collection for specific carrier
 $packagesData = new DefaultPackageDataCollection(Carrier::CP);
 
 // create new package
@@ -132,7 +132,7 @@ if (Status::isDelivered($status->getId())) {
 ```php
 // get only branches for Zasilkovna in CZ/SK
 $branches = $branchService->getBranchesForCarrierAndCountries(
-  Shipper::ZASILKOVNA, 
+  Carrier::ZASILKOVNA, 
   [Country::CZECH_REPUBLIC, Country::SLOVAKIA]
 ); 
 
@@ -220,12 +220,12 @@ $trackService = new DefaultTrackService(
 The module contains several helper classes that contain most of the constants needed to work with the Balikobot API.
 
 - [**Definitons**](./docs/definitions.md)
-- [**Package service**](./docs/services.md)
-- [**Track service**](./docs/services.md)
-- [**Branch service**](./docs/services.md)
-- [**Setting service**](./docs/services.md)
-- [**Info service**](./docs/services.md)
-- [**Providers**](./docs/services.md)
+- [**Package service**](./docs/services.md#package-service)
+- [**Track service**](./docs/services.md#track-service)
+- [**Branch service**](./docs/services.md#branch-service)
+- [**Setting service**](./docs/services.md#setting-service)
+- [**Info service**](./docs/services.md#info-service)
+- [**Providers**](./docs/services.md#providers)
 
 
 ## Testing

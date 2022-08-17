@@ -9,9 +9,6 @@ use Inspirum\Balikobot\Definitions\Method;
 use Inspirum\Balikobot\Definitions\Version;
 use Inspirum\Balikobot\Model\Account\Account;
 use Inspirum\Balikobot\Model\Account\AccountFactory;
-use Inspirum\Balikobot\Model\Carrier\Carrier;
-use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
-use Inspirum\Balikobot\Model\Carrier\CarrierFactory;
 use Inspirum\Balikobot\Model\Changelog\ChangelogCollection;
 use Inspirum\Balikobot\Model\Changelog\ChangelogFactory;
 use Inspirum\Balikobot\Service\DefaultInfoService;
@@ -29,37 +26,6 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
         );
 
         $actualResult = $infoService->getAccountInfo();
-
-        self::assertSame($expectedResult, $actualResult);
-    }
-
-    public function testGetCarriers(): void
-    {
-        $response       = $this->mockClientResponse();
-        $expectedResult = $this->createMock(CarrierCollection::class);
-
-        $infoService = $this->newDefaultInfoService(
-            client: $this->mockClient([Version::V2V1, null, Method::INFO_CARRIERS], $response),
-            carrierFactory: $this->mockCarrierFactory(null, $response, $expectedResult),
-        );
-
-        $actualResult = $infoService->getCarriers();
-
-        self::assertSame($expectedResult, $actualResult);
-    }
-
-    public function testGetCarrier(): void
-    {
-        $carrier        = \Inspirum\Balikobot\Definitions\Carrier::ZASILKOVNA;
-        $response       = $this->mockClientResponse();
-        $expectedResult = $this->createMock(Carrier::class);
-
-        $infoService = $this->newDefaultInfoService(
-            client: $this->mockClient([Version::V2V1, null, Method::INFO_CARRIERS, [], $carrier], $response),
-            carrierFactory: $this->mockCarrierFactory($carrier, $response, $expectedResult),
-        );
-
-        $actualResult = $infoService->getCarrier($carrier);
 
         self::assertSame($expectedResult, $actualResult);
     }
@@ -93,20 +59,6 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
     /**
      * @param array<string,mixed> $data
      */
-    private function mockCarrierFactory(?string $carrier, array $data, CarrierCollection|Carrier $response): CarrierFactory
-    {
-        $carrierFactory = $this->createMock(CarrierFactory::class);
-        $carrierFactory->expects(self::once())
-                       ->method($response instanceof Carrier ? 'create' : 'createCollection')
-                       ->with(...($response instanceof Carrier ? [$carrier, $data] : [$data]))
-                       ->willReturn($response);
-
-        return $carrierFactory;
-    }
-
-    /**
-     * @param array<string,mixed> $data
-     */
     private function mockChangelogFactory(array $data, ChangelogCollection $response): ChangelogFactory
     {
         $changelogFactory = $this->createMock(ChangelogFactory::class);
@@ -118,13 +70,11 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
     private function newDefaultInfoService(
         Client $client,
         ?AccountFactory $accountFactory = null,
-        ?CarrierFactory $carrierFactory = null,
         ?ChangelogFactory $changelogFactory = null,
     ): DefaultInfoService {
         return new DefaultInfoService(
             $client,
             $accountFactory ?? $this->createMock(AccountFactory::class),
-            $carrierFactory ?? $this->createMock(CarrierFactory::class),
             $changelogFactory ?? $this->createMock(ChangelogFactory::class),
         );
     }

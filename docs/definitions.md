@@ -2,26 +2,26 @@
 
 The module contains several helper classes that contain most of the constants needed to work with the Balikobot API.
 
-There are classes for country codes, currency codes, package options, shipper codes and service types:
+There are classes for country codes, currency codes, package options, carrier codes and service types:
 
-- [**Inspirum\Balikobot\Definitions\API**](../src/Definitions/API.php)
-- [**Inspirum\Balikobot\Definitions\Country**](../src/Definitions/Country.php)
-- [**Inspirum\Balikobot\Definitions\Currency**](../src/Definitions/Currency.php)
-- [**Inspirum\Balikobot\Definitions\Option**](../src/Definitions/Option.php)
-- [**Inspirum\Balikobot\Definitions\Region**](../src/Definitions/Region.php)
-- [**Inspirum\Balikobot\Definitions\ServiceType**](../src/Definitions/ServiceType.php)
-- [**Inspirum\Balikobot\Definitions\Shipper**](../src/Definitions/Shipper.php)
-- [**Inspirum\Balikobot\Definitions\Status**](../src/Definitions/Status.php)
+- [**Attribute**](../src/Definitions/Attribute.php)
+- [**Carrier**](../src/Definitions/Carrier.php)
+- [**Country**](../src/Definitions/Country.php)
+- [**Currency**](../src/Definitions/Currency.php)
+- [**Method**](../src/Definitions/Method.php)
+- [**Region**](../src/Definitions/Region.php)
+- [**Service**](../src/Definitions/Service.php)
+- [**Status**](../src/Definitions/Status.php)
 
 ```php
-use Inspirum\Balikobot\Definitions\Shipper;
+use Inspirum\Balikobot\Definitions\Carrier;
 
-var_dump(Shipper::CP);
+var_dump(Carrier::CP);
 /*
 'cp'
 */
 
-var_dump(Shipper::TOPTRANS);
+var_dump(Carrier::TOPTRANS);
 /*
 'toptrans'
 */
@@ -29,33 +29,33 @@ var_dump(Shipper::TOPTRANS);
 ```
 
 ```php
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 
-var_dump(ServiceType::DHL_EXPRESS_WORLDWIDE_12);
+var_dump(Service::DHL_EXPRESS_WORLDWIDE_12);
 /*
 '4'
 */
 
-var_dump(ServiceType::CP_NP);
+var_dump(Service::CP_NP);
 /*
 'NP'
 */
 
-var_dump(ServiceType::DPD_PRIVATE_SATURDAY);
+var_dump(Service::DPD_PRIVATE_SATURDAY);
 /*
 '8'
 */
 ```
 
 ```php
-use Inspirum\Balikobot\Definitions\Option;
+use Inspirum\Balikobot\Definitions\Attribute;
 
-var_dump(Option::REAL_ORDER_ID);
+var_dump(Attribute::REAL_ORDER_ID);
 /*
 'real_order_id'
 */
 
-var_dump(Option::REC_NAME);
+var_dump(Attribute::REC_NAME);
 /*
 'rec_name'
 */
@@ -82,12 +82,12 @@ var_dump(Currency::PLN);
 These classes also contain static methods for accessing all constants for given type.
 
 ```php
-use Inspirum\Balikobot\Definitions\Shipper;
+use Inspirum\Balikobot\Definitions\Carrier;
 
-$shippers = Shipper::all();
+$carriers = Carrier::all();
 
 /*
-var_dump($shippers);
+var_dump($carriers);
 [
   0  => 'cp'
   1  => 'dhl'
@@ -108,11 +108,10 @@ var_dump($shippers);
 */
 ```
 
-
 ```php
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Service;
 
-$services = ServiceType::all();
+$services = Service::getForCarriers();
 
 /*
 var_dump($services);
@@ -136,9 +135,10 @@ var_dump($services);
 ```
 
 ```php
-use Inspirum\Balikobot\Definitions\ServiceType;
+use Inspirum\Balikobot\Definitions\Carrier;
+use Inspirum\Balikobot\Definitions\Service;
 
-$services = ServiceType::topTrans();
+$services = Service::getForCarrier(Carrier::TOPTRANS);
 
 /*
 var_dump($services);
@@ -152,38 +152,3 @@ var_dump($services);
 ]
 */
 ```
-
-Other, less used available methods:
-
-```php
-use Inspirum\Balikobot\Definitions\Country;
-use Inspirum\Balikobot\Definitions\Currency;
-use Inspirum\Balikobot\Definitions\ServiceType;
-use Inspirum\Balikobot\Definitions\Shipper;
-
-Country::all();
-Country::validateCode('CZE');
-Currency::all();
-Currency::validateCode('RUB');
-Shipper::validateCode('dpd');
-Shipper::hasFullBranchesSupport('cp', 'NP');
-ServiceType::cp();
-ServiceType::intime();
-
-// and more ...
-```
-
-***
-
-
-## More usage
-
-
-### [**Client**](./client.md)
-
-Support all options for Balikobot API described in given documentation.
-
-
-### [**Balikobot**](./balikobot.md)
-
-Extension over Client that uses custom DTO classes as an input and output for its methods.

@@ -11,7 +11,7 @@ final class LiveCarrierProviderTest extends BaseTestCase
 {
     public function testGetCarriers(): void
     {
-        $provider = new LiveCarrierProvider($this->newDefaultInfoService());
+        $provider = new LiveCarrierProvider($this->newDefaultSettingService());
 
         $expectedCarriers = Carrier::getAll();
 

@@ -13,7 +13,7 @@ final class LiveServiceProviderTest extends BaseTestCase
 {
     public function testGetServices(): void
     {
-        $carrierProvider = new LiveCarrierProvider($this->newDefaultInfoService());
+        $carrierProvider = new LiveCarrierProvider($this->newDefaultSettingService());
         $serviceProvider = new LiveServiceProvider($this->newDefaultSettingService());
 
         foreach ($carrierProvider->getCarriers() as $carrier) {

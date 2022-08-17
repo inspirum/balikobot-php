@@ -14,6 +14,9 @@ use Inspirum\Balikobot\Model\AdrUnit\AdrUnitCollection;
 use Inspirum\Balikobot\Model\AdrUnit\AdrUnitFactory;
 use Inspirum\Balikobot\Model\Attribute\AttributeCollection;
 use Inspirum\Balikobot\Model\Attribute\AttributeFactory;
+use Inspirum\Balikobot\Model\Carrier\Carrier as CarrierModel;
+use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
+use Inspirum\Balikobot\Model\Carrier\CarrierFactory;
 use Inspirum\Balikobot\Model\Country\CountryCollection;
 use Inspirum\Balikobot\Model\Country\CountryFactory;
 use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection;
@@ -28,6 +31,37 @@ use function sprintf;
 
 final class DefaultSettingServiceTest extends BaseServiceTestCase
 {
+    public function testGetCarriers(): void
+    {
+        $response       = $this->mockClientResponse();
+        $expectedResult = $this->createMock(CarrierCollection::class);
+
+        $infoService = $this->newDefaultSettingService(
+            client: $this->mockClient([Version::V2V1, null, Method::INFO_CARRIERS], $response),
+            carrierFactory: $this->mockCarrierFactory(null, $response, $expectedResult),
+        );
+
+        $actualResult = $infoService->getCarriers();
+
+        self::assertSame($expectedResult, $actualResult);
+    }
+
+    public function testGetCarrier(): void
+    {
+        $carrier        = Carrier::ZASILKOVNA;
+        $response       = $this->mockClientResponse();
+        $expectedResult = $this->createMock(CarrierModel::class);
+
+        $infoService = $this->newDefaultSettingService(
+            client: $this->mockClient([Version::V2V1, null, Method::INFO_CARRIERS, [], $carrier], $response),
+            carrierFactory: $this->mockCarrierFactory($carrier, $response, $expectedResult),
+        );
+
+        $actualResult = $infoService->getCarrier($carrier);
+
+        self::assertSame($expectedResult, $actualResult);
+    }
+
     public function testGetServices(): void
     {
         $carrier        = Carrier::CP;
@@ -241,6 +275,20 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     /**
      * @param array<string,mixed> $data
      */
+    private function mockCarrierFactory(?string $carrier, array $data, CarrierCollection|CarrierModel $response): CarrierFactory
+    {
+        $carrierFactory = $this->createMock(CarrierFactory::class);
+        $carrierFactory->expects(self::once())
+                       ->method($response instanceof CarrierModel ? 'create' : 'createCollection')
+                       ->with(...($response instanceof CarrierModel ? [$carrier, $data] : [$data]))
+                       ->willReturn($response);
+
+        return $carrierFactory;
+    }
+
+    /**
+     * @param array<string,mixed> $data
+     */
     private function mockServiceFactory(string $carrier, array $data, ServiceCollection|ServiceModel $response): ServiceFactory
     {
         $serviceFactory = $this->createMock(ServiceFactory::class);
@@ -312,6 +360,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     private function newDefaultSettingService(
         Client $client,
+        ?CarrierFactory $carrierFactory = null,
         ?ServiceFactory $serviceFactory = null,
         ?ManipulationUnitFactory $unitFactory = null,
         ?CountryFactory $countryFactory = null,
@@ -321,6 +370,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     ): DefaultSettingService {
         return new DefaultSettingService(
             $client,
+            $carrierFactory ?? $this->createMock(CarrierFactory::class),
             $serviceFactory ?? $this->createMock(ServiceFactory::class),
             $unitFactory ?? $this->createMock(ManipulationUnitFactory::class),
             $countryFactory ?? $this->createMock(CountryFactory::class),

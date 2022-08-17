@@ -7,9 +7,35 @@ namespace Inspirum\Balikobot\Tests\Integration\Service;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Tests\Integration\BaseTestCase;
+use function array_diff;
+use function sprintf;
 
 final class DefaultSettingServiceTest extends BaseTestCase
 {
+    public function testGetCarriers(): void
+    {
+        $settingService = $this->newDefaultSettingService();
+
+        $carriers = $settingService->getCarriers();
+
+        self::assertNotEmpty($carriers);
+
+        $unsupportedCarriers = array_diff($carriers->getCarrierCodes(), Carrier::getAll());
+
+        foreach ($unsupportedCarriers as $unsupportedCarrier) {
+            self::addWarning(sprintf('Unsupported carrier "%s"', $unsupportedCarrier));
+        }
+    }
+
+    public function testGetCarrier(): void
+    {
+        $settingService = $this->newDefaultSettingService();
+
+        $carrier = $settingService->getCarrier(Carrier::CP);
+
+        self::assertSame($carrier->getCode(), Carrier::CP);
+    }
+
     public function testGetServices(): void
     {
         $settingService = $this->newDefaultSettingService();

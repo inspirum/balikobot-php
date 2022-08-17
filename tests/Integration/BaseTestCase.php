@@ -69,7 +69,6 @@ abstract class BaseTestCase extends TestCase
         return new DefaultInfoService(
             $this->newDefaultClient(),
             new DefaultAccountFactory($carrierFactory),
-            $carrierFactory,
             new DefaultChangelogFactory(),
         );
     }
@@ -93,6 +92,7 @@ abstract class BaseTestCase extends TestCase
 
         return new DefaultSettingService(
             $this->newDefaultClient(),
+            new DefaultCarrierFactory(new DefaultMethodFactory()),
             new DefaultServiceFactory($countryFactory),
             new DefaultManipulationUnitFactory(),
             $countryFactory,

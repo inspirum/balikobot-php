@@ -63,12 +63,10 @@ final class DefaultStatusFactory implements StatusFactory
         $packages = $data['packages'] ?? [];
         $this->validator->validateIndexes($packages, count($carrierIds));
 
-        $statuses = new DefaultStatusesCollection($carrier, array_map(
+        return new DefaultStatusesCollection($carrier, array_map(
             fn(array $status): Statuses => $this->createStatuses($carrier, $status, $data),
             $packages,
         ));
-
-        return $statuses;
     }
 
     /**
@@ -97,11 +95,9 @@ final class DefaultStatusFactory implements StatusFactory
         $packages = $data['packages'] ?? [];
         $this->validator->validateIndexes($packages, count($carrierIds));
 
-        $statuses = new DefaultStatusCollection($carrier, array_map(
+        return new DefaultStatusCollection($carrier, array_map(
             fn(array $status): Status => $this->createLastStatus($carrier, $status, $data),
             $packages,
         ));
-
-        return $statuses;
     }
 }

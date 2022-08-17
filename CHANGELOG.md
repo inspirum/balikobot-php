@@ -29,7 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v1.963** (2022-07-27)
   - Added **dcl_pdf** attribute
 - Added support for new options from documentation **v1.964** (2022-08-02)
-  - Added **SAMEDAY** shipper
+  - Added **SAMEDAY** carrier
 - Added support for new options from documentation **v1.965** (2022-08-10)
   - Added **note_invoice** attribute
 ### Changed
@@ -118,9 +118,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v6.4.0 (2022-03-26)](https://github.com/inspirum/balikobot-php/compare/v6.3.0...v6.4.0)
 ### Added
 - Added support for new options from documentation **v1.944** (2021-12-07)
-  - Added **LIFTAGO** shipper
+  - Added **LIFTAGO** carrier
 - Added support for new options from documentation **v1.949** (2022-02-04)
-  - Added **MAGYARPOSTA** shipper
+  - Added **MAGYARPOSTA** carrier
 - Added support for new options from documentation **v1.952** (2022-03-09)
   - Added **FULLADRUNITS** request
 - Added support for new options from documentation **v1.955** (2022-03-24)
@@ -142,7 +142,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v6.2.0 (2021-11-02)](https://github.com/inspirum/balikobot-php/compare/v6.1.0...v6.2.0)
 ### Added
 - Added support for new options from documentation **v1.935** (2021-10-15)
-  - Added **JAPO** shipper
+  - Added **JAPO** carrier
 - Added support for new options from documentation **v1.937** (2021-10-25)
   - Add **405** response status error code
 ### Changed
@@ -180,16 +180,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v5.6.0 (2021-08-04)](https://github.com/inspirum/balikobot-php/compare/v5.5.0...v5.6.0)
 ### Added
 - Added support for new options from documentation **v1.933** (2021-07-29)
-    - Added **AIRWAY** shipper
+    - Added **AIRWAY** carrier
 - Added opt-in option to Requester SSL verification [#14](https://github.com/inspirum/balikobot-php/pull/14)
 
 
 ## [v5.5.0 (2021-07-21)](https://github.com/inspirum/balikobot-php/compare/v5.4.1...v5.5.0)
 ### Added
 - Added support for new options from documentation **v1.929** (2021-07-13)
-    - Added **KURIER** shipper
+    - Added **KURIER** carrier
 - Added support for new options from documentation **v1.930** (2021-07-16)
-    - Added **DBSCHENKER** shipper
+    - Added **DBSCHENKER** carrier
 ### Fixed
 - Fixed **TRACK** request response when API returns states as `string` instead of `array` ([#15](https://github.com/inspirum/balikobot-php/issues/15))
 
@@ -202,19 +202,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v5.4.0 (2021-07-08)](https://github.com/inspirum/balikobot-php/compare/v5.3.0...v5.4.0)
 ### Added
 - Added support for new options from documentation **v1.925** (2021-06-30)
-    - Added **DHLFREIGHTEC** shipper
+    - Added **DHLFREIGHTEC** carrier
 - Added support for new options from documentation **v1.926** (2021-06-30)
     - Added **PPL_PRIVATE_SMART_CZ** service type
     - Added **PPL_PRIVATE_SMART_EU** service type
 ### Fixed
-- Fixed branches filter by countries if service type is `null` (and shipper does not support filter by both)  ([#12](https://github.com/inspirum/balikobot-php/issues/12))
+- Fixed branches filter by countries if service type is `null` (and carrier does not support filter by both)  ([#12](https://github.com/inspirum/balikobot-php/issues/12))
     - Added [**Shipper**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Definitions/Shipper.php) `hasBranchCountryFilterSupport()` #2 **serviceCode** optional parameter
 
 
 ## [v5.3.0 (2021-06-21)](https://github.com/inspirum/balikobot-php/compare/v5.2.0...v5.3.0)
 ### Added
 - Added support for new options from documentation **v1.924** (2021-06-18)
-    - Added **DSV** shipper
+    - Added **DSV** carrier
 - Added support for new options from documentation **v1.921** (2021-06-03)
     - Added **content_issue_date** attribute
     - Added **content_invoice_number** attribute
@@ -222,18 +222,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Added **content_mrn** attribute
     - Added **ead_pdf** attribute
 - Added support for new options from documentation **v1.919** (2021-05-11)
-    - Added **SPRING** shipper
+    - Added **SPRING** carrier
 
 
 ## [v5.2.0 (2021-05-01)](https://github.com/inspirum/balikobot-php/compare/v5.1.0...v5.2.0)
 ### Added
 - Added [**Status**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Definitions/Status.php) constants
 - Added support for new options from documentation **v1.918** (2021-04-29)
-    - Added **RABEN** shipper
+    - Added **RABEN** carrier
 - Added support for new options from documentation **v1.915** (2021-04-19)
-    - Added **DHLPARCEL** shipper
+    - Added **DHLPARCEL** carrier
 - Added support for new options from documentation **v1.914** (2021-04-19)
-    - Added **DACHSER** shipper
+    - Added **DACHSER** carrier
 - Added support for new options from documentation **v1.913** (2021-04-08)
     - Added **PPL_BUSINESS_EU** service type
 - Added support for new options from documentation **v1.912** (2021-04-06)
@@ -304,7 +304,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v1.896** (2020-11-18)
     - Added **PACKAGE** request filtered by **carrier_id**
 - Added support for new options from documentation **v1.897** (2020-11-30)
-    - Added **FOFR** shipper
+    - Added **FOFR** carrier
 - Added support for new options from documentation **v1.898** (2020-12-01)
     - Added **CHANGELOG** request
 
@@ -312,14 +312,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v4.2.0 (2020-11-10)](https://github.com/inspirum/balikobot-php/compare/v4.1.0...v4.2.0)
 ### Added
 - Added support for new options from documentation **v1.897** (2020-11-30)
-    - Added **FEDEX** shipper
+    - Added **FEDEX** carrier
 - Added multiple **ZASILKOVNA\_&ast;** service types
 
 
 ## [v4.1.0 (2020-10-29)](https://github.com/inspirum/balikobot-php/compare/v4.0.0...v4.1.0)
 ### Added
 - Added support for new options from documentation **v1.894** (2020-10-20)
-    - Added **DHLDE** shipper
+    - Added **DHLDE** carrier
 - Added support for new options from documentation **v1.895** (2020-10-29)
     - Added **PBH_123_KURIER** service type
 
@@ -369,7 +369,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [v3.2.1 (2020-07-15)](https://github.com/inspirum/balikobot-php/compare/v3.2.0...v3.2.1)
 ### Fixes
-- Fixed branch street house/orientation number for **CP** shipper
+- Fixed branch street house/orientation number for **CP** carrier
 
 
 ## [v3.2.0 (2020-06-07)](https://github.com/inspirum/balikobot-php/compare/v3.1.0...v3.2.0)
@@ -377,7 +377,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v1.886** (2020-05-29)
     - Added **TRANSPORTCOSTS** request
 - Added support for new options from documentation **v1.887** (2020-06-09)
-    - Added **MESSENGER** (Messenger) shipper
+    - Added **MESSENGER** (Messenger) carrier
 
 
 ## [v3.1.0 (2020-05-30)](https://github.com/inspirum/balikobot-php/compare/v3.0.0...v3.1.0)
@@ -392,7 +392,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Normalized request constants, change **ACTIVATEDSERVICES** to **ACTIVATED_SERVICES**
 ### Fixed
-- Fixed bug that API returns only last package statuses for GLS shipper ([#3](https://github.com/inspirum/balikobot-php/issues/3))
+- Fixed bug that API returns only last package statuses for GLS carrier ([#3](https://github.com/inspirum/balikobot-php/issues/3))
 ### Deprecated
 - Deprecated **ACTIVATEDSERVICES** request constant
 
@@ -400,21 +400,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v3.0.0 (2020-05-09)](https://github.com/inspirum/balikobot-php/compare/v2.0.1...v3.0.0)
 ### Added
 - Added support for new options from documentation **v1.882** (2020-04-15)
-    - Added **ADD** **v2** request for **TOPTRANS** shipper
+    - Added **ADD** **v2** request for **TOPTRANS** carrier
 - Added support for new options from documentation **v1.881** (2020-04-09)
     - Added **country** parameter to **SERVICES** **v2** request
-    - Added **ADD** **v2** request for **ZASILKOVNA** shipper
-    - Added **BRANCHES** **v2** request for **ZASILKOVNA** shipper
-    - Added **SERVICES** **v2** request for **ZASILKOVNA** shipper
+    - Added **ADD** **v2** request for **ZASILKOVNA** carrier
+    - Added **BRANCHES** **v2** request for **ZASILKOVNA** carrier
+    - Added **SERVICES** **v2** request for **ZASILKOVNA** carrier
     - Added **ZASILKOVNA** services type
     - Added **full_age_minimum** attribute
 ### Changed
-- Normalized shipper constants, change **TOP_TRANS** to **TOPTRANS**
+- Normalized carrier constants, change **TOP_TRANS** to **TOPTRANS**
 
 
 ## [v2.0.1 (2020-03-24)](https://github.com/inspirum/balikobot-php/compare/v2.0.0...v2.0.1)
 ### Fixed
-- Set branch country to **CZ** if missing (for **CP** shipper with **NP** service)
+- Set branch country to **CZ** if missing (for **CP** carrier with **NP** service)
 
 
 ## [v2.0.0 (2020-03-15)](https://github.com/inspirum/balikobot-php/compare/v1.4.0...v2.0.0)
@@ -426,20 +426,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Support multiple **EID** in [**PackageCollection**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Model/Aggregates/PackageCollection.php)
 ### Removed
 - Deprecated **date** and **note** parameters from **ORDER** request
-- Removed **DHLSK** shipper support
+- Removed **DHLSK** carrier support
 
 
 ## [v1.4.0 (2020-03-15)](https://github.com/inspirum/balikobot-php/compare/v1.3.2...v1.4.0)
 ### Added
 - Added support for new options from documentation **v1.879** (2020-03-13)
-    - Added **GWCZ** (Gebrüder Weiss Česká republika) shipper
+    - Added **GWCZ** (Gebrüder Weiss Česká republika) carrier
 - Added support for new options from documentation **v1.878** (2020-01-30)
     - Added **B2A/SERVICES** request
 ### Fixed
 - Fixed bug with bad formatted latitude/longitude in branch import
 ### Deprecated
 - Deprecated **date** and **note** parameters from **ORDER** request
-- Deprecated **DHLSK** shipper support
+- Deprecated **DHLSK** carrier support
 
 
 ## [v1.3.2 (2020-01-06)](https://github.com/inspirum/balikobot-php/compare/v1.3.1...v1.3.2)
@@ -449,7 +449,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [v1.3.1 (2019-11-18)](https://github.com/inspirum/balikobot-php/compare/v1.3.0...v1.3.1)
 ### Added
-- Added helper method for information if shipper support filtering branches by country code
+- Added helper method for information if carrier support filtering branches by country code
 ### Fixed
 - Fixed branch filtering by country code(s)
 ### Removed
@@ -462,11 +462,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added methods to get branches filtered by country codes
 - Added support for new options from documentation **v1.873** (2019-11-15)
     - Added **country** parameter to **BRANCHES** request
-    - Added **ADD** **v2** request for **DHL** shipper
-    - Added **ADD** **v2** request for **TNT** shipper
+    - Added **ADD** **v2** request for **DHL** carrier
+    - Added **ADD** **v2** request for **TNT** carrier
     - Added **bank_code** attribute
 - Added support for new options from documentation **v1.872** (2019-10-24)
-    - Added **ADD** **v2** request for **UPS** shipper
+    - Added **ADD** **v2** request for **UPS** carrier
 - Added support for new options from documentation **v1.872** (2019-10-22)
     - Added **POD** request
     - Added **GLS_GUARANTEED24** service type
@@ -484,7 +484,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v1.2.0 (2019-09-07)](https://github.com/inspirum/balikobot-php/compare/v1.1.2...v1.2.0)
 ### Added
 - Added support for new options from documentation **v1.870** (2019-09-05)
-    - Added **GW** (Gebrüder Weiss) shipper
+    - Added **GW** (Gebrüder Weiss) carrier
 - Added support for new options from documentation **v1.869** (2019-08-19)
     - Added **del_exworks_account_number** attribute
     - Added **del_exworks_zip** attribute
@@ -516,7 +516,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     - Added **delivery_costs** attribute
     - Added **delivery_costs_eur** attribute
 - Added support for new options from documentation **v1.856** (2019-04-10)
-    - Added **SPS** (Slovak Parcel Service) shipper
+    - Added **SPS** (Slovak Parcel Service) carrier
     - Added **ULOZENKA_EXPRESS_COURRIER** service type (Expres Kurýr SK for Ulozenka)
     - Added **ULOZENKA_EXPRESS_SK** service type (Expres na poštu SK for Ulozenka)
     - Added **ULOZENKA_BALIKOBOX_SK** service type (BalíkoBOX SK for Ulozenka)
@@ -526,13 +526,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v1.1.0 (2019-03-23)](https://github.com/inspirum/balikobot-php/compare/v1.0.4...v1.1.0)
 ### Added
 - Added support for new options from documentation **v1.855** (2019-03-19)
-    - Added **DHLSK** shipper
+    - Added **DHLSK** carrier
 - Added support for new options from documentation **v1.854** (2019-03-13)
     - Added **COD4SERVICES** request
 - Added support for new options from documentation **v1.853** (2019-02-28)
     - Added **BRANCHLOCATOR** request
 - Added support for new options from documentation **v1.852** (2019-02-26)
-    - Added **TNT** shipper
+    - Added **TNT** carrier
 - Added support for new options from documentation **v1.851** (2019-02-19)
     - Added new definitons for regions
 - Added support for new options from documentation **v1.847** (2019-01-22)

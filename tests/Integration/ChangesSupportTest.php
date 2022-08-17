@@ -26,7 +26,7 @@ final class ChangesSupportTest extends BaseTestCase
 
         $changelog = $infoService->getChangelog();
 
-        $expected = '1.964';
+        $expected = '1.965';
         $actual   = $changelog->getLatestVersion();
 
         if ($actual > $expected) {
@@ -62,13 +62,13 @@ final class ChangesSupportTest extends BaseTestCase
 
     public function testAllMethodsSupport(): void
     {
-        $infoService = $this->newDefaultInfoService();
-        $methods     = [];
+        $settingService = $this->newDefaultSettingService();
+        $methods        = [];
 
         foreach (Carrier::getAll() as $carrier) {
             $methods[] = array_map(
                 static fn(MethodModel $method): string => str_replace(' ', '/', strtolower($method->getCode())),
-                $infoService->getCarrier($carrier)->getMethodsForVersion(Version::V2V1)->getMethods(),
+                $settingService->getCarrier($carrier)->getMethodsForVersion(Version::V2V1)->getMethods(),
             );
         }
 

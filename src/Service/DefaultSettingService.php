@@ -11,6 +11,9 @@ use Inspirum\Balikobot\Model\AdrUnit\AdrUnitCollection;
 use Inspirum\Balikobot\Model\AdrUnit\AdrUnitFactory;
 use Inspirum\Balikobot\Model\Attribute\AttributeCollection;
 use Inspirum\Balikobot\Model\Attribute\AttributeFactory;
+use Inspirum\Balikobot\Model\Carrier\Carrier;
+use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
+use Inspirum\Balikobot\Model\Carrier\CarrierFactory;
 use Inspirum\Balikobot\Model\Country\CountryCollection;
 use Inspirum\Balikobot\Model\Country\CountryFactory;
 use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection;
@@ -26,6 +29,7 @@ final class DefaultSettingService implements SettingService
 {
     public function __construct(
         private Client $client,
+        private CarrierFactory $carrierFactory,
         private ServiceFactory $serviceFactory,
         private ManipulationUnitFactory $unitFactory,
         private CountryFactory $countryFactory,
@@ -33,6 +37,20 @@ final class DefaultSettingService implements SettingService
         private AdrUnitFactory $adrUnitFactory,
         private AttributeFactory $attributeFactory,
     ) {
+    }
+
+    public function getCarriers(): CarrierCollection
+    {
+        $response = $this->client->call(Version::V2V1, null, Method::INFO_CARRIERS);
+
+        return $this->carrierFactory->createCollection($response);
+    }
+
+    public function getCarrier(string $carrier): Carrier
+    {
+        $response = $this->client->call(Version::V2V1, null, Method::INFO_CARRIERS, path: $carrier);
+
+        return $this->carrierFactory->create($carrier, $response);
     }
 
     public function getServices(string $carrier): ServiceCollection

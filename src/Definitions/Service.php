@@ -687,6 +687,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_ES_MRW_HD = '4653';
 
     /**
+     * ES Envialia HD
+     */
+    public const ZASILKOVNA_ES_ENVIALIA_HD = '13851';
+
+    /**
      * ES MRW Pickup Point
      */
     public const ZASILKOVNA_ES_MRW_PP = '4654';
@@ -2238,6 +2243,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_EE_LT_POST_HD,
             self::ZASILKOVNA_ES_MRW_HD,
             self::ZASILKOVNA_ES_MRW_PP,
+            self::ZASILKOVNA_ES_ENVIALIA_HD,
             self::ZASILKOVNA_FI_POST_NORD_HP,
             self::ZASILKOVNA_FI_POST_NORD_PP,
             self::ZASILKOVNA_FR_COLIS_PRIVE_HD,
