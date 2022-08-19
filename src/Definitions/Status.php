@@ -122,14 +122,10 @@ final class Status
 
     /**
      * Is package delivered to customer
-     *
-     * @param float $status
-     *
-     * @return bool
      */
     public static function isDelivered(float $status): bool
     {
-        return self::inStatuses($status, [
+        return self::isStatus($status, [
             self::PICKUP_ON_DELIVERY_POINT,
             self::DELIVERED_TO_ADDRESS,
         ]);
@@ -137,14 +133,10 @@ final class Status
 
     /**
      * Package delivery failed
-     *
-     * @param float $status
-     *
-     * @return bool
      */
     public static function isError(float $status): bool
     {
-        return self::inStatuses($status, [
+        return self::isStatus($status, [
             self::ERROR_CARRIER,
             self::ERROR_RECIPIENT,
             self::ERROR_SENDER,
@@ -153,14 +145,10 @@ final class Status
 
     /**
      * Package is being delivered to customer
-     *
-     * @param float $status
-     *
-     * @return bool
      */
     public static function isBeingDelivered(float $status): bool
     {
-        return self::inStatuses($status, [
+        return self::isStatus($status, [
             self::ORDERED,
             self::PICKED_UP_FROM_SENDER,
             self::TRANSIT,
@@ -171,14 +159,10 @@ final class Status
 
     /**
      * Package delivery processed ended
-     *
-     * @param float $status
-     *
-     * @return bool
      */
     public static function isClosed(float $status): bool
     {
-        return self::inStatuses($status, [
+        return self::isStatus($status, [
             self::DELIVERED_BACK_TO_SENDER,
             self::COD_PAID,
             self::PICKUP_ON_DELIVERY_POINT,
@@ -189,12 +173,9 @@ final class Status
     /**
      * Check if given ID is in any of given statuses
      *
-     * @param float        $status
      * @param array<float> $statuses
-     *
-     * @return bool
      */
-    private static function inStatuses(float $status, array $statuses): bool
+    private static function isStatus(float $status, array $statuses): bool
     {
         return in_array($status, $statuses, true);
     }
