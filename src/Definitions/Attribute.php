@@ -888,6 +888,11 @@ final class Attribute extends BaseEnum
     public const NOTE_INVOICE = 'note_invoice';
 
     /**
+     * Nastavení druhu faktury při zasílání vlastní PDF faktury ('PRO_FORMA_INVOICE', 'COMMERCIAL')
+     */
+    public const INVOICE_TYPE = 'invoice_type';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

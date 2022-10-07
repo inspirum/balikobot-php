@@ -23,6 +23,11 @@ trait ForeignCountryDeliveryData
         $this->offsetSet(Attribute::INVOICE_PDF, $pdf);
     }
 
+    public function setInvoiceType(string $type): void
+    {
+        $this->offsetSet(Attribute::INVOICE_TYPE, $type);
+    }
+
     public function setTermsOfTrade(string $terms): void
     {
         $this->offsetSet(Attribute::TERMS_OF_TRADE, $terms);
