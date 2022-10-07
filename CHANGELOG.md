@@ -6,7 +6,24 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.0.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.1.0...master)
+
+
+## [v7.1.0 (2022-08-19)](https://github.com/inspirum/balikobot-php/compare/v7.0.0...v7.1.0)
+### Added
+- Added support for new options from documentation **v1.966** (2022-08-23)
+  - Added **region** to [**ZipCode**](./src/Model/ZipCode/DefaultZipCode.php) as #6 parameter
+- Added support for new options from documentation **v1.967** (2022-09-22)
+  - Added **invoice_type** attribute
+- Added **ZASILKOVNA_FR_MONDIAL_RELAY_PP** service type
+- Added **ZASILKOVNA_FR_COLIS_PRIVE_DIRECT_HD** service type
+- Added **ZASILKOVNA_GR_SPEEDEX_HD** service type
+- Added **ZASILKOVNA_GR_BOXNOW_BOX** service type
+- Added **ZASILKOVNA_HU_FAMA_FUTAR_HD** service type
+- Added **ZASILKOVNA_IT_HR_PARCEL_HD** service type
+- Added **ZASILKOVNA_PL_POST_PP** service type
+### Changed
+- Changed order of [**ZipCode**](./src/Model/ZipCode/DefaultZipCode.php) parameters (moved **country** from #6 to #7, moved **morningDelivery** from #7 to #8)
 
 
 ## [v7.0.0 (2022-08-19)](https://github.com/inspirum/balikobot-php/compare/v6.4.0...v7.0.0)
