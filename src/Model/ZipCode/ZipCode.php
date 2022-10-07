@@ -21,6 +21,8 @@ interface ZipCode extends Model
 
     public function getCity(): ?string;
 
+    public function getRegion(): ?string;
+
     public function getCountry(): ?string;
 
     public function isMorningDelivery(): bool;

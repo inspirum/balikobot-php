@@ -21,6 +21,7 @@ final class DefaultZipCodeTest extends BaseTestCase
             '35002',
             null,
             'Praha',
+            'Česko',
             'CZ',
             false,
         );
@@ -30,6 +31,7 @@ final class DefaultZipCodeTest extends BaseTestCase
             'zipCode'         => '35002',
             'zipCodeEnt'      => null,
             'city'            => 'Praha',
+            'region'          => 'Česko',
             'country'         => 'CZ',
             'morningDelivery' => false,
         ];
@@ -39,6 +41,7 @@ final class DefaultZipCodeTest extends BaseTestCase
         self::assertSame('35002', $model->getZipCode());
         self::assertSame(null, $model->getZipCodeEnd());
         self::assertSame('Praha', $model->getCity());
+        self::assertSame('Česko', $model->getRegion());
         self::assertSame('CZ', $model->getCountry());
         self::assertSame(false, $model->isMorningDelivery());
         self::assertSame($expectedArray, $model->__toArray());

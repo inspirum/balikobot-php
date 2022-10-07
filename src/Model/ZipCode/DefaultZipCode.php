@@ -17,8 +17,9 @@ final class DefaultZipCode extends BaseModel implements ZipCode
         private ?string $zipCode,
         private ?string $zipCodeEnd,
         private ?string $city,
+        private ?string $region,
         private ?string $country,
-        private bool $morningDelivery
+        private bool $morningDelivery,
     ) {
     }
 
@@ -47,6 +48,11 @@ final class DefaultZipCode extends BaseModel implements ZipCode
         return $this->city;
     }
 
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }
+
     public function getCountry(): ?string
     {
         return $this->country;
@@ -66,6 +72,7 @@ final class DefaultZipCode extends BaseModel implements ZipCode
             'zipCode'         => $this->zipCode,
             'zipCodeEnt'      => $this->zipCodeEnd,
             'city'            => $this->city,
+            'region'          => $this->region,
             'country'         => $this->country,
             'morningDelivery' => $this->morningDelivery,
         ];

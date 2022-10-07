@@ -17,6 +17,7 @@ final class DefaultZipCodeFactory implements ZipCodeFactory
             $data['zip'] ?? ($data['zip_start'] ?? null),
             $data['zip_end'] ?? null,
             $data['city'] ?? null,
+            $data['region'] ?? null,
             $data['country'] ?? null,
             (bool) ($data['1B'] ?? false),
         );
