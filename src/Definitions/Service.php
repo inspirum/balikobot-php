@@ -727,6 +727,16 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_FR_COLISSIMO_HD = '4309';
 
     /**
+     * FR Mondial Relay PP
+     */
+    public const ZASILKOVNA_FR_MONDIAL_RELAY_PP = '12889';
+
+    /**
+     * Fr Colis Privé Direct HD
+     */
+    public const ZASILKOVNA_FR_COLIS_PRIVE_DIRECT_HD = '16080';
+
+    /**
      * Spojené království Hermes
      */
     public const ZASILKOVNA_GB_HERMES_HD = '3885';
@@ -760,6 +770,16 @@ final class Service extends BaseEnum
      * Recko Speedy Home
      */
     public const ZASILKOVNA_GR_SPEEDY_HD = '4738';
+
+    /**
+     * GR Speedex HD
+     */
+    public const ZASILKOVNA_GR_SPEEDEX_HD = '12235';
+
+    /**
+     * GR BoxNow Box
+     */
+    public const ZASILKOVNA_GR_BOXNOW_BOX = '20409';
 
     /**
      * HR Overseas Express HD
@@ -807,6 +827,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_HU_POST_HD = '763';
 
     /**
+     * HU Fáma Futár HD
+     */
+    public const ZASILKOVNA_HU_FAMA_FUTAR_HD = '10061';
+
+    /**
      * Švýcarsko-Lichtenštejnská Pošta - prioritní
      */
     public const ZASILKOVNA_CH_POST_PRIORITY_HD = '3870';
@@ -840,6 +865,11 @@ final class Service extends BaseEnum
      * Itálie GLS
      */
     public const ZASILKOVNA_IT_GLS_HD = '2726';
+
+    /**
+     * IT HR Parcel HD
+     */
+    public const ZASILKOVNA_IT_HR_PARCEL_HD = '12154';
 
     /**
      * LT Omniva Box
@@ -905,6 +935,11 @@ final class Service extends BaseEnum
      * PL - best delivery solution
      */
     public const ZASILKOVNA_PL_COURIER_HD = '4162';
+
+    /**
+     * PL Polská pošta PP
+     */
+    public const ZASILKOVNA_PL_POST_PP = '14052';
 
     /**
      * Polsko Paczkomaty
@@ -2243,13 +2278,15 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_EE_LT_POST_HD,
             self::ZASILKOVNA_ES_MRW_HD,
             self::ZASILKOVNA_ES_MRW_PP,
-            self::ZASILKOVNA_ES_ENVIALIA_HD,
+            // self::ZASILKOVNA_ES_ENVIALIA_HD,
             self::ZASILKOVNA_FI_POST_NORD_HP,
             self::ZASILKOVNA_FI_POST_NORD_PP,
             self::ZASILKOVNA_FR_COLIS_PRIVE_HD,
             self::ZASILKOVNA_FR_MONDIAL_PP,
             self::ZASILKOVNA_FR_COLISSIMO_PP,
             self::ZASILKOVNA_FR_COLISSIMO_HD,
+            self::ZASILKOVNA_FR_MONDIAL_RELAY_PP,
+            self::ZASILKOVNA_FR_COLIS_PRIVE_DIRECT_HD,
             // self::ZASILKOVNA_GB_HERMES_HD,
             self::ZASILKOVNA_GB_ROYAL_MAIL_24_HD,
             self::ZASILKOVNA_GB_ROYAL_MAIL_48_HD,
@@ -2257,6 +2294,8 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_GR_ACS_HD,
             self::ZASILKOVNA_GR_ACS_PP,
             // self::ZASILKOVNA_GR_SPEEDY_HD,
+            self::ZASILKOVNA_GR_SPEEDEX_HD,
+            self::ZASILKOVNA_GR_BOXNOW_BOX,
             self::ZASILKOVNA_HR_OVERSEAS_HD,
             self::ZASILKOVNA_HR_OVERSEAS_PP,
             self::ZASILKOVNA_HR_DPD_HD,
@@ -2266,6 +2305,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
             // self::ZASILKOVNA_HU_POST_HD,
+            self::ZASILKOVNA_HU_FAMA_FUTAR_HD,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
             self::ZASILKOVNA_CH_POST_HD,
             // self::ZASILKOVNA_IE_HERMES_HD,
@@ -2275,6 +2315,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_IT_BARTOLINI_HD,
             self::ZASILKOVNA_IT_BARTOLINI_PP,
             self::ZASILKOVNA_IT_GLS_HD,
+            self::ZASILKOVNA_IT_HR_PARCEL_HD,
             self::ZASILKOVNA_LT_OMNIVA_BOX,
             self::ZASILKOVNA_LT_OMNIVA_HD,
             self::ZASILKOVNA_LU_POST_HD,
@@ -2292,6 +2333,7 @@ final class Service extends BaseEnum
             // self::ZASILKOVNA_PL_DPD_HD,
             self::ZASILKOVNA_PL_COURIER_HD,
             self::ZASILKOVNA_PL_INPOST_PACZKOMATY_BOX,
+            self::ZASILKOVNA_PL_POST_PP,
             // self::ZASILKOVNA_PL_INPOST_HD,
             self::ZASILKOVNA_PT_MRW_HD,
             self::ZASILKOVNA_PT_MRW_PP,

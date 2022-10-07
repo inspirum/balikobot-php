@@ -47,6 +47,9 @@ final class DefaultClient implements Client
         return $parsedContent;
     }
 
+    /**
+     * @return non-empty-string
+     */
     private function resolveUrl(string $baseUrl, ?string $carrier, string $method, ?string $path, bool $gzip): string
     {
         $url = sprintf('%s/%s/%s', $carrier, $method, $path ?? '');

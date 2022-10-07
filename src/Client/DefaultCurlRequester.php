@@ -50,14 +50,14 @@ final class DefaultCurlRequester implements Requester
 
         // disable SSL verification
         if ($this->sslVerify === false) {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         }
 
         // set data
         if (count($data) > 0) {
             curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, (string) json_encode($data));
         }
 
         // set auth
