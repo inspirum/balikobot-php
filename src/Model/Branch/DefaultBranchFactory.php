@@ -171,9 +171,9 @@ final class DefaultBranchFactory implements BranchFactory
                 sprintf(
                     '%s/%s',
                     $houseNumber > 0 ? $houseNumber : '',
-                    $orientationNumber > 0 ? $orientationNumber : ''
+                    $orientationNumber > 0 ? $orientationNumber : '',
                 ),
-                '/'
+                '/',
             );
 
             $data['street'] = trim(sprintf('%s %s', $data['street'] ?: ($data['city'] ?? ''), $streetNumber));

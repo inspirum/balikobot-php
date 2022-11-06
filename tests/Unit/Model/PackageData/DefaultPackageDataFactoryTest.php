@@ -39,7 +39,7 @@ final class DefaultPackageDataFactoryTest extends BaseTestCase
         yield 'valid' => [
             'data'   => [],
             'result' => new DefaultPackageData(
-                []
+                [],
             ),
         ];
     }

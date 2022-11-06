@@ -55,7 +55,7 @@ final class DefaultServiceFactory implements ServiceFactory
     private function createOptionCollection(string $carrier, array $data): ServiceOptionCollection
     {
         return new DefaultServiceOptionCollection(
-            array_map(fn(array $data): ServiceOption => $this->createOption($data), $data['services'] ?? [])
+            array_map(fn(array $data): ServiceOption => $this->createOption($data), $data['services'] ?? []),
         );
     }
 }

@@ -20,7 +20,7 @@ final class DefaultOrderedShipment extends BaseModel implements OrderedShipment
         private array $packageIds,
         private string $handoverUrl,
         private string $labelsUrl,
-        private ?string $fileUrl = null
+        private ?string $fileUrl = null,
     ) {
     }
 

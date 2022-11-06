@@ -15,7 +15,7 @@ final class DefaultOrderedShipmentFactory implements OrderedShipmentFactory
             $packageIds,
             $data['handover_url'],
             $data['labels_url'],
-            $data['file_url'] ?? null
+            $data['file_url'] ?? null,
         );
     }
 }

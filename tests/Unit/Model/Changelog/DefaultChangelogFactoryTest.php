@@ -90,7 +90,7 @@ final class DefaultChangelogFactoryTest extends BaseTestCase
                             'ADD PbH',
                             '- content data - přidání GB',
                         ),
-                    ])
+                    ]),
                 ),
                 new DefaultChangelog(
                     '1.899',
@@ -100,7 +100,7 @@ final class DefaultChangelogFactoryTest extends BaseTestCase
                             'ADD Gebrüder Weiss Česká republika',
                             '- nový atribut rec_floor_number - číslo patra',
                         ),
-                    ])
+                    ]),
                 ),
             ]),
         ];

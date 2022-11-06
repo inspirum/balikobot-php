@@ -84,7 +84,7 @@ final class DefaultStatusFactory implements StatusFactory
             (string) $data['carrier_id'],
             new DefaultStatusCollection(
                 $carrier,
-                array_map(fn(array $status): Status => $this->create($carrier, (string) $data['carrier_id'], $status, $response), $data['states'] ?? [])
+                array_map(fn(array $status): Status => $this->create($carrier, (string) $data['carrier_id'], $status, $response), $data['states'] ?? []),
             ),
         );
     }

@@ -374,7 +374,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::NOTE_INVOICE                  => 'note1',
                 Attribute::INVOICE_TYPE                  => 'PRO_FORMA_INVOICE',
             ],
-            $package->__toArray()
+            $package->__toArray(),
         );
         self::assertCount(count(Attribute::getAll()) - 10, $package, sprintf('Missing: %s', implode(',', $unsupportedAttributes)));
     }

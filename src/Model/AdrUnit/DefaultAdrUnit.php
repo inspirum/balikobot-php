@@ -19,7 +19,7 @@ final class DefaultAdrUnit extends BaseModel implements AdrUnit
         private string $class,
         private ?string $packaging,
         private ?string $tunnelCode,
-        private string $transportCategory
+        private string $transportCategory,
     ) {
     }
 

@@ -751,7 +751,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
     private function mockBranchResolver(
         array $arguments,
         array $fullBranchSupport,
-        ?array $countryFilterSupports = null
+        ?array $countryFilterSupports = null,
     ): BranchResolver {
         $branchResolver = $this->createMock(BranchResolver::class);
         $branchResolver->expects(self::exactly(count($arguments)))->method('hasFullBranchesSupport')

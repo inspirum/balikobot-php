@@ -34,7 +34,7 @@ final class DefaultStatuses extends BaseModel implements Statuses
                     'Item carrier ID mismatch ("%s" instead "%s")',
                     $item->getCarrierId(),
                     $this->carrierId,
-                )
+                ),
             );
         }
     }

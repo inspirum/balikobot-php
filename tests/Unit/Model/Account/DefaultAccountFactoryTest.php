@@ -94,7 +94,7 @@ final class DefaultAccountFactoryTest extends BaseTestCase
                         'dpd',
                         'DPD',
                     ),
-                ])
+                ]),
             ),
         ];
     }

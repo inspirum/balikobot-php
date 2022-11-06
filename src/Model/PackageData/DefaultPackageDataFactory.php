@@ -18,7 +18,7 @@ final class DefaultPackageDataFactory implements PackageDataFactory
             $data['track_url'],
             $data['label_url'],
             $data['carrier_id_swap'],
-            $data['pieces']
+            $data['pieces'],
         );
 
         return new DefaultPackageData($data);

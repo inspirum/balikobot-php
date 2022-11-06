@@ -20,7 +20,7 @@ final class DefaultTransportCost extends BaseModel implements TransportCost
         private string $carrier,
         private float $totalCost,
         private string $currencyCode,
-        private array $costsBreakdown = []
+        private array $costsBreakdown = [],
     ) {
     }
 

@@ -24,7 +24,7 @@ final class DefaultTransportCostFactory implements TransportCostFactory
             $carrier,
             $data['costs_total'],
             $data['currency'],
-            array_map(static fn(array $part) => new DefaultTransportCostPart($part['name'], $part['cost'], $data['currency']), $data['costs_breakdown'] ?? [])
+            array_map(static fn(array $part) => new DefaultTransportCostPart($part['name'], $part['cost'], $data['currency']), $data['costs_breakdown'] ?? []),
         );
     }
 

@@ -142,7 +142,7 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
                         new DefaultMethod('ADD'),
                         new DefaultMethod('DROP'),
                     ]),
-                ]
+                ],
             ),
         ];
     }

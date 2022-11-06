@@ -205,8 +205,8 @@ final class DefaultBranchService implements BranchService
                     'max_results' => $maxResults,
                     'radius'      => $radius,
                     'type'        => $type,
-                ]
-            )
+                ],
+            ),
         );
 
         return $this->branchFactory->createIterator($carrier, null, [$country], $response);

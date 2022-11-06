@@ -45,7 +45,7 @@ final class DefaultBranch extends BaseModel implements Branch
         private ?string $openingFriday = null,
         private ?string $openingSaturday = null,
         private ?string $openingSunday = null,
-        private ?float $maxWeight = null
+        private ?float $maxWeight = null,
     ) {
     }
 

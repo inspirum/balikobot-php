@@ -20,7 +20,7 @@ final class DefaultCountryFactory implements CountryFactory
             $data['iso_code'],
             $data['currency'],
             is_array($data['phone_prefix']) ? $data['phone_prefix'] : [$data['phone_prefix']],
-            $data['continent']
+            $data['continent'],
         );
     }
 
@@ -28,7 +28,7 @@ final class DefaultCountryFactory implements CountryFactory
     public function createCollection(array $data): CountryCollection
     {
         return new DefaultCountryCollection(
-            array_map(fn(array $country): Country => $this->create($country), $data['countries'] ?? [])
+            array_map(fn(array $country): Country => $this->create($country), $data['countries'] ?? []),
         );
     }
 

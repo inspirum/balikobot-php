@@ -18,12 +18,12 @@ final class DefaultPackageDataCollectionTest extends BaseTestCase
             new DefaultPackageData(
                 [
                     'eid' => '0123456',
-                ]
+                ],
             ),
             new DefaultPackageData(
                 [
                     'eid' => '0123457',
-                ]
+                ],
             ),
         ];
         $collection    = new DefaultPackageDataCollection($carrier, $items);
@@ -119,7 +119,7 @@ final class DefaultPackageDataCollectionTest extends BaseTestCase
                     'test' => 2,
                 ],
             ],
-            $packages->__toArray()
+            $packages->__toArray(),
         );
     }
 }

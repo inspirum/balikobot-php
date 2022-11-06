@@ -23,7 +23,7 @@ final class BadRequestException extends BaseException
         array $response,
         int $statusCode = 400,
         ?Throwable $previous = null,
-        ?string $message = null
+        ?string $message = null,
     ) {
         $this->setErrors($response);
 

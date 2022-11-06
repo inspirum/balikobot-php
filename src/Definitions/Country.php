@@ -184,7 +184,8 @@ final class Country extends BaseEnum
     /**
      * Burkina Faso
      */
-    public const BURKINA_FASO = 'BF'; /* <*/
+    public const BURKINA_FASO = 'BF';
+
     /**
      * Burundi
      */
@@ -268,7 +269,8 @@ final class Country extends BaseEnum
     /**
      * Cook Islands
      */
-    public const COOK_ISLANDS = 'CK'; /* <*/
+    public const COOK_ISLANDS = 'CK';
+
     /**
      * Costa Rica
      */
@@ -827,7 +829,8 @@ final class Country extends BaseEnum
     /**
      * Northern Mariana Islands
      */
-    public const NORTHERN_MARIANA_ISLANDS = 'MP'; /* <*/
+    public const NORTHERN_MARIANA_ISLANDS = 'MP';
+
     /**
      * Norway
      */
@@ -916,7 +919,8 @@ final class Country extends BaseEnum
     /**
      * Russian Federation
      */
-    public const RUSSIAN_FEDERATION = 'RU'; /* <*/
+    public const RUSSIAN_FEDERATION = 'RU';
+
     /**
      * Rwanda
      */
@@ -1130,7 +1134,8 @@ final class Country extends BaseEnum
     /**
      * Trinidad and Tobago
      */
-    public const TRINIDAD_AND_TOBAGO = 'TT'; /* <*/
+    public const TRINIDAD_AND_TOBAGO = 'TT';
+
     /**
      * Tunisia
      */

@@ -44,7 +44,7 @@ final class DefaultChangelogFactory implements ChangelogFactory
     private function createStatusCollection(array $data): ChangelogStatusCollection
     {
         return new DefaultChangelogStatusCollection(
-            array_map(fn(array $change): ChangelogStatus => $this->createStatus($change), $data['changes'])
+            array_map(fn(array $change): ChangelogStatus => $this->createStatus($change), $data['changes']),
         );
     }
 }

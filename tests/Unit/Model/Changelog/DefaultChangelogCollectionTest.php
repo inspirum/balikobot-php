@@ -28,7 +28,7 @@ final class DefaultChangelogCollectionTest extends BaseTestCase
                         'ADD PbH',
                         '- content data - přidání GB',
                     ),
-                ])
+                ]),
             ),
             new DefaultChangelog(
                 '1.899',
@@ -38,7 +38,7 @@ final class DefaultChangelogCollectionTest extends BaseTestCase
                         'ADD Gebrüder Weiss Česká republika',
                         '- nový atribut rec_floor_number - číslo patra',
                     ),
-                ])
+                ]),
             ),
         ];
         $collection    = new DefaultChangelogCollection($items);

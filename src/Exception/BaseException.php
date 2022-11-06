@@ -46,7 +46,7 @@ abstract class BaseException extends RuntimeException implements Exception
         array $response = [],
         int $statusCode = 500,
         ?Throwable $previous = null,
-        ?string $message = null
+        ?string $message = null,
     ) {
         // set response data
         $this->response = $response;

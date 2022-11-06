@@ -28,7 +28,7 @@ final class DefaultPackageFactory implements PackageFactory
             $data['carrier_id_swap'] ?? null,
             $data['pieces'] ?? [],
             $data['carrier_id_final'] ?? null,
-            $data['track_url_final'] ?? null
+            $data['track_url_final'] ?? null,
         );
     }
 

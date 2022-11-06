@@ -13,12 +13,12 @@ final class DefaultBranchResolver implements BranchResolver
     public function hasFullBranchesSupport(string $carrier, ?string $service): bool
     {
         $supported = [
-            Carrier::ZASILKOVNA => null,
-            Carrier::CP         => [
+            Carrier::ZASILKOVNA  => null,
+            Carrier::CP          => [
                 Service::CP_NP,
                 Service::CP_NB,
             ],
-            Carrier::PBH        => [
+            Carrier::PBH         => [
                 Service::PBH_UPS,
                 Service::PBH_SP,
                 Service::PBH_MP,
@@ -30,23 +30,23 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::PBH_NOBA_POSHTA,
                 Service::PBH_ECONT,
             ],
-            Carrier::DPD        => [
+            Carrier::DPD         => [
                 Service::DPD_PICKUP,
             ],
-            Carrier::GLS        => [
+            Carrier::GLS         => [
                 Service::GLS_SHOP,
                 Service::GLS_GUARANTEED24_SHOP,
             ],
-            Carrier::INTIME     => [
+            Carrier::INTIME      => [
                 Service::INTIME_POSTOMAT_CZ,
                 Service::INTIME_BOX_CZ,
                 Service::INTIME_BOX_SK,
             ],
-            Carrier::SPS        => [
+            Carrier::SPS         => [
                 Service::SPS_EXPRESS,
                 Service::SPS_INTERNATIONAL,
             ],
-            Carrier::SP         => [
+            Carrier::SP          => [
                 Service::SP_BZP,
                 Service::SP_BZB,
                 Service::SP_EXP,
@@ -54,7 +54,7 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::SP_BNP,
                 Service::SP_BNB,
             ],
-            Carrier::ULOZENKA   => [
+            Carrier::ULOZENKA    => [
                 Service::ULOZENKA_ULOZENKA,
                 Service::ULOZENKA_DPD_PARCEL,
                 Service::ULOZENKA_CP_NP,
@@ -63,16 +63,17 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::ULOZENKA_BALIKOBOX_SK,
                 Service::ULOZENKA_DEPO_SK,
             ],
-            Carrier::PPL        => [
+            Carrier::PPL         => [
                 Service::PPL_CONNECT,
                 Service::PPL_PRIVATE,
                 Service::PPL_PRIVATE_SMART_CZ,
                 Service::PPL_PRIVATE_SMART_EU,
             ],
-            Carrier::SAMEDAY        => [
+            Carrier::SAMEDAY     => [
                 Service::SAMEDAY_LOCKER_NEXT_DAY,
                 Service::SAMEDAY_LOCKER_RETURN,
             ],
+            Carrier::MAGYARPOSTA => null,
         ];
 
         foreach ($supported as $supportedCarrier => $supportedServices) {
@@ -99,6 +100,7 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::SPS,
             Carrier::RABEN,
             Carrier::SAMEDAY,
+            Carrier::ZASILKOVNA,
         ];
 
         return in_array($carrier, $supportedCarriers, true);

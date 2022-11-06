@@ -187,7 +187,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                     'package_ids' => $packageIds,
                 ],
             ], $response),
-            orderedShipmentFactory: $this->mockOrderedShipmentFactory($carrier, $packageIds, $response, $expectedResult)
+            orderedShipmentFactory: $this->mockOrderedShipmentFactory($carrier, $packageIds, $response, $expectedResult),
         );
 
         $actualResult = $packageService->orderShipment($collection);
@@ -214,7 +214,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                     'package_ids' => $packageIds,
                 ],
             ], $response),
-            orderedShipmentFactory: $this->mockOrderedShipmentFactory($carrier, $packageIds, $response, $expectedResult)
+            orderedShipmentFactory: $this->mockOrderedShipmentFactory($carrier, $packageIds, $response, $expectedResult),
         );
 
         $actualResult = $packageService->orderShipmentByPackageIds($carrier, $packageIds);
@@ -244,7 +244,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 $orderId,
                 false,
             ], $response),
-            orderedShipmentFactory: $this->mockOrderedShipmentFactory($carrier, $packageIds, $response, $expectedResult)
+            orderedShipmentFactory: $this->mockOrderedShipmentFactory($carrier, $packageIds, $response, $expectedResult),
         );
 
         $actualResult = $packageService->getOrder($carrier, $orderId);
@@ -267,7 +267,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 null,
                 false,
             ], $response),
-            packageFactory: $this->mockPackageFactory($carrier, null, $response, $expectedResult)
+            packageFactory: $this->mockPackageFactory($carrier, null, $response, $expectedResult),
         );
 
         $actualResult = $packageService->getOverview($carrier);
@@ -464,7 +464,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 null,
                 false,
             ], $response),
-            proofOfDeliveryFactory: $this->mockProofOfDeliveryFactory([$carrierId], $response, [$expectedResult])
+            proofOfDeliveryFactory: $this->mockProofOfDeliveryFactory([$carrierId], $response, [$expectedResult]),
         );
 
         $actualResult = $packageService->getProofOfDelivery($model);
@@ -504,7 +504,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 null,
                 false,
             ], $response),
-            proofOfDeliveryFactory: $this->mockProofOfDeliveryFactory($carrierIds, $response, $expectedResult)
+            proofOfDeliveryFactory: $this->mockProofOfDeliveryFactory($carrierIds, $response, $expectedResult),
         );
 
         $actualResult = $packageService->getProofOfDeliveries($collection);
@@ -530,7 +530,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 null,
                 false,
             ], $response),
-            proofOfDeliveryFactory: $this->mockProofOfDeliveryFactory([$carrierId], $response, [$expectedResult])
+            proofOfDeliveryFactory: $this->mockProofOfDeliveryFactory([$carrierId], $response, [$expectedResult]),
         );
 
         $actualResult = $packageService->getProofOfDeliveryByCarrierId($carrier, $carrierId);
@@ -566,7 +566,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 null,
                 false,
             ], $response),
-            proofOfDeliveryFactory: $this->mockProofOfDeliveryFactory($carrierIds, $response, $expectedResult)
+            proofOfDeliveryFactory: $this->mockProofOfDeliveryFactory($carrierIds, $response, $expectedResult),
         );
 
         $actualResult = $packageService->getProofOfDeliveriesByCarrierIds($carrier, $carrierIds);
@@ -595,7 +595,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 Method::TRANSPORT_COSTS,
                 ['packages' => $packages],
             ], $response),
-            transportCostFactory: $this->mockTransportCostFactory($carrier, $packages, $response, $expectedResult)
+            transportCostFactory: $this->mockTransportCostFactory($carrier, $packages, $response, $expectedResult),
         );
 
         $actualResult = $packageService->getTransportCosts($collection);
@@ -624,7 +624,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 Method::B2A,
                 ['packages' => $packages],
             ], $response),
-            packageFactory: $this->mockPackageFactory($carrier, $packages, $response, $expectedResult)
+            packageFactory: $this->mockPackageFactory($carrier, $packages, $response, $expectedResult),
         );
 
         $actualResult = $packageService->orderB2AShipment($collection);
@@ -734,7 +734,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 Method::B2C,
                 ['packages' => $packages],
             ], $response),
-            packageFactory: $this->mockPackageFactory($carrier, $packages, $response, $expectedResult)
+            packageFactory: $this->mockPackageFactory($carrier, $packages, $response, $expectedResult),
         );
 
         $actualResult = $packageService->orderB2CShipment($collection);

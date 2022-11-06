@@ -20,7 +20,7 @@ final class DefaultCountry extends BaseModel implements Country
         private string $code,
         private string $currencyCode,
         private array $phonePrefixes,
-        private string $continent
+        private string $continent,
     ) {
     }
 

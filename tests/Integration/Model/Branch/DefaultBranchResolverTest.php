@@ -50,8 +50,8 @@ final class DefaultBranchResolverTest extends BaseTestCase
                     '%s/%s: %s',
                     $carrier,
                     $service,
-                    $exception->getMessage()
-                )
+                    $exception->getMessage(),
+                ),
             );
         }
     }
@@ -100,8 +100,8 @@ final class DefaultBranchResolverTest extends BaseTestCase
                     '%s/%s: %s',
                     $carrier,
                     $service,
-                    $exception->getMessage()
-                )
+                    $exception->getMessage(),
+                ),
             );
         }
     }
@@ -135,7 +135,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
                     self::assertNotNull($branch->getBranchId());
                     self::assertTrue(
                         in_array($branch->getCountry(), $countries),
-                        sprintf('Country %s code should be DE/SK', $branch->getCountry() ?? '[null]')
+                        sprintf('Country %s code should be DE/SK', $branch->getCountry() ?? '[null]'),
                     );
 
                     break;

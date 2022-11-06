@@ -328,7 +328,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         string $service,
         ?string $country,
         array $data,
-        ZipCodeIterator $response
+        ZipCodeIterator $response,
     ): ZipCodeFactory {
         $zipCodeFactory = $this->createMock(ZipCodeFactory::class);
         $zipCodeFactory->expects(self::once())->method('createIterator')->with($carrier, $service, $country, $data)->willReturn($response);

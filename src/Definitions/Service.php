@@ -1076,7 +1076,6 @@ final class Service extends BaseEnum
      */
     public const ZASILKOVNA_US_FEDEX_PRIORITY_HD = '19325';
 
-
     /**
      * TR FedEx HD Economy
      */
@@ -1241,6 +1240,7 @@ final class Service extends BaseEnum
      * RoyalMail 24h
      */
     public const PBH_ROYAL_MAIL_24 = '25';
+
     /**
      * RoyalMail 48h
      */
@@ -1926,7 +1926,6 @@ final class Service extends BaseEnum
      */
     public const SAMEDAY_3H = '2';
 
-
     /**
      * 3H
      */
@@ -2281,8 +2280,8 @@ final class Service extends BaseEnum
             // self::ZASILKOVNA_ES_ENVIALIA_HD,
             self::ZASILKOVNA_FI_POST_NORD_HP,
             self::ZASILKOVNA_FI_POST_NORD_PP,
-            self::ZASILKOVNA_FR_COLIS_PRIVE_HD,
-            self::ZASILKOVNA_FR_MONDIAL_PP,
+            // self::ZASILKOVNA_FR_COLIS_PRIVE_HD,
+            // self::ZASILKOVNA_FR_MONDIAL_PP,
             self::ZASILKOVNA_FR_COLISSIMO_PP,
             self::ZASILKOVNA_FR_COLISSIMO_HD,
             self::ZASILKOVNA_FR_MONDIAL_RELAY_PP,
@@ -2304,7 +2303,7 @@ final class Service extends BaseEnum
             // self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
             self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
-            // self::ZASILKOVNA_HU_POST_HD,
+            self::ZASILKOVNA_HU_POST_HD,
             self::ZASILKOVNA_HU_FAMA_FUTAR_HD,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
             self::ZASILKOVNA_CH_POST_HD,

@@ -119,8 +119,8 @@ abstract class BasePerCarrierCollection extends BaseCollection implements PerCar
                 sprintf(
                     'Item carrier mismatch ("%s" instead "%s")',
                     $item->getCarrier(),
-                    $this->carrier
-                )
+                    $this->carrier,
+                ),
             );
         }
     }

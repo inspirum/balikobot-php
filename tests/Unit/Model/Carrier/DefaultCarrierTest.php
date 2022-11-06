@@ -27,7 +27,7 @@ final class DefaultCarrierTest extends BaseTestCase
         $model         = new DefaultCarrier(
             'zasilkovna',
             'Zásilkovna',
-            $methods
+            $methods,
         );
         $expectedArray = [
             'code'    => 'zasilkovna',
