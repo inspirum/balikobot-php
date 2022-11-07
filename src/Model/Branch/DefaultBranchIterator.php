@@ -8,7 +8,7 @@ use IteratorIterator;
 use Traversable;
 
 /**
- * @extends \IteratorIterator<int, \Inspirum\Balikobot\Model\Branch\Branch, \Traversable<int, \Inspirum\Balikobot\Model\Branch\Branch>>
+ * @extends \IteratorIterator<int,\Inspirum\Balikobot\Model\Branch\Branch,\Traversable<int,\Inspirum\Balikobot\Model\Branch\Branch>>
  */
 final class DefaultBranchIterator extends IteratorIterator implements BranchIterator
 {

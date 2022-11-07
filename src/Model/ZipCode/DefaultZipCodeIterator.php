@@ -8,7 +8,7 @@ use IteratorIterator;
 use Traversable;
 
 /**
- * @extends \IteratorIterator<int, \Inspirum\Balikobot\Model\ZipCode\ZipCode, \Traversable<int, \Inspirum\Balikobot\Model\ZipCode\ZipCode>>
+ * @extends \IteratorIterator<int,\Inspirum\Balikobot\Model\ZipCode\ZipCode,\Traversable<int,\Inspirum\Balikobot\Model\ZipCode\ZipCode>>
  */
 final class DefaultZipCodeIterator extends IteratorIterator implements ZipCodeIterator
 {
