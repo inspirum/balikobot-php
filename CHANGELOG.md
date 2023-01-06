@@ -6,8 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.1.0...master)
-- ### Added
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.2.0...master)
+
+
+## [v7.2.0 (2023-01-06)](https://github.com/inspirum/balikobot-php/compare/v7.1.0...v7.2.0)
+### Added
 - Added support for **PHP 8.2**
 - Added support for new options from documentation **v1.972** (2022-12-07)
   - Added **FEDEX_INTERNATIONAL_FIRST** service type
