@@ -15,12 +15,12 @@ final class DefaultOrderedShipment extends BaseModel implements OrderedShipment
      * @param array<string> $packageIds
      */
     public function __construct(
-        private string $orderId,
-        private string $carrier,
-        private array $packageIds,
-        private string $handoverUrl,
-        private string $labelsUrl,
-        private ?string $fileUrl = null,
+        private readonly string $orderId,
+        private readonly string $carrier,
+        private readonly array $packageIds,
+        private readonly string $handoverUrl,
+        private readonly string $labelsUrl,
+        private readonly ?string $fileUrl = null,
     ) {
     }
 

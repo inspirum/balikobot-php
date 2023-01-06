@@ -18,11 +18,11 @@ final class DefaultService extends BaseModel implements Service
      * @param array<\Inspirum\Balikobot\Model\Country\CodCountry>|null $codCountries
      */
     public function __construct(
-        private string $type,
-        private ?string $name,
-        private ?ServiceOptionCollection $options = null,
-        private ?array $countries = null,
-        private ?array $codCountries = null,
+        private readonly string $type,
+        private readonly ?string $name,
+        private readonly ?ServiceOptionCollection $options = null,
+        private readonly ?array $countries = null,
+        private readonly ?array $codCountries = null,
     ) {
     }
 

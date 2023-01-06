@@ -15,7 +15,7 @@ use function sprintf;
  * @template TItemValue
  * @template TKey of array-key
  * @template TValue of \Inspirum\Arrayable\Arrayable<TItemKey,TItemValue>&\Inspirum\Balikobot\Model\WithCarrierId
- * @extends  \Inspirum\Arrayable\BaseCollection<TItemKey,TItemValue,TKey,TValue>
+ * @extends \Inspirum\Arrayable\BaseCollection<TItemKey,TItemValue,TKey,TValue>
  * @implements \Inspirum\Balikobot\Model\PerCarrierCollection<TValue>
  */
 abstract class BasePerCarrierCollection extends BaseCollection implements PerCarrierCollection
@@ -27,7 +27,7 @@ abstract class BasePerCarrierCollection extends BaseCollection implements PerCar
         private ?string $carrier = null,
         array $items = [],
     ) {
-        parent::__construct([]);
+        parent::__construct();
 
         foreach ($items as $key => $value) {
             $this->offsetSet($key, $value);

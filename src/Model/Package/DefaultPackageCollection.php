@@ -18,7 +18,7 @@ final class DefaultPackageCollection extends BasePerCarrierCollection implements
     public function __construct(
         ?string $carrier = null,
         array $items = [],
-        private ?string $labelsUrl = null,
+        private readonly ?string $labelsUrl = null,
     ) {
         parent::__construct($carrier, $items);
     }

@@ -16,11 +16,11 @@ final class DefaultCountry extends BaseModel implements Country
      * @param array<string>        $phonePrefixes
      */
     public function __construct(
-        private array $names,
-        private string $code,
-        private string $currencyCode,
-        private array $phonePrefixes,
-        private string $continent,
+        private readonly array $names,
+        private readonly string $code,
+        private readonly string $currencyCode,
+        private readonly array $phonePrefixes,
+        private readonly string $continent,
     ) {
     }
 

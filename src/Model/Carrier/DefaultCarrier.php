@@ -17,9 +17,9 @@ final class DefaultCarrier extends BaseModel implements Carrier
      * @param array<string,\Inspirum\Balikobot\Model\Method\MethodCollection> $methods
      */
     public function __construct(
-        private string $code,
-        private string $name,
-        private array $methods = [],
+        private readonly string $code,
+        private readonly string $name,
+        private readonly array $methods = [],
     ) {
     }
 

@@ -15,16 +15,16 @@ final class DefaultPackage extends BaseModel implements Package
      * @param array<string> $pieces
      */
     public function __construct(
-        private string $carrier,
-        private string $packageId,
-        private string $batchId,
-        private string $carrierId,
-        private ?string $trackUrl = null,
-        private ?string $labelUrl = null,
-        private ?string $carrierIdSwap = null,
-        private array $pieces = [],
-        private ?string $finalCarrierId = null,
-        private ?string $finalTrackUrl = null,
+        private readonly string $carrier,
+        private readonly string $packageId,
+        private readonly string $batchId,
+        private readonly string $carrierId,
+        private readonly ?string $trackUrl = null,
+        private readonly ?string $labelUrl = null,
+        private readonly ?string $carrierIdSwap = null,
+        private readonly array $pieces = [],
+        private readonly ?string $finalCarrierId = null,
+        private readonly ?string $finalTrackUrl = null,
     ) {
     }
 

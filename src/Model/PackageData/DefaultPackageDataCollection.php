@@ -19,10 +19,10 @@ final class DefaultPackageDataCollection extends BaseCollection implements Packa
      * @param array<\Inspirum\Balikobot\Model\PackageData\PackageData> $items
      */
     public function __construct(
-        private string $carrier,
+        private readonly string $carrier,
         array $items = [],
     ) {
-        parent::__construct([]);
+        parent::__construct();
 
         foreach ($items as $package) {
             $this->add($package);

@@ -11,7 +11,7 @@ use function array_map;
 final class DefaultServiceFactory implements ServiceFactory
 {
     public function __construct(
-        private CountryFactory $countryFactory,
+        private readonly CountryFactory $countryFactory,
     ) {
     }
 
@@ -21,7 +21,7 @@ final class DefaultServiceFactory implements ServiceFactory
         return new DefaultService(
             (string) $data['service_type'],
             $data['service_type_name'] ?? ($data['name'] ?? null),
-            array_key_exists('services', $data) ? $this->createOptionCollection($carrier, $data) : null,
+            array_key_exists('services', $data) ? $this->createOptionCollection($data) : null,
             array_key_exists('countries', $data) ? $this->countryFactory->createCodeCollection($data) : null,
             array_key_exists('cod_countries', $data) ? $this->countryFactory->createCodCountryCollection($data) : null,
         );
@@ -52,7 +52,7 @@ final class DefaultServiceFactory implements ServiceFactory
     /**
      * @param array<string,mixed> $data
      */
-    private function createOptionCollection(string $carrier, array $data): ServiceOptionCollection
+    private function createOptionCollection(array $data): ServiceOptionCollection
     {
         return new DefaultServiceOptionCollection(
             array_map(fn(array $data): ServiceOption => $this->createOption($data), $data['services'] ?? []),

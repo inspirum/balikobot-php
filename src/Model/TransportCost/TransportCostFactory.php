@@ -14,6 +14,8 @@ interface TransportCostFactory
     /**
      * @param array<int,array<string,mixed>> $packages
      * @param array<string,mixed>            $data
+     *
+     * @return \Inspirum\Balikobot\Model\TransportCost\TransportCostCollection&array<\Inspirum\Balikobot\Model\TransportCost\TransportCost>
      */
     public function createCollection(string $carrier, ?array $packages, array $data): TransportCostCollection;
 }

@@ -13,13 +13,13 @@ use Inspirum\Arrayable\BaseModel;
 final class DefaultStatus extends BaseModel implements Status
 {
     public function __construct(
-        private string $carrier,
-        private string $carrierId,
-        private float $id,
-        private string $name,
-        private string $description,
-        private string $type,
-        private ?DateTimeInterface $date,
+        private readonly string $carrier,
+        private readonly string $carrierId,
+        private readonly float $id,
+        private readonly string $name,
+        private readonly string $description,
+        private readonly string $type,
+        private readonly ?DateTimeInterface $date,
     ) {
     }
 

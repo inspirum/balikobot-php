@@ -17,9 +17,9 @@ final class DefaultBranchIterator extends IteratorIterator implements BranchIter
      * @param \Traversable<int,\Inspirum\Balikobot\Model\Branch\Branch> $iterator
      */
     public function __construct(
-        private ?string $carrier,
-        private ?string $service,
-        private ?array $countries,
+        private readonly ?string $carrier,
+        private readonly ?string $service,
+        private readonly ?array $countries,
         Traversable $iterator,
     ) {
         parent::__construct($iterator);

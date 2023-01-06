@@ -12,7 +12,7 @@ use function count;
 final class DefaultTransportCostFactory implements TransportCostFactory
 {
     public function __construct(
-        private Validator $validator,
+        private readonly Validator $validator,
     ) {
     }
 

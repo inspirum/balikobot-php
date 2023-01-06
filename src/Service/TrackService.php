@@ -30,6 +30,8 @@ interface TrackService
     /**
      * Track packages
      *
+     * @return \Inspirum\Balikobot\Model\Status\StatusesCollection&array<\Inspirum\Balikobot\Model\Status\Statuses>
+     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function trackPackages(PackageCollection $packages): StatusesCollection;
@@ -38,6 +40,8 @@ interface TrackService
      * Track packages by carrier IDs
      *
      * @param array<string> $carrierIds
+     *
+     * @return \Inspirum\Balikobot\Model\Status\StatusesCollection&array<\Inspirum\Balikobot\Model\Status\Statuses>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -60,6 +64,8 @@ interface TrackService
     /**
      * Track packages last statuses
      *
+     * @return \Inspirum\Balikobot\Model\Status\StatusCollection&array<\Inspirum\Balikobot\Model\Status\Status>
+     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function trackPackagesLastStatuses(PackageCollection $packages): StatusCollection;
@@ -68,6 +74,8 @@ interface TrackService
      * Tracks a package, get the last info
      *
      * @param array<string> $carrierIds
+     *
+     * @return \Inspirum\Balikobot\Model\Status\StatusCollection&array<\Inspirum\Balikobot\Model\Status\Status>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */

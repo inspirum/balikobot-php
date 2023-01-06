@@ -13,9 +13,9 @@ use Inspirum\Arrayable\BaseModel;
 final class DefaultChangelog extends BaseModel implements Changelog
 {
     public function __construct(
-        private string $version,
-        private DateTimeInterface $date,
-        private ChangelogStatusCollection $changes,
+        private readonly string $version,
+        private readonly DateTimeInterface $date,
+        private readonly ChangelogStatusCollection $changes,
     ) {
     }
 

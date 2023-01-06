@@ -14,9 +14,9 @@ use function sprintf;
 final class DefaultStatuses extends BaseModel implements Statuses
 {
     public function __construct(
-        private string $carrier,
-        private string $carrierId,
-        private StatusCollection $states,
+        private readonly string $carrier,
+        private readonly string $carrierId,
+        private readonly StatusCollection $states,
     ) {
         foreach ($states as $status) {
             $this->validateCarrierId($status);

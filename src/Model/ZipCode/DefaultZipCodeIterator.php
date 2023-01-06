@@ -16,8 +16,8 @@ final class DefaultZipCodeIterator extends IteratorIterator implements ZipCodeIt
      * @param \Traversable<int,\Inspirum\Balikobot\Model\ZipCode\ZipCode> $iterator
      */
     public function __construct(
-        private string $carrier,
-        private ?string $service,
+        private readonly string $carrier,
+        private readonly ?string $service,
         Traversable $iterator,
     ) {
         parent::__construct($iterator);

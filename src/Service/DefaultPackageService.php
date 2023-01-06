@@ -29,13 +29,13 @@ use function sprintf;
 final class DefaultPackageService implements PackageService
 {
     public function __construct(
-        private Client $client,
-        private PackageDataFactory $packageDataFactory,
-        private PackageFactory $packageFactory,
-        private OrderedShipmentFactory $orderedShipmentFactory,
-        private LabelFactory $labelFactory,
-        private ProofOfDeliveryFactory $proofOfDeliveryFactory,
-        private TransportCostFactory $transportCostFactory,
+        private readonly Client $client,
+        private readonly PackageDataFactory $packageDataFactory,
+        private readonly PackageFactory $packageFactory,
+        private readonly OrderedShipmentFactory $orderedShipmentFactory,
+        private readonly LabelFactory $labelFactory,
+        private readonly ProofOfDeliveryFactory $proofOfDeliveryFactory,
+        private readonly TransportCostFactory $transportCostFactory,
     ) {
     }
 

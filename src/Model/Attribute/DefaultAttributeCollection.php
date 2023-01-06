@@ -15,7 +15,7 @@ final class DefaultAttributeCollection extends BaseCollection implements Attribu
      * @param array<int,\Inspirum\Balikobot\Model\Attribute\Attribute> $items
      */
     public function __construct(
-        private string $carrier,
+        private readonly string $carrier,
         array $items = [],
     ) {
         parent::__construct($items);

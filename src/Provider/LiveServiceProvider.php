@@ -11,11 +11,15 @@ use function array_map;
 final class LiveServiceProvider implements ServiceProvider
 {
     public function __construct(
-        private SettingService $settingService,
+        private readonly SettingService $settingService,
     ) {
     }
 
-    /** @inheritDoc */
+    /**
+     * @return array<string>
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
     public function getServices(string $carrier): array
     {
         return array_map(static fn(Service $service): string => $service->getType(), $this->settingService->getServices($carrier)->getServices());

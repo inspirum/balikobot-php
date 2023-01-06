@@ -13,6 +13,8 @@ interface CountryFactory
 
     /**
      * @param array<string,mixed> $data
+     *
+     * @return \Inspirum\Balikobot\Model\Country\CountryCollection&array<\Inspirum\Balikobot\Model\Country\Country>
      */
     public function createCollection(array $data): CountryCollection;
 

@@ -13,17 +13,17 @@ use Inspirum\Balikobot\Model\Carrier\CarrierCollection;
 final class DefaultAccount extends BaseModel implements Account
 {
     public function __construct(
-        private string $name,
-        private string $contactPerson,
-        private string $email,
-        private string $phone,
-        private string $url,
-        private string $street,
-        private string $city,
-        private string $zip,
-        private string $country,
-        private bool $live,
-        private CarrierCollection $carriers,
+        private readonly string $name,
+        private readonly string $contactPerson,
+        private readonly string $email,
+        private readonly string $phone,
+        private readonly string $url,
+        private readonly string $street,
+        private readonly string $city,
+        private readonly string $zip,
+        private readonly string $country,
+        private readonly bool $live,
+        private readonly CarrierCollection $carriers,
     ) {
     }
 

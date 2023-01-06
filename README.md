@@ -26,6 +26,16 @@ See more available methods' documentation in [Usage](#usage) section.
 #### Create packages and order shipment
 
 ```php
+use Inspirum\Balikobot\Definitions\Carrier;
+use Inspirum\Balikobot\Definitions\Country;
+use Inspirum\Balikobot\Definitions\Currency;
+use Inspirum\Balikobot\Definitions\Service;
+use Inspirum\Balikobot\Model\PackageData\DefaultPackageData;
+use Inspirum\Balikobot\Model\PackageData\DefaultPackageDataCollection;
+use Inspirum\Balikobot\Service\PackageService;
+
+/** @var Inspirum\Balikobot\Service\PackageService $packageService */
+
 // create new package collection for specific carrier
 $packagesData = new DefaultPackageDataCollection(Carrier::CP);
 
@@ -62,7 +72,7 @@ $data['orderId']     = $orderedShipment->getOrderId();
 $data['labelsUrl']   = $orderedShipment->getLabelsUrl();
 $data['handoverUrl'] = $orderedShipment->getHandoverUrl();
 
-/*
+/**
 var_dump($data);
 [
   'packages'    => [
@@ -84,10 +94,14 @@ var_dump($data);
 #### Test packages data / delete packages
 
 ```php
+use Inspirum\Balikobot\Exception\Exception;
+
+/** @var Inspirum\Balikobot\Service\PackageService $packageService */
+
 // check if packages data is valid
 try {
     $packageService->checkPackages($packagesData);
-} catch (ExceptionInterface $exception) {
+} catch (Exception $exception) {
     return $exception->getErrors();
 }
 
@@ -99,9 +113,13 @@ $packageService->dropPackages($packages);
 #### Track packages
 
 ```php
+use Inspirum\Balikobot\Definitions\Status;
+
+/** @var Inspirum\Balikobot\Service\TrackService $trackService */
+
 // track last package status
 $status = $trackService->trackPackageLastStatus($packages[0]);
-/*
+/**
 var_dump($status);
 Inspirum\Balikobot\Model\Status\DefaultStatus {
   private $carrier     => 'cp'
@@ -130,6 +148,11 @@ if (Status::isDelivered($status->getId())) {
 #### Import branches
 
 ```php
+use Inspirum\Balikobot\Definitions\Carrier;
+use Inspirum\Balikobot\Definitions\Country;
+
+/** @var Inspirum\Balikobot\Service\BranchService $branchService */
+
 // get only branches for Zasilkovna in CZ/SK
 $branches = $branchService->getBranchesForCarrierAndCountries(
   Carrier::ZASILKOVNA, 
@@ -137,7 +160,7 @@ $branches = $branchService->getBranchesForCarrierAndCountries(
 ); 
 
 foreach($branches as $branch) {
-  /*
+  /**
   var_dump($branch);
   Inspirum\Balikobot\Model\Branch\DefaultBranch {
     private $carrier  => 'zasilkovna'
@@ -219,7 +242,7 @@ $trackService = new DefaultTrackService(
 
 The module contains several helper classes that contain most of the constants needed to work with the Balikobot API.
 
-- [**Definitons**](./docs/definitions.md)
+- [**Definitions**](./docs/definitions.md)
 - [**Package service**](./docs/services.md#package-service)
 - [**Track service**](./docs/services.md#track-service)
 - [**Branch service**](./docs/services.md#branch-service)

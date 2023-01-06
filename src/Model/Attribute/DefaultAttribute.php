@@ -12,9 +12,9 @@ use Inspirum\Arrayable\BaseModel;
 final class DefaultAttribute extends BaseModel implements Attribute
 {
     public function __construct(
-        private string $name,
-        private string $dataType,
-        private ?string $maxLength,
+        private readonly string $name,
+        private readonly string $dataType,
+        private readonly ?string $maxLength,
     ) {
     }
 

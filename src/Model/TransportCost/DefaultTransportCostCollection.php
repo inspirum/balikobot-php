@@ -17,7 +17,7 @@ final class DefaultTransportCostCollection extends BaseCollection implements Tra
      * @param array<int,\Inspirum\Balikobot\Model\TransportCost\TransportCost> $items
      */
     public function __construct(
-        private ?string $carrier,
+        private readonly ?string $carrier,
         array $items = [],
     ) {
         parent::__construct($items);

@@ -12,7 +12,7 @@ use function array_map;
 final class DefaultCarrierFactory implements CarrierFactory
 {
     public function __construct(
-        private MethodFactory $methodFactory,
+        private readonly MethodFactory $methodFactory,
     ) {
     }
 

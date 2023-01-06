@@ -13,6 +13,8 @@ interface ZipCodeFactory
 
     /**
      * @param array<string,mixed> $data
+     *
+     * @return \Inspirum\Balikobot\Model\ZipCode\ZipCodeIterator&iterable<\Inspirum\Balikobot\Model\ZipCode\ZipCode>
      */
     public function createIterator(string $carrier, ?string $service, ?string $country, array $data): ZipCodeIterator;
 }

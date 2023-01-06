@@ -10,7 +10,7 @@ use function count;
 final class DefaultProofOfDeliveryFactory implements ProofOfDeliveryFactory
 {
     public function __construct(
-        private Validator $validator,
+        private readonly Validator $validator,
     ) {
     }
 

@@ -12,7 +12,7 @@ final class Country extends BaseEnum
     public const AFGHANISTAN = 'AF';
 
     /**
-     * Aland Islands
+     * Åland Islands
      */
     public const ALAND_ISLANDS = 'AX';
 

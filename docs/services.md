@@ -38,7 +38,7 @@ $packagesData->add($packageData);
 /** @var \Inspirum\Balikobot\Service\PackageService $packageService */
 $packages = $packageService->addPackages($packagesData);
 
-/*
+/**
 var_dump($packages);
 Inspirum\Balikobot\Model\Package\DefaultPackageCollection {
   private $carrier   => 'cp'
@@ -89,7 +89,7 @@ The service normalizes the response by returning [**OrderedShipment**](../src/Mo
 /** @var \Inspirum\Balikobot\Service\PackageService $packageService */
 $orderedShipment = $packageService->orderShipment($packages);
 
-/*
+/**
 var_dump($orderedPackages);
 Inspirum\Balikobot\Model\OrderedShipment\DefaultOrderedShipment {
   private $orderId     => '42718'
@@ -120,7 +120,7 @@ The service normalizes the response by returning collection of [**Status**](../s
 /** @var \Inspirum\Balikobot\Service\TrackService $trackService */
 $statuses = $trackService->trackPackage($packages[0]);
 
-/*
+/**
 var_dump($statuses);
 Inspirum\Balikobot\Model\Status\DefaultStatuses {
   private $carrier   => 'cp'
@@ -158,7 +158,7 @@ Inspirum\Balikobot\Model\Status\DefaultStatuses {
 
 $status = $trackService->trackPackageLastStatus($packages[0]);
 
-/*
+/**
 var_dump($status);
 Inspirum\Balikobot\Model\Status\DefaultStatus {
   private $carrier     => 'cp'
@@ -205,7 +205,7 @@ $branches = $branchService->getBranchesForCountries([Country::CZECH_REPUBLIC, Co
 $branches = $branchService->getBranchesForCarrierAndCountries(Carrier::ZASILKOVNA, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
 $branches = $branchService->getBranchesForCarrierServiceAndCountries(Carrier::ZASILKOVNA, Service::ZASILKOVNA_VMCZ, [Country::CZECH_REPUBLIC, Country::SLOVAKIA]);
 
-/*
+/**
 var_dump($branches);
 Inspirum\Balikobot\Model\Branch\DefaultBranchIterator {
     private $carrier   => 'cp'
@@ -226,7 +226,7 @@ use Inspirum\Balikobot\Definitions\Carrier;
 $branches = $branchService->getBranchesForCarrier(Carrier::CP);
 
 foreach($branches as $branch) {
-  /*
+  /**
   var_dump($branch);
   Inspirum\Balikobot\Model\Branch\DefaultBranch {
     private $carrier  => 'cp'

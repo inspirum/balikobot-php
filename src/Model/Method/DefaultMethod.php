@@ -12,7 +12,7 @@ use Inspirum\Arrayable\BaseModel;
 final class DefaultMethod extends BaseModel implements Method
 {
     public function __construct(
-        private string $code,
+        private readonly string $code,
     ) {
     }
 

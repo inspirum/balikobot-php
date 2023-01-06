@@ -11,6 +11,8 @@ interface BranchService
     /**
      * Get all available branches
      *
+     * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
+     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getBranches(): BranchIterator;
@@ -19,6 +21,8 @@ interface BranchService
      * Get all available branches for countries
      *
      * @param array<string> $countries
+     *
+     * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -36,12 +40,16 @@ interface BranchService
      *
      * @param array<string> $countries
      *
+     * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
+     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getBranchesForCarrierAndCountries(string $carrier, array $countries): BranchIterator;
 
     /**
      * Get all available branches for carrier and service type
+     *
+     * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -52,12 +60,16 @@ interface BranchService
      *
      * @param array<string> $countries
      *
+     * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
+     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getBranchesForCarrierServiceAndCountries(string $carrier, string $service, array $countries): BranchIterator;
 
     /**
      * Get all available branches for carrier in specific location
+     *
+     * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */

@@ -19,8 +19,8 @@ use OutOfBoundsException;
 final class DefaultTrackService implements TrackService
 {
     public function __construct(
-        private Client $client,
-        private StatusFactory $statusFactory,
+        private readonly Client $client,
+        private readonly StatusFactory $statusFactory,
     ) {
     }
 

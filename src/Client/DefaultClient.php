@@ -19,8 +19,8 @@ use const JSON_THROW_ON_ERROR;
 final class DefaultClient implements Client
 {
     public function __construct(
-        private Requester $requester,
-        private Validator $validator,
+        private readonly Requester $requester,
+        private readonly Validator $validator,
     ) {
     }
 

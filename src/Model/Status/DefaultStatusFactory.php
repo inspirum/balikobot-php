@@ -15,7 +15,7 @@ use function count;
 final class DefaultStatusFactory implements StatusFactory
 {
     public function __construct(
-        private Validator $validator,
+        private readonly Validator $validator,
     ) {
     }
 

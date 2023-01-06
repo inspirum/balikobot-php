@@ -15,9 +15,9 @@ use Inspirum\Balikobot\Model\Changelog\ChangelogFactory;
 final class DefaultInfoService implements InfoService
 {
     public function __construct(
-        private Client $client,
-        private AccountFactory $accountFactory,
-        private ChangelogFactory $changelogFactory,
+        private readonly Client $client,
+        private readonly AccountFactory $accountFactory,
+        private readonly ChangelogFactory $changelogFactory,
     ) {
     }
 

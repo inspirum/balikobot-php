@@ -12,9 +12,9 @@ use Inspirum\Arrayable\BaseModel;
 final class DefaultCodCountry extends BaseModel implements CodCountry
 {
     public function __construct(
-        private string $code,
-        private string $currencyCode,
-        private float $maxPrice,
+        private readonly string $code,
+        private readonly string $currencyCode,
+        private readonly float $maxPrice,
     ) {
     }
 

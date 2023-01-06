@@ -20,11 +20,11 @@ use function in_array;
 final class DefaultBranchService implements BranchService
 {
     public function __construct(
-        private Client $client,
-        private BranchFactory $branchFactory,
-        private BranchResolver $branchResolver,
-        private CarrierProvider $carrierProvider,
-        private ServiceProvider $serviceProvider,
+        private readonly Client $client,
+        private readonly BranchFactory $branchFactory,
+        private readonly BranchResolver $branchResolver,
+        private readonly CarrierProvider $carrierProvider,
+        private readonly ServiceProvider $serviceProvider,
     ) {
     }
 
@@ -143,7 +143,7 @@ final class DefaultBranchService implements BranchService
     /**
      * @param array<string> $countries
      *
-     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
+     * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */

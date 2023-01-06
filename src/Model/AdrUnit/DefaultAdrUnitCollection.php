@@ -15,7 +15,7 @@ final class DefaultAdrUnitCollection extends BaseCollection implements AdrUnitCo
      * @param array<int,\Inspirum\Balikobot\Model\AdrUnit\AdrUnit> $items
      */
     public function __construct(
-        private string $carrier,
+        private readonly string $carrier,
         array $items = [],
     ) {
         parent::__construct($items);

@@ -11,7 +11,7 @@ use function count;
 final class DefaultPackageFactory implements PackageFactory
 {
     public function __construct(
-        private Validator $validator,
+        private readonly Validator $validator,
     ) {
     }
 

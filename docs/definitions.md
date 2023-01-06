@@ -17,12 +17,12 @@ There are classes for country codes, currency codes, package options, carrier co
 use Inspirum\Balikobot\Definitions\Carrier;
 
 var_dump(Carrier::CP);
-/*
+/**
 'cp'
 */
 
 var_dump(Carrier::TOPTRANS);
-/*
+/**
 'toptrans'
 */
 
@@ -32,17 +32,17 @@ var_dump(Carrier::TOPTRANS);
 use Inspirum\Balikobot\Definitions\Service;
 
 var_dump(Service::DHL_EXPRESS_WORLDWIDE_12);
-/*
+/**
 '4'
 */
 
 var_dump(Service::CP_NP);
-/*
+/**
 'NP'
 */
 
 var_dump(Service::DPD_PRIVATE_SATURDAY);
-/*
+/**
 '8'
 */
 ```
@@ -51,12 +51,12 @@ var_dump(Service::DPD_PRIVATE_SATURDAY);
 use Inspirum\Balikobot\Definitions\Attribute;
 
 var_dump(Attribute::REAL_ORDER_ID);
-/*
+/**
 'real_order_id'
 */
 
 var_dump(Attribute::REC_NAME);
-/*
+/**
 'rec_name'
 */
 ```
@@ -65,7 +65,7 @@ var_dump(Attribute::REC_NAME);
 use Inspirum\Balikobot\Definitions\Country;
 
 var_dump(Country::AUSTRIA);
-/*
+/**
 'AT'
 */
 ```
@@ -74,7 +74,7 @@ var_dump(Country::AUSTRIA);
 use Inspirum\Balikobot\Definitions\Currency;
 
 var_dump(Currency::PLN);
-/*
+/**
 'PLN'
 */
 ```
@@ -86,7 +86,7 @@ use Inspirum\Balikobot\Definitions\Carrier;
 
 $carriers = Carrier::all();
 
-/*
+/**
 var_dump($carriers);
 [
   0  => 'cp'
@@ -113,7 +113,7 @@ use Inspirum\Balikobot\Definitions\Service;
 
 $services = Service::getForCarriers();
 
-/*
+/**
 var_dump($services);
 [
   'cp' => [
@@ -140,7 +140,7 @@ use Inspirum\Balikobot\Definitions\Service;
 
 $services = Service::getForCarrier(Carrier::TOPTRANS);
 
-/*
+/**
 var_dump($services);
 [
   0 => '1'

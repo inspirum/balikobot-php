@@ -13,6 +13,8 @@ interface MethodFactory
 
     /**
      * @param array<array<string,string>> $data
+     *
+     * @return \Inspirum\Balikobot\Model\Method\MethodCollection&array<\Inspirum\Balikobot\Model\Method\Method>
      */
     public function createCollection(array $data): MethodCollection;
 }

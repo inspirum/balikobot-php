@@ -12,8 +12,8 @@ use Inspirum\Arrayable\BaseModel;
 final class DefaultServiceOption extends BaseModel implements ServiceOption
 {
     public function __construct(
-        private string $code,
-        private string $name,
+        private readonly string $code,
+        private readonly string $name,
     ) {
     }
 

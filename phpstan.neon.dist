@@ -18,6 +18,14 @@ parameters:
 			message: '#^Method Inspirum\\Balikobot\\Model\\BasePerCarrierCollection\:\:first\(\) should return \(TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\)\|null but returns Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\.$#'
 			count: 1
 			path: src/Model/BasePerCarrierCollection.php
+#		-
+#		    message: '#^PHPDoc tag \@return with type (iterable|array)\<.+\>|(.+) is not subtype of native type .+\.$#'
+#		    count: 30
+#		    path: src/**
+		-
+		    message: '#^PHPDoc tag \@return contains unresolvable type\.$#'
+		    count: 35
+		    path: src/**
 		-
 		    message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertNull\(\) with Inspirum\\Balikobot\\Model\\Branch\\Branch will always evaluate to false\.$#'
 		    count: 1

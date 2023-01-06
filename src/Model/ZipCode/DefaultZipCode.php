@@ -12,14 +12,14 @@ use Inspirum\Arrayable\BaseModel;
 final class DefaultZipCode extends BaseModel implements ZipCode
 {
     public function __construct(
-        private string $carrier,
-        private ?string $service,
-        private ?string $zipCode,
-        private ?string $zipCodeEnd,
-        private ?string $city,
-        private ?string $region,
-        private ?string $country,
-        private bool $morningDelivery,
+        private readonly string $carrier,
+        private readonly ?string $service,
+        private readonly ?string $zipCode,
+        private readonly ?string $zipCodeEnd,
+        private readonly ?string $city,
+        private readonly ?string $region,
+        private readonly ?string $country,
+        private readonly bool $morningDelivery,
     ) {
     }
 

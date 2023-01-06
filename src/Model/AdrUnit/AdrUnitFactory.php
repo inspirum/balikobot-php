@@ -13,6 +13,8 @@ interface AdrUnitFactory
 
     /**
      * @param array<string,mixed> $data
+     *
+     * @return \Inspirum\Balikobot\Model\AdrUnit\AdrUnitCollection&array<\Inspirum\Balikobot\Model\AdrUnit\AdrUnit>
      */
     public function createCollection(string $carrier, array $data): AdrUnitCollection;
 }

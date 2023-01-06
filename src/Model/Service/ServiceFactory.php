@@ -13,6 +13,8 @@ interface ServiceFactory
 
     /**
      * @param array<string,mixed> $data
+     *
+     * @return \Inspirum\Balikobot\Model\Service\ServiceCollection&array<\Inspirum\Balikobot\Model\Service\Service>
      */
     public function createCollection(string $carrier, array $data): ServiceCollection;
 }

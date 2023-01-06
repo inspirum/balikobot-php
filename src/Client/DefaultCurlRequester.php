@@ -31,9 +31,9 @@ use const CURLOPT_URL;
 final class DefaultCurlRequester implements Requester
 {
     public function __construct(
-        private string $apiUser,
-        private string $apiKey,
-        private bool $sslVerify = true,
+        private readonly string $apiUser,
+        private readonly string $apiKey,
+        private readonly bool $sslVerify = true,
     ) {
     }
 

@@ -16,11 +16,11 @@ final class DefaultTransportCost extends BaseModel implements TransportCost
      * @param array<\Inspirum\Balikobot\Model\TransportCost\TransportCostPart> $costsBreakdown
      */
     public function __construct(
-        private string $batchId,
-        private string $carrier,
-        private float $totalCost,
-        private string $currencyCode,
-        private array $costsBreakdown = [],
+        private readonly string $batchId,
+        private readonly string $carrier,
+        private readonly float $totalCost,
+        private readonly string $currencyCode,
+        private readonly array $costsBreakdown = [],
     ) {
     }
 

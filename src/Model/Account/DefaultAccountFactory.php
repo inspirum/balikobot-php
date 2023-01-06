@@ -8,7 +8,7 @@ use Inspirum\Balikobot\Model\Carrier\CarrierFactory;
 
 final class DefaultAccountFactory implements AccountFactory
 {
-    public function __construct(private CarrierFactory $carrierFactory)
+    public function __construct(private readonly CarrierFactory $carrierFactory)
     {
     }
 

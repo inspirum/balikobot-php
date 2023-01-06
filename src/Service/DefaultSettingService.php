@@ -28,14 +28,14 @@ use function sprintf;
 final class DefaultSettingService implements SettingService
 {
     public function __construct(
-        private Client $client,
-        private CarrierFactory $carrierFactory,
-        private ServiceFactory $serviceFactory,
-        private ManipulationUnitFactory $unitFactory,
-        private CountryFactory $countryFactory,
-        private ZipCodeFactory $zipCodeFactory,
-        private AdrUnitFactory $adrUnitFactory,
-        private AttributeFactory $attributeFactory,
+        private readonly Client $client,
+        private readonly CarrierFactory $carrierFactory,
+        private readonly ServiceFactory $serviceFactory,
+        private readonly ManipulationUnitFactory $unitFactory,
+        private readonly CountryFactory $countryFactory,
+        private readonly ZipCodeFactory $zipCodeFactory,
+        private readonly AdrUnitFactory $adrUnitFactory,
+        private readonly AttributeFactory $attributeFactory,
     ) {
     }
 

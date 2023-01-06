@@ -11,6 +11,8 @@ interface ProofOfDeliveryFactory
      * @param array<string,mixed> $data
      *
      * @return array<string>
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function create(array $carrierIds, array $data): array;
 }

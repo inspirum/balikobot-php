@@ -8,17 +8,13 @@ use function array_map;
 
 final class DefaultMethodFactory implements MethodFactory
 {
-    /**
-     * @param array<string,string> $data
-     */
+    /** @inheritDoc */
     public function create(array $data): Method
     {
         return new DefaultMethod($data['method']);
     }
 
-    /**
-     * @param array<array<string,string>> $data
-     */
+    /** @inheritDoc */
     public function createCollection(array $data): MethodCollection
     {
         return new DefaultMethodCollection(array_map(fn(array $method): Method => $this->create($method), $data));

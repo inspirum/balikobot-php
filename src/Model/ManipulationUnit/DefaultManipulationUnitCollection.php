@@ -15,7 +15,7 @@ final class DefaultManipulationUnitCollection extends BaseCollection implements 
      * @param array<int,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit> $items
      */
     public function __construct(
-        private string $carrier,
+        private readonly string $carrier,
         array $items = [],
     ) {
         parent::__construct($items);

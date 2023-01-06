@@ -12,14 +12,14 @@ use Inspirum\Arrayable\BaseModel;
 final class DefaultAdrUnit extends BaseModel implements AdrUnit
 {
     public function __construct(
-        private string $carrier,
-        private string $id,
-        private string $code,
-        private string $name,
-        private string $class,
-        private ?string $packaging,
-        private ?string $tunnelCode,
-        private string $transportCategory,
+        private readonly string $carrier,
+        private readonly string $id,
+        private readonly string $code,
+        private readonly string $name,
+        private readonly string $class,
+        private readonly ?string $packaging,
+        private readonly ?string $tunnelCode,
+        private readonly string $transportCategory,
     ) {
     }
 
