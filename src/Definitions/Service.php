@@ -1561,42 +1561,35 @@ final class Service extends BaseEnum
      */
     public const FEDEX_INTERNATIONAL_FIRST = '3';
 
-
     /**
      * FedEx International Priority Express
      */
     public const FEDEX_INTERNATIONAL_PRIORITY_EXPRESS = '4';
-
 
     /**
      * FedEx International Priority
      */
     public const FEDEX_INTERNATIONAL_PRIORITY = '5';
 
-
     /**
      * FedEx FedEx Regional Economy
      */
     public const FEDEX_REGIONAL_ECONOMY = '6';
-
 
     /**
      * FedEx International Priority Freight
      */
     public const FEDEX_INTERNATIONAL_PRIORITY_FREIGHT = '7';
 
-
     /**
      * FedEx International Economy Freight
      */
     public const FEDEX_INTERNATIONAL_ECONOMY_FREIGHT = '8';
 
-
     /**
      * FedEx Fedex Regional Economy Freight
      */
     public const FEDEX_REGIONAL_ECONOMY_FREIGHT = '9';
-
 
     /**
      * FedEx International Connect Plus
