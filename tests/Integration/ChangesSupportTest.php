@@ -26,7 +26,7 @@ final class ChangesSupportTest extends BaseTestCase
 
         $changelog = $infoService->getChangelog();
 
-        $expected = '1.969';
+        $expected = '1.973';
         $actual   = $changelog->getLatestVersion();
 
         if ($actual > $expected) {
@@ -73,7 +73,7 @@ final class ChangesSupportTest extends BaseTestCase
         }
 
         $methods          = array_unique(array_merge(...$methods));
-        $supportedMethods = array_map('strtolower', Method::getAll());
+        $supportedMethods = array_map(strtolower(...), Method::getAll());
 
         $unsupportedMethods = array_diff($methods, $supportedMethods);
 

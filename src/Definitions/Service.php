@@ -1557,6 +1557,58 @@ final class Service extends BaseEnum
     public const FEDEX_ECONOMY = '2';
 
     /**
+     * FedEx International First
+     */
+    public const FEDEX_INTERNATIONAL_FIRST = '3';
+
+
+    /**
+     * FedEx International Priority Express
+     */
+    public const FEDEX_INTERNATIONAL_PRIORITY_EXPRESS = '4';
+
+
+    /**
+     * FedEx International Priority
+     */
+    public const FEDEX_INTERNATIONAL_PRIORITY = '5';
+
+
+    /**
+     * FedEx FedEx Regional Economy
+     */
+    public const FEDEX_REGIONAL_ECONOMY = '6';
+
+
+    /**
+     * FedEx International Priority Freight
+     */
+    public const FEDEX_INTERNATIONAL_PRIORITY_FREIGHT = '7';
+
+
+    /**
+     * FedEx International Economy Freight
+     */
+    public const FEDEX_INTERNATIONAL_ECONOMY_FREIGHT = '8';
+
+
+    /**
+     * FedEx Fedex Regional Economy Freight
+     */
+    public const FEDEX_REGIONAL_ECONOMY_FREIGHT = '9';
+
+
+    /**
+     * FedEx International Connect Plus
+     */
+    public const FEDEX_INTERNATIONAL_CONNECT_PLUS = '10';
+
+    /**
+     * FedEx Priority Overnight
+     */
+    public const FEDEX_PRIORITY_OVERNIGHT = '11';
+
+    /**
      * Fofr
      */
     public const FOFR_FOFR = 'F';
@@ -2313,7 +2365,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_IL_FEDEX_ECONOMY_HD,
             self::ZASILKOVNA_IT_BARTOLINI_HD,
             self::ZASILKOVNA_IT_BARTOLINI_PP,
-            self::ZASILKOVNA_IT_GLS_HD,
+            // self::ZASILKOVNA_IT_GLS_HD,
             self::ZASILKOVNA_IT_HR_PARCEL_HD,
             self::ZASILKOVNA_LT_OMNIVA_BOX,
             self::ZASILKOVNA_LT_OMNIVA_HD,
@@ -2452,6 +2504,15 @@ final class Service extends BaseEnum
         return [
             self::FEDEX_INTERNATIONAL,
             self::FEDEX_ECONOMY,
+            self::FEDEX_INTERNATIONAL_FIRST,
+            self::FEDEX_INTERNATIONAL_PRIORITY_EXPRESS,
+            self::FEDEX_INTERNATIONAL_PRIORITY,
+            self::FEDEX_REGIONAL_ECONOMY,
+            self::FEDEX_INTERNATIONAL_PRIORITY_FREIGHT,
+            self::FEDEX_INTERNATIONAL_ECONOMY_FREIGHT,
+            self::FEDEX_REGIONAL_ECONOMY_FREIGHT,
+            self::FEDEX_INTERNATIONAL_CONNECT_PLUS,
+            self::FEDEX_PRIORITY_OVERNIGHT,
         ];
     }
 

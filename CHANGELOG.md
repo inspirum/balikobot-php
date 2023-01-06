@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.1.0...master)
+- ### Added
+- Added support for **PHP 8.2**
+- Added support for new options from documentation **v1.972** (2022-12-07)
+  - Added **FEDEX_INTERNATIONAL_FIRST** service type
+  - Added **FEDEX_INTERNATIONAL_PRIORITY_EXPRESS** service type
+  - Added **FEDEX_INTERNATIONAL_PRIORITY** service type
+  - Added **FEDEX_REGIONAL_ECONOMY** service type
+  - Added **FEDEX_INTERNATIONAL_PRIORITY_FREIGHT** service type
+  - Added **FEDEX_INTERNATIONAL_ECONOMY_FREIGHT** service type
+  - Added **FEDEX_REGIONAL_ECONOMY_FREIGHT** service type
+  - Added **FEDEX_INTERNATIONAL_CONNECT_PLUS** service type
+  - Added **FEDEX_PRIORITY_OVERNIGHT** service type
 
 
 ## [v7.1.0 (2022-08-19)](https://github.com/inspirum/balikobot-php/compare/v7.0.0...v7.1.0)
