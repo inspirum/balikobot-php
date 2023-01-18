@@ -63,9 +63,9 @@ trait CustomerData
         $this->offsetSet(Attribute::REC_PHONE, $phone);
     }
 
-    public function setBankAccountNumber(string $bankAccount): void
+    public function setBankAccountNumber(string $bankAccountNumber): void
     {
-        $this->offsetSet(Attribute::BANK_ACCOUNT_NUMBER, $bankAccount);
+        $this->offsetSet(Attribute::BANK_ACCOUNT_NUMBER, $bankAccountNumber);
     }
 
     public function setBankCode(string $bankCode): void
@@ -73,14 +73,19 @@ trait CustomerData
         $this->offsetSet(Attribute::BANK_CODE, $bankCode);
     }
 
-    public function setBankName(string $bankAccount): void
+    public function setBankName(string $bankName): void
     {
-        $this->offsetSet(Attribute::BANK_NAME, $bankAccount);
+        $this->offsetSet(Attribute::BANK_NAME, $bankName);
     }
 
-    public function setBankAccountHolder(string $bankAccount): void
+    public function setBankAccountHolder(string $bankAccountHolder): void
     {
-        $this->offsetSet(Attribute::BANK_ACCOUNT_HOLDER, $bankAccount);
+        $this->offsetSet(Attribute::BANK_ACCOUNT_HOLDER, $bankAccountHolder);
+    }
+
+    public function setBankAccountName(string $bankAccountName): void
+    {
+        $this->offsetSet(Attribute::BANK_ACCOUNT_NAME, $bankAccountName);
     }
 
     public function setRecNamePatronymum(string $recNamePatronymum): void

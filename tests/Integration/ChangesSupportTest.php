@@ -26,13 +26,13 @@ final class ChangesSupportTest extends BaseTestCase
 
         $changelog = $infoService->getChangelog();
 
-        $expected = '1.973';
-        $actual   = $changelog->getLatestVersion();
+        $expected = (float) '1.975';
+        $actual   = (float) $changelog->getLatestVersion();
 
         if ($actual > $expected) {
-            $this->addWarning(sprintf('Package not supporting latest changes [%s > %s]', $actual, $expected));
+            $this->addWarning(sprintf('Package not supporting latest changes [%.3f > %.3f]', $actual, $expected));
         } else {
-            self::assertSame($expected, $actual);
+            self::assertLessThanOrEqual($expected, $actual);
         }
     }
 

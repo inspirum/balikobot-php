@@ -893,6 +893,11 @@ final class Attribute extends BaseEnum
     public const INVOICE_TYPE = 'invoice_type';
 
     /**
+     * Jméno držitele účtu
+     */
+    public const BANK_ACCOUNT_NAME = 'bank_account_name';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

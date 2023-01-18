@@ -198,6 +198,7 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setNeutralizeAccountNumber('456789/0985');
         $package->setBankName('CS');
         $package->setBankAccountHolder('BankHolderName');
+        $package->setBankAccountName('BankAccountName');
         $package->setSWIFT('12345');
         $package->setIBAN('6789');
         $package->setBranchType('packstation');
@@ -363,6 +364,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::DCL_PDF                       => 'base64:dcl',
                 Attribute::BANK_NAME                     => 'CS',
                 Attribute::BANK_ACCOUNT_HOLDER           => 'BankHolderName',
+                Attribute::BANK_ACCOUNT_NAME             => 'BankAccountName',
                 Attribute::SWIFT                         => '12345',
                 Attribute::IBAN                          => '6789',
                 Attribute::BRANCH_TYPE                   => 'packstation',
