@@ -19,7 +19,7 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::CP_NB,
             ],
             Carrier::PBH         => [
-                Service::PBH_UPS,
+                Service::PBH_SPS,
                 Service::PBH_SP,
                 Service::PBH_MP,
                 Service::PBH_RP,

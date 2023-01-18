@@ -1127,9 +1127,9 @@ final class Service extends BaseEnum
     public const PBH_GLS = '2';
 
     /**
-     * UPS
+     * SPS
      */
-    public const PBH_UPS = '3';
+    public const PBH_SPS = '3';
 
     /**
      * Slovenská pošta
@@ -1250,6 +1250,11 @@ final class Service extends BaseEnum
      * Express one
      */
     public const PBH_EXPRESS_ONE = '27';
+
+    /**
+     * Express UPS
+     */
+    public const PBH_UPS = '28';
 
     /**
      * Worlwide zásilky
@@ -2165,7 +2170,7 @@ final class Service extends BaseEnum
         return [
             self::PBH_DHL,
             self::PBH_GLS,
-            self::PBH_UPS,
+            self::PBH_SPS,
             self::PBH_SP,
             self::PBH_TRANSOFLEX,
             self::PBH_MP,
@@ -2190,6 +2195,7 @@ final class Service extends BaseEnum
             self::PBH_ROYAL_MAIL_24,
             self::PBH_ROYAL_MAIL_48,
             self::PBH_EXPRESS_ONE,
+            self::PBH_UPS,
         ];
     }
 

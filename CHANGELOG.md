@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.2.0...master)
+- Added support for new options from documentation **v1.974** (2023-01-09)
+  - Updated **PBH_UPS** service type value
+  - Added **PBH_SPS** service type
 
 
 ## [v7.2.0 (2023-01-06)](https://github.com/inspirum/balikobot-php/compare/v7.1.0...v7.2.0)
