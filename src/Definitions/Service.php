@@ -2355,7 +2355,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
             self::ZASILKOVNA_HU_POST_HD,
-            self::ZASILKOVNA_HU_FAMA_FUTAR_HD,
+            // self::ZASILKOVNA_HU_FAMA_FUTAR_HD,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
             self::ZASILKOVNA_CH_POST_HD,
             // self::ZASILKOVNA_IE_HERMES_HD,
