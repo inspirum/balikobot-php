@@ -22,6 +22,8 @@ final class DefaultStatusFactory implements StatusFactory
     /** @inheritDoc */
     public function create(string $carrier, string $carrierId, array $data, array $response = []): Status
     {
+        $this->validator->validateResponseItemHasSomeAttributes($data, ['status_id_v2', 'status_id'], $response);
+
         try {
             return new DefaultStatus(
                 $carrier,
@@ -41,6 +43,7 @@ final class DefaultStatusFactory implements StatusFactory
     public function createLastStatus(string $carrier, array $data, array $response = []): Status
     {
         $this->validator->validateResponseStatus($data, $response);
+        $this->validator->validateResponseItemHasAttribute($data, 'status_id', $response);
 
         try {
             return new DefaultStatus(

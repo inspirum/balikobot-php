@@ -9,15 +9,15 @@ use Inspirum\Balikobot\Model\Method\DefaultMethodCollection;
 use Inspirum\Balikobot\Model\Method\DefaultMethodFactory;
 use Inspirum\Balikobot\Model\Method\MethodCollection;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultMethodFactoryTest extends BaseTestCase
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateCollection
      */
+    #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(array $data, MethodCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -35,7 +35,7 @@ final class DefaultMethodFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
             'data'    => [

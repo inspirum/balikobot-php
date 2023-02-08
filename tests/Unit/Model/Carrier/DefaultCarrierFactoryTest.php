@@ -13,15 +13,15 @@ use Inspirum\Balikobot\Model\Method\DefaultMethod;
 use Inspirum\Balikobot\Model\Method\DefaultMethodCollection;
 use Inspirum\Balikobot\Model\Method\DefaultMethodFactory;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultCarrierFactoryTest extends BaseTestCase
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateCollection
      */
+    #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(array $data, CarrierCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -39,7 +39,7 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
             'data'   => [
@@ -81,9 +81,8 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreate
      */
+    #[DataProvider('providesTestCreate')]
     public function testCreate(string $carrier, array $data, Carrier|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -101,7 +100,7 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreate(): iterable
+    public static function providesTestCreate(): iterable
     {
         yield 'valid' => [
             'carrier' => 'zasilkovna',

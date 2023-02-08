@@ -9,15 +9,15 @@ use Inspirum\Balikobot\Model\Country\DefaultCountry;
 use Inspirum\Balikobot\Model\Country\DefaultCountryCollection;
 use Inspirum\Balikobot\Model\Country\DefaultCountryFactory;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultCountryFactoryTest extends BaseTestCase
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateCollection
      */
+    #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(array $data, CountryCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -35,7 +35,7 @@ final class DefaultCountryFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
             'data'    => [

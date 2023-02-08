@@ -13,6 +13,7 @@ use Inspirum\Balikobot\Model\TransportCost\DefaultTransportCostFactory;
 use Inspirum\Balikobot\Model\TransportCost\DefaultTransportCostPart;
 use Inspirum\Balikobot\Model\TransportCost\TransportCostCollection;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultTransportCostFactoryTest extends BaseTestCase
@@ -20,9 +21,8 @@ final class DefaultTransportCostFactoryTest extends BaseTestCase
     /**
      * @param array<array<string,mixed>>|null $packages
      * @param array<string,mixed>             $data
-     *
-     * @dataProvider providesTestCreateCollection
      */
+    #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(string $carrier, ?array $packages, array $data, TransportCostCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -40,7 +40,7 @@ final class DefaultTransportCostFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
             'carrier' => Carrier::TOPTRANS,

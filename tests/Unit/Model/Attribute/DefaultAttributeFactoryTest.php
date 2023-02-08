@@ -10,15 +10,15 @@ use Inspirum\Balikobot\Model\Attribute\DefaultAttribute;
 use Inspirum\Balikobot\Model\Attribute\DefaultAttributeCollection;
 use Inspirum\Balikobot\Model\Attribute\DefaultAttributeFactory;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultAttributeFactoryTest extends BaseTestCase
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateCollection
      */
+    #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(string $carrier, array $data, AttributeCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -36,7 +36,7 @@ final class DefaultAttributeFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
             'carrier' => Carrier::CP,

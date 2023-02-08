@@ -37,7 +37,7 @@ final class DefaultTransportCostFactory implements TransportCostFactory
             $this->validator->validateIndexes($packagesResponse, count($packages));
         }
 
-        $this->validator->validateResponseItemHasAttribute($packagesResponse, 'eid', $data);
+        $this->validator->validateResponseItemsHasAttribute($packagesResponse, 'eid', $data);
 
         return new DefaultTransportCostCollection($carrier, array_values(array_map(fn(array $package): TransportCost => $this->create($carrier, $package), $packagesResponse)));
     }

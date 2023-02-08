@@ -26,11 +26,11 @@ final class ChangesSupportTest extends BaseTestCase
 
         $changelog = $infoService->getChangelog();
 
-        $expected = (float) '1.975';
+        $expected = (float) '1.976';
         $actual   = (float) $changelog->getLatestVersion();
 
         if ($actual > $expected) {
-            $this->addWarning(sprintf('Package not supporting latest changes [%.3f > %.3f]', $actual, $expected));
+            self::markTestIncomplete(sprintf('Package not supporting latest changes [%.3f > %.3f]', $actual, $expected));
         } else {
             self::assertLessThanOrEqual($expected, $actual);
         }
@@ -54,7 +54,7 @@ final class ChangesSupportTest extends BaseTestCase
         $unsupportedAttributes = array_diff($attributes, $supportedAttributes);
 
         foreach ($unsupportedAttributes as $unsupportedAttribute) {
-            self::addWarning(sprintf('Unsupported ADD attribute "%s"', $unsupportedAttribute));
+            self::markTestIncomplete(sprintf('Unsupported ADD attribute "%s"', $unsupportedAttribute));
         }
 
         self::assertTrue(true);
@@ -78,7 +78,7 @@ final class ChangesSupportTest extends BaseTestCase
         $unsupportedMethods = array_diff($methods, $supportedMethods);
 
         foreach ($unsupportedMethods as $unsupportedMethod) {
-            self::addWarning(sprintf('Unsupported method "%s"', $unsupportedMethod));
+            self::markTestIncomplete(sprintf('Unsupported method "%s"', $unsupportedMethod));
         }
 
         self::assertTrue(true);

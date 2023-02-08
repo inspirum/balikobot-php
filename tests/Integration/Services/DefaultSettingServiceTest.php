@@ -23,7 +23,7 @@ final class DefaultSettingServiceTest extends BaseTestCase
         $unsupportedCarriers = array_diff($carriers->getCarrierCodes(), Carrier::getAll());
 
         foreach ($unsupportedCarriers as $unsupportedCarrier) {
-            self::addWarning(sprintf('Unsupported carrier "%s"', $unsupportedCarrier));
+            self::markTestIncomplete(sprintf('Unsupported carrier "%s"', $unsupportedCarrier));
         }
     }
 

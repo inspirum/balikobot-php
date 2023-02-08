@@ -60,13 +60,46 @@ final class Validator
      *
      * @throws \Inspirum\Balikobot\Exception\BadRequestException
      */
-    public function validateResponseItemHasAttribute(array $items, string $attribute, array $response): void
+    public function validateResponseItemsHasAttribute(array $items, string $attribute, array $response): void
     {
         foreach ($items as $item) {
-            if (isset($item[$attribute]) === false) {
-                throw new BadRequestException($response);
+            $this->validateResponseItemHasAttribute($item, $attribute, $response);
+        }
+    }
+
+    /**
+     * Validate that response item has given attribute
+     *
+     * @param array<string,mixed> $item
+     * @param array<mixed,mixed>  $response
+     *
+     * @throws \Inspirum\Balikobot\Exception\BadRequestException
+     */
+    public function validateResponseItemHasAttribute(array $item, string $attribute, array $response): void
+    {
+        if (isset($item[$attribute]) === false) {
+            throw new BadRequestException($response);
+        }
+    }
+
+    /**
+     * Validate that response item has some attributes
+     *
+     * @param array<string,mixed> $item
+     * @param array<string>       $attributes
+     * @param array<mixed,mixed>  $response
+     *
+     * @throws \Inspirum\Balikobot\Exception\BadRequestException
+     */
+    public function validateResponseItemHasSomeAttributes(array $item, array $attributes, array $response): void
+    {
+        foreach ($attributes as $attribute) {
+            if (isset($item[$attribute])) {
+                return;
             }
         }
+
+        throw new BadRequestException($response);
     }
 
     /**

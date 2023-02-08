@@ -10,6 +10,7 @@ use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Branch\BranchResolver;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use function count;
 use function in_array;
 use function iterator_to_array;
@@ -19,9 +20,7 @@ use function strtoupper;
 
 final class DefaultBranchResolverTest extends BaseTestCase
 {
-    /**
-     * @dataProvider providesCarrierServiceData
-     */
+    #[DataProvider('providesCarrierServiceData')]
     public function testHasFullBranchesSupport(string $carrier, string $service): void
     {
         $branchResolver = new DefaultBranchResolver();
@@ -39,7 +38,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
 
             $shouldSupport = $branchResolver->hasFullBranchesSupport($carrier, $service);
             if ($shouldSupport === false) {
-                $this->addWarning(sprintf('%s/%s could support full-branches request', strtoupper($carrier), $service));
+                self::markTestIncomplete(sprintf('%s/%s could support full-branches request', strtoupper($carrier), $service));
             } else {
                 self::assertTrue($shouldSupport, sprintf('%s/%s should not support full-branches request', strtoupper($carrier), $service));
             }
@@ -56,9 +55,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
         }
     }
 
-    /**
-     * @dataProvider providesCarrierServiceData
-     */
+    #[DataProvider('providesCarrierServiceData')]
     public function testHasBranchCountryFilterSupport(string $carrier, string $service): void
     {
         $branchResolver = new DefaultBranchResolver();
@@ -89,7 +86,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
 
             $shouldSupport = $branchResolver->hasBranchCountryFilterSupport($carrier, $service);
             if ($shouldSupport === false && $totalCount === 0) {
-                $this->addWarning(sprintf('%s/%s could support branch country filter', strtoupper($carrier), $service));
+                self::markTestIncomplete(sprintf('%s/%s could support branch country filter', strtoupper($carrier), $service));
             } else {
                 self::assertTrue($shouldSupport, sprintf('%s/%s should not support branch country filter', strtoupper($carrier), $service));
             }
@@ -109,7 +106,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
     /**
      * @return iterable<array<string,string>>
      */
-    public function providesCarrierServiceData(): iterable
+    public static function providesCarrierServiceData(): iterable
     {
         foreach (Carrier::getAll() as $carrier) {
             foreach (Service::getForCarrier($carrier) ?? [] as $service) {

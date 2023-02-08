@@ -8,12 +8,11 @@ use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchResolver;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 final class DefaultBranchResolverTest extends BaseTestCase
 {
-    /**
-     * @dataProvider providesTestHasFullBranchesSupport
-     */
+    #[DataProvider('providesTestHasFullBranchesSupport')]
     public function testHasFullBranchesSupport(string $carrier, ?string $service, bool $result): void
     {
         $resolver = $this->newDefaultBranchResolver();
@@ -26,7 +25,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestHasFullBranchesSupport(): iterable
+    public static function providesTestHasFullBranchesSupport(): iterable
     {
         yield 'zasilkovna' => [
             'carrier' => Carrier::ZASILKOVNA,
@@ -83,9 +82,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
         ];
     }
 
-    /**
-     * @dataProvider providesTestHasBranchCountryFilterSupport
-     */
+    #[DataProvider('providesTestHasBranchCountryFilterSupport')]
     public function testHasBranchCountryFilterSupport(string $carrier, ?string $service, bool $result): void
     {
         $resolver = $this->newDefaultBranchResolver();
@@ -98,7 +95,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestHasBranchCountryFilterSupport(): iterable
+    public static function providesTestHasBranchCountryFilterSupport(): iterable
     {
         yield 'ppl' => [
             'carrier' => Carrier::PPL,

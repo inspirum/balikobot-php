@@ -8,6 +8,7 @@ use Inspirum\Balikobot\Client\Response\Validator;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\ProofOfDelivery\DefaultProofOfDeliveryFactory;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
@@ -16,9 +17,8 @@ final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
      * @param array<string>            $carrierIds
      * @param array<string,mixed>      $data
      * @param array<string>|\Throwable $result
-     *
-     * @dataProvider providesTestCreate
      */
+    #[DataProvider('providesTestCreate')]
     public function testCreate(array $carrierIds, array $data, array|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -36,7 +36,7 @@ final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreate(): iterable
+    public static function providesTestCreate(): iterable
     {
         yield 'valid' => [
             'carrierIds' => [

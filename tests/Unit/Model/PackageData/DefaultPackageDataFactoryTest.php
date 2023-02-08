@@ -8,15 +8,15 @@ use Inspirum\Balikobot\Model\PackageData\DefaultPackageData;
 use Inspirum\Balikobot\Model\PackageData\DefaultPackageDataFactory;
 use Inspirum\Balikobot\Model\PackageData\PackageData;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultPackageDataFactoryTest extends BaseTestCase
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreate
      */
+    #[DataProvider('providesTestCreate')]
     public function testCreate(array $data, PackageData|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -34,7 +34,7 @@ final class DefaultPackageDataFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreate(): iterable
+    public static function providesTestCreate(): iterable
     {
         yield 'valid' => [
             'data'   => [],

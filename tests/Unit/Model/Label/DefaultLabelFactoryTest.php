@@ -6,15 +6,15 @@ namespace Inspirum\Balikobot\Tests\Unit\Model\Label;
 
 use Inspirum\Balikobot\Model\Label\DefaultLabelFactory;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultLabelFactoryTest extends BaseTestCase
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreate
      */
+    #[DataProvider('providesTestCreate')]
     public function testCreate(array $data, string|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -32,7 +32,7 @@ final class DefaultLabelFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreate(): iterable
+    public static function providesTestCreate(): iterable
     {
         yield 'valid' => [
             'data'    => [

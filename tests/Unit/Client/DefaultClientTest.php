@@ -13,6 +13,7 @@ use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Exception\UnauthorizedException;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 use function gzcompress;
 use function is_array;
@@ -22,9 +23,8 @@ final class DefaultClientTest extends BaseTestCase
 {
     /**
      * @param array<mixed,mixed> $data
-     *
-     * @dataProvider providesTestRequest()
      */
+    #[DataProvider('providesTestRequest')]
     public function testRequest(
         string $version,
         ?string $carrier,
@@ -41,7 +41,7 @@ final class DefaultClientTest extends BaseTestCase
     /**
      * @return iterable<array<mixed,mixed>>
      */
-    public function providesTestRequest(): iterable
+    public static function providesTestRequest(): iterable
     {
         yield 'v2v1' => [
             'version' => Version::V2V1,
@@ -98,9 +98,8 @@ final class DefaultClientTest extends BaseTestCase
     /**
      * @param array<mixed,mixed>|string          $response
      * @param \Throwable|array<mixed,mixed>|bool $result
-     *
-     * @dataProvider providesTestCall()
      */
+    #[DataProvider('providesTestCall')]
     public function testCall(
         int $statusCode,
         array|string $response,
@@ -127,7 +126,7 @@ final class DefaultClientTest extends BaseTestCase
     /**
      * @return iterable<array<mixed,mixed>>
      */
-    public function providesTestCall(): iterable
+    public static function providesTestCall(): iterable
     {
         yield 'status_error' => [
             'statusCode'       => 400,
@@ -225,9 +224,8 @@ final class DefaultClientTest extends BaseTestCase
     /**
      * @param array<mixed,mixed>          $response
      * @param array<array<string,string>> $errors
-     *
-     * @dataProvider providerCallException()
      */
+    #[DataProvider('providerCallException')]
     public function testCallExceptions(
         int $statusCode,
         array $response,
@@ -256,7 +254,7 @@ final class DefaultClientTest extends BaseTestCase
     /**
      * @return iterable<array<mixed,mixed>>
      */
-    public function providerCallException(): iterable
+    public static function providerCallException(): iterable
     {
         yield 'status_error_401' => [
             'statusCode' => 401,

@@ -12,6 +12,7 @@ use Inspirum\Balikobot\Model\Package\DefaultPackageCollection;
 use Inspirum\Balikobot\Model\Package\DefaultPackageFactory;
 use Inspirum\Balikobot\Model\Package\PackageCollection;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultPackageFactoryTest extends BaseTestCase
@@ -19,9 +20,8 @@ final class DefaultPackageFactoryTest extends BaseTestCase
     /**
      * @param array<array<string,mixed>>|null $packages
      * @param array<string,mixed>             $data
-     *
-     * @dataProvider providesTestCreateCollection
      */
+    #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(string $carrier, ?array $packages, array $data, PackageCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -39,7 +39,7 @@ final class DefaultPackageFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
             'carrier'  => Carrier::CP,

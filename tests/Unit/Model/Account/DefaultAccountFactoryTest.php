@@ -12,15 +12,15 @@ use Inspirum\Balikobot\Model\Carrier\DefaultCarrierCollection;
 use Inspirum\Balikobot\Model\Carrier\DefaultCarrierFactory;
 use Inspirum\Balikobot\Model\Method\DefaultMethodFactory;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultAccountFactoryTest extends BaseTestCase
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreate
      */
+    #[DataProvider('providesTestCreate')]
     public function testCreate(array $data, Account|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -38,7 +38,7 @@ final class DefaultAccountFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreate(): iterable
+    public static function providesTestCreate(): iterable
     {
         yield 'valid' => [
             'data'    => [

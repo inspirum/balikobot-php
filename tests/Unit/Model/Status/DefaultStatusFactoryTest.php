@@ -17,6 +17,7 @@ use Inspirum\Balikobot\Model\Status\Status;
 use Inspirum\Balikobot\Model\Status\StatusCollection;
 use Inspirum\Balikobot\Model\Status\StatusesCollection;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultStatusFactoryTest extends BaseTestCase
@@ -24,9 +25,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     /**
      * @param array<string>       $carrierId
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateCollection
      */
+    #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(string $carrier, array $carrierId, array $data, StatusesCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -44,7 +44,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public static function providesTestCreateCollection(): iterable
     {
         yield 'missing_data_error' => [
             'carrier'    => Carrier::CP,
@@ -319,9 +319,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     /**
      * @param array<string>       $carrierId
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateLastStatusCollection
      */
+    #[DataProvider('providesTestCreateLastStatusCollection')]
     public function testCreateLastStatusCollection(string $carrier, array $carrierId, array $data, StatusCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -339,7 +338,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<mixed,mixed>>
      */
-    public function providesTestCreateLastStatusCollection(): iterable
+    public static function providesTestCreateLastStatusCollection(): iterable
     {
         yield 'valid' => [
             'carrier'    => 'cp',
@@ -457,9 +456,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreate
      */
+    #[DataProvider('providesTestCreate')]
     public function testCreate(string $carrier, string $carrierId, array $data, Status|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -477,7 +475,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreate(): iterable
+    public static function providesTestCreate(): iterable
     {
         yield 'v2' => [
             'carrier' => 'cp',
@@ -543,9 +541,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateLastStatus
      */
+    #[DataProvider('providesTestCreateLastStatus')]
     public function testCreateLastStatus(string $carrier, array $data, Status|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -563,7 +560,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateLastStatus(): iterable
+    public static function providesTestCreateLastStatus(): iterable
     {
         yield 'valid' => [
             'carrier' => 'cp',

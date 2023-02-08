@@ -13,6 +13,7 @@ use Inspirum\Balikobot\Model\ZipCode\DefaultZipCodeFactory;
 use Inspirum\Balikobot\Model\ZipCode\DefaultZipCodeIterator;
 use Inspirum\Balikobot\Model\ZipCode\ZipCodeIterator;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 use Traversable;
 use function iterator_to_array;
@@ -21,9 +22,8 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateIterator
      */
+    #[DataProvider('providesTestCreateIterator')]
     public function testCreateIterator(string $carrier, string $service, ?string $country, array $data, ZipCodeIterator|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -44,7 +44,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateIterator(): iterable
+    public static function providesTestCreateIterator(): iterable
     {
         yield 'type_zip' => [
             'carrier' => Carrier::CP,

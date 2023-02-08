@@ -12,15 +12,15 @@ use Inspirum\Balikobot\Model\Changelog\DefaultChangelogFactory;
 use Inspirum\Balikobot\Model\Changelog\DefaultChangelogStatus;
 use Inspirum\Balikobot\Model\Changelog\DefaultChangelogStatusCollection;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultChangelogFactoryTest extends BaseTestCase
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateCollection
      */
+    #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(array $data, ChangelogCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -38,7 +38,7 @@ final class DefaultChangelogFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
             'data'    => [

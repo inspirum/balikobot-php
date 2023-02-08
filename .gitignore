@@ -8,5 +8,6 @@
 /coverage.clover
 /phpunit.xml
 /.phpunit.result.cache
+/.phpunit.cache/
 /.phpcs-cache
 /phpcs.xml

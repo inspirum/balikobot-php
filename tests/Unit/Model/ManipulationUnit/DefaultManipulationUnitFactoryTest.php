@@ -9,15 +9,15 @@ use Inspirum\Balikobot\Model\ManipulationUnit\DefaultManipulationUnitCollection;
 use Inspirum\Balikobot\Model\ManipulationUnit\DefaultManipulationUnitFactory;
 use Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultManipulationUnitFactoryTest extends BaseTestCase
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateCollection
      */
+    #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(string $carrier, array $data, ManipulationUnitCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -35,7 +35,7 @@ final class DefaultManipulationUnitFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
             'carrier' => 'ppl',

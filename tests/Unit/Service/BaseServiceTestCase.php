@@ -54,15 +54,19 @@ abstract class BaseServiceTestCase extends BaseTestCase
     protected function mockClientMultipleCalls(array $multipleArguments, array $responses): Client
     {
         $client = $this->createMock(Client::class);
-        $client->expects(self::exactly(count($multipleArguments)))->method('call')->withConsecutive(...array_map(static fn(array $arguments): array => array_replace([
-            null,
-            null,
-            null,
-            [],
-            null,
-            true,
-            false,
-        ], $arguments), $multipleArguments))->willReturnOnConsecutiveCalls(...$responses);
+        $client->expects(self::exactly(count($multipleArguments)))->method('call')
+               ->willReturnOnConsecutiveCalls(...$this->withConsecutive(
+                   array_map(static fn(array $arguments): array => array_replace([
+                       null,
+                       null,
+                       null,
+                       [],
+                       null,
+                       true,
+                       false,
+                   ], $arguments), $multipleArguments),
+                   $responses,
+               ));
 
         return $client;
     }

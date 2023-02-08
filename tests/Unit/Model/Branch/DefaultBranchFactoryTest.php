@@ -13,6 +13,7 @@ use Inspirum\Balikobot\Model\Branch\DefaultBranch;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchFactory;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchIterator;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 use Traversable;
 use function iterator_to_array;
@@ -22,9 +23,8 @@ final class DefaultBranchFactoryTest extends BaseTestCase
     /**
      * @param array<string>       $countries
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateIterator
      */
+    #[DataProvider('providesTestCreateIterator')]
     public function testCreateIterator(string $carrier, ?string $service, ?array $countries, array $data, BranchIterator|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -45,7 +45,7 @@ final class DefaultBranchFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateIterator(): iterable
+    public static function providesTestCreateIterator(): iterable
     {
         yield 'valid' => [
             'carrier' => Carrier::CP,
@@ -108,9 +108,8 @@ final class DefaultBranchFactoryTest extends BaseTestCase
     /**
      * @param array<string>       $countries
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestWrapIterator
      */
+    #[DataProvider('providesTestWrapIterator')]
     public function testWrapIterator(string $carrier, ?string $service, ?array $countries, array $data, BranchIterator $result): void
     {
         $factory = $this->newDefaultBranchFactory();
@@ -124,7 +123,7 @@ final class DefaultBranchFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestWrapIterator(): iterable
+    public static function providesTestWrapIterator(): iterable
     {
         yield 'valid' => [
             'carrier' => Carrier::CP,

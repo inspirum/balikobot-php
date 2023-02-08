@@ -9,6 +9,7 @@ use Inspirum\Balikobot\Model\OrderedShipment\DefaultOrderedShipment;
 use Inspirum\Balikobot\Model\OrderedShipment\DefaultOrderedShipmentFactory;
 use Inspirum\Balikobot\Model\OrderedShipment\OrderedShipment;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 final class DefaultOrderedShipmentFactoryTest extends BaseTestCase
@@ -16,9 +17,8 @@ final class DefaultOrderedShipmentFactoryTest extends BaseTestCase
     /**
      * @param array<string>       $packageIds
      * @param array<string,mixed> $data
-     *
-     * @dataProvider providesTestCreateCollection
      */
+    #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(string $carrier, array $packageIds, array $data, OrderedShipment|Throwable $result): void
     {
         if ($result instanceof Throwable) {
@@ -36,7 +36,7 @@ final class DefaultOrderedShipmentFactoryTest extends BaseTestCase
     /**
      * @return iterable<array<string,mixed>>
      */
-    public function providesTestCreateCollection(): iterable
+    public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
             'carrier' => Carrier::CP,

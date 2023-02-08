@@ -732,8 +732,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
     {
         $branchFactory = $this->createMock(BranchFactory::class);
         $branchFactory->expects(self::exactly(count($arguments)))->method('createIterator')
-                      ->withConsecutive(...$arguments)
-                      ->willReturnOnConsecutiveCalls(...$responses);
+                      ->willReturnOnConsecutiveCalls(...$this->withConsecutive($arguments, $responses));
 
         $branchFactory->expects(self::any())->method('wrapIterator')
                       ->willReturnCallback(static function (?string $carrier, ?string $service, ?array $countries, Traversable $iterator) {
@@ -755,8 +754,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
     ): BranchResolver {
         $branchResolver = $this->createMock(BranchResolver::class);
         $branchResolver->expects(self::exactly(count($arguments)))->method('hasFullBranchesSupport')
-                       ->withConsecutive(...$arguments)
-                       ->willReturnOnConsecutiveCalls(...$fullBranchSupport);
+                       ->willReturnOnConsecutiveCalls(...$this->withConsecutive($arguments, $fullBranchSupport));
 
         if ($countryFilterSupports !== null) {
             $countryFilterArguments = [];
@@ -770,9 +768,9 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
                 $countryFilterValues[]    = $countryFilterSupport;
             }
 
-            $branchResolver->expects(self::exactly(count($countryFilterArguments)))->method('hasBranchCountryFilterSupport')
-                           ->withConsecutive(...$countryFilterArguments)
-                           ->willReturnOnConsecutiveCalls(...$countryFilterValues);
+            $branchResolver->expects(self::exactly(count($countryFilterArguments)))
+                           ->method('hasBranchCountryFilterSupport')
+                           ->willReturnOnConsecutiveCalls(...$this->withConsecutive($countryFilterArguments, $countryFilterValues));
         }
 
         return $branchResolver;
@@ -787,8 +785,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
         $settingService = $this->createMock(ServiceProvider::class);
         $settingService->expects(self::exactly(count($arguments)))
                        ->method('getServices')
-                       ->withConsecutive(...array_map(static fn(string $carrier): array => [$carrier], $arguments))
-                       ->willReturnOnConsecutiveCalls(...$responses);
+                       ->willReturnOnConsecutiveCalls(...$this->withConsecutive(array_map(static fn(string $carrier): array => [$carrier], $arguments), $responses));
 
         return $settingService;
     }
