@@ -541,8 +541,9 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $carrier      = Carrier::UPS;
-        $dateFrom     = new DateTimeImmutable('+1 DAY');
-        $dateTo       = new DateTimeImmutable('+1 DAY +2 HOURS');
+        $date         = new DateTimeImmutable('+2 DAY');
+        $dateFrom     = $date->setTime(10, 0);
+        $dateTo       = $date->setTime(12, 0);
         $weight       = 10.0;
         $packageCount = 1;
         $message      = 'testMessage';
