@@ -8,6 +8,7 @@ use Generator;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Service;
 use Traversable;
+use function preg_replace;
 use function sprintf;
 use function str_replace;
 use function trim;
@@ -137,7 +138,7 @@ final class DefaultBranchFactory implements BranchFactory
         }
 
         if ($carrier === Carrier::PPL) {
-            return str_replace('KM', '', (string) $data['id']);
+            return (string) preg_replace('/^KM/', '', (string) $data['id']);
         }
 
         if ($carrier === Carrier::INTIME) {

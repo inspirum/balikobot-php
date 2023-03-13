@@ -504,6 +504,14 @@ final class DefaultBranchFactoryTest extends BaseTestCase
 
         self::assertSame('K1M234', $branch->getBranchId());
 
+        $branch = $factory->create('ppl', 'NP', [
+            'id'   => 'KMSKMK000000000',
+            'name' => 'Branch Name',
+            'zip'  => '110 00',
+        ]);
+
+        self::assertSame('SKMK000000000', $branch->getBranchId());
+
         $branch = $factory->create('intime', 'NP', [
             'id'   => '11',
             'name' => 'Branch Name',
