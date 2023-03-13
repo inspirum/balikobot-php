@@ -2125,8 +2125,8 @@ final class Service extends BaseEnum
         return [
             self::GEIS_CARGO_BUSINESS_NATIONAL,
             self::GEIS_CARGO_BUSINESS_INTERNATIONAL,
-            self::GEIS_CARGO_PRIVATE_NATIONAL,
-            self::GEIS_CARGO_PRIVATE_INTERNATIONAL,
+            // self::GEIS_CARGO_PRIVATE_NATIONAL,
+            // self::GEIS_CARGO_PRIVATE_INTERNATIONAL,
             self::GEIS_PARCEL_HD_STANDARD,
             self::GEIS_PARCEL_HD_PREMIUM,
             self::GEIS_B2B,
@@ -2261,7 +2261,7 @@ final class Service extends BaseEnum
     private static function ulozenka(): array
     {
         return [
-            self::ULOZENKA_ULOZENKA,
+            // self::ULOZENKA_ULOZENKA,
             self::ULOZENKA_SP,
             self::ULOZENKA_DPD_CLASSIC_SK,
             self::ULOZENKA_DPD_PRIVATE,
