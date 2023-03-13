@@ -98,7 +98,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
 
         $packageService->dropPackages($packages);
 
-        self::assertTrue(true);
+        $this->assertNoException();
     }
 
     public function testDropPackagesForInvalidData(): void
@@ -351,7 +351,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
 
         $packageService->checkPackages($packagesData);
 
-        self::assertTrue(true);
+        $this->assertNoException();
     }
 
     public function testCheckPackagesInvalidData(): void
@@ -556,7 +556,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             $message,
         );
 
-        self::assertTrue(true);
+        $this->assertNoException();
     }
 
     public function testOrderPickupForInvalidData(): void
@@ -676,7 +676,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
 
         $packageService->checkB2APackages($packagesData);
 
-        self::assertTrue(true);
+        $this->assertNoException();
     }
 
     public function testCheckB2APackagesInvalidData(): void
@@ -736,7 +736,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
 
         $packageService->checkB2CPackages($packagesData);
 
-        self::assertTrue(true);
+        $this->assertNoException();
     }
 
     public function testCheckB2CPackagesInvalidData(): void

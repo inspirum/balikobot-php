@@ -47,6 +47,11 @@ abstract class BaseTestCase extends TestCase
         return $requester;
     }
 
+    protected function assertNoException(): void
+    {
+        $this->addToAssertionCount(1);
+    }
+
     /**
      * @param array<array<int,mixed>> $arguments
      * @param array<mixed>            $responses

@@ -5,6 +5,7 @@ parameters:
 	paths:
 		- src
 		- tests
+	treatPhpDocTypesAsCertain: false
 	ignoreErrors:
 		-
 			message: '#^Parameter \#2 \$value of method Inspirum\\Balikobot\\Model\\BasePerCarrierCollection\<TItemKey of \(int\|string\),TItemValue,TKey of \(int\|string\),TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\>\:\:offsetSet\(\) expects TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId, Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId given\.$#'
@@ -26,7 +27,3 @@ parameters:
 		    message: '#^PHPDoc tag \@return contains unresolvable type\.$#'
 		    count: 35
 		    path: src/**
-		-
-		    message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertNull\(\) with Inspirum\\Balikobot\\Model\\Branch\\Branch will always evaluate to false\.$#'
-		    count: 1
-		    path: tests/Integration/Services/DefaultBranchServiceTest.php

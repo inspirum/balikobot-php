@@ -8,6 +8,7 @@ use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Tests\Integration\BaseTestCase;
 use function array_diff;
+use function count;
 use function sprintf;
 
 final class DefaultSettingServiceTest extends BaseTestCase
@@ -18,7 +19,7 @@ final class DefaultSettingServiceTest extends BaseTestCase
 
         $carriers = $settingService->getCarriers();
 
-        self::assertNotEmpty($carriers);
+        self::assertGreaterThan(0, count($carriers));
 
         $unsupportedCarriers = array_diff($carriers->getCarrierCodes(), Carrier::getAll());
 

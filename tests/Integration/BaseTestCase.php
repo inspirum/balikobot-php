@@ -35,10 +35,10 @@ use Inspirum\Balikobot\Service\DefaultInfoService;
 use Inspirum\Balikobot\Service\DefaultPackageService;
 use Inspirum\Balikobot\Service\DefaultSettingService;
 use Inspirum\Balikobot\Service\DefaultTrackService;
-use PHPUnit\Framework\TestCase;
+use Inspirum\Balikobot\Tests\Unit\BaseTestCase as BaseUnitTestCase;
 use function getenv;
 
-abstract class BaseTestCase extends TestCase
+abstract class BaseTestCase extends BaseUnitTestCase
 {
     /**
      * @return \Inspirum\Balikobot\Client\Requester

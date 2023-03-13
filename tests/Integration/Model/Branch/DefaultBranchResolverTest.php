@@ -40,7 +40,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
             if ($shouldSupport === false) {
                 self::markTestIncomplete(sprintf('%s/%s could support full-branches request', strtoupper($carrier), $service));
             } else {
-                self::assertTrue($shouldSupport, sprintf('%s/%s should not support full-branches request', strtoupper($carrier), $service));
+                $this->assertNoException();
             }
         } catch (BadRequestException $exception) {
             self::assertFalse(
@@ -129,7 +129,6 @@ final class DefaultBranchResolverTest extends BaseTestCase
                 $branches = $branchService->getBranchesForCarrierAndCountries($carrier, $countries);
                 foreach ($branches as $branch) {
                     self::assertNotNull($branch->getId());
-                    self::assertNotNull($branch->getBranchId());
                     self::assertTrue(
                         in_array($branch->getCountry(), $countries),
                         sprintf('Country %s code should be DE/SK', $branch->getCountry() ?? '[null]'),
