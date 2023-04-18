@@ -96,7 +96,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://apiv2.balikobot.cz/v2/cp/trackstatus',
+                'https://apiv2.balikobot.cz/cp/trackstatus',
                 [
                     'carrier_ids' => [
                         '1',
@@ -266,7 +266,7 @@ class TrackPackagesLastStatusMethodTest extends AbstractClientTestCase
         $requester->shouldHaveReceived(
             'request',
             [
-                'https://apiv2.balikobot.cz/v2/cp/trackstatus',
+                'https://apiv2.balikobot.cz/cp/trackstatus',
                 [
                     'carrier_ids' => [
                         '1',

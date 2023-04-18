@@ -275,6 +275,7 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 
 [ico-license]:              https://img.shields.io/github/license/inspirum/balikobot-php.svg?style=flat-square&colorB=blue
 [ico-workflow]:             https://img.shields.io/github/workflow/status/inspirum/balikobot-php/Test/master?style=flat-square
+[ico-workflow]:             https://img.shields.io/github/actions/workflow/status/inspirum/balikobot-php/master.yml?branch=5.x&style=flat-square
 [ico-scrutinizer]:          https://img.shields.io/scrutinizer/coverage/g/inspirum/balikobot-php/master.svg?style=flat-square
 [ico-code-quality]:         https://img.shields.io/scrutinizer/g/inspirum/balikobot-php.svg?style=flat-square
 [ico-packagist-stable]:     https://img.shields.io/packagist/v/inspirum/balikobot.svg?style=flat-square&colorB=blue
@@ -296,5 +297,5 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 [link-inspishop]:           https://www.inspishop.cz/
 [link-inspirum]:            https://www.inspirum.cz/
 [link-packagist-stable]:    https://packagist.org/packages/inspirum/balikobot
-[link-packagist-download]:  https://packagist.org/packages/inspirum/balikobot
+[link-packagist-download]:  https://packagist.org/packages/inspirum/balikobot/stats
 [link-phpstan]:             https://github.com/phpstan/phpstan

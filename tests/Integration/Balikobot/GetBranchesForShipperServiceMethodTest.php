@@ -6,6 +6,7 @@ namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Definitions\ServiceType;
 use Inspirum\Balikobot\Definitions\Shipper;
+use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Model\Values\Branch;
 
 class GetBranchesForShipperServiceMethodTest extends AbstractBalikobotTestCase
@@ -25,10 +26,11 @@ class GetBranchesForShipperServiceMethodTest extends AbstractBalikobotTestCase
 
     public function testInvalidRequest(): void
     {
+        $this->expectException(BadRequestException::class);
+
         $service = $this->newBalikobot();
 
         $branches = $service->getBranchesForShipperService(Shipper::TOPTRANS, ServiceType::TOPTRANS_NOTICE);
         $branches->valid();
-        self::assertNull($branches->current());
     }
 }

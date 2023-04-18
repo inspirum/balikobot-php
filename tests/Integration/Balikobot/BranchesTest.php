@@ -31,8 +31,12 @@ class BranchesTest extends AbstractBalikobotTestCase
                     break;
                 }
             } catch (BadRequestException $exception) {
-                $errorMessage = $exception->getResponse()['status_message'] ?? '';
-                if (strpos($errorMessage, 'Neznámý kód služby') === false) {
+                $errorMessage = $exception->getResponse()['status_message'] ?? $exception->getMessage();
+
+                if (
+                    strpos($errorMessage, 'Neznámý kód služby') === false
+                    && strpos($errorMessage, 'Technologie toho dopravce ještě není implementována') === false
+                ) {
                     $this->fail(sprintf('%s: %s', $shipper, $exception->getMessage()));
                 }
             }

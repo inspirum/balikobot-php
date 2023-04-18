@@ -703,7 +703,7 @@ final class Option
     public const REC_ENTERANCE = 'rec_enterance';
 
     /**
-     * Číslo podlaží (přenáší se jen u přepravce BG Speedy)
+     *  Číslo podlaží (přenáší se jen u přepravce BG Speedy)
      *
      * @var string
      */

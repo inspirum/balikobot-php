@@ -41,10 +41,10 @@ class GetActivatedManipulationUnitsMethodTest extends AbstractBalikobotTestCase
 
     public function testInvalidRequest(): void
     {
+        $this->expectException(BadRequestException::class);
+
         $service = $this->newBalikobot();
 
-        $units = $service->getActivatedManipulationUnits(Shipper::CP);
-
-        self::assertTrue(count($units) === 0);
+        $service->getActivatedManipulationUnits(Shipper::CP);
     }
 }

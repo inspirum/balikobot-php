@@ -324,8 +324,8 @@ final class Shipper
         $supportedShippers = [
             self::PPL,
             self::DPD,
-            self::GEIS,
             self::GLS,
+            self::ZASILKOVNA,
         ];
 
         return in_array($shipperCode, $supportedShippers);
