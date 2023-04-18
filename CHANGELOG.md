@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.3.0...master)
+### Added
+- Added support for new options from documentation **v1.979** (2023-04-17)
+  - Added **return_barcode** attribute
+  - Added new method [**Package**](./src/Model/Package/Package.php) `getBarcode()`
+### Fixed
+- Fixed API URL `API::V2V1` for **TRACK_STATUS** request ([#19](https://github.com/inspirum/balikobot-php/issues/19))
 
 
 ## [v7.3.0 (2023-03-13)](https://github.com/inspirum/balikobot-php/compare/v7.2.0...v7.3.0)
