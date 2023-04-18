@@ -166,7 +166,7 @@ class Client
     public function trackPackagesLastStatus(string $shipper, array $carrierIds): array
     {
         $response = $this->requester->call(
-            API::V2V2,
+            API::V2V1,
             $shipper,
             Request::TRACK_STATUS,
             ['carrier_ids' => $carrierIds],
