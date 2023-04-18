@@ -29,6 +29,7 @@ final class DefaultPackageFactory implements PackageFactory
             $data['pieces'] ?? [],
             $data['carrier_id_final'] ?? null,
             $data['track_url_final'] ?? null,
+            $data['barcode'] ?? null,
         );
     }
 

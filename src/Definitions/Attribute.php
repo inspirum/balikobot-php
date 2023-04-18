@@ -898,6 +898,11 @@ final class Attribute extends BaseEnum
     public const BANK_ACCOUNT_NAME = 'bank_account_name';
 
     /**
+     * Číselná podoba Barcode ze štítku
+     */
+    public const RETURN_BARCODE = 'return_barcode';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

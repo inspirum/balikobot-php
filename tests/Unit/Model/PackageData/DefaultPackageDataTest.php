@@ -209,6 +209,7 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setShipperVat('21');
         $package->setNoteInvoice('note1');
         $package->setInvoiceType('PRO_FORMA_INVOICE');
+        $package->setReturnBarcode(true);
 
         $unsupportedAttributes = array_diff(Attribute::getAll(), array_keys($package->getData()));
 
@@ -375,6 +376,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::SHIPPER_VAT                   => '21',
                 Attribute::NOTE_INVOICE                  => 'note1',
                 Attribute::INVOICE_TYPE                  => 'PRO_FORMA_INVOICE',
+                Attribute::RETURN_BARCODE                => 1,
             ],
             $package->__toArray(),
         );

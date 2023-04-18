@@ -30,4 +30,6 @@ interface Package extends Model, WithCarrierId
     public function getFinalCarrierId(): ?string;
 
     public function getFinalTrackUrl(): ?string;
+
+    public function getBarcode(): ?string;
 }

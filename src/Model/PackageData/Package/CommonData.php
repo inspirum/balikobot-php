@@ -73,4 +73,9 @@ trait CommonData
     {
         $this->offsetSet(Attribute::RETURN_FINAL_CARRIER_ID, (int) $returnCarrierId);
     }
+
+    public function setReturnBarcode(bool $returnBarcode = true): void
+    {
+        $this->offsetSet(Attribute::RETURN_BARCODE, (int) $returnBarcode);
+    }
 }

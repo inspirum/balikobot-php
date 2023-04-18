@@ -25,6 +25,7 @@ final class DefaultPackage extends BaseModel implements Package
         private readonly array $pieces = [],
         private readonly ?string $finalCarrierId = null,
         private readonly ?string $finalTrackUrl = null,
+        private readonly ?string $barcode = null,
     ) {
     }
 
@@ -71,6 +72,11 @@ final class DefaultPackage extends BaseModel implements Package
         return $this->finalTrackUrl;
     }
 
+    public function getBarcode(): ?string
+    {
+        return $this->barcode;
+    }
+
     public function getCarrier(): string
     {
         return $this->carrier;
@@ -95,6 +101,7 @@ final class DefaultPackage extends BaseModel implements Package
             'pieces'         => $this->pieces,
             'finalCarrierId' => $this->finalCarrierId,
             'finalTrackUrl'  => $this->finalTrackUrl,
+            'barcode'        => $this->barcode,
         ];
     }
 }
