@@ -14,13 +14,15 @@
             <directory>tests/Integration/</directory>
         </testsuite>
     </testsuites>
-    <coverage>
+    <source>
         <include>
-            <directory suffix=".php">src</directory>
+            <directory>src</directory>
         </include>
         <exclude>
-            <directory suffix=".php">src/Definitions</directory>
+            <directory>src/Definitions</directory>
         </exclude>
+    </source>
+    <coverage>
         <report>
             <clover outputFile="var/phpunit/logs/clover.xml"/>
             <text outputFile="var/phpunit/coverage/coverage.txt"/>

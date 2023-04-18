@@ -42,6 +42,7 @@ final class DefaultPackageCollectionTest extends BaseTestCase
                 'pieces'         => [],
                 'finalCarrierId' => null,
                 'finalTrackUrl'  => null,
+                'barcode'        => null,
             ],
             [
                 'carrier'        => 'cp',
@@ -54,6 +55,7 @@ final class DefaultPackageCollectionTest extends BaseTestCase
                 'pieces'         => [],
                 'finalCarrierId' => null,
                 'finalTrackUrl'  => null,
+                'barcode'        => null,
             ],
         ];
 

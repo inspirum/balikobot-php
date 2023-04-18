@@ -34,6 +34,7 @@ final class DefaultPackageTest extends BaseTestCase
             'pieces'         => [],
             'finalCarrierId' => null,
             'finalTrackUrl'  => null,
+            'barcode'        => null,
         ], $model->__toArray());
     }
 
@@ -50,6 +51,7 @@ final class DefaultPackageTest extends BaseTestCase
             ['1', '2'],
             '00605444103',
             '/final-track',
+            '2004589637',
         );
 
         self::assertSame(Carrier::CP, $model->getCarrier());
@@ -70,6 +72,7 @@ final class DefaultPackageTest extends BaseTestCase
             'pieces'         =>  ['1', '2'],
             'finalCarrierId' => '00605444103',
             'finalTrackUrl'  => '/final-track',
+            'barcode'        => '2004589637',
         ], $model->__toArray());
     }
 }

@@ -27,7 +27,6 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::PBH_INPOST_KURIER,
                 Service::PBH_FAN_KURIER,
                 Service::PBH_SPEEDY,
-                Service::PBH_NOBA_POSHTA,
                 Service::PBH_ECONT,
             ],
             Carrier::DPD         => [
@@ -76,13 +75,7 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::MAGYARPOSTA => null,
         ];
 
-        foreach ($supported as $supportedCarrier => $supportedServices) {
-            if ($carrier === $supportedCarrier && ($supportedServices === null || in_array($service, $supportedServices, true))) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->hasSupport($supported, $carrier, $service);
     }
 
     public function hasBranchCountryFilterSupport(string $carrier, ?string $service): bool
@@ -91,18 +84,34 @@ final class DefaultBranchResolver implements BranchResolver
             return true;
         }
 
-        $supportedCarriers = [
-            Carrier::PPL,
-            Carrier::DPD,
-            Carrier::GLS,
-            Carrier::ULOZENKA,
-            Carrier::PBH,
-            Carrier::SPS,
-            Carrier::RABEN,
-            Carrier::SAMEDAY,
-            Carrier::ZASILKOVNA,
+        $supported = [
+            Carrier::PPL => null,
+            Carrier::DPD => null,
+            Carrier::GLS => null,
+            Carrier::ULOZENKA => null,
+            Carrier::PBH => [
+                Service::PBH_CP_NP,
+            ],
+            Carrier::SPS => null,
+            Carrier::RABEN => null,
+            Carrier::SAMEDAY => null,
+            Carrier::ZASILKOVNA => null,
         ];
 
-        return in_array($carrier, $supportedCarriers, true);
+        return $this->hasSupport($supported, $carrier, $service);
+    }
+
+    /**
+     * @param array<string,array<string>|null> $supported
+     */
+    private function hasSupport(array $supported, string $carrier, ?string $service): bool
+    {
+        foreach ($supported as $supportedCarrier => $supportedServices) {
+            if ($carrier === $supportedCarrier && ($supportedServices === null || in_array($service, $supportedServices, true))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
