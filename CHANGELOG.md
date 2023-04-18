@@ -6,7 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.3.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.4.0...master)
+
+
+## [v7.4.0 (2023-04-18)](https://github.com/inspirum/balikobot-php/compare/v7.3.0...v7.4.0)
 ### Added
 - Added support for new options from documentation **v1.979** (2023-04-17)
   - Added **return_barcode** attribute
