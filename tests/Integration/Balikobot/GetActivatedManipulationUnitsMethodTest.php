@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Definitions\Shipper;
+use Inspirum\Balikobot\Exceptions\BadRequestException;
 use function count;
 use function is_array;
 use function is_int;
