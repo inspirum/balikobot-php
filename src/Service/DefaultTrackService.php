@@ -72,7 +72,7 @@ final class DefaultTrackService implements TrackService
     public function trackPackagesLastStatusesByIds(string $carrier, array $carrierIds): StatusCollection
     {
         $response = $this->client->call(
-            Version::V2V2,
+            Version::V2V1,
             $carrier,
             Method::TRACK_STATUS,
             ['carrier_ids' => $carrierIds],

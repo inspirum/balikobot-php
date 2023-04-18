@@ -28,9 +28,9 @@ final class DefaultTrackServiceTest extends BaseTestCase
     {
         $trackService = $this->newDefaultTrackService();
 
-        $packages = new DefaultPackageCollection(Carrier::PPL);
-        $packages->add(new DefaultPackage(Carrier::PPL, '1', '0001', '1234'));
-        $packages->add(new DefaultPackage(Carrier::PPL, '2', '0001', '1235'));
+        $packages = new DefaultPackageCollection(Carrier::DHL);
+        $packages->add(new DefaultPackage(Carrier::DHL, '1', '0001', '1234'));
+        $packages->add(new DefaultPackage(Carrier::DHL, '2', '0001', '1235'));
 
         $statuses = $trackService->trackPackagesLastStatuses($packages);
 
