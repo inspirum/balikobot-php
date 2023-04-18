@@ -316,8 +316,8 @@ final class Shipper
         $supportedShippers = [
             Shipper::PPL,
             Shipper::DPD,
-            Shipper::GEIS,
             Shipper::GLS,
+            Shipper::ZASILKOVNA,
         ];
 
         return in_array($shipperCode, $supportedShippers);

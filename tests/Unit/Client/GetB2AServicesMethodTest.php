@@ -76,8 +76,14 @@ class GetB2AServicesMethodTest extends AbstractClientTestCase
         $client = $this->newMockedClient(200, [
             'status'        => 200,
             'service_types' => [
-                '1'  => 'PPL Parcel Business CZ',
-                '11' => 'PPL Parcel Import SK',
+                [
+                    'service_type' => '1',
+                    'name'         => 'PPL Parcel Business CZ',
+                ],
+                [
+                    'service_type' => '11',
+                    'name'         => 'PPL Parcel Import SK',
+                ],
             ],
         ]);
 

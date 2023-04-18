@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [v5.7.1 (2023-04-18)](https://github.com/inspirum/balikobot-php/compare/v5.7.0...v5.7.1)
+### Added
+- Added multiple missing service types
 ### Fixed
 - Fixed API URL `API::V2V1` for **TRACK_STATUS** request ([#19](https://github.com/inspirum/balikobot-php/issues/19))
 

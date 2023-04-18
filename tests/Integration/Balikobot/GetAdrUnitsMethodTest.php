@@ -3,6 +3,7 @@
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
 use Inspirum\Balikobot\Definitions\Shipper;
+use Inspirum\Balikobot\Exceptions\BadRequestException;
 
 class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
 {
@@ -36,10 +37,10 @@ class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
 
     public function testInvalidRequest()
     {
+        $this->expectException(BadRequestException::class);
+
         $service = $this->newBalikobot();
 
-        $units = $service->getAdrUnits(Shipper::CP);
-
-        $this->assertTrue(count($units) === 0);
+        $service->getAdrUnits(Shipper::CP);
     }
 }

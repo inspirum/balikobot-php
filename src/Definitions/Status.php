@@ -13,6 +13,7 @@ final class Status
 
     /**
      * Transit (v1)
+     *
      * @deprecated
      *
      * @var float
@@ -56,6 +57,7 @@ final class Status
 
     /**
      * Cancellation (v1)
+     *
      * @deprecated
      *
      * @var float
@@ -92,6 +94,7 @@ final class Status
 
     /**
      * Cash on delivery has been credited to the sender's account (v1)
+     *
      * @deprecated
      *
      * @var float
@@ -100,6 +103,7 @@ final class Status
 
     /**
      * Error (v1)
+     *
      * @deprecated
      *
      * @var float
@@ -129,6 +133,7 @@ final class Status
 
     /**
      * Delivered (v1)
+     *
      * @deprecated
      *
      * @var float

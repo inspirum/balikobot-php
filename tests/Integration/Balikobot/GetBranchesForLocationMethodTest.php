@@ -14,7 +14,7 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         $service = $this->newBalikobot();
 
         $branches = $service->getBranchesForLocation(
-            Shipper::DHLPARCEL,
+            Shipper::UPS,
             Country::GERMANY,
             'Berlin',
             null,
@@ -35,7 +35,7 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         $service = $this->newBalikobot();
 
         try {
-            $branches = $service->getBranchesForLocation(Shipper::UPS, Country::GHANA, 'Praha');
+            $branches = $service->getBranchesForLocation(Shipper::PBH, Country::GHANA, 'Praha');
             $branches->valid();
             $this->assertTrue(false, 'BRANCHLOCATOR request should thrown exception');
         } catch (ExceptionInterface $exception) {

@@ -1598,7 +1598,6 @@ final class Country
     public const TURKEY = 'TR';
 
     /**
-     *
      * Turkmenistan
      *
      * @var string

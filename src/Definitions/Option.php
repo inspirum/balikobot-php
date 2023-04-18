@@ -694,7 +694,6 @@ final class Option
     public const REC_ENTERANCE = 'rec_enterance';
 
     /**
-     *
      *  Číslo podlaží (přenáší se jen u přepravce BG Speedy)
      *
      * @var string
@@ -849,7 +848,6 @@ final class Option
     public const IS_ALCOHOL = 'is_alcohol';
 
     /**
-     *
      * Datum vystavení faktury (formát YYYY-MM-DD)
      * string
      *

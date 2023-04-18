@@ -342,7 +342,7 @@ class Client
     {
         $response = $this->requester->call(API::V2V1, $shipper, Request::B2A . '/' . Request::SERVICES);
 
-        return $response['service_types'] ?? [];
+        return $this->formatter->normalizeResponseItems($response['service_types'] ?? [], 'service_type', 'name');
     }
 
     /**
