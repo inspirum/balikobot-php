@@ -2330,7 +2330,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_ES_MRW_PP,
             // self::ZASILKOVNA_ES_ENVIALIA_HD,
             self::ZASILKOVNA_FI_POST_NORD_HP,
-            // self::ZASILKOVNA_FI_POST_NORD_PP,
+            self::ZASILKOVNA_FI_POST_NORD_PP,
             // self::ZASILKOVNA_FR_COLIS_PRIVE_HD,
             // self::ZASILKOVNA_FR_MONDIAL_PP,
             self::ZASILKOVNA_FR_COLISSIMO_PP,

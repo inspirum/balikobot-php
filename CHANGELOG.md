@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.4.0...master)
+### Added
+- Added service container registry to be used in DI (like in [Symfony Bundle](https://github.com/inspirum/balikobot-php-symfony) integration) with multiple API accounts 
+  - Added [**ServiceContainer**](src/Service/Registry/ServiceContainer.php) service
+  - Added [**ServiceContainerRegistry**](src/Service/Registry/ServiceContainerRegistry.php) service
 
 
 ## [v7.4.0 (2023-04-18)](https://github.com/inspirum/balikobot-php/compare/v7.3.0...v7.4.0)
@@ -218,7 +222,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added support for new options from documentation **v1.931** (2021-07-20)
     - Added option to get compressed response in GZIP (by parameter `?gzip=1`)
-    - Added new optional parameter #6 **gzip** to method [**RequesterInterface**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Contracts/RequesterInterface.php)`call()` (and [**Requester**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Services/Requester.php))
+    - Added new optional parameter #6 **gzip** to method [**RequesterInterface**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Contracts/RequesterInterface.php) `call()` (and [**Requester**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Services/Requester.php))
     - Added new optional parameter #5 **gzip** to method [**Client**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Services/Client.php) `getBranches()` 
 - Enable strict types (`declare(strict_types=1)`)
 - Added [**Status**](https://github.com/inspirum/balikobot-php/blob/6.x/src/Definitions/Status.php) helper methods for status determinations

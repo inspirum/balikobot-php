@@ -61,6 +61,7 @@ final class DefaultPackageTest extends BaseTestCase
         self::assertSame(['1', '2'], $model->getPieces());
         self::assertSame('00605444103', $model->getFinalCarrierId());
         self::assertSame('/final-track', $model->getFinalTrackUrl());
+        self::assertSame('2004589637', $model->getBarcode());
         self::assertSame([
             'carrier'      => 'cp',
             'carrierId'      => '02IID',
