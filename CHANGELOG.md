@@ -6,7 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.4.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.5.0...master)
+
+
+## [v7.5.0 (2023-05-15)](https://github.com/inspirum/balikobot-php/compare/v7.4.0...v7.5.0)
 ### Added
 - Added service container registry to be used in DI (like in [Symfony Bundle](https://github.com/inspirum/balikobot-php-symfony) integration) with multiple API accounts 
   - Added [**ServiceContainer**](src/Service/Registry/ServiceContainer.php) service
