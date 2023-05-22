@@ -6,7 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.4.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.4.1...master)
+
+
+## [v6.4.1 (2023-05-22)](https://github.com/inspirum/balikobot-php/compare/v6.4.0...v6.4.1)
+### Fixed
+- Fixed **ORDERPICKUP** request datetime format ([#20](https://github.com/inspirum/balikobot-php/pull/20))
 
 
 ## [v6.4.0 (2022-03-26)](https://github.com/inspirum/balikobot-php/compare/v6.3.0...v6.4.0)
@@ -32,11 +37,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v1.941** (2021-11-09)
   - Change response format for **B2A/SERVICES** request
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.2.2...master)
-
-
-## [v6.2.2 (2023-05-22)](https://github.com/inspirum/balikobot-php/compare/v6.2.1...v6.2.2)
-### Fixed
-- Fixed **ORDERPICKUP** request datetime format ([#20](https://github.com/inspirum/balikobot-php/pull/20))
 
 
 ## [v6.2.1 (2023-04-18)](https://github.com/inspirum/balikobot-php/compare/v6.2.0...v6.2.1)
