@@ -52,6 +52,26 @@ class OrderedPackageTest extends AbstractTestCase
         self::assertEquals([], $orderedPackage->getPieces());
     }
 
+    public function testStaticConstructorWithIntegerIds(): void
+    {
+        $orderedPackage = OrderedPackage::newInstanceFromData('cp', [
+            'eid'          => '0001',
+            'order_number' => 1,
+            'package_id'   => 1234,
+            'carrier_id'   => 12,
+            'label_url'    => '/labels',
+        ]);
+
+        self::assertEquals('cp', $orderedPackage->getShipper());
+        self::assertEquals('0001', $orderedPackage->getBatchId());
+        self::assertEquals('1234', $orderedPackage->getPackageId());
+        self::assertEquals('12', $orderedPackage->getCarrierId());
+        self::assertEquals(null, $orderedPackage->getTrackUrl());
+        self::assertEquals('/labels', $orderedPackage->getLabelUrl());
+        self::assertEquals(null, $orderedPackage->getCarrierIdSwap());
+        self::assertEquals([], $orderedPackage->getPieces());
+    }
+
     public function testStaticConstructorWithMissingCarrierId(): void
     {
         $orderedPackage = OrderedPackage::newInstanceFromData('cp', [

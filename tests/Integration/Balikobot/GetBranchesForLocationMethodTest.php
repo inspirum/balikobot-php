@@ -39,7 +39,7 @@ class GetBranchesForLocationMethodTest extends AbstractBalikobotTestCase
         try {
             $branches = $service->getBranchesForLocation(Shipper::PBH, Country::GHANA, 'Praha');
             $branches->valid();
-            self::assertTrue(false, 'BRANCHLOCATOR request should thrown exception');
+            self::fail('BRANCHLOCATOR request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(413, $exception->getStatusCode());
         }

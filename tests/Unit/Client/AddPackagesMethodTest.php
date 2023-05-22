@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Tests\Unit\Client\Request;
+namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use Inspirum\Balikobot\Services\Client;
-use Inspirum\Balikobot\Tests\Unit\Client\AbstractClientTestCase;
 
 class AddPackagesMethodTest extends AbstractClientTestCase
 {

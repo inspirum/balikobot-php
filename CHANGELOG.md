@@ -6,6 +6,31 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.4.0...master)
+
+
+## [v6.4.0 (2022-03-26)](https://github.com/inspirum/balikobot-php/compare/v6.3.0...v6.4.0)
+### Added
+- Added support for new options from documentation **v1.944** (2021-12-07)
+  - Added **LIFTAGO** shipper
+- Added support for new options from documentation **v1.949** (2022-02-04)
+  - Added **MAGYARPOSTA** shipper
+- Added support for new options from documentation **v1.952** (2022-03-09)
+  - Added **FULLADRUNITS** request
+- Added support for new options from documentation **v1.955** (2022-03-24)
+  - Added **CARRIERS/MY** request
+- Added **DBSCHENKER_LPA** service type
+### Changed
+- Added support for `carrier_id` has integer type value for ordered package
+
+
+## [v6.3.0 (2021-11-16)](https://github.com/inspirum/balikobot-php/compare/v6.2.0...v6.3.0)
+### Added
+- Added support for new options from documentation **v1.940** (2021-11-05)
+  - Added **WHOAMI** request
+### Changed
+- Added support for new options from documentation **v1.941** (2021-11-09)
+  - Change response format for **B2A/SERVICES** request
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v6.2.2...master)
 
 

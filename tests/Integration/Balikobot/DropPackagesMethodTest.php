@@ -51,7 +51,7 @@ class DropPackagesMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->dropPackages($packages);
-            self::assertTrue(false, 'DROP request should thrown exception');
+            self::fail('DROP request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(400, $exception->getStatusCode());
             self::assertTrue(isset($exception->getErrors()[0]['status']));

@@ -92,6 +92,7 @@ class Requester implements RequesterInterface
      * @param string             $shipper
      * @param array<mixed,mixed> $data
      * @param bool               $shouldHaveStatus
+     * @param bool               $gzip
      *
      * @return array<mixed,mixed>
      *
@@ -187,6 +188,7 @@ class Requester implements RequesterInterface
      * Decode API response JSON to array
      *
      * @param string $content
+     * @param bool   $throwOnError
      *
      * @return array<mixed,mixed>
      *

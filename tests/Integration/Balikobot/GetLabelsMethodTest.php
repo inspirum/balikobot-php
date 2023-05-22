@@ -51,7 +51,7 @@ class GetLabelsMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getLabels($packages);
-            self::assertTrue(false, 'LABELS request should thrown exception');
+            self::fail('LABELS request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(406, $exception->getStatusCode());
         }

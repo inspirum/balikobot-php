@@ -8,7 +8,7 @@ use Inspirum\Balikobot\Definitions\Shipper;
 use Inspirum\Balikobot\Exceptions\BadRequestException;
 use function in_array;
 use function sprintf;
-use function strpos;
+use function str_contains;
 
 class BranchesTest extends AbstractBalikobotTestCase
 {
@@ -31,12 +31,12 @@ class BranchesTest extends AbstractBalikobotTestCase
                     break;
                 }
             } catch (BadRequestException $exception) {
-                $errorMessage = $exception->getResponse()['status_message'] ?? $exception->getMessage();
+                if ($exception->getStatusCode() === 501) {
+                    continue;
+                }
 
-                if (
-                    strpos($errorMessage, 'Neznámý kód služby') === false
-                    && strpos($errorMessage, 'Technologie toho dopravce ještě není implementována') === false
-                ) {
+                $errorMessage = $exception->getResponse()['status_message'] ?? '';
+                if (str_contains($errorMessage, 'Neznámý kód služby') === false) {
                     $this->fail(sprintf('%s: %s', $shipper, $exception->getMessage()));
                 }
             }

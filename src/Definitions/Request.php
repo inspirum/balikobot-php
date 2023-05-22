@@ -154,6 +154,13 @@ final class Request
     public const ADR_UNITS = 'adrunits';
 
     /**
+     * Detailed list of ADR units
+     *
+     * @var string
+     */
+    public const FULL_ADR_UNITS = 'fulladrunits';
+
+    /**
      * List of activated services for production API keys
      *
      * @var string
@@ -209,4 +216,18 @@ final class Request
      * @var string
      */
     public const ADD_ATTRIBUTES = 'addattributes';
+
+    /**
+     * Method for obtaining info about used API keys
+     *
+     * @var string
+     */
+    public const INFO_WHO_AM_I = 'info/whoami';
+
+    /**
+     * Method for obtaining a list of active carriers.
+     *
+     * @var string
+     */
+    public const CARRIER_MY = 'carriers/my';
 }

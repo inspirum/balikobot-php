@@ -573,6 +573,26 @@ class Client
     }
 
     /**
+     * Returns available detailed manipulation units for the given shipper
+     *
+     * @param string $shipper
+     *
+     * @return array<string,array<string,mixed>>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getFullAdrUnits(string $shipper): array
+    {
+        $response = $this->requester->call(API::V2V1, $shipper, Request::FULL_ADR_UNITS);
+
+        return $this->formatter->normalizeResponseItems(
+            $response['units'] ?? [],
+            'code',
+            null,
+        );
+    }
+
+    /**
      * Returns available activated services for the given shipper
      *
      * @param string $shipper
@@ -654,7 +674,7 @@ class Client
     }
 
     /**
-     * Obtain the price of carriage at consignment level
+     * Get the price of carriage at consignment level
      *
      * @param string                     $shipper
      * @param array<array<string,mixed>> $packages
@@ -691,7 +711,7 @@ class Client
     }
 
     /**
-     * Method for obtaining news in the Balikobot API
+     * Get news in the Balikobot API
      *
      * @return array<string,mixed>
      *
@@ -705,7 +725,7 @@ class Client
     }
 
     /**
-     * Method for easier carrier integration, obtaining list of available input attributes for the ADD method
+     * Get list of available input attributes for the ADD method
      *
      * @param string $shipper
      *
@@ -725,7 +745,7 @@ class Client
     }
 
     /**
-     * Method for obtaining a list of additional services by individual transport services
+     * Get list of additional services by individual transport services
      *
      * @param string      $shipper
      * @param string|null $service
@@ -754,5 +774,33 @@ class Client
             'code',
             $fullData === false ? 'name' : null,
         );
+    }
+
+    /**
+     * Get info about used API keys
+     *
+     * @return array<string,mixed>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getAccountInfo(): array
+    {
+        $response = $this->requester->call(API::V2V1, '', Request::INFO_WHO_AM_I);
+
+        return $this->formatter->withoutStatus($response);
+    }
+
+    /**
+     * Get list of active carriers
+     *
+     * @return array<string>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getActiveShippers(): array
+    {
+        $response = $this->requester->call(API::V2V1, '', Request::CARRIER_MY);
+
+        return $response['carriers'];
     }
 }

@@ -10,6 +10,7 @@ use Inspirum\Balikobot\Definitions\Shipper;
 use Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection;
 use Inspirum\Balikobot\Model\Aggregates\PackageCollection;
 use Inspirum\Balikobot\Model\Aggregates\PackageTransportCostCollection;
+use Inspirum\Balikobot\Model\Values\AdrUnit;
 use Inspirum\Balikobot\Model\Values\Branch;
 use Inspirum\Balikobot\Model\Values\Country;
 use Inspirum\Balikobot\Model\Values\OrderedPackage;
@@ -49,6 +50,18 @@ class Balikobot
     public function getShippers(): array
     {
         return Shipper::all();
+    }
+
+    /**
+     * Get list of active carriers
+     *
+     * @return array<string>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getActiveShippers(): array
+    {
+        return $this->client->getActiveShippers();
     }
 
     /**
@@ -124,7 +137,7 @@ class Balikobot
      *
      * @param \Inspirum\Balikobot\Model\Values\OrderedPackage $package
      *
-     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>|\Inspirum\Balikobot\Model\Values\PackageStatus[]
+     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -141,7 +154,7 @@ class Balikobot
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      *
-     * @return array<array<\Inspirum\Balikobot\Model\Values\PackageStatus>>|\Inspirum\Balikobot\Model\Values\PackageStatus[][]
+     * @return array<array<\Inspirum\Balikobot\Model\Values\PackageStatus>>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -180,7 +193,7 @@ class Balikobot
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\OrderedPackageCollection $packages
      *
-     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>|\Inspirum\Balikobot\Model\Values\PackageStatus[]
+     * @return array<\Inspirum\Balikobot\Model\Values\PackageStatus>
      *
      * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
      */
@@ -192,7 +205,7 @@ class Balikobot
     }
 
     /**
-     * Create package statuses collection for package
+     * Create package status collection for package
      *
      * @param array<array<string,float|string|null>> $response
      *
@@ -623,6 +636,28 @@ class Balikobot
     }
 
     /**
+     * Returns available detailed manipulation units for the given shipper
+     *
+     * @param string $shipper
+     *
+     * @return array<string,\Inspirum\Balikobot\Model\Values\AdrUnit>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getFullAdrUnits(string $shipper): array
+    {
+        $response = $this->client->getFullAdrUnits($shipper);
+
+        $units = [];
+
+        foreach ($response as $code => $unit) {
+            $units[$code] = AdrUnit::newInstanceFromData($shipper, $unit);
+        }
+
+        return $units;
+    }
+
+    /**
      * Returns available activated services for the given shipper
      *
      * @param string $shipper
@@ -692,7 +727,7 @@ class Balikobot
     }
 
     /**
-     * Obtain the price of carriage at consignment level
+     * Get the price of carriage at consignment level
      *
      * @param \Inspirum\Balikobot\Model\Aggregates\PackageCollection $packages
      *
@@ -735,7 +770,7 @@ class Balikobot
     }
 
     /**
-     * Method for obtaining news in the Balikobot API
+     * Get news in the Balikobot API
      *
      * @return array<string,mixed>
      *
@@ -747,7 +782,7 @@ class Balikobot
     }
 
     /**
-     * Method for obtaining a list of additional services by individual transport services
+     * Get list of additional services by individual transport services
      *
      * @param string $shipper
      *
@@ -761,7 +796,7 @@ class Balikobot
     }
 
     /**
-     * Method for obtaining a list of additional services by individual transport services
+     * Get list of additional services by individual transport services
      *
      * @param string      $shipper
      * @param string|null $service
@@ -774,5 +809,17 @@ class Balikobot
     public function getAddServiceOptions(string $shipper, ?string $service = null, bool $fullData = false): array
     {
         return $this->client->getAddServiceOptions($shipper, $service, $fullData);
+    }
+
+    /**
+     * Get info about used API keys
+     *
+     * @return array<string,mixed>
+     *
+     * @throws \Inspirum\Balikobot\Contracts\ExceptionInterface
+     */
+    public function getAccountInfo(): array
+    {
+        return $this->client->getAccountInfo();
     }
 }

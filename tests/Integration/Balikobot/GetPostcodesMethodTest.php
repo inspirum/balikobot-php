@@ -30,7 +30,7 @@ class GetPostcodesMethodTest extends AbstractBalikobotTestCase
 
         $service = $this->newBalikobot();
 
-        $branches = $service->getBranchesForShipperService(Shipper::TOPTRANS, ServiceType::TOPTRANS_NOTICE);
+        $branches = $service->getBranchesForShipperService(Shipper::CP, ServiceType::CP_BA);
         $branches->valid();
     }
 }

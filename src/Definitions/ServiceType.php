@@ -1311,7 +1311,9 @@ final class ServiceType
     public const ZASILKOVNA_LV_LT_POST_HD = '18807';
 
     /**
-     * LT Lithuanian Post HD
+     * US FedEx HD Priority
+     *
+     * @var string
      */
     public const ZASILKOVNA_LT_POST_HD = '18808';
 
@@ -2299,6 +2301,8 @@ final class ServiceType
 
     /**
      * DB Schenker Parcel
+     *
+     * @var string
      */
     public const DBSCHENKER_LPA = 'LPA';
 
@@ -2371,6 +2375,120 @@ final class ServiceType
      * @var string
      */
     public const JAPO_STANDARD = 'STANDARD';
+
+    /**
+     * Liftago Express
+     *
+     * @var string
+     */
+    public const LIFTAGO_EXPRESS = 'express';
+
+    /**
+     * Liftago Standard
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD = 'standard';
+
+    /**
+     * Liftago Standard 6-8h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_8 = 'standard-6-8';
+
+    /**
+     * Liftago Standard 8-10h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_10 = 'standard-8-10';
+
+    /**
+     * Liftago Standard 10-12h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_12 = 'standard-10-12';
+
+    /**
+     * Liftago Standard 12-14h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_14 = 'standard-12-14';
+
+    /**
+     * Liftago Standard 14-16h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_16 = 'standard-14-16';
+
+    /**
+     * Liftago Standard 16-18h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_18 = 'standard-16-18';
+
+    /**
+     * Liftago Standard 18-20h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_20 = 'standard-18-20';
+
+    /**
+     * Liftago Standard 20-22h
+     *
+     * @var string
+     */
+    public const LIFTAGO_STANDARD_22 = 'standard-20-22';
+
+
+
+    /**
+     * MPL Business parcel (Domestic)
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_MPL_BUSINESS = 'A_175_UZL';
+
+    /**
+     * MPL Postal Parcel (Domestic)
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_MPL_POST = 'A_177_MPC';
+
+    /**
+     * International priority postal parcel
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_INTERNATIONAL_PRIORITY = 'A_122_ECS';
+
+    /**
+     * International postal parcel
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_INTERNATIONAL = 'A_121_CSG';
+
+    /**
+     * Europe+ parcel
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_EUROPE_PLUS = 'A_123_EUP';
+
+    /**
+     * MPL Europe Standard
+     *
+     * @var string
+     */
+    public const MAGYARPOSTA_EUROPE_STANDARD = 'A_125_HAR';
 
     /**
      * @return array<string>
@@ -2658,7 +2776,7 @@ final class ServiceType
             self::ZASILKOVNA_CZ_COURIER_HD,
             // self::ZASILKOVNA_DE_POST_HD,
             self::ZASILKOVNA_DE_HERMES_PP,
-            self::ZASILKOVNA_DE_HERMES_HD,
+            // self::ZASILKOVNA_DE_HERMES_HD,
             self::ZASILKOVNA_DE_HOME_DELIVERY_HD,
             self::ZASILKOVNA_DK_POST_NORD_HD,
             self::ZASILKOVNA_DK_POST_NORD_PP,
@@ -2678,8 +2796,6 @@ final class ServiceType
             // self::ZASILKOVNA_FR_MONDIAL_PP,
             self::ZASILKOVNA_FR_COLISSIMO_PP,
             self::ZASILKOVNA_FR_COLISSIMO_HD,
-            self::ZASILKOVNA_FR_MONDIAL_RELAY_PP,
-            self::ZASILKOVNA_FR_COLIS_PRIVE_DIRECT_HD,
             // self::ZASILKOVNA_GB_HERMES_HD,
             self::ZASILKOVNA_GB_ROYAL_MAIL_24_HD,
             self::ZASILKOVNA_GB_ROYAL_MAIL_48_HD,
@@ -2687,8 +2803,6 @@ final class ServiceType
             self::ZASILKOVNA_GR_ACS_HD,
             self::ZASILKOVNA_GR_ACS_PP,
             // self::ZASILKOVNA_GR_SPEEDY_HD,
-            self::ZASILKOVNA_GR_SPEEDEX_HD,
-            self::ZASILKOVNA_GR_BOXNOW_BOX,
             self::ZASILKOVNA_HR_OVERSEAS_HD,
             self::ZASILKOVNA_HR_OVERSEAS_PP,
             self::ZASILKOVNA_HR_DPD_HD,
@@ -2726,7 +2840,6 @@ final class ServiceType
             // self::ZASILKOVNA_PL_DPD_HD,
             self::ZASILKOVNA_PL_COURIER_HD,
             self::ZASILKOVNA_PL_INPOST_PACZKOMATY_BOX,
-            self::ZASILKOVNA_PL_POST_PP,
             // self::ZASILKOVNA_PL_INPOST_HD,
             self::ZASILKOVNA_PT_MRW_HD,
             self::ZASILKOVNA_PT_MRW_PP,
@@ -3027,6 +3140,40 @@ final class ServiceType
     }
 
     /**
+     * @return array<string>
+     */
+    public static function liftago(): array
+    {
+        return [
+            self::LIFTAGO_EXPRESS,
+            self::LIFTAGO_STANDARD,
+            self::LIFTAGO_STANDARD_8,
+            self::LIFTAGO_STANDARD_10,
+            self::LIFTAGO_STANDARD_12,
+            self::LIFTAGO_STANDARD_14,
+            self::LIFTAGO_STANDARD_16,
+            self::LIFTAGO_STANDARD_18,
+            self::LIFTAGO_STANDARD_20,
+            self::LIFTAGO_STANDARD_22,
+        ];
+    }
+
+    /**
+     * @return array<string>
+     */
+    public static function magyarposta(): array
+    {
+        return [
+            self::MAGYARPOSTA_MPL_BUSINESS,
+            self::MAGYARPOSTA_MPL_POST,
+            self::MAGYARPOSTA_INTERNATIONAL_PRIORITY,
+            self::MAGYARPOSTA_INTERNATIONAL,
+            self::MAGYARPOSTA_EUROPE_PLUS,
+            self::MAGYARPOSTA_EUROPE_STANDARD,
+        ];
+    }
+
+    /**
      * All supported shipper services
      *
      * @return array<string,array<string>>
@@ -3065,6 +3212,8 @@ final class ServiceType
             Shipper::DBSCHENKER   => self::dbschenker(),
             Shipper::AIRWAY       => self::airway(),
             Shipper::JAPO         => self::japo(),
+            Shipper::LIFTAGO      => self::liftago(),
+            Shipper::MAGYARPOSTA  => self::magyarposta(),
         ];
     }
 }

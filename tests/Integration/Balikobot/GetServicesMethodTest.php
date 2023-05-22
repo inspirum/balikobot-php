@@ -18,9 +18,9 @@ class GetServicesMethodTest extends AbstractBalikobotTestCase
         $services = $service->getServices(Shipper::PPL);
 
         self::assertTrue(count($services) > 0);
-        foreach ($services as $id => $service) {
+        foreach ($services as $id => $name) {
             self::assertTrue(is_int($id));
-            self::assertTrue(is_string($service));
+            self::assertTrue(is_string($name));
         }
     }
 }

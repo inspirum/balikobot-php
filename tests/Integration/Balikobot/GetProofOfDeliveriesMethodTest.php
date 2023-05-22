@@ -51,7 +51,7 @@ class GetProofOfDeliveriesMethodTest extends AbstractBalikobotTestCase
 
         try {
             $service->getProofOfDeliveries($packages);
-            self::assertTrue(false, 'POD request should thrown exception');
+            self::fail('POD request should thrown exception');
         } catch (ExceptionInterface $exception) {
             self::assertEquals(404, $exception->getStatusCode());
         }

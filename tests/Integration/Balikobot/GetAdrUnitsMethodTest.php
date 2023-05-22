@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Tests\Integration\Balikobot;
 
+use Inspirum\Balikobot\Contracts\ExceptionInterface;
 use Inspirum\Balikobot\Definitions\Shipper;
-use Inspirum\Balikobot\Exceptions\BadRequestException;
 use function count;
 use function is_array;
 use function is_int;
@@ -44,10 +44,13 @@ class GetAdrUnitsMethodTest extends AbstractBalikobotTestCase
 
     public function testInvalidRequest(): void
     {
-        $this->expectException(BadRequestException::class);
-
         $service = $this->newBalikobot();
 
-        $service->getAdrUnits(Shipper::CP);
+        try {
+            $service->getAdrUnits(Shipper::CP);
+            self::fail('ADRUNITS request should thrown exception');
+        } catch (ExceptionInterface $exception) {
+            self::assertEquals(501, $exception->getStatusCode());
+        }
     }
 }

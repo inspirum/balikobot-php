@@ -151,7 +151,7 @@ var_dump($orderedPackages);
 
 Drop created packages from Balikobot with **dropPackage** or **dropPackages** method. 
 
-These methods has no return value, only throws exception on error.  
+These methods have no return value, only throws exception on error.  
 
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
@@ -174,7 +174,7 @@ Carrier ID is from [**ADD**](#add) request response.
 This method internally uses new **TRACK V3** request with better response data format. 
 Response return only **status_id_v2** as **status_id** (you can always cast `float` to `int` to get older status ID) and use **name_internal** instead of **name_balikobot**. 
 
-Older versions (**TRACK V2**, **TRACK V1**) are not longer available via this client.
+Older versions (**TRACK V2**, **TRACK V1**) are no longer available via this client.
 
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
@@ -391,7 +391,9 @@ Method **getServices** returns a list of services that can be used by the shippe
 The client normalizes the response by returning only **service_type** array.
 
 ```php
-$services = $client->getServices('cp');
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$services = $client->getServices(Shipper::CP);
 
 /*
 var_dump($services);
@@ -413,7 +415,7 @@ Method **getManipulationUnits** returns a list of possible manipulation units fo
 
 The client normalizes the response by returning unit code and value from as associative array `[id => value]` (with optional **fullData** parameter)
 
-This units are used as **mu_type** option in [**ADD**](#add) request.
+These units are used as **mu_type** option in [**ADD**](#add) request.
 
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
@@ -463,7 +465,7 @@ Method **getActivatedManipulationUnits** returns a list of activated manipulatio
 
 The client normalizes the response by returning unit code and value from as associative array `[id => value]` (with optional **fullData** parameter).
 
-This units are used as **mu_type** option in [**ADD**](#add) request.
+These units are used as **mu_type** option in [**ADD**](#add) request.
 
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
@@ -833,7 +835,7 @@ var_dump($postcodes);
 
 The **checkPackages** method is used to validate data for [**ADD**](#add) request.
 
-This method has no return value if give data is valid, and it throws exception on error same as **addPackage** request.
+This method has no return value if given data is valid, and it throws exception on error same as **addPackage** request.
 
 
 ```php
@@ -886,7 +888,7 @@ Method **getAdrUnits** returns a list of possible manipulation units for pallet 
 
 The client normalizes the response by returning unit ID and value from as associative array `[id => value]` (with optional **fullData** parameter).
 
-This units are used as **adr_un** option in [**ADD**](#add) request.
+These units are used as **adr_content.adr_code** option in [**ADD**](#add) request.
 
 ```php
 use Inspirum\Balikobot\Definitions\Shipper;
@@ -926,6 +928,43 @@ var_dump($units);
     'id'   => 377
     'code' => '1001'
     'name' => 'ACETYLÉN, ROZPUŠTĚNÝ'
+  ]
+  ...
+]
+*/
+```
+
+### **FULLADRUNITS**
+
+Method **getFullAdrUnits** returns a list of possible manipulation units for pallet transport with more detailed information than **ADRUNITS** request.
+
+The client normalizes the response by returning only unit data.
+
+```php
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$units = $client->getFullAdrUnits(Shipper::TOPTRANS);
+
+/*
+var_dump($units);
+[
+  '432' => [
+    'id'                 => '299'
+    'code'               => '432'
+    'name'               => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely'
+    'class'              => '1'
+    'packaging'          => null
+    'tunnel_code'        => 'E'
+    'transport_category' => '4'
+  ]
+  '1001' => [
+    'id'                 => '377'
+    'code'               => '1001'
+    'name'               => 'ACETYLÉN, ROZPUŠTĚNÝ'
+    'class'              => '2'
+    'packaging'          => null
+    'tunnel_code'        => null
+    'transport_category' => '2'
   ]
   ...
 ]
@@ -993,6 +1032,28 @@ var_dump($orderedPackages);
     'status_message' => 'OK, přeprava byla objednána'
     'status'         => 200
   ]
+]
+*/
+```
+
+
+### **BA2SERVICES**
+
+Method **getB2AServices** returns a list of services that can be used by the shipper for B2A.
+
+The client normalizes the response by returning only **service_type** array.
+
+```php
+use Inspirum\Balikobot\Definitions\Shipper;
+
+$services = $client->getB2AServices(Shipper::PPL);
+
+/*
+var_dump($services);
+[
+  '1'  =>'PPL Parcel Business CZ'
+  '11' =>'PPL Parcel Import SK'
+  ...
 ]
 */
 ```
@@ -1070,7 +1131,7 @@ var_dump($transportCosts);
 
 Method **getCountriesData** obtain information on individual countries of the world.
 
-The client normalizes the response by returning only countries data (drop **status** attribute).
+The client normalizes the response by returning only country's data (drop **status** attribute).
 
 
 ```php
@@ -1215,6 +1276,74 @@ var_dump($options);
 ```
 
 
+### **WHOAMI**
+
+Method **getAccountInfo** obtain info about used API keys.
+
+The client normalizes the response by returning only account data (drop **status** attribute).
+
+
+```php
+$info = $client->getAccountInfo();
+
+/*
+var_dump($info);
+[
+  'account' => [
+    'name'           => 'Balikobot-Test_obchod.cz',
+    'contact_person' => 'DPD_2',
+    'street'         => 'Kovářská 12',
+    'city'           => 'Praha 9',
+    'zip'            => '19000',
+    'country'        => 'CZ',
+    'email'          => 'info@balikobot.cz',
+    'url'            => 'http://www.balikobot_test2.cz',
+    'phone'          => '+420123456789',
+  ],
+  'live_account' => false,
+  'carriers' => [
+    0 => [
+      'name' => 'Česká pošta',
+      'slug' => 'cp',
+    ],
+    1 => [
+      'name' => 'PPL',
+      'slug' => 'ppl',
+    ],
+    2 => [
+      'name' => 'DPD',
+      'slug' => 'dpd',
+    ],
+    ...
+  ],
+]
+*/
+```
+
+
+### **CARRIERS/MY**
+
+Method **getActiveShippers** returns list of active carriers for used API keys.
+
+The client normalizes the response by returning only shipper codes.
+
+
+```php
+$shippers = $client->getActiveShippers();
+
+/*
+var_dump($shippers);
+[
+  0 => 'cp',
+  1 => 'ppl',
+  2 => 'dpd',
+  3 => 'geis',
+  4 => 'gls',
+  ...
+]
+*/
+```
+
 ## All available methods
 
 ```php
@@ -1265,6 +1394,8 @@ interface Client {
   function checkPackages(string $shipper, array $packages): void;
     
   function getAdrUnits(string $shipper, bool $fullData = false): array;
+  
+  function getFullAdrUnits(string $shipper): array;
     
   function getActivatedServices(string $shipper): array;
     
@@ -1285,6 +1416,10 @@ interface Client {
   function getAddAttributes(string $shipper): array;
   
   function getAddServiceOptions(string $shipper, string $service = null, bool $fullData = false): array;
+  
+  function getAccountInfo(): array;
+  
+  function getActiveShippers(): array;
 }
 ```
 
