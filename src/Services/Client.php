@@ -310,8 +310,8 @@ class Client
     ): void {
         $response = $this->requester->call(API::V2V1, $shipper, Request::ORDER_PICKUP, [
             'date'          => $dateFrom->format('Y-m-d'),
-            'time_from'     => $dateFrom->format('H:s'),
-            'time_to'       => $dateTo->format('H:s'),
+            'time_from'     => $dateFrom->format('H:i'),
+            'time_to'       => $dateTo->format('H:i'),
             'weight'        => $weight,
             'package_count' => $packageCount,
             'message'       => $message,
