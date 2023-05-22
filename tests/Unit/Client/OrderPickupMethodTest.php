@@ -50,8 +50,8 @@ class OrderPickupMethodTest extends AbstractClientTestCase
 
         $client->orderPickup(
             'cp',
-            new DateTime('2018-10-10 14:00:00'),
-            new DateTime('2018-12-10 20:00:00'),
+            new DateTime('2018-10-10 14:10:00'),
+            new DateTime('2018-12-10 20:20:00'),
             1,
             2,
             'TEST'
@@ -63,8 +63,8 @@ class OrderPickupMethodTest extends AbstractClientTestCase
                 'https://apiv2.balikobot.cz/cp/orderpickup',
                 [
                     'date'          => '2018-10-10',
-                    'time_from'     => '14:00',
-                    'time_to'       => '20:00',
+                    'time_from'     => '14:10',
+                    'time_to'       => '20:20',
                     'weight'        => 1,
                     'package_count' => 2,
                     'message'       => 'TEST',

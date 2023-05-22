@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v5.7.1...5.x)
 
 
+## [v5.7.2 (2023-05-22)](https://github.com/inspirum/balikobot-php/compare/v5.7.1...v5.7.2)
+### Fixed
+- Fixed **ORDERPICKUP** request datetime format ([#20](https://github.com/inspirum/balikobot-php/pull/20))
+
+
 ## [v5.7.1 (2023-04-18)](https://github.com/inspirum/balikobot-php/compare/v5.7.0...v5.7.1)
 ### Added
 - Added multiple missing service types
