@@ -635,8 +635,8 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
     public function testOrderPickup(): void
     {
         $carrier      = Carrier::PPL;
-        $dateFrom     = new DateTimeImmutable('2020-08-01 16:00:00');
-        $dateTo       = new DateTimeImmutable('2020-08-01 19:00:00');
+        $dateFrom     = new DateTimeImmutable('2020-08-01 16:10:00');
+        $dateTo       = new DateTimeImmutable('2020-08-01 19:20:00');
         $weight       = 15.6;
         $packageCount = 2;
         $message      = 'testMessage';
@@ -649,9 +649,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 $carrier,
                 Method::ORDER_PICKUP,
                 [
-                    'date'          => $dateFrom->format('Y-m-d'),
-                    'time_from'     => $dateFrom->format('H:s'),
-                    'time_to'       => $dateTo->format('H:s'),
+                    'date'          => '2020-08-01',
+                    'time_from'     => '16:10',
+                    'time_to'       => '19:20',
                     'weight'        => $weight,
                     'package_count' => $packageCount,
                     'message'       => $message,
@@ -677,8 +677,8 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         $this->expectExceptionMessage($errorMessage);
 
         $carrier      = Carrier::PPL;
-        $dateFrom     = new DateTimeImmutable('2020-08-01 16:00:00');
-        $dateTo       = new DateTimeImmutable('2020-08-01 19:00:00');
+        $dateFrom     = new DateTimeImmutable('2020-08-01 16:10:00');
+        $dateTo       = new DateTimeImmutable('2020-08-01 19:20:00');
         $weight       = 15.6;
         $packageCount = 2;
         $message      = 'testMessage';
@@ -693,9 +693,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 $carrier,
                 Method::ORDER_PICKUP,
                 [
-                    'date'          => $dateFrom->format('Y-m-d'),
-                    'time_from'     => $dateFrom->format('H:s'),
-                    'time_to'       => $dateTo->format('H:s'),
+                    'date'          => '2020-08-01',
+                    'time_from'     => '16:10',
+                    'time_to'       => '19:20',
                     'weight'        => $weight,
                     'package_count' => $packageCount,
                     'message'       => $message,

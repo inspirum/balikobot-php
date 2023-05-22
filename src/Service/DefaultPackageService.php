@@ -197,8 +197,8 @@ final class DefaultPackageService implements PackageService
     ): void {
         $response = $this->client->call(Version::V2V1, $carrier, Method::ORDER_PICKUP, [
             'date'          => $dateFrom->format('Y-m-d'),
-            'time_from'     => $dateFrom->format('H:s'),
-            'time_to'       => $dateTo->format('H:s'),
+            'time_from'     => $dateFrom->format('H:i'),
+            'time_to'       => $dateTo->format('H:i'),
             'weight'        => $weight,
             'package_count' => $packageCount,
             'message'       => $message,
