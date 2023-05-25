@@ -2,8 +2,6 @@
   "name": "inspirum/balikobot",
   "description": "PHP library for Balikobot API",
   "keywords": [
-    "inspirum",
-    "inspishop",
     "balikobot",
     "api-client"
   ],

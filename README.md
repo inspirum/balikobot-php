@@ -1,7 +1,5 @@
 # Balikobot API
 
-**Created as part of [inspishop][link-inspishop] e-commerce platform by [inspirum][link-inspirum] team.**
-
 [![Latest Stable Version][ico-packagist-stable]][link-packagist-stable]
 [![Build Status][ico-workflow]][link-workflow]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
@@ -326,8 +324,6 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 [link-api]:                 https://balikobot.docs.apiary.io/#introduction/prehled-zmen
 [link-api-v2]:              https://balikobotv2.docs.apiary.io/#introduction/prehled-zmen
 [link-api-v2-upgrade]:      https://balikobotv2.docs.apiary.io/#introduction/rozdil-api-v2-vs-api-v1
-[link-inspishop]:           https://www.inspishop.cz/
-[link-inspirum]:            https://www.inspirum.cz/
 [link-packagist-stable]:    https://packagist.org/packages/inspirum/balikobot
 [link-packagist-download]:  https://packagist.org/packages/inspirum/balikobot/stats
 [link-phpstan]:             https://github.com/phpstan/phpstan
