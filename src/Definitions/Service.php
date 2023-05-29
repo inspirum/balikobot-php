@@ -622,6 +622,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_CZ_EXPRESS_OSTRAVA_HD = '134';
 
     /**
+     * CZ Doručování do kufru
+     */
+    public const ZASILKOVNA_CZ_CAR_TRUNK = '25061';
+
+    /**
      * DE Německá pošta DHL HD
      */
     public const ZASILKOVNA_DE_POST_HD = '111';
@@ -2313,6 +2318,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_CZ_EXPRESS_BRNO_HD,
             self::ZASILKOVNA_CZ_EXPRESS_OSTRAVA_HD,
             self::ZASILKOVNA_CZ_COURIER_HD,
+            self::ZASILKOVNA_CZ_CAR_TRUNK,
             // self::ZASILKOVNA_DE_POST_HD,
             self::ZASILKOVNA_DE_HERMES_PP,
             self::ZASILKOVNA_DE_HERMES_HD,
