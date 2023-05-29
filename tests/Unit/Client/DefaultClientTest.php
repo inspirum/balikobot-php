@@ -15,9 +15,13 @@ use Inspirum\Balikobot\Exception\UnauthorizedException;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
+use function bin2hex;
 use function gzcompress;
+use function gzencode;
+use function hex2bin;
 use function is_array;
 use function json_encode;
+use function substr;
 
 final class DefaultClientTest extends BaseTestCase
 {
@@ -55,7 +59,7 @@ final class DefaultClientTest extends BaseTestCase
                 ],
             ],
             'path'    => null,
-            'url' => 'https://apiv2.balikobot.cz/cp/add',
+            'url'     => 'https://apiv2.balikobot.cz/cp/add',
         ];
 
         yield 'v2v2' => [
@@ -64,7 +68,7 @@ final class DefaultClientTest extends BaseTestCase
             'request' => Method::SERVICES,
             'data'    => [],
             'path'    => null,
-            'url' =>  'https://apiv2.balikobot.cz/v2/zasilkovna/services',
+            'url'     => 'https://apiv2.balikobot.cz/v2/zasilkovna/services',
         ];
 
         yield 'carrier_null' => [
@@ -73,7 +77,7 @@ final class DefaultClientTest extends BaseTestCase
             'request' => Method::INFO_CARRIERS,
             'data'    => [],
             'path'    => Carrier::CP,
-            'url' =>  'https://apiv2.balikobot.cz/info/carriers/cp',
+            'url'     => 'https://apiv2.balikobot.cz/info/carriers/cp',
         ];
 
         yield 'path' => [
@@ -82,7 +86,7 @@ final class DefaultClientTest extends BaseTestCase
             'request' => Method::ZIP_CODES,
             'data'    => [],
             'path'    => '1/CZ',
-            'url' =>   'https://apiv2.balikobot.cz/ppl/zipcodes/1/CZ',
+            'url'     => 'https://apiv2.balikobot.cz/ppl/zipcodes/1/CZ',
         ];
 
         yield 'v1v1' => [
@@ -91,7 +95,7 @@ final class DefaultClientTest extends BaseTestCase
             'request' => Method::ADD_SERVICE_OPTIONS,
             'data'    => [],
             'path'    => null,
-            'url' =>  'https://api.balikobot.cz/toptrans/addserviceoptions',
+            'url'     => 'https://api.balikobot.cz/toptrans/addserviceoptions',
         ];
     }
 
@@ -106,6 +110,7 @@ final class DefaultClientTest extends BaseTestCase
         bool $shouldHaveStatus,
         Throwable|array|bool $result,
         bool $gzip = false,
+        ?string $skip = null,
     ): void {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -114,7 +119,15 @@ final class DefaultClientTest extends BaseTestCase
 
         $client = $this->newDefaultClient($statusCode, $response);
 
-        $actualResponse = $client->call(Version::V1V1, Carrier::CP, Method::ADD, shouldHaveStatus: $shouldHaveStatus, gzip: $gzip);
+        try {
+            $actualResponse = $client->call(Version::V1V1, Carrier::CP, Method::ADD, shouldHaveStatus: $shouldHaveStatus, gzip: $gzip);
+        } catch (Throwable $exception) {
+            if ($skip !== null) {
+                self::markTestSkipped($skip);
+            }
+
+            throw $exception;
+        }
 
         if ($result === true) {
             self::assertSame($response, $actualResponse);
@@ -177,9 +190,35 @@ final class DefaultClientTest extends BaseTestCase
             'gzip'             => false,
         ];
 
-        yield 'compressed' => [
+        yield 'compressed_gz' => [
             'statusCode'       => 200,
             'response'         => (string) gzcompress((string) json_encode([
+                'status' => 200,
+                'test'   => 1596,
+            ])),
+            'shouldHaveStatus' => true,
+            'result'           => [
+                'status' => 200,
+                'test'   => 1596,
+            ],
+            'gzip'             => true,
+            'warning'          => 'Unsupported decompression (update to "guzzlehttp/psr7:^2.0")',
+        ];
+
+        yield 'compressed_gz_error' => [
+            'statusCode'       => 200,
+            'response'         => (string) gzcompress((string) json_encode([
+                'status' => 200,
+                'test'   => 1596,
+            ])),
+            'shouldHaveStatus' => true,
+            'result'           => new BadRequestException([], 400, message: 'Cannot parse response data'),
+            'gzip'             => false,
+        ];
+
+        yield 'compressed' => [
+            'statusCode'       => 200,
+            'response'         => self::getGzipStringWithFilename((string) json_encode([
                 'status' => 200,
                 'test'   => 1596,
             ])),
@@ -193,7 +232,7 @@ final class DefaultClientTest extends BaseTestCase
 
         yield 'compressed_error' => [
             'statusCode'       => 200,
-            'response'         => (string) gzcompress((string) json_encode([
+            'response'         => self::getGzipStringWithFilename((string) json_encode([
                 'status' => 200,
                 'test'   => 1596,
             ])),
@@ -219,6 +258,21 @@ final class DefaultClientTest extends BaseTestCase
             'shouldHaveStatus' => false,
             'result'           => new BadRequestException([], 404),
         ];
+    }
+
+    private static function getGzipStringWithFilename(string $value): string
+    {
+        $gzipped = bin2hex((string) gzencode($value));
+
+        $header    = substr($gzipped, 0, 20);
+        $header[6] = 0;
+        $header[7] = 8;
+
+        $filename = '64756d6d7900';
+
+        $rest = substr($gzipped, 20);
+
+        return (string) hex2bin($header . $filename . $rest);
     }
 
     /**
