@@ -211,10 +211,16 @@ Available framework integrations:
 But you can also use it without any framework implementation:
 
 ```php
-use Inspirum\Balikobot\Client\DefaultCurlRequester;
 use Inspirum\Balikobot\Client\DefaultClient;
+use Inspirum\Balikobot\Client\DefaultCurlRequester;
 use Inspirum\Balikobot\Client\Response\Validator;
+use Inspirum\Balikobot\Model\Label\DefaultLabelFactory;
+use Inspirum\Balikobot\Model\OrderedShipment\DefaultOrderedShipmentFactory;
+use Inspirum\Balikobot\Model\Package\DefaultPackageFactory;
+use Inspirum\Balikobot\Model\PackageData\DefaultPackageDataFactory;
+use Inspirum\Balikobot\Model\ProofOfDelivery\DefaultProofOfDeliveryFactory;
 use Inspirum\Balikobot\Model\Status\DefaultStatusFactory;
+use Inspirum\Balikobot\Model\TransportCost\DefaultTransportCostFactory;
 use Inspirum\Balikobot\Service\DefaultPackageService;
 use Inspirum\Balikobot\Service\DefaultTrackService;
 
@@ -227,13 +233,19 @@ $client    = new DefaultClient($requester, $validator);
 
 $packageService = new DefaultPackageService(
     $client,
-    // ... more arguments
+    new DefaultPackageDataFactory(),
+    new DefaultPackageFactory($validator),
+    new DefaultOrderedShipmentFactory(),
+    new DefaultLabelFactory(),
+    new DefaultProofOfDeliveryFactory($validator),
+    new DefaultTransportCostFactory($validator),
 );
 
 $trackService = new DefaultTrackService(
     $client,
     new DefaultStatusFactory($validator),
 );
+
 // ...
 ```
 
