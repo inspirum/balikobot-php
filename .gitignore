@@ -10,4 +10,3 @@
 /.phpunit.result.cache
 /.phpunit.cache/
 /.phpcs-cache
-/phpcs.xml
