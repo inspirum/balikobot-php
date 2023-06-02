@@ -206,6 +206,7 @@ or add a requirement to your `composer.json`:
 Available framework integrations:
 
 - [Symfony](https://github.com/inspirum/balikobot-php-symfony)
+- [Laravel](https://github.com/inspirum/balikobot-php-laravel)
 - [Nette](https://github.com/TomasHalasz/balikobot-nette)
 
 But you can also use it without any framework implementation:
