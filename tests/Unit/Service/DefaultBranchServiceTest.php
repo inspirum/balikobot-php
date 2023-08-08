@@ -732,7 +732,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
     {
         $branchFactory = $this->createMock(BranchFactory::class);
         $branchFactory->expects(self::exactly(count($arguments)))->method('createIterator')
-                      ->willReturnOnConsecutiveCalls(...$this->withConsecutive($arguments, $responses));
+                      ->will(self::withConsecutive($arguments, $responses));
 
         $branchFactory->expects(self::any())->method('wrapIterator')
                       ->willReturnCallback(static function (?string $carrier, ?string $service, ?array $countries, Traversable $iterator) {
@@ -754,7 +754,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
     ): BranchResolver {
         $branchResolver = $this->createMock(BranchResolver::class);
         $branchResolver->expects(self::exactly(count($arguments)))->method('hasFullBranchesSupport')
-                       ->willReturnOnConsecutiveCalls(...$this->withConsecutive($arguments, $fullBranchSupport));
+                       ->will(self::withConsecutive($arguments, $fullBranchSupport));
 
         if ($countryFilterSupports !== null) {
             $countryFilterArguments = [];
@@ -770,7 +770,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
             $branchResolver->expects(self::exactly(count($countryFilterArguments)))
                            ->method('hasBranchCountryFilterSupport')
-                           ->willReturnOnConsecutiveCalls(...$this->withConsecutive($countryFilterArguments, $countryFilterValues));
+                           ->will(self::withConsecutive($countryFilterArguments, $countryFilterValues));
         }
 
         return $branchResolver;
@@ -785,7 +785,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
         $settingService = $this->createMock(ServiceProvider::class);
         $settingService->expects(self::exactly(count($arguments)))
                        ->method('getServices')
-                       ->willReturnOnConsecutiveCalls(...$this->withConsecutive(array_map(static fn(string $carrier): array => [$carrier], $arguments), $responses));
+                       ->will(self::withConsecutive(array_map(static fn(string $carrier): array => [$carrier], $arguments), $responses));
 
         return $settingService;
     }

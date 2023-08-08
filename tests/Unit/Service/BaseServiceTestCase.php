@@ -55,7 +55,7 @@ abstract class BaseServiceTestCase extends BaseTestCase
     {
         $client = $this->createMock(Client::class);
         $client->expects(self::exactly(count($multipleArguments)))->method('call')
-               ->willReturnOnConsecutiveCalls(...$this->withConsecutive(
+               ->will(self::withConsecutive(
                    array_map(static fn(array $arguments): array => array_replace([
                        null,
                        null,

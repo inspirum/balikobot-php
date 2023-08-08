@@ -8,7 +8,9 @@ use GuzzleHttp\Psr7\Response;
 use Inspirum\Balikobot\Client\Requester;
 use LengthException;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls;
 use PHPUnit\Framework\MockObject\Stub\ReturnCallback;
+use PHPUnit\Framework\MockObject\Stub\Stub;
 use PHPUnit\Framework\TestCase;
 use function array_map;
 use function count;
@@ -54,18 +56,19 @@ abstract class BaseTestCase extends TestCase
 
     /**
      * @param array<array<int,mixed>> $arguments
-     * @param array<mixed>            $responses
-     *
-     * @return array<\PHPUnit\Framework\MockObject\Stub\Stub>
      */
-    protected function withConsecutive(array $arguments, array $responses): array
+    protected static function withConsecutive(array $arguments, mixed $responses = null): Stub
     {
-        if (count($arguments) !== count($responses)) {
+        if (is_array($responses) && count($arguments) !== count($responses)) {
             throw new LengthException('Arguments and responses arrays must be same length');
         }
 
-        return array_map(fn(array $arguments, mixed $response, int $i): ReturnCallback => new ReturnCallback(function () use ($arguments, $response, $i) {
-            $this->assertSame(
+        if (!is_array($responses)) {
+            $responses = array_map(static fn() => $responses, $arguments);
+        }
+
+        $values = array_map(static fn(array $arguments, mixed $response, int $i): ReturnCallback => new ReturnCallback(static function () use ($arguments, $response, $i) {
+            self::assertSame(
                 $arguments,
                 func_get_args(),
                 sprintf('Parameters for invocation #%d does not match expected value.', $i),
@@ -73,5 +76,7 @@ abstract class BaseTestCase extends TestCase
 
             return $response;
         }), $arguments, $responses, range(0, count($arguments) - 1));
+
+        return new ConsecutiveCalls($values);
     }
 }
