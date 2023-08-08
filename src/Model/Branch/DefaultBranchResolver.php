@@ -96,6 +96,7 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::RABEN => null,
             Carrier::SAMEDAY => null,
             Carrier::ZASILKOVNA => null,
+            Carrier::KURIER => null,
         ];
 
         return $this->hasSupport($supported, $carrier, $service);

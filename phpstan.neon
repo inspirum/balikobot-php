@@ -12,17 +12,13 @@ parameters:
 			count: 1
 			path: src/Model/BasePerCarrierCollection.php
 		-
-			message: '#^Parameter \#1 \$ of callable callable\(TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\)\: bool expects TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId, Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId given\.$#'
+			message: '#^Parameter \#1 \$ of callable callable\(TValue\): bool expects TValue of Inspirum\\Arrayable\\Arrayable<TItemKey of \(int\|string\), TItemValue>&Inspirum\\Balikobot\\Model\\WithCarrierId, Inspirum\\Arrayable\\Arrayable<TItemKey of \(int\|string\), TItemValue>&Inspirum\\Balikobot\\Model\\WithCarrierId given\.$#'
 			count: 1
 			path: src/Model/BasePerCarrierCollection.php
 		-
 			message: '#^Method Inspirum\\Balikobot\\Model\\BasePerCarrierCollection\:\:first\(\) should return \(TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\)\|null but returns Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\.$#'
 			count: 1
 			path: src/Model/BasePerCarrierCollection.php
-#		-
-#		    message: '#^PHPDoc tag \@return with type (iterable|array)\<.+\>|(.+) is not subtype of native type .+\.$#'
-#		    count: 30
-#		    path: src/**
 		-
 		    message: '#^PHPDoc tag \@return contains unresolvable type\.$#'
 		    count: 35

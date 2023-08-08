@@ -192,6 +192,11 @@ final class Service extends BaseEnum
     public const PPL_PRIVATE_SMART_EU = '48';
 
     /**
+     * PPL Parcel Return Connect
+     */
+    public const PPL_RETURN_CONNECT = '50';
+
+    /**
      * DPD Classic
      */
     public const DPD_CLASSIC = '1';
@@ -625,6 +630,11 @@ final class Service extends BaseEnum
      * CZ Doručování do kufru
      */
     public const ZASILKOVNA_CZ_CAR_TRUNK = '25061';
+
+    /**
+     * "CZ Zásilkovna večerní doručení Brno HD
+     */
+    public const ZASILKOVNA_CZ_EVENING_BRNO_HD = '26637';
 
     /**
      * DE Německá pošta DHL HD
@@ -1782,14 +1792,24 @@ final class Service extends BaseEnum
     public const KURIER_GARANTED = 'gdd';
 
     /**
+     * KURIER Garantované doručení na výdejní místo
+     */
+    public const KURIER_GARANTED_BRANCH = 'gdd_branch';
+
+    /**
      * KURIER Doručení do 12h
      */
     public const KURIER_12 = 'd12';
 
     /**
-     * KURIER Statndard
+     * KURIER Standard
      */
     public const KURIER_STANDARD = 'std';
+
+    /**
+     * KURIER Standard na výdejní místo
+     */
+    public const KURIER_STANDARD_BRANCH = 'std_branch';
 
     /**
      * DB Schenker System FIX
@@ -2218,6 +2238,7 @@ final class Service extends BaseEnum
             self::PPL_PRIVATE_PALETTE,
             self::PPL_PRIVATE_SMART_CZ,
             self::PPL_PRIVATE_SMART_EU,
+            self::PPL_RETURN_CONNECT,
         ];
     }
 
@@ -2315,10 +2336,11 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_BG_ECONT_BOX,
             // self::ZASILKOVNA_CZ_POST_HD,
             self::ZASILKOVNA_CZ_EXPRESS_PRAHA_HD,
-            self::ZASILKOVNA_CZ_EXPRESS_BRNO_HD,
+            // self::ZASILKOVNA_CZ_EXPRESS_BRNO_HD,
             self::ZASILKOVNA_CZ_EXPRESS_OSTRAVA_HD,
             self::ZASILKOVNA_CZ_COURIER_HD,
             self::ZASILKOVNA_CZ_CAR_TRUNK,
+            self::ZASILKOVNA_CZ_EVENING_BRNO_HD,
             // self::ZASILKOVNA_DE_POST_HD,
             self::ZASILKOVNA_DE_HERMES_PP,
             self::ZASILKOVNA_DE_HERMES_HD,
@@ -2608,8 +2630,10 @@ final class Service extends BaseEnum
     {
         return [
             self::KURIER_GARANTED,
+            self::KURIER_GARANTED_BRANCH,
             // self::KURIER_12,
             self::KURIER_STANDARD,
+            self::KURIER_STANDARD_BRANCH,
         ];
     }
 
