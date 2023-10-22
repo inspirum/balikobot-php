@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.6.1...master)
+### Added
+- Added support for new options from documentation **v1.986** (2023-09-13)
+  - Added **eori**, **gb_eori** and **eu_eori** attributes
 
 
 ## [v7.6.1 (2023-08-08)](https://github.com/inspirum/balikobot-php/compare/v7.6.0...v7.6.1)

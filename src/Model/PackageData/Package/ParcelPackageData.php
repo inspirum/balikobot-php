@@ -136,4 +136,19 @@ trait ParcelPackageData
     {
         $this->offsetSet(Attribute::DCL_PDF, $value);
     }
+
+    public function setEORI(string $value): void
+    {
+        $this->offsetSet(Attribute::EORI, $value);
+    }
+
+    public function setGBEORI(string $value): void
+    {
+        $this->offsetSet(Attribute::GB_EORI, $value);
+    }
+
+    public function setEUEORI(string $value): void
+    {
+        $this->offsetSet(Attribute::EU_EORI, $value);
+    }
 }

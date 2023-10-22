@@ -903,6 +903,21 @@ final class Attribute extends BaseEnum
     public const RETURN_BARCODE = 'return_barcode';
 
     /**
+     * Číslo EORI
+     */
+    public const EORI = 'eori';
+
+    /**
+     * Číslo EORI pro Velkou Británii - poviné pro zásilky do GB nad 135 GBP nebo 2kg
+     */
+    public const GB_EORI = 'gb_eori';
+
+    /**
+     * Číslo EORI pro Evropskou unii - poviné pro zásilky do GB nad 135 GBP nebo 2kg
+     */
+    public const EU_EORI = 'eu_eori';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

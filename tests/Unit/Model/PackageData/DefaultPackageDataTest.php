@@ -210,6 +210,9 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setNoteInvoice('note1');
         $package->setInvoiceType('PRO_FORMA_INVOICE');
         $package->setReturnBarcode(true);
+        $package->setEORI('1234');
+        $package->setGBEORI('5678');
+        $package->setEUEORI('9012');
 
         $unsupportedAttributes = array_diff(Attribute::getAll(), array_keys($package->getData()));
 
@@ -377,6 +380,9 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::NOTE_INVOICE                  => 'note1',
                 Attribute::INVOICE_TYPE                  => 'PRO_FORMA_INVOICE',
                 Attribute::RETURN_BARCODE                => 1,
+                Attribute::EORI                          => '1234',
+                Attribute::GB_EORI                       => '5678',
+                Attribute::EU_EORI                       => '9012',
             ],
             $package->__toArray(),
         );
