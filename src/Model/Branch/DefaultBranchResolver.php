@@ -73,6 +73,20 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::SAMEDAY_LOCKER_RETURN,
             ],
             Carrier::MAGYARPOSTA => null,
+            Carrier::RABEN => [
+                Service::RABEN_CLASSIC_TIME,
+                Service::RABEN_PREMIUM_TIME,
+            ],
+            Carrier::DHLFREIGHTEC => [
+                Service::DHLFREIGHTEC_ECD_B2B,
+                Service::DHLFREIGHTEC_ECD_B2C,
+            ],
+            Carrier::KURIER => [
+                Service::KURIER_GARANTED,
+                Service::KURIER_GARANTED_BRANCH,
+                Service::KURIER_STANDARD,
+                Service::KURIER_STANDARD_BRANCH,
+            ],
         ];
 
         return $this->hasSupport($supported, $carrier, $service);
@@ -91,12 +105,21 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::ULOZENKA => null,
             Carrier::PBH => [
                 Service::PBH_CP_NP,
+                Service::PBH_SPS,
+                Service::PBH_SP,
+                Service::PBH_MP,
+                Service::PBH_RP,
+                Service::PBH_INPOST_KURIER,
+                Service::PBH_FAN_KURIER,
+                Service::PBH_SPEEDY,
+                Service::PBH_ECONT,
             ],
             Carrier::SPS => null,
             Carrier::RABEN => null,
             Carrier::SAMEDAY => null,
             Carrier::ZASILKOVNA => null,
             Carrier::KURIER => null,
+            Carrier::MAGYARPOSTA => null,
         ];
 
         return $this->hasSupport($supported, $carrier, $service);

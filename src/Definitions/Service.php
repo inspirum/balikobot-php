@@ -867,6 +867,16 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_IE_ANPOST_HD = '9990';
 
     /**
+     * IE FedEx HD Connect Plus
+     */
+    public const ZASILKOVNA_IE_FEDEX_HD_CONNECT_PLUS = '24810';
+
+    /**
+     * IE FedEx HD Priority
+     */
+    public const ZASILKOVNA_IE_FEDEX_HD_PRIORITY = '24811';
+
+    /**
      * IT Bartolini Home
      */
     public const ZASILKOVNA_IT_BARTOLINI_HD = '9103';
@@ -2388,6 +2398,8 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_CH_POST_HD,
             // self::ZASILKOVNA_IE_HERMES_HD,
             self::ZASILKOVNA_IE_ANPOST_HD,
+            self::ZASILKOVNA_IE_FEDEX_HD_CONNECT_PLUS,
+            self::ZASILKOVNA_IE_FEDEX_HD_PRIORITY,
             self::ZASILKOVNA_IL_FEDEX_PRIORITY_HD,
             self::ZASILKOVNA_IL_FEDEX_ECONOMY_HD,
             self::ZASILKOVNA_IT_BARTOLINI_HD,
