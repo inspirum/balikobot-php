@@ -2037,9 +2037,14 @@ final class Service extends BaseEnum
     public const SAMEDAY_LOCKER_NEXT_DAY = '15';
 
     /**
-     * "Locker Return
+     * Locker Return
      */
     public const SAMEDAY_LOCKER_RETURN = '24';
+
+    /**
+     * SDS Standard
+     */
+    public const SDS_STANDART = 'Standard';
 
     /**
      * @return array<string>|null
@@ -2089,6 +2094,7 @@ final class Service extends BaseEnum
             Carrier::LIFTAGO      => self::liftago(),
             Carrier::MAGYARPOSTA  => self::magyarposta(),
             Carrier::SAMEDAY      => self::sameday(),
+            Carrier::SDS          => self::sds(),
         ];
     }
 
@@ -2732,6 +2738,14 @@ final class Service extends BaseEnum
             self::SAMEDAY_STANDARD_RETURN,
             self::SAMEDAY_LOCKER_NEXT_DAY,
             self::SAMEDAY_LOCKER_RETURN,
+        ];
+    }
+
+    /** @return array<string> */
+    private static function sds(): array
+    {
+        return [
+            self::SDS_STANDART,
         ];
     }
 }

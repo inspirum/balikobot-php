@@ -175,4 +175,9 @@ final class Carrier extends BaseEnum
      * Sameday
      */
     public const SAMEDAY = 'sameday';
+
+    /**
+     * Sameday
+     */
+    public const SDS = 'sds';
 }
