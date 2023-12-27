@@ -8,6 +8,7 @@ use Inspirum\Balikobot\Definitions\Attribute;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Method;
 use Inspirum\Balikobot\Definitions\Version;
+use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Model\Attribute\Attribute as AttributeModel;
 use Inspirum\Balikobot\Model\Method\Method as MethodModel;
 use function array_diff;
@@ -26,7 +27,7 @@ final class ChangesSupportTest extends BaseTestCase
 
         $changelog = $infoService->getChangelog();
 
-        $expected = (float) '1.987';
+        $expected = (float) '1.990';
         $actual   = (float) $changelog->getLatestVersion();
 
         if ($actual > $expected) {
@@ -42,10 +43,18 @@ final class ChangesSupportTest extends BaseTestCase
         $attributes     = [];
 
         foreach (Carrier::getAll() as $carrier) {
-            $attributes[] = array_map(
-                static fn(AttributeModel $attribute): string => $attribute->getName(),
-                $settingService->getAddAttributes($carrier)->getAttributes(),
-            );
+            try {
+                $attributes[] = array_map(
+                    static fn(AttributeModel $attribute): string => $attribute->getName(),
+                    $settingService->getAddAttributes($carrier)->getAttributes(),
+                );
+            } catch (Exception $exception) {
+                if ($exception->getStatusCode() === 503) {
+                    continue;
+                }
+
+                throw $exception;
+            }
         }
 
         $attributes          = array_unique(array_merge(...$attributes));

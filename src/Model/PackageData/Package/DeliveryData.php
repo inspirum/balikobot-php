@@ -243,4 +243,9 @@ trait DeliveryData
     {
         $this->offsetSet(Attribute::SHIPPER_VAT, $code);
     }
+
+    public function setShipperAccountNumber(string $number): void
+    {
+        $this->offsetSet(Attribute::SHIPPER_ACCOUNT_NUMBER, $number);
+    }
 }

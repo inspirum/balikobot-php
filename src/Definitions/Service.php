@@ -602,6 +602,16 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_BG_ECONT_BOX = '19470';
 
     /**
+     * BG Sameday HD
+     */
+    public const ZASILKOVNA_BG_SAMEDAY_HD = '26066';
+
+    /**
+     * BG Sameday Box
+     */
+    public const ZASILKOVNA_BG_SAMEDAY_BOX = '26067';
+
+    /**
      * CZ Česká pošta HD
      */
     public const ZASILKOVNA_CZ_POST_HD = '13';
@@ -1067,6 +1077,16 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_SI_POST_BOX = '19517';
 
     /**
+     * SI Express One HD
+     */
+    public const ZASILKOVNA_SI_EXPRESS_ONE_HD = '25004';
+
+    /**
+     * SI Express One PP
+     */
+    public const ZASILKOVNA_SI_EXPRESS_ONE_PP = '25005';
+
+    /**
      * Expresné doručenie Bratislava
      */
     public const ZASILKOVNA_SK_EXPRESS_BRATISLAVA_HD = '132';
@@ -1207,7 +1227,7 @@ final class Service extends BaseEnum
     public const PBH_PP = '13';
 
     /**
-     * polský Inpost Kurier
+     * Polský Inpost Kurier
      */
     public const PBH_INPOST_KURIER = '14';
 
@@ -1280,6 +1300,21 @@ final class Service extends BaseEnum
      * Express UPS
      */
     public const PBH_UPS = '28';
+
+    /**
+     * Warenpost
+     */
+    public const PBH_WARENPOST = '29';
+
+    /**
+     * Chorvatská pošta
+     */
+    public const PBH_HR_POST = '30';
+
+    /**
+     * BOX NOW
+     */
+    public const PBH_BOX_NOW = '31';
 
     /**
      * Worlwide zásilky
@@ -1977,6 +2012,21 @@ final class Service extends BaseEnum
     public const LIFTAGO_STANDARD_22 = 'standard-20-22';
 
     /**
+     * Liftago SLot 10-12h
+     */
+    public const LIFTAGO_SLOT_12 = 'SLOT10-12';
+
+    /**
+     * Liftago SLot 12-15h
+     */
+    public const LIFTAGO_SLOT_15 = 'SLOT12-15';
+
+    /**
+     * Liftago SLot 18-21h
+     */
+    public const LIFTAGO_SLOT_21 = 'SLOT18-21';
+
+    /**
      * MPL Business parcel (Domestic)
      */
     public const MAGYARPOSTA_MPL_BUSINESS = 'A_175_UZL';
@@ -2237,6 +2287,9 @@ final class Service extends BaseEnum
             self::PBH_ROYAL_MAIL_48,
             self::PBH_EXPRESS_ONE,
             self::PBH_UPS,
+            self::PBH_WARENPOST,
+            self::PBH_HR_POST,
+            self::PBH_BOX_NOW,
         ];
     }
 
@@ -2350,6 +2403,8 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_BG_SPEEDY_PP,
             self::ZASILKOVNA_BG_SPEEDY_HD,
             self::ZASILKOVNA_BG_ECONT_BOX,
+            self::ZASILKOVNA_BG_SAMEDAY_HD,
+            self::ZASILKOVNA_BG_SAMEDAY_BOX,
             // self::ZASILKOVNA_CZ_POST_HD,
             self::ZASILKOVNA_CZ_EXPRESS_PRAHA_HD,
             // self::ZASILKOVNA_CZ_EXPRESS_BRNO_HD,
@@ -2406,8 +2461,8 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_IE_ANPOST_HD,
             self::ZASILKOVNA_IE_FEDEX_HD_CONNECT_PLUS,
             self::ZASILKOVNA_IE_FEDEX_HD_PRIORITY,
-            self::ZASILKOVNA_IL_FEDEX_PRIORITY_HD,
-            self::ZASILKOVNA_IL_FEDEX_ECONOMY_HD,
+            // self::ZASILKOVNA_IL_FEDEX_PRIORITY_HD,
+            // self::ZASILKOVNA_IL_FEDEX_ECONOMY_HD,
             self::ZASILKOVNA_IT_BARTOLINI_HD,
             self::ZASILKOVNA_IT_BARTOLINI_PP,
             // self::ZASILKOVNA_IT_GLS_HD,
@@ -2449,6 +2504,8 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_SI_POST_HD,
             self::ZASILKOVNA_SI_POST_PP,
             self::ZASILKOVNA_SI_POST_BOX,
+            self::ZASILKOVNA_SI_EXPRESS_ONE_HD,
+            self::ZASILKOVNA_SI_EXPRESS_ONE_PP,
             self::ZASILKOVNA_SK_EXPRESS_BRATISLAVA_HD,
             self::ZASILKOVNA_SK_COURIER_HD,
             // self::ZASILKOVNA_SK_POST_HD,
@@ -2703,14 +2760,17 @@ final class Service extends BaseEnum
         return [
             self::LIFTAGO_EXPRESS,
             self::LIFTAGO_STANDARD,
-            self::LIFTAGO_STANDARD_8,
-            self::LIFTAGO_STANDARD_10,
-            self::LIFTAGO_STANDARD_12,
-            self::LIFTAGO_STANDARD_14,
-            self::LIFTAGO_STANDARD_16,
-            self::LIFTAGO_STANDARD_18,
-            self::LIFTAGO_STANDARD_20,
-            self::LIFTAGO_STANDARD_22,
+            // self::LIFTAGO_STANDARD_8,
+            // self::LIFTAGO_STANDARD_10,
+            // self::LIFTAGO_STANDARD_12,
+            // self::LIFTAGO_STANDARD_14,
+            // self::LIFTAGO_STANDARD_16,
+            // self::LIFTAGO_STANDARD_18,
+            // self::LIFTAGO_STANDARD_20,
+            // self::LIFTAGO_STANDARD_22,
+            self::LIFTAGO_SLOT_12,
+            self::LIFTAGO_SLOT_15,
+            self::LIFTAGO_SLOT_21,
         ];
     }
 

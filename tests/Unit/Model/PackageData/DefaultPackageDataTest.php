@@ -207,6 +207,7 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setTransformTempFrom(5);
         $package->setTransformTempTO(60);
         $package->setShipperVat('21');
+        $package->setShipperAccountNumber('765432/0300');
         $package->setNoteInvoice('note1');
         $package->setInvoiceType('PRO_FORMA_INVOICE');
         $package->setReturnBarcode(true);
@@ -377,6 +378,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::TRANSFORM_TEMP_FROM           => 5.0,
                 Attribute::TRANSFORM_TEMP_TO             => 60.0,
                 Attribute::SHIPPER_VAT                   => '21',
+                Attribute::SHIPPER_ACCOUNT_NUMBER                   => '765432/0300',
                 Attribute::NOTE_INVOICE                  => 'note1',
                 Attribute::INVOICE_TYPE                  => 'PRO_FORMA_INVOICE',
                 Attribute::RETURN_BARCODE                => 1,

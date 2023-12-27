@@ -873,7 +873,7 @@ final class Attribute extends BaseEnum
     public const CONTENT_PRODUCE_CODE = 'content_produce_code';
 
     /**
-     * dentifikační číslo plátce přepravy
+     * Identifikační číslo plátce přepravy
      */
     public const SHIPPER_VAT = 'shipper_vat';
 
@@ -916,6 +916,11 @@ final class Attribute extends BaseEnum
      * Číslo EORI pro Evropskou unii - poviné pro zásilky do GB nad 135 GBP nebo 2kg
      */
     public const EU_EORI = 'eu_eori';
+
+    /**
+     * Číslo účtu odesilatele
+     */
+    public const SHIPPER_ACCOUNT_NUMBER = 'shipper_account_number';
 
     /**
      * @deprecated

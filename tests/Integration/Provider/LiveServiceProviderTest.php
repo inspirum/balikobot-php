@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Tests\Integration;
 
 use Inspirum\Balikobot\Definitions\Service;
+use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Provider\LiveCarrierProvider;
 use Inspirum\Balikobot\Provider\LiveServiceProvider;
 use function sprintf;
@@ -18,7 +19,16 @@ final class LiveServiceProviderTest extends BaseTestCase
 
         foreach ($carrierProvider->getCarriers() as $carrier) {
             $expectedServices = Service::getForCarrier($carrier);
-            $services         = $serviceProvider->getServices($carrier);
+
+            try {
+                $services = $serviceProvider->getServices($carrier);
+            } catch (Exception $exception) {
+                if ($exception->getStatusCode() === 503) {
+                    continue;
+                }
+
+                throw  $exception;
+            }
 
             self::assertEqualsCanonicalizing(
                 $expectedServices,

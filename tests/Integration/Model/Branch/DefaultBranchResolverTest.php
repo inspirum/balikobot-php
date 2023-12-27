@@ -8,6 +8,7 @@ use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Country;
 use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Exception\BadRequestException;
+use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Model\Branch\BranchResolver;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchResolver;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -42,7 +43,11 @@ final class DefaultBranchResolverTest extends BaseTestCase
             } else {
                 $this->assertNoException();
             }
-        } catch (BadRequestException $exception) {
+        } catch (Exception $exception) {
+            if ($exception->getStatusCode() === 503) {
+                self::markTestIncomplete(sprintf('%s/%s is unavailable', strtoupper($carrier), $service));
+            }
+
             self::assertFalse(
                 $branchResolver->hasFullBranchesSupport($carrier, $service),
                 sprintf(
@@ -90,7 +95,11 @@ final class DefaultBranchResolverTest extends BaseTestCase
             } else {
                 self::assertTrue($shouldSupport, sprintf('%s/%s should not support branch country filter', strtoupper($carrier), $service));
             }
-        } catch (BadRequestException $exception) {
+        } catch (Exception $exception) {
+            if ($exception->getStatusCode() === 503) {
+                self::markTestIncomplete(sprintf('%s/%s is unavailable', strtoupper($carrier), $service));
+            }
+
             self::assertFalse(
                 $branchResolver->hasBranchCountryFilterSupport($carrier, $service),
                 sprintf(
@@ -136,14 +145,14 @@ final class DefaultBranchResolverTest extends BaseTestCase
 
                     break;
                 }
-            } catch (BadRequestException $exception) {
-                if ($exception->getStatusCode() === 501) {
-                    continue;
+            } catch (Exception $exception) {
+                if ($exception->getStatusCode() === 501 || $exception->getStatusCode() === 503) {
+                    self::markTestIncomplete(sprintf('%s is unavailable', strtoupper($carrier)));
                 }
 
                 $errorMessage = $exception->getResponse()['status_message'] ?? '';
                 if (str_contains($errorMessage, 'Neznámý kód služby') === false) {
-                    $this->fail(sprintf('%s: %s', $carrier, $exception->getMessage()));
+                    $this->fail(sprintf('%s: %s', strtoupper($carrier), $exception->getMessage()));
                 }
             }
         }
