@@ -6,10 +6,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.6.1...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.7.0...master)
+
+
+## [v7.7.0 (2023-12-27)](https://github.com/inspirum/balikobot-php/compare/v7.6.1...v7.7.0)
 ### Added
 - Added support for new options from documentation **v1.986** (2023-09-13)
   - Added **eori**, **gb_eori** and **eu_eori** attributes
+- Added support for new options from documentation **v1.989** (2023-11-27)
+  - Added **shipper_account_number** attributes
+- Added support for new options from documentation **v1.990** (2023-11-30)
+  - Added **SDS** carrier
 
 
 ## [v7.6.1 (2023-08-08)](https://github.com/inspirum/balikobot-php/compare/v7.6.0...v7.6.1)
