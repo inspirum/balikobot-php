@@ -2097,6 +2097,16 @@ final class Service extends BaseEnum
     public const SDS_STANDART = 'Standard';
 
     /**
+     * HU Maďarská pošta Box
+     */
+    public const ZASILKOVNA_HU_MADARSKA_POSTA_BOX = '29760';
+
+    /**
+     * HU Maďarská pošta PP
+     */
+    public const ZASILKOVNA_HU_MADARSKA_POSTA_PP = '4539';
+
+    /**
      * @return array<string>|null
      */
     public static function getForCarrier(string $carrier): ?array
@@ -2455,6 +2465,8 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_HU_COURIER_HD,
             self::ZASILKOVNA_HU_POST_HD,
             // self::ZASILKOVNA_HU_FAMA_FUTAR_HD,
+            self::ZASILKOVNA_HU_MADARSKA_POSTA_PP,
+            self::ZASILKOVNA_HU_MADARSKA_POSTA_BOX,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
             self::ZASILKOVNA_CH_POST_HD,
             // self::ZASILKOVNA_IE_HERMES_HD,
