@@ -852,6 +852,16 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_HU_POST_HD = '763';
 
     /**
+     * Maďarská pošta PP
+     */
+    public const ZASILKOVNA_HU_POST_PP = '4539';
+
+    /**
+     * Maďarská pošta Box
+     */
+    public const ZASILKOVNA_HU_POST_BOX = '29760';
+
+    /**
      * HU Fáma Futár HD
      */
     public const ZASILKOVNA_HU_FAMA_FUTAR_HD = '10061';
@@ -2110,41 +2120,41 @@ final class Service extends BaseEnum
     private static function getForCarriers(): array
     {
         return [
-            Carrier::CP           => self::cp(),
-            Carrier::DPD          => self::dpd(),
-            Carrier::DHL          => self::dhl(),
-            Carrier::GEIS         => self::geis(),
-            Carrier::GLS          => self::gls(),
-            Carrier::INTIME       => self::intime(),
-            Carrier::PBH          => self::pbh(),
-            Carrier::PPL          => self::ppl(),
-            Carrier::SP           => self::sp(),
-            Carrier::SPS          => self::sps(),
-            Carrier::TOPTRANS     => self::topTrans(),
-            Carrier::ULOZENKA     => self::ulozenka(),
-            Carrier::UPS          => self::ups(),
-            Carrier::ZASILKOVNA   => self::zasilkovna(),
-            Carrier::TNT          => self::tnt(),
-            Carrier::GW           => self::gw(),
-            Carrier::GWCZ         => self::gwcz(),
-            Carrier::MESSENGER    => self::messenger(),
-            Carrier::DHLDE        => self::dhlde(),
-            Carrier::FEDEX        => self::fedex(),
-            Carrier::FOFR         => self::fofr(),
-            Carrier::DACHSER      => self::dachser(),
-            Carrier::DHLPARCEL    => self::dhlparcel(),
-            Carrier::RABEN        => self::raben(),
-            Carrier::SPRING       => self::spring(),
-            Carrier::DSV          => self::dsv(),
+            Carrier::CP => self::cp(),
+            Carrier::DPD => self::dpd(),
+            Carrier::DHL => self::dhl(),
+            Carrier::GEIS => self::geis(),
+            Carrier::GLS => self::gls(),
+            Carrier::INTIME => self::intime(),
+            Carrier::PBH => self::pbh(),
+            Carrier::PPL => self::ppl(),
+            Carrier::SP => self::sp(),
+            Carrier::SPS => self::sps(),
+            Carrier::TOPTRANS => self::topTrans(),
+            Carrier::ULOZENKA => self::ulozenka(),
+            Carrier::UPS => self::ups(),
+            Carrier::ZASILKOVNA => self::zasilkovna(),
+            Carrier::TNT => self::tnt(),
+            Carrier::GW => self::gw(),
+            Carrier::GWCZ => self::gwcz(),
+            Carrier::MESSENGER => self::messenger(),
+            Carrier::DHLDE => self::dhlde(),
+            Carrier::FEDEX => self::fedex(),
+            Carrier::FOFR => self::fofr(),
+            Carrier::DACHSER => self::dachser(),
+            Carrier::DHLPARCEL => self::dhlparcel(),
+            Carrier::RABEN => self::raben(),
+            Carrier::SPRING => self::spring(),
+            Carrier::DSV => self::dsv(),
             Carrier::DHLFREIGHTEC => self::dhlfreightec(),
-            Carrier::KURIER       => self::kurier(),
-            Carrier::DBSCHENKER   => self::dbschenker(),
-            Carrier::AIRWAY       => self::airway(),
-            Carrier::JAPO         => self::japo(),
-            Carrier::LIFTAGO      => self::liftago(),
-            Carrier::MAGYARPOSTA  => self::magyarposta(),
-            Carrier::SAMEDAY      => self::sameday(),
-            Carrier::SDS          => self::sds(),
+            Carrier::KURIER => self::kurier(),
+            Carrier::DBSCHENKER => self::dbschenker(),
+            Carrier::AIRWAY => self::airway(),
+            Carrier::JAPO => self::japo(),
+            Carrier::LIFTAGO => self::liftago(),
+            Carrier::MAGYARPOSTA => self::magyarposta(),
+            Carrier::SAMEDAY => self::sameday(),
+            Carrier::SDS => self::sds(),
         ];
     }
 
@@ -2454,6 +2464,8 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
             self::ZASILKOVNA_HU_POST_HD,
+            self::ZASILKOVNA_HU_POST_PP,
+            self::ZASILKOVNA_HU_POST_BOX,
             // self::ZASILKOVNA_HU_FAMA_FUTAR_HD,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
             self::ZASILKOVNA_CH_POST_HD,
