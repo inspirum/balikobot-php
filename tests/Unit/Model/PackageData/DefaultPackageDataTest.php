@@ -214,6 +214,7 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setEORI('1234');
         $package->setGBEORI('5678');
         $package->setEUEORI('9012');
+        $package->setCustomIndicator(true);
 
         $unsupportedAttributes = array_diff(Attribute::getAll(), array_keys($package->getData()));
 
@@ -378,13 +379,14 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::TRANSFORM_TEMP_FROM           => 5.0,
                 Attribute::TRANSFORM_TEMP_TO             => 60.0,
                 Attribute::SHIPPER_VAT                   => '21',
-                Attribute::SHIPPER_ACCOUNT_NUMBER                   => '765432/0300',
+                Attribute::SHIPPER_ACCOUNT_NUMBER        => '765432/0300',
                 Attribute::NOTE_INVOICE                  => 'note1',
                 Attribute::INVOICE_TYPE                  => 'PRO_FORMA_INVOICE',
                 Attribute::RETURN_BARCODE                => 1,
                 Attribute::EORI                          => '1234',
                 Attribute::GB_EORI                       => '5678',
                 Attribute::EU_EORI                       => '9012',
+                Attribute::CUSTOMS_INDICATOR             => 1,
             ],
             $package->__toArray(),
         );

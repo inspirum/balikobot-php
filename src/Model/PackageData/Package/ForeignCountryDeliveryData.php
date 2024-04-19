@@ -85,4 +85,9 @@ trait ForeignCountryDeliveryData
     {
         $this->offsetSet(Attribute::NOTE_INVOICE, $note);
     }
+
+    public function setCustomIndicator(bool $value): void
+    {
+        $this->offsetSet(Attribute::CUSTOMS_INDICATOR, (int) $value);
+    }
 }

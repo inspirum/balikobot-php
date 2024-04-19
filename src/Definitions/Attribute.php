@@ -923,6 +923,11 @@ final class Attribute extends BaseEnum
     public const SHIPPER_ACCOUNT_NUMBER = 'shipper_account_number';
 
     /**
+     * Označení zda zásilka je nebo není v celním režimu
+     */
+    public const CUSTOMS_INDICATOR = 'customs_indicator';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';
