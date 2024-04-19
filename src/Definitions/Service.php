@@ -702,6 +702,21 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_EE_OMNIVA_BOX = '5062';
 
     /**
+     * EE Venipak HD
+     */
+    public const ZASILKOVNA_EE_VENIPAK_HD = '25980';
+
+    /**
+     * EE Venipak PP
+     */
+    public const ZASILKOVNA_EE_VENIPAK_PP = '25985';
+
+    /**
+     * EE Venipak Box
+     */
+    public const ZASILKOVNA_EE_VENIPAK_BOX = '25989';
+
+    /**
      * ES Correos HD
      */
     public const ZASILKOVNA_ES_CORREOS_HD = '4638';
@@ -730,6 +745,21 @@ final class Service extends BaseEnum
      * FI Post Nord Pickup Point
      */
     public const ZASILKOVNA_FI_POST_NORD_PP = '4828';
+
+    /**
+     * FI Matkahuolto HD
+     */
+    public const ZASILKOVNA_FI_MATKAHUOLTO_HD = '26985';
+
+    /**
+     * FI Matkahuolto PP
+     */
+    public const ZASILKOVNA_FI_MATKAHUOLTO_PP = '26986';
+
+    /**
+     * FI Matkahuolto BOX
+     */
+    public const ZASILKOVNA_FI_MATKAHUOLTO_BOX = '26987';
 
     /**
      * FR Colis Privé HD
@@ -834,7 +864,7 @@ final class Service extends BaseEnum
     /**
      * Maďarsko Express One (Transoflex)
      */
-    public const ZASILKOVNA_HU_EXPRESS_ONE_HD = '151';
+    public const ZASILKOVNA_HU_EXPRESS_ONE_HD = '3828';
 
     /**
      * Maďarsko DPD
@@ -945,6 +975,21 @@ final class Service extends BaseEnum
      * LV Omniva Home
      */
     public const ZASILKOVNA_LV_OMNIVA_HD = '5063';
+
+    /**
+     * LV Venipak HD
+     */
+    public const ZASILKOVNA_LV_VENIPAK_HD = '25981';
+
+    /**
+     * LV Venipak PP
+     */
+    public const ZASILKOVNA_LV_VENIPAK_PP = '25987';
+
+    /**
+     * LV Venipak Box
+     */
+    public const ZASILKOVNA_LV_VENIPAK_BOX = '25990';
 
     /**
      * NL DHL HD
@@ -1170,6 +1215,21 @@ final class Service extends BaseEnum
      * LT Lithuanian Post Box
      */
     public const ZASILKOVNA_LT_POST_BOX = '18809';
+
+    /**
+     * LT Venipak HD
+     */
+    public const ZASILKOVNA_LT_VENIPAK_HD = '25982';
+
+    /**
+     * LT Venipak PP
+     */
+    public const ZASILKOVNA_LT_VENIPAK_PP = '25988';
+
+    /**
+     * LT Venipak Box
+     */
+    public const ZASILKOVNA_LT_VENIPAK_BOX = '25992';
 
     /**
      * DHL
@@ -2311,7 +2371,7 @@ final class Service extends BaseEnum
             self::PPL_AFTERNOON,
             self::PPL_PRIVATE,
             self::PPL_BUSINESS,
-            self::PPL_PRIVATE_EVENING,
+            // self::PPL_PRIVATE_EVENING,
             self::PPL_BUSINESS_EU,
             self::PPL_BUSINESS_PALETTE,
             self::PPL_PRIVATE_PALETTE,
@@ -2433,13 +2493,19 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_EE_OMNIVA_HD,
             self::ZASILKOVNA_EE_OMNIVA_PP,
             self::ZASILKOVNA_EE_OMNIVA_BOX,
-            self::ZASILKOVNA_ES_CORREOS_HD,
             self::ZASILKOVNA_EE_LT_POST_HD,
+            self::ZASILKOVNA_EE_VENIPAK_HD,
+            self::ZASILKOVNA_EE_VENIPAK_PP,
+            self::ZASILKOVNA_EE_VENIPAK_BOX,
+            self::ZASILKOVNA_ES_CORREOS_HD,
             self::ZASILKOVNA_ES_MRW_HD,
             self::ZASILKOVNA_ES_MRW_PP,
             // self::ZASILKOVNA_ES_ENVIALIA_HD,
             self::ZASILKOVNA_FI_POST_NORD_HP,
             self::ZASILKOVNA_FI_POST_NORD_PP,
+            self::ZASILKOVNA_FI_MATKAHUOLTO_HD,
+            self::ZASILKOVNA_FI_MATKAHUOLTO_PP,
+            self::ZASILKOVNA_FI_MATKAHUOLTO_BOX,
             // self::ZASILKOVNA_FR_COLIS_PRIVE_HD,
             // self::ZASILKOVNA_FR_MONDIAL_PP,
             self::ZASILKOVNA_FR_COLISSIMO_PP,
@@ -2460,7 +2526,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_HR_DPD_HD,
             self::ZASILKOVNA_HR_POST_PP,
             self::ZASILKOVNA_HR_POST_HD,
-            // self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
+            self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
             self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
             self::ZASILKOVNA_HU_POST_HD,
@@ -2486,8 +2552,14 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_LV_OMNIVA_BOX,
             self::ZASILKOVNA_LV_OMNIVA_HD,
             self::ZASILKOVNA_LV_LT_POST_HD,
+            self::ZASILKOVNA_LV_VENIPAK_HD,
+            self::ZASILKOVNA_LV_VENIPAK_PP,
+            self::ZASILKOVNA_LV_VENIPAK_BOX,
             self::ZASILKOVNA_LT_POST_HD,
             self::ZASILKOVNA_LT_POST_BOX,
+            self::ZASILKOVNA_LT_VENIPAK_HD,
+            self::ZASILKOVNA_LT_VENIPAK_PP,
+            self::ZASILKOVNA_LT_VENIPAK_BOX,
             self::ZASILKOVNA_NL_DHL_HD,
             self::ZASILKOVNA_NL_POST_HD,
             self::ZASILKOVNA_NL_DHL_PP,
