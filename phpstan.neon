@@ -12,7 +12,7 @@ parameters:
 			count: 1
 			path: src/Model/BasePerCarrierCollection.php
 		-
-			message: '#^Parameter \#1 \$ of callable callable\(TValue\): bool expects TValue of Inspirum\\Arrayable\\Arrayable<TItemKey of \(int\|string\), TItemValue>&Inspirum\\Balikobot\\Model\\WithCarrierId, Inspirum\\Arrayable\\Arrayable<TItemKey of \(int\|string\), TItemValue>&Inspirum\\Balikobot\\Model\\WithCarrierId given\.$#'
+			message: '#^Parameter \#1 of callable callable\(TValue\): bool expects TValue of Inspirum\\Arrayable\\Arrayable<TItemKey of \(int\|string\), TItemValue>&Inspirum\\Balikobot\\Model\\WithCarrierId, Inspirum\\Arrayable\\Arrayable<TItemKey of \(int\|string\), TItemValue>&Inspirum\\Balikobot\\Model\\WithCarrierId given\.$#'
 			count: 1
 			path: src/Model/BasePerCarrierCollection.php
 		-

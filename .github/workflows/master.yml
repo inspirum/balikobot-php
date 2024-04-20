@@ -38,6 +38,7 @@ jobs:
         run: |
           vendor/bin/phpcs src tests
           vendor/bin/phpstan analyse -c phpstan.neon
+          vendor/bin/composer-dependency-analyser
       - name: Run tests
         run: |
           vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover

@@ -202,7 +202,6 @@ final class DefaultClientTest extends BaseTestCase
                 'test'   => 1596,
             ],
             'gzip'             => true,
-            'warning'          => 'Unsupported decompression (update to "guzzlehttp/psr7:^2.0")',
         ];
 
         yield 'compressed_gz_error' => [

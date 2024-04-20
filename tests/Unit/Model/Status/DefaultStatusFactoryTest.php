@@ -23,11 +23,11 @@ use Throwable;
 final class DefaultStatusFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string>       $carrierId
+     * @param array<string>       $carrierIds
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateCollection')]
-    public function testCreateCollection(string $carrier, array $carrierId, array $data, StatusesCollection|Throwable $result): void
+    public function testCreateCollection(string $carrier, array $carrierIds, array $data, StatusesCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -36,7 +36,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
 
         $factory = $this->newDefaultStatusFactory();
 
-        $collection = $factory->createCollection($carrier, $carrierId, $data);
+        $collection = $factory->createCollection($carrier, $carrierIds, $data);
 
         self::assertEquals($result, $collection);
     }
@@ -162,7 +162,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'package_index_error' => [
             'carrier'    => 'cp',
             'carrierIds' => ['3', '4', '5'],
-            'response'   => [
+            'data'       => [
                 'packages' => [
                     0 => [
                         'carrier_id' => '3',
@@ -223,7 +223,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'package_index_missing_error' => [
             'carrier'    => 'ppl',
             'carrierIds' => ['1', '3'],
-            'response'   => [
+            'data'       => [
                 'status'   => 200,
                 'packages' => [
                     1 => [
@@ -249,7 +249,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'package_status_error' => [
             'carrier'    => 'ppl',
             'carrierIds' => ['1', '3'],
-            'response'   => [
+            'data'       => [
                 'status'   => 200,
                 'packages' => [
                     0 => [
@@ -280,7 +280,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'package_status_data_error' => [
             'carrier'    => 'cp',
             'carrierIds' => ['1', '2'],
-            'response'   => [
+            'data'       => [
                 'status'   => 200,
                 'packages' => [
                     0 => [
@@ -317,11 +317,11 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     }
 
     /**
-     * @param array<string>       $carrierId
+     * @param array<string>       $carrierIds
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateLastStatusCollection')]
-    public function testCreateLastStatusCollection(string $carrier, array $carrierId, array $data, StatusCollection|Throwable $result): void
+    public function testCreateLastStatusCollection(string $carrier, array $carrierIds, array $data, StatusCollection|Throwable $result): void
     {
         if ($result instanceof Throwable) {
             $this->expectException($result::class);
@@ -330,7 +330,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
 
         $factory = $this->newDefaultStatusFactory();
 
-        $collection = $factory->createLastStatusCollection($carrier, $carrierId, $data);
+        $collection = $factory->createLastStatusCollection($carrier, $carrierIds, $data);
 
         self::assertEquals($result, $collection);
     }
@@ -343,7 +343,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'valid' => [
             'carrier'    => 'cp',
             'carrierIds' => ['1', '2'],
-            'response'   => [
+            'data'       => [
                 'packages' => [
                     0 => [
                         'carrier_id'  => '1',
@@ -387,7 +387,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'missing_data_error' => [
             'carrier'    => 'cp',
             'carrierIds' => ['1', '2'],
-            'response'   => [
+            'data'       => [
                 'status' => 200,
             ],
             'result'     => new BadRequestException([], 400),
@@ -396,7 +396,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'package_index_error' => [
             'carrier'    => 'cp',
             'carrierIds' => ['3', '4'],
-            'response'   => [
+            'data'       => [
                 'packages' => [
                     0 => [
                         'carrier_id'  => '1',
@@ -418,7 +418,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'package_index_missing_error' => [
             'carrier'    => 'ppl',
             'carrierIds' => ['1', '3'],
-            'response'   => [
+            'data'       => [
                 'status'   => 200,
                 'packages' => [
                     0 => [
@@ -435,7 +435,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'package_status_error' => [
             'carrier'    => 'ppl',
             'carrierIds' => ['1', '3'],
-            'response'   => [
+            'data'       => [
                 'status'   => 200,
                 'packages' => [
                     0 => [
@@ -480,7 +480,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'v2' => [
             'carrier' => 'cp',
             'carrierId' => '1',
-            'data'   => [
+            'data'       => [
                 'date'          => '2018-11-07 14:15:01',
                 'name'          => 'Doručení',
                 'name_internal' => 'Zásilka byla doručena příjemci.',
@@ -501,7 +501,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'missing_data' => [
             'carrier' => 'cp',
             'carrierId' => '2',
-            'data'   => [
+            'data'       => [
                 'name'      => 'Doručení',
                 'status_id' => 2,
             ],
@@ -519,7 +519,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'v3' => [
             'carrier' => 'cp',
             'carrierId' => '3',
-            'data'   => [
+            'data'       => [
                 'date'           => '2018-11-08 14:18:01',
                 'name'           => 'Doručení',
                 'name_balikobot' => 'Zásilka byla doručena příjemci.',
@@ -564,7 +564,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     {
         yield 'valid' => [
             'carrier' => 'cp',
-            'data'   => [
+            'data'       => [
                 'carrier_id'  => '1',
                 'status'      => 200,
                 'status_id'   => 1.2,
@@ -583,7 +583,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
 
         yield 'invalid' => [
             'carrier' => 'cp',
-            'data'   => [
+            'data'       => [
                 'status' => 200,
             ],
             'result' => new BadRequestException([], 400),

@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.8.0...master)
+### Added
+- Added support for new options from documentation **v1.991** (2024-01-04)
+  - Added **customs_indicator** attributes
+- Added **ZASILKOVNA_EE_VENIPAK_HD** service type
+- Added **ZASILKOVNA_EE_VENIPAK_PP** service type
+- Added **ZASILKOVNA_EE_VENIPAK_BOX** service type
+- Added **ZASILKOVNA_FI_MATKAHUOLTO_HD** service type
+- Added **ZASILKOVNA_FI_MATKAHUOLTO_PP** service type
+- Added **ZASILKOVNA_FI_MATKAHUOLTO_BOX** service type
+- Added **ZASILKOVNA_LV_VENIPAK_HD** service type
+- Added **ZASILKOVNA_LV_VENIPAK_PP** service type
+- Added **ZASILKOVNA_LV_VENIPAK_BOX** service type
+- Added **ZASILKOVNA_LT_VENIPAK_HD** service type
+- Added **ZASILKOVNA_LT_VENIPAK_PP** service type
+- Added **ZASILKOVNA_LT_VENIPAK_BOX** service type
+### Changed
+- Changed **ZASILKOVNA_HU_EXPRESS_ONE_HD** service type value
 
 
 ## [v7.8.0 (2024-04-04)](https://github.com/inspirum/balikobot-php/compare/v7.7.0...v7.8.0)
