@@ -26,7 +26,7 @@
   "require-dev": {
     "inspirum/coding-standard": "^1.4",
     "phpstan/phpstan": "^1.10",
-    "phpunit/phpunit": "^10.3",
+    "phpunit/phpunit": "^10.5",
     "shipmonk/composer-dependency-analyser": "^1.5",
     "squizlabs/php_codesniffer": "^3.9"
   },
