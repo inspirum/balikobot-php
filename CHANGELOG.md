@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.9.0...master)
+- Added **ZASILKOVNA_GR_ELTA_COURIER_HD** service type
+- Added **ZASILKOVNA_GR_ELTA_COURIER_PP** service type
+- Added **ZASILKOVNA_IT_BARTOLINI_BOX** service type
 
 
 ## [v7.9.0 (2024-04-21)](https://github.com/inspirum/balikobot-php/compare/v7.8.0...v7.9.0)

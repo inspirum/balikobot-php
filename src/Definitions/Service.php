@@ -837,6 +837,16 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_GR_BOXNOW_BOX = '20409';
 
     /**
+     * GR Elta Courier HD
+     */
+    public const ZASILKOVNA_GR_ELTA_COURIER_HD = '27954';
+
+    /**
+     * GR Elta Courier PP
+     */
+    public const ZASILKOVNA_GR_ELTA_COURIER_PP = '27955';
+
+    /**
      * HR Overseas Express HD
      */
     public const ZASILKOVNA_HR_OVERSEAS_HD = '10618';
@@ -935,6 +945,11 @@ final class Service extends BaseEnum
      * IT Bartolini PP
      */
     public const ZASILKOVNA_IT_BARTOLINI_PP = '9104';
+
+    /**
+     * IT Bartolini Box
+     */
+    public const ZASILKOVNA_IT_BARTOLINI_BOX = '29678';
 
     /**
      * Itálie GLS
@@ -2521,13 +2536,15 @@ final class Service extends BaseEnum
             // self::ZASILKOVNA_GR_SPEEDY_HD,
             self::ZASILKOVNA_GR_SPEEDEX_HD,
             self::ZASILKOVNA_GR_BOXNOW_BOX,
+            self::ZASILKOVNA_GR_ELTA_COURIER_HD,
+            self::ZASILKOVNA_GR_ELTA_COURIER_PP,
             self::ZASILKOVNA_HR_OVERSEAS_HD,
             self::ZASILKOVNA_HR_OVERSEAS_PP,
-            self::ZASILKOVNA_HR_DPD_HD,
+            // self::ZASILKOVNA_HR_DPD_HD,
             self::ZASILKOVNA_HR_POST_PP,
             self::ZASILKOVNA_HR_POST_HD,
             self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
-            self::ZASILKOVNA_HU_DPD_HD,
+            // self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
             self::ZASILKOVNA_HU_POST_HD,
             self::ZASILKOVNA_HU_POST_PP,
@@ -2543,6 +2560,7 @@ final class Service extends BaseEnum
             // self::ZASILKOVNA_IL_FEDEX_ECONOMY_HD,
             self::ZASILKOVNA_IT_BARTOLINI_HD,
             self::ZASILKOVNA_IT_BARTOLINI_PP,
+            self::ZASILKOVNA_IT_BARTOLINI_BOX,
             // self::ZASILKOVNA_IT_GLS_HD,
             self::ZASILKOVNA_IT_HR_PARCEL_HD,
             self::ZASILKOVNA_LT_OMNIVA_BOX,
@@ -2583,8 +2601,8 @@ final class Service extends BaseEnum
             // self::ZASILKOVNA_RU_EMS_HD,
             self::ZASILKOVNA_SE_POST_NORD_PP,
             self::ZASILKOVNA_SE_POST_NORD_HD,
-            self::ZASILKOVNA_SI_DPD_HD,
-            self::ZASILKOVNA_SI_DPD_PP,
+            // self::ZASILKOVNA_SI_DPD_HD,
+            // self::ZASILKOVNA_SI_DPD_PP,
             self::ZASILKOVNA_SI_POST_HD,
             self::ZASILKOVNA_SI_POST_PP,
             self::ZASILKOVNA_SI_POST_BOX,
@@ -2698,7 +2716,7 @@ final class Service extends BaseEnum
             self::FEDEX_INTERNATIONAL_ECONOMY_FREIGHT,
             self::FEDEX_REGIONAL_ECONOMY_FREIGHT,
             self::FEDEX_INTERNATIONAL_CONNECT_PLUS,
-            self::FEDEX_PRIORITY_OVERNIGHT,
+            // self::FEDEX_PRIORITY_OVERNIGHT,
         ];
     }
 
