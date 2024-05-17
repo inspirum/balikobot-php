@@ -67,13 +67,13 @@ final class DefaultZipCode extends BaseModel implements ZipCode
     public function __toArray(): array
     {
         return [
-            'carrier'         => $this->carrier,
-            'service'         => $this->service,
-            'zipCode'         => $this->zipCode,
-            'zipCodeEnt'      => $this->zipCodeEnd,
-            'city'            => $this->city,
-            'region'          => $this->region,
-            'country'         => $this->country,
+            'carrier' => $this->carrier,
+            'service' => $this->service,
+            'zipCode' => $this->zipCode,
+            'zipCodeEnt' => $this->zipCodeEnd,
+            'city' => $this->city,
+            'region' => $this->region,
+            'country' => $this->country,
             'morningDelivery' => $this->morningDelivery,
         ];
     }

@@ -27,15 +27,15 @@ final class DefaultOrderedShipmentTest extends BaseTestCase
         self::assertSame('/file', $model->getFileUrl());
         self::assertSame(['1', '67'], $model->getPackageIds());
         self::assertSame([
-            'carrier'     => 'cp',
-            'orderId'     => '1234',
-            'packageIds'  => [
+            'carrier' => 'cp',
+            'orderId' => '1234',
+            'packageIds' => [
                 '1',
                 '67',
             ],
             'handoverUrl' => '/handover',
-            'labelsUrl'   => '/labels',
-            'fileUrl'     => '/file',
+            'labelsUrl' => '/labels',
+            'fileUrl' => '/file',
         ], $model->__toArray());
     }
 }

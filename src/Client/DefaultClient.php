@@ -38,8 +38,8 @@ final class DefaultClient implements Client
 
         $response = $this->requester->request($url, $data);
 
-        $statusCode    = $response->getStatusCode();
-        $contents      = $this->getContents($response->getBody(), $gzip);
+        $statusCode = $response->getStatusCode();
+        $contents = $this->getContents($response->getBody(), $gzip);
         $parsedContent = $this->parseContents($contents, $statusCode < 300);
 
         $this->validateResponse($statusCode, $parsedContent, $shouldHaveStatus);

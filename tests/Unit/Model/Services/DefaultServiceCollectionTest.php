@@ -15,8 +15,8 @@ final class DefaultServiceCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = 'cp';
-        $items         = [
+        $carrier = 'cp';
+        $items = [
             new DefaultService(
                 'NP',
                 'NP - Balík Na poštu',
@@ -52,7 +52,7 @@ final class DefaultServiceCollectionTest extends BaseTestCase
                 ],
             ),
         ];
-        $collection    = new DefaultServiceCollection(
+        $collection = new DefaultServiceCollection(
             $carrier,
             $items,
             false,
@@ -60,9 +60,9 @@ final class DefaultServiceCollectionTest extends BaseTestCase
         );
         $expectedArray = [
             [
-                'type'         => 'NP',
-                'name'         => 'NP - Balík Na poštu',
-                'options'      => [
+                'type' => 'NP',
+                'name' => 'NP - Balík Na poštu',
+                'options' => [
                     [
                         'code' => '3',
                         'name' => 'Dodejka',
@@ -72,27 +72,27 @@ final class DefaultServiceCollectionTest extends BaseTestCase
                         'name' => 'Dobírka Pk A/MZ dobírka',
                     ],
                 ],
-                'countries'    => [
+                'countries' => [
                     'CZ',
                     'EU',
                 ],
                 'codCountries' => null,
             ],
             [
-                'type'         => 'RR',
-                'name'         => 'RR - Doporučená zásilka Ekonomická',
-                'options'      => null,
-                'countries'    => null,
+                'type' => 'RR',
+                'name' => 'RR - Doporučená zásilka Ekonomická',
+                'options' => null,
+                'countries' => null,
                 'codCountries' => [
                     [
-                        'code'         => 'UA',
+                        'code' => 'UA',
                         'currencyCode' => 'UAH',
-                        'maxPrice'     => 36000.0,
+                        'maxPrice' => 36000.0,
                     ],
                     [
-                        'code'         => 'LV',
+                        'code' => 'LV',
                         'currencyCode' => 'USD',
-                        'maxPrice'     => 2000.0,
+                        'maxPrice' => 2000.0,
                     ],
                 ],
             ],

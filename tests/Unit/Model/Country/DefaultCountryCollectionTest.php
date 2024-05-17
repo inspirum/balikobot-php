@@ -12,7 +12,7 @@ final class DefaultCountryCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $items         = [
+        $items = [
             new DefaultCountry(
                 [
                     'cs' => 'Andorra',
@@ -39,32 +39,32 @@ final class DefaultCountryCollectionTest extends BaseTestCase
                 'America',
             ),
         ];
-        $collection    = new DefaultCountryCollection($items);
+        $collection = new DefaultCountryCollection($items);
         $expectedArray = [
             [
-                'names'         => [
+                'names' => [
                     'cs' => 'Andorra',
                     'en' => 'Andorra',
                 ],
-                'code'          => 'AD',
-                'currencyCode'  => 'EUR',
+                'code' => 'AD',
+                'currencyCode' => 'EUR',
                 'phonePrefixes' => [
                     '+376',
                 ],
-                'continent'     => 'Europe',
+                'continent' => 'Europe',
             ],
             [
-                'names'         => [
+                'names' => [
                     'cs' => 'Portoriko',
                     'en' => 'Puerto Rico',
                 ],
-                'code'          => 'PR',
-                'currencyCode'  => 'USD',
+                'code' => 'PR',
+                'currencyCode' => 'USD',
                 'phonePrefixes' => [
                     '+1787',
                     '+1939',
                 ],
-                'continent'     => 'America',
+                'continent' => 'America',
             ],
         ];
 

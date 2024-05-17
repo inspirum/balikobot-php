@@ -15,8 +15,8 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
 {
     public function testGetter(): void
     {
-        $carrier    = Carrier::CP;
-        $items      = [
+        $carrier = Carrier::CP;
+        $items = [
             new DefaultStatus(
                 $carrier,
                 '1',
@@ -90,7 +90,7 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
         self::expectException(InvalidArgumentException::class);
         self::expectExceptionMessage('Item carrier mismatch');
 
-        $carrier    = 'ppl';
+        $carrier = 'ppl';
         $collection = new class ($carrier) extends BasePerCarrierCollection {
         };
 
@@ -110,7 +110,7 @@ final class BasePerCarrierCollectionTest extends BaseTestCase
         self::expectException(InvalidArgumentException::class);
         self::expectExceptionMessage('Item carrier mismatch');
 
-        $carrier    = 'ppl';
+        $carrier = 'ppl';
         $collection = new class ($carrier, [
             new DefaultStatus(
                 'ppl',

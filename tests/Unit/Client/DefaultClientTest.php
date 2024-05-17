@@ -51,56 +51,56 @@ final class DefaultClientTest extends BaseTestCase
             'version' => Version::V2V1,
             'carrier' => Carrier::CP,
             'request' => Method::ADD,
-            'data'    => [
+            'data' => [
                 [
-                    'eid'   => 1,
-                    'name'  => 'Josef Novák',
+                    'eid' => 1,
+                    'name' => 'Josef Novák',
                     'price' => 100,
                 ],
             ],
-            'path'    => null,
-            'url'     => 'https://apiv2.balikobot.cz/cp/add',
+            'path' => null,
+            'url' => 'https://apiv2.balikobot.cz/cp/add',
         ];
 
         yield 'v2v2' => [
             'version' => Version::V2V2,
             'carrier' => Carrier::ZASILKOVNA,
             'request' => Method::SERVICES,
-            'data'    => [],
-            'path'    => null,
-            'url'     => 'https://apiv2.balikobot.cz/v2/zasilkovna/services',
+            'data' => [],
+            'path' => null,
+            'url' => 'https://apiv2.balikobot.cz/v2/zasilkovna/services',
         ];
 
         yield 'carrier_null' => [
             'version' => Version::V2V1,
             'carrier' => null,
             'request' => Method::INFO_CARRIERS,
-            'data'    => [],
-            'path'    => Carrier::CP,
-            'url'     => 'https://apiv2.balikobot.cz/info/carriers/cp',
+            'data' => [],
+            'path' => Carrier::CP,
+            'url' => 'https://apiv2.balikobot.cz/info/carriers/cp',
         ];
 
         yield 'path' => [
             'version' => Version::V2V1,
             'carrier' => Carrier::PPL,
             'request' => Method::ZIP_CODES,
-            'data'    => [],
-            'path'    => '1/CZ',
-            'url'     => 'https://apiv2.balikobot.cz/ppl/zipcodes/1/CZ',
+            'data' => [],
+            'path' => '1/CZ',
+            'url' => 'https://apiv2.balikobot.cz/ppl/zipcodes/1/CZ',
         ];
 
         yield 'v1v1' => [
             'version' => Version::V1V1,
             'carrier' => Carrier::TOPTRANS,
             'request' => Method::ADD_SERVICE_OPTIONS,
-            'data'    => [],
-            'path'    => null,
-            'url'     => 'https://api.balikobot.cz/toptrans/addserviceoptions',
+            'data' => [],
+            'path' => null,
+            'url' => 'https://api.balikobot.cz/toptrans/addserviceoptions',
         ];
     }
 
     /**
-     * @param array<mixed,mixed>|string          $response
+     * @param array<mixed,mixed>|string $response
      * @param \Throwable|array<mixed,mixed>|bool $result
      */
     #[DataProvider('providesTestCall')]
@@ -142,120 +142,120 @@ final class DefaultClientTest extends BaseTestCase
     public static function providesTestCall(): iterable
     {
         yield 'status_error' => [
-            'statusCode'       => 400,
-            'response'         => [
+            'statusCode' => 400,
+            'response' => [
                 'status' => 200,
-                'test'   => 1596,
+                'test' => 1596,
             ],
             'shouldHaveStatus' => true,
-            'result'           => new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
 
         yield 'response_status_error' => [
-            'statusCode'       => 200,
-            'response'         => [
+            'statusCode' => 200,
+            'response' => [
                 'status' => 400,
-                'test'   => 1596,
+                'test' => 1596,
             ],
             'shouldHaveStatus' => true,
-            'result'           => new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
 
         yield 'should_have_status' => [
-            'statusCode'       => 200,
-            'response'         => [
+            'statusCode' => 200,
+            'response' => [
                 'test' => 1596,
             ],
             'shouldHaveStatus' => true,
-            'result'           => new BadRequestException([], 500),
+            'result' => new BadRequestException([], 500),
         ];
 
         yield 'should_not_have_status' => [
-            'statusCode'       => 200,
-            'response'         => [
+            'statusCode' => 200,
+            'response' => [
                 'test' => 1596,
             ],
             'shouldHaveStatus' => false,
-            'result'           => true,
+            'result' => true,
         ];
 
         yield 'uncompressed' => [
-            'statusCode'       => 200,
-            'response'         => [
+            'statusCode' => 200,
+            'response' => [
                 'status' => 200,
-                'test'   => 1596,
+                'test' => 1596,
             ],
             'shouldHaveStatus' => true,
-            'result'           => true,
-            'gzip'             => false,
+            'result' => true,
+            'gzip' => false,
         ];
 
         yield 'compressed_gz' => [
-            'statusCode'       => 200,
-            'response'         => (string) gzcompress((string) json_encode([
+            'statusCode' => 200,
+            'response' => (string) gzcompress((string) json_encode([
                 'status' => 200,
-                'test'   => 1596,
+                'test' => 1596,
             ])),
             'shouldHaveStatus' => true,
-            'result'           => [
+            'result' => [
                 'status' => 200,
-                'test'   => 1596,
+                'test' => 1596,
             ],
-            'gzip'             => true,
+            'gzip' => true,
         ];
 
         yield 'compressed_gz_error' => [
-            'statusCode'       => 200,
-            'response'         => (string) gzcompress((string) json_encode([
+            'statusCode' => 200,
+            'response' => (string) gzcompress((string) json_encode([
                 'status' => 200,
-                'test'   => 1596,
+                'test' => 1596,
             ])),
             'shouldHaveStatus' => true,
-            'result'           => new BadRequestException([], 400, message: 'Cannot parse response data'),
-            'gzip'             => false,
+            'result' => new BadRequestException([], 400, message: 'Cannot parse response data'),
+            'gzip' => false,
         ];
 
         yield 'compressed' => [
-            'statusCode'       => 200,
-            'response'         => self::getGzipStringWithFilename((string) json_encode([
+            'statusCode' => 200,
+            'response' => self::getGzipStringWithFilename((string) json_encode([
                 'status' => 200,
-                'test'   => 1596,
+                'test' => 1596,
             ])),
             'shouldHaveStatus' => true,
-            'result'           => [
+            'result' => [
                 'status' => 200,
-                'test'   => 1596,
+                'test' => 1596,
             ],
-            'gzip'             => true,
+            'gzip' => true,
         ];
 
         yield 'compressed_error' => [
-            'statusCode'       => 200,
-            'response'         => self::getGzipStringWithFilename((string) json_encode([
+            'statusCode' => 200,
+            'response' => self::getGzipStringWithFilename((string) json_encode([
                 'status' => 200,
-                'test'   => 1596,
+                'test' => 1596,
             ])),
             'shouldHaveStatus' => true,
-            'result'           => new BadRequestException([], 400, message: 'Cannot parse response data'),
-            'gzip'             => false,
+            'result' => new BadRequestException([], 400, message: 'Cannot parse response data'),
+            'gzip' => false,
         ];
 
         yield 'compressed_fallback' => [
-            'statusCode'       => 200,
-            'response'         => [
+            'statusCode' => 200,
+            'response' => [
                 'status' => 200,
-                'test'   => 1596,
+                'test' => 1596,
             ],
             'shouldHaveStatus' => true,
-            'result'           => true,
-            'gzip'             => true,
+            'result' => true,
+            'gzip' => true,
         ];
 
         yield 'parse_error' => [
-            'statusCode'       => 404,
-            'response'         => 's\x/\*',
+            'statusCode' => 404,
+            'response' => 's\x/\*',
             'shouldHaveStatus' => false,
-            'result'           => new BadRequestException([], 404),
+            'result' => new BadRequestException([], 404),
         ];
     }
 
@@ -263,7 +263,7 @@ final class DefaultClientTest extends BaseTestCase
     {
         $gzipped = bin2hex((string) gzencode($value));
 
-        $header    = substr($gzipped, 0, 20);
+        $header = substr($gzipped, 0, 20);
         $header[6] = 0;
         $header[7] = 8;
 
@@ -275,7 +275,7 @@ final class DefaultClientTest extends BaseTestCase
     }
 
     /**
-     * @param array<mixed,mixed>          $response
+     * @param array<mixed,mixed> $response
      * @param array<array<string,string>> $errors
      */
     #[DataProvider('providerCallException')]
@@ -311,50 +311,50 @@ final class DefaultClientTest extends BaseTestCase
     {
         yield 'status_error_401' => [
             'statusCode' => 401,
-            'response'   => [],
-            'result'     => new UnauthorizedException(),
+            'response' => [],
+            'result' => new UnauthorizedException(),
         ];
 
         yield 'status_error_403' => [
             'statusCode' => 403,
-            'response'   => [],
-            'result'     => new UnauthorizedException(statusCode: 403),
+            'response' => [],
+            'result' => new UnauthorizedException(statusCode: 403),
         ];
 
         yield 'status_code_match' => [
             'statusCode' => 409,
-            'response'   => [],
-            'result'     => new BadRequestException([], 409),
+            'response' => [],
+            'result' => new BadRequestException([], 409),
         ];
 
         yield 'response_status_code_match' => [
             'statusCode' => 200,
-            'response'   => [
+            'response' => [
                 'status' => 419,
             ],
-            'result'     => new BadRequestException([], 419),
+            'result' => new BadRequestException([], 419),
         ];
 
         yield 'response_match' => [
             'statusCode' => 409,
-            'response'   => [
-                'test'   => 1,
+            'response' => [
+                'test' => 1,
                 'errors' => [
                     'id' => 404,
                 ],
             ],
-            'result'     => new BadRequestException([], 409),
+            'result' => new BadRequestException([], 409),
         ];
 
         yield 'simple_errors' => [
             'statusCode' => 200,
-            'response'   => [
-                'status'   => 400,
+            'response' => [
+                'status' => 400,
                 'packages' => [
                     0 => [
-                        'status'   => 413,
-                        'id'       => 404,
-                        'eid'      => 'Missing',
+                        'status' => 413,
+                        'id' => 404,
+                        'eid' => 'Missing',
                         'rec_name' => 406,
                     ],
                     1 => [
@@ -362,11 +362,11 @@ final class DefaultClientTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'     => new BadRequestException([], 400, message: ''),
-            'errors'     => [
+            'result' => new BadRequestException([], 400, message: ''),
+            'errors' => [
                 0 => [
-                    'status'   => 'Špatný formát dat.',
-                    'id'       => 'Nespecifikovaná chyba.',
+                    'status' => 'Špatný formát dat.',
+                    'id' => 'Nespecifikovaná chyba.',
                     'rec_name' => 'Nedorazilo jméno příjemce.',
                 ],
                 1 => [
@@ -377,23 +377,23 @@ final class DefaultClientTest extends BaseTestCase
 
         yield 'simple_errors_older_response' => [
             'statusCode' => 200,
-            'response'   => [
+            'response' => [
                 'status' => 400,
-                0        => [
-                    'status'   => 413,
-                    'id'       => 404,
-                    'eid'      => 'Missing',
+                0 => [
+                    'status' => 413,
+                    'id' => 404,
+                    'eid' => 'Missing',
                     'rec_name' => 406,
                 ],
-                1        => [
+                1 => [
                     'aa' => 406,
                 ],
             ],
-            'result'     => new BadRequestException([], 400, message: ''),
-            'errors'     => [
+            'result' => new BadRequestException([], 400, message: ''),
+            'errors' => [
                 0 => [
-                    'status'   => 'Špatný formát dat.',
-                    'id'       => 'Nespecifikovaná chyba.',
+                    'status' => 'Špatný formát dat.',
+                    'id' => 'Nespecifikovaná chyba.',
                     'rec_name' => 'Nedorazilo jméno příjemce.',
                 ],
                 1 => [
@@ -404,19 +404,19 @@ final class DefaultClientTest extends BaseTestCase
 
         yield 'simple_errors_older_response_error_message' => [
             'statusCode' => 200,
-            'response'   => [
+            'response' => [
                 'status' => 400,
-                0        => [
-                    'status'   => 413,
-                    'id'       => 404,
-                    'eid'      => 'Missing',
+                0 => [
+                    'status' => 413,
+                    'id' => 404,
+                    'eid' => 'Missing',
                     'rec_name' => 406,
                 ],
-                1        => [
+                1 => [
                     'aa' => 406,
                 ],
             ],
-            'result'     => new BadRequestException(
+            'result' => new BadRequestException(
                 [],
                 400,
                 message: 'Operace neproběhla v pořádku, zkontrolujte konkrétní data.' . "\n" .
@@ -429,7 +429,7 @@ final class DefaultClientTest extends BaseTestCase
 
         yield 'simple_errors_status_code' => [
             'statusCode' => 400,
-            'response'   => [
+            'response' => [
                 'packages' => [
                     0 => 406,
                     1 => [
@@ -437,8 +437,8 @@ final class DefaultClientTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'     => new BadRequestException([], 400, message: ''),
-            'errors'     => [
+            'result' => new BadRequestException([], 400, message: ''),
+            'errors' => [
                 0 => [
                     'status' => 'Nedorazila žádná data ke zpracování nebo nemůžou být akceptována.',
                 ],
@@ -450,8 +450,8 @@ final class DefaultClientTest extends BaseTestCase
 
         yield 'simple_errors_unexpected_value' => [
             'statusCode' => 200,
-            'response'   => [
-                'status'   => 400,
+            'response' => [
+                'status' => 400,
                 'packages' => [
                     0 => [
                         'eid' => 413,
@@ -459,8 +459,8 @@ final class DefaultClientTest extends BaseTestCase
                     1 => 'test',
                 ],
             ],
-            'result'     => new BadRequestException([], 400, message: ''),
-            'errors'     => [
+            'result' => new BadRequestException([], 400, message: ''),
+            'errors' => [
                 0 => [
                     'eid' => 'Eshop ID je delší než je maximální povolená délka.',
                 ],
@@ -472,39 +472,39 @@ final class DefaultClientTest extends BaseTestCase
 
         yield 'response_errors' => [
             'statusCode' => 200,
-            'response'   => [
-                'status'   => 400,
+            'response' => [
+                'status' => 400,
                 'packages' => [
                     0 => [
                         'errors' => [
                             [
-                                'type'      => '413',
+                                'type' => '413',
                                 'attribute' => 'rec_zip',
-                                'message'   => 'Nepovolené PSČ příjemce.',
+                                'message' => 'Nepovolené PSČ příjemce.',
                             ],
                             [
-                                'type'      => '406',
+                                'type' => '406',
                                 'attribute' => 'eid',
-                                'message'   => 'Nedorazilo eshop ID.',
+                                'message' => 'Nedorazilo eshop ID.',
                             ],
                         ],
                     ],
                     1 => [
                         'errors' => [
                             [
-                                'type'      => '406',
+                                'type' => '406',
                                 'attribute' => 'service_type',
-                                'message'   => 'Nedorazilo ID vybrané služby přepravce.',
+                                'message' => 'Nedorazilo ID vybrané služby přepravce.',
                             ],
                         ],
                     ],
                 ],
             ],
-            'result'     => new BadRequestException([], 400, message: ''),
-            'errors'     => [
+            'result' => new BadRequestException([], 400, message: ''),
+            'errors' => [
                 0 => [
                     'rec_zip' => 'Nepovolené PSČ příjemce.',
-                    'eid'     => 'Nedorazilo eshop ID.',
+                    'eid' => 'Nedorazilo eshop ID.',
                 ],
                 1 => [
                     'service_type' => 'Nedorazilo ID vybrané služby přepravce.',
@@ -515,7 +515,7 @@ final class DefaultClientTest extends BaseTestCase
 
     /**
      * @param array<mixed>|string $response
-     * @param array<mixed>|null   $request
+     * @param array<mixed>|null $request
      */
     private function newDefaultClient(int $statusCode, array|string $response, ?array $request = null): DefaultClient
     {

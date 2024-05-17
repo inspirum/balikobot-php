@@ -60,9 +60,9 @@ final class DefaultStatuses extends BaseModel implements Statuses
     public function __toArray(): array
     {
         return [
-            'carrier'   => $this->carrier,
+            'carrier' => $this->carrier,
             'carrierId' => $this->carrierId,
-            'states'    => $this->states->__toArray(),
+            'states' => $this->states->__toArray(),
         ];
     }
 }

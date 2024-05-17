@@ -38,31 +38,31 @@ final class DefaultCountryFactoryTest extends BaseTestCase
     public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
-            'data'    => [
+            'data' => [
                 'status' => 200,
                 'countries' => [
                     [
-                        'name_en'      => 'Andorra',
-                        'name_cz'      => 'Andorra',
-                        'iso_code'     => 'AD',
+                        'name_en' => 'Andorra',
+                        'name_cz' => 'Andorra',
+                        'iso_code' => 'AD',
                         'phone_prefix' => '+376',
-                        'currency'     => 'EUR',
-                        'continent'    => 'Europe',
+                        'currency' => 'EUR',
+                        'continent' => 'Europe',
                     ],
                     [
-                        'name_en'      => 'Puerto Rico',
-                        'name_cz'      => 'Portoriko',
-                        'iso_code'     => 'PR',
+                        'name_en' => 'Puerto Rico',
+                        'name_cz' => 'Portoriko',
+                        'iso_code' => 'PR',
                         'phone_prefix' => [
                             '+1787',
                             '+1939',
                         ],
-                        'currency'     => 'USD',
-                        'continent'    => 'America',
+                        'currency' => 'USD',
+                        'continent' => 'America',
                     ],
                 ],
             ],
-            'result'  => new DefaultCountryCollection(
+            'result' => new DefaultCountryCollection(
                 [
                     new DefaultCountry(
                         [

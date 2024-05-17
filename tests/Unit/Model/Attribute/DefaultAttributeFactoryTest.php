@@ -40,27 +40,27 @@ final class DefaultAttributeFactoryTest extends BaseTestCase
     {
         yield 'valid' => [
             'carrier' => Carrier::CP,
-            'data'    => [
+            'data' => [
                 'status' => 200,
                 'attributes' => [
                     [
-                        'name'       => 'eid',
-                        'data_type'  => 'string',
+                        'name' => 'eid',
+                        'data_type' => 'string',
                         'max_length' => 40,
                     ],
                     [
-                        'name'       => 'services',
-                        'data_type'  => 'plus_separated_values',
+                        'name' => 'services',
+                        'data_type' => 'plus_separated_values',
                         'max_length' => null,
                     ],
                     [
-                        'name'       => 'volume',
-                        'data_type'  => 'float',
+                        'name' => 'volume',
+                        'data_type' => 'float',
                         'max_length' => '9.20',
                     ],
                 ],
             ],
-            'result'  => new DefaultAttributeCollection(
+            'result' => new DefaultAttributeCollection(
                 Carrier::CP,
                 [
                     new DefaultAttribute(

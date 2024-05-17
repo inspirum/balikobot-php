@@ -12,7 +12,7 @@ final class DefaultServiceOptionCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $items         = [
+        $items = [
             new DefaultServiceOption(
                 '3',
                 'Dodejka',
@@ -22,7 +22,7 @@ final class DefaultServiceOptionCollectionTest extends BaseTestCase
                 'Dobírka Pk A/MZ dobírka',
             ),
         ];
-        $collection    = new DefaultServiceOptionCollection($items);
+        $collection = new DefaultServiceOptionCollection($items);
         $expectedArray = [
             [
                 'code' => '3',

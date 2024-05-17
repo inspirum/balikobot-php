@@ -29,12 +29,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 {
     public function testAddPackages(): void
     {
-        $carrier        = Carrier::PPL;
-        $packages       = [
+        $carrier = Carrier::PPL;
+        $packages = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(PackageCollection::class);
 
         $collection = $this->createMock(PackageDataCollection::class);
@@ -60,12 +60,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testDropPackages(): void
     {
-        $carrier    = Carrier::PPL;
+        $carrier = Carrier::PPL;
         $packageIds = [
             '1234',
             '5678',
         ];
-        $response   = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $collection = $this->createMock(PackageCollection::class);
         $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
@@ -87,9 +87,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testDropPackage(): void
     {
-        $carrier   = Carrier::PPL;
+        $carrier = Carrier::PPL;
         $packageId = '1234';
-        $response  = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $model = $this->createMock(Package::class);
         $model->expects(self::any())->method('getCarrier')->willReturn($carrier);
@@ -111,9 +111,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testDropPackageByPackageId(): void
     {
-        $carrier   = Carrier::PPL;
+        $carrier = Carrier::PPL;
         $packageId = '1234';
-        $response  = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -131,12 +131,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testDropPackagesByPackageIds(): void
     {
-        $carrier    = Carrier::PPL;
+        $carrier = Carrier::PPL;
         $packageIds = [
             '1234',
             '5678',
         ];
-        $response   = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -154,7 +154,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testDropPackagesWithoutPackageIds(): void
     {
-        $carrier    = Carrier::PPL;
+        $carrier = Carrier::PPL;
         $packageIds = [];
 
         $packageService = $this->newDefaultPackageService(
@@ -166,12 +166,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testOrderShipment(): void
     {
-        $carrier        = Carrier::PPL;
-        $packageIds     = [
+        $carrier = Carrier::PPL;
+        $packageIds = [
             '1234',
             '5678',
         ];
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(OrderedShipment::class);
 
         $collection = $this->createMock(PackageCollection::class);
@@ -197,12 +197,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testOrderShipmentByPackageIds(): void
     {
-        $carrier        = Carrier::PPL;
-        $packageIds     = [
+        $carrier = Carrier::PPL;
+        $packageIds = [
             '1234',
             '5678',
         ];
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(OrderedShipment::class);
 
         $packageService = $this->newDefaultPackageService(
@@ -224,13 +224,13 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetOrder(): void
     {
-        $carrier        = Carrier::PPL;
-        $orderId        = '888';
-        $packageIds     = [
+        $carrier = Carrier::PPL;
+        $orderId = '888';
+        $packageIds = [
             '4568',
             '9012',
         ];
-        $response       = [
+        $response = [
             'package_ids' => $packageIds,
         ];
         $expectedResult = $this->createMock(OrderedShipment::class);
@@ -254,8 +254,8 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetOverview(): void
     {
-        $carrier        = Carrier::PPL;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::PPL;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(PackageCollection::class);
 
         $packageService = $this->newDefaultPackageService(
@@ -277,13 +277,13 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetLabels(): void
     {
-        $carrier        = Carrier::PPL;
-        $packageIds     = [
+        $carrier = Carrier::PPL;
+        $packageIds = [
             '1234',
             '5678',
         ];
         $expectedResult = 'mockedLabelsUrl';
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $collection = $this->createMock(PackageCollection::class);
         $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
@@ -308,13 +308,13 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetLabelsByPackageIds(): void
     {
-        $carrier        = Carrier::PPL;
-        $packageIds     = [
+        $carrier = Carrier::PPL;
+        $packageIds = [
             '1234',
             '5678',
         ];
         $expectedResult = 'mockedLabelsUrl';
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -335,10 +335,10 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetPackageInfo(): void
     {
-        $carrier   = Carrier::PPL;
+        $carrier = Carrier::PPL;
         $carrierId = '9876';
-        $batchID   = '11';
-        $response  = $this->mockClientResponse();
+        $batchID = '11';
+        $response = $this->mockClientResponse();
 
         $model = $this->createMock(Package::class);
         $model->expects(self::any())->method('getCarrier')->willReturn($carrier);
@@ -367,9 +367,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetPackageInfoByPackageId(): void
     {
-        $carrier   = Carrier::PPL;
+        $carrier = Carrier::PPL;
         $packageId = '4561';
-        $response  = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $expectedResult = $this->createMock(PackageData::class);
 
@@ -392,9 +392,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetPackageInfoByCarrierId(): void
     {
-        $carrier   = Carrier::PPL;
+        $carrier = Carrier::PPL;
         $carrierId = '9876';
-        $response  = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $expectedResult = $this->createMock(PackageData::class);
 
@@ -417,7 +417,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testCheckPackages(): void
     {
-        $carrier  = Carrier::PPL;
+        $carrier = Carrier::PPL;
         $packages = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
@@ -444,10 +444,10 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetProofOfDelivery(): void
     {
-        $carrier        = Carrier::PPL;
-        $carrierId      = '5678';
+        $carrier = Carrier::PPL;
+        $carrierId = '5678';
         $expectedResult = 'mockedFileUrl';
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $model = $this->createMock(Package::class);
         $model->expects(self::any())->method('getCarrier')->willReturn($carrier);
@@ -474,8 +474,8 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetProofOfDeliveries(): void
     {
-        $carrier        = Carrier::PPL;
-        $carrierIds     = [
+        $carrier = Carrier::PPL;
+        $carrierIds = [
             '1234',
             '5678',
             '8526',
@@ -485,7 +485,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
             'mockedLabelsUrl2',
             'mockedLabelsUrl3',
         ];
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $collection = $this->createMock(PackageCollection::class);
         $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
@@ -514,10 +514,10 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetProofOfDeliveryByCarrierId(): void
     {
-        $carrier        = Carrier::PPL;
-        $carrierId      = '5678';
+        $carrier = Carrier::PPL;
+        $carrierId = '5678';
         $expectedResult = 'mockedFileUrl';
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -540,8 +540,8 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetProofOfDeliveriesByCarrierIds(): void
     {
-        $carrier        = Carrier::PPL;
-        $carrierIds     = [
+        $carrier = Carrier::PPL;
+        $carrierIds = [
             '1234',
             '5678',
             '8526',
@@ -551,7 +551,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
             'mockedLabelsUrl2',
             'mockedLabelsUrl3',
         ];
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -576,12 +576,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testGetTransportCosts(): void
     {
-        $carrier        = Carrier::PPL;
-        $packages       = [
+        $carrier = Carrier::PPL;
+        $packages = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(TransportCostCollection::class);
 
         $collection = $this->createMock(PackageDataCollection::class);
@@ -605,12 +605,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testOrderB2AShipment(): void
     {
-        $carrier        = Carrier::PPL;
-        $packages       = [
+        $carrier = Carrier::PPL;
+        $packages = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(PackageCollection::class);
 
         $collection = $this->createMock(PackageDataCollection::class);
@@ -634,12 +634,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testOrderPickup(): void
     {
-        $carrier      = Carrier::PPL;
-        $dateFrom     = new DateTimeImmutable('2020-08-01 16:10:00');
-        $dateTo       = new DateTimeImmutable('2020-08-01 19:20:00');
-        $weight       = 15.6;
+        $carrier = Carrier::PPL;
+        $dateFrom = new DateTimeImmutable('2020-08-01 16:10:00');
+        $dateTo = new DateTimeImmutable('2020-08-01 19:20:00');
+        $weight = 15.6;
         $packageCount = 2;
-        $message      = 'testMessage';
+        $message = 'testMessage';
 
         $response = $this->mockClientResponse();
 
@@ -649,12 +649,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 $carrier,
                 Method::ORDER_PICKUP,
                 [
-                    'date'          => '2020-08-01',
-                    'time_from'     => '16:10',
-                    'time_to'       => '19:20',
-                    'weight'        => $weight,
+                    'date' => '2020-08-01',
+                    'time_from' => '16:10',
+                    'time_to' => '19:20',
+                    'weight' => $weight,
                     'package_count' => $packageCount,
-                    'message'       => $message,
+                    'message' => $message,
                 ],
             ], $response),
         );
@@ -676,12 +676,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         $this->expectException(BadRequestException::class);
         $this->expectExceptionMessage($errorMessage);
 
-        $carrier      = Carrier::PPL;
-        $dateFrom     = new DateTimeImmutable('2020-08-01 16:10:00');
-        $dateTo       = new DateTimeImmutable('2020-08-01 19:20:00');
-        $weight       = 15.6;
+        $carrier = Carrier::PPL;
+        $dateFrom = new DateTimeImmutable('2020-08-01 16:10:00');
+        $dateTo = new DateTimeImmutable('2020-08-01 19:20:00');
+        $weight = 15.6;
         $packageCount = 2;
-        $message      = 'testMessage';
+        $message = 'testMessage';
 
         $response = [
             'message' => $errorMessage,
@@ -693,12 +693,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
                 $carrier,
                 Method::ORDER_PICKUP,
                 [
-                    'date'          => '2020-08-01',
-                    'time_from'     => '16:10',
-                    'time_to'       => '19:20',
-                    'weight'        => $weight,
+                    'date' => '2020-08-01',
+                    'time_from' => '16:10',
+                    'time_to' => '19:20',
+                    'weight' => $weight,
                     'package_count' => $packageCount,
-                    'message'       => $message,
+                    'message' => $message,
                 ],
             ], $response),
         );
@@ -715,12 +715,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testOrderB2CShipment(): void
     {
-        $carrier        = Carrier::PPL;
-        $packages       = [
+        $carrier = Carrier::PPL;
+        $packages = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(PackageCollection::class);
 
         $collection = $this->createMock(PackageDataCollection::class);
@@ -744,7 +744,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testCheckB2APackages(): void
     {
-        $carrier  = Carrier::TOPTRANS;
+        $carrier = Carrier::TOPTRANS;
         $packages = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
@@ -771,7 +771,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     public function testCheckB2CPackages(): void
     {
-        $carrier  = Carrier::TOPTRANS;
+        $carrier = Carrier::TOPTRANS;
         $packages = [
             $this->mockClientResponse(),
             $this->mockClientResponse(),
@@ -809,7 +809,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     /**
      * @param array<int,array<string,mixed>>|null $packages
-     * @param array<string,mixed>                 $data
+     * @param array<string,mixed> $data
      */
     private function mockPackageFactory(string $carrier, ?array $packages, array $data, PackageCollection $response): PackageFactory
     {
@@ -820,7 +820,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
     }
 
     /**
-     * @param array<string>       $packageIds
+     * @param array<string> $packageIds
      * @param array<string,mixed> $data
      */
     private function mockOrderedShipmentFactory(string $carrier, array $packageIds, array $data, OrderedShipment $response): OrderedShipmentFactory
@@ -843,9 +843,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
     }
 
     /**
-     * @param array<string>       $carrierIds
+     * @param array<string> $carrierIds
      * @param array<string,mixed> $data
-     * @param array<string>       $response
+     * @param array<string> $response
      */
     private function mockProofOfDeliveryFactory(array $carrierIds, array $data, array $response): ProofOfDeliveryFactory
     {
@@ -857,7 +857,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
 
     /**
      * @param array<int,array<string,mixed>>|null $packages
-     * @param array<string,mixed>                 $data
+     * @param array<string,mixed> $data
      */
     private function mockTransportCostFactory(string $carrier, ?array $packages, array $data, TransportCostCollection $response): TransportCostFactory
     {

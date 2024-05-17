@@ -44,7 +44,7 @@ final class DefaultTransportCostCollection extends BaseCollection implements Tra
 
     public function getTotalCost(): float
     {
-        $totalCost    = 0.0;
+        $totalCost = 0.0;
         $currencyCode = $this->getCurrencyCode();
 
         foreach ($this->getItems() as $cost) {

@@ -41,43 +41,43 @@ final class DefaultChangelogFactoryTest extends BaseTestCase
     public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
-            'data'    => [
-                'status'                  => 200,
-                'status_message'          => 'Operace proběhla v pořádku.',
+            'data' => [
+                'status' => 200,
+                'status_message' => 'Operace proběhla v pořádku.',
                 'api_v1_documentation_cz' => 'https://balikobot.docs.apiary.io/',
                 'api_v2_documentation_cz' => 'https://balikobotv2.docs.apiary.io/',
                 'api_v1_documentation_en' => 'https://balikoboteng.docs.apiary.io/',
                 'api_v2_documentation_en' => 'https://balikobotv2eng.docs.apiary.io/',
-                'version'                 => '1.900',
-                'date'                    => '2020-12-18',
-                'versions'                => [
+                'version' => '1.900',
+                'date' => '2020-12-18',
+                'versions' => [
                     0 => [
                         'version' => '1.900',
-                        'date'    => '2020-12-18',
+                        'date' => '2020-12-18',
                         'changes' => [
                             0 => [
-                                'name'        => 'ADD Zásilkovna',
+                                'name' => 'ADD Zásilkovna',
                                 'description' => '- delivery_costs a delivery_costs_eur - přidání GB',
                             ],
                             1 => [
-                                'name'        => 'ADD PbH',
+                                'name' => 'ADD PbH',
                                 'description' => '- content data - přidání GB',
                             ],
                         ],
                     ],
                     1 => [
                         'version' => '1.899',
-                        'date'    => '2020-12-07',
+                        'date' => '2020-12-07',
                         'changes' => [
                             0 => [
-                                'name'        => 'ADD Gebrüder Weiss Česká republika',
+                                'name' => 'ADD Gebrüder Weiss Česká republika',
                                 'description' => '- nový atribut rec_floor_number - číslo patra',
                             ],
                         ],
                     ],
                 ],
             ],
-            'result'     => new DefaultChangelogCollection([
+            'result' => new DefaultChangelogCollection([
                 new DefaultChangelog(
                     '1.900',
                     new DateTimeImmutable('2020-12-18'),

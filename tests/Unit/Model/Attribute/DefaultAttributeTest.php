@@ -11,14 +11,14 @@ final class DefaultAttributeTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $model         = new DefaultAttribute(
+        $model = new DefaultAttribute(
             'eid',
             'string',
             '40',
         );
         $expectedArray = [
-            'name'      => 'eid',
-            'dataType'  => 'string',
+            'name' => 'eid',
+            'dataType' => 'string',
             'maxLength' => '40',
         ];
 

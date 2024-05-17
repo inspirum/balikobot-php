@@ -14,8 +14,8 @@ final class DefaultCarrierTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $methods       = [
-            'https://apiv2.balikobot.cz'    => new DefaultMethodCollection([
+        $methods = [
+            'https://apiv2.balikobot.cz' => new DefaultMethodCollection([
                 new DefaultMethod('ADD'),
                 new DefaultMethod('TRACKSTATUS'),
             ]),
@@ -24,16 +24,16 @@ final class DefaultCarrierTest extends BaseTestCase
                 new DefaultMethod('DROP'),
             ]),
         ];
-        $model         = new DefaultCarrier(
+        $model = new DefaultCarrier(
             'zasilkovna',
             'Zásilkovna',
             $methods,
         );
         $expectedArray = [
-            'code'    => 'zasilkovna',
-            'name'    => 'Zásilkovna',
+            'code' => 'zasilkovna',
+            'name' => 'Zásilkovna',
             'methods' => [
-                'https://apiv2.balikobot.cz'    => [
+                'https://apiv2.balikobot.cz' => [
                     [
                         'code' => 'ADD',
                     ],

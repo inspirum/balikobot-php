@@ -38,8 +38,8 @@ final class DefaultChangelog extends BaseModel implements Changelog
     public function __toArray(): array
     {
         return [
-            'code'    => $this->version,
-            'date'    => $this->date->format('Y-m-d'),
+            'code' => $this->version,
+            'date' => $this->date->format('Y-m-d'),
             'changes' => $this->changes->__toArray(),
         ];
     }

@@ -37,8 +37,8 @@ final class DefaultTransportCostPart extends BaseModel implements TransportCostP
     public function __toArray(): array
     {
         return [
-            'name'         => $this->name,
-            'cost'         => $this->cost,
+            'name' => $this->name,
+            'cost' => $this->cost,
             'currencyCode' => $this->currencyCode,
         ];
     }

@@ -22,7 +22,7 @@ abstract class BaseServiceTestCase extends BaseTestCase
     }
 
     /**
-     * @param array<mixed>             $arguments
+     * @param array<mixed> $arguments
      * @param array<string,mixed>|null $response
      */
     protected function mockClient(array $arguments, ?array $response): Client
@@ -48,7 +48,7 @@ abstract class BaseServiceTestCase extends BaseTestCase
     }
 
     /**
-     * @param array<array<mixed>>        $multipleArguments
+     * @param array<array<mixed>> $multipleArguments
      * @param array<array<string,mixed>> $responses
      */
     protected function mockClientMultipleCalls(array $multipleArguments, array $responses): Client

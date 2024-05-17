@@ -20,7 +20,7 @@ final class DefaultTransportCostFactoryTest extends BaseTestCase
 {
     /**
      * @param array<array<string,mixed>>|null $packages
-     * @param array<string,mixed>             $data
+     * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(string $carrier, ?array $packages, array $data, TransportCostCollection|Throwable $result): void
@@ -52,33 +52,33 @@ final class DefaultTransportCostFactoryTest extends BaseTestCase
                     'eid' => '9636699909',
                 ],
             ],
-            'data'    => [
+            'data' => [
                 [
-                    'eid'             => '8316699909',
-                    'costs_total'     => 1200,
-                    'currency'        => 'CZK',
+                    'eid' => '8316699909',
+                    'costs_total' => 1200,
+                    'currency' => 'CZK',
                     'costs_breakdown' => [
                         [
                             'name' => 'Base price',
                             'cost' => 1200,
                         ],
                     ],
-                    'status'          => '200',
+                    'status' => '200',
                 ],
                 [
-                    'eid'             => '9636699909',
-                    'costs_total'     => 800,
-                    'currency'        => 'CZK',
+                    'eid' => '9636699909',
+                    'costs_total' => 800,
+                    'currency' => 'CZK',
                     'costs_breakdown' => [
                         [
                             'name' => 'Base price',
                             'cost' => 800,
                         ],
                     ],
-                    'status'          => '200',
+                    'status' => '200',
                 ],
             ],
-            'result'  =>  new DefaultTransportCostCollection(Carrier::TOPTRANS, [
+            'result' => new DefaultTransportCostCollection(Carrier::TOPTRANS, [
                 new DefaultTransportCost(
                     '8316699909',
                     Carrier::TOPTRANS,
@@ -115,33 +115,33 @@ final class DefaultTransportCostFactoryTest extends BaseTestCase
                     'eid' => '8316699909',
                 ],
             ],
-            'data'    => [
+            'data' => [
                 [
-                    'eid'             => '8316699909',
-                    'costs_total'     => 1200,
-                    'currency'        => 'CZK',
+                    'eid' => '8316699909',
+                    'costs_total' => 1200,
+                    'currency' => 'CZK',
                     'costs_breakdown' => [
                         [
                             'name' => 'Base price',
                             'cost' => 1200,
                         ],
                     ],
-                    'status'          => '200',
+                    'status' => '200',
                 ],
                 [
-                    'eid'             => '9636699909',
-                    'costs_total'     => 800,
-                    'currency'        => 'CZK',
+                    'eid' => '9636699909',
+                    'costs_total' => 800,
+                    'currency' => 'CZK',
                     'costs_breakdown' => [
                         [
                             'name' => 'Base price',
                             'cost' => 800,
                         ],
                     ],
-                    'status'          => '200',
+                    'status' => '200',
                 ],
             ],
-            'result'  =>  new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
 
         yield 'missing_package_data' => [
@@ -154,32 +154,32 @@ final class DefaultTransportCostFactoryTest extends BaseTestCase
                     'eid' => '9636699909',
                 ],
             ],
-            'data'    => [
+            'data' => [
                 [
-                    'eid'             => '8316699909',
-                    'costs_total'     => 1200,
-                    'currency'        => 'CZK',
+                    'eid' => '8316699909',
+                    'costs_total' => 1200,
+                    'currency' => 'CZK',
                     'costs_breakdown' => [
                         [
                             'name' => 'Base price',
                             'cost' => 1200,
                         ],
                     ],
-                    'status'          => '404',
+                    'status' => '404',
                 ],
                 [
-                    'costs_total'     => 800,
-                    'currency'        => 'CZK',
+                    'costs_total' => 800,
+                    'currency' => 'CZK',
                     'costs_breakdown' => [
                         [
                             'name' => 'Base price',
                             'cost' => 800,
                         ],
                     ],
-                    'status'          => '200',
+                    'status' => '200',
                 ],
             ],
-            'result'  =>  new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
     }
 

@@ -22,8 +22,6 @@ abstract class BaseException extends RuntimeException implements Exception
 
     /**
      * Response HTTP status code
-     *
-     * @var int
      */
     protected int $statusCode;
 
@@ -37,10 +35,7 @@ abstract class BaseException extends RuntimeException implements Exception
     /**
      * AbstractException constructor
      *
-     * @param array<mixed>    $response
-     * @param int             $statusCode
-     * @param \Throwable|null $previous
-     * @param string|null     $message
+     * @param array<mixed> $response
      */
     public function __construct(
         array $response = [],
@@ -66,8 +61,6 @@ abstract class BaseException extends RuntimeException implements Exception
 
     /**
      * Get response HTTP status code
-     *
-     * @return int
      */
     public function getStatusCode(): int
     {
@@ -86,8 +79,6 @@ abstract class BaseException extends RuntimeException implements Exception
 
     /**
      * Get response as string
-     *
-     * @return string
      */
     public function getResponseAsString(): string
     {
@@ -106,10 +97,6 @@ abstract class BaseException extends RuntimeException implements Exception
 
     /**
      * Get message with errors
-     *
-     * @param string $message
-     *
-     * @return string
      */
     private function getMessageWithErrors(string $message): string
     {

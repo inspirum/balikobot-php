@@ -37,9 +37,9 @@ final class DefaultCodCountry extends BaseModel implements CodCountry
     public function __toArray(): array
     {
         return [
-            'code'         => $this->code,
+            'code' => $this->code,
             'currencyCode' => $this->currencyCode,
-            'maxPrice'     => $this->maxPrice,
+            'maxPrice' => $this->maxPrice,
         ];
     }
 }

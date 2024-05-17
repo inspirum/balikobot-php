@@ -38,17 +38,17 @@ final class DefaultMethodFactoryTest extends BaseTestCase
     public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
-            'data'    => [
+            'data' => [
                 [
-                    'method'   => 'ADD',
+                    'method' => 'ADD',
                     'endpoint' => 'https://api.balikobot.cz/zasilkovna/add',
                 ],
                 [
-                    'method'   => 'TRACKSTATUS',
+                    'method' => 'TRACKSTATUS',
                     'endpoint' => 'https://api.balikobot.cz/zasilkovna/trackstatus',
                 ],
             ],
-            'result'  =>  new DefaultMethodCollection([
+            'result' => new DefaultMethodCollection([
                 new DefaultMethod('ADD'),
                 new DefaultMethod('TRACKSTATUS'),
             ]),

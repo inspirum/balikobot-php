@@ -89,20 +89,20 @@ final class DefaultBranchFactory implements BranchFactory
      */
     private function normalizeData(string $carrier, ?string $service, array $data): array
     {
-        $data['country']               = $this->resolveCountry($carrier, $service, $data);
-        $data['type']                ??= 'branch';
-        $data['city']                ??= '';
-        $data['zip']                 ??= '00000';
-        $data['street']                = $this->resolveStreet($data);
-        $data['id']                    = $data['branch_id'] ?? (isset($data['id']) ? (string) $data['id'] : null);
-        $data['name']                ??= $data['zip'];
-        $data['latitude']              = $this->castFloat($data, 'latitude');
-        $data['longitude']             = $this->castFloat($data, 'longitude');
+        $data['country'] = $this->resolveCountry($carrier, $service, $data);
+        $data['type'] ??= 'branch';
+        $data['city'] ??= '';
+        $data['zip'] ??= '00000';
+        $data['street'] = $this->resolveStreet($data);
+        $data['id'] = $data['branch_id'] ?? (isset($data['id']) ? (string) $data['id'] : null);
+        $data['name'] ??= $data['zip'];
+        $data['latitude'] = $this->castFloat($data, 'latitude');
+        $data['longitude'] = $this->castFloat($data, 'longitude');
         $data['wheelchair_accessible'] = $this->castBool($data, 'wheelchair_accessible');
-        $data['claim_assistant']       = $this->castBool($data, 'claim_assistant');
-        $data['dressing_room']         = $this->castBool($data, 'dressing_room');
-        $data['max_weight']            = $this->castFloat($data, 'max_weight');
-        $data['branch_id']             = $this->resolveBranchId($carrier, $service, $data);
+        $data['claim_assistant'] = $this->castBool($data, 'claim_assistant');
+        $data['dressing_room'] = $this->castBool($data, 'dressing_room');
+        $data['max_weight'] = $this->castFloat($data, 'max_weight');
+        $data['branch_id'] = $this->resolveBranchId($carrier, $service, $data);
 
         return $data;
     }
@@ -166,9 +166,9 @@ final class DefaultBranchFactory implements BranchFactory
     private function resolveStreet(array $data): string
     {
         if (isset($data['street']) && (isset($data['house_number']) || isset($data['orientation_number']))) {
-            $houseNumber       = (int) ($data['house_number'] ?? 0);
+            $houseNumber = (int) ($data['house_number'] ?? 0);
             $orientationNumber = (int) ($data['orientation_number'] ?? 0);
-            $streetNumber      = trim(
+            $streetNumber = trim(
                 sprintf(
                     '%s/%s',
                     $houseNumber > 0 ? $houseNumber : '',

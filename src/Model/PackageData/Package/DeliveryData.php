@@ -79,11 +79,6 @@ trait DeliveryData
         $this->offsetSet(Attribute::DEL_EVENING, (int) $delEvening);
     }
 
-    /**
-     * @param bool $delExworks
-     *
-     * @return void
-     */
     public function setDelExworks(bool $delExworks = true): void
     {
         $this->offsetSet(Attribute::DEL_EXWORKS, (int) $delExworks);

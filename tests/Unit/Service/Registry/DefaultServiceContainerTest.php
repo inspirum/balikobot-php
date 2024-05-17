@@ -16,11 +16,11 @@ final class DefaultServiceContainerTest extends BaseTestCase
 {
     public function testGetter(): void
     {
-        $branchService  = $this->createMock(BranchService::class);
-        $infoService    = $this->createMock(InfoService::class);
+        $branchService = $this->createMock(BranchService::class);
+        $infoService = $this->createMock(InfoService::class);
         $packageService = $this->createMock(PackageService::class);
         $settingService = $this->createMock(SettingService::class);
-        $trackService   = $this->createMock(TrackService::class);
+        $trackService = $this->createMock(TrackService::class);
 
         $container = new DefaultServiceContainer(
             $branchService,

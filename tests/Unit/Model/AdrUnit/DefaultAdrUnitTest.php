@@ -11,8 +11,8 @@ final class DefaultAdrUnitTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $carrier       = 'ppl';
-        $model         = new DefaultAdrUnit(
+        $carrier = 'ppl';
+        $model = new DefaultAdrUnit(
             $carrier,
             '299',
             '432',
@@ -23,12 +23,12 @@ final class DefaultAdrUnitTest extends BaseTestCase
             '4',
         );
         $expectedArray = [
-            'id'                => '299',
-            'code'              => '432',
-            'name'              => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely',
-            'class'             => '1',
-            'packaging'         => 'A',
-            'tunnelCode'        => 'E',
+            'id' => '299',
+            'code' => '432',
+            'name' => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely',
+            'class' => '1',
+            'packaging' => 'A',
+            'tunnelCode' => 'E',
             'transportCategory' => '4',
         ];
 

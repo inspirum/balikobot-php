@@ -17,7 +17,7 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
 {
     public function testGetAccountInfo(): void
     {
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(Account::class);
 
         $infoService = $this->newDefaultInfoService(
@@ -32,7 +32,7 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
 
     public function testGetChangelog(): void
     {
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ChangelogCollection::class);
 
         $infoService = $this->newDefaultInfoService(

@@ -40,13 +40,10 @@ use function getenv;
 
 abstract class BaseTestCase extends BaseUnitTestCase
 {
-    /**
-     * @return \Inspirum\Balikobot\Client\Requester
-     */
     protected function newDefaultCurlRequester(bool $sslVerify = true): Requester
     {
         $apiUser = (string) getenv('BALIKOBOT_API_USER');
-        $apiKey  = (string) getenv('BALIKOBOT_API_KEY');
+        $apiKey = (string) getenv('BALIKOBOT_API_KEY');
 
         return new DefaultCurlRequester($apiUser, $apiKey, $sslVerify);
     }

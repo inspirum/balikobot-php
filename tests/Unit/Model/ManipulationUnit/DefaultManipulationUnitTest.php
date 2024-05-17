@@ -11,7 +11,7 @@ final class DefaultManipulationUnitTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $model         =  new DefaultManipulationUnit(
+        $model = new DefaultManipulationUnit(
             '32',
             'Balík',
         );

@@ -12,7 +12,7 @@ final class DefaultChangelogStatusCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $items         = [
+        $items = [
             new DefaultChangelogStatus(
                 'ADD Zásilkovna',
                 '- delivery_costs a delivery_costs_eur - přidání GB',
@@ -22,14 +22,14 @@ final class DefaultChangelogStatusCollectionTest extends BaseTestCase
                 '- content data - přidání GB',
             ),
         ];
-        $collection    = new DefaultChangelogStatusCollection($items);
+        $collection = new DefaultChangelogStatusCollection($items);
         $expectedArray = [
             [
-                'name'        => 'ADD Zásilkovna',
+                'name' => 'ADD Zásilkovna',
                 'description' => '- delivery_costs a delivery_costs_eur - přidání GB',
             ],
             [
-                'name'        => 'ADD PbH',
+                'name' => 'ADD PbH',
                 'description' => '- content data - přidání GB',
             ],
         ];

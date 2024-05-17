@@ -14,11 +14,11 @@ final class DefaultServiceTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $countries     = [
+        $countries = [
             'CZ',
             'EU',
         ];
-        $options       = new DefaultServiceOptionCollection([
+        $options = new DefaultServiceOptionCollection([
             new DefaultServiceOption(
                 '3',
                 'Dodejka',
@@ -28,7 +28,7 @@ final class DefaultServiceTest extends BaseTestCase
                 'Dobírka Pk A/MZ dobírka',
             ),
         ]);
-        $codCountries  = [
+        $codCountries = [
             new DefaultCodCountry(
                 'UA',
                 'UAH',
@@ -40,7 +40,7 @@ final class DefaultServiceTest extends BaseTestCase
                 2000,
             ),
         ];
-        $model         = new DefaultService(
+        $model = new DefaultService(
             'NP',
             'NP - Balík Na poštu',
             $options,
@@ -48,9 +48,9 @@ final class DefaultServiceTest extends BaseTestCase
             $codCountries,
         );
         $expectedArray = [
-            'type'         => 'NP',
-            'name'         => 'NP - Balík Na poštu',
-            'options'      => [
+            'type' => 'NP',
+            'name' => 'NP - Balík Na poštu',
+            'options' => [
                 [
                     'code' => '3',
                     'name' => 'Dodejka',
@@ -60,20 +60,20 @@ final class DefaultServiceTest extends BaseTestCase
                     'name' => 'Dobírka Pk A/MZ dobírka',
                 ],
             ],
-            'countries'    => [
+            'countries' => [
                 'CZ',
                 'EU',
             ],
             'codCountries' => [
                 [
-                    'code'         => 'UA',
+                    'code' => 'UA',
                     'currencyCode' => 'UAH',
-                    'maxPrice'     => 36000.0,
+                    'maxPrice' => 36000.0,
                 ],
                 [
-                    'code'         => 'LV',
+                    'code' => 'LV',
                     'currencyCode' => 'USD',
-                    'maxPrice'     => 2000.0,
+                    'maxPrice' => 2000.0,
                 ],
             ],
         ];

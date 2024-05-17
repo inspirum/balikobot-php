@@ -10,8 +10,6 @@ interface Exception extends Throwable
 {
     /**
      * Get response HTTP status code
-     *
-     * @return int
      */
     public function getStatusCode(): int;
 
@@ -24,8 +22,6 @@ interface Exception extends Throwable
 
     /**
      * Get response as string
-     *
-     * @return string
      */
     public function getResponseAsString(): string;
 

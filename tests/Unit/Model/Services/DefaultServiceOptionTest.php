@@ -11,7 +11,7 @@ final class DefaultServiceOptionTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $model         = new DefaultServiceOption(
+        $model = new DefaultServiceOption(
             '3',
             'Dodejka',
         );

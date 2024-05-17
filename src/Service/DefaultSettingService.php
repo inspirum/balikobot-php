@@ -109,7 +109,6 @@ final class DefaultSettingService implements SettingService
         return $this->countryFactory->createCollection($response);
     }
 
-    /** @inheritDoc */
     public function getZipCodes(string $carrier, string $service, ?string $country = null): ZipCodeIterator
     {
         $response = $this->client->call(Version::V2V1, $carrier, Method::ZIP_CODES, path: sprintf('%s/%s', $service, $country));

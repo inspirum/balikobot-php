@@ -14,10 +14,7 @@ final class BadRequestException extends BaseException
     /**
      * BadRequestException constructor
      *
-     * @param array<mixed>    $response
-     * @param int             $statusCode
-     * @param \Throwable|null $previous
-     * @param string|null     $message
+     * @param array<mixed> $response
      */
     public function __construct(
         array $response,
@@ -34,8 +31,6 @@ final class BadRequestException extends BaseException
      * Set errors from response
      *
      * @param array<mixed> $response
-     *
-     * @return void
      */
     private function setErrors(array $response): void
     {
@@ -81,10 +76,7 @@ final class BadRequestException extends BaseException
     /**
      * Set errors for package
      *
-     * @param int          $number
      * @param array<mixed> $response
-     *
-     * @return void
      */
     private function setErrorsForPackage(int $number, array $response): void
     {
@@ -105,10 +97,7 @@ final class BadRequestException extends BaseException
     /**
      * Set errors from codes
      *
-     * @param int                      $number
      * @param array<string,int|string> $response
-     *
-     * @return void
      */
     private function setErrorsFromResponseCodes(int $number, array $response): void
     {
@@ -125,11 +114,6 @@ final class BadRequestException extends BaseException
 
     /**
      * Get error message from variables
-     *
-     * @param string $key
-     * @param int    $code
-     *
-     * @return string
      */
     private function getErrorMessage(string $key, int $code): string
     {
@@ -147,12 +131,6 @@ final class BadRequestException extends BaseException
 
     /**
      * Set new error message
-     *
-     * @param int    $number
-     * @param string $key
-     * @param string $error
-     *
-     * @return void
      */
     private function setError(int $number, string $key, string $error): void
     {

@@ -67,7 +67,7 @@ final class DefaultCurlRequester implements Requester
         ]);
 
         // execute curl
-        $response   = curl_exec($ch);
+        $response = curl_exec($ch);
         $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         // check for errors.

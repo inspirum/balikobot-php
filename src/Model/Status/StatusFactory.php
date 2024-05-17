@@ -8,20 +8,20 @@ interface StatusFactory
 {
     /**
      * @param array<string,mixed> $data
-     * @param array<mixed,mixed>  $response
+     * @param array<mixed,mixed> $response
      */
     public function create(string $carrier, string $carrierId, array $data, array $response = []): Status;
 
     /**
      * @param array<string,mixed> $data
-     * @param array<mixed,mixed>  $response
+     * @param array<mixed,mixed> $response
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function createLastStatus(string $carrier, array $data, array $response = []): Status;
 
     /**
-     * @param array<string>      $carrierIds
+     * @param array<string> $carrierIds
      * @param array<mixed,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Status\StatusesCollection&array<\Inspirum\Balikobot\Model\Status\Statuses>
@@ -31,7 +31,7 @@ interface StatusFactory
     public function createCollection(string $carrier, array $carrierIds, array $data): StatusesCollection;
 
     /**
-     * @param array<string>      $carrierIds
+     * @param array<string> $carrierIds
      * @param array<mixed,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Status\StatusCollection&array<\Inspirum\Balikobot\Model\Status\Status>

@@ -12,8 +12,8 @@ final class DefaultAdrUnitCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = 'ppl';
-        $items         = [
+        $carrier = 'ppl';
+        $items = [
             new DefaultAdrUnit(
                 $carrier,
                 '299',
@@ -35,24 +35,24 @@ final class DefaultAdrUnitCollectionTest extends BaseTestCase
                 '2',
             ),
         ];
-        $collection    = new DefaultAdrUnitCollection($carrier, $items);
+        $collection = new DefaultAdrUnitCollection($carrier, $items);
         $expectedArray = [
             [
-                'id'                => '299',
-                'code'              => '432',
-                'name'              => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely',
-                'class'             => '1',
-                'packaging'         => null,
-                'tunnelCode'        => 'E',
+                'id' => '299',
+                'code' => '432',
+                'name' => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely',
+                'class' => '1',
+                'packaging' => null,
+                'tunnelCode' => 'E',
                 'transportCategory' => '4',
             ],
             [
-                'id'                => '377',
-                'code'              => '1001',
-                'name'              => 'ACETYLÉN, ROZPUŠTĚNÝ',
-                'class'             => '2',
-                'packaging'         => 'A',
-                'tunnelCode'        => null,
+                'id' => '377',
+                'code' => '1001',
+                'name' => 'ACETYLÉN, ROZPUŠTĚNÝ',
+                'class' => '2',
+                'packaging' => 'A',
+                'tunnelCode' => null,
                 'transportCategory' => '2',
             ],
         ];

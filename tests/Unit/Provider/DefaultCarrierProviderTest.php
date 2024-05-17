@@ -15,7 +15,7 @@ final class DefaultCarrierProviderTest extends BaseTestCase
         $provider = $this->newDefaultCarrierProvider();
 
         $expectedCarriers = Carrier::getAll();
-        $carriers         = $provider->getCarriers();
+        $carriers = $provider->getCarriers();
 
         self::assertSame($expectedCarriers, $carriers);
     }

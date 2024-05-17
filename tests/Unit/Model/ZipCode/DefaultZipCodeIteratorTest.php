@@ -18,7 +18,7 @@ final class DefaultZipCodeIteratorTest extends BaseTestCase
     {
         $carrier = Carrier::CP;
         $service = Service::CP_NP;
-        $items   = [
+        $items = [
             new DefaultZipCode(
                 $carrier,
                 $service,

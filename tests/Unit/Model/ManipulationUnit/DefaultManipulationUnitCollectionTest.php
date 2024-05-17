@@ -12,8 +12,8 @@ final class DefaultManipulationUnitCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = 'ppl';
-        $items         =  [
+        $carrier = 'ppl';
+        $items = [
             new DefaultManipulationUnit(
                 '32',
                 'Balík',
@@ -23,7 +23,7 @@ final class DefaultManipulationUnitCollectionTest extends BaseTestCase
                 'Bedna',
             ),
         ];
-        $collection    = new DefaultManipulationUnitCollection($carrier, $items);
+        $collection = new DefaultManipulationUnitCollection($carrier, $items);
         $expectedArray = [
             [
                 'code' => '32',

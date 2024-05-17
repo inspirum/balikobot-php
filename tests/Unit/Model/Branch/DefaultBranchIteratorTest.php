@@ -17,13 +17,13 @@ final class DefaultBranchIteratorTest extends BaseTestCase
 {
     public function testIterator(): void
     {
-        $carrier   = Carrier::CP;
-        $service   = Service::CP_NP;
+        $carrier = Carrier::CP;
+        $service = Service::CP_NP;
         $countries = [
             Country::CZECH_REPUBLIC,
             Country::HUNGARY,
         ];
-        $items     = [
+        $items = [
             new DefaultBranch(
                 Carrier::CP,
                 Service::CP_NP,

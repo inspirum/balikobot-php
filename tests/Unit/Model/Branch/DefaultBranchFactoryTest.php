@@ -21,7 +21,7 @@ use function iterator_to_array;
 final class DefaultBranchFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string>       $countries
+     * @param array<string> $countries
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateIterator')]
@@ -51,27 +51,27 @@ final class DefaultBranchFactoryTest extends BaseTestCase
             'carrier' => Carrier::CP,
             'service' => null,
             'countries' => null,
-            'data'    => [
+            'data' => [
                 'branches' => [
                     [
-                        'id'     => '1234',
-                        'type'   => 'type1',
-                        'name'   => 'name1',
-                        'city'   => 'city1',
+                        'id' => '1234',
+                        'type' => 'type1',
+                        'name' => 'name1',
+                        'city' => 'city1',
                         'street' => 'street 27/8',
-                        'zip'    => '11000',
+                        'zip' => '11000',
                     ],
                     [
-                        'id'     => '1235',
-                        'type'   => 'type2',
-                        'name'   => 'name2',
-                        'city'   => 'city2',
+                        'id' => '1235',
+                        'type' => 'type2',
+                        'name' => 'name2',
+                        'city' => 'city2',
                         'street' => 'street 27/9',
-                        'zip'    => '12000',
+                        'zip' => '12000',
                     ],
                 ],
             ],
-            'result'  => new DefaultBranchIterator(
+            'result' => new DefaultBranchIterator(
                 Carrier::CP,
                 null,
                 null,
@@ -106,7 +106,7 @@ final class DefaultBranchFactoryTest extends BaseTestCase
     }
 
     /**
-     * @param array<string>       $countries
+     * @param array<string> $countries
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestWrapIterator')]
@@ -129,27 +129,27 @@ final class DefaultBranchFactoryTest extends BaseTestCase
             'carrier' => Carrier::CP,
             'service' => null,
             'countries' => [Country::CZECH_REPUBLIC],
-            'data'    => [
+            'data' => [
                 'branches' => [
                     [
-                        'id'     => '1234',
-                        'type'   => 'type1',
-                        'name'   => 'name1',
-                        'city'   => 'city1',
+                        'id' => '1234',
+                        'type' => 'type1',
+                        'name' => 'name1',
+                        'city' => 'city1',
                         'street' => 'street 27/8',
-                        'zip'    => '11000',
+                        'zip' => '11000',
                     ],
                     [
-                        'id'     => '1235',
-                        'type'   => 'type2',
-                        'name'   => 'name2',
-                        'city'   => 'city2',
+                        'id' => '1235',
+                        'type' => 'type2',
+                        'name' => 'name2',
+                        'city' => 'city2',
                         'street' => 'street 27/9',
-                        'zip'    => '12000',
+                        'zip' => '12000',
                     ],
                 ],
             ],
-            'result'  => new DefaultBranchIterator(
+            'result' => new DefaultBranchIterator(
                 Carrier::CP,
                 null,
                 [Country::CZECH_REPUBLIC],
@@ -188,36 +188,36 @@ final class DefaultBranchFactoryTest extends BaseTestCase
         $factory = $this->newDefaultBranchFactory();
 
         $branch = $factory->create('cp', 'NP', [
-            'id'                    => '1234',
-            'type'                  => 'type',
-            'name'                  => 'name',
-            'city'                  => 'city',
-            'street'                => 'street 27/8',
-            'zip'                   => 'zip',
-            'country'               => 'country',
-            'city_part'             => 'city_part',
-            'district'              => 'district',
-            'region'                => 'region',
-            'currency'              => 'currency',
-            'photo_small'           => 'photo_small',
-            'photo_big'             => 'photo_big',
-            'url'                   => 'url',
-            'latitude'              => 123.45,
-            'longitude'             => 67.890,
-            'directions_global'     => 'directions_global',
-            'directions_car'        => 'directions_car',
-            'directions_public'     => 'directions_public',
+            'id' => '1234',
+            'type' => 'type',
+            'name' => 'name',
+            'city' => 'city',
+            'street' => 'street 27/8',
+            'zip' => 'zip',
+            'country' => 'country',
+            'city_part' => 'city_part',
+            'district' => 'district',
+            'region' => 'region',
+            'currency' => 'currency',
+            'photo_small' => 'photo_small',
+            'photo_big' => 'photo_big',
+            'url' => 'url',
+            'latitude' => 123.45,
+            'longitude' => 67.890,
+            'directions_global' => 'directions_global',
+            'directions_car' => 'directions_car',
+            'directions_public' => 'directions_public',
             'wheelchair_accessible' => false,
-            'claim_assistant'       => true,
-            'dressing_room'         => true,
-            'opening_monday'        => 'opening_monday',
-            'opening_tuesday'       => 'opening_tuesday',
-            'opening_wednesday'     => 'opening_wednesday',
-            'opening_thursday'      => 'opening_thursday',
-            'opening_friday'        => 'opening_friday',
-            'opening_saturday'      => 'opening_saturday',
-            'opening_sunday'        => 'opening_sunday',
-            'max_weight'            => '5',
+            'claim_assistant' => true,
+            'dressing_room' => true,
+            'opening_monday' => 'opening_monday',
+            'opening_tuesday' => 'opening_tuesday',
+            'opening_wednesday' => 'opening_wednesday',
+            'opening_thursday' => 'opening_thursday',
+            'opening_friday' => 'opening_friday',
+            'opening_saturday' => 'opening_saturday',
+            'opening_sunday' => 'opening_sunday',
+            'max_weight' => '5',
         ]);
 
         self::assertSame('cp', $branch->getCarrier());
@@ -296,8 +296,8 @@ final class DefaultBranchFactoryTest extends BaseTestCase
 
         $branch = $factory->create('ppl', '2', [
             'branch_uid' => '2-ppl-branch-KMBA01081885107',
-            'branch_id'  => 'KMBA01081885107',
-            'id'         => '1234',
+            'branch_id' => 'KMBA01081885107',
+            'id' => '1234',
         ]);
 
         self::assertSame('KMBA01081885107', $branch->getId());
@@ -393,7 +393,7 @@ final class DefaultBranchFactoryTest extends BaseTestCase
         $factory = $this->newDefaultBranchFactory();
 
         $branch = $factory->create('cp', 'NP', [
-            'zip'     => 'zip',
+            'zip' => 'zip',
             'address' => 'address',
         ]);
 
@@ -407,82 +407,82 @@ final class DefaultBranchFactoryTest extends BaseTestCase
         $factory = $this->newDefaultBranchFactory();
 
         $branch = $factory->create('cp', 'NP', [
-            'zip'                => 'zip',
-            'street'             => 'street',
-            'house_number'       => '8',
+            'zip' => 'zip',
+            'street' => 'street',
+            'house_number' => '8',
             'orientation_number' => '896',
         ]);
 
         self::assertSame('street 8/896', $branch->getStreet());
 
         $branch = $factory->create('cp', 'NP', [
-            'zip'                => 'zip',
-            'street'             => 'street',
-            'house_number'       => '8',
+            'zip' => 'zip',
+            'street' => 'street',
+            'house_number' => '8',
             'orientation_number' => '0',
         ]);
 
         self::assertSame('street 8', $branch->getStreet());
 
         $branch = $factory->create('cp', 'NP', [
-            'zip'                => 'zip',
-            'street'             => 'street',
+            'zip' => 'zip',
+            'street' => 'street',
             'orientation_number' => '897',
         ]);
 
         self::assertSame('street 897', $branch->getStreet());
 
         $branch = $factory->create('cp', 'NP', [
-            'zip'          => 'zip',
-            'street'       => 'street',
+            'zip' => 'zip',
+            'street' => 'street',
             'house_number' => '2',
         ]);
 
         self::assertSame('street 2', $branch->getStreet());
 
         $branch = $factory->create('cp', 'NP', [
-            'zip'                => 'zip',
-            'street'             => 'street 1',
-            'house_number'       => '2',
+            'zip' => 'zip',
+            'street' => 'street 1',
+            'house_number' => '2',
             'orientation_number' => '3',
         ]);
 
         self::assertSame('street 1 2/3', $branch->getStreet());
 
         $branch = $factory->create('cp', 'NP', [
-            'zip'                => 'zip',
-            'address'            => 'address',
-            'house_number'       => '2',
+            'zip' => 'zip',
+            'address' => 'address',
+            'house_number' => '2',
             'orientation_number' => '3',
         ]);
 
         self::assertSame('address', $branch->getStreet());
 
         $branch = $factory->create('cp', 'NP', [
-            'zip'                => 'zip',
-            'street'             => '',
-            'house_number'       => '3',
+            'zip' => 'zip',
+            'street' => '',
+            'house_number' => '3',
             'orientation_number' => '4',
         ]);
 
         self::assertSame('3/4', $branch->getStreet());
 
         $branch = $factory->create('cp', 'NP', [
-            'zip'                => 'zip',
-            'city'               => 'Vrbovec',
-            'street'             => '',
-            'house_number'       => '146',
+            'zip' => 'zip',
+            'city' => 'Vrbovec',
+            'street' => '',
+            'house_number' => '146',
             'orientation_number' => '0',
         ]);
 
         self::assertSame('Vrbovec 146', $branch->getStreet());
 
         $branch = $factory->create('cp', 'NP', [
-            'zip'                => 'zip',
-            'city'               => 'Vrbovec',
-            'street'             => '',
-            'address'            => 'address',
-            'house_number'       => '147',
+            'zip' => 'zip',
+            'city' => 'Vrbovec',
+            'street' => '',
+            'address' => 'address',
+            'house_number' => '147',
             'orientation_number' => '0',
         ]);
 
@@ -494,65 +494,65 @@ final class DefaultBranchFactoryTest extends BaseTestCase
         $factory = $this->newDefaultBranchFactory();
 
         $branch = $factory->create('cp', 'NP', [
-            'id'   => 11,
+            'id' => 11,
             'name' => 'Branch Name',
-            'zip'  => '110 00',
+            'zip' => '110 00',
         ]);
 
         self::assertSame('11000', $branch->getBranchId());
 
         $branch = $factory->create('sp', 'NP', [
-            'id'   => '11',
+            'id' => '11',
             'name' => 'Branch Name',
-            'zip'  => '110 00',
+            'zip' => '110 00',
         ]);
 
         self::assertSame('11000', $branch->getBranchId());
 
         $branch = $factory->create('ulozenka', '7', [
-            'id'   => '11',
+            'id' => '11',
             'name' => 'Branch Name',
-            'zip'  => '110 00',
+            'zip' => '110 00',
         ]);
 
         self::assertSame('11000', $branch->getBranchId());
 
         $branch = $factory->create('ppl', 'NP', [
-            'id'   => 'KM1234',
+            'id' => 'KM1234',
             'name' => 'Branch Name',
-            'zip'  => '110 00',
+            'zip' => '110 00',
         ]);
 
         self::assertSame('1234', $branch->getBranchId());
 
         $branch = $factory->create('ppl', 'NP', [
-            'id'   => 'K1M234',
+            'id' => 'K1M234',
             'name' => 'Branch Name',
-            'zip'  => '110 00',
+            'zip' => '110 00',
         ]);
 
         self::assertSame('K1M234', $branch->getBranchId());
 
         $branch = $factory->create('ppl', 'NP', [
-            'id'   => 'KMSKMK000000000',
+            'id' => 'KMSKMK000000000',
             'name' => 'Branch Name',
-            'zip'  => '110 00',
+            'zip' => '110 00',
         ]);
 
         self::assertSame('SKMK000000000', $branch->getBranchId());
 
         $branch = $factory->create('intime', 'NP', [
-            'id'   => '11',
+            'id' => '11',
             'name' => 'Branch Name',
-            'zip'  => '110 00',
+            'zip' => '110 00',
         ]);
 
         self::assertSame('Branch Name', $branch->getBranchId());
 
         $branch = $factory->create('zasilkovna', null, [
-            'id'   => '167',
+            'id' => '167',
             'name' => 'Branch Name',
-            'zip'  => '110 00',
+            'zip' => '110 00',
         ]);
 
         self::assertSame('167', $branch->getBranchId());

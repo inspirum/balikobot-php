@@ -80,7 +80,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
 
             $totalCount = 0;
             foreach ($countries as $country) {
-                $branches    = iterator_to_array($branchService->getBranchesForCarrierServiceAndCountries($carrier, $service, [$country]));
+                $branches = iterator_to_array($branchService->getBranchesForCarrierServiceAndCountries($carrier, $service, [$country]));
                 $totalCount += count($branches);
                 foreach ($branches as $branch) {
                     if ($branch->getCountry() !== $country) {
@@ -130,8 +130,8 @@ final class DefaultBranchResolverTest extends BaseTestCase
     public function testBranchesFilterByCountryCodes(): void
     {
         $branchService = $this->newDefaultBranchService();
-        $carriers      = Carrier::getAll();
-        $countries     = [Country::SLOVAKIA, Country::GERMANY];
+        $carriers = Carrier::getAll();
+        $countries = [Country::SLOVAKIA, Country::GERMANY];
 
         foreach ($carriers as $carrier) {
             try {

@@ -15,7 +15,7 @@ use Throwable;
 final class DefaultOrderedShipmentFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string>       $packageIds
+     * @param array<string> $packageIds
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateCollection')]
@@ -40,15 +40,15 @@ final class DefaultOrderedShipmentFactoryTest extends BaseTestCase
     {
         yield 'valid' => [
             'carrier' => Carrier::CP,
-            'packageIds' =>   ['1', '67'],
-            'data'    => [
-                'labels_url'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
-                'order_id'     => '1234',
-                'file_url'     => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
+            'packageIds' => ['1', '67'],
+            'data' => [
+                'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                'order_id' => '1234',
+                'file_url' => 'http://csv.balikobot.cz/cp/eNoz0jUFXDABKFwwlQ..',
                 'handover_url' => 'http://pdf.balikobot.cz/cp/eNoz0jW0BfwwAe5cMMo.',
-                'package_ids'  => ['1', '67'],
+                'package_ids' => ['1', '67'],
             ],
-            'result'  =>  new DefaultOrderedShipment(
+            'result' => new DefaultOrderedShipment(
                 '1234',
                 'cp',
                 ['1', '67'],

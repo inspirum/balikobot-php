@@ -43,20 +43,20 @@ final class DefaultServiceFactoryTest extends BaseTestCase
     {
         yield 'services' => [
             'carrier' => 'cp',
-            'data'    => [
-                'status'        => 200,
+            'data' => [
+                'status' => 200,
                 'service_types' => [
                     [
                         'service_type' => 'NP',
-                        'name'         => 'NP - Balík Na poštu',
+                        'name' => 'NP - Balík Na poštu',
                     ],
                     [
                         'service_type' => 'RR',
-                        'name'         => 'RR - Doporučená zásilka Ekonomická',
+                        'name' => 'RR - Doporučená zásilka Ekonomická',
                     ],
                 ],
             ],
-            'result'  => new DefaultServiceCollection(
+            'result' => new DefaultServiceCollection(
                 'cp',
                 [
                     new DefaultService(
@@ -73,22 +73,22 @@ final class DefaultServiceFactoryTest extends BaseTestCase
 
         yield 'activated_services' => [
             'carrier' => 'ppl',
-            'data'    => [
-                'status'        => 200,
+            'data' => [
+                'status' => 200,
                 'active_parcel' => true,
-                'active_cargo'  => false,
+                'active_cargo' => false,
                 'service_types' => [
                     [
                         'service_type' => 2,
-                        'name'         => 'PPL Parcel Connect',
+                        'name' => 'PPL Parcel Connect',
                     ],
                     [
                         'service_type' => 3,
-                        'name'         => 'PPL Parcel CZ Dopolední balík',
+                        'name' => 'PPL Parcel CZ Dopolední balík',
                     ],
                 ],
             ],
-            'result'  => new DefaultServiceCollection(
+            'result' => new DefaultServiceCollection(
                 'ppl',
                 [
                     new DefaultService(
@@ -107,38 +107,38 @@ final class DefaultServiceFactoryTest extends BaseTestCase
 
         yield 'cod_countries' => [
             'carrier' => 'cp',
-            'data'    => [
-                'status'        => 200,
+            'data' => [
+                'status' => 200,
                 'service_types' => [
                     [
-                        'service_type'  => 'DR',
+                        'service_type' => 'DR',
                         'cod_countries' => [
                             'CZ' => [
                                 'max_price' => 10000,
-                                'currency'  => 'CZK',
+                                'currency' => 'CZK',
                             ],
                         ],
                     ],
                     [
-                        'service_type'  => 'VZP',
+                        'service_type' => 'VZP',
                         'cod_countries' => [
                             'UA' => [
                                 'max_price' => 36000,
-                                'currency'  => 'UAH',
+                                'currency' => 'UAH',
                             ],
                             'LV' => [
                                 'max_price' => 2000,
-                                'currency'  => 'USD',
+                                'currency' => 'USD',
                             ],
                             'HU' => [
                                 'max_price' => 2500,
-                                'currency'  => 'EUR',
+                                'currency' => 'EUR',
                             ],
                         ],
                     ],
                 ],
             ],
-            'result'  => new DefaultServiceCollection(
+            'result' => new DefaultServiceCollection(
                 'cp',
                 [
                     new DefaultService(
@@ -179,12 +179,12 @@ final class DefaultServiceFactoryTest extends BaseTestCase
 
         yield 'countries' => [
             'carrier' => 'ppl',
-            'data'    => [
-                'status'        => 200,
+            'data' => [
+                'status' => 200,
                 'service_types' => [
                     [
                         'service_type' => 1,
-                        'countries'    => [
+                        'countries' => [
                             'CZ',
                             'UK',
                             'DE',
@@ -192,14 +192,14 @@ final class DefaultServiceFactoryTest extends BaseTestCase
                     ],
                     [
                         'service_type' => 4,
-                        'countries'    => [
+                        'countries' => [
                             'CZ',
                             'SK',
                         ],
                     ],
                 ],
             ],
-            'result'  => new DefaultServiceCollection(
+            'result' => new DefaultServiceCollection(
                 'ppl',
                 [
                     new DefaultService(
@@ -214,7 +214,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
                     new DefaultService(
                         '4',
                         null,
-                        countries:[
+                        countries: [
                             'CZ',
                             'SK',
                         ],
@@ -225,13 +225,13 @@ final class DefaultServiceFactoryTest extends BaseTestCase
 
         yield 'service_options' => [
             'carrier' => 'cp',
-            'data'    => [
-                'status'        => 200,
+            'data' => [
+                'status' => 200,
                 'service_types' => [
                     [
-                        'service_type'      => 'CE',
+                        'service_type' => 'CE',
                         'service_type_name' => 'CE - Obchodní balík do zahraničí',
-                        'services'          => [
+                        'services' => [
                             [
                                 'name' => 'Neskladně',
                                 'code' => '10',
@@ -243,9 +243,9 @@ final class DefaultServiceFactoryTest extends BaseTestCase
                         ],
                     ],
                     [
-                        'service_type'      => 'CV',
+                        'service_type' => 'CV',
                         'service_type_name' => '',
-                        'services'          => [
+                        'services' => [
                             [
                                 'name' => 'Dodejka',
                                 'code' => '3',
@@ -258,7 +258,7 @@ final class DefaultServiceFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new DefaultServiceCollection(
+            'result' => new DefaultServiceCollection(
                 'cp',
                 [
                     new DefaultService(

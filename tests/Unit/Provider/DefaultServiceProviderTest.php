@@ -17,7 +17,7 @@ final class DefaultServiceProviderTest extends BaseTestCase
 
         foreach (Carrier::getAll() as $carrier) {
             $expectedServices = Service::getForCarrier($carrier);
-            $services         = $provider->getServices($carrier);
+            $services = $provider->getServices($carrier);
 
             self::assertSame($expectedServices, $services);
         }

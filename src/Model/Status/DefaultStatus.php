@@ -62,13 +62,13 @@ final class DefaultStatus extends BaseModel implements Status
     public function __toArray(): array
     {
         return [
-            'carrier'     => $this->carrier,
-            'carrierId'   => $this->carrierId,
-            'id'          => $this->id,
-            'name'        => $this->name,
+            'carrier' => $this->carrier,
+            'carrierId' => $this->carrierId,
+            'id' => $this->id,
+            'name' => $this->name,
             'description' => $this->description,
-            'type'        => $this->type,
-            'date'        => $this->date?->format(DateTimeInterface::ATOM),
+            'type' => $this->type,
+            'date' => $this->date?->format(DateTimeInterface::ATOM),
         ];
     }
 }

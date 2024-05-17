@@ -28,7 +28,6 @@ final class DefaultBranchService implements BranchService
     ) {
     }
 
-    /** @inheritDoc */
     public function getBranches(): BranchIterator
     {
         return $this->branchFactory->wrapIterator(null, null, null, $this->generateBranches());
@@ -70,7 +69,6 @@ final class DefaultBranchService implements BranchService
         }
     }
 
-    /** @inheritDoc */
     public function getBranchesForCarrier(string $carrier): BranchIterator
     {
         return $this->branchFactory->wrapIterator($carrier, null, null, $this->generateBranchesForCarrier($carrier));
@@ -112,7 +110,6 @@ final class DefaultBranchService implements BranchService
         }
     }
 
-    /** @inheritDoc */
     public function getBranchesForCarrierService(string $carrier, string $service): BranchIterator
     {
         return $this->getBranchesForCarrierServiceAndCountry($carrier, $service, null);
@@ -181,7 +178,6 @@ final class DefaultBranchService implements BranchService
         return $this->branchFactory->createIterator($carrier, $service, $country !== null ? [$country] : null, $response);
     }
 
-    /** @inheritDoc */
     public function getBranchesForLocation(
         string $carrier,
         string $country,
@@ -198,13 +194,13 @@ final class DefaultBranchService implements BranchService
             Method::BRANCH_LOCATOR,
             array_filter(
                 [
-                    'country'     => $country,
-                    'city'        => $city,
-                    'zip'         => $zipCode,
-                    'street'      => $street,
+                    'country' => $country,
+                    'city' => $city,
+                    'zip' => $zipCode,
+                    'street' => $street,
                     'max_results' => $maxResults,
-                    'radius'      => $radius,
-                    'type'        => $type,
+                    'radius' => $radius,
+                    'type' => $type,
                 ],
             ),
         );

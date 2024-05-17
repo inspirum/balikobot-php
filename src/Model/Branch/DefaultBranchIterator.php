@@ -13,7 +13,7 @@ use Traversable;
 final class DefaultBranchIterator extends IteratorIterator implements BranchIterator
 {
     /**
-     * @param array<string>                                             $countries
+     * @param array<string> $countries
      * @param \Traversable<int,\Inspirum\Balikobot\Model\Branch\Branch> $iterator
      */
     public function __construct(

@@ -14,7 +14,7 @@ use function array_map;
 final class DefaultService extends BaseModel implements Service
 {
     /**
-     * @param array<string>|null                                       $countries
+     * @param array<string>|null $countries
      * @param array<\Inspirum\Balikobot\Model\Country\CodCountry>|null $codCountries
      */
     public function __construct(
@@ -57,10 +57,10 @@ final class DefaultService extends BaseModel implements Service
     public function __toArray(): array
     {
         return [
-            'type'         => $this->type,
-            'name'         => $this->name,
-            'options'      => $this->options?->__toArray(),
-            'countries'    => $this->countries,
+            'type' => $this->type,
+            'name' => $this->name,
+            'options' => $this->options?->__toArray(),
+            'countries' => $this->countries,
             'codCountries' => $this->codCountries !== null ? array_map(static fn(CodCountry $country): array => $country->__toArray(), $this->codCountries)
                 : null,
         ];

@@ -56,10 +56,10 @@ final class DefaultTransportCost extends BaseModel implements TransportCost
     public function __toArray(): array
     {
         return [
-            'batchId'        => $this->batchId,
-            'carrier'        => $this->carrier,
-            'totalCost'      => $this->totalCost,
-            'currencyCode'   => $this->currencyCode,
+            'batchId' => $this->batchId,
+            'carrier' => $this->carrier,
+            'totalCost' => $this->totalCost,
+            'currencyCode' => $this->currencyCode,
             'costsBreakdown' => array_map(static fn(TransportCostPart $costPart): array => $costPart->__toArray(), $this->costsBreakdown),
         ];
     }

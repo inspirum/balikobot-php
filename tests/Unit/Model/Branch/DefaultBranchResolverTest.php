@@ -30,55 +30,55 @@ final class DefaultBranchResolverTest extends BaseTestCase
         yield 'zasilkovna' => [
             'carrier' => Carrier::ZASILKOVNA,
             'service' => null,
-            'result'  => true,
+            'result' => true,
         ];
 
         yield 'zasilkovna_vmcz' => [
             'carrier' => Carrier::ZASILKOVNA,
             'service' => Service::ZASILKOVNA_VMCZ,
-            'result'  => true,
+            'result' => true,
         ];
 
         yield 'cp_np' => [
             'carrier' => Carrier::CP,
             'service' => Service::CP_NP,
-            'result'  => true,
+            'result' => true,
         ];
 
         yield 'cp_null' => [
             'carrier' => Carrier::CP,
             'service' => null,
-            'result'  => false,
+            'result' => false,
         ];
 
         yield 'cp_nb' => [
             'carrier' => Carrier::CP,
             'service' => Service::CP_NB,
-            'result'  => true,
+            'result' => true,
         ];
 
         yield 'pbh_mp' => [
             'carrier' => Carrier::PBH,
             'service' => Service::PBH_MP,
-            'result'  => true,
+            'result' => true,
         ];
 
         yield 'pbh_fan_kurier' => [
             'carrier' => Carrier::PBH,
             'service' => Service::PBH_FAN_KURIER,
-            'result'  => true,
+            'result' => true,
         ];
 
         yield 'pbh_null' => [
             'carrier' => Carrier::PBH,
             'service' => null,
-            'result'  => false,
+            'result' => false,
         ];
 
         yield 'pbh_cargus' => [
             'carrier' => Carrier::PBH,
             'service' => Service::PBH_CARGUS,
-            'result'  => false,
+            'result' => false,
         ];
     }
 
@@ -100,25 +100,25 @@ final class DefaultBranchResolverTest extends BaseTestCase
         yield 'ppl' => [
             'carrier' => Carrier::PPL,
             'service' => Service::PPL_PARCEL_BUSSINESS_CZ,
-            'result'  => true,
+            'result' => true,
         ];
 
         yield 'dpd' => [
             'carrier' => Carrier::DPD,
             'service' => Service::DPD_CLASSIC,
-            'result'  => true,
+            'result' => true,
         ];
 
         yield 'gls' => [
             'carrier' => Carrier::GLS,
             'service' => Service::GLS_SHOP,
-            'result'  => true,
+            'result' => true,
         ];
 
         yield 'zasilkovna' => [
             'carrier' => Carrier::ZASILKOVNA,
             'service' => null,
-            'result'  => true,
+            'result' => true,
         ];
     }
 

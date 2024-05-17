@@ -30,11 +30,11 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 {
     public function testGetBranches(): void
     {
-        $carriers  = [
+        $carriers = [
             Carrier::CP,
             Carrier::ZASILKOVNA,
         ];
-        $services  = [
+        $services = [
             [
                 Service::CP_NP,
                 Service::CP_RR,
@@ -50,7 +50,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $items     = [
+        $items = [
             [
                 $this->mockBranch(),
             ],
@@ -142,11 +142,11 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
     public function testGetBranchesForCountries(): void
     {
-        $carriers  = [
+        $carriers = [
             Carrier::CP,
             Carrier::ZASILKOVNA,
         ];
-        $services  = [
+        $services = [
             [
                 Service::CP_NP,
                 Service::CP_RR,
@@ -168,7 +168,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $items     = [
+        $items = [
             [
                 $this->mockBranch(Country::CZECH_REPUBLIC),
             ],
@@ -305,8 +305,8 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
     public function testGetBranchesForCarrier(): void
     {
-        $carrier   = Carrier::CP;
-        $services  = [
+        $carrier = Carrier::CP;
+        $services = [
             Service::CP_NP,
             Service::CP_RR,
             Service::CP_NB,
@@ -316,7 +316,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $items     = [
+        $items = [
             [
                 $this->mockBranch(),
             ],
@@ -394,8 +394,8 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
     public function testGetBranchesForCarrierAndCountries(): void
     {
-        $carrier   = Carrier::CP;
-        $services  = [
+        $carrier = Carrier::CP;
+        $services = [
             Service::CP_NP,
             Service::CP_RR,
             Service::CP_NB,
@@ -410,7 +410,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $items     = [
+        $items = [
             [
                 $this->mockBranch(Country::HUNGARY),
             ],
@@ -510,10 +510,10 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
     public function testGetBranchesForCarrierService(): void
     {
-        $carrier  = Carrier::CP;
-        $service  = Service::CP_NP;
+        $carrier = Carrier::CP;
+        $service = Service::CP_NP;
         $response = $this->mockClientResponse();
-        $items    = [
+        $items = [
             $this->mockBranch(),
             $this->mockBranch(),
             $this->mockBranch(),
@@ -541,7 +541,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
             ]),
         );
 
-        $actualResult   = $branchService->getBranchesForCarrierService($carrier, $service);
+        $actualResult = $branchService->getBranchesForCarrierService($carrier, $service);
         $expectedResult = new ArrayIterator($items);
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
@@ -552,14 +552,14 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
     public function testGetBranchesForCarrierServiceAndCountries(): void
     {
-        $carrier   = Carrier::CP;
-        $service   = Service::CP_NP;
+        $carrier = Carrier::CP;
+        $service = Service::CP_NP;
         $countries = [
             Country::CZECH_REPUBLIC,
             Country::SLOVAKIA,
         ];
-        $response  = $this->mockClientResponse();
-        $items     = [
+        $response = $this->mockClientResponse();
+        $items = [
             $this->mockBranch(Country::CZECH_REPUBLIC),
             $this->mockBranch(Country::CZECH_REPUBLIC),
             $this->mockBranch(Country::GREENLAND),
@@ -603,8 +603,8 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
     public function testGetBranchesForCarrierServiceAndCountriesWithCountryFilterSupport(): void
     {
-        $carrier   = Carrier::CP;
-        $service   = Service::CP_NP;
+        $carrier = Carrier::CP;
+        $service = Service::CP_NP;
         $countries = [
             Country::CZECH_REPUBLIC,
             Country::SLOVAKIA,
@@ -613,7 +613,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
             $this->mockClientResponse(),
             $this->mockClientResponse(),
         ];
-        $items     = [
+        $items = [
             [
                 $this->mockBranch(Country::CZECH_REPUBLIC),
                 $this->mockBranch(Country::CZECH_REPUBLIC),
@@ -677,11 +677,11 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
     public function testGetBranchesForLocation(): void
     {
-        $carrier  = Carrier::UPS;
-        $country  = Country::CZECH_REPUBLIC;
-        $city     = 'Prague';
+        $carrier = Carrier::UPS;
+        $country = Country::CZECH_REPUBLIC;
+        $city = 'Prague';
         $response = $this->mockClientResponse();
-        $items    = [
+        $items = [
             $this->mockBranch(Country::CZECH_REPUBLIC),
             $this->mockBranch(Country::CZECH_REPUBLIC),
             $this->mockBranch(),
@@ -694,7 +694,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
                 Method::BRANCH_LOCATOR,
                 [
                     'country' => $country,
-                    'city'    => $city,
+                    'city' => $city,
                 ],
             ], $response),
             branchFactory: $this->mockBranchFactory([
@@ -726,7 +726,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
     /**
      * @param array<array<string|array<string>|array<string,mixed>|null>> $arguments
-     * @param array<\Inspirum\Balikobot\Model\Branch\BranchIterator>      $responses
+     * @param array<\Inspirum\Balikobot\Model\Branch\BranchIterator> $responses
      */
     private function mockBranchFactory(array $arguments, array $responses): BranchFactory
     {
@@ -744,8 +744,8 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
     /**
      * @param array<array{0:string,1:string|null}> $arguments
-     * @param array<bool>                          $fullBranchSupport
-     * @param array<bool|null>|null                $countryFilterSupports
+     * @param array<bool> $fullBranchSupport
+     * @param array<bool|null>|null $countryFilterSupports
      */
     private function mockBranchResolver(
         array $arguments,
@@ -758,14 +758,14 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
         if ($countryFilterSupports !== null) {
             $countryFilterArguments = [];
-            $countryFilterValues    = [];
+            $countryFilterValues = [];
             foreach ($countryFilterSupports as $i => $countryFilterSupport) {
                 if ($countryFilterSupport === null) {
                     continue;
                 }
 
                 $countryFilterArguments[] = $arguments[$i];
-                $countryFilterValues[]    = $countryFilterSupport;
+                $countryFilterValues[] = $countryFilterSupport;
             }
 
             $branchResolver->expects(self::exactly(count($countryFilterArguments)))
@@ -777,7 +777,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
     }
 
     /**
-     * @param array<string>        $arguments
+     * @param array<string> $arguments
      * @param array<array<string>> $responses
      */
     private function mockServiceProvider(array $arguments, array $responses): ServiceProvider

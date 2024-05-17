@@ -42,19 +42,19 @@ final class DefaultTransportCostTest extends BaseTestCase
         self::assertSame(800.0, $model->getCostsBreakdown()[0]->getCost());
         self::assertSame('CZK', $model->getCostsBreakdown()[0]->getCurrencyCode());
         self::assertSame([
-            'batchId'        => '9636699909',
-            'carrier'        => 'cp',
-            'totalCost'      => 1200.0,
-            'currencyCode'   => 'CZK',
+            'batchId' => '9636699909',
+            'carrier' => 'cp',
+            'totalCost' => 1200.0,
+            'currencyCode' => 'CZK',
             'costsBreakdown' => [
                 [
-                    'name'         => 'Base price',
-                    'cost'         => 800.0,
+                    'name' => 'Base price',
+                    'cost' => 800.0,
                     'currencyCode' => 'CZK',
                 ],
                 [
-                    'name'         => 'Part price',
-                    'cost'         => 400.0,
+                    'name' => 'Part price',
+                    'cost' => 400.0,
                     'currencyCode' => 'CZK',
                 ],
             ],

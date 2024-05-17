@@ -35,10 +35,10 @@ final class DefaultLabelFactoryTest extends BaseTestCase
     public static function providesTestCreate(): iterable
     {
         yield 'valid' => [
-            'data'    => [
+            'data' => [
                 'labels_url' => 'http://pdf.balikobot.cz/dpd/eNorMdY1NFwwXDAELgE2',
             ],
-            'result'  =>  'http://pdf.balikobot.cz/dpd/eNorMdY1NFwwXDAELgE2',
+            'result' => 'http://pdf.balikobot.cz/dpd/eNorMdY1NFwwXDAELgE2',
         ];
     }
 

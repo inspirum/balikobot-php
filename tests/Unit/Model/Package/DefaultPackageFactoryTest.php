@@ -19,7 +19,7 @@ final class DefaultPackageFactoryTest extends BaseTestCase
 {
     /**
      * @param array<array<string,mixed>>|null $packages
-     * @param array<string,mixed>             $data
+     * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateCollection')]
     public function testCreateCollection(string $carrier, ?array $packages, array $data, PackageCollection|Throwable $result): void
@@ -42,7 +42,7 @@ final class DefaultPackageFactoryTest extends BaseTestCase
     public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
-            'carrier'  => Carrier::CP,
+            'carrier' => Carrier::CP,
             'packages' => [
                 [
                     'eid' => '0001',
@@ -51,28 +51,28 @@ final class DefaultPackageFactoryTest extends BaseTestCase
                     'eid' => '0002',
                 ],
             ],
-            'data'     => [
+            'data' => [
                 'labels_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.',
-                'packages'   => [
+                'packages' => [
                     [
-                        'eid'          => '0001',
+                        'eid' => '0001',
                         'order_number' => 1,
-                        'carrier_id'   => 'NP1504102246M',
-                        'package_id'   => '42719',
-                        'label_url'    => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
-                        'status'       => '200',
+                        'carrier_id' => 'NP1504102246M',
+                        'package_id' => '42719',
+                        'label_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                        'status' => '200',
                     ],
                     [
-                        'eid'          => '0002',
+                        'eid' => '0002',
                         'order_number' => 1,
-                        'carrier_id'   => 'NP1504102247M',
-                        'package_id'   => '42720',
-                        'label_url'    => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
-                        'status'       => '200',
+                        'carrier_id' => 'NP1504102247M',
+                        'package_id' => '42720',
+                        'label_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                        'status' => '200',
                     ],
                 ],
             ],
-            'result'   => new DefaultPackageCollection(
+            'result' => new DefaultPackageCollection(
                 Carrier::CP,
                 [
                     new DefaultPackage(
@@ -97,81 +97,81 @@ final class DefaultPackageFactoryTest extends BaseTestCase
         ];
 
         yield 'invalid_index' => [
-            'carrier'  => Carrier::CP,
+            'carrier' => Carrier::CP,
             'packages' => [
                 [
                     'eid' => '8316699909',
                 ],
             ],
-            'data'     => [
+            'data' => [
                 'packages' => [
                     1 => [
-                        'eid'          => '0001',
+                        'eid' => '0001',
                         'order_number' => 1,
-                        'carrier_id'   => 'NP1504102246M',
-                        'package_id'   => '42719',
-                        'label_url'    => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
-                        'status'       => 200,
+                        'carrier_id' => 'NP1504102246M',
+                        'package_id' => '42719',
+                        'label_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                        'status' => 200,
                     ],
                 ],
             ],
-            'result'   => new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
 
         yield 'invalid_count' => [
-            'carrier'  => Carrier::CP,
+            'carrier' => Carrier::CP,
             'packages' => [
                 [
                     'eid' => '8316699909',
                 ],
             ],
-            'data'     => [
+            'data' => [
                 'packages' => [
                     [
-                        'eid'          => '0001',
+                        'eid' => '0001',
                         'order_number' => 1,
-                        'carrier_id'   => 'NP1504102246M',
-                        'package_id'   => '42719',
-                        'label_url'    => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
-                        'status'       => '200',
+                        'carrier_id' => 'NP1504102246M',
+                        'package_id' => '42719',
+                        'label_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                        'status' => '200',
                     ],
                     [
-                        'eid'          => '0002',
+                        'eid' => '0002',
                         'order_number' => 1,
-                        'carrier_id'   => 'NP1504102247M',
-                        'package_id'   => '42720',
-                        'label_url'    => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
-                        'status'       => '200',
+                        'carrier_id' => 'NP1504102247M',
+                        'package_id' => '42720',
+                        'label_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                        'status' => '200',
                     ],
                 ],
             ],
-            'result'   => new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
 
         yield 'package_status' => [
-            'carrier'  => Carrier::CP,
+            'carrier' => Carrier::CP,
             'packages' => [
                 [
                     'eid' => '8316699909',
                 ],
             ],
-            'data'     => [
+            'data' => [
                 'packages' => [
                     [
-                        'eid'          => '0001',
+                        'eid' => '0001',
                         'order_number' => 1,
-                        'carrier_id'   => 'NP1504102246M',
-                        'package_id'   => '42719',
-                        'label_url'    => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
-                        'status'       => 404,
+                        'carrier_id' => 'NP1504102246M',
+                        'package_id' => '42719',
+                        'label_url' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoA.',
+                        'status' => 404,
                     ],
                 ],
             ],
-            'result'   => new BadRequestException([], 404),
+            'result' => new BadRequestException([], 404),
         ];
 
         yield 'b2a' => [
-            'carrier'  => Carrier::CP,
+            'carrier' => Carrier::CP,
             'packages' => [
                 [
                     'eid' => '0001',
@@ -180,20 +180,20 @@ final class DefaultPackageFactoryTest extends BaseTestCase
                     'eid' => '0002',
                 ],
             ],
-            'data'     => [
+            'data' => [
                 'packages' => [
                     [
                         'package_id' => '42718',
-                        'status'     => '200',
+                        'status' => '200',
                     ],
                     [
                         'package_id' => '42721',
-                        'status'     => '200',
+                        'status' => '200',
                     ],
                 ],
-                'status'   => 200,
+                'status' => 200,
             ],
-            'result'   => new DefaultPackageCollection(
+            'result' => new DefaultPackageCollection(
                 Carrier::CP,
                 [
                     new DefaultPackage(

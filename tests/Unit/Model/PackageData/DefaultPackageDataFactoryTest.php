@@ -37,7 +37,7 @@ final class DefaultPackageDataFactoryTest extends BaseTestCase
     public static function providesTestCreate(): iterable
     {
         yield 'valid' => [
-            'data'   => [],
+            'data' => [],
             'result' => new DefaultPackageData(
                 [],
             ),

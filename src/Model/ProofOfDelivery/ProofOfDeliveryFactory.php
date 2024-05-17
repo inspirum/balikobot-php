@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Model\ProofOfDelivery;
 interface ProofOfDeliveryFactory
 {
     /**
-     * @param array<string>       $carrierIds
+     * @param array<string> $carrierIds
      * @param array<string,mixed> $data
      *
      * @return array<string>

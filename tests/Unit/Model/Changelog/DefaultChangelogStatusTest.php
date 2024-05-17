@@ -11,12 +11,12 @@ final class DefaultChangelogStatusTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $model         = new DefaultChangelogStatus(
+        $model = new DefaultChangelogStatus(
             'ADD Zásilkovna',
             '- delivery_costs a delivery_costs_eur - přidání GB',
         );
         $expectedArray = [
-            'name'        => 'ADD Zásilkovna',
+            'name' => 'ADD Zásilkovna',
             'description' => '- delivery_costs a delivery_costs_eur - přidání GB',
         ];
 

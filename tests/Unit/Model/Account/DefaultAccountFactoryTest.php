@@ -41,21 +41,21 @@ final class DefaultAccountFactoryTest extends BaseTestCase
     public static function providesTestCreate(): iterable
     {
         yield 'valid' => [
-            'data'    => [
-                'status'       => 200,
-                'account'      => [
-                    'name'           => 'Balikobot-Test_obchod.cz',
+            'data' => [
+                'status' => 200,
+                'account' => [
+                    'name' => 'Balikobot-Test_obchod.cz',
                     'contact_person' => 'DPD_2',
-                    'street'         => 'Kovářská 12',
-                    'city'           => 'Praha 9',
-                    'zip'            => '19000',
-                    'country'        => 'CZ',
-                    'email'          => 'info@balikobot.cz',
-                    'url'            => 'http://www.balikobot_test2.cz',
-                    'phone'          => '+420123456789',
+                    'street' => 'Kovářská 12',
+                    'city' => 'Praha 9',
+                    'zip' => '19000',
+                    'country' => 'CZ',
+                    'email' => 'info@balikobot.cz',
+                    'url' => 'http://www.balikobot_test2.cz',
+                    'phone' => '+420123456789',
                 ],
                 'live_account' => false,
-                'carriers'     => [
+                'carriers' => [
                     [
                         'name' => 'Česká pošta',
                         'slug' => 'cp',
@@ -70,7 +70,7 @@ final class DefaultAccountFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'     => new DefaultAccount(
+            'result' => new DefaultAccount(
                 'Balikobot-Test_obchod.cz',
                 'DPD_2',
                 'info@balikobot.cz',

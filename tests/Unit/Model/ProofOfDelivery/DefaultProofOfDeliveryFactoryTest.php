@@ -14,8 +14,8 @@ use Throwable;
 final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string>            $carrierIds
-     * @param array<string,mixed>      $data
+     * @param array<string> $carrierIds
+     * @param array<string,mixed> $data
      * @param array<string>|\Throwable $result
      */
     #[DataProvider('providesTestCreate')]
@@ -44,21 +44,21 @@ final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
                 '456',
                 '789',
             ],
-            'data'    => [
+            'data' => [
                 0 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
                 ],
                 1 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/rNorMTY11DUEXDAFrwFs',
                 ],
                 2 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/tNorMTY11DUEXDAFrwFs',
                 ],
             ],
-            'result'  =>  [
+            'result' => [
                 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
                 'https://pod.balikobot.cz/tnt/rNorMTY11DUEXDAFrwFs',
                 'https://pod.balikobot.cz/tnt/tNorMTY11DUEXDAFrwFs',
@@ -71,20 +71,20 @@ final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
                 '456',
                 '789',
             ],
-            'data'    => [
+            'data' => [
                 0 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
                 ],
                 1 => [
-                    'status'   => 404,
+                    'status' => 404,
                 ],
                 2 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/tNorMTY11DUEXDAFrwFs',
                 ],
             ],
-            'result'  =>  new BadRequestException([], 404),
+            'result' => new BadRequestException([], 404),
         ];
 
         yield 'missing_status' => [
@@ -93,20 +93,20 @@ final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
                 '456',
                 '789',
             ],
-            'data'    => [
+            'data' => [
                 0 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
                 ],
                 1 => [
                     'file_url' => 'https://pod.balikobot.cz/tnt/rNorMTY11DUEXDAFrwFs',
                 ],
                 2 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/tNorMTY11DUEXDAFrwFs',
                 ],
             ],
-            'result'  =>  new BadRequestException([], 500),
+            'result' => new BadRequestException([], 500),
         ];
 
         yield 'invalid_index' => [
@@ -115,21 +115,21 @@ final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
                 '456',
                 '789',
             ],
-            'data'    => [
+            'data' => [
                 0 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
                 ],
                 2 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/rNorMTY11DUEXDAFrwFs',
                 ],
                 3 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/tNorMTY11DUEXDAFrwFs',
                 ],
             ],
-            'result'  =>  new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
 
         yield 'invalid_response_count' => [
@@ -138,34 +138,34 @@ final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
                 '456',
                 '789',
             ],
-            'data'    => [
+            'data' => [
                 0 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
                 ],
                 1 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/rNorMTY11DUEXDAFrwFs',
                 ],
             ],
-            'result'  =>  new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
 
         yield 'invalid_input_count' => [
             'carrierIds' => [
                 '123',
             ],
-            'data'    => [
+            'data' => [
                 0 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/eNorMTY11DUEXDAFrwFs',
                 ],
                 1 => [
-                    'status'   => 200,
+                    'status' => 200,
                     'file_url' => 'https://pod.balikobot.cz/tnt/rNorMTY11DUEXDAFrwFs',
                 ],
             ],
-            'result'  =>  new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
     }
 

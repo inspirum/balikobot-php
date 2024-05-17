@@ -53,7 +53,7 @@ abstract class BasePerCarrierCollection extends BaseCollection implements PerCar
     }
 
     /**
-     * @param TKey   $key
+     * @param TKey $key
      * @param TValue $value
      */
     public function offsetSet(mixed $key, mixed $value): void

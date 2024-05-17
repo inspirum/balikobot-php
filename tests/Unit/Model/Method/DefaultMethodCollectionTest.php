@@ -12,11 +12,11 @@ final class DefaultMethodCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $items         = [
+        $items = [
             new DefaultMethod('ADD'),
             new DefaultMethod('TRACKSTATUS'),
         ];
-        $collection    = new DefaultMethodCollection($items);
+        $collection = new DefaultMethodCollection($items);
         $expectedArray = [
             [
                 'code' => 'ADD',

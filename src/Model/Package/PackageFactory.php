@@ -13,7 +13,7 @@ interface PackageFactory
 
     /**
      * @param array<int,array<string,mixed>>|null $packages
-     * @param array<string,mixed>                 $data
+     * @param array<string,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Package\PackageCollection&array<\Inspirum\Balikobot\Model\Package\Package>
      *

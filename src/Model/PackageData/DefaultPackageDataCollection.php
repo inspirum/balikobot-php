@@ -45,13 +45,11 @@ final class DefaultPackageDataCollection extends BaseCollection implements Packa
         $this->offsetAdd($item);
     }
 
-    /** @inheritDoc */
     public function offsetSet(mixed $key, mixed $value): void
     {
         parent::offsetSet($key, $this->clonePackageWithEid($value));
     }
 
-    /** @inheritDoc */
     public function offsetAdd(mixed $value): void
     {
         parent::offsetAdd($this->clonePackageWithEid($value));

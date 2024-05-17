@@ -23,9 +23,9 @@ final class DefaultTrackServiceTest extends BaseServiceTestCase
 {
     public function testTrackPackages(): void
     {
-        $carrier        = Carrier::CP;
-        $carrierIds     = ['1', '2'];
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $carrierIds = ['1', '2'];
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(StatusesCollection::class);
 
         $trackService = $this->newDefaultTrackService(
@@ -54,10 +54,10 @@ final class DefaultTrackServiceTest extends BaseServiceTestCase
 
     public function testTrackPackage(): void
     {
-        $carrier                  =  Carrier::CP;
-        $carrierId                = '3';
-        $response                 = $this->mockClientResponse();
-        $expectedResult           = $this->createMock(Statuses::class);
+        $carrier = Carrier::CP;
+        $carrierId = '3';
+        $response = $this->mockClientResponse();
+        $expectedResult = $this->createMock(Statuses::class);
         $expectedResultCollection = $this->createMock(StatusesCollection::class);
         $expectedResultCollection->expects(self::exactly(2))->method('getForCarrierId')->with($carrierId)->willReturn($expectedResult);
 
@@ -87,9 +87,9 @@ final class DefaultTrackServiceTest extends BaseServiceTestCase
 
     public function testTrackPackagesLastStatuses(): void
     {
-        $carrier        =  Carrier::CP;
-        $carrierIds     = ['1', '2'];
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $carrierIds = ['1', '2'];
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(StatusCollection::class);
 
         $trackService = $this->newDefaultTrackService(
@@ -118,10 +118,10 @@ final class DefaultTrackServiceTest extends BaseServiceTestCase
 
     public function testTrackPackageLastStatus(): void
     {
-        $carrier                  =  Carrier::CP;
-        $carrierId                = '2';
-        $response                 = $this->mockClientResponse();
-        $expectedResult           = $this->createMock(Status::class);
+        $carrier = Carrier::CP;
+        $carrierId = '2';
+        $response = $this->mockClientResponse();
+        $expectedResult = $this->createMock(Status::class);
         $expectedResultCollection = $this->createMock(StatusCollection::class);
         $expectedResultCollection->expects(self::exactly(2))->method('getForCarrierId')->with($carrierId)->willReturn($expectedResult);
 
@@ -150,16 +150,16 @@ final class DefaultTrackServiceTest extends BaseServiceTestCase
     }
 
     /**
-     * @param array<string>       $carrierIds
+     * @param array<string> $carrierIds
      * @param array<string,mixed> $data
      */
     private function mockStatusFactory(string $carrier, array $carrierIds, array $data, StatusesCollection|StatusCollection $response): StatusFactory
     {
         $statusFactory = $this->createMock(StatusFactory::class);
         $statusFactory->expects(self::once())
-                       ->method($response instanceof StatusCollection ? 'createLastStatusCollection' : 'createCollection')
-                       ->with($carrier, $carrierIds, $data)
-                       ->willReturn($response);
+                      ->method($response instanceof StatusCollection ? 'createLastStatusCollection' : 'createCollection')
+                      ->with($carrier, $carrierIds, $data)
+                      ->willReturn($response);
 
         return $statusFactory;
     }

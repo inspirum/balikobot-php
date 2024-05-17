@@ -31,7 +31,7 @@ final class DefaultChangelogStatus extends BaseModel implements ChangelogStatus
     public function __toArray(): array
     {
         return [
-            'name'        => $this->name,
+            'name' => $this->name,
             'description' => $this->description,
         ];
     }

@@ -15,8 +15,8 @@ final class DefaultServiceContainerRegistryTest extends BaseTestCase
     {
         $items = [
             'default' => $this->createMock(ServiceContainer::class),
-            'test1'   => $this->createMock(ServiceContainer::class),
-            'test2'   => $this->createMock(ServiceContainer::class),
+            'test1' => $this->createMock(ServiceContainer::class),
+            'test2' => $this->createMock(ServiceContainer::class),
         ];
 
         $registry = new DefaultServiceContainerRegistry($items);
@@ -32,8 +32,8 @@ final class DefaultServiceContainerRegistryTest extends BaseTestCase
 
         $items = [
             'default' => $this->createMock(ServiceContainer::class),
-            'test1'   => $this->createMock(ServiceContainer::class),
-            'test2'   => $this->createMock(ServiceContainer::class),
+            'test1' => $this->createMock(ServiceContainer::class),
+            'test2' => $this->createMock(ServiceContainer::class),
         ];
 
         $registry = new DefaultServiceContainerRegistry($items);
@@ -47,8 +47,8 @@ final class DefaultServiceContainerRegistryTest extends BaseTestCase
         $this->expectExceptionMessageMatches('/Service container for "default" connection is not available/');
 
         $items = [
-            'test1'   => $this->createMock(ServiceContainer::class),
-            'test2'   => $this->createMock(ServiceContainer::class),
+            'test1' => $this->createMock(ServiceContainer::class),
+            'test2' => $this->createMock(ServiceContainer::class),
         ];
 
         $registry = new DefaultServiceContainerRegistry($items);
@@ -61,8 +61,8 @@ final class DefaultServiceContainerRegistryTest extends BaseTestCase
     public function testRegistryCustomDefaultKey(): void
     {
         $items = [
-            'base'   => $this->createMock(ServiceContainer::class),
-            'test2'   => $this->createMock(ServiceContainer::class),
+            'base' => $this->createMock(ServiceContainer::class),
+            'test2' => $this->createMock(ServiceContainer::class),
         ];
 
         $registry = new DefaultServiceContainerRegistry($items, 'base');

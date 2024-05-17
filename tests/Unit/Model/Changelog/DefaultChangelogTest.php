@@ -14,8 +14,8 @@ final class DefaultChangelogTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $date          = new DateTimeImmutable('2020-12-18');
-        $changes       = new DefaultChangelogStatusCollection([
+        $date = new DateTimeImmutable('2020-12-18');
+        $changes = new DefaultChangelogStatusCollection([
             new DefaultChangelogStatus(
                 'ADD Zásilkovna',
                 '- delivery_costs a delivery_costs_eur - přidání GB',
@@ -25,21 +25,21 @@ final class DefaultChangelogTest extends BaseTestCase
                 '- content data - přidání GB',
             ),
         ]);
-        $model         = new DefaultChangelog(
+        $model = new DefaultChangelog(
             '1.900',
             $date,
             $changes,
         );
         $expectedArray = [
-            'code'    => '1.900',
-            'date'    => '2020-12-18',
+            'code' => '1.900',
+            'date' => '2020-12-18',
             'changes' => [
                 [
-                    'name'        => 'ADD Zásilkovna',
+                    'name' => 'ADD Zásilkovna',
                     'description' => '- delivery_costs a delivery_costs_eur - přidání GB',
                 ],
                 [
-                    'name'        => 'ADD PbH',
+                    'name' => 'ADD PbH',
                     'description' => '- content data - přidání GB',
                 ],
             ],

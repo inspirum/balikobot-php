@@ -16,8 +16,8 @@ final class StatusesCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = Carrier::CP;
-        $items         = [
+        $carrier = Carrier::CP;
+        $items = [
             new DefaultStatuses($carrier, '3', new DefaultStatusCollection($carrier, [
                 new DefaultStatus(
                     $carrier,
@@ -50,44 +50,44 @@ final class StatusesCollectionTest extends BaseTestCase
                 ),
             ])),
         ];
-        $collection    = new DefaultStatusesCollection($carrier, $items);
+        $collection = new DefaultStatusesCollection($carrier, $items);
         $expectedArray = [
             [
-                'carrier'   => 'cp',
+                'carrier' => 'cp',
                 'carrierId' => '3',
-                'states'    => [
+                'states' => [
                     [
-                        'carrier'     => 'cp',
-                        'carrierId'   => '3',
-                        'id'          => 2.2,
-                        'name'        => 'Zásilka je v přepravě.',
+                        'carrier' => 'cp',
+                        'carrierId' => '3',
+                        'id' => 2.2,
+                        'name' => 'Zásilka je v přepravě.',
                         'description' => 'Doručování zásilky',
-                        'type'        => 'event',
-                        'date'        => '2018-11-07T14:15:01+00:00',
+                        'type' => 'event',
+                        'date' => '2018-11-07T14:15:01+00:00',
                     ],
                     [
-                        'carrier'     => 'cp',
-                        'carrierId'   => '3',
-                        'id'          => 1.2,
-                        'name'        => 'Zásilka byla doručena příjemci.',
+                        'carrier' => 'cp',
+                        'carrierId' => '3',
+                        'id' => 1.2,
+                        'name' => 'Zásilka byla doručena příjemci.',
                         'description' => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
-                        'type'        => 'event',
-                        'date'        => '2018-11-08T18:00:00+00:00',
+                        'type' => 'event',
+                        'date' => '2018-11-08T18:00:00+00:00',
                     ],
                 ],
             ],
             [
-                'carrier'   => 'cp',
+                'carrier' => 'cp',
                 'carrierId' => '4',
-                'states'    => [
+                'states' => [
                     [
-                        'carrier'     => 'cp',
-                        'carrierId'   => '4',
-                        'id'          => 2.2,
-                        'name'        => 'Zásilka je v přepravě.',
+                        'carrier' => 'cp',
+                        'carrierId' => '4',
+                        'id' => 2.2,
+                        'name' => 'Zásilka je v přepravě.',
                         'description' => 'Doručování zásilky',
-                        'type'        => 'event',
-                        'date'        => '2018-11-07T14:15:01+00:00',
+                        'type' => 'event',
+                        'date' => '2018-11-07T14:15:01+00:00',
                     ],
                 ],
             ],

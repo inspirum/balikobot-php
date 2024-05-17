@@ -13,7 +13,7 @@ final class DefaultCountry extends BaseModel implements Country
 {
     /**
      * @param array<string,string> $names
-     * @param array<string>        $phonePrefixes
+     * @param array<string> $phonePrefixes
      */
     public function __construct(
         private readonly array $names,
@@ -65,11 +65,11 @@ final class DefaultCountry extends BaseModel implements Country
     public function __toArray(): array
     {
         return [
-            'names'         => $this->names,
-            'code'          => $this->code,
-            'currencyCode'  => $this->currencyCode,
+            'names' => $this->names,
+            'code' => $this->code,
+            'currencyCode' => $this->currencyCode,
             'phonePrefixes' => $this->phonePrefixes,
-            'continent'     => $this->continent,
+            'continent' => $this->continent,
         ];
     }
 }

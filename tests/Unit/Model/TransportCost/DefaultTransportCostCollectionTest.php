@@ -14,8 +14,8 @@ final class DefaultTransportCostCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = Carrier::CP;
-        $items         = [
+        $carrier = Carrier::CP;
+        $items = [
             new DefaultTransportCost(
                 '9636699909',
                 $carrier,
@@ -31,20 +31,20 @@ final class DefaultTransportCostCollectionTest extends BaseTestCase
                 [],
             ),
         ];
-        $collection    = new DefaultTransportCostCollection($carrier, $items);
+        $collection = new DefaultTransportCostCollection($carrier, $items);
         $expectedArray = [
             [
-                'batchId'        => '9636699909',
-                'carrier'        => 'cp',
-                'totalCost'      => 800.0,
-                'currencyCode'   => 'CZK',
+                'batchId' => '9636699909',
+                'carrier' => 'cp',
+                'totalCost' => 800.0,
+                'currencyCode' => 'CZK',
                 'costsBreakdown' => [],
             ],
             [
-                'batchId'        => '9636699910',
-                'carrier'        => 'cp',
-                'totalCost'      => 1000.0,
-                'currencyCode'   => 'CZK',
+                'batchId' => '9636699910',
+                'carrier' => 'cp',
+                'totalCost' => 1000.0,
+                'currencyCode' => 'CZK',
                 'costsBreakdown' => [],
             ],
         ];
@@ -62,7 +62,7 @@ final class DefaultTransportCostCollectionTest extends BaseTestCase
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Collection is empty');
 
-        $carrier    = Carrier::CP;
+        $carrier = Carrier::CP;
         $collection = new DefaultTransportCostCollection($carrier, []);
 
         $collection->getCurrencyCode();
@@ -73,7 +73,7 @@ final class DefaultTransportCostCollectionTest extends BaseTestCase
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Package cost currency codes are not the same');
 
-        $carrier    = Carrier::CP;
+        $carrier = Carrier::CP;
         $collection = new DefaultTransportCostCollection($carrier, [
             new DefaultTransportCost(
                 '9636699909',

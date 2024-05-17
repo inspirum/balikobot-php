@@ -39,9 +39,9 @@ final class DefaultManipulationUnitFactoryTest extends BaseTestCase
     {
         yield 'valid' => [
             'carrier' => 'ppl',
-            'data'    => [
+            'data' => [
                 'status' => 200,
-                'units'  => [
+                'units' => [
                     [
                         'name' => 'Balík',
                         'code' => 32,
@@ -52,7 +52,7 @@ final class DefaultManipulationUnitFactoryTest extends BaseTestCase
                     ],
                 ],
             ],
-            'result'  => new DefaultManipulationUnitCollection(
+            'result' => new DefaultManipulationUnitCollection(
                 'ppl',
                 [
                     new DefaultManipulationUnit(

@@ -13,8 +13,8 @@ final class DefaultPackageDataCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = Carrier::CP;
-        $items         = [
+        $carrier = Carrier::CP;
+        $items = [
             new DefaultPackageData(
                 [
                     'eid' => '0123456',
@@ -26,7 +26,7 @@ final class DefaultPackageDataCollectionTest extends BaseTestCase
                 ],
             ),
         ];
-        $collection    = new DefaultPackageDataCollection($carrier, $items);
+        $collection = new DefaultPackageDataCollection($carrier, $items);
         $expectedArray = [
             [
                 'eid' => '0123456',
@@ -44,7 +44,7 @@ final class DefaultPackageDataCollectionTest extends BaseTestCase
     public function testAddEid(): void
     {
         $packages = new DefaultPackageDataCollection(Carrier::CP);
-        $package  = new DefaultPackageData(['test' => 1]);
+        $package = new DefaultPackageData(['test' => 1]);
 
         self::assertNull($package->getEID());
 
@@ -57,7 +57,7 @@ final class DefaultPackageDataCollectionTest extends BaseTestCase
     public function testSetEid(): void
     {
         $packages = new DefaultPackageDataCollection(Carrier::CP);
-        $package  = new DefaultPackageData(['test' => 1]);
+        $package = new DefaultPackageData(['test' => 1]);
 
         self::assertNull($package->getEID());
 
@@ -111,11 +111,11 @@ final class DefaultPackageDataCollectionTest extends BaseTestCase
         self::assertEquals(
             [
                 0 => [
-                    'eid'  => '0001',
+                    'eid' => '0001',
                     'test' => 1,
                 ],
                 1 => [
-                    'eid'  => '0001',
+                    'eid' => '0001',
                     'test' => 2,
                 ],
             ],

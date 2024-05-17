@@ -13,9 +13,9 @@ final class DefaultZipCodeTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $carrier       = Carrier::CP;
-        $service       = Service::CP_NP;
-        $model         = new DefaultZipCode(
+        $carrier = Carrier::CP;
+        $service = Service::CP_NP;
+        $model = new DefaultZipCode(
             $carrier,
             $service,
             '35002',
@@ -26,13 +26,13 @@ final class DefaultZipCodeTest extends BaseTestCase
             false,
         );
         $expectedArray = [
-            'carrier'         => 'cp',
-            'service'         => 'NP',
-            'zipCode'         => '35002',
-            'zipCodeEnt'      => null,
-            'city'            => 'Praha',
-            'region'          => 'Česko',
-            'country'         => 'CZ',
+            'carrier' => 'cp',
+            'service' => 'NP',
+            'zipCode' => '35002',
+            'zipCodeEnt' => null,
+            'city' => 'Praha',
+            'region' => 'Česko',
+            'country' => 'CZ',
             'morningDelivery' => false,
         ];
 

@@ -13,7 +13,7 @@ final class DefaultAccountTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $carriers      = new DefaultCarrierCollection([
+        $carriers = new DefaultCarrierCollection([
             new DefaultCarrier(
                 'cp',
                 'Česká pošta',
@@ -27,7 +27,7 @@ final class DefaultAccountTest extends BaseTestCase
                 'DPD',
             ),
         ]);
-        $model         = new DefaultAccount(
+        $model = new DefaultAccount(
             'Balikobot-Test_obchod.cz',
             'DPD_2',
             'info@balikobot.cz',
@@ -41,30 +41,30 @@ final class DefaultAccountTest extends BaseTestCase
             $carriers,
         );
         $expectedArray = [
-            'name'          => 'Balikobot-Test_obchod.cz',
+            'name' => 'Balikobot-Test_obchod.cz',
             'contactPerson' => 'DPD_2',
-            'email'         => 'info@balikobot.cz',
-            'phone'         => '+420123456789',
-            'url'           => 'http://www.balikobot_test2.cz',
-            'street'        => 'Kovářská 12',
-            'city'          => 'Praha 9',
-            'zip'           => '19000',
-            'country'       => 'CZ',
-            'live'          => false,
-            'carriers'      => [
+            'email' => 'info@balikobot.cz',
+            'phone' => '+420123456789',
+            'url' => 'http://www.balikobot_test2.cz',
+            'street' => 'Kovářská 12',
+            'city' => 'Praha 9',
+            'zip' => '19000',
+            'country' => 'CZ',
+            'live' => false,
+            'carriers' => [
                 [
-                    'code'    => 'cp',
-                    'name'    => 'Česká pošta',
+                    'code' => 'cp',
+                    'name' => 'Česká pošta',
                     'methods' => [],
                 ],
                 [
-                    'code'    => 'ppl',
-                    'name'    => 'PPL',
+                    'code' => 'ppl',
+                    'name' => 'PPL',
                     'methods' => [],
                 ],
                 [
-                    'code'    => 'dpd',
-                    'name'    => 'DPD',
+                    'code' => 'dpd',
+                    'name' => 'DPD',
                     'methods' => [],
                 ],
             ],

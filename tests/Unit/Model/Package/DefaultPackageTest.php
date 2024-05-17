@@ -24,17 +24,17 @@ final class DefaultPackageTest extends BaseTestCase
         self::assertSame('0001', $model->getBatchId());
         self::assertSame('02IID', $model->getCarrierId());
         self::assertSame([
-            'carrier'      => 'cp',
-            'carrierId'      => '02IID',
-            'packageId'      => '1234',
-            'batchId'        => '0001',
-            'trackUrl'       => null,
-            'labelUrl'       => null,
-            'carrierIdSwap'  => null,
-            'pieces'         => [],
+            'carrier' => 'cp',
+            'carrierId' => '02IID',
+            'packageId' => '1234',
+            'batchId' => '0001',
+            'trackUrl' => null,
+            'labelUrl' => null,
+            'carrierIdSwap' => null,
+            'pieces' => [],
             'finalCarrierId' => null,
-            'finalTrackUrl'  => null,
-            'barcode'        => null,
+            'finalTrackUrl' => null,
+            'barcode' => null,
         ], $model->__toArray());
     }
 
@@ -63,17 +63,17 @@ final class DefaultPackageTest extends BaseTestCase
         self::assertSame('/final-track', $model->getFinalTrackUrl());
         self::assertSame('2004589637', $model->getBarcode());
         self::assertSame([
-            'carrier'      => 'cp',
-            'carrierId'      => '02IID',
-            'packageId'      => '1234',
-            'batchId'        => '0001',
-            'trackUrl'       => '/track',
-            'labelUrl'       => '/labels',
-            'carrierIdSwap'  => '23',
-            'pieces'         =>  ['1', '2'],
+            'carrier' => 'cp',
+            'carrierId' => '02IID',
+            'packageId' => '1234',
+            'batchId' => '0001',
+            'trackUrl' => '/track',
+            'labelUrl' => '/labels',
+            'carrierIdSwap' => '23',
+            'pieces' => ['1', '2'],
             'finalCarrierId' => '00605444103',
-            'finalTrackUrl'  => '/final-track',
-            'barcode'        => '2004589637',
+            'finalTrackUrl' => '/final-track',
+            'barcode' => '2004589637',
         ], $model->__toArray());
     }
 }

@@ -91,17 +91,17 @@ final class DefaultPackage extends BaseModel implements Package
     public function __toArray(): array
     {
         return [
-            'carrier'        => $this->carrier,
-            'carrierId'      => $this->carrierId,
-            'packageId'      => $this->packageId,
-            'batchId'        => $this->batchId,
-            'trackUrl'       => $this->trackUrl,
-            'labelUrl'       => $this->labelUrl,
-            'carrierIdSwap'  => $this->carrierIdSwap,
-            'pieces'         => $this->pieces,
+            'carrier' => $this->carrier,
+            'carrierId' => $this->carrierId,
+            'packageId' => $this->packageId,
+            'batchId' => $this->batchId,
+            'trackUrl' => $this->trackUrl,
+            'labelUrl' => $this->labelUrl,
+            'carrierIdSwap' => $this->carrierIdSwap,
+            'pieces' => $this->pieces,
             'finalCarrierId' => $this->finalCarrierId,
-            'finalTrackUrl'  => $this->finalTrackUrl,
-            'barcode'        => $this->barcode,
+            'finalTrackUrl' => $this->finalTrackUrl,
+            'barcode' => $this->barcode,
         ];
     }
 }

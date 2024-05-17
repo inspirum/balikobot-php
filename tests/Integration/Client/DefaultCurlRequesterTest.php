@@ -17,10 +17,10 @@ final class DefaultCurlRequesterTest extends BaseTestCase
         $url = sprintf('%s/%s', Version::V2V1, Method::CHANGELOG);
 
         $requesterWithSSL = $this->newDefaultCurlRequester(false);
-        $firstVersion     = json_decode($requesterWithSSL->request($url)->getBody()->getContents(), true)['version'];
+        $firstVersion = json_decode($requesterWithSSL->request($url)->getBody()->getContents(), true)['version'];
 
         $requesterWithoutSSL = $this->newDefaultCurlRequester(true);
-        $secondVersion       = json_decode($requesterWithoutSSL->request($url)->getBody()->getContents(), true)['version'];
+        $secondVersion = json_decode($requesterWithoutSSL->request($url)->getBody()->getContents(), true)['version'];
 
         self::assertEquals($firstVersion, $secondVersion);
     }

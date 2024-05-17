@@ -13,8 +13,8 @@ final class DefaultPackageCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = Carrier::CP;
-        $items         = [
+        $carrier = Carrier::CP;
+        $items = [
             new DefaultPackage(
                 Carrier::CP,
                 '1234',
@@ -28,34 +28,34 @@ final class DefaultPackageCollectionTest extends BaseTestCase
                 '02IIE',
             ),
         ];
-        $labelsUrl     = 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.';
-        $collection    = new DefaultPackageCollection($carrier, $items, $labelsUrl);
+        $labelsUrl = 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwMwdcMBAZAoC.';
+        $collection = new DefaultPackageCollection($carrier, $items, $labelsUrl);
         $expectedArray = [
             [
-                'carrier'        => 'cp',
-                'carrierId'      => '02IID',
-                'packageId'      => '1234',
-                'batchId'        => '0001',
-                'trackUrl'       => null,
-                'labelUrl'       => null,
-                'carrierIdSwap'  => null,
-                'pieces'         => [],
+                'carrier' => 'cp',
+                'carrierId' => '02IID',
+                'packageId' => '1234',
+                'batchId' => '0001',
+                'trackUrl' => null,
+                'labelUrl' => null,
+                'carrierIdSwap' => null,
+                'pieces' => [],
                 'finalCarrierId' => null,
-                'finalTrackUrl'  => null,
-                'barcode'        => null,
+                'finalTrackUrl' => null,
+                'barcode' => null,
             ],
             [
-                'carrier'        => 'cp',
-                'carrierId'      => '02IIE',
-                'packageId'      => '1235',
-                'batchId'        => '0001',
-                'trackUrl'       => null,
-                'labelUrl'       => null,
-                'carrierIdSwap'  => null,
-                'pieces'         => [],
+                'carrier' => 'cp',
+                'carrierId' => '02IIE',
+                'packageId' => '1235',
+                'batchId' => '0001',
+                'trackUrl' => null,
+                'labelUrl' => null,
+                'carrierIdSwap' => null,
+                'pieces' => [],
                 'finalCarrierId' => null,
-                'finalTrackUrl'  => null,
-                'barcode'        => null,
+                'finalTrackUrl' => null,
+                'barcode' => null,
             ],
         ];
 

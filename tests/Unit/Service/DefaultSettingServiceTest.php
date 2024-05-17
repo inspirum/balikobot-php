@@ -33,7 +33,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 {
     public function testGetCarriers(): void
     {
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(CarrierCollection::class);
 
         $infoService = $this->newDefaultSettingService(
@@ -48,8 +48,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetCarrier(): void
     {
-        $carrier        = Carrier::ZASILKOVNA;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::ZASILKOVNA;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(CarrierModel::class);
 
         $infoService = $this->newDefaultSettingService(
@@ -64,8 +64,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetServices(): void
     {
-        $carrier        = Carrier::CP;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -80,8 +80,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetActivatedServices(): void
     {
-        $carrier        = Carrier::CP;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -96,8 +96,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetB2AServices(): void
     {
-        $carrier        = Carrier::CP;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -112,8 +112,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetManipulationUnits(): void
     {
-        $carrier        = Carrier::CP;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ManipulationUnitCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -128,8 +128,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetActivatedManipulationUnits(): void
     {
-        $carrier        = Carrier::TOPTRANS;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::TOPTRANS;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ManipulationUnitCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -144,8 +144,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetCodCountries(): void
     {
-        $carrier        = Carrier::CP;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -160,8 +160,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetCountries(): void
     {
-        $carrier        = Carrier::CP;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -176,7 +176,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetCountriesData(): void
     {
-        $response       = $this->mockClientResponse();
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(CountryCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -191,10 +191,10 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetZipCodes(): void
     {
-        $carrier        = Carrier::CP;
-        $serviceType    = Service::CP_DR;
-        $country        = Country::CZECH_REPUBLIC;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $serviceType = Service::CP_DR;
+        $country = Country::CZECH_REPUBLIC;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ZipCodeIterator::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -209,8 +209,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetAdrUnits(): void
     {
-        $carrier        = Carrier::TOPTRANS;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::TOPTRANS;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(AdrUnitCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -225,8 +225,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetAddAttributes(): void
     {
-        $carrier        = Carrier::CP;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(AttributeCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -241,8 +241,8 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetAddServiceOptions(): void
     {
-        $carrier        = Carrier::CP;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
@@ -257,9 +257,9 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
 
     public function testGetAddServiceOptionsForService(): void
     {
-        $carrier        = Carrier::CP;
-        $serviceType    = Service::CP_DR;
-        $response       = $this->mockClientResponse();
+        $carrier = Carrier::CP;
+        $serviceType = Service::CP_DR;
+        $response = $this->mockClientResponse();
         $expectedResult = $this->createMock(ServiceModel::class);
 
         $settingService = $this->newDefaultSettingService(

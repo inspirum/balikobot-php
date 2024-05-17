@@ -44,8 +44,6 @@ trait CommonData
      */
     public function setServices(array $services): void
     {
-        // TODO: add validation
-
         $this->offsetSet(Attribute::SERVICES, implode('+', $services));
     }
 

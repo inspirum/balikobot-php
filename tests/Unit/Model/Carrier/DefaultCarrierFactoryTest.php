@@ -42,22 +42,22 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
     public static function providesTestCreateCollection(): iterable
     {
         yield 'valid' => [
-            'data'   => [
-                'status'   => 200,
+            'data' => [
+                'status' => 200,
                 'carriers' => [
                     [
-                        'name'     => 'Česká pošta',
-                        'slug'     => 'cp',
+                        'name' => 'Česká pošta',
+                        'slug' => 'cp',
                         'endpoint' => 'https://api.balikobot.cz/cp',
                     ],
                     [
-                        'name'     => 'PPL',
-                        'slug'     => 'ppl',
+                        'name' => 'PPL',
+                        'slug' => 'ppl',
                         'endpoint' => 'https://api.balikobot.cz/ppl',
                     ],
                     [
-                        'name'     => 'Magyar Posta',
-                        'slug'     => 'magyarposta',
+                        'name' => 'Magyar Posta',
+                        'slug' => 'magyarposta',
                         'endpoint' => 'https://api.balikobot.cz/magyarposta',
                     ],
                 ],
@@ -104,36 +104,36 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
     {
         yield 'valid' => [
             'carrier' => 'zasilkovna',
-            'data'    => [
-                'status'               => 200,
-                'name'                 => 'Zásilkovna',
+            'data' => [
+                'status' => 200,
+                'name' => 'Zásilkovna',
                 'v2_methods_available' => true,
-                'methods'              => [
+                'methods' => [
                     [
-                        'method'   => 'ADD',
+                        'method' => 'ADD',
                         'endpoint' => 'https://api.balikobot.cz/zasilkovna/add',
                     ],
                     [
-                        'method'   => 'TRACKSTATUS',
+                        'method' => 'TRACKSTATUS',
                         'endpoint' => 'https://api.balikobot.cz/zasilkovna/trackstatus',
                     ],
                 ],
-                'v2_methods'           => [
+                'v2_methods' => [
                     [
-                        'method'   => 'ADD',
+                        'method' => 'ADD',
                         'endpoint' => 'https://api.balikobot.cz/v2/zasilkovna/add',
                     ],
                     [
-                        'method'   => 'DROP',
+                        'method' => 'DROP',
                         'endpoint' => 'https://api.balikobot.cz/v2/zasilkovna/drop',
                     ],
                 ],
             ],
-            'result'  => new DefaultCarrier(
+            'result' => new DefaultCarrier(
                 'zasilkovna',
                 'Zásilkovna',
                 [
-                    'https://apiv2.balikobot.cz'    => new DefaultMethodCollection([
+                    'https://apiv2.balikobot.cz' => new DefaultMethodCollection([
                         new DefaultMethod('ADD'),
                         new DefaultMethod('TRACKSTATUS'),
                     ]),

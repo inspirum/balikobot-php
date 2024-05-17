@@ -8,8 +8,6 @@ interface LabelFactory
 {
     /**
      * @param array<string,mixed> $data
-     *
-     * @return string
      */
     public function create(array $data): string;
 }

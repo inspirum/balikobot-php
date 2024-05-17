@@ -154,7 +154,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
     {
         $packageService = $this->newDefaultPackageService();
 
-        $package  = new DefaultPackage(
+        $package = new DefaultPackage(
             Carrier::PPL,
             '12345',
             '0001',
@@ -253,7 +253,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
     {
         $packageService = $this->newDefaultPackageService();
 
-        $package  = new DefaultPackage(
+        $package = new DefaultPackage(
             Carrier::PPL,
             '12345',
             '0001',
@@ -292,7 +292,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         ]);
 
         $packages = $packageService->addPackages($packagesData);
-        $package  = $packages[0] ?? self::fail();
+        $package = $packages[0] ?? self::fail();
 
         $packageDataInfo = $packageService->getPackageInfo($package);
 
@@ -414,7 +414,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
     {
         $packageService = $this->newDefaultPackageService();
 
-        $package  = new DefaultPackage(
+        $package = new DefaultPackage(
             Carrier::TNT,
             '12345',
             '0001',
@@ -540,13 +540,13 @@ final class DefaultPackageServiceTest extends BaseTestCase
     {
         $packageService = $this->newDefaultPackageService();
 
-        $carrier      = Carrier::UPS;
-        $date         = new DateTimeImmutable('+2 DAY');
-        $dateFrom     = $date->setTime(10, 0);
-        $dateTo       = $date->setTime(12, 0);
-        $weight       = 10.0;
+        $carrier = Carrier::UPS;
+        $date = new DateTimeImmutable('+2 DAY');
+        $dateFrom = $date->setTime(10, 0);
+        $dateTo = $date->setTime(12, 0);
+        $weight = 10.0;
         $packageCount = 1;
-        $message      = 'testMessage';
+        $message = 'testMessage';
 
         $packageService->orderPickup(
             $carrier,
@@ -564,12 +564,12 @@ final class DefaultPackageServiceTest extends BaseTestCase
     {
         $packageService = $this->newDefaultPackageService();
 
-        $carrier      = Carrier::UPS;
-        $dateFrom     = new DateTimeImmutable('-1 DAY');
-        $dateTo       = new DateTimeImmutable('-1 DAY +2 HOURS');
-        $weight       = 10.0;
+        $carrier = Carrier::UPS;
+        $dateFrom = new DateTimeImmutable('-1 DAY');
+        $dateTo = new DateTimeImmutable('-1 DAY +2 HOURS');
+        $weight = 10.0;
         $packageCount = 1;
-        $message      = 'testMessage';
+        $message = 'testMessage';
 
         try {
             $packageService->orderPickup(

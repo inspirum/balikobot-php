@@ -24,7 +24,8 @@
     "psr/http-message": "^1.1 || ^2.0"
   },
   "require-dev": {
-    "inspirum/coding-standard": "^1.4",
+    "inspirum/coding-standard": "^1.5",
+    "inspirum/phpunit-extension": "^1.0",
     "phpstan/phpstan": "^1.10",
     "phpunit/phpunit": "^10.5",
     "shipmonk/composer-dependency-analyser": "^1.5",

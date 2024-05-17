@@ -86,17 +86,17 @@ final class DefaultAccount extends BaseModel implements Account
     public function __toArray(): array
     {
         return [
-            'name'          => $this->name,
+            'name' => $this->name,
             'contactPerson' => $this->contactPerson,
-            'email'         => $this->email,
-            'phone'         => $this->phone,
-            'url'           => $this->url,
-            'street'        => $this->street,
-            'city'          => $this->city,
-            'zip'           => $this->zip,
-            'country'       => $this->country,
-            'live'          => $this->live,
-            'carriers'      => $this->carriers->__toArray(),
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'url' => $this->url,
+            'street' => $this->street,
+            'city' => $this->city,
+            'zip' => $this->zip,
+            'country' => $this->country,
+            'live' => $this->live,
+            'carriers' => $this->carriers->__toArray(),
 
         ];
     }

@@ -196,12 +196,12 @@ final class DefaultPackageService implements PackageService
         ?string $message = null,
     ): void {
         $response = $this->client->call(Version::V2V1, $carrier, Method::ORDER_PICKUP, [
-            'date'          => $dateFrom->format('Y-m-d'),
-            'time_from'     => $dateFrom->format('H:i'),
-            'time_to'       => $dateTo->format('H:i'),
-            'weight'        => $weight,
+            'date' => $dateFrom->format('Y-m-d'),
+            'time_from' => $dateFrom->format('H:i'),
+            'time_to' => $dateTo->format('H:i'),
+            'weight' => $weight,
             'package_count' => $packageCount,
-            'message'       => $message,
+            'message' => $message,
         ]);
 
         if (array_key_exists('message', $response)) {

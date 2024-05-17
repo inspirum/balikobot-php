@@ -17,7 +17,7 @@ final class LiveServiceProviderTest extends BaseTestCase
 {
     public function testGetServices(): void
     {
-        $carrier          = Carrier::DPD;
+        $carrier = Carrier::DPD;
         $expectedServices = [
             Service::DPD_CLASSIC,
             Service::DPD_EXPRESS_12,

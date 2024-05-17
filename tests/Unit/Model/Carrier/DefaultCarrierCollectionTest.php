@@ -12,7 +12,7 @@ final class DefaultCarrierCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $items         =  [
+        $items = [
             new DefaultCarrier(
                 'cp',
                 'Česká pošta',
@@ -26,21 +26,21 @@ final class DefaultCarrierCollectionTest extends BaseTestCase
                 'Magyar Posta',
             ),
         ];
-        $collection    = new DefaultCarrierCollection($items);
+        $collection = new DefaultCarrierCollection($items);
         $expectedArray = [
             [
-                'code'    => 'cp',
-                'name'    => 'Česká pošta',
+                'code' => 'cp',
+                'name' => 'Česká pošta',
                 'methods' => [],
             ],
             [
-                'code'    => 'ppl',
-                'name'    => 'PPL',
+                'code' => 'ppl',
+                'name' => 'PPL',
                 'methods' => [],
             ],
             [
-                'code'    => 'magyarposta',
-                'name'    => 'Magyar Posta',
+                'code' => 'magyarposta',
+                'name' => 'Magyar Posta',
                 'methods' => [],
             ],
         ];

@@ -12,8 +12,8 @@ final class DefaultStatusCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = 'cp';
-        $items         =   [
+        $carrier = 'cp';
+        $items = [
             new DefaultStatus(
                 $carrier,
                 '1',
@@ -33,25 +33,25 @@ final class DefaultStatusCollectionTest extends BaseTestCase
                 null,
             ),
         ];
-        $collection    = new DefaultStatusCollection($carrier, $items);
+        $collection = new DefaultStatusCollection($carrier, $items);
         $expectedArray = [
             [
-                'carrier'     => 'cp',
-                'carrierId'   => '1',
-                'id'          => 1.2,
-                'name'        => 'Zásilka byla doručena příjemci.',
+                'carrier' => 'cp',
+                'carrierId' => '1',
+                'id' => 1.2,
+                'name' => 'Zásilka byla doručena příjemci.',
                 'description' => 'Zásilka byla doručena příjemci.',
-                'type'        => 'event',
-                'date'        => null,
+                'type' => 'event',
+                'date' => null,
             ],
             [
-                'carrier'     => 'cp',
-                'carrierId'   => '2',
-                'id'          => 2.2,
-                'name'        => 'Zásilka je v přepravě.',
+                'carrier' => 'cp',
+                'carrierId' => '2',
+                'id' => 2.2,
+                'name' => 'Zásilka je v přepravě.',
                 'description' => 'Zásilka je v přepravě.',
-                'type'        => 'event',
-                'date'        => null,
+                'type' => 'event',
+                'date' => null,
             ],
         ];
 

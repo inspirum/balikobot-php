@@ -28,7 +28,7 @@ final class ChangesSupportTest extends BaseTestCase
         $changelog = $infoService->getChangelog();
 
         $expected = (float) '1.996';
-        $actual   = (float) $changelog->getLatestVersion();
+        $actual = (float) $changelog->getLatestVersion();
 
         if ($actual > $expected) {
             self::markTestIncomplete(sprintf('Package not supporting latest changes [%.3f > %.3f]', $actual, $expected));
@@ -40,7 +40,7 @@ final class ChangesSupportTest extends BaseTestCase
     public function testAllAddAttributesSupport(): void
     {
         $settingService = $this->newDefaultSettingService();
-        $attributes     = [];
+        $attributes = [];
 
         foreach (Carrier::getAll() as $carrier) {
             try {
@@ -57,7 +57,7 @@ final class ChangesSupportTest extends BaseTestCase
             }
         }
 
-        $attributes          = array_unique(array_merge(...$attributes));
+        $attributes = array_unique(array_merge(...$attributes));
         $supportedAttributes = Attribute::getAll();
 
         $unsupportedAttributes = array_diff($attributes, $supportedAttributes);
@@ -72,7 +72,7 @@ final class ChangesSupportTest extends BaseTestCase
     public function testAllMethodsSupport(): void
     {
         $settingService = $this->newDefaultSettingService();
-        $methods        = [];
+        $methods = [];
 
         foreach (Carrier::getAll() as $carrier) {
             $methods[] = array_map(
@@ -81,7 +81,7 @@ final class ChangesSupportTest extends BaseTestCase
             );
         }
 
-        $methods          = array_unique(array_merge(...$methods));
+        $methods = array_unique(array_merge(...$methods));
         $supportedMethods = array_map(strtolower(...), Method::getAll());
 
         $unsupportedMethods = array_diff($methods, $supportedMethods);

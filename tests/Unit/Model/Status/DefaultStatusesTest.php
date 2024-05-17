@@ -16,8 +16,8 @@ final class DefaultStatusesTest extends BaseTestCase
 {
     public function testModel(): void
     {
-        $carrier    = 'cp';
-        $items      = [
+        $carrier = 'cp';
+        $items = [
             new DefaultStatus(
                 $carrier,
                 '3',

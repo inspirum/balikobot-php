@@ -13,8 +13,8 @@ final class DefaultStatusTest extends BaseTestCase
     public function testModel(): void
     {
         $carrier = 'cp';
-        $date    = new DateTimeImmutable('2018-11-07 14:15:01');
-        $model   = new DefaultStatus(
+        $date = new DateTimeImmutable('2018-11-07 14:15:01');
+        $model = new DefaultStatus(
             $carrier,
             '3',
             2.2,

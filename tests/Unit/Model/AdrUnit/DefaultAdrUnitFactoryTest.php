@@ -39,30 +39,30 @@ final class DefaultAdrUnitFactoryTest extends BaseTestCase
     {
         yield 'valid' => [
             'carrier' => 'ppl',
-            'data'    => [
+            'data' => [
                 'status' => 200,
-                'units'  => [
+                'units' => [
                     [
-                        'id'                 => '299',
-                        'code'               => '432',
-                        'name'               => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely',
-                        'class'              => '1',
-                        'packaging'          => null,
-                        'tunnel_code'        => 'E',
+                        'id' => '299',
+                        'code' => '432',
+                        'name' => 'PŘEDMĚTY PYROTECHNICKÉ pro technické účely',
+                        'class' => '1',
+                        'packaging' => null,
+                        'tunnel_code' => 'E',
                         'transport_category' => '4',
                     ],
                     [
-                        'id'                 => '377',
-                        'code'               => '1001',
-                        'name'               => 'ACETYLÉN, ROZPUŠTĚNÝ',
-                        'class'              => '2',
-                        'packaging'          => 'A',
-                        'tunnel_code'        => null,
+                        'id' => '377',
+                        'code' => '1001',
+                        'name' => 'ACETYLÉN, ROZPUŠTĚNÝ',
+                        'class' => '2',
+                        'packaging' => 'A',
+                        'tunnel_code' => null,
                         'transport_category' => '2',
                     ],
                 ],
             ],
-            'result'  => new DefaultAdrUnitCollection(
+            'result' => new DefaultAdrUnitCollection(
                 'ppl',
                 [
                     new DefaultAdrUnit(

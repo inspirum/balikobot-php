@@ -23,7 +23,7 @@ use Throwable;
 final class DefaultStatusFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string>       $carrierIds
+     * @param array<string> $carrierIds
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateCollection')]
@@ -47,9 +47,9 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     public static function providesTestCreateCollection(): iterable
     {
         yield 'missing_data_error' => [
-            'carrier'    => Carrier::CP,
+            'carrier' => Carrier::CP,
             'carrierIds' => ['1', '2'],
-            'data'       => [
+            'data' => [
                 'status' => 200,
             ],
 
@@ -57,63 +57,63 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'valid' => [
-            'carrier'    => Carrier::CP,
+            'carrier' => Carrier::CP,
             'carrierIds' => ['3', '4', '5'],
-            'data'       => [
+            'data' => [
                 'packages' => [
                     0 => [
                         'carrier_id' => '3',
-                        'status'     => 200,
-                        'states'     => [
+                        'status' => 200,
+                        'states' => [
                             [
-                                'date'           => '2018-11-07 14:15:01',
-                                'name'           => 'Doručování zásilky',
-                                'status_id'      => 2,
-                                'status_id_v2'   => 2.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-07 14:15:01',
+                                'name' => 'Doručování zásilky',
+                                'status_id' => 2,
+                                'status_id_v2' => 2.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka je v přepravě.',
                             ],
                             [
-                                'date'           => '2018-11-08 18:00:00',
-                                'name'           => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
-                                'status_id'      => 1,
-                                'status_id_v2'   => 1.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-08 18:00:00',
+                                'name' => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                                'status_id' => 1,
+                                'status_id_v2' => 1.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka byla doručena příjemci.',
                             ],
                         ],
                     ],
                     1 => [
                         'carrier_id' => '4',
-                        'status'     => 200,
-                        'states'     => [
+                        'status' => 200,
+                        'states' => [
                             [
-                                'date'           => '2018-11-07 14:15:01',
-                                'name'           => 'Doručování zásilky',
-                                'status_id'      => 2,
-                                'status_id_v2'   => 2.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-07 14:15:01',
+                                'name' => 'Doručování zásilky',
+                                'status_id' => 2,
+                                'status_id_v2' => 2.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka je v přepravě.',
                             ],
                         ],
                     ],
                     2 => [
                         'carrier_id' => '5',
-                        'status'     => 200,
-                        'states'     => [
+                        'status' => 200,
+                        'states' => [
                             [
-                                'date'           => '2018-11-08 18:00:00',
-                                'name'           => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
-                                'status_id'      => 1,
-                                'status_id_v2'   => 1.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-08 18:00:00',
+                                'name' => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                                'status_id' => 1,
+                                'status_id_v2' => 1.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka byla doručena příjemci.',
                             ],
                         ],
                     ],
                 ],
             ],
-            'result'     => new DefaultStatusesCollection(Carrier::CP, [
+            'result' => new DefaultStatusesCollection(Carrier::CP, [
                 new DefaultStatuses(Carrier::CP, '3', new DefaultStatusCollection(Carrier::CP, [
                     new DefaultStatus(
                         'cp',
@@ -160,56 +160,56 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_index_error' => [
-            'carrier'    => 'cp',
+            'carrier' => 'cp',
             'carrierIds' => ['3', '4', '5'],
-            'data'       => [
+            'data' => [
                 'packages' => [
                     0 => [
                         'carrier_id' => '3',
-                        'status'     => 200,
-                        'states'     => [
+                        'status' => 200,
+                        'states' => [
                             [
-                                'date'           => '2018-11-07 14:15:01',
-                                'name'           => 'Doručování zásilky',
-                                'status_id'      => 2,
-                                'status_id_v2'   => 2.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-07 14:15:01',
+                                'name' => 'Doručování zásilky',
+                                'status_id' => 2,
+                                'status_id_v2' => 2.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka je v přepravě.',
                             ],
                             [
-                                'date'           => '2018-11-08 18:00:00',
-                                'name'           => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
-                                'status_id'      => 1,
-                                'status_id_v2'   => 1.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-08 18:00:00',
+                                'name' => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                                'status_id' => 1,
+                                'status_id_v2' => 1.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka byla doručena příjemci.',
                             ],
                         ],
                     ],
                     2 => [
                         'carrier_id' => '4',
-                        'status'     => 200,
-                        'states'     => [
+                        'status' => 200,
+                        'states' => [
                             [
-                                'date'           => '2018-11-07 14:15:01',
-                                'name'           => 'Doručování zásilky',
-                                'status_id'      => 2,
-                                'status_id_v2'   => 2.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-07 14:15:01',
+                                'name' => 'Doručování zásilky',
+                                'status_id' => 2,
+                                'status_id_v2' => 2.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka je v přepravě.',
                             ],
                         ],
                     ],
                     3 => [
                         'carrier_id' => '5',
-                        'status'     => 200,
-                        'states'     => [
+                        'status' => 200,
+                        'states' => [
                             [
-                                'date'           => '2018-11-08 18:00:00',
-                                'name'           => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
-                                'status_id'      => 1,
-                                'status_id_v2'   => 1.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-08 18:00:00',
+                                'name' => 'Dodání zásilky. (77072 - Depo Olomouc 72)',
+                                'status_id' => 1,
+                                'status_id_v2' => 1.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka byla doručena příjemci.',
                             ],
                         ],
@@ -221,21 +221,21 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_index_missing_error' => [
-            'carrier'    => 'ppl',
+            'carrier' => 'ppl',
             'carrierIds' => ['1', '3'],
-            'data'       => [
-                'status'   => 200,
+            'data' => [
+                'status' => 200,
                 'packages' => [
                     1 => [
                         'carrier_id' => '3',
-                        'status'     => 200,
-                        'states'     => [
+                        'status' => 200,
+                        'states' => [
                             [
-                                'date'           => '2018-11-07 14:15:01',
-                                'name'           => 'Dodání zásilky. 10005 Depo Praha 701',
-                                'status_id'      => 1,
-                                'status_id_v2'   => 1.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-07 14:15:01',
+                                'name' => 'Dodání zásilky. 10005 Depo Praha 701',
+                                'status_id' => 1,
+                                'status_id_v2' => 1.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka byla doručena příjemci..',
                             ],
                         ],
@@ -247,28 +247,28 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_status_error' => [
-            'carrier'    => 'ppl',
+            'carrier' => 'ppl',
             'carrierIds' => ['1', '3'],
-            'data'       => [
-                'status'   => 200,
+            'data' => [
+                'status' => 200,
                 'packages' => [
                     0 => [
                         'carrier_id' => '1',
-                        'status'     => 200,
-                        'states'     => [
+                        'status' => 200,
+                        'states' => [
                             [
-                                'date'           => '2018-11-07 14:15:01',
-                                'name'           => 'Dodání zásilky. 10005 Depo Praha 701',
-                                'status_id'      => 1,
-                                'status_id_v2'   => 1.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-07 14:15:01',
+                                'name' => 'Dodání zásilky. 10005 Depo Praha 701',
+                                'status_id' => 1,
+                                'status_id_v2' => 1.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka byla doručena příjemci..',
                             ],
                         ],
                     ],
                     1 => [
-                        'carrier_id'     => '1234',
-                        'status'         => 503,
+                        'carrier_id' => '1234',
+                        'status' => 503,
                         'status_message' => 'Technologie dopravce je momentálně nedostupná. Zopakujte dotaz později.',
                     ],
                 ],
@@ -278,15 +278,15 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'package_status_data_error' => [
-            'carrier'    => 'cp',
+            'carrier' => 'cp',
             'carrierIds' => ['1', '2'],
-            'data'       => [
-                'status'   => 200,
+            'data' => [
+                'status' => 200,
                 'packages' => [
                     0 => [
                         'carrier_id' => '1',
-                        'status'     => 200,
-                        'states'     => [
+                        'status' => 200,
+                        'states' => [
                             [
                                 '404',
                             ],
@@ -294,17 +294,17 @@ final class DefaultStatusFactoryTest extends BaseTestCase
                     ],
                     1 => [
                         'carrier_id' => '2',
-                        'status'     => 200,
-                        'states'     => [
+                        'status' => 200,
+                        'states' => [
                             [
                                 '404',
                             ],
                             [
-                                'date'           => '2018-11-07 14:15:01',
-                                'name'           => 'Doručování zásilky',
-                                'status_id'      => 2,
-                                'status_id_v2'   => 2.2,
-                                'type'           => 'event',
+                                'date' => '2018-11-07 14:15:01',
+                                'name' => 'Doručování zásilky',
+                                'status_id' => 2,
+                                'status_id_v2' => 2.2,
+                                'type' => 'event',
                                 'name_balikobot' => 'Zásilka je v přepravě.',
                             ],
                         ],
@@ -317,7 +317,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     }
 
     /**
-     * @param array<string>       $carrierIds
+     * @param array<string> $carrierIds
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateLastStatusCollection')]
@@ -341,25 +341,25 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     public static function providesTestCreateLastStatusCollection(): iterable
     {
         yield 'valid' => [
-            'carrier'    => 'cp',
+            'carrier' => 'cp',
             'carrierIds' => ['1', '2'],
-            'data'       => [
+            'data' => [
                 'packages' => [
                     0 => [
-                        'carrier_id'  => '1',
-                        'status'      => 200,
-                        'status_id'   => 1.2,
+                        'carrier_id' => '1',
+                        'status' => 200,
+                        'status_id' => 1.2,
                         'status_text' => 'Zásilka byla doručena příjemci.',
                     ],
                     1 => [
-                        'carrier_id'  => '2',
-                        'status'      => 200,
-                        'status_id'   => 2.2,
+                        'carrier_id' => '2',
+                        'status' => 200,
+                        'status_id' => 2.2,
                         'status_text' => 'Zásilka je v přepravě.',
                     ],
                 ],
             ],
-            'result'     => new DefaultStatusCollection(
+            'result' => new DefaultStatusCollection(
                 'cp',
                 [
                     new DefaultStatus(
@@ -385,72 +385,72 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         ];
 
         yield 'missing_data_error' => [
-            'carrier'    => 'cp',
+            'carrier' => 'cp',
             'carrierIds' => ['1', '2'],
-            'data'       => [
+            'data' => [
                 'status' => 200,
             ],
-            'result'     => new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
 
         yield 'package_index_error' => [
-            'carrier'    => 'cp',
+            'carrier' => 'cp',
             'carrierIds' => ['3', '4'],
-            'data'       => [
+            'data' => [
                 'packages' => [
                     0 => [
-                        'carrier_id'  => '1',
-                        'status'      => 200,
-                        'status_id'   => 1.2,
+                        'carrier_id' => '1',
+                        'status' => 200,
+                        'status_id' => 1.2,
                         'status_text' => 'Zásilka byla doručena příjemci.',
                     ],
                     2 => [
-                        'carrier_id'  => '3',
-                        'status'      => 200,
-                        'status_id'   => 1.2,
+                        'carrier_id' => '3',
+                        'status' => 200,
+                        'status_id' => 1.2,
                         'status_text' => 'Zásilka byla doručena příjemci.',
                     ],
                 ],
             ],
-            'result'     => new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
 
         yield 'package_index_missing_error' => [
-            'carrier'    => 'ppl',
+            'carrier' => 'ppl',
             'carrierIds' => ['1', '3'],
-            'data'       => [
-                'status'   => 200,
+            'data' => [
+                'status' => 200,
                 'packages' => [
                     0 => [
-                        'carrier_id'  => '1',
-                        'status'      => 200,
-                        'status_id'   => 1.2,
+                        'carrier_id' => '1',
+                        'status' => 200,
+                        'status_id' => 1.2,
                         'status_text' => 'Zásilka byla doručena příjemci.',
                     ],
                 ],
             ],
-            'result'     => new BadRequestException([], 400),
+            'result' => new BadRequestException([], 400),
         ];
 
         yield 'package_status_error' => [
-            'carrier'    => 'ppl',
+            'carrier' => 'ppl',
             'carrierIds' => ['1', '3'],
-            'data'       => [
-                'status'   => 200,
+            'data' => [
+                'status' => 200,
                 'packages' => [
                     0 => [
-                        'carrier_id'  => '1',
-                        'status'      => 200,
-                        'status_id'   => 1.2,
+                        'carrier_id' => '1',
+                        'status' => 200,
+                        'status_id' => 1.2,
                         'status_text' => 'Zásilka byla doručena příjemci.',
                     ],
                     1 => [
                         'carrier_id' => '1234',
-                        'status'     => 404,
+                        'status' => 404,
                     ],
                 ],
             ],
-            'result'     => new BadRequestException([], 404),
+            'result' => new BadRequestException([], 404),
         ];
     }
 
@@ -480,12 +480,12 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'v2' => [
             'carrier' => 'cp',
             'carrierId' => '1',
-            'data'       => [
-                'date'          => '2018-11-07 14:15:01',
-                'name'          => 'Doručení',
+            'data' => [
+                'date' => '2018-11-07 14:15:01',
+                'name' => 'Doručení',
                 'name_internal' => 'Zásilka byla doručena příjemci.',
-                'status_id'     => 2.1,
-                'type'          => 'notification',
+                'status_id' => 2.1,
+                'type' => 'notification',
             ],
             'result' => new DefaultStatus(
                 'cp',
@@ -501,8 +501,8 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'missing_data' => [
             'carrier' => 'cp',
             'carrierId' => '2',
-            'data'       => [
-                'name'      => 'Doručení',
+            'data' => [
+                'name' => 'Doručení',
                 'status_id' => 2,
             ],
             'result' => new DefaultStatus(
@@ -519,13 +519,13 @@ final class DefaultStatusFactoryTest extends BaseTestCase
         yield 'v3' => [
             'carrier' => 'cp',
             'carrierId' => '3',
-            'data'       => [
-                'date'           => '2018-11-08 14:18:01',
-                'name'           => 'Doručení',
+            'data' => [
+                'date' => '2018-11-08 14:18:01',
+                'name' => 'Doručení',
                 'name_balikobot' => 'Zásilka byla doručena příjemci.',
-                'status_id'      => 2,
-                'status_id_v2'   => 2.3,
-                'type'           => 'event',
+                'status_id' => 2,
+                'status_id_v2' => 2.3,
+                'type' => 'event',
             ],
             'result' => new DefaultStatus(
                 'cp',
@@ -564,10 +564,10 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     {
         yield 'valid' => [
             'carrier' => 'cp',
-            'data'       => [
-                'carrier_id'  => '1',
-                'status'      => 200,
-                'status_id'   => 1.2,
+            'data' => [
+                'carrier_id' => '1',
+                'status' => 200,
+                'status_id' => 1.2,
                 'status_text' => 'Zásilka byla doručena příjemci.',
             ],
             'result' => new DefaultStatus(
@@ -583,7 +583,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
 
         yield 'invalid' => [
             'carrier' => 'cp',
-            'data'       => [
+            'data' => [
                 'status' => 200,
             ],
             'result' => new BadRequestException([], 400),

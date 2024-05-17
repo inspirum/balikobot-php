@@ -13,8 +13,8 @@ final class DefaultAttributeCollectionTest extends BaseTestCase
 {
     public function testCollection(): void
     {
-        $carrier       = Carrier::CP;
-        $items         = [
+        $carrier = Carrier::CP;
+        $items = [
             new DefaultAttribute(
                 'eid',
                 'string',
@@ -31,21 +31,21 @@ final class DefaultAttributeCollectionTest extends BaseTestCase
                 '9.20',
             ),
         ];
-        $collection    = new DefaultAttributeCollection($carrier, $items);
+        $collection = new DefaultAttributeCollection($carrier, $items);
         $expectedArray = [
             [
-                'name'      => 'eid',
-                'dataType'  => 'string',
+                'name' => 'eid',
+                'dataType' => 'string',
                 'maxLength' => '40',
             ],
             [
-                'name'      => 'services',
-                'dataType'  => 'plus_separated_values',
+                'name' => 'services',
+                'dataType' => 'plus_separated_values',
                 'maxLength' => null,
             ],
             [
-                'name'      => 'volume',
-                'dataType'  => 'float',
+                'name' => 'volume',
+                'dataType' => 'float',
                 'maxLength' => '9.20',
             ],
         ];
