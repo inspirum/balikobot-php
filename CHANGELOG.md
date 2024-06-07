@@ -6,10 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.9.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.10.0...master)
+
+
+## [v7.10.0 (2024-06-07)](https://github.com/inspirum/balikobot-php/compare/v7.9.0...v7.10.0)
 - Added **ZASILKOVNA_GR_ELTA_COURIER_HD** service type
 - Added **ZASILKOVNA_GR_ELTA_COURIER_PP** service type
 - Added **ZASILKOVNA_IT_BARTOLINI_BOX** service type
+- Added **PBH_SI** service type
+- Added **DACHSER_ONSITE_FIX** service type
 
 
 ## [v7.9.0 (2024-04-21)](https://github.com/inspirum/balikobot-php/compare/v7.8.0...v7.9.0)

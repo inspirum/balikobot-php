@@ -1402,6 +1402,11 @@ final class Service extends BaseEnum
     public const PBH_BOX_NOW = '31';
 
     /**
+     * Slovinská pošta
+     */
+    public const PBH_SI = '32';
+
+    /**
      * Worlwide zásilky
      */
     public const DHL_WORLDWIDE = '1';
@@ -1835,6 +1840,11 @@ final class Service extends BaseEnum
      * Dachser classicline
      */
     public const DACHSER_CLASSIC = 'N';
+
+    /**
+     * Dachser Targo on-site FIX
+     */
+    public const DACHSER_ONSITE_FIX = 'U';
 
     /**
      * DHL Parcel Connect
@@ -2375,6 +2385,7 @@ final class Service extends BaseEnum
             self::PBH_WARENPOST,
             self::PBH_HR_POST,
             self::PBH_BOX_NOW,
+            self::PBH_SI,
         ];
     }
 
@@ -2748,6 +2759,7 @@ final class Service extends BaseEnum
             self::DACHSER_FLEX,
             self::DACHSER_ONSITE,
             self::DACHSER_CLASSIC,
+            self::DACHSER_ONSITE_FIX,
         ];
     }
 
