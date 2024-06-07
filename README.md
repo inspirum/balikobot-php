@@ -8,7 +8,7 @@
 [![Total Downloads][ico-packagist-download]][link-packagist-download]
 [![Software License][ico-license]][link-licence]
 
-Offers implementation of Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v1.996** *(2024-03-05)*.
+Offers implementation of Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v1.998** *(2024-04-26)*.
 
 > If you want to use older API [v1][link-api], please use [`^4.0`](https://github.com/inspirum/balikobot-php/tree/v4.5.0) version.
 
@@ -54,7 +54,7 @@ $packagesData->add($packageData);
 $packages = $packageService->addPackages($packagesData);
 
 // save package IDs
-$data             = [];
+$data = [];
 $data['packages'] = $packages->getPackageIds();
 
 // save track URL for each package
@@ -66,23 +66,23 @@ foreach($packages as $package) {
 $orderedShipment = $packageService->orderShipment($orderedPackages);
 
 // save order ID and labels URL
-$data['orderId']     = $orderedShipment->getOrderId();
-$data['labelsUrl']   = $orderedShipment->getLabelsUrl();
+$data['orderId'] = $orderedShipment->getOrderId();
+$data['labelsUrl'] = $orderedShipment->getLabelsUrl();
 $data['handoverUrl'] = $orderedShipment->getHandoverUrl();
 
 /**
 var_dump($data);
 [
-  'packages'    => [
+  'packages' => [
     0 => 42719
     1 => 42720
   ]
-  'trackUrl'    => [
+  'trackUrl' => [
     0 => 'https://www.postaonline.cz/trackandtrace/-/zasilka/cislo?parcelNumbers=DR00112233M'
     1 => 'https://www.postaonline.cz/trackandtrace/-/zasilka/cislo?parcelNumbers=DR00112234M' 
   ]
-  'orderId'     => 2757
-  'labelsUrl'   => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwM76cMBAXAn4.'
+  'orderId' => 2757
+  'labelsUrl' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbYwM76cMBAXAn4.'
   'handoverUrl' => 'https://pdf.balikobot.cz/cp/eNorMTIwt9A1NbawtARcMBAhAoU.'
 ]
 */
@@ -120,13 +120,13 @@ $status = $trackService->trackPackageLastStatus($packages[0]);
 /**
 var_dump($status);
 Inspirum\Balikobot\Model\Status\DefaultStatus {
-  private $carrier     => 'cp'
-  private $carrierId   => '1234'
-  private $id          => 2.2
-  private $name        => 'Zásilka byla doručena příjemci.'
+  private $carrier => 'cp'
+  private $carrierId => '1234'
+  private $id => 2.2
+  private $name => 'Zásilka byla doručena příjemci.'
   private $description => 'Dodání zásilky. (77072 - Depo Olomouc 72)'
-  private $type        => 'event'
-  private $date        => DateTimeImmutable { '2018-07-02 09:15:01.000000' }
+  private $type => 'event'
+  private $date => DateTimeImmutable { '2018-07-02 09:15:01.000000' }
 }
 */
         
@@ -161,20 +161,20 @@ foreach($branches as $branch) {
   /**
   var_dump($branch);
   Inspirum\Balikobot\Model\Branch\DefaultBranch {
-    private $carrier  => 'zasilkovna'
-    private $service  => null
+    private $carrier => 'zasilkovna'
+    private $service => null
     private $branchId => '10000'
-    private $uid      => 'VMCZ-zasilkovna-branch-10000'
-    private $id       => '10000'
-    private $type     => 'branch'
-    private $name     => 'Hradec Králové, Dukelská tř. 1713/7 (OC Atrium - Traficon) Tabák Traficon'
-    private $city     => 'Hradec Králové'
-    private $street   => 'Dukelská tř. 1713/7'
-    private $zip      => '50002'
+    private $uid => 'VMCZ-zasilkovna-branch-10000'
+    private $id => '10000'
+    private $type => 'branch'
+    private $name => 'Hradec Králové, Dukelská tř. 1713/7 (OC Atrium - Traficon) Tabák Traficon'
+    private $city => 'Hradec Králové'
+    private $street => 'Dukelská tř. 1713/7'
+    private $zip => '50002'
     private $cityPart => null
     private $district => 'okres Hradec Králové'
-    private $region   => 'Královéhradecký kraj'
-    private $country  => 'CZ'
+    private $region => 'Královéhradecký kraj'
+    private $country => 'CZ'
     ...
   }
   */
@@ -226,11 +226,11 @@ use Inspirum\Balikobot\Service\DefaultPackageService;
 use Inspirum\Balikobot\Service\DefaultTrackService;
 
 $apiUser = getenv('BALIKOBOT_API_USER');
-$apiKey  = getenv('BALIKOBOT_API_KEY');
+$apiKey = getenv('BALIKOBOT_API_KEY');
 
 $requester = new DefaultCurlRequester($apiUser, $apiKey, sslVerify: true);
 $validator = new Validator();
-$client    = new DefaultClient($requester, $validator);
+$client = new DefaultClient($requester, $validator);
 
 $packageService = new DefaultPackageService(
     $client,
