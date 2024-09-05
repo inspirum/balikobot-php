@@ -22,6 +22,11 @@ final class Service extends BaseEnum
     public const CP_NP = 'NP';
 
     /**
+     * Balík Na poštu
+     */
+    public const CP_NV = 'NV';
+
+    /**
      * Balík do ruky pro vybrané podavatele
      */
     public const CP_DV = 'DV';
@@ -947,6 +952,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_IT_BARTOLINI_PP = '9104';
 
     /**
+     * IT Italská pošta PP
+     */
+    public const ZASILKOVNA_IT_POST_PP = '29660';
+
+    /**
      * IT Bartolini Box
      */
     public const ZASILKOVNA_IT_BARTOLINI_BOX = '29678';
@@ -960,6 +970,11 @@ final class Service extends BaseEnum
      * IT HR Parcel HD
      */
     public const ZASILKOVNA_IT_HR_PARCEL_HD = '12154';
+
+    /**
+     * IT Italská pošta HD
+     */
+    public const ZASILKOVNA_IT_POST_HD = '29192';
 
     /**
      * LT Omniva Box
@@ -1757,6 +1772,31 @@ final class Service extends BaseEnum
     public const FEDEX_PRIORITY_OVERNIGHT = '11';
 
     /**
+     * FedEx First
+     */
+    public const FEDEX_FIRST = '65';
+
+    /**
+     * FedEx Priority Express
+     */
+    public const FEDEX_PRIORITY_EXPRESS = '66';
+
+    /**
+     * FedEx Priority
+     */
+    public const FEDEX_PRIORITY = '67';
+
+    /**
+     * FedEx Priority Express Freight
+     */
+    public const FEDEX_REGIONAL_EXPRESS_FREIGHT = '68';
+
+    /**
+     * FedEx Priority Freight
+     */
+    public const FEDEX_REGIONAL_REIGHT = '69';
+
+    /**
      * Fofr
      */
     public const FOFR_FOFR = 'F';
@@ -2187,6 +2227,16 @@ final class Service extends BaseEnum
     public const SAMEDAY_LOCKER_RETURN = '24';
 
     /**
+     * Crossborder HD 24H
+     */
+    public const SAMEDAY_CROSSBORDER_24H_HD = '28';
+
+    /**
+     * Crossborder Locker Delivery
+     */
+    public const SAMEDAY_CROSSBORDER_LOCKER_HD = '30';
+
+    /**
      * SDS Standard
      */
     public const SDS_STANDART = 'Standard';
@@ -2253,6 +2303,7 @@ final class Service extends BaseEnum
             self::CP_RRP,
             self::CP_SRP,
             self::CP_NP,
+            self::CP_NV,
             self::CP_VL,
             self::CP_DV,
             self::CP_BA,
@@ -2372,14 +2423,14 @@ final class Service extends BaseEnum
             // self::PBH_HERMES,
             self::PBH_SPEEDY,
             self::PBH_COLISSIMO,
-            self::PBH_MEEST,
-            self::PBH_NOBA_POSHTA,
+            // self::PBH_MEEST,
+            // self::PBH_NOBA_POSHTA,
             self::PBH_ECONT,
             self::PBH_ACS,
             self::PBH_CORREOS,
-            self::PBH_123_KURIER,
-            self::PBH_ROYAL_MAIL_24,
-            self::PBH_ROYAL_MAIL_48,
+            // self::PBH_123_KURIER,
+            // self::PBH_ROYAL_MAIL_24,
+            // self::PBH_ROYAL_MAIL_48,
             self::PBH_EXPRESS_ONE,
             self::PBH_UPS,
             self::PBH_WARENPOST,
@@ -2571,9 +2622,11 @@ final class Service extends BaseEnum
             // self::ZASILKOVNA_IL_FEDEX_ECONOMY_HD,
             self::ZASILKOVNA_IT_BARTOLINI_HD,
             self::ZASILKOVNA_IT_BARTOLINI_PP,
+            self::ZASILKOVNA_IT_POST_PP,
             self::ZASILKOVNA_IT_BARTOLINI_BOX,
             // self::ZASILKOVNA_IT_GLS_HD,
             self::ZASILKOVNA_IT_HR_PARCEL_HD,
+            self::ZASILKOVNA_IT_POST_HD,
             self::ZASILKOVNA_LT_OMNIVA_BOX,
             self::ZASILKOVNA_LT_OMNIVA_HD,
             self::ZASILKOVNA_LU_POST_HD,
@@ -2728,6 +2781,11 @@ final class Service extends BaseEnum
             self::FEDEX_REGIONAL_ECONOMY_FREIGHT,
             self::FEDEX_INTERNATIONAL_CONNECT_PLUS,
             // self::FEDEX_PRIORITY_OVERNIGHT,
+            self::FEDEX_FIRST,
+            self::FEDEX_PRIORITY_EXPRESS,
+            self::FEDEX_PRIORITY,
+            self::FEDEX_REGIONAL_EXPRESS_FREIGHT,
+            self::FEDEX_REGIONAL_REIGHT,
         ];
     }
 
@@ -2912,6 +2970,8 @@ final class Service extends BaseEnum
             self::SAMEDAY_STANDARD_RETURN,
             self::SAMEDAY_LOCKER_NEXT_DAY,
             self::SAMEDAY_LOCKER_RETURN,
+            self::SAMEDAY_CROSSBORDER_24H_HD,
+            self::SAMEDAY_CROSSBORDER_LOCKER_HD,
         ];
     }
 
