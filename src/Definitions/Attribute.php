@@ -928,6 +928,16 @@ final class Attribute extends BaseEnum
     public const CUSTOMS_INDICATOR = 'customs_indicator';
 
     /**
+     * Referenční číslo země příjemce
+     */
+    public const COUNTRY_REFERENCE = 'country_reference';
+
+    /**
+     * Typ referenčního čísla - "UIT" pro RO, "EKAER" pro HU
+     */
+    public const COUNTRY_REFERENCE_TYPE = 'country_reference_type';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';
