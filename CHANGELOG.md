@@ -6,7 +6,26 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.10.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.11.0...master)
+
+
+## [v7.11.0 (2024-09-05)](https://github.com/inspirum/balikobot-php/compare/v7.10.0...v7.11.0)
+### Added
+- Added support for new options from documentation **v1.999** (2024-07-30)
+  - Added **country_reference** attributes
+  - Added **country_reference_type** attributes
+- Added **CP_NV** service type
+- Added **ZASILKOVNA_IT_POST_PP** service type
+- Added **ZASILKOVNA_IT_POST_HD** service type
+- Added **FEDEX_FIRST** service type
+- Added **FEDEX_PRIORITY_EXPRESS** service type
+- Added **FEDEX_PRIORITY** service type
+- Added **FEDEX_REGIONAL_EXPRESS_FREIGHT** service type
+- Added **FEDEX_REGIONAL_REIGHT** service type
+- Added **SAMEDAY_CROSSBORDER_24H_HD** service type
+- Added **SAMEDAY_CROSSBORDER_LOCKER_HD** service type
+### Changed
+- Use list collections
 
 
 ## [v7.10.0 (2024-06-07)](https://github.com/inspirum/balikobot-php/compare/v7.9.0...v7.10.0)
