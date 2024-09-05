@@ -11,7 +11,7 @@ use function sprintf;
 class ServiceContainerNotFoundException extends InvalidArgumentException
 {
     /**
-     * @param array<string> $alternatives
+     * @param list<string> $alternatives
      */
     public function __construct(string $connection, array $alternatives)
     {

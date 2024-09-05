@@ -54,7 +54,7 @@ final class DefaultBranchService implements BranchService
     }
 
     /**
-     * @param array<string> $countries
+     * @param list<string> $countries
      *
      * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
@@ -95,7 +95,7 @@ final class DefaultBranchService implements BranchService
     }
 
     /**
-     * @param array<string> $countries
+     * @param list<string> $countries
      *
      * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
@@ -122,7 +122,7 @@ final class DefaultBranchService implements BranchService
     }
 
     /**
-     * @param array<string> $countries
+     * @param list<string> $countries
      *
      * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
@@ -138,7 +138,7 @@ final class DefaultBranchService implements BranchService
     }
 
     /**
-     * @param array<string> $countries
+     * @param list<string> $countries
      *
      * @return \Traversable<\Inspirum\Balikobot\Model\Branch\Branch>&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *

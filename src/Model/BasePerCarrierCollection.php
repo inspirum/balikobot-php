@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseListCollection;
 use InvalidArgumentException;
 use RuntimeException;
 use function array_map;
@@ -13,15 +13,14 @@ use function sprintf;
 /**
  * @template TItemKey of array-key
  * @template TItemValue
- * @template TKey of array-key
  * @template TValue of \Inspirum\Arrayable\Arrayable<TItemKey,TItemValue>&\Inspirum\Balikobot\Model\WithCarrierId
- * @extends \Inspirum\Arrayable\BaseCollection<TItemKey,TItemValue,TKey,TValue>
+ * @extends \Inspirum\Arrayable\BaseListCollection<TItemKey,TItemValue,TValue>
  * @implements \Inspirum\Balikobot\Model\PerCarrierCollection<TValue>
  */
-abstract class BasePerCarrierCollection extends BaseCollection implements PerCarrierCollection
+abstract class BasePerCarrierCollection extends BaseListCollection implements PerCarrierCollection
 {
     /**
-     * @param array<TKey,TValue> $items
+     * @param list<TValue> $items
      */
     public function __construct(
         private ?string $carrier = null,
@@ -53,7 +52,7 @@ abstract class BasePerCarrierCollection extends BaseCollection implements PerCar
     }
 
     /**
-     * @param TKey $key
+     * @param non-negative-int $key
      * @param TValue $value
      */
     public function offsetSet(mixed $key, mixed $value): void
@@ -78,7 +77,7 @@ abstract class BasePerCarrierCollection extends BaseCollection implements PerCar
      */
     public function getForCarrierId(string $carrierId): ?WithCarrierId
     {
-        return $this->first(static fn(WithCarrierId $item) => $item->getCarrierId() === $carrierId);
+        return $this->first(static fn (WithCarrierId $item) => $item->getCarrierId() === $carrierId);
     }
 
     /**
@@ -100,7 +99,7 @@ abstract class BasePerCarrierCollection extends BaseCollection implements PerCar
     /** @inheritDoc */
     public function getCarrierIds(): array
     {
-        return array_map(static fn(WithCarrierId $item) => $item->getCarrierId(), $this->items);
+        return array_map(static fn (WithCarrierId $item) => $item->getCarrierId(), $this->getItems());
     }
 
     /**

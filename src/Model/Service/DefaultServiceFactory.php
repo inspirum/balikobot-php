@@ -7,6 +7,7 @@ namespace Inspirum\Balikobot\Model\Service;
 use Inspirum\Balikobot\Model\Country\CountryFactory;
 use function array_key_exists;
 use function array_map;
+use function array_values;
 
 final class DefaultServiceFactory implements ServiceFactory
 {
@@ -32,7 +33,7 @@ final class DefaultServiceFactory implements ServiceFactory
     {
         return new DefaultServiceCollection(
             $carrier,
-            array_map(fn(array $service): Service => $this->create($carrier, $service), $data['service_types'] ?? []),
+            array_values(array_map(fn (array $service): Service => $this->create($carrier, $service), $data['service_types'] ?? [])),
             $data['active_parcel'] ?? null,
             $data['active_cargo'] ?? null,
         );
@@ -55,7 +56,7 @@ final class DefaultServiceFactory implements ServiceFactory
     private function createOptionCollection(array $data): ServiceOptionCollection
     {
         return new DefaultServiceOptionCollection(
-            array_map(fn(array $data): ServiceOption => $this->createOption($data), $data['services'] ?? []),
+            array_map(fn (array $data): ServiceOption => $this->createOption($data), $data['services'] ?? []),
         );
     }
 }

@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Carrier;
 
-use Inspirum\Arrayable\Collection;
+use Inspirum\Arrayable\ListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\Collection<string,mixed,int,\Inspirum\Balikobot\Model\Carrier\Carrier>
+ * @extends \Inspirum\Arrayable\ListCollection<string,mixed,\Inspirum\Balikobot\Model\Carrier\Carrier>
  */
-interface CarrierCollection extends Collection
+interface CarrierCollection extends ListCollection
 {
     /**
-     * @return array<int,\Inspirum\Balikobot\Model\Carrier\Carrier>
+     * @return list<\Inspirum\Balikobot\Model\Carrier\Carrier>
      */
     public function getCarriers(): array;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getCarrierCodes(): array;
 }

@@ -24,7 +24,7 @@ final class LiveCarrierProviderTest extends BaseTestCase
 
         $infoService = $this->createMock(SettingService::class);
         $infoService->expects(self::once())->method('getCarriers')->willReturn(
-            new DefaultCarrierCollection(array_map(static fn(string $carrier): DefaultCarrier => new DefaultCarrier($carrier, $carrier), $expectedCarriers)),
+            new DefaultCarrierCollection(array_map(static fn (string $carrier): DefaultCarrier => new DefaultCarrier($carrier, $carrier), $expectedCarriers)),
         );
 
         $provider = $this->newLiveCarrierProvider($infoService);

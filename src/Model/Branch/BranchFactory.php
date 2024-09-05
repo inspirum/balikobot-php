@@ -14,7 +14,7 @@ interface BranchFactory
     public function create(string $carrier, ?string $service, array $data): Branch;
 
     /**
-     * @param array<string> $countries
+     * @param list<string> $countries
      * @param array<string,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
@@ -22,7 +22,7 @@ interface BranchFactory
     public function createIterator(string $carrier, ?string $service, ?array $countries, array $data): BranchIterator;
 
     /**
-     * @param array<string> $countries
+     * @param list<string> $countries
      * @param \Traversable<\Inspirum\Balikobot\Model\Branch\Branch> $iterator
      *
      * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>

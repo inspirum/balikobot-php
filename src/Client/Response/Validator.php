@@ -86,7 +86,7 @@ final class Validator
      * Validate that response item has some attributes
      *
      * @param array<string,mixed> $item
-     * @param array<string> $attributes
+     * @param list<string> $attributes
      * @param array<mixed,mixed> $response
      *
      * @throws \Inspirum\Balikobot\Exception\BadRequestException

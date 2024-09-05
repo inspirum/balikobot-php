@@ -278,10 +278,9 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     private function mockCarrierFactory(?string $carrier, array $data, CarrierCollection|CarrierModel $response): CarrierFactory
     {
         $carrierFactory = $this->createMock(CarrierFactory::class);
-        $carrierFactory->expects(self::once())
-                       ->method($response instanceof CarrierModel ? 'create' : 'createCollection')
-                       ->with(...($response instanceof CarrierModel ? [$carrier, $data] : [$data]))
-                       ->willReturn($response);
+        $carrierFactory
+            ->expects(self::once())->method($response instanceof CarrierModel ? 'create' : 'createCollection')
+            ->with(...($response instanceof CarrierModel ? [$carrier, $data] : [$data]))->willReturn($response);
 
         return $carrierFactory;
     }
@@ -292,8 +291,9 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     private function mockServiceFactory(string $carrier, array $data, ServiceCollection|ServiceModel $response): ServiceFactory
     {
         $serviceFactory = $this->createMock(ServiceFactory::class);
-        $serviceFactory->expects(self::once())->method($response instanceof ServiceModel ? 'create' : 'createCollection')->with($carrier, $data)
-                       ->willReturn($response);
+        $serviceFactory
+            ->expects(self::once())->method($response instanceof ServiceModel ? 'create' : 'createCollection')
+            ->with($carrier, $data)->willReturn($response);
 
         return $serviceFactory;
     }

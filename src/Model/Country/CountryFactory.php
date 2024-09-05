@@ -21,7 +21,7 @@ interface CountryFactory
     /**
      * @param array<string,mixed> $data
      *
-     * @return array<string>
+     * @return list<string>
      */
     public function createCodeCollection(array $data): array;
 

@@ -21,7 +21,7 @@ interface StatusFactory
     public function createLastStatus(string $carrier, array $data, array $response = []): Status;
 
     /**
-     * @param array<string> $carrierIds
+     * @param list<string> $carrierIds
      * @param array<mixed,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Status\StatusesCollection&array<\Inspirum\Balikobot\Model\Status\Statuses>
@@ -31,7 +31,7 @@ interface StatusFactory
     public function createCollection(string $carrier, array $carrierIds, array $data): StatusesCollection;
 
     /**
-     * @param array<string> $carrierIds
+     * @param list<string> $carrierIds
      * @param array<mixed,mixed> $data
      *
      * @return \Inspirum\Balikobot\Model\Status\StatusCollection&array<\Inspirum\Balikobot\Model\Status\Status>

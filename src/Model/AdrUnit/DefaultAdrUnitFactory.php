@@ -28,7 +28,7 @@ final class DefaultAdrUnitFactory implements AdrUnitFactory
     {
         return new DefaultAdrUnitCollection(
             $carrier,
-            array_map(fn(array $unit): AdrUnit => $this->create($carrier, $unit), $data['units'] ?? []),
+            array_map(fn (array $unit): AdrUnit => $this->create($carrier, $unit), $data['units'] ?? []),
         );
     }
 }

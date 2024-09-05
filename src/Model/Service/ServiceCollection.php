@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Service;
 
-use Inspirum\Arrayable\Collection;
+use Inspirum\Arrayable\ListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\Collection<string,mixed,int,\Inspirum\Balikobot\Model\Service\Service>
+ * @extends \Inspirum\Arrayable\ListCollection<string,mixed,\Inspirum\Balikobot\Model\Service\Service>
  */
-interface ServiceCollection extends Collection
+interface ServiceCollection extends ListCollection
 {
     public function getCarrier(): string;
 
     /**
-     * @return array<int,\Inspirum\Balikobot\Model\Service\Service>
+     * @return list<\Inspirum\Balikobot\Model\Service\Service>
      */
     public function getServices(): array;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getServiceCodes(): array;
 

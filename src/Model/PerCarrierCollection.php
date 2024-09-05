@@ -17,7 +17,7 @@ interface PerCarrierCollection
     public function getForCarrierId(string $carrierId): ?WithCarrierId;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getCarrierIds(): array;
 }

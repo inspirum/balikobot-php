@@ -39,7 +39,7 @@ interface TrackService
     /**
      * Track packages by carrier IDs
      *
-     * @param array<string> $carrierIds
+     * @param list<string> $carrierIds
      *
      * @return \Inspirum\Balikobot\Model\Status\StatusesCollection&array<\Inspirum\Balikobot\Model\Status\Statuses>
      *
@@ -73,7 +73,7 @@ interface TrackService
     /**
      * Tracks a package, get the last info
      *
-     * @param array<string> $carrierIds
+     * @param list<string> $carrierIds
      *
      * @return \Inspirum\Balikobot\Model\Status\StatusCollection&array<\Inspirum\Balikobot\Model\Status\Status>
      *

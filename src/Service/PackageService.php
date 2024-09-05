@@ -54,7 +54,7 @@ interface PackageService
     /**
      * Drops packages by theirs package IDs
      *
-     * @param array<string> $packageIds
+     * @param list<string> $packageIds
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -70,7 +70,7 @@ interface PackageService
     /**
      * Order shipment for packages by theirs IDs
      *
-     * @param array<string> $packageIds
+     * @param list<string> $packageIds
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -95,7 +95,7 @@ interface PackageService
     /**
      * Get labels PDF link for packages by theirs IDs
      *
-     * @param array<string> $packageIds
+     * @param list<string> $packageIds
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -139,7 +139,7 @@ interface PackageService
     /**
      * Get PDF links with signed consignment delivery document by the recipient
      *
-     * @return array<string>
+     * @return list<string>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -155,9 +155,9 @@ interface PackageService
     /**
      * Get PDF links with signed consignment delivery document by the recipient by carrier ID
      *
-     * @param array<string> $carrierIds
+     * @param list<string> $carrierIds
      *
-     * @return array<string>
+     * @return list<string>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */

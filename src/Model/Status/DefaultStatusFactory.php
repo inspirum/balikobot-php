@@ -10,6 +10,7 @@ use Inspirum\Balikobot\Exception\BadRequestException;
 use Throwable;
 use function array_key_exists;
 use function array_map;
+use function array_values;
 use function count;
 
 final class DefaultStatusFactory implements StatusFactory
@@ -67,8 +68,8 @@ final class DefaultStatusFactory implements StatusFactory
         $this->validator->validateIndexes($packages, count($carrierIds));
 
         return new DefaultStatusesCollection($carrier, array_map(
-            fn(array $status): Statuses => $this->createStatuses($carrier, $status, $data),
-            $packages,
+            fn (array $status): Statuses => $this->createStatuses($carrier, $status, $data),
+            array_values($packages),
         ));
     }
 
@@ -87,7 +88,7 @@ final class DefaultStatusFactory implements StatusFactory
             (string) $data['carrier_id'],
             new DefaultStatusCollection(
                 $carrier,
-                array_map(fn(array $status): Status => $this->create($carrier, (string) $data['carrier_id'], $status, $response), $data['states'] ?? []),
+                array_values(array_map(fn (array $status): Status => $this->create($carrier, (string) $data['carrier_id'], $status, $response), $data['states'] ?? [])),
             ),
         );
     }
@@ -99,8 +100,8 @@ final class DefaultStatusFactory implements StatusFactory
         $this->validator->validateIndexes($packages, count($carrierIds));
 
         return new DefaultStatusCollection($carrier, array_map(
-            fn(array $status): Status => $this->createLastStatus($carrier, $status, $data),
-            $packages,
+            fn (array $status): Status => $this->createLastStatus($carrier, $status, $data),
+            array_values($packages),
         ));
     }
 }

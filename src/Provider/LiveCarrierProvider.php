@@ -16,12 +16,12 @@ final class LiveCarrierProvider implements CarrierProvider
     }
 
     /**
-     * @return array<string>
+     * @return list<string>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getCarriers(): array
     {
-        return array_map(static fn(Carrier $carrier): string => $carrier->getCode(), $this->settingService->getCarriers()->getCarriers());
+        return array_map(static fn (Carrier $carrier): string => $carrier->getCode(), $this->settingService->getCarriers()->getCarriers());
     }
 }

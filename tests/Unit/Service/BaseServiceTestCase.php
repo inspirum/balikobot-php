@@ -22,7 +22,7 @@ abstract class BaseServiceTestCase extends BaseTestCase
     }
 
     /**
-     * @param array<mixed> $arguments
+     * @param list<mixed> $arguments
      * @param array<string,mixed>|null $response
      */
     protected function mockClient(array $arguments, ?array $response): Client
@@ -48,25 +48,26 @@ abstract class BaseServiceTestCase extends BaseTestCase
     }
 
     /**
-     * @param array<array<mixed>> $multipleArguments
-     * @param array<array<string,mixed>> $responses
+     * @param list<list<mixed>> $multipleArguments
+     * @param list<array<string,mixed>> $responses
      */
     protected function mockClientMultipleCalls(array $multipleArguments, array $responses): Client
     {
         $client = $this->createMock(Client::class);
-        $client->expects(self::exactly(count($multipleArguments)))->method('call')
-               ->will(self::withConsecutive(
-                   array_map(static fn(array $arguments): array => array_replace([
-                       null,
-                       null,
-                       null,
-                       [],
-                       null,
-                       true,
-                       false,
-                   ], $arguments), $multipleArguments),
-                   $responses,
-               ));
+        $client
+            ->expects(self::exactly(count($multipleArguments)))->method('call')
+            ->will(self::withConsecutive(
+                array_map(static fn (array $arguments): array => array_replace([
+                    null,
+                    null,
+                    null,
+                    [],
+                    null,
+                    true,
+                    false,
+                ], $arguments), $multipleArguments),
+                $responses,
+            ));
 
         return $client;
     }

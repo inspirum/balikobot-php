@@ -24,7 +24,7 @@ final class DefaultTransportCostFactory implements TransportCostFactory
             $carrier,
             $data['costs_total'],
             $data['currency'],
-            array_map(static fn(array $part) => new DefaultTransportCostPart($part['name'], $part['cost'], $data['currency']), $data['costs_breakdown'] ?? []),
+            array_map(static fn (array $part) => new DefaultTransportCostPart($part['name'], $part['cost'], $data['currency']), $data['costs_breakdown'] ?? []),
         );
     }
 
@@ -39,6 +39,6 @@ final class DefaultTransportCostFactory implements TransportCostFactory
 
         $this->validator->validateResponseItemsHasAttribute($packagesResponse, 'eid', $data);
 
-        return new DefaultTransportCostCollection($carrier, array_values(array_map(fn(array $package): TransportCost => $this->create($carrier, $package), $packagesResponse)));
+        return new DefaultTransportCostCollection($carrier, array_values(array_map(fn (array $package): TransportCost => $this->create($carrier, $package), $packagesResponse)));
     }
 }

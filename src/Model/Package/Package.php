@@ -23,7 +23,7 @@ interface Package extends Model, WithCarrierId
     public function getCarrierIdSwap(): ?string;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getPieces(): array;
 

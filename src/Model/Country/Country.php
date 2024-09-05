@@ -12,7 +12,7 @@ use Inspirum\Arrayable\Model;
 interface Country extends Model
 {
     /**
-     * @return array<string>
+     * @return array<string,string>
      */
     public function getNames(): array;
 
@@ -23,7 +23,7 @@ interface Country extends Model
     public function getCurrencyCode(): string;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getPhonePrefixes(): array;
 

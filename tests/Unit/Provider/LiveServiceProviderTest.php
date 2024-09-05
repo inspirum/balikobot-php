@@ -26,7 +26,7 @@ final class LiveServiceProviderTest extends BaseTestCase
 
         $settingService = $this->createMock(SettingService::class);
         $settingService->expects(self::once())->method('getServices')->with($carrier)->willReturn(
-            new DefaultServiceCollection($carrier, array_map(static fn(string $service): DefaultService => new DefaultService($service, null), $expectedServices)),
+            new DefaultServiceCollection($carrier, array_map(static fn (string $service): DefaultService => new DefaultService($service, null), $expectedServices)),
         );
 
         $provider = $this->newLiveServiceProvider($settingService);

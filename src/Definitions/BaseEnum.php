@@ -10,7 +10,7 @@ use function array_values;
 abstract class BaseEnum
 {
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public static function getAll(): array
     {

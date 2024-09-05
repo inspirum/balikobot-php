@@ -21,7 +21,7 @@ use function iterator_to_array;
 final class DefaultBranchFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string> $countries
+     * @param list<string> $countries
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateIterator')]
@@ -106,7 +106,7 @@ final class DefaultBranchFactoryTest extends BaseTestCase
     }
 
     /**
-     * @param array<string> $countries
+     * @param list<string> $countries
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestWrapIterator')]

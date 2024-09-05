@@ -23,7 +23,7 @@ final class DefaultAttributeFactory implements AttributeFactory
     {
         return new DefaultAttributeCollection(
             $carrier,
-            array_map(fn(array $attribute): Attribute => $this->create($attribute), $data['attributes'] ?? []),
+            array_map(fn (array $attribute): Attribute => $this->create($attribute), $data['attributes'] ?? []),
         );
     }
 }

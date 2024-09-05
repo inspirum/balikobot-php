@@ -16,12 +16,12 @@ final class LiveServiceProvider implements ServiceProvider
     }
 
     /**
-     * @return array<string>
+     * @return list<string>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getServices(string $carrier): array
     {
-        return array_map(static fn(Service $service): string => $service->getType(), $this->settingService->getServices($carrier)->getServices());
+        return array_map(static fn (Service $service): string => $service->getType(), $this->settingService->getServices($carrier)->getServices());
     }
 }

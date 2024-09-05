@@ -20,7 +20,7 @@ abstract class BaseTestCase extends TestCase
      * Get partial mocked API requester instance with overridden call method.
      *
      * @param array<mixed>|string $response
-     * @param array<mixed>|null $request
+     * @param list<mixed>|null $request
      *
      * @return \Inspirum\Balikobot\Client\Requester&\PHPUnit\Framework\MockObject\MockObject
      */

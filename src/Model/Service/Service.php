@@ -18,7 +18,7 @@ interface Service extends Model
     public function getOptions(): ?ServiceOptionCollection;
 
     /**
-     * @return array<string>|null
+     * @return list<string>|null
      */
     public function getCountries(): ?array;
 

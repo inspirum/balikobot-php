@@ -166,7 +166,7 @@ final class DefaultPackageService implements PackageService
             Version::V1V1,
             $carrier,
             Method::PROOF_OF_DELIVERY,
-            array_map(static fn(string $carrierId): array => ['id' => $carrierId], $carrierIds),
+            array_map(static fn (string $carrierId): array => ['id' => $carrierId], $carrierIds),
             shouldHaveStatus: false,
         );
 

@@ -50,7 +50,7 @@ final class DefaultCarrier extends BaseModel implements Carrier
         return [
             'code' => $this->code,
             'name' => $this->name,
-            'methods' => array_map(static fn(MethodCollection $methods) => $methods->__toArray(), $this->methods),
+            'methods' => array_map(static fn (MethodCollection $methods) => $methods->__toArray(), $this->methods),
         ];
     }
 }

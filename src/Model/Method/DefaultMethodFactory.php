@@ -17,6 +17,6 @@ final class DefaultMethodFactory implements MethodFactory
     /** @inheritDoc */
     public function createCollection(array $data): MethodCollection
     {
-        return new DefaultMethodCollection(array_map(fn(array $method): Method => $this->create($method), $data));
+        return new DefaultMethodCollection(array_map(fn (array $method): Method => $this->create($method), $data));
     }
 }

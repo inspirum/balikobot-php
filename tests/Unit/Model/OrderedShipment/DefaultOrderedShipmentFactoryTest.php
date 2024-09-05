@@ -15,7 +15,7 @@ use Throwable;
 final class DefaultOrderedShipmentFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string> $packageIds
+     * @param list<string> $packageIds
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateCollection')]

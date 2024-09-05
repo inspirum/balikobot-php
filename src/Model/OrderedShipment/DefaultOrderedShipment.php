@@ -12,7 +12,7 @@ use Inspirum\Arrayable\BaseModel;
 final class DefaultOrderedShipment extends BaseModel implements OrderedShipment
 {
     /**
-     * @param array<string> $packageIds
+     * @param list<string> $packageIds
      */
     public function __construct(
         private readonly string $orderId,

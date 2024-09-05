@@ -14,9 +14,9 @@ use Throwable;
 final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string> $carrierIds
+     * @param list<string> $carrierIds
      * @param array<string,mixed> $data
-     * @param array<string>|\Throwable $result
+     * @param list<string>|\Throwable $result
      */
     #[DataProvider('providesTestCreate')]
     public function testCreate(array $carrierIds, array $data, array|Throwable $result): void

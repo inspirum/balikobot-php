@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Model\Status;
 use Inspirum\Balikobot\Model\BasePerCarrierCollection;
 
 /**
- * @extends \Inspirum\Balikobot\Model\BasePerCarrierCollection<string,mixed,int,\Inspirum\Balikobot\Model\Status\Statuses>
+ * @extends \Inspirum\Balikobot\Model\BasePerCarrierCollection<string,mixed,\Inspirum\Balikobot\Model\Status\Statuses>
  */
 final class DefaultStatusesCollection extends BasePerCarrierCollection implements StatusesCollection
 {

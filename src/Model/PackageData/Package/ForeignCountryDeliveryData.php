@@ -90,4 +90,14 @@ trait ForeignCountryDeliveryData
     {
         $this->offsetSet(Attribute::CUSTOMS_INDICATOR, (int) $value);
     }
+
+    public function setCountryReference(string $value): void
+    {
+        $this->offsetSet(Attribute::COUNTRY_REFERENCE, $value);
+    }
+
+    public function setCountryReferenceType(string $value): void
+    {
+        $this->offsetSet(Attribute::COUNTRY_REFERENCE_TYPE, $value);
+    }
 }

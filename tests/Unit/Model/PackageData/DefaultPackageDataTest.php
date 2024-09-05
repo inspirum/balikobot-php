@@ -215,6 +215,8 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setGBEORI('5678');
         $package->setEUEORI('9012');
         $package->setCustomIndicator(true);
+        $package->setCountryReference('RO123');
+        $package->setCountryReferenceType('UIT');
 
         $unsupportedAttributes = array_diff(Attribute::getAll(), array_keys($package->getData()));
 
@@ -387,6 +389,8 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::GB_EORI => '5678',
                 Attribute::EU_EORI => '9012',
                 Attribute::CUSTOMS_INDICATOR => 1,
+                Attribute::COUNTRY_REFERENCE => 'RO123',
+                Attribute::COUNTRY_REFERENCE_TYPE => 'UIT',
             ],
             $package->__toArray(),
         );

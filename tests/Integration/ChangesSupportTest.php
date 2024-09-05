@@ -45,7 +45,7 @@ final class ChangesSupportTest extends BaseTestCase
         foreach (Carrier::getAll() as $carrier) {
             try {
                 $attributes[] = array_map(
-                    static fn(AttributeModel $attribute): string => $attribute->getName(),
+                    static fn (AttributeModel $attribute): string => $attribute->getName(),
                     $settingService->getAddAttributes($carrier)->getAttributes(),
                 );
             } catch (Exception $exception) {
@@ -76,7 +76,7 @@ final class ChangesSupportTest extends BaseTestCase
 
         foreach (Carrier::getAll() as $carrier) {
             $methods[] = array_map(
-                static fn(MethodModel $method): string => str_replace(' ', '/', strtolower($method->getCode())),
+                static fn (MethodModel $method): string => str_replace(' ', '/', strtolower($method->getCode())),
                 $settingService->getCarrier($carrier)->getMethodsForVersion(Version::V2V1)->getMethods(),
             );
         }

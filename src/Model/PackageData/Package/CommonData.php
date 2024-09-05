@@ -40,7 +40,7 @@ trait CommonData
     }
 
     /**
-     * @param array<string> $services
+     * @param list<string> $services
      */
     public function setServices(array $services): void
     {

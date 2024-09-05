@@ -2242,7 +2242,7 @@ final class Service extends BaseEnum
     public const SDS_STANDART = 'Standard';
 
     /**
-     * @return array<string>|null
+     * @return list<string>|null
      */
     public static function getForCarrier(string $carrier): ?array
     {
@@ -2250,7 +2250,7 @@ final class Service extends BaseEnum
     }
 
     /**
-     * @return array<string,array<string>>
+     * @return array<string,list<string>>
      */
     private static function getForCarriers(): array
     {
@@ -2293,7 +2293,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function cp(): array
     {
         return [
@@ -2326,7 +2326,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function dpd(): array
     {
         return [
@@ -2341,7 +2341,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function dhl(): array
     {
         return [
@@ -2356,7 +2356,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function geis(): array
     {
         return [
@@ -2370,7 +2370,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function gls(): array
     {
         return [
@@ -2383,7 +2383,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function intime(): array
     {
         return [
@@ -2401,7 +2401,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function pbh(): array
     {
         return [
@@ -2440,7 +2440,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function ppl(): array
     {
         return [
@@ -2458,7 +2458,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function sp(): array
     {
         return [
@@ -2475,7 +2475,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function sps(): array
     {
         return [
@@ -2486,7 +2486,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function topTrans(): array
     {
         return [
@@ -2499,7 +2499,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function ulozenka(): array
     {
         return [
@@ -2520,7 +2520,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function ups(): array
     {
         return [
@@ -2531,7 +2531,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function zasilkovna(): array
     {
         return [
@@ -2684,7 +2684,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function tnt(): array
     {
         return [
@@ -2708,7 +2708,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function gw(): array
     {
         return [
@@ -2724,7 +2724,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function gwcz(): array
     {
         return [
@@ -2736,7 +2736,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function messenger(): array
     {
         return [
@@ -2754,7 +2754,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function dhlde(): array
     {
         return [
@@ -2766,7 +2766,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function fedex(): array
     {
         return [
@@ -2789,7 +2789,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function fofr(): array
     {
         return [
@@ -2803,7 +2803,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function dachser(): array
     {
         return [
@@ -2821,7 +2821,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function dhlparcel(): array
     {
         return [
@@ -2829,7 +2829,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function raben(): array
     {
         return [
@@ -2842,7 +2842,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function spring(): array
     {
         return [
@@ -2852,7 +2852,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function dsv(): array
     {
         return [
@@ -2861,7 +2861,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function dhlfreightec(): array
     {
         return [
@@ -2872,7 +2872,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function kurier(): array
     {
         return [
@@ -2884,7 +2884,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function dbschenker(): array
     {
         return [
@@ -2902,7 +2902,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function airway(): array
     {
         return [
@@ -2918,7 +2918,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function japo(): array
     {
         return [
@@ -2926,7 +2926,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function liftago(): array
     {
         return [
@@ -2946,7 +2946,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function magyarposta(): array
     {
         return [
@@ -2959,7 +2959,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function sameday(): array
     {
         return [
@@ -2975,7 +2975,7 @@ final class Service extends BaseEnum
         ];
     }
 
-    /** @return array<string> */
+    /** @return list<string> */
     private static function sds(): array
     {
         return [

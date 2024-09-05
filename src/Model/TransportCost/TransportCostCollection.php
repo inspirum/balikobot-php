@@ -19,7 +19,7 @@ interface TransportCostCollection extends Collection
     public function getCosts(): array;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getBatchIds(): array;
 

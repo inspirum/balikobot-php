@@ -16,7 +16,7 @@ interface OrderedShipment extends Model
     public function getCarrier(): string;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getPackageIds(): array;
 

@@ -8,12 +8,12 @@ use Inspirum\Balikobot\Model\BasePerCarrierCollection;
 use function array_map;
 
 /**
- * @extends \Inspirum\Balikobot\Model\BasePerCarrierCollection<string,mixed,int,\Inspirum\Balikobot\Model\Package\Package>
+ * @extends \Inspirum\Balikobot\Model\BasePerCarrierCollection<string,mixed,\Inspirum\Balikobot\Model\Package\Package>
  */
 final class DefaultPackageCollection extends BasePerCarrierCollection implements PackageCollection
 {
     /**
-     * @param array<\Inspirum\Balikobot\Model\Package\Package> $items
+     * @param list<\Inspirum\Balikobot\Model\Package\Package> $items
      */
     public function __construct(
         ?string $carrier = null,
@@ -32,7 +32,7 @@ final class DefaultPackageCollection extends BasePerCarrierCollection implements
     /** @inheritDoc */
     public function getPackageIds(): array
     {
-        return array_map(static fn(Package $package) => $package->getPackageId(), $this->items);
+        return array_map(static fn (Package $package) => $package->getPackageId(), $this->getItems());
     }
 
     public function getLabelsUrl(): ?string

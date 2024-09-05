@@ -12,7 +12,7 @@ use Inspirum\Arrayable\BaseModel;
 final class DefaultPackage extends BaseModel implements Package
 {
     /**
-     * @param array<string> $pieces
+     * @param list<string> $pieces
      */
     public function __construct(
         private readonly string $carrier,
@@ -55,7 +55,7 @@ final class DefaultPackage extends BaseModel implements Package
     }
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getPieces(): array
     {

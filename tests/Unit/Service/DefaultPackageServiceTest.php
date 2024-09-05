@@ -820,7 +820,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
     }
 
     /**
-     * @param array<string> $packageIds
+     * @param list<string> $packageIds
      * @param array<string,mixed> $data
      */
     private function mockOrderedShipmentFactory(string $carrier, array $packageIds, array $data, OrderedShipment $response): OrderedShipmentFactory
@@ -843,9 +843,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
     }
 
     /**
-     * @param array<string> $carrierIds
+     * @param list<string> $carrierIds
      * @param array<string,mixed> $data
-     * @param array<string> $response
+     * @param list<string> $response
      */
     private function mockProofOfDeliveryFactory(array $carrierIds, array $data, array $response): ProofOfDeliveryFactory
     {

@@ -60,7 +60,7 @@ final class DefaultTransportCost extends BaseModel implements TransportCost
             'carrier' => $this->carrier,
             'totalCost' => $this->totalCost,
             'currencyCode' => $this->currencyCode,
-            'costsBreakdown' => array_map(static fn(TransportCostPart $costPart): array => $costPart->__toArray(), $this->costsBreakdown),
+            'costsBreakdown' => array_map(static fn (TransportCostPart $costPart): array => $costPart->__toArray(), $this->costsBreakdown),
         ];
     }
 }

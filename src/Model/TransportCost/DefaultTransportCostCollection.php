@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\TransportCost;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseListCollection;
 use RuntimeException;
 use function array_map;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\TransportCost\TransportCost>
+ * @extends \Inspirum\Arrayable\BaseListCollection<string,mixed,\Inspirum\Balikobot\Model\TransportCost\TransportCost>
  */
-final class DefaultTransportCostCollection extends BaseCollection implements TransportCostCollection
+final class DefaultTransportCostCollection extends BaseListCollection implements TransportCostCollection
 {
     /**
-     * @param array<int,\Inspirum\Balikobot\Model\TransportCost\TransportCost> $items
+     * @param list<\Inspirum\Balikobot\Model\TransportCost\TransportCost> $items
      */
     public function __construct(
         private readonly ?string $carrier,
@@ -35,11 +35,11 @@ final class DefaultTransportCostCollection extends BaseCollection implements Tra
     }
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getBatchIds(): array
     {
-        return array_map(static fn(TransportCost $transportCost) => $transportCost->getBatchId(), $this->getItems());
+        return array_map(static fn (TransportCost $transportCost) => $transportCost->getBatchId(), $this->getItems());
     }
 
     public function getTotalCost(): float

@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Provider;
 interface CarrierProvider
 {
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getCarriers(): array;
 }

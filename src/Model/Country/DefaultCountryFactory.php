@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Country;
 
 use function array_map;
+use function array_values;
 use function is_array;
 
 final class DefaultCountryFactory implements CountryFactory
@@ -19,7 +20,7 @@ final class DefaultCountryFactory implements CountryFactory
             ],
             $data['iso_code'],
             $data['currency'],
-            is_array($data['phone_prefix']) ? $data['phone_prefix'] : [$data['phone_prefix']],
+            is_array($data['phone_prefix']) ? array_values($data['phone_prefix']) : [$data['phone_prefix']],
             $data['continent'],
         );
     }
@@ -28,7 +29,7 @@ final class DefaultCountryFactory implements CountryFactory
     public function createCollection(array $data): CountryCollection
     {
         return new DefaultCountryCollection(
-            array_map(fn(array $country): Country => $this->create($country), $data['countries'] ?? []),
+            array_map(fn (array $country): Country => $this->create($country), $data['countries'] ?? []),
         );
     }
 

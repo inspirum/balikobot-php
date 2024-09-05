@@ -19,7 +19,7 @@ final class DefaultManipulationUnitFactory implements ManipulationUnitFactory
     {
         return new DefaultManipulationUnitCollection(
             $carrier,
-            array_map(fn(array $unit): ManipulationUnit => $this->create($unit), $data['units'] ?? []),
+            array_map(fn (array $unit): ManipulationUnit => $this->create($unit), $data['units'] ?? []),
         );
     }
 }

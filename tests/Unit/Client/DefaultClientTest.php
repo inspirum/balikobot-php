@@ -515,7 +515,7 @@ final class DefaultClientTest extends BaseTestCase
 
     /**
      * @param array<mixed>|string $response
-     * @param array<mixed>|null $request
+     * @param list<mixed>|null $request
      */
     private function newDefaultClient(int $statusCode, array|string $response, ?array $request = null): DefaultClient
     {

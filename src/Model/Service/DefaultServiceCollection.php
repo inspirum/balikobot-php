@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Service;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseListCollection;
 use function array_map;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\Service\Service>
+ * @extends \Inspirum\Arrayable\BaseListCollection<string,mixed,\Inspirum\Balikobot\Model\Service\Service>
  */
-final class DefaultServiceCollection extends BaseCollection implements ServiceCollection
+final class DefaultServiceCollection extends BaseListCollection implements ServiceCollection
 {
     /**
-     * @param array<int,\Inspirum\Balikobot\Model\Service\Service> $items
+     * @param list<\Inspirum\Balikobot\Model\Service\Service> $items
      */
     public function __construct(
         private readonly string $carrier,
@@ -36,11 +36,11 @@ final class DefaultServiceCollection extends BaseCollection implements ServiceCo
     }
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getServiceCodes(): array
     {
-        return array_map(static fn(Service $service): string => $service->getType(), $this->getServices());
+        return array_map(static fn (Service $service): string => $service->getType(), $this->getServices());
     }
 
     public function supportsParcel(): ?bool

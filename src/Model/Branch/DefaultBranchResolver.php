@@ -19,6 +19,7 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::CP_NB,
             ],
             Carrier::PBH => [
+                Service::PBH_DHL,
                 Service::PBH_SPS,
                 Service::PBH_SP,
                 Service::PBH_MP,
@@ -28,6 +29,9 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::PBH_FAN_KURIER,
                 Service::PBH_SPEEDY,
                 Service::PBH_ECONT,
+                Service::PBH_HR_POST,
+                Service::PBH_BOX_NOW,
+                Service::PBH_SI,
             ],
             Carrier::DPD => [
                 Service::DPD_PICKUP,
@@ -71,6 +75,7 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::SAMEDAY => [
                 Service::SAMEDAY_LOCKER_NEXT_DAY,
                 Service::SAMEDAY_LOCKER_RETURN,
+                Service::SAMEDAY_CROSSBORDER_LOCKER_HD,
             ],
             Carrier::MAGYARPOSTA => null,
             Carrier::RABEN => [
@@ -104,6 +109,7 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::GLS => null,
             Carrier::ULOZENKA => null,
             Carrier::PBH => [
+                Service::PBH_DHL,
                 Service::PBH_CP_NP,
                 Service::PBH_SPS,
                 Service::PBH_SP,
@@ -113,6 +119,9 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::PBH_FAN_KURIER,
                 Service::PBH_SPEEDY,
                 Service::PBH_ECONT,
+                Service::PBH_HR_POST,
+                Service::PBH_BOX_NOW,
+                Service::PBH_SI,
             ],
             Carrier::SPS => null,
             Carrier::RABEN => null,
@@ -126,7 +135,7 @@ final class DefaultBranchResolver implements BranchResolver
     }
 
     /**
-     * @param array<string,array<string>|null> $supported
+     * @param array<string,list<string>|null> $supported
      */
     private function hasSupport(array $supported, string $carrier, ?string $service): bool
     {

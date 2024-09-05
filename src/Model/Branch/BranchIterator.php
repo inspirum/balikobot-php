@@ -16,7 +16,7 @@ interface BranchIterator extends OuterIterator
     public function getService(): ?string;
 
     /**
-     * @return array<string>|null
+     * @return list<string>|null
      */
     public function getCountries(): ?array;
 }

@@ -23,7 +23,7 @@ use Throwable;
 final class DefaultStatusFactoryTest extends BaseTestCase
 {
     /**
-     * @param array<string> $carrierIds
+     * @param list<string> $carrierIds
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateCollection')]
@@ -317,7 +317,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
     }
 
     /**
-     * @param array<string> $carrierIds
+     * @param list<string> $carrierIds
      * @param array<string,mixed> $data
      */
     #[DataProvider('providesTestCreateLastStatusCollection')]

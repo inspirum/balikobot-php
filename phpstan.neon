@@ -8,7 +8,7 @@ parameters:
 	treatPhpDocTypesAsCertain: false
 	ignoreErrors:
 		-
-			message: '#^Parameter \#2 \$value of method Inspirum\\Balikobot\\Model\\BasePerCarrierCollection\<TItemKey of \(int\|string\),TItemValue,TKey of \(int\|string\),TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\>\:\:offsetSet\(\) expects TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId, Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId given\.$#'
+			message: '#^Parameter \#2 \$value of method Inspirum\\Balikobot\\Model\\BasePerCarrierCollection\<TItemKey of \(int\|string\),TItemValue,TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\>\:\:offsetSet\(\) expects TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId, Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId given\.$#'
 			count: 1
 			path: src/Model/BasePerCarrierCollection.php
 		-

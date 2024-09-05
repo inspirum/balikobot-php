@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Carrier;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseListCollection;
 use function array_map;
+use function array_values;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\Carrier\Carrier>
+ * @extends \Inspirum\Arrayable\BaseListCollection<string,mixed,\Inspirum\Balikobot\Model\Carrier\Carrier>
  */
-final class DefaultCarrierCollection extends BaseCollection implements CarrierCollection
+final class DefaultCarrierCollection extends BaseListCollection implements CarrierCollection
 {
     /** @inheritDoc */
     public function getCarriers(): array
@@ -21,6 +22,6 @@ final class DefaultCarrierCollection extends BaseCollection implements CarrierCo
     /** @inheritDoc */
     public function getCarrierCodes(): array
     {
-        return array_map(static fn(Carrier $carrier): string => $carrier->getCode(), $this->getCarriers());
+        return array_values(array_map(static fn (Carrier $carrier): string => $carrier->getCode(), $this->getCarriers()));
     }
 }

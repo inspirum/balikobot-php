@@ -19,7 +19,7 @@ interface PackageCollection extends Collection, PerCarrierCollection
     public function getPackages(): array;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getPackageIds(): array;
 

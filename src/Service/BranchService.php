@@ -20,7 +20,7 @@ interface BranchService
     /**
      * Get all available branches for countries
      *
-     * @param array<string> $countries
+     * @param list<string> $countries
      *
      * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
@@ -38,7 +38,7 @@ interface BranchService
     /**
      * Get all available branches for carrier and countries
      *
-     * @param array<string> $countries
+     * @param list<string> $countries
      *
      * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *
@@ -58,7 +58,7 @@ interface BranchService
     /**
      * Get all available branches for carrier, service type and countries
      *
-     * @param array<string> $countries
+     * @param list<string> $countries
      *
      * @return \Inspirum\Balikobot\Model\Branch\BranchIterator&iterable<\Inspirum\Balikobot\Model\Branch\Branch>
      *

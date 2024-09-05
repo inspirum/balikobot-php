@@ -42,7 +42,7 @@ final class DefaultTrackServiceTest extends BaseServiceTestCase
             statusFactory: $this->mockStatusFactory($carrier, $carrierIds, $response, $expectedResult),
         );
 
-        $actualResult = $trackService->trackPackages(new DefaultPackageCollection($carrier, array_map(static fn(string $carrierId): Package => new DefaultPackage(
+        $actualResult = $trackService->trackPackages(new DefaultPackageCollection($carrier, array_map(static fn (string $carrierId): Package => new DefaultPackage(
             $carrier,
             '1',
             '1',
@@ -106,7 +106,7 @@ final class DefaultTrackServiceTest extends BaseServiceTestCase
             statusFactory: $this->mockStatusFactory($carrier, $carrierIds, $response, $expectedResult),
         );
 
-        $actualResult = $trackService->trackPackagesLastStatuses(new DefaultPackageCollection($carrier, array_map(static fn(string $carrierId): Package => new DefaultPackage(
+        $actualResult = $trackService->trackPackagesLastStatuses(new DefaultPackageCollection($carrier, array_map(static fn (string $carrierId): Package => new DefaultPackage(
             $carrier,
             '1',
             '1',
@@ -150,16 +150,15 @@ final class DefaultTrackServiceTest extends BaseServiceTestCase
     }
 
     /**
-     * @param array<string> $carrierIds
+     * @param list<string> $carrierIds
      * @param array<string,mixed> $data
      */
     private function mockStatusFactory(string $carrier, array $carrierIds, array $data, StatusesCollection|StatusCollection $response): StatusFactory
     {
         $statusFactory = $this->createMock(StatusFactory::class);
-        $statusFactory->expects(self::once())
-                      ->method($response instanceof StatusCollection ? 'createLastStatusCollection' : 'createCollection')
-                      ->with($carrier, $carrierIds, $data)
-                      ->willReturn($response);
+        $statusFactory
+            ->expects(self::once())->method($response instanceof StatusCollection ? 'createLastStatusCollection' : 'createCollection')
+            ->with($carrier, $carrierIds, $data)->willReturn($response);
 
         return $statusFactory;
     }

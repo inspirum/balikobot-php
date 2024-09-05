@@ -725,19 +725,21 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
     }
 
     /**
-     * @param array<array<string|array<string>|array<string,mixed>|null>> $arguments
+     * @param array<array<string|list<string>|array<string,mixed>|null>> $arguments
      * @param array<\Inspirum\Balikobot\Model\Branch\BranchIterator> $responses
      */
     private function mockBranchFactory(array $arguments, array $responses): BranchFactory
     {
         $branchFactory = $this->createMock(BranchFactory::class);
-        $branchFactory->expects(self::exactly(count($arguments)))->method('createIterator')
-                      ->will(self::withConsecutive($arguments, $responses));
+        $branchFactory
+            ->expects(self::exactly(count($arguments)))->method('createIterator')
+            ->will(self::withConsecutive($arguments, $responses));
 
-        $branchFactory->expects(self::any())->method('wrapIterator')
-                      ->willReturnCallback(static function (?string $carrier, ?string $service, ?array $countries, Traversable $iterator) {
-                          return new DefaultBranchIterator($carrier, $service, $countries, $iterator);
-                      });
+        $branchFactory
+            ->expects(self::any())->method('wrapIterator')
+            ->willReturnCallback(static function (?string $carrier, ?string $service, ?array $countries, Traversable $iterator) {
+                return new DefaultBranchIterator($carrier, $service, $countries !== null ? array_values($countries) : null, $iterator);
+            });
 
         return $branchFactory;
     }
@@ -753,8 +755,9 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
         ?array $countryFilterSupports = null,
     ): BranchResolver {
         $branchResolver = $this->createMock(BranchResolver::class);
-        $branchResolver->expects(self::exactly(count($arguments)))->method('hasFullBranchesSupport')
-                       ->will(self::withConsecutive($arguments, $fullBranchSupport));
+        $branchResolver
+            ->expects(self::exactly(count($arguments)))->method('hasFullBranchesSupport')
+            ->will(self::withConsecutive($arguments, $fullBranchSupport));
 
         if ($countryFilterSupports !== null) {
             $countryFilterArguments = [];
@@ -768,30 +771,30 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
                 $countryFilterValues[] = $countryFilterSupport;
             }
 
-            $branchResolver->expects(self::exactly(count($countryFilterArguments)))
-                           ->method('hasBranchCountryFilterSupport')
-                           ->will(self::withConsecutive($countryFilterArguments, $countryFilterValues));
+            $branchResolver
+                ->expects(self::exactly(count($countryFilterArguments)))->method('hasBranchCountryFilterSupport')
+                ->will(self::withConsecutive($countryFilterArguments, $countryFilterValues));
         }
 
         return $branchResolver;
     }
 
     /**
-     * @param array<string> $arguments
-     * @param array<array<string>> $responses
+     * @param list<string> $arguments
+     * @param array<list<string>> $responses
      */
     private function mockServiceProvider(array $arguments, array $responses): ServiceProvider
     {
         $settingService = $this->createMock(ServiceProvider::class);
-        $settingService->expects(self::exactly(count($arguments)))
-                       ->method('getServices')
-                       ->will(self::withConsecutive(array_map(static fn(string $carrier): array => [$carrier], $arguments), $responses));
+        $settingService
+            ->expects(self::exactly(count($arguments)))->method('getServices')
+            ->will(self::withConsecutive(array_map(static fn (string $carrier): array => [$carrier], $arguments), $responses));
 
         return $settingService;
     }
 
     /**
-     * @param array<string> $response
+     * @param list<string> $response
      */
     private function mockCarrierProvider(array $response): CarrierProvider
     {

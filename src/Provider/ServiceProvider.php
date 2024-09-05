@@ -7,7 +7,7 @@ namespace Inspirum\Balikobot\Provider;
 interface ServiceProvider
 {
     /**
-     * @return array<string>
+     * @return list<string>
      */
     public function getServices(string $carrier): array;
 }
