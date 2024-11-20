@@ -911,6 +911,11 @@ final class Service extends BaseEnum
      */
     public const ZASILKOVNA_HU_FAMA_FUTAR_HD = '10061';
 
+    /*
+     * HU FoxPost BOX
+     */
+    public const ZASILKOVNA_HU_FOXPOST_BOX = '32970';
+
     /**
      * Švýcarsko-Lichtenštejnská Pošta - prioritní
      */
@@ -2611,6 +2616,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_HU_POST_HD,
             self::ZASILKOVNA_HU_POST_PP,
             self::ZASILKOVNA_HU_POST_BOX,
+            self::ZASILKOVNA_HU_FOXPOST_BOX,
             // self::ZASILKOVNA_HU_FAMA_FUTAR_HD,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
             self::ZASILKOVNA_CH_POST_HD,
