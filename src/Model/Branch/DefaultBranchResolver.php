@@ -32,6 +32,7 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::PBH_HR_POST,
                 Service::PBH_BOX_NOW,
                 Service::PBH_SI,
+                Service::PBH_ITELLA,
             ],
             Carrier::DPD => [
                 Service::DPD_PICKUP,
