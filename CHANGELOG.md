@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.11.0...master)
+### Added
+- Added support for new options from documentation **v2.008** (2024-11-20)
+  - Added **QDL** carrier
+- Added **PPL_PARCEL_RETURN_CZ** service type
+- Added **INTIME_EXTRA_SK_100** service type
+- Added **INTIME_EXTRA_SK_800** service type
+- Added **INTIME_EXTRA_CZ_800** service type
+- Added **ZASILKOVNA_GB_FEDEX_HD_CONNECT_PLUS** service type
+- Added **ZASILKOVNA_GB_FEDEX_HD_PRIORITY** service type
+- Added **ZASILKOVNA_HU_FOXPOST_BOX** service type
+- Added **PBH_ITELLA** service type
+- Added **DHLDE_WARENPOST_DOMESTIC** service type
+- Added **DHLDE_WARENPOST_INTERNATIONAL** service type
 
 
 ## [v7.11.0 (2024-09-05)](https://github.com/inspirum/balikobot-php/compare/v7.10.0...v7.11.0)

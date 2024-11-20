@@ -8,7 +8,7 @@
 [![Total Downloads][ico-packagist-download]][link-packagist-download]
 [![Software License][ico-license]][link-licence]
 
-Offers implementation of Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v2.004** *(2024-08-06)*.
+Offers implementation of Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v2.008** *(2024-11-20)*.
 
 > If you want to use older API [v1][link-api], please use [`^4.0`](https://github.com/inspirum/balikobot-php/tree/v4.5.0) version.
 
