@@ -415,12 +415,12 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $package = new DefaultPackage(
-            Carrier::TNT,
+            Carrier::UPS,
             '12345',
             '0001',
             '1234',
         );
-        $packages = new DefaultPackageCollection(Carrier::TNT, [
+        $packages = new DefaultPackageCollection(Carrier::UPS, [
             $package,
         ]);
 
