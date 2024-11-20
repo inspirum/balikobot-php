@@ -6,7 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.11.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.12.0...master)
+
+
+## [v7.12.0 (2024-11-20)](https://github.com/inspirum/balikobot-php/compare/v7.11.0...v7.12.0)
 ### Added
 - Added support for new options from documentation **v2.008** (2024-11-20)
   - Added **QDL** carrier
