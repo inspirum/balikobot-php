@@ -187,6 +187,11 @@ final class Service extends BaseEnum
     public const PPL_PRIVATE_PALETTE = '19';
 
     /**
+     * PPL Parcel Return CZ
+     */
+    public const PPL_PARCEL_RETURN_CZ = '45';
+
+    /**
      * PPL Smart CZ
      */
     public const PPL_PRIVATE_SMART_CZ = '46';
@@ -360,6 +365,21 @@ final class Service extends BaseEnum
      * BOXSK - Výdejní box SK
      */
     public const INTIME_BOX_SK = '11';
+
+    /**
+     * Extra Large Colli 48-SK - hmotnost do 100 kg
+     */
+    public const INTIME_EXTRA_SK_100 = '12';
+
+    /**
+     * 2 Extra Large Colli 48-SK - hmotnost do 800 kg
+     */
+    public const INTIME_EXTRA_SK_800 = '13';
+
+    /**
+     * 2 Extra Large Colli 24-CZ - hmotnost do 800 kg
+     */
+    public const INTIME_EXTRA_CZ_800 = '14';
 
     /**
      * 24 hodin (Standard)
@@ -615,6 +635,16 @@ final class Service extends BaseEnum
      * BG Sameday Box
      */
     public const ZASILKOVNA_BG_SAMEDAY_BOX = '26067';
+
+    /**
+     * GB FedEx HD Connect Plus
+     */
+    public const ZASILKOVNA_GB_FEDEX_HD_CONNECT_PLUS = '24808';
+
+    /**
+     * GB FedEx HD Priority
+     */
+    public const ZASILKOVNA_GB_FEDEX_HD_PRIORITY = '24809';
 
     /**
      * CZ Česká pošta HD
@@ -1427,6 +1457,11 @@ final class Service extends BaseEnum
     public const PBH_SI = '32';
 
     /**
+     * Itella
+     */
+    public const PBH_ITELLA = '33';
+
+    /**
      * Worlwide zásilky
      */
     public const DHL_WORLDWIDE = '1';
@@ -1720,6 +1755,16 @@ final class Service extends BaseEnum
      * DHL Paket Connect
      */
     public const DHLDE_PAKET_CONNECT = '5';
+
+    /**
+     * DHL Warenpost Domestic
+     */
+    public const DHLDE_WARENPOST_DOMESTIC = '6';
+
+    /**
+     * DHL Warenpost International
+     */
+    public const DHLDE_WARENPOST_INTERNATIONAL = '7';
 
     /**
      * FedEx International Priority
@@ -2243,8 +2288,30 @@ final class Service extends BaseEnum
 
     /**
      * SDS Standard
+     *
+     * @deprecated
      */
-    public const SDS_STANDART = 'Standard';
+    public const SDS_STANDART = self::SDS_STANDARD;
+
+    /**
+     * SDS Standard
+     */
+    public const SDS_STANDARD = 'Standard';
+
+    /**
+     * Standard
+     */
+    public const QDL_STANDARD = '1';
+
+    /**
+     * Garantované doručení do 24h
+     */
+    public const QDL_GARANTED_24H = '2';
+
+    /**
+     * Doručení do 12h
+     */
+    public const QDL_12H = '3';
 
     /**
      * @return list<string>|null
@@ -2295,6 +2362,7 @@ final class Service extends BaseEnum
             Carrier::MAGYARPOSTA => self::magyarposta(),
             Carrier::SAMEDAY => self::sameday(),
             Carrier::SDS => self::sds(),
+            Carrier::QDL => self::qdl(),
         ];
     }
 
@@ -2308,7 +2376,7 @@ final class Service extends BaseEnum
             self::CP_RRP,
             self::CP_SRP,
             self::CP_NP,
-            self::CP_NV,
+            // self::CP_NV,
             self::CP_VL,
             self::CP_DV,
             self::CP_BA,
@@ -2402,7 +2470,10 @@ final class Service extends BaseEnum
             self::INTIME_PARCEL_EU,
             self::INTIME_PARCEL_EU_PLUS,
             self::INTIME_BOX_CZ,
-            self::INTIME_BOX_SK,
+            // self::INTIME_BOX_SK,
+            self::INTIME_EXTRA_SK_100,
+            self::INTIME_EXTRA_SK_800,
+            self::INTIME_EXTRA_CZ_800,
         ];
     }
 
@@ -2442,6 +2513,7 @@ final class Service extends BaseEnum
             self::PBH_HR_POST,
             self::PBH_BOX_NOW,
             self::PBH_SI,
+            self::PBH_ITELLA,
         ];
     }
 
@@ -2457,6 +2529,7 @@ final class Service extends BaseEnum
             self::PPL_BUSINESS_EU,
             self::PPL_BUSINESS_PALETTE,
             self::PPL_PRIVATE_PALETTE,
+            self::PPL_PARCEL_RETURN_CZ,
             self::PPL_PRIVATE_SMART_CZ,
             self::PPL_PRIVATE_SMART_EU,
             self::PPL_RETURN_CONNECT,
@@ -2557,6 +2630,8 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_BG_ECONT_BOX,
             self::ZASILKOVNA_BG_SAMEDAY_HD,
             self::ZASILKOVNA_BG_SAMEDAY_BOX,
+            self::ZASILKOVNA_GB_FEDEX_HD_CONNECT_PLUS,
+            self::ZASILKOVNA_GB_FEDEX_HD_PRIORITY,
             // self::ZASILKOVNA_CZ_POST_HD,
             self::ZASILKOVNA_CZ_EXPRESS_PRAHA_HD,
             // self::ZASILKOVNA_CZ_EXPRESS_BRNO_HD,
@@ -2769,6 +2844,8 @@ final class Service extends BaseEnum
             self::DHLDE_PAKET_INTERNATIONAL,
             self::DHLDE_EUROPAKET,
             self::DHLDE_PAKET_CONNECT,
+            self::DHLDE_WARENPOST_DOMESTIC,
+            self::DHLDE_WARENPOST_INTERNATIONAL,
         ];
     }
 
@@ -2985,7 +3062,17 @@ final class Service extends BaseEnum
     private static function sds(): array
     {
         return [
-            self::SDS_STANDART,
+            self::SDS_STANDARD,
+        ];
+    }
+
+    /** @return list<string> */
+    private static function qdl(): array
+    {
+        return [
+            self::QDL_STANDARD,
+            self::QDL_GARANTED_24H,
+            self::QDL_12H,
         ];
     }
 }

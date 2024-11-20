@@ -180,4 +180,9 @@ final class Carrier extends BaseEnum
      * Sameday
      */
     public const SDS = 'sds';
+
+    /**
+     * Quality Delivery Logistics
+     */
+    public const QDL = 'qdl';
 }
