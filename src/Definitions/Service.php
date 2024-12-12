@@ -637,6 +637,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_BG_SAMEDAY_BOX = '26067';
 
     /**
+     * BG BoxNow Box
+     */
+    public const ZASILKOVNA_BG_BOXNOW_BOX = '33777';
+
+    /**
      * GB FedEx HD Connect Plus
      */
     public const ZASILKOVNA_GB_FEDEX_HD_CONNECT_PLUS = '24808';
@@ -2630,6 +2635,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_BG_ECONT_BOX,
             self::ZASILKOVNA_BG_SAMEDAY_HD,
             self::ZASILKOVNA_BG_SAMEDAY_BOX,
+            self::ZASILKOVNA_BG_BOXNOW_BOX,
             self::ZASILKOVNA_GB_FEDEX_HD_CONNECT_PLUS,
             self::ZASILKOVNA_GB_FEDEX_HD_PRIORITY,
             // self::ZASILKOVNA_CZ_POST_HD,

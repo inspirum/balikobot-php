@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.12.0...master)
+- Added **ZASILKOVNA_BG_BOXNOW_BOX** service type
 
 
 ## [v7.12.0 (2024-11-20)](https://github.com/inspirum/balikobot-php/compare/v7.11.0...v7.12.0)
