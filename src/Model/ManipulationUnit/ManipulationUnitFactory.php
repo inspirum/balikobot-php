@@ -13,8 +13,6 @@ interface ManipulationUnitFactory
 
     /**
      * @param array<string,mixed> $data
-     *
-     * @return \Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection&array<\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
      */
     public function createCollection(string $carrier, array $data): ManipulationUnitCollection;
 }

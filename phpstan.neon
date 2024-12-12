@@ -19,7 +19,3 @@ parameters:
 			message: '#^Method Inspirum\\Balikobot\\Model\\BasePerCarrierCollection\:\:first\(\) should return \(TValue of Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\)\|null but returns Inspirum\\Arrayable\\Arrayable\<TItemKey of \(int\|string\), TItemValue\>&Inspirum\\Balikobot\\Model\\WithCarrierId\.$#'
 			count: 1
 			path: src/Model/BasePerCarrierCollection.php
-		-
-		    message: '#^PHPDoc tag \@return contains unresolvable type\.$#'
-		    count: 35
-		    path: src/**

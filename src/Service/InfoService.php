@@ -19,8 +19,6 @@ interface InfoService
     /**
      * Get news in the Balikobot API
      *
-     * @return \Inspirum\Balikobot\Model\Changelog\ChangelogCollection&array<\Inspirum\Balikobot\Model\Changelog\Changelog>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      * @throws \Exception
      */

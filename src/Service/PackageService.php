@@ -24,8 +24,6 @@ interface PackageService
     /**
      * Add packages
      *
-     * @return \Inspirum\Balikobot\Model\Package\PackageCollection&array<\Inspirum\Balikobot\Model\Package\Package>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function addPackages(PackageDataCollection $packages): PackageCollection;
@@ -78,8 +76,6 @@ interface PackageService
 
     /**
      * Get packages which was not yet sent
-     *
-     * @return \Inspirum\Balikobot\Model\Package\PackageCollection&array<\Inspirum\Balikobot\Model\Package\Package>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -166,8 +162,6 @@ interface PackageService
     /**
      * Get the price of carriage at consignment level
      *
-     * @return \Inspirum\Balikobot\Model\TransportCost\TransportCostCollection&array<\Inspirum\Balikobot\Model\TransportCost\TransportCost>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getTransportCosts(PackageDataCollection $packages): TransportCostCollection;
@@ -189,16 +183,12 @@ interface PackageService
     /**
      * Order shipments from place B (typically supplier / previous consignee) to place A (shipping point)
      *
-     * @return \Inspirum\Balikobot\Model\Package\PackageCollection&array<\Inspirum\Balikobot\Model\Package\Package>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function orderB2AShipment(PackageDataCollection $packages): PackageCollection;
 
     /**
      * Order shipments from place B (typically supplier / previous consignee) to place C (address other than shipping point)
-     *
-     * @return \Inspirum\Balikobot\Model\Package\PackageCollection&array<\Inspirum\Balikobot\Model\Package\Package>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */

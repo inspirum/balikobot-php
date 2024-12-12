@@ -12,8 +12,5 @@ use Inspirum\Balikobot\Model\WithCarrierId;
  */
 interface Statuses extends Model, WithCarrierId
 {
-    /**
-     * @return \Inspirum\Balikobot\Model\Status\StatusCollection&array<\Inspirum\Balikobot\Model\Status\Status>
-     */
     public function getStates(): StatusCollection;
 }

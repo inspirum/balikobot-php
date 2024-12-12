@@ -19,8 +19,6 @@ interface SettingService
     /**
      * Get list of carriers
      *
-     * @return \Inspirum\Balikobot\Model\Carrier\CarrierCollection&array<\Inspirum\Balikobot\Model\Carrier\Carrier>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getCarriers(): CarrierCollection;
@@ -35,16 +33,12 @@ interface SettingService
     /**
      * Get services for carrier
      *
-     * @return \Inspirum\Balikobot\Model\Service\ServiceCollection&array<\Inspirum\Balikobot\Model\Service\Service>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getServices(string $carrier): ServiceCollection;
 
     /**
      * Get activated services for carrier
-     *
-     * @return \Inspirum\Balikobot\Model\Service\ServiceCollection&array<\Inspirum\Balikobot\Model\Service\Service>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -53,16 +47,12 @@ interface SettingService
     /**
      * Get B2A services for carrier
      *
-     * @return \Inspirum\Balikobot\Model\Service\ServiceCollection&array<\Inspirum\Balikobot\Model\Service\Service>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getB2AServices(string $carrier): ServiceCollection;
 
     /**
      * Get manipulation units for carrier
-     *
-     * @return \Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection&array<\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -71,16 +61,12 @@ interface SettingService
     /**
      * Get activated manipulation units for carrier
      *
-     * @return \Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnitCollection&array<\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getActivatedManipulationUnits(string $carrier): ManipulationUnitCollection;
 
     /**
      * Get available countries by service type
-     *
-     * @return \Inspirum\Balikobot\Model\Service\ServiceCollection&array<\Inspirum\Balikobot\Model\Service\Service>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -89,16 +75,12 @@ interface SettingService
     /**
      * Get countries by service type where cash-on-delivery payment type is available
      *
-     * @return \Inspirum\Balikobot\Model\Service\ServiceCollection&array<\Inspirum\Balikobot\Model\Service\Service>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getCodCountries(string $carrier): ServiceCollection;
 
     /**
      * Get information about countries
-     *
-     * @return \Inspirum\Balikobot\Model\Country\CountryCollection&array<\Inspirum\Balikobot\Model\Country\Country>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -116,8 +98,6 @@ interface SettingService
     /**
      * Get ADR units for carrier
      *
-     * @return \Inspirum\Balikobot\Model\AdrUnit\AdrUnitCollection&array<\Inspirum\Balikobot\Model\AdrUnit\AdrUnit>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getAdrUnits(string $carrier): AdrUnitCollection;
@@ -125,16 +105,12 @@ interface SettingService
     /**
      * Get available package data options for carrier
      *
-     * @return \Inspirum\Balikobot\Model\Attribute\AttributeCollection&array<\Inspirum\Balikobot\Model\Attribute\Attribute>
-     *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
     public function getAddAttributes(string $carrier): AttributeCollection;
 
     /**
      * Get additional services (package data `services`) for carrier
-     *
-     * @return \Inspirum\Balikobot\Model\Service\ServiceCollection&array<\Inspirum\Balikobot\Model\Service\Service>
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */

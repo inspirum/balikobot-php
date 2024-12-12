@@ -13,8 +13,6 @@ interface CarrierFactory
 
     /**
      * @param array<array<int,mixed>> $data
-     *
-     * @return \Inspirum\Balikobot\Model\Carrier\CarrierCollection&array<\Inspirum\Balikobot\Model\Carrier\Carrier>
      */
     public function createCollection(array $data): CarrierCollection;
 }
