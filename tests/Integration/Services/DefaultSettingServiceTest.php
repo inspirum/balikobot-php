@@ -156,7 +156,7 @@ final class DefaultSettingServiceTest extends BaseTestCase
     {
         $settingService = $this->newDefaultSettingService();
 
-        $service = $settingService->getAddServiceOptionsForService(Carrier::CP, Service::CP_NP);
+        $service = $settingService->getAddServiceOptionsForService(Carrier::CP, Service::CP_NB);
 
         self::assertNotNull($service->getOptions());
     }

@@ -540,7 +540,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
     {
         $packageService = $this->newDefaultPackageService();
 
-        $carrier = Carrier::UPS;
+        $carrier = Carrier::DHL;
         $date = new DateTimeImmutable('+2 DAY');
         $dateFrom = $date->setTime(10, 0);
         $dateTo = $date->setTime(12, 0);

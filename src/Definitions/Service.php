@@ -2436,7 +2436,7 @@ final class Service extends BaseEnum
             self::CP_SR,
             self::CP_RRP,
             self::CP_SRP,
-            self::CP_NP,
+            // self::CP_NP,
             // self::CP_NV,
             self::CP_VL,
             self::CP_DV,
@@ -2446,7 +2446,7 @@ final class Service extends BaseEnum
             self::CP_NB,
             self::CP_DT,
             // self::CP_DS,
-            self::CP_EE,
+            // self::CP_EE,
             // self::CP_BE,
             self::CP_RZP,
             self::CP_VZP,
@@ -2602,9 +2602,9 @@ final class Service extends BaseEnum
     private static function sp(): array
     {
         return [
-            self::SP_BZA,
-            self::SP_BZP,
-            self::SP_BZB,
+            // self::SP_BZA,
+            // self::SP_BZP,
+            // self::SP_BZB,
             self::SP_EXA,
             self::SP_EXP,
             self::SP_EXB,

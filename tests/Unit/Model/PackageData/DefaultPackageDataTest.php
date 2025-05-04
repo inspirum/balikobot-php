@@ -16,6 +16,8 @@ use function sprintf;
 
 final class DefaultPackageDataTest extends BaseTestCase
 {
+    private const DEPRECATED_ATTRIBUTES_COUNT = 10;
+
     public function testArrayAccess(): void
     {
         $data = [
@@ -217,6 +219,10 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setCustomIndicator(true);
         $package->setCountryReference('RO123');
         $package->setCountryReferenceType('UIT');
+        $package->setRmaAssociation('rma');
+        $package->setPONumber('123456');
+        $package->setPickupManipulationLift(true);
+        $package->setDeliveryManipulationLift(true);
 
         $unsupportedAttributes = array_diff(Attribute::getAll(), array_keys($package->getData()));
 
@@ -391,9 +397,14 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::CUSTOMS_INDICATOR => 1,
                 Attribute::COUNTRY_REFERENCE => 'RO123',
                 Attribute::COUNTRY_REFERENCE_TYPE => 'UIT',
+                Attribute::RMA_ASSOCIATION => 'rma',
+                Attribute::P_O_NUMBER => '123456',
+                Attribute::PICKUP_MANIPULATION_LIFT => true,
+                Attribute::DELIVERY_MANIPULATION_LIFT => true,
             ],
             $package->__toArray(),
         );
-        self::assertCount(count(Attribute::getAll()) - 10, $package, sprintf('Missing: %s', implode(',', $unsupportedAttributes)));
+
+        self::assertCount(count(Attribute::getAll()) - self::DEPRECATED_ATTRIBUTES_COUNT, $package, sprintf('Missing: %s', implode(',', $unsupportedAttributes)));
     }
 }
