@@ -66,7 +66,7 @@ final class ChangesSupportTest extends BaseTestCase
             self::markTestIncomplete(sprintf('Unsupported ADD attribute "%s"', $unsupportedAttribute));
         }
 
-        $this->assertNoException();
+        $this->expectNotToPerformAssertions();
     }
 
     public function testAllMethodsSupport(): void
@@ -90,6 +90,6 @@ final class ChangesSupportTest extends BaseTestCase
             self::markTestIncomplete(sprintf('Unsupported method "%s"', $unsupportedMethod));
         }
 
-        $this->assertNoException();
+        $this->expectNotToPerformAssertions();
     }
 }

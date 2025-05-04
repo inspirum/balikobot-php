@@ -41,7 +41,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
             if ($shouldSupport === false) {
                 self::markTestIncomplete(sprintf('%s/%s could support full-branches request', strtoupper($carrier), $service));
             } else {
-                $this->assertNoException();
+                $this->expectNotToPerformAssertions();
             }
         } catch (Exception $exception) {
             if ($exception->getStatusCode() === 503) {

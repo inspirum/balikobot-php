@@ -10,113 +10,81 @@ final class Status
 {
     /**
      * Ordered
-     *
-     * @var float
      */
     public const ORDERED = -1.0;
 
     /**
      * Picked up at the sender
-     *
-     * @var float
      */
     public const PICKED_UP_FROM_SENDER = 2.1;
 
     /**
      * Transit
-     *
-     * @var float
      */
     public const TRANSIT = 2.2;
 
     /**
      * Ready to pick up
-     *
-     * @var float
      */
     public const READY_TO_PICK_UP = 2.3;
 
     /**
      * Back on the way to the sender
-     *
-     * @var float
      */
     public const SEND_BACK_TO_SENDER = 2.4;
 
     /**
      * Handed over to the final carrier
-     *
-     * @var float
      */
     public const HANDED_TO_FINAL_CARRIER = 2.5;
 
     /**
      * Cancellation by the carrier
-     *
-     * @var float
      */
     public const CANCELLATION_BY_CARRIER = 3.1;
 
     /**
      * Cancellation by the recipient
-     *
-     * @var float
      */
     public const CANCELLATION_BY_RECIPIENT = 3.2;
 
     /**
      * Cancellation by the sender
-     *
-     * @var float
      */
     public const CANCELLATION_BY_SENDER = 3.3;
 
     /**
      * Delivered back to sender
-     *
-     * @var float
      */
     public const DELIVERED_BACK_TO_SENDER = 4.0;
 
     /**
      * Cash on delivery has been credited to the sender's account
-     *
-     * @var float
      */
     public const COD_PAID = 5.0;
 
     /**
      * Carrier error
-     *
-     * @var float
      */
     public const ERROR_CARRIER = 0.1;
 
     /**
      * Error on the part of the recipient
-     *
-     * @var float
      */
     public const ERROR_RECIPIENT = 0.2;
 
     /**
      * Error on the part of the sender
-     *
-     * @var float
      */
     public const ERROR_SENDER = 0.3;
 
     /**
      * Collection of the consignment at the delivery point
-     *
-     * @var float
      */
     public const PICKUP_ON_DELIVERY_POINT = 1.1;
 
     /**
      * Delivered to address
-     *
-     * @var float
      */
     public const DELIVERED_TO_ADDRESS = 1.2;
 
