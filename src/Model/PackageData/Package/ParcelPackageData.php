@@ -151,4 +151,14 @@ trait ParcelPackageData
     {
         $this->offsetSet(Attribute::EU_EORI, $value);
     }
+
+    public function setRmaAssociation(string $value): void
+    {
+        $this->offsetSet(Attribute::RMA_ASSOCIATION, $value);
+    }
+
+    public function setPONumber(string $value): void
+    {
+        $this->offsetSet(Attribute::P_O_NUMBER, $value);
+    }
 }

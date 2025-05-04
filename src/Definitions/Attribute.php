@@ -938,6 +938,26 @@ final class Attribute extends BaseEnum
     public const COUNTRY_REFERENCE_TYPE = 'country_reference_type';
 
     /**
+     * Použít pro nakládku auto s čelem
+     */
+    public const PICKUP_MANIPULATION_LIFT = 'pickup_manipulation_lift';
+
+    /**
+     * Použít pro vykládku auto s čelem
+     */
+    public const DELIVERY_MANIPULATION_LIFT = 'delivery_manipulation_lift';
+
+    /**
+     * Čárový kód pro návratovou zásilku
+     */
+    public const RMA_ASSOCIATION = 'rma_association';
+
+    /**
+     * P_O_NUMBER reference
+     */
+    public const P_O_NUMBER = 'p_o_number';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

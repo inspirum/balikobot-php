@@ -33,6 +33,7 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::PBH_BOX_NOW,
                 Service::PBH_SI,
                 Service::PBH_ITELLA,
+                Service::PBH_CP_NB,
             ],
             Carrier::DPD => [
                 Service::DPD_PICKUP,
@@ -93,6 +94,7 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::KURIER_STANDARD,
                 Service::KURIER_STANDARD_BRANCH,
             ],
+            Carrier::INPOST => null,
         ];
 
         return $this->hasSupport($supported, $carrier, $service);
@@ -124,6 +126,7 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::PBH_BOX_NOW,
                 Service::PBH_SI,
                 Service::PBH_ITELLA,
+                Service::PBH_CP_NB,
             ],
             Carrier::SPS => null,
             Carrier::RABEN => null,

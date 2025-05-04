@@ -185,4 +185,9 @@ final class Carrier extends BaseEnum
      * Quality Delivery Logistics
      */
     public const QDL = 'qdl';
+
+    /**
+     * Inpost
+     */
+    public const INPOST = 'inpost';
 }

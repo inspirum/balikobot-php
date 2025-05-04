@@ -652,6 +652,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_GB_FEDEX_HD_PRIORITY = '24809';
 
     /**
+     * CY BoxNow Box
+     */
+    public const ZASILKOVNA_CY_BOXNOW_BOX = '35369';
+
+    /**
      * CZ Česká pošta HD
      */
     public const ZASILKOVNA_CZ_POST_HD = '13';
@@ -912,6 +917,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_HR_POST_HD = '4634';
 
     /**
+     * HR BoxNow Box
+     */
+    public const ZASILKOVNA_HR_BOXNOW_BOX = '35319';
+
+    /**
      * Maďarsko Express One (Transoflex)
      */
     public const ZASILKOVNA_HU_EXPRESS_ONE_HD = '3828';
@@ -1150,6 +1160,11 @@ final class Service extends BaseEnum
      * Rumunsko FAN
      */
     public const ZASILKOVNA_RO_FAN_COURIER_HD = '762';
+
+    /**
+     * Rumunsko FAN box
+     */
+    public const ZASILKOVNA_RO_FAN_BOX = '32428';
 
     /**
      * Ruská pošta
@@ -1465,6 +1480,11 @@ final class Service extends BaseEnum
      * Itella
      */
     public const PBH_ITELLA = '33';
+
+    /**
+     * Česká pošta - Balík do balíkovny"
+     */
+    public const PBH_CP_NB = '34';
 
     /**
      * Worlwide zásilky
@@ -2017,6 +2037,16 @@ final class Service extends BaseEnum
     public const DHLFREIGHTEC_ECI = 'ECI';
 
     /**
+     * DHLFREIGHTEC EuroLine Domestic
+     */
+    public const DHLFREIGHTEC_ELD = 'ELD';
+
+    /**
+     * DHLFREIGHTEC EuroLine International
+     */
+    public const DHLFREIGHTEC_ELI = 'ELI';
+
+    /**
      * DHLFREIGHTEC EuroRapid International
      */
     public const DHLFREIGHTEC_ERI = 'ERI';
@@ -2319,6 +2349,31 @@ final class Service extends BaseEnum
     public const QDL_12H = '3';
 
     /**
+     * Paczkomatowa standardowa
+     */
+    public const INPOST_LOCKER_STANDARD = 'inpost_locker_standard';
+
+    /**
+     * Paczkomatowa ekonomiczna
+     */
+    public const INPOST_LOCKER_ECONOMY = 'inpost_locker_economy';
+
+    /**
+     * Kurier standard"
+     */
+    public const INPOST_COURIER_STANDARD = 'inpost_courier_standard';
+
+    /**
+     * Courier Standard 17-20
+     */
+    public const INPOST_COURIER_STANDARD_1720 = 'inpost_courier_standard_1720';
+
+    /**
+     * Courier Standard Saturday
+     */
+    public const INPOST_COURIER_STANDARD_SATURDAY = 'inpost_courier_standard_saturday';
+
+    /**
      * @return list<string>|null
      */
     public static function getForCarrier(string $carrier): ?array
@@ -2368,6 +2423,7 @@ final class Service extends BaseEnum
             Carrier::SAMEDAY => self::sameday(),
             Carrier::SDS => self::sds(),
             Carrier::QDL => self::qdl(),
+            Carrier::INPOST => self::inpost(),
         ];
     }
 
@@ -2519,6 +2575,7 @@ final class Service extends BaseEnum
             self::PBH_BOX_NOW,
             self::PBH_SI,
             self::PBH_ITELLA,
+            self::PBH_CP_NB,
         ];
     }
 
@@ -2638,6 +2695,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_BG_BOXNOW_BOX,
             self::ZASILKOVNA_GB_FEDEX_HD_CONNECT_PLUS,
             self::ZASILKOVNA_GB_FEDEX_HD_PRIORITY,
+            self::ZASILKOVNA_CY_BOXNOW_BOX,
             // self::ZASILKOVNA_CZ_POST_HD,
             self::ZASILKOVNA_CZ_EXPRESS_PRAHA_HD,
             // self::ZASILKOVNA_CZ_EXPRESS_BRNO_HD,
@@ -2691,6 +2749,7 @@ final class Service extends BaseEnum
             // self::ZASILKOVNA_HR_DPD_HD,
             self::ZASILKOVNA_HR_POST_PP,
             self::ZASILKOVNA_HR_POST_HD,
+            self::ZASILKOVNA_HR_BOXNOW_BOX,
             self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
             // self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
@@ -2747,6 +2806,7 @@ final class Service extends BaseEnum
             // self::ZASILKOVNA_RO_DPD_HD,
             self::ZASILKOVNA_RO_SAMEDAY_HD,
             self::ZASILKOVNA_RO_FAN_COURIER_HD,
+            self::ZASILKOVNA_RO_FAN_BOX,
             // self::ZASILKOVNA_RU_POST_PP,
             // self::ZASILKOVNA_RU_POST_RECOMMENDED_PP,
             // self::ZASILKOVNA_RU_EMS_HD,
@@ -2958,6 +3018,8 @@ final class Service extends BaseEnum
             self::DHLFREIGHTEC_ECD_B2C,
             self::DHLFREIGHTEC_ECI,
             self::DHLFREIGHTEC_ERI,
+            self::DHLFREIGHTEC_ELD,
+            self::DHLFREIGHTEC_ELI,
         ];
     }
 
@@ -3079,6 +3141,18 @@ final class Service extends BaseEnum
             self::QDL_STANDARD,
             self::QDL_GARANTED_24H,
             self::QDL_12H,
+        ];
+    }
+
+    /** @return list<string> */
+    private static function inpost(): array
+    {
+        return [
+            self::INPOST_LOCKER_STANDARD,
+            self::INPOST_LOCKER_ECONOMY,
+            self::INPOST_COURIER_STANDARD,
+            self::INPOST_COURIER_STANDARD_1720,
+            self::INPOST_COURIER_STANDARD_SATURDAY,
         ];
     }
 }

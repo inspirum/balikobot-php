@@ -243,4 +243,14 @@ trait DeliveryData
     {
         $this->offsetSet(Attribute::SHIPPER_ACCOUNT_NUMBER, $number);
     }
+
+    public function setPickupManipulationLift(bool $value): void
+    {
+        $this->offsetSet(Attribute::PICKUP_MANIPULATION_LIFT, $value);
+    }
+
+    public function setDeliveryManipulationLift(bool $value): void
+    {
+        $this->offsetSet(Attribute::DELIVERY_MANIPULATION_LIFT, $value);
+    }
 }

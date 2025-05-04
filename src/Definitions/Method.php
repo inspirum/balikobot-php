@@ -186,4 +186,9 @@ final class Method extends BaseEnum
      * Check add-package data for B2c
      */
     public const B2C_CHECK = 'checkb2c';
+
+    /**
+     * @deprecated
+     */
+    public const ADR = 'adr';
 }
