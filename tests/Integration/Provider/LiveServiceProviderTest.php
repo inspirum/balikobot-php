@@ -27,7 +27,12 @@ final class LiveServiceProviderTest extends BaseTestCase
                     continue;
                 }
 
-                throw  $exception;
+                if ($exception->getStatusCode() !== 404) {
+                    throw $exception;
+                }
+
+                // deprecated carriers should not have services
+                $services = null;
             }
 
             self::assertEqualsCanonicalizing(

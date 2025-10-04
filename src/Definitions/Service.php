@@ -488,66 +488,92 @@ final class Service extends BaseEnum
 
     /**
      * Slovenská pošta
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_SP = '2';
 
     /**
      * DPD Classic na Slovensko
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_DPD_CLASSIC_SK = '3';
 
     /**
      * DPD Private pro ČR a SK
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_DPD_PRIVATE = '4';
 
     /**
      * DPD ParcelShop
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_DPD_PARCEL = '5';
 
     /**
-     * Balík do ruky – Česká pošta,
+     * Balík do ruky – Česká pošta
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_CP_DR = '6';
 
     /**
      * Balík na poštu – Česká pošta
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_CP_NP = '7';
 
     /**
      * Partner
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_PARTNER = '11';
 
     /**
      * Doručení na adresu D+1
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_D1 = '17';
 
     /**
      * Expres Kurýr SK
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_EXPRESS_COURRIER = '19';
 
     /**
      * Expres na poštu SK
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_EXPRESS_SK = '20';
 
     /**
      * BalíkoBOX SK
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_BALIKOBOX_SK = '21';
 
     /**
      * Depo SK
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_DEPO_SK = '22';
 
     /**
      * Mall Delivery
+     *
+     * @deprecated Renamed to ONEBYALLEGRO
      */
     public const ULOZENKA_MALL_DELIVERY = '100';
 
@@ -2053,26 +2079,36 @@ final class Service extends BaseEnum
 
     /**
      * KURIER Garantované doručení
+     *
+     * @deprecated Terminated
      */
     public const KURIER_GARANTED = 'gdd';
 
     /**
      * KURIER Garantované doručení na výdejní místo
+     *
+     * @deprecated Terminated
      */
     public const KURIER_GARANTED_BRANCH = 'gdd_branch';
 
     /**
      * KURIER Doručení do 12h
+     *
+     * @deprecated Terminated
      */
     public const KURIER_12 = 'd12';
 
     /**
      * KURIER Standard
+     *
+     * @deprecated Terminated
      */
     public const KURIER_STANDARD = 'std';
 
     /**
      * KURIER Standard na výdejní místo
+     *
+     * @deprecated Terminated
      */
     public const KURIER_STANDARD_BRANCH = 'std_branch';
 
@@ -2335,16 +2371,22 @@ final class Service extends BaseEnum
 
     /**
      * Standard
+     *
+     * @deprecated Terminated
      */
     public const QDL_STANDARD = '1';
 
     /**
      * Garantované doručení do 24h
+     *
+     * @deprecated Terminated
      */
     public const QDL_GARANTED_24H = '2';
 
     /**
      * Doručení do 12h
+     *
+     * @deprecated Terminated
      */
     public const QDL_12H = '3';
 
@@ -2374,6 +2416,21 @@ final class Service extends BaseEnum
     public const INPOST_COURIER_STANDARD_SATURDAY = 'inpost_courier_standard_saturday';
 
     /**
+     * One Courier Standard
+     */
+    public const ONEBYALLEGRO_COURIER_STANDARD = '2';
+
+    /**
+     * One Box Standard
+     */
+    public const ONEBYALLEGRO_BOX_STANDARD = '4';
+
+    /**
+     * One Point Standard
+     */
+    public const ONEBYALLEGRO_POINT_STANDARD = '6';
+
+    /**
      * @return list<string>|null
      */
     public static function getForCarrier(string $carrier): ?array
@@ -2398,7 +2455,6 @@ final class Service extends BaseEnum
             Carrier::SP => self::sp(),
             Carrier::SPS => self::sps(),
             Carrier::TOPTRANS => self::topTrans(),
-            Carrier::ULOZENKA => self::ulozenka(),
             Carrier::UPS => self::ups(),
             Carrier::ZASILKOVNA => self::zasilkovna(),
             Carrier::TNT => self::tnt(),
@@ -2414,7 +2470,6 @@ final class Service extends BaseEnum
             Carrier::SPRING => self::spring(),
             Carrier::DSV => self::dsv(),
             Carrier::DHLFREIGHTEC => self::dhlfreightec(),
-            Carrier::KURIER => self::kurier(),
             Carrier::DBSCHENKER => self::dbschenker(),
             Carrier::AIRWAY => self::airway(),
             Carrier::JAPO => self::japo(),
@@ -2422,8 +2477,8 @@ final class Service extends BaseEnum
             Carrier::MAGYARPOSTA => self::magyarposta(),
             Carrier::SAMEDAY => self::sameday(),
             Carrier::SDS => self::sds(),
-            Carrier::QDL => self::qdl(),
             Carrier::INPOST => self::inpost(),
+            Carrier::ONEBYALLEGRO => self::onebyallegro(),
         ];
     }
 
@@ -2636,27 +2691,6 @@ final class Service extends BaseEnum
             self::TOPTRANS_WEEKEND,
             self::TOPTRANS_PERSONAL,
             self::TOPTRANS_NOTICE,
-        ];
-    }
-
-    /** @return list<string> */
-    private static function ulozenka(): array
-    {
-        return [
-            // self::ULOZENKA_ULOZENKA,
-            self::ULOZENKA_SP,
-            self::ULOZENKA_DPD_CLASSIC_SK,
-            self::ULOZENKA_DPD_PRIVATE,
-            self::ULOZENKA_DPD_PARCEL,
-            self::ULOZENKA_CP_DR,
-            self::ULOZENKA_CP_NP,
-            self::ULOZENKA_PARTNER,
-            self::ULOZENKA_D1,
-            self::ULOZENKA_EXPRESS_COURRIER,
-            self::ULOZENKA_EXPRESS_SK,
-            self::ULOZENKA_BALIKOBOX_SK,
-            self::ULOZENKA_DEPO_SK,
-            self::ULOZENKA_MALL_DELIVERY,
         ];
     }
 
@@ -3024,18 +3058,6 @@ final class Service extends BaseEnum
     }
 
     /** @return list<string> */
-    private static function kurier(): array
-    {
-        return [
-            self::KURIER_GARANTED,
-            self::KURIER_GARANTED_BRANCH,
-            // self::KURIER_12,
-            self::KURIER_STANDARD,
-            self::KURIER_STANDARD_BRANCH,
-        ];
-    }
-
-    /** @return list<string> */
     private static function dbschenker(): array
     {
         return [
@@ -3135,16 +3157,6 @@ final class Service extends BaseEnum
     }
 
     /** @return list<string> */
-    private static function qdl(): array
-    {
-        return [
-            self::QDL_STANDARD,
-            self::QDL_GARANTED_24H,
-            self::QDL_12H,
-        ];
-    }
-
-    /** @return list<string> */
     private static function inpost(): array
     {
         return [
@@ -3153,6 +3165,16 @@ final class Service extends BaseEnum
             self::INPOST_COURIER_STANDARD,
             self::INPOST_COURIER_STANDARD_1720,
             self::INPOST_COURIER_STANDARD_SATURDAY,
+        ];
+    }
+
+    /** @return list<string> */
+    private static function onebyallegro(): array
+    {
+        return [
+            self::ONEBYALLEGRO_COURIER_STANDARD,
+            self::ONEBYALLEGRO_BOX_STANDARD,
+            self::ONEBYALLEGRO_POINT_STANDARD,
         ];
     }
 }

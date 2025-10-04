@@ -21,6 +21,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v2.015** (2025-02-19)
   - Added **pickup_manipulation_lift** attributes
   - Added **delivery_manipulation_lift** attributes
+- Deprecate removed options from documentation **v2.026** (2025-09-25)
+  - Deprecated **QDL** carrier 
+  - Deprecated **123kurier** carrier 
+- Added support for new options from documentation **v2.027** (2025-09-30)
+  - Added **ONEBYALLEGRO** carrier
 
 
 ## [v7.12.0 (2024-11-20)](https://github.com/inspirum/balikobot-php/compare/v7.11.0...v7.12.0)
