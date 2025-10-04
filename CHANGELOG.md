@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v2.027** (2025-09-30)
   - Added **ONEBYALLEGRO** carrier
 - Added **ZASILKOVNA_BG_BOXNOW_BOX** service type
+- Added **ZASILKOVNA_CH_POST_DIRECT_HD** service type
+- Added **ZASILKOVNA_CH_POST_DIRECT_HD_PRIORITY** service type
 - Added **ZASILKOVNA_CY_BOXNOW_BOX** service type
 - Added **ZASILKOVNA_HR_BOXNOW_BOX** service type
 - Added **ZASILKOVNA_HR_BOXNOW_BOX** service type
@@ -29,12 +31,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added **PBH_CP_NB** service type
 - Added **DHLFREIGHTEC_ELD** service type
 - Added **DHLFREIGHTEC_ELI** service type
-- Added **ZASILKOVNA_CH_POST_DIRECT_HD** service type
-- Added **ZASILKOVNA_CH_POST_DIRECT_HD_PRIORITY** service type
 - Added **DHLFREIGHTEC_ELI_B2C** service type
 - Added **LIFTAGO_SLOT_16** service type
 ### Deprecated
-- Deprecate removed options from documentation **v2.026** (2025-09-25)
+- Deprecated removed options from documentation **v2.026** (2025-09-25)
   - Deprecated **QDL** carrier
   - Deprecated **123kurier** carrier
 
