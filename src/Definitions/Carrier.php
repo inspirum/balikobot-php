@@ -152,7 +152,7 @@ final class Carrier extends BaseEnum
     /**
      * 123kurier
      *
-     * @deprecated
+     * @deprecated Terminated
      */
     public const KURIER = 'kurier';
 
@@ -194,7 +194,7 @@ final class Carrier extends BaseEnum
     /**
      * Quality Delivery Logistics
      *
-     * @deprecated
+     * @deprecated Terminated
      */
     public const QDL = 'qdl';
 
@@ -213,10 +213,6 @@ final class Carrier extends BaseEnum
      */
     public static function getAll(): array
     {
-        return array_values(array_filter(parent::getAll(), static fn (string $value): bool => !in_array($value, [
-            self::ULOZENKA,
-            self::QDL,
-            self::KURIER,
-        ])));
+        return array_values(array_filter(parent::getAll(), static fn (string $value): bool => !in_array($value, [self::ULOZENKA])));
     }
 }

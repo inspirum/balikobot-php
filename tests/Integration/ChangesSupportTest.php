@@ -15,6 +15,7 @@ use function array_diff;
 use function array_map;
 use function array_merge;
 use function array_unique;
+use function in_array;
 use function sprintf;
 use function str_replace;
 use function strtolower;
@@ -27,7 +28,7 @@ final class ChangesSupportTest extends BaseTestCase
 
         $changelog = $infoService->getChangelog();
 
-        $expected = (float) '2.019';
+        $expected = (float) '2.027';
         $actual = (float) $changelog->getLatestVersion();
 
         if ($actual > $expected) {
@@ -44,6 +45,11 @@ final class ChangesSupportTest extends BaseTestCase
 
         foreach (Carrier::getAll() as $carrier) {
             try {
+                // skip deprecated carriers
+                if (in_array($carrier, [Carrier::KURIER, Carrier::QDL, Carrier::ULOZENKA])) {
+                    continue;
+                }
+
                 $attributes[] = array_map(
                     static fn (AttributeModel $attribute): string => $attribute->getName(),
                     $settingService->getAddAttributes($carrier)->getAttributes(),

@@ -110,7 +110,6 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::PPL => null,
             Carrier::DPD => null,
             Carrier::GLS => null,
-            Carrier::ULOZENKA => null,
             Carrier::PBH => [
                 Service::PBH_DHL,
                 Service::PBH_CP_NP,
@@ -132,8 +131,11 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::RABEN => null,
             Carrier::SAMEDAY => null,
             Carrier::ZASILKOVNA => null,
-            Carrier::KURIER => null,
             Carrier::MAGYARPOSTA => null,
+            Carrier::ONEBYALLEGRO => [
+                Service::ONEBYALLEGRO_BOX_STANDARD,
+                Service::ONEBYALLEGRO_POINT_STANDARD,
+            ],
         ];
 
         return $this->hasSupport($supported, $carrier, $service);

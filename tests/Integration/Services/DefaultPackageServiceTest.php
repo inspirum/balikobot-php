@@ -689,7 +689,6 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageData->setRecEmail('tets@test.cz');
         $packageData->setRecZip('12000');
         $packageData->setRecStreet('Ulice');
-        $packageData->setRecCity('Praha');
         $packageData->setRecCountry(Country::CZECH_REPUBLIC);
         $packageData->setRecPhone('776555888');
 
@@ -702,7 +701,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             self::fail('CHECKB2A request should thrown exception');
         } catch (Exception $exception) {
             self::assertEquals(400, $exception->getStatusCode());
-            self::assertTrue(isset($exception->getErrors()[0]['rec_name']), $exception->getResponseAsString());
+            self::assertTrue(isset($exception->getErrors()[0]['rec_city']), $exception->getResponseAsString());
         }
     }
 

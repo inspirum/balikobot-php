@@ -19,7 +19,7 @@ final class DefaultServiceProviderTest extends BaseTestCase
             $expectedServices = Service::getForCarrier($carrier);
             $services = $provider->getServices($carrier);
 
-            self::assertSame($expectedServices, $services);
+            self::assertSame($expectedServices ?? [], $services);
         }
     }
 
