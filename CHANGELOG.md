@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [v7.13.0 (2025-10-04)](https://github.com/inspirum/balikobot-php/compare/v7.12.0...v7.13.0)
+### Added
 - Added support for new options from documentation **v2.015** (2025-02-19)
   - Added **pickup_manipulation_lift** attributes
   - Added **delivery_manipulation_lift** attributes
@@ -18,9 +19,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **p_o_number** attributes
 - Added support for new options from documentation **v2.020** (2025-05-05)
   - Added **INPOST** carrier
-- Deprecate removed options from documentation **v2.026** (2025-09-25)
-  - Deprecated **QDL** carrier 
-  - Deprecated **123kurier** carrier 
 - Added support for new options from documentation **v2.027** (2025-09-30)
   - Added **ONEBYALLEGRO** carrier
 - Added **ZASILKOVNA_BG_BOXNOW_BOX** service type
@@ -35,6 +33,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added **ZASILKOVNA_CH_POST_DIRECT_HD_PRIORITY** service type
 - Added **DHLFREIGHTEC_ELI_B2C** service type
 - Added **LIFTAGO_SLOT_16** service type
+### Deprecated
+- Deprecate removed options from documentation **v2.026** (2025-09-25)
+  - Deprecated **QDL** carrier
+  - Deprecated **123kurier** carrier
 
 
 ## [v7.12.0 (2024-11-20)](https://github.com/inspirum/balikobot-php/compare/v7.11.0...v7.12.0)
