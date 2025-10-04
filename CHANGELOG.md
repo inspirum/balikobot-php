@@ -6,26 +6,35 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.12.0...master)
-- Added **ZASILKOVNA_BG_BOXNOW_BOX** service type
-- Added **ZASILKOVNA_CY_BOXNOW_BOX** service type
-- Added **ZASILKOVNA_HR_BOXNOW_BOX** service type
-- Added **ZASILKOVNA_RO_FAN_BOX** service type
-- Added **PBH_CP_NB** service type
-- Added **DHLFREIGHTEC_ELD** service type
-- Added **DHLFREIGHTEC_ELI** service type
-- Added **INPOST** carrier
-- Added support for new options from documentation **v2.017** (2025-04-01)
-  - Added **rma_association** attributes
-  - Added **p_o_number** attributes
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.13.0...master)
+
+
+## [v7.13.0 (2025-10-04)](https://github.com/inspirum/balikobot-php/compare/v7.12.0...v7.13.0)
 - Added support for new options from documentation **v2.015** (2025-02-19)
   - Added **pickup_manipulation_lift** attributes
   - Added **delivery_manipulation_lift** attributes
+- Added support for new options from documentation **v2.017** (2025-04-01)
+  - Added **rma_association** attributes
+  - Added **p_o_number** attributes
+- Added support for new options from documentation **v2.020** (2025-05-05)
+  - Added **INPOST** carrier
 - Deprecate removed options from documentation **v2.026** (2025-09-25)
   - Deprecated **QDL** carrier 
   - Deprecated **123kurier** carrier 
 - Added support for new options from documentation **v2.027** (2025-09-30)
   - Added **ONEBYALLEGRO** carrier
+- Added **ZASILKOVNA_BG_BOXNOW_BOX** service type
+- Added **ZASILKOVNA_CY_BOXNOW_BOX** service type
+- Added **ZASILKOVNA_HR_BOXNOW_BOX** service type
+- Added **ZASILKOVNA_HR_BOXNOW_BOX** service type
+- Added **ZASILKOVNA_RO_FAN_BOX** service type
+- Added **PBH_CP_NB** service type
+- Added **DHLFREIGHTEC_ELD** service type
+- Added **DHLFREIGHTEC_ELI** service type
+- Added **ZASILKOVNA_CH_POST_DIRECT_HD** service type
+- Added **ZASILKOVNA_CH_POST_DIRECT_HD_PRIORITY** service type
+- Added **DHLFREIGHTEC_ELI_B2C** service type
+- Added **LIFTAGO_SLOT_16** service type
 
 
 ## [v7.12.0 (2024-11-20)](https://github.com/inspirum/balikobot-php/compare/v7.11.0...v7.12.0)

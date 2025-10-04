@@ -998,6 +998,16 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_CH_POST_HD = '3294';
 
     /**
+     * CH Post Direct HD
+     */
+    public const ZASILKOVNA_CH_POST_DIRECT_HD = '29738';
+
+    /**
+     * CH Post Direct HD Priority
+     */
+    public const ZASILKOVNA_CH_POST_DIRECT_HD_PRIORITY = '30383';
+
+    /**
      * Irsko Hermes
      */
     public const ZASILKOVNA_IE_HERMES_HD = '4524';
@@ -2063,6 +2073,11 @@ final class Service extends BaseEnum
     public const DHLFREIGHTEC_ECI = 'ECI';
 
     /**
+     * DHLFREIGHTEC EuroConnect International B2C
+     */
+    public const DHLFREIGHTEC_ELI_B2C = 'ECI_B2C';
+
+    /**
      * DHLFREIGHTEC EuroLine Domestic
      */
     public const DHLFREIGHTEC_ELD = 'ELD';
@@ -2276,6 +2291,11 @@ final class Service extends BaseEnum
      * Liftago SLot 12-15h
      */
     public const LIFTAGO_SLOT_15 = 'SLOT12-15';
+
+    /**
+     * Liftago SLot 13-16h
+     */
+    public const LIFTAGO_SLOT_16 = 'SLOT13-16';
 
     /**
      * Liftago SLot 18-21h
@@ -2522,7 +2542,7 @@ final class Service extends BaseEnum
             self::DPD_CLASSIC,
             self::DPD_PRIVATE,
             self::DPD_PICKUP,
-            self::DPD_EXPRESS_10,
+            // self::DPD_EXPRESS_10,
             self::DPD_EXPRESS_12,
             self::DPD_EXPRESS_18,
             // self::DPD_PRIVATE_EVENING,
@@ -2639,7 +2659,7 @@ final class Service extends BaseEnum
     {
         return [
             self::PPL_CONNECT,
-            self::PPL_AFTERNOON,
+            // self::PPL_AFTERNOON,
             self::PPL_PRIVATE,
             self::PPL_BUSINESS,
             // self::PPL_PRIVATE_EVENING,
@@ -2794,6 +2814,8 @@ final class Service extends BaseEnum
             // self::ZASILKOVNA_HU_FAMA_FUTAR_HD,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
             self::ZASILKOVNA_CH_POST_HD,
+            self::ZASILKOVNA_CH_POST_DIRECT_HD,
+            self::ZASILKOVNA_CH_POST_DIRECT_HD_PRIORITY,
             // self::ZASILKOVNA_IE_HERMES_HD,
             self::ZASILKOVNA_IE_ANPOST_HD,
             self::ZASILKOVNA_IE_FEDEX_HD_CONNECT_PLUS,
@@ -3051,6 +3073,7 @@ final class Service extends BaseEnum
             self::DHLFREIGHTEC_ECD_B2B,
             self::DHLFREIGHTEC_ECD_B2C,
             self::DHLFREIGHTEC_ECI,
+            self::DHLFREIGHTEC_ELI_B2C,
             self::DHLFREIGHTEC_ERI,
             self::DHLFREIGHTEC_ELD,
             self::DHLFREIGHTEC_ELI,
@@ -3114,7 +3137,8 @@ final class Service extends BaseEnum
             // self::LIFTAGO_STANDARD_20,
             // self::LIFTAGO_STANDARD_22,
             self::LIFTAGO_SLOT_12,
-            self::LIFTAGO_SLOT_15,
+            //self::LIFTAGO_SLOT_15,
+            self::LIFTAGO_SLOT_16,
             self::LIFTAGO_SLOT_21,
         ];
     }
