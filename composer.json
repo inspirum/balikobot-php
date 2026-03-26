@@ -61,10 +61,10 @@
       "@test:integration"
     ],
     "test:unit": [
-      "@phpunit --testsuite=Unit --display-notices"
+      "@phpunit --testsuite=Unit --no-coverage --display-notices"
     ],
     "test:integration": [
-      "@phpunit --testsuite=Integration --display-notices --display-incomplete"
+      "@phpunit --testsuite=Integration --no-coverage --display-notices --display-incomplete"
     ],
     "test:coverage": [
       "@phpunit --coverage-text --coverage-html=var/phpunit/coverage"
