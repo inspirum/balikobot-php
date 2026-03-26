@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [v7.14.0 (2026-03-06)](https://github.com/inspirum/balikobot-php/compare/v7.13.0...v7.14.0)
+### Added
 - Added support for new options from documentation **v2.028** (2026-03-25)
   - Added **direct_signature** attributes
 - Added support for new options from documentation **v2.024** (2025-11-19)
