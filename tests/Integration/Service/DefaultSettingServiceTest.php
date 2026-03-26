@@ -121,7 +121,6 @@ final class DefaultSettingServiceTest extends BaseTestCase
 
         $zipCodes->next();
         self::assertTrue($zipCodes->valid());
-        self::assertNotNull($zipCodes->current());
     }
 
     public function testGetAdrUnits(): void

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Tests\Integration;
+namespace Inspirum\Balikobot\Tests\Integration\Model\Branch;
 
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Country;
@@ -11,6 +11,7 @@ use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Model\Branch\BranchResolver;
 use Inspirum\Balikobot\Model\Branch\DefaultBranchResolver;
+use Inspirum\Balikobot\Tests\Integration\BaseTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use function count;
 use function in_array;

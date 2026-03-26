@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Tests\Integration;
+namespace Inspirum\Balikobot\Tests\Integration\Provider;
 
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Provider\LiveCarrierProvider;
+use Inspirum\Balikobot\Tests\Integration\BaseTestCase;
 
 final class LiveCarrierProviderTest extends BaseTestCase
 {

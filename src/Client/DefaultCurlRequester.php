@@ -9,7 +9,6 @@ use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 use function base64_encode;
 use function count;
-use function curl_close;
 use function curl_errno;
 use function curl_error;
 use function curl_exec;
@@ -74,9 +73,6 @@ final class DefaultCurlRequester implements Requester
         if ($response === false) {
             throw new RuntimeException(curl_error($ch), curl_errno($ch));
         }
-
-        // close curl
-        curl_close($ch);
 
         return new Response((int) $statusCode, [], (string) $response);
     }

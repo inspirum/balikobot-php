@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Tests\Integration;
+namespace Inspirum\Balikobot\Tests\Integration\Provider;
 
 use Inspirum\Balikobot\Definitions\Service;
 use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Provider\LiveCarrierProvider;
 use Inspirum\Balikobot\Provider\LiveServiceProvider;
+use Inspirum\Balikobot\Tests\Integration\BaseTestCase;
 use function sprintf;
 
 final class LiveServiceProviderTest extends BaseTestCase

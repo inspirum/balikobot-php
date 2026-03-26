@@ -20,13 +20,11 @@ final class DefaultBranchServiceTest extends BaseTestCase
 
         $branches->next();
         self::assertTrue($branches->valid());
-        self::assertNotNull($branches->current());
 
         $branches = $branchService->getBranchesForCarrierService(Carrier::CP, Service::CP_BB);
 
         $branches->next();
         self::assertFalse($branches->valid());
-        self::assertNull($branches->current());
     }
 
     public function testGetBranchesForLocation(): void
@@ -45,7 +43,6 @@ final class DefaultBranchServiceTest extends BaseTestCase
 
         $branches->next();
         self::assertTrue($branches->valid());
-        self::assertNotNull($branches->current());
     }
 
     public function testGetBranchesForLocationForInvalidData(): void

@@ -30,21 +30,33 @@ abstract class BasePackageData extends BaseModel implements PackageData
         return $this->data;
     }
 
+    /**
+     * @param string $key
+     */
     public function offsetExists(mixed $key): bool
     {
         return array_key_exists($key, $this->data);
     }
 
+    /**
+     * @param string $key
+     */
     public function offsetGet(mixed $key): mixed
     {
         return $this->data[$key];
     }
 
+    /**
+     * @param string $key
+     */
     public function offsetSet(mixed $key, mixed $value): void
     {
         $this->data[$key] = $value;
     }
 
+    /**
+     * @param string $key
+     */
     public function offsetUnset(mixed $key): void
     {
         unset($this->data[$key]);

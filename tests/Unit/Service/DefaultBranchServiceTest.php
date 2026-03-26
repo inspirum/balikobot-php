@@ -132,7 +132,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
         $actualResult = $branchService->getBranches();
 
-        $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
+        $expectedResult = new ArrayIterator(array_merge(...$items));
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
         self::assertSame(null, $actualResult->getCarrier());
@@ -295,7 +295,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
         unset($items[4][1]);
         unset($items[5][2]);
-        $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
+        $expectedResult = new ArrayIterator(array_merge(...$items));
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
         self::assertSame(null, $actualResult->getCarrier());
@@ -384,7 +384,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
         $actualResult = $branchService->getBranchesForCarrier($carrier);
 
-        $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
+        $expectedResult = new ArrayIterator(array_merge(...$items));
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
         self::assertSame($carrier, $actualResult->getCarrier());
@@ -500,7 +500,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
         $actualResult = $branchService->getBranchesForCarrierAndCountries($carrier, $countries);
 
         unset($items[3][1]);
-        $expectedResult = new ArrayIterator(array_values(array_merge(...$items)));
+        $expectedResult = new ArrayIterator(array_merge(...$items));
 
         self::assertSame(iterator_to_array($expectedResult), iterator_to_array($actualResult));
         self::assertSame($carrier, $actualResult->getCarrier());
