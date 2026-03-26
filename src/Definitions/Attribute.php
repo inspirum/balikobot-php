@@ -958,6 +958,36 @@ final class Attribute extends BaseEnum
     public const P_O_NUMBER = 'p_o_number';
 
     /**
+     * Require a signature from the parcel recipient upon delivery
+     */
+    public const DIRECT_SIGNATURE = 'direct_signature';
+
+    /**
+     * States if transported goods are subject to logistical tax, based on the Romanian law passed January 1, 2026.
+     */
+    public const TAX_SUBJECT = 'tax_subject';
+
+    /**
+     * Country of origin of the goods; for the logistical tax in Romania
+     */
+    public const TAX_COUNTRY = 'tax_country';
+
+    /**
+     * Mandatory if sending batteries
+     */
+    public const BATTERY_DATA = 'battery_data';
+
+    /**
+     * Fedex account number of the duty and tax payer
+     */
+    public const ACCOUNT_NUMBER_DUTIES = 'account_number_duties';
+
+    /**
+     * Fedex account number of the shipment payer
+     */
+    public const ACCOUNT_NUMBER_SHIPPING_CHARGES = 'account_number_shipping_charges';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

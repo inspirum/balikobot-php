@@ -253,4 +253,19 @@ trait DeliveryData
     {
         $this->offsetSet(Attribute::DELIVERY_MANIPULATION_LIFT, $value);
     }
+
+    public function setDirectSignature(bool $value): void
+    {
+        $this->offsetSet(Attribute::DIRECT_SIGNATURE, $value);
+    }
+
+    public function setAccountNumberDuties(string $value): void
+    {
+        $this->offsetSet(Attribute::ACCOUNT_NUMBER_DUTIES, $value);
+    }
+
+    public function setAccountNumberShippingCharges(string $value): void
+    {
+        $this->offsetSet(Attribute::ACCOUNT_NUMBER_SHIPPING_CHARGES, $value);
+    }
 }

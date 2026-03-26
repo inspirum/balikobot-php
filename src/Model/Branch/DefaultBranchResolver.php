@@ -31,12 +31,15 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::PBH_ECONT,
                 Service::PBH_HR_POST,
                 Service::PBH_BOX_NOW,
-                Service::PBH_SI,
+                Service::PBH_SI_POST,
                 Service::PBH_ITELLA,
                 Service::PBH_CP_NB,
+                Service::PBH_NL_POST,
+                Service::PBH_EXPRESS_OVERSEAS,
             ],
             Carrier::DPD => [
                 Service::DPD_PICKUP,
+                Service::DPD_SHOP_TO_SHOP,
             ],
             Carrier::GLS => [
                 Service::GLS_SHOP,
@@ -73,6 +76,7 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::PPL_PRIVATE,
                 Service::PPL_PRIVATE_SMART_CZ,
                 Service::PPL_PRIVATE_SMART_EU,
+                Service::PPL_PRIVATE_SMART_TO_BOX,
             ],
             Carrier::SAMEDAY => [
                 Service::SAMEDAY_LOCKER_NEXT_DAY,
@@ -95,6 +99,10 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::KURIER_STANDARD_BRANCH,
             ],
             Carrier::INPOST => null,
+            Carrier::ONEBYALLEGRO => [
+                Service::ONEBYALLEGRO_BOX_STANDARD,
+                Service::ONEBYALLEGRO_POINT_STANDARD,
+            ],
         ];
 
         return $this->hasSupport($supported, $carrier, $service);
@@ -123,9 +131,11 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::PBH_ECONT,
                 Service::PBH_HR_POST,
                 Service::PBH_BOX_NOW,
-                Service::PBH_SI,
+                Service::PBH_SI_POST,
                 Service::PBH_ITELLA,
                 Service::PBH_CP_NB,
+                Service::PBH_NL_POST,
+                Service::PBH_EXPRESS_OVERSEAS,
             ],
             Carrier::SPS => null,
             Carrier::RABEN => null,

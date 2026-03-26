@@ -161,4 +161,12 @@ trait ParcelPackageData
     {
         $this->offsetSet(Attribute::P_O_NUMBER, $value);
     }
+
+    /**
+     * @param array<string,mixed> $batteryData
+     */
+    public function setBatteryData(array $batteryData): void
+    {
+        $this->offsetSet(Attribute::BATTERY_DATA, $batteryData);
+    }
 }

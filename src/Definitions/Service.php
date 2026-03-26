@@ -207,6 +207,11 @@ final class Service extends BaseEnum
     public const PPL_RETURN_CONNECT = '50';
 
     /**
+     * PPL Smart2Box
+     */
+    public const PPL_PRIVATE_SMART_TO_BOX = '52';
+
+    /**
      * DPD Classic
      */
     public const DPD_CLASSIC = '1';
@@ -245,6 +250,21 @@ final class Service extends BaseEnum
      * DPD Private sobotní doručení
      */
     public const DPD_PRIVATE_SATURDAY = '8';
+
+    /**
+     * DPD Pneu
+     */
+    public const DPD_PNEU = '10';
+
+    /**
+     * DPD Shop2Shop
+     */
+    public const DPD_SHOP_TO_SHOP = '11';
+
+    /**
+     * DPD Shop2Home
+     */
+    public const DPD_SHOP_TO_HOME = '12';
 
     /**
      * Vnitrostátní paletová zásilka B2B
@@ -1509,8 +1529,15 @@ final class Service extends BaseEnum
 
     /**
      * Slovinská pošta
+     *
+     * @deprecated
      */
-    public const PBH_SI = '32';
+    public const PBH_SI = self::PBH_SI_POST;
+
+    /**
+     * Slovinská pošta
+     */
+    public const PBH_SI_POST = '32';
 
     /**
      * Itella
@@ -1521,6 +1548,16 @@ final class Service extends BaseEnum
      * Česká pošta - Balík do balíkovny"
      */
     public const PBH_CP_NB = '34';
+
+    /**
+     * Post NL
+     */
+    public const PBH_NL_POST = '35';
+
+    /**
+     * Overseas Express
+     */
+    public const PBH_EXPRESS_OVERSEAS = '36';
 
     /**
      * Worlwide zásilky
@@ -2546,7 +2583,10 @@ final class Service extends BaseEnum
             self::DPD_EXPRESS_12,
             self::DPD_EXPRESS_18,
             // self::DPD_PRIVATE_EVENING,
-            self::DPD_PRIVATE_SATURDAY,
+            // self::DPD_PRIVATE_SATURDAY,
+            self::DPD_PNEU,
+            self::DPD_SHOP_TO_SHOP,
+            self::DPD_SHOP_TO_HOME,
         ];
     }
 
@@ -2648,9 +2688,11 @@ final class Service extends BaseEnum
             self::PBH_WARENPOST,
             self::PBH_HR_POST,
             self::PBH_BOX_NOW,
-            self::PBH_SI,
+            self::PBH_SI_POST,
             self::PBH_ITELLA,
             self::PBH_CP_NB,
+            self::PBH_NL_POST,
+            self::PBH_EXPRESS_OVERSEAS,
         ];
     }
 
@@ -2670,6 +2712,7 @@ final class Service extends BaseEnum
             self::PPL_PRIVATE_SMART_CZ,
             self::PPL_PRIVATE_SMART_EU,
             self::PPL_RETURN_CONNECT,
+            self::PPL_PRIVATE_SMART_TO_BOX,
         ];
     }
 
@@ -2848,12 +2891,12 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_NL_POST_HD,
             self::ZASILKOVNA_NL_DHL_PP,
             // self::ZASILKOVNA_PL_POST_24_HD,
-            // self::ZASILKOVNA_PL_POST_48_HD,
-            // self::ZASILKOVNA_PL_DPD_HD,
+            self::ZASILKOVNA_PL_POST_48_HD,
+            self::ZASILKOVNA_PL_DPD_HD,
             self::ZASILKOVNA_PL_COURIER_HD,
             self::ZASILKOVNA_PL_INPOST_PACZKOMATY_BOX,
             self::ZASILKOVNA_PL_POST_PP,
-            // self::ZASILKOVNA_PL_INPOST_HD,
+            self::ZASILKOVNA_PL_INPOST_HD,
             self::ZASILKOVNA_PT_MRW_HD,
             self::ZASILKOVNA_PT_MRW_PP,
             self::ZASILKOVNA_RO_COURIER_HD,

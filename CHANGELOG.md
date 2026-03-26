@@ -6,7 +6,27 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.13.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.14.0...master)
+
+
+## [v7.14.0 (2026-03-06)](https://github.com/inspirum/balikobot-php/compare/v7.13.0...v7.14.0)
+- Added support for new options from documentation **v2.028** (2026-03-25)
+  - Added **direct_signature** attributes
+- Added support for new options from documentation **v2.024** (2025-11-19)
+  - Added **battery_data** attributes
+- Added **tax_subject** attributes
+- Added **tax_country** attributes
+- Added **account_number_duties** attributes
+- Added **account_number_shipping_charges** attributes
+- Added **PPL_PRIVATE_SMART_TO_BOX** service type
+- Added **DPD_PNEU** service type
+- Added **DPD_SHOP_TO_SHOP** service type
+- Added **DPD_SHOP_TO_HOME** service type
+- Added **PBH_NL_POST** service type
+- Added **PBH_EXPRESS_OVERSEAS** service type
+- Added **PBH_SI_POST** service type
+### Deprecated
+- Deprecated some **PBH_SI** service type constant
 
 
 ## [v7.13.0 (2025-10-04)](https://github.com/inspirum/balikobot-php/compare/v7.12.0...v7.13.0)

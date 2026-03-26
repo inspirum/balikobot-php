@@ -213,6 +213,6 @@ final class Carrier extends BaseEnum
      */
     public static function getAll(): array
     {
-        return array_values(array_filter(parent::getAll(), static fn (string $value): bool => !in_array($value, [self::ULOZENKA])));
+        return array_values(array_filter(parent::getAll(), static fn (string $value): bool => !in_array($value, [self::ULOZENKA, self::QDL])));
     }
 }

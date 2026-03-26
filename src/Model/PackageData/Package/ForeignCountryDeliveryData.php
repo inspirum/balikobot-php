@@ -100,4 +100,14 @@ trait ForeignCountryDeliveryData
     {
         $this->offsetSet(Attribute::COUNTRY_REFERENCE_TYPE, $value);
     }
+
+    public function setTaxSubject(bool $value): void
+    {
+        $this->offsetSet(Attribute::TAX_SUBJECT, $value);
+    }
+
+    public function setTaxCountry(string $value): void
+    {
+        $this->offsetSet(Attribute::TAX_COUNTRY, $value);
+    }
 }

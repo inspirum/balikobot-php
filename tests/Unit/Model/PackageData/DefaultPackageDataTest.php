@@ -223,6 +223,16 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setPONumber('123456');
         $package->setPickupManipulationLift(true);
         $package->setDeliveryManipulationLift(true);
+        $package->setDirectSignature(true);
+        $package->setTaxSubject(true);
+        $package->setTaxCountry('CZ');
+        $package->setBatteryData([
+            'battery_regulatory_type' => '1',
+            'battery_packing_type' => 'LOOSE',
+            'battery_material_type' => 'LITHIUM_ION',
+        ]);
+        $package->setAccountNumberDuties('1234');
+        $package->setAccountNumberShippingCharges('4567');
 
         $unsupportedAttributes = array_diff(Attribute::getAll(), array_keys($package->getData()));
 
@@ -401,6 +411,16 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::P_O_NUMBER => '123456',
                 Attribute::PICKUP_MANIPULATION_LIFT => true,
                 Attribute::DELIVERY_MANIPULATION_LIFT => true,
+                Attribute::DIRECT_SIGNATURE => true,
+                Attribute::TAX_SUBJECT => true,
+                Attribute::TAX_COUNTRY => 'CZ',
+                Attribute::BATTERY_DATA => [
+                    'battery_regulatory_type' => '1',
+                    'battery_packing_type' => 'LOOSE',
+                    'battery_material_type' => 'LITHIUM_ION',
+                ],
+                Attribute::ACCOUNT_NUMBER_DUTIES => '1234',
+                Attribute::ACCOUNT_NUMBER_SHIPPING_CHARGES => '4567',
             ],
             $package->__toArray(),
         );
