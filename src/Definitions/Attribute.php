@@ -527,7 +527,14 @@ final class Attribute extends BaseEnum
     /**
      * Číslo vchodu (přenáší se jen u přepravce BG Speedy)
      */
-    public const REC_ENTERANCE = 'rec_enterance';
+    public const REC_ENTRANCE = 'rec_entrance';
+
+    /**
+     * @deprecated
+     *
+     * @see self::REC_ENTRANCE
+     */
+    public const REC_ENTERANCE = self::REC_ENTRANCE;
 
     /**
      * Číslo podlaží (přenáší se jen u přepravce BG Speedy)
@@ -986,6 +993,16 @@ final class Attribute extends BaseEnum
      * Fedex account number of the shipment payer
      */
     public const ACCOUNT_NUMBER_SHIPPING_CHARGES = 'account_number_shipping_charges';
+
+    /**
+     * Export customs declarant details. Specifies who handles export customs clearance on the sender's side
+     */
+    public const EXPORT_CUSTOMS_DECLARANT = 'export_customs_declarant';
+
+    /**
+     * Specifies who handles import customs clearance on the recipient's side
+     */
+    public const IMPORT_CUSTOMS_DECLARANT = 'import_customs_declarant';
 
     /**
      * @deprecated

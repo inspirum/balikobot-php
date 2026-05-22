@@ -110,4 +110,20 @@ trait ForeignCountryDeliveryData
     {
         $this->offsetSet(Attribute::TAX_COUNTRY, $value);
     }
+
+    /**
+     * @param array<string,mixed> $value
+     */
+    public function setExportCustomsDeclarant(array $value): void
+    {
+        $this->offsetSet(Attribute::EXPORT_CUSTOMS_DECLARANT, $value);
+    }
+
+    /**
+     * @param array<string,mixed> $value
+     */
+    public function setImportCustomsDeclarant(array $value): void
+    {
+        $this->offsetSet(Attribute::IMPORT_CUSTOMS_DECLARANT, $value);
+    }
 }

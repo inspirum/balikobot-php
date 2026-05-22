@@ -7,18 +7,30 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.14.0...master)
+### Added
+- Added **CESKAPOSTA** and **BALIKOVKA** carrier aliases for CP
+- Added **ZASILKOVNA_HOME_DELIVERY_HD** service type
+- Added support for new options from documentation **v2.0214** (2026-05-20)
+  - Added **export_customs_declarant** attribute
+  - Added **import_customs_declarant** attribute
+### Fixed
+- Fixed typo: renamed `REC_ENTERANCE` constant to `REC_ENTRANCE` (old constant kept as deprecated alias)
+- Fixed typo: rename `setRecEnterance` method to `setRecEntrance`
+### Deprecated
+- Deprecated `REC_ENTERANCE` constant
+- Deprecated `setRecEnterance` method
 
 
 ## [v7.14.0 (2026-03-06)](https://github.com/inspirum/balikobot-php/compare/v7.13.0...v7.14.0)
 ### Added
 - Added support for new options from documentation **v2.028** (2026-03-25)
-  - Added **direct_signature** attributes
+  - Added **direct_signature** attribute
 - Added support for new options from documentation **v2.024** (2025-11-19)
-  - Added **battery_data** attributes
-- Added **tax_subject** attributes
-- Added **tax_country** attributes
-- Added **account_number_duties** attributes
-- Added **account_number_shipping_charges** attributes
+  - Added **battery_data** attribute
+- Added **tax_subject** attribute
+- Added **tax_country** attribute
+- Added **account_number_duties** attribute
+- Added **account_number_shipping_charges** attribute
 - Added **PPL_PRIVATE_SMART_TO_BOX** service type
 - Added **DPD_PNEU** service type
 - Added **DPD_SHOP_TO_SHOP** service type
@@ -33,11 +45,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v7.13.0 (2025-10-04)](https://github.com/inspirum/balikobot-php/compare/v7.12.0...v7.13.0)
 ### Added
 - Added support for new options from documentation **v2.015** (2025-02-19)
-  - Added **pickup_manipulation_lift** attributes
-  - Added **delivery_manipulation_lift** attributes
+  - Added **pickup_manipulation_lift** attribute
+  - Added **delivery_manipulation_lift** attribute
 - Added support for new options from documentation **v2.017** (2025-04-01)
-  - Added **rma_association** attributes
-  - Added **p_o_number** attributes
+  - Added **rma_association** attribute
+  - Added **p_o_number** attribute
 - Added support for new options from documentation **v2.020** (2025-05-05)
   - Added **INPOST** carrier
 - Added support for new options from documentation **v2.027** (2025-09-30)
@@ -79,8 +91,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v7.11.0 (2024-09-05)](https://github.com/inspirum/balikobot-php/compare/v7.10.0...v7.11.0)
 ### Added
 - Added support for new options from documentation **v1.999** (2024-07-30)
-  - Added **country_reference** attributes
-  - Added **country_reference_type** attributes
+  - Added **country_reference** attribute
+  - Added **country_reference_type** attribute
 - Added **CP_NV** service type
 - Added **ZASILKOVNA_IT_POST_PP** service type
 - Added **ZASILKOVNA_IT_POST_HD** service type
@@ -107,7 +119,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v7.9.0 (2024-04-21)](https://github.com/inspirum/balikobot-php/compare/v7.8.0...v7.9.0)
 ### Added
 - Added support for new options from documentation **v1.991** (2024-01-04)
-  - Added **customs_indicator** attributes
+  - Added **customs_indicator** attribute
 - Added **ZASILKOVNA_EE_VENIPAK_HD** service type
 - Added **ZASILKOVNA_EE_VENIPAK_PP** service type
 - Added **ZASILKOVNA_EE_VENIPAK_BOX** service type
@@ -135,7 +147,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v1.986** (2023-09-13)
   - Added **eori**, **gb_eori** and **eu_eori** attributes
 - Added support for new options from documentation **v1.989** (2023-11-27)
-  - Added **shipper_account_number** attributes
+  - Added **shipper_account_number** attribute
 - Added support for new options from documentation **v1.990** (2023-11-30)
   - Added **SDS** carrier
 

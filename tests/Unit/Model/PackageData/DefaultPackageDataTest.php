@@ -16,7 +16,7 @@ use function sprintf;
 
 final class DefaultPackageDataTest extends BaseTestCase
 {
-    private const DEPRECATED_ATTRIBUTES_COUNT = 10;
+    private const DEPRECATED_ATTRIBUTES_COUNT = 11;
 
     public function testArrayAccess(): void
     {
@@ -146,7 +146,7 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setAdrContent(['b' => '6']);
         $package->setRecHouseNumber('18/B');
         $package->setRecBlock('15');
-        $package->setRecEnterance('189-12');
+        $package->setRecEntrance('189-12');
         $package->setFloor('4');
         $package->setFlatNumber('1900');
         $package->setDeliveryCosts(15.1);
@@ -233,6 +233,12 @@ final class DefaultPackageDataTest extends BaseTestCase
         ]);
         $package->setAccountNumberDuties('1234');
         $package->setAccountNumberShippingCharges('4567');
+        $package->setExportCustomsDeclarant([
+            'ecd_type' => 'other',
+        ]);
+        $package->setImportCustomsDeclarant([
+            'icd_type' => 'other',
+        ]);
 
         $unsupportedAttributes = array_diff(Attribute::getAll(), array_keys($package->getData()));
 
@@ -335,7 +341,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::ADR_CONTENT => ['b' => '6'],
                 Attribute::REC_HOUSE_NUMBER => '18/B',
                 Attribute::REC_BLOCK => '15',
-                Attribute::REC_ENTERANCE => '189-12',
+                Attribute::REC_ENTRANCE => '189-12',
                 Attribute::REC_FLOOR => '4',
                 Attribute::REC_FLAT_NUMBER => '1900',
                 Attribute::DELIVERY_COSTS => 15.1,
@@ -421,6 +427,12 @@ final class DefaultPackageDataTest extends BaseTestCase
                 ],
                 Attribute::ACCOUNT_NUMBER_DUTIES => '1234',
                 Attribute::ACCOUNT_NUMBER_SHIPPING_CHARGES => '4567',
+                Attribute::EXPORT_CUSTOMS_DECLARANT => [
+                    'ecd_type' => 'other',
+                ],
+                Attribute::IMPORT_CUSTOMS_DECLARANT => [
+                    'icd_type' => 'other',
+                ],
             ],
             $package->__toArray(),
         );

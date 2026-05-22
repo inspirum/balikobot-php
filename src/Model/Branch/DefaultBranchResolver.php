@@ -18,6 +18,14 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::CP_NP,
                 Service::CP_NB,
             ],
+            Carrier::CESKAPOSTA => [
+                Service::CP_NP,
+                Service::CP_NB,
+            ],
+            Carrier::BALIKOVKA => [
+                Service::CP_NP,
+                Service::CP_NB,
+            ],
             Carrier::PBH => [
                 Service::PBH_DHL,
                 Service::PBH_SPS,

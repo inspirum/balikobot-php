@@ -8,7 +8,7 @@
 [![Total Downloads][ico-packagist-download]][link-packagist-download]
 [![Software License][ico-license]][link-licence]
 
-Offers implementation of Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v2.028** *(2026-03-25)*.
+Offers implementation of Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v2.0215** *(2026-05-22)*.
 
 More details are available in [changelog][link-changelog].
 

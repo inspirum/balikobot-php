@@ -16,6 +16,24 @@ final class Carrier extends BaseEnum
     public const CP = 'cp';
 
     /**
+     * Česká pošta
+     *
+     * Alias for CP
+     *
+     * @see self::CP
+     */
+    public const CESKAPOSTA = 'ceskaposta';
+
+    /**
+     * Česká pošta - Balikovna
+     *
+     * Alias for CP
+     *
+     * @see self::CP
+     */
+    public const BALIKOVKA = 'balikovna';
+
+    /**
      * DPD
      */
     public const DPD = 'dpd';

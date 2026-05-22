@@ -164,9 +164,17 @@ trait DeliveryData
         $this->offsetSet(Attribute::REC_BLOCK, $recBlock);
     }
 
+    public function setRecEntrance(string $recEnteracne): void
+    {
+        $this->offsetSet(Attribute::REC_ENTRANCE, $recEnteracne);
+    }
+
+    /**
+     * @deprecated
+     */
     public function setRecEnterance(string $recEnteracne): void
     {
-        $this->offsetSet(Attribute::REC_ENTERANCE, $recEnteracne);
+        $this->setRecEntrance($recEnteracne);
     }
 
     public function setFloor(string $recFloor): void

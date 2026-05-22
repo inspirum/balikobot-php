@@ -688,6 +688,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_BG_BOXNOW_BOX = '33777';
 
     /**
+     * BG Doručení na adresu HD
+     */
+    public const ZASILKOVNA_HOME_DELIVERY_HD = '23603';
+
+    /**
      * GB FedEx HD Connect Plus
      */
     public const ZASILKOVNA_GB_FEDEX_HD_CONNECT_PLUS = '24808';
@@ -1941,6 +1946,7 @@ final class Service extends BaseEnum
 
     /**
      * @deprecated
+     *
      * @see FEDEX_REGIONAL_FREIGHT
      */
     public const FEDEX_REGIONAL_REIGHT = self::FEDEX_REGIONAL_FREIGHT;
@@ -2508,6 +2514,8 @@ final class Service extends BaseEnum
     {
         return [
             Carrier::CP => self::cp(),
+            Carrier::CESKAPOSTA => self::cp(),
+            Carrier::BALIKOVKA => self::cp(),
             Carrier::DPD => self::dpd(),
             Carrier::DHL => self::dhl(),
             Carrier::GEIS => self::geis(),
@@ -2560,7 +2568,7 @@ final class Service extends BaseEnum
             self::CP_DV,
             self::CP_BA,
             self::CP_BB,
-            self::CP_BN,
+            // self::CP_BN,
             self::CP_NB,
             self::CP_DT,
             // self::CP_DS,
@@ -2796,6 +2804,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_BG_SAMEDAY_HD,
             self::ZASILKOVNA_BG_SAMEDAY_BOX,
             self::ZASILKOVNA_BG_BOXNOW_BOX,
+            self::ZASILKOVNA_HOME_DELIVERY_HD,
             self::ZASILKOVNA_GB_FEDEX_HD_CONNECT_PLUS,
             self::ZASILKOVNA_GB_FEDEX_HD_PRIORITY,
             self::ZASILKOVNA_CY_BOXNOW_BOX,
