@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Inspirum\Balikobot\Tests\Unit\Model\ManipulationUnit;
+namespace Inspirum\Balikobot\Tests\Unit\Model\Status;
 
 use DateTimeImmutable;
 use Inspirum\Balikobot\Definitions\Carrier;

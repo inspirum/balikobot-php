@@ -50,7 +50,7 @@ interface PackageService
     public function dropPackageByPackageId(string $carrier, string $packageId): void;
 
     /**
-     * Drops packages by theirs package IDs
+     * Drops packages by their package IDs
      *
      * @param list<string> $packageIds
      *
@@ -66,7 +66,7 @@ interface PackageService
     public function orderShipment(PackageCollection $packages): OrderedShipment;
 
     /**
-     * Order shipment for packages by theirs IDs
+     * Order shipment for packages by their IDs
      *
      * @param list<string> $packageIds
      *
@@ -75,7 +75,7 @@ interface PackageService
     public function orderShipmentByPackageIds(string $carrier, array $packageIds): OrderedShipment;
 
     /**
-     * Get packages which was not yet sent
+     * Get packages which have not yet been sent
      *
      * @throws \Inspirum\Balikobot\Exception\Exception
      */
@@ -89,7 +89,7 @@ interface PackageService
     public function getLabels(PackageCollection $packages): string;
 
     /**
-     * Get labels PDF link for packages by theirs IDs
+     * Get labels PDF link for packages by their IDs
      *
      * @param list<string> $packageIds
      *

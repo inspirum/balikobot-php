@@ -33,7 +33,7 @@ abstract class BaseException extends RuntimeException implements Exception
     protected array $errors = [];
 
     /**
-     * AbstractException constructor
+     * BaseException constructor
      *
      * @param array<mixed> $response
      */

@@ -1940,9 +1940,15 @@ final class Service extends BaseEnum
     public const FEDEX_REGIONAL_EXPRESS_FREIGHT = '68';
 
     /**
+     * @deprecated
+     * @see FEDEX_REGIONAL_FREIGHT
+     */
+    public const FEDEX_REGIONAL_REIGHT = self::FEDEX_REGIONAL_FREIGHT;
+
+    /**
      * FedEx Priority Freight
      */
-    public const FEDEX_REGIONAL_REIGHT = '69';
+    public const FEDEX_REGIONAL_FREIGHT = '69';
 
     /**
      * Fofr
@@ -2112,7 +2118,7 @@ final class Service extends BaseEnum
     /**
      * DHLFREIGHTEC EuroConnect International B2C
      */
-    public const DHLFREIGHTEC_ELI_B2C = 'ECI_B2C';
+    public const DHLFREIGHTEC_ECI_B2C = 'ECI_B2C';
 
     /**
      * DHLFREIGHTEC EuroLine Domestic
@@ -2320,22 +2326,22 @@ final class Service extends BaseEnum
     public const LIFTAGO_STANDARD_22 = 'standard-20-22';
 
     /**
-     * Liftago SLot 10-12h
+     * Liftago Slot 10-12h
      */
     public const LIFTAGO_SLOT_12 = 'SLOT10-12';
 
     /**
-     * Liftago SLot 12-15h
+     * Liftago Slot 12-15h
      */
     public const LIFTAGO_SLOT_15 = 'SLOT12-15';
 
     /**
-     * Liftago SLot 13-16h
+     * Liftago Slot 13-16h
      */
     public const LIFTAGO_SLOT_16 = 'SLOT13-16';
 
     /**
-     * Liftago SLot 18-21h
+     * Liftago Slot 18-21h
      */
     public const LIFTAGO_SLOT_21 = 'SLOT18-21';
 
@@ -2458,7 +2464,7 @@ final class Service extends BaseEnum
     public const INPOST_LOCKER_ECONOMY = 'inpost_locker_economy';
 
     /**
-     * Kurier standard"
+     * Kurier standard
      */
     public const INPOST_COURIER_STANDARD = 'inpost_courier_standard';
 
@@ -3033,7 +3039,7 @@ final class Service extends BaseEnum
             self::FEDEX_PRIORITY_EXPRESS,
             self::FEDEX_PRIORITY,
             self::FEDEX_REGIONAL_EXPRESS_FREIGHT,
-            self::FEDEX_REGIONAL_REIGHT,
+            self::FEDEX_REGIONAL_FREIGHT,
         ];
     }
 
@@ -3116,7 +3122,7 @@ final class Service extends BaseEnum
             self::DHLFREIGHTEC_ECD_B2B,
             self::DHLFREIGHTEC_ECD_B2C,
             self::DHLFREIGHTEC_ECI,
-            self::DHLFREIGHTEC_ELI_B2C,
+            self::DHLFREIGHTEC_ECI_B2C,
             self::DHLFREIGHTEC_ERI,
             self::DHLFREIGHTEC_ELD,
             self::DHLFREIGHTEC_ELI,
