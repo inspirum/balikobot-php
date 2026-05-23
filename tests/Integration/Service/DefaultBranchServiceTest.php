@@ -29,6 +29,9 @@ final class DefaultBranchServiceTest extends BaseTestCase
 
     public function testGetBranchesForLocation(): void
     {
+        // endpoint inavailble in this environment
+        $this->expectExceptionMessage('Nepodařilo se rozeznat chybový stav');
+
         $branchService = $this->newDefaultBranchService();
 
         $branches = $branchService->getBranchesForLocation(

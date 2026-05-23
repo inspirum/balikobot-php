@@ -398,6 +398,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageData->setRecPhone('776555888');
         $packageData->setPrice(1000.00);
         $packageData->setContent('test');
+        $packageData->setContentPackage('test');
 
         $packagesData = new DefaultPackageDataCollection(Carrier::UPS, [
             $packageData,

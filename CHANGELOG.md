@@ -13,8 +13,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added support for new options from documentation **v2.0214** (2026-05-20)
   - Added **export_customs_declarant** attribute
   - Added **import_customs_declarant** attribute
+- Added support for new options from documentation **v2.029** (2026-03-30)
+  - Added **content_package** attribute
+  - Added **rec_residential** attribute
 ### Fixed
-- Fixed typo: renamed `REC_ENTERANCE` constant to `REC_ENTRANCE` (old constant kept as deprecated alias)
+- Fixed typo: renamed `REC_ENTERANCE` constant to `REC_ENTRANCE`
 - Fixed typo: rename `setRecEnterance` method to `setRecEntrance`
 ### Deprecated
 - Deprecated `REC_ENTERANCE` constant

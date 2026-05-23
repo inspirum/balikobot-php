@@ -69,6 +69,11 @@ trait ParcelPackageData
         $this->offsetSet(Attribute::CONTENT, $content);
     }
 
+    public function setContentPackage(string $content): void
+    {
+        $this->offsetSet(Attribute::CONTENT_PACKAGE, $content);
+    }
+
     public function setGetPiecesNumbers(bool $getPiecesNumbers = true): void
     {
         $this->offsetSet(Attribute::GET_PIECES_NUMBERS, (int) $getPiecesNumbers);

@@ -18,6 +18,11 @@ trait CustomerData
         $this->offsetSet(Attribute::REC_FIRM, $firm);
     }
 
+    public function setRecResidental(bool $residental = true): void
+    {
+        $this->offsetSet(Attribute::REC_RESIDENTIAL, (int) $residental);
+    }
+
     public function setRecStreet(string $street): void
     {
         $this->offsetSet(Attribute::REC_STREET, $street);

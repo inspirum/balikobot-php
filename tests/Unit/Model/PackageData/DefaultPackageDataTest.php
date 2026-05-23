@@ -64,6 +64,7 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setVS('67890');
         $package->setRecName('Name');
         $package->setRecFirm('Firm');
+        $package->setRecResidental(true);
         $package->setRecNamePatronymum('Patronymum');
         $package->setRecStreet('Street');
         $package->setRecStreetAppend('12a');
@@ -111,6 +112,7 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setReturnTrack(true);
         $package->setBankAccountNumber('56789/0900');
         $package->setContent('content');
+        $package->setContentPackage('content_package');
         $package->setTermsOfTrade('terms an terms');
         $package->setTermsOfTradeLocation('Prague');
         $package->setInvoicePDF('base64:pdf');
@@ -259,6 +261,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::VS => '67890',
                 Attribute::REC_NAME => 'Name',
                 Attribute::REC_FIRM => 'Firm',
+                Attribute::REC_RESIDENTIAL => true,
                 Attribute::REC_NAME_PATRONYMUM => 'Patronymum',
                 Attribute::REC_STREET => 'Street',
                 Attribute::REC_STREET_APPEND => '12a',
@@ -306,6 +309,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::RETURN_TRACK => 1,
                 Attribute::BANK_ACCOUNT_NUMBER => '56789/0900',
                 Attribute::CONTENT => 'content',
+                Attribute::CONTENT_PACKAGE => 'content_package',
                 Attribute::TERMS_OF_TRADE => 'terms an terms',
                 Attribute::TERMS_OF_TRADE_LOCATION => 'Prague',
                 Attribute::INVOICE_PDF => 'base64:pdf',

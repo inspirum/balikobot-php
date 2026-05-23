@@ -155,6 +155,11 @@ final class Attribute extends BaseEnum
     public const REC_PHONE = 'rec_phone';
 
     /**
+     * This attribute allows the customer to set the recipient address as residential
+     */
+    public const REC_RESIDENTIAL = 'rec_residential';
+
+    /**
      * Customer ID
      */
     public const REC_ID = 'rec_id';
@@ -356,8 +361,13 @@ final class Attribute extends BaseEnum
     public const CONTENT = 'content';
 
     /**
-     * Terms and Conditions
+     * Text content of the shipment
      * string
+     */
+    public const CONTENT_PACKAGE = 'content_package';
+
+    /**
+     * General description of the package (maximum 35 characters).
      */
     public const TERMS_OF_TRADE = 'terms_of_trade';
 
