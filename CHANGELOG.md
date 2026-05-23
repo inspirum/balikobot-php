@@ -6,7 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.14.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.15.0...master)
+
+
+## [v7.15.0 (2026-05-23)](https://github.com/inspirum/balikobot-php/compare/v7.14.0...v7.15.0)
 ### Added
 - Added **CESKAPOSTA** and **BALIKOVKA** carrier aliases for CP
 - Added **ZASILKOVNA_HOME_DELIVERY_HD** service type
