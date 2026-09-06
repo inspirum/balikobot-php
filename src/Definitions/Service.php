@@ -2097,6 +2097,11 @@ final class Service extends BaseEnum
     public const SPRING_UNTRACKED = 'UNTR';
 
     /**
+     * Spring PUDO
+     */
+    public const SPRING_PUDO = 'CLLCT';
+
+    /**
      * DSV Road
      */
     public const DSV_ROAD = 'road';
@@ -3112,6 +3117,7 @@ final class Service extends BaseEnum
             self::SPRING_TRACKED,
             self::SPRING_SIGNATURED,
             self::SPRING_UNTRACKED,
+            self::SPRING_PUDO,
         ];
     }
 

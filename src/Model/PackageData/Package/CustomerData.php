@@ -23,6 +23,14 @@ trait CustomerData
         $this->offsetSet(Attribute::REC_RESIDENTIAL, (int) $residental);
     }
 
+    /**
+     * @param array<string,mixed> $value
+     */
+    public function setRecTin(array $value): void
+    {
+        $this->offsetSet(Attribute::REC_TIN, $value);
+    }
+
     public function setRecStreet(string $street): void
     {
         $this->offsetSet(Attribute::REC_STREET, $street);

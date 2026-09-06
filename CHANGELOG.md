@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.15.0...master)
+### Added
+- Added support for new options from documentation **v2.02117** (2026-07-20)
+  - Added **mu_sub_type** attribute
+  - Added **mu_sub_count** attribute
+- Added support for new options from documentation **v2.02114** (2026-07-02)
+  - Added **consign_password** attribute
+- Added support for new options from documentation **v2.02113** (2026-06-30)
+  - Added **SPRING_PUDO** service type
+- Added support for new options from documentation **v2.0219** (2026-06-18)
+  - Added **vdl_service_document** attribute
+- Added support for new options from documentation **v2.0218** (2026-06-01)
+  - Added **rec_tin** attribute
+- Added support for new options from documentation **v2.0216** (2026-05-27)
+  - Added **country_reference_key** attribute
 
 
 ## [v7.15.0 (2026-05-23)](https://github.com/inspirum/balikobot-php/compare/v7.14.0...v7.15.0)

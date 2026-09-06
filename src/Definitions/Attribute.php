@@ -1015,6 +1015,36 @@ final class Attribute extends BaseEnum
     public const IMPORT_CUSTOMS_DECLARANT = 'import_customs_declarant';
 
     /**
+     * Reference number "SENT" key, mandatory when country_reference is used and rec_country is PL
+     */
+    public const COUNTRY_REFERENCE_KEY = 'country_reference_key';
+
+    /**
+     * Recipient tax identification number details for customs clearance purpose
+     */
+    public const REC_TIN = 'rec_tin';
+
+    /**
+     * Document value for the Document Return Service (VDL), used only when vdl_service is enabled
+     */
+    public const VDL_SERVICE_DOCUMENT = 'vdl_service_document';
+
+    /**
+     * Request a box deposit password returned in the ADD response
+     */
+    public const CONSIGN_PASSWORD = 'consign_password';
+
+    /**
+     * Sub-type of the manipulation unit, used when manipulation units are stacked on top of each other
+     */
+    public const MU_SUB_TYPE = 'mu_sub_type';
+
+    /**
+     * Number of pieces of the given manipulation unit sub-type
+     */
+    public const MU_SUB_COUNT = 'mu_sub_count';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

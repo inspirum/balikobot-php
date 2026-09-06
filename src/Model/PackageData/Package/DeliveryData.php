@@ -267,6 +267,11 @@ trait DeliveryData
         $this->offsetSet(Attribute::DIRECT_SIGNATURE, $value);
     }
 
+    public function setConsignPassword(bool $value = true): void
+    {
+        $this->offsetSet(Attribute::CONSIGN_PASSWORD, $value);
+    }
+
     public function setAccountNumberDuties(string $value): void
     {
         $this->offsetSet(Attribute::ACCOUNT_NUMBER_DUTIES, $value);

@@ -19,6 +19,16 @@ trait ParcelPackageData
         $this->offsetSet(Attribute::PIECES_COUNT, $piecesCount);
     }
 
+    public function setMuSubType(string $muSubType): void
+    {
+        $this->offsetSet(Attribute::MU_SUB_TYPE, $muSubType);
+    }
+
+    public function setMuSubCount(int $muSubCount): void
+    {
+        $this->offsetSet(Attribute::MU_SUB_COUNT, $muSubCount);
+    }
+
     public function setMuTypeOne(string $muType): void
     {
         $this->offsetSet(Attribute::MU_TYPE_ONE, $muType);
@@ -110,6 +120,11 @@ trait ParcelPackageData
     public function setVDLService(bool $vdlService): void
     {
         $this->offsetSet(Attribute::VDL_SERVICE, (int) $vdlService);
+    }
+
+    public function setVDLServiceDocument(string $value): void
+    {
+        $this->offsetSet(Attribute::VDL_SERVICE_DOCUMENT, $value);
     }
 
     public function setContentIssueDate(DateTimeInterface $deliveryDate): void

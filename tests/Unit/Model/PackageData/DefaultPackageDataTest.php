@@ -65,6 +65,10 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setRecName('Name');
         $package->setRecFirm('Firm');
         $package->setRecResidental(true);
+        $package->setRecTin([
+            'tin_number' => '123456789',
+            'tin_type' => 'BUSINESS_UNION',
+        ]);
         $package->setRecNamePatronymum('Patronymum');
         $package->setRecStreet('Street');
         $package->setRecStreetAppend('12a');
@@ -90,9 +94,12 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setSwap(true);
         $package->setSwapOption('Option');
         $package->setVDLService(true);
+        $package->setVDLServiceDocument('DOC123');
         $package->setVolume(4);
         $package->setMuType('MU_1');
         $package->setPiecesCount(1);
+        $package->setMuSubType('YA');
+        $package->setMuSubCount(3);
         $package->setMuTypeOne('MU_1');
         $package->setPiecesCountOne(1);
         $package->setMuTypeTwo('MU_2');
@@ -221,11 +228,13 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setCustomIndicator(true);
         $package->setCountryReference('RO123');
         $package->setCountryReferenceType('UIT');
+        $package->setCountryReferenceKey('SENT');
         $package->setRmaAssociation('rma');
         $package->setPONumber('123456');
         $package->setPickupManipulationLift(true);
         $package->setDeliveryManipulationLift(true);
         $package->setDirectSignature(true);
+        $package->setConsignPassword(true);
         $package->setTaxSubject(true);
         $package->setTaxCountry('CZ');
         $package->setBatteryData([
@@ -262,6 +271,10 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::REC_NAME => 'Name',
                 Attribute::REC_FIRM => 'Firm',
                 Attribute::REC_RESIDENTIAL => true,
+                Attribute::REC_TIN => [
+                    'tin_number' => '123456789',
+                    'tin_type' => 'BUSINESS_UNION',
+                ],
                 Attribute::REC_NAME_PATRONYMUM => 'Patronymum',
                 Attribute::REC_STREET => 'Street',
                 Attribute::REC_STREET_APPEND => '12a',
@@ -287,9 +300,12 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::SWAP => 1,
                 Attribute::SWAP_OPTION => 'Option',
                 Attribute::VDL_SERVICE => 1,
+                Attribute::VDL_SERVICE_DOCUMENT => 'DOC123',
                 Attribute::VOLUME => 4.0,
                 Attribute::MU_TYPE => 'MU_1',
                 Attribute::PIECES_COUNT => 1,
+                Attribute::MU_SUB_TYPE => 'YA',
+                Attribute::MU_SUB_COUNT => 3,
                 Attribute::MU_TYPE_ONE => 'MU_1',
                 Attribute::PIECES_COUNT_ONE => 1,
                 Attribute::MU_TYPE_TWO => 'MU_2',
@@ -417,11 +433,13 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::CUSTOMS_INDICATOR => 1,
                 Attribute::COUNTRY_REFERENCE => 'RO123',
                 Attribute::COUNTRY_REFERENCE_TYPE => 'UIT',
+                Attribute::COUNTRY_REFERENCE_KEY => 'SENT',
                 Attribute::RMA_ASSOCIATION => 'rma',
                 Attribute::P_O_NUMBER => '123456',
                 Attribute::PICKUP_MANIPULATION_LIFT => true,
                 Attribute::DELIVERY_MANIPULATION_LIFT => true,
                 Attribute::DIRECT_SIGNATURE => true,
+                Attribute::CONSIGN_PASSWORD => true,
                 Attribute::TAX_SUBJECT => true,
                 Attribute::TAX_COUNTRY => 'CZ',
                 Attribute::BATTERY_DATA => [
