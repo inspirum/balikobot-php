@@ -127,7 +127,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageService = $this->newDefaultPackageService();
 
         $packageData = new DefaultPackageData();
-        $packageData->setServiceType(Service::CP_DR);
+        $packageData->setServiceType(Service::CP_SR);
         $packageData->setBranchId('12');
         $packageData->setRecName('Tomáš Novák');
         $packageData->setRecEmail('tets@test.cz');
@@ -137,6 +137,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageData->setRecCountry(Country::CZECH_REPUBLIC);
         $packageData->setRecPhone('776555888');
         $packageData->setPrice(1000.00);
+        $packageData->setWeight(0.001);
 
         $packagesData = new DefaultPackageDataCollection(Carrier::CP, [
             $packageData,

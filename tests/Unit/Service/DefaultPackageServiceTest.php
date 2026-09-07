@@ -35,11 +35,11 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
             $this->mockClientResponse(),
         ];
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(PackageCollection::class);
+        $expectedResult = self::createStub(PackageCollection::class);
 
-        $collection = $this->createMock(PackageDataCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('__toArray')->willReturn($packages);
+        $collection = self::createStub(PackageDataCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('__toArray')->willReturn($packages);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -67,9 +67,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         ];
         $response = $this->mockClientResponse();
 
-        $collection = $this->createMock(PackageCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('getPackageIds')->willReturn($packageIds);
+        $collection = self::createStub(PackageCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('getPackageIds')->willReturn($packageIds);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -91,9 +91,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         $packageId = '1234';
         $response = $this->mockClientResponse();
 
-        $model = $this->createMock(Package::class);
-        $model->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $model->expects(self::any())->method('getPackageId')->willReturn($packageId);
+        $model = self::createStub(Package::class);
+        $model->method('getCarrier')->willReturn($carrier);
+        $model->method('getPackageId')->willReturn($packageId);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -172,11 +172,11 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
             '5678',
         ];
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(OrderedShipment::class);
+        $expectedResult = self::createStub(OrderedShipment::class);
 
-        $collection = $this->createMock(PackageCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('getPackageIds')->willReturn($packageIds);
+        $collection = self::createStub(PackageCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('getPackageIds')->willReturn($packageIds);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -203,7 +203,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
             '5678',
         ];
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(OrderedShipment::class);
+        $expectedResult = self::createStub(OrderedShipment::class);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -233,7 +233,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         $response = [
             'package_ids' => $packageIds,
         ];
-        $expectedResult = $this->createMock(OrderedShipment::class);
+        $expectedResult = self::createStub(OrderedShipment::class);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -256,7 +256,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::PPL;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(PackageCollection::class);
+        $expectedResult = self::createStub(PackageCollection::class);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -285,9 +285,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         $expectedResult = 'mockedLabelsUrl';
         $response = $this->mockClientResponse();
 
-        $collection = $this->createMock(PackageCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('getPackageIds')->willReturn($packageIds);
+        $collection = self::createStub(PackageCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('getPackageIds')->willReturn($packageIds);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -340,10 +340,10 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         $batchID = '11';
         $response = $this->mockClientResponse();
 
-        $model = $this->createMock(Package::class);
-        $model->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $model->expects(self::any())->method('getCarrierId')->willReturn($carrierId);
-        $model->expects(self::any())->method('getBatchId')->willReturn($batchID);
+        $model = self::createStub(Package::class);
+        $model->method('getCarrier')->willReturn($carrier);
+        $model->method('getCarrierId')->willReturn($carrierId);
+        $model->method('getBatchId')->willReturn($batchID);
 
         $expectedResult = $this->createMock(PackageData::class);
         $expectedResult->expects(self::once())->method('setEID')->with($batchID);
@@ -371,7 +371,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         $packageId = '4561';
         $response = $this->mockClientResponse();
 
-        $expectedResult = $this->createMock(PackageData::class);
+        $expectedResult = self::createStub(PackageData::class);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -396,7 +396,7 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         $carrierId = '9876';
         $response = $this->mockClientResponse();
 
-        $expectedResult = $this->createMock(PackageData::class);
+        $expectedResult = self::createStub(PackageData::class);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -424,9 +424,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         ];
         $response = $this->mockClientResponse();
 
-        $collection = $this->createMock(PackageDataCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('__toArray')->willReturn($packages);
+        $collection = self::createStub(PackageDataCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('__toArray')->willReturn($packages);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -449,9 +449,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         $expectedResult = 'mockedFileUrl';
         $response = $this->mockClientResponse();
 
-        $model = $this->createMock(Package::class);
-        $model->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $model->expects(self::any())->method('getCarrierId')->willReturn($carrierId);
+        $model = self::createStub(Package::class);
+        $model->method('getCarrier')->willReturn($carrier);
+        $model->method('getCarrierId')->willReturn($carrierId);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -487,9 +487,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         ];
         $response = $this->mockClientResponse();
 
-        $collection = $this->createMock(PackageCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('getCarrierIds')->willReturn($carrierIds);
+        $collection = self::createStub(PackageCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('getCarrierIds')->willReturn($carrierIds);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -582,11 +582,11 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
             $this->mockClientResponse(),
         ];
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(TransportCostCollection::class);
+        $expectedResult = self::createStub(TransportCostCollection::class);
 
-        $collection = $this->createMock(PackageDataCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('__toArray')->willReturn($packages);
+        $collection = self::createStub(PackageDataCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('__toArray')->willReturn($packages);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -611,11 +611,11 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
             $this->mockClientResponse(),
         ];
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(PackageCollection::class);
+        $expectedResult = self::createStub(PackageCollection::class);
 
-        $collection = $this->createMock(PackageDataCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('__toArray')->willReturn($packages);
+        $collection = self::createStub(PackageDataCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('__toArray')->willReturn($packages);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -721,11 +721,11 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
             $this->mockClientResponse(),
         ];
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(PackageCollection::class);
+        $expectedResult = self::createStub(PackageCollection::class);
 
-        $collection = $this->createMock(PackageDataCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('__toArray')->willReturn($packages);
+        $collection = self::createStub(PackageDataCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('__toArray')->willReturn($packages);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -751,9 +751,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         ];
         $response = $this->mockClientResponse();
 
-        $collection = $this->createMock(PackageDataCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('__toArray')->willReturn($packages);
+        $collection = self::createStub(PackageDataCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('__toArray')->willReturn($packages);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -778,9 +778,9 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
         ];
         $response = $this->mockClientResponse();
 
-        $collection = $this->createMock(PackageDataCollection::class);
-        $collection->expects(self::any())->method('getCarrier')->willReturn($carrier);
-        $collection->expects(self::any())->method('__toArray')->willReturn($packages);
+        $collection = self::createStub(PackageDataCollection::class);
+        $collection->method('getCarrier')->willReturn($carrier);
+        $collection->method('__toArray')->willReturn($packages);
 
         $packageService = $this->newDefaultPackageService(
             client: $this->mockClient([
@@ -878,12 +878,12 @@ final class DefaultPackageServiceTest extends BaseServiceTestCase
     ): DefaultPackageService {
         return new DefaultPackageService(
             $client,
-            $packageDataFactory ?? $this->createMock(PackageDataFactory::class),
-            $packageFactory ?? $this->createMock(PackageFactory::class),
-            $orderedShipmentFactory ?? $this->createMock(OrderedShipmentFactory::class),
-            $labelFactory ?? $this->createMock(LabelFactory::class),
-            $proofOfDeliveryFactory ?? $this->createMock(ProofOfDeliveryFactory::class),
-            $transportCostFactory ?? $this->createMock(TransportCostFactory::class),
+            $packageDataFactory ?? self::createStub(PackageDataFactory::class),
+            $packageFactory ?? self::createStub(PackageFactory::class),
+            $orderedShipmentFactory ?? self::createStub(OrderedShipmentFactory::class),
+            $labelFactory ?? self::createStub(LabelFactory::class),
+            $proofOfDeliveryFactory ?? self::createStub(ProofOfDeliveryFactory::class),
+            $transportCostFactory ?? self::createStub(TransportCostFactory::class),
         );
     }
 }

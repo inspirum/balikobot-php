@@ -8,7 +8,6 @@ use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Exception\UnauthorizedException;
 use function array_is_list;
 use function count;
-use function max;
 
 final class Validator
 {
@@ -28,7 +27,7 @@ final class Validator
 
         // request error
         if ($statusCode >= 400) {
-            throw new BadRequestException($response, (int) max($statusCode, $response['status'] ?? 0));
+            throw new BadRequestException($response, $statusCode);
         }
     }
 

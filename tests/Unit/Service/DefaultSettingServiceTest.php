@@ -34,7 +34,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     public function testGetCarriers(): void
     {
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(CarrierCollection::class);
+        $expectedResult = self::createStub(CarrierCollection::class);
 
         $infoService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, null, Method::INFO_CARRIERS], $response),
@@ -50,7 +50,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::ZASILKOVNA;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(CarrierModel::class);
+        $expectedResult = self::createStub(CarrierModel::class);
 
         $infoService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, null, Method::INFO_CARRIERS, [], $carrier], $response),
@@ -66,7 +66,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::CP;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ServiceCollection::class);
+        $expectedResult = self::createStub(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::SERVICES], $response),
@@ -82,7 +82,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::CP;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ServiceCollection::class);
+        $expectedResult = self::createStub(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::ACTIVATED_SERVICES], $response),
@@ -98,7 +98,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::CP;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ServiceCollection::class);
+        $expectedResult = self::createStub(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::B2A_SERVICES], $response),
@@ -114,7 +114,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::CP;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ManipulationUnitCollection::class);
+        $expectedResult = self::createStub(ManipulationUnitCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::MANIPULATION_UNITS], $response),
@@ -130,7 +130,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::TOPTRANS;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ManipulationUnitCollection::class);
+        $expectedResult = self::createStub(ManipulationUnitCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::ACTIVATED_MANIPULATION_UNITS], $response),
@@ -146,7 +146,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::CP;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ServiceCollection::class);
+        $expectedResult = self::createStub(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::CASH_ON_DELIVERY_COUNTRIES], $response),
@@ -162,7 +162,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::CP;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ServiceCollection::class);
+        $expectedResult = self::createStub(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::COUNTRIES], $response),
@@ -177,7 +177,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     public function testGetCountriesData(): void
     {
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(CountryCollection::class);
+        $expectedResult = self::createStub(CountryCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, null, Method::GET_COUNTRIES_DATA], $response),
@@ -195,7 +195,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $serviceType = Service::CP_DR;
         $country = Country::CZECH_REPUBLIC;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ZipCodeIterator::class);
+        $expectedResult = self::createStub(ZipCodeIterator::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::ZIP_CODES, [], sprintf('%s/%s', $serviceType, $country)], $response),
@@ -211,7 +211,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::TOPTRANS;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(AdrUnitCollection::class);
+        $expectedResult = self::createStub(AdrUnitCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::FULL_ADR_UNITS], $response),
@@ -227,7 +227,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::CP;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(AttributeCollection::class);
+        $expectedResult = self::createStub(AttributeCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::ADD_ATTRIBUTES], $response),
@@ -243,7 +243,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     {
         $carrier = Carrier::CP;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ServiceCollection::class);
+        $expectedResult = self::createStub(ServiceCollection::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::ADD_SERVICE_OPTIONS], $response),
@@ -260,7 +260,7 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
         $carrier = Carrier::CP;
         $serviceType = Service::CP_DR;
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ServiceModel::class);
+        $expectedResult = self::createStub(ServiceModel::class);
 
         $settingService = $this->newDefaultSettingService(
             client: $this->mockClient([Version::V2V1, $carrier, Method::ADD_SERVICE_OPTIONS, [], $serviceType], $response),
@@ -370,13 +370,13 @@ final class DefaultSettingServiceTest extends BaseServiceTestCase
     ): DefaultSettingService {
         return new DefaultSettingService(
             $client,
-            $carrierFactory ?? $this->createMock(CarrierFactory::class),
-            $serviceFactory ?? $this->createMock(ServiceFactory::class),
-            $unitFactory ?? $this->createMock(ManipulationUnitFactory::class),
-            $countryFactory ?? $this->createMock(CountryFactory::class),
-            $zipCodeFactory ?? $this->createMock(ZipCodeFactory::class),
-            $adrUnitFactory ?? $this->createMock(AdrUnitFactory::class),
-            $attributeFactory ?? $this->createMock(AttributeFactory::class),
+            $carrierFactory ?? self::createStub(CarrierFactory::class),
+            $serviceFactory ?? self::createStub(ServiceFactory::class),
+            $unitFactory ?? self::createStub(ManipulationUnitFactory::class),
+            $countryFactory ?? self::createStub(CountryFactory::class),
+            $zipCodeFactory ?? self::createStub(ZipCodeFactory::class),
+            $adrUnitFactory ?? self::createStub(AdrUnitFactory::class),
+            $attributeFactory ?? self::createStub(AttributeFactory::class),
         );
     }
 }

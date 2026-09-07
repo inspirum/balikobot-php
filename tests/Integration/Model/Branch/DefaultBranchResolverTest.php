@@ -27,8 +27,8 @@ final class DefaultBranchResolverTest extends BaseTestCase
     {
         $branchResolver = new DefaultBranchResolver();
 
-        $mockedBranchResolver = $this->createMock(BranchResolver::class);
-        $mockedBranchResolver->expects(self::any())->method('hasFullBranchesSupport')->willReturn(true);
+        $mockedBranchResolver = self::createStub(BranchResolver::class);
+        $mockedBranchResolver->method('hasFullBranchesSupport')->willReturn(true);
         $branchService = $this->newDefaultBranchService($mockedBranchResolver);
 
         try {
@@ -66,8 +66,8 @@ final class DefaultBranchResolverTest extends BaseTestCase
     {
         $branchResolver = new DefaultBranchResolver();
 
-        $mockedBranchResolver = $this->createMock(BranchResolver::class);
-        $mockedBranchResolver->expects(self::any())->method('hasBranchCountryFilterSupport')->willReturn(true);
+        $mockedBranchResolver = self::createStub(BranchResolver::class);
+        $mockedBranchResolver->method('hasBranchCountryFilterSupport')->willReturn(true);
         $branchService = $this->newDefaultBranchService($mockedBranchResolver);
 
         $countries = [Country::CZECH_REPUBLIC, 'EE'];

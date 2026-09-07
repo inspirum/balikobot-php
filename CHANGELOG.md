@@ -27,6 +27,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **country_reference_key** attribute
 ### Changed
 - Changed **CESKAPOSTA** and **BALIKOVKA** carriers to use their own service list instead of the **CP** alias
+- Changed response validation to use the `status` code from the response body and fall back to the HTTP status code only when the body does not contain one
+### Fixed
+- Fixed valid responses being rejected when the API returns an HTTP status code that contradicts the `status` code in the response body (e.g. `BRANCHLOCATOR` returning HTTP 400 with `"status": 200`)
 
 
 ## [v7.15.0 (2026-05-23)](https://github.com/inspirum/balikobot-php/compare/v7.14.0...v7.15.0)

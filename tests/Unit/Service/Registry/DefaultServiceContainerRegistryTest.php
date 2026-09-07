@@ -14,9 +14,9 @@ final class DefaultServiceContainerRegistryTest extends BaseTestCase
     public function testRegistry(): void
     {
         $items = [
-            'default' => $this->createMock(ServiceContainer::class),
-            'test1' => $this->createMock(ServiceContainer::class),
-            'test2' => $this->createMock(ServiceContainer::class),
+            'default' => self::createStub(ServiceContainer::class),
+            'test1' => self::createStub(ServiceContainer::class),
+            'test2' => self::createStub(ServiceContainer::class),
         ];
 
         $registry = new DefaultServiceContainerRegistry($items);
@@ -31,9 +31,9 @@ final class DefaultServiceContainerRegistryTest extends BaseTestCase
         $this->expectExceptionMessageMatches('/Service container for "test3" connection is not available/');
 
         $items = [
-            'default' => $this->createMock(ServiceContainer::class),
-            'test1' => $this->createMock(ServiceContainer::class),
-            'test2' => $this->createMock(ServiceContainer::class),
+            'default' => self::createStub(ServiceContainer::class),
+            'test1' => self::createStub(ServiceContainer::class),
+            'test2' => self::createStub(ServiceContainer::class),
         ];
 
         $registry = new DefaultServiceContainerRegistry($items);
@@ -47,8 +47,8 @@ final class DefaultServiceContainerRegistryTest extends BaseTestCase
         $this->expectExceptionMessageMatches('/Service container for "default" connection is not available/');
 
         $items = [
-            'test1' => $this->createMock(ServiceContainer::class),
-            'test2' => $this->createMock(ServiceContainer::class),
+            'test1' => self::createStub(ServiceContainer::class),
+            'test2' => self::createStub(ServiceContainer::class),
         ];
 
         $registry = new DefaultServiceContainerRegistry($items);
@@ -61,8 +61,8 @@ final class DefaultServiceContainerRegistryTest extends BaseTestCase
     public function testRegistryCustomDefaultKey(): void
     {
         $items = [
-            'base' => $this->createMock(ServiceContainer::class),
-            'test2' => $this->createMock(ServiceContainer::class),
+            'base' => self::createStub(ServiceContainer::class),
+            'test2' => self::createStub(ServiceContainer::class),
         ];
 
         $registry = new DefaultServiceContainerRegistry($items, 'base');
@@ -77,7 +77,7 @@ final class DefaultServiceContainerRegistryTest extends BaseTestCase
 
         $registry = new DefaultServiceContainerRegistry($items);
 
-        $item = $this->createMock(ServiceContainer::class);
+        $item = self::createStub(ServiceContainer::class);
         $registry->add('test3', $item);
 
         self::assertSame($item, $registry->get('test3'));

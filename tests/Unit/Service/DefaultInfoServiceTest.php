@@ -18,7 +18,7 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
     public function testGetAccountInfo(): void
     {
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(Account::class);
+        $expectedResult = self::createStub(Account::class);
 
         $infoService = $this->newDefaultInfoService(
             client: $this->mockClient([Version::V2V1, null, Method::INFO_WHO_AM_I], $response),
@@ -33,7 +33,7 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
     public function testGetChangelog(): void
     {
         $response = $this->mockClientResponse();
-        $expectedResult = $this->createMock(ChangelogCollection::class);
+        $expectedResult = self::createStub(ChangelogCollection::class);
 
         $infoService = $this->newDefaultInfoService(
             client: $this->mockClient([Version::V2V1, null, Method::CHANGELOG], $response),
@@ -74,8 +74,8 @@ final class DefaultInfoServiceTest extends BaseServiceTestCase
     ): DefaultInfoService {
         return new DefaultInfoService(
             $client,
-            $accountFactory ?? $this->createMock(AccountFactory::class),
-            $changelogFactory ?? $this->createMock(ChangelogFactory::class),
+            $accountFactory ?? self::createStub(AccountFactory::class),
+            $changelogFactory ?? self::createStub(ChangelogFactory::class),
         );
     }
 }

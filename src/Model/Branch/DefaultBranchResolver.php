@@ -114,6 +114,7 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::SPRING => [
                 Service::SPRING_PUDO,
             ],
+            Carrier::EXPEDICO => null,
         ];
 
         return $this->hasSupport($supported, $carrier, $service);
@@ -160,6 +161,7 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::SPRING => [
                 Service::SPRING_PUDO,
             ],
+            Carrier::EXPEDICO => null,
         ];
 
         return $this->hasSupport($supported, $carrier, $service);

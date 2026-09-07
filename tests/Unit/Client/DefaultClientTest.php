@@ -148,7 +148,7 @@ final class DefaultClientTest extends BaseTestCase
                 'test' => 1596,
             ],
             'shouldHaveStatus' => true,
-            'result' => new BadRequestException([], 400),
+            'result' => true,
         ];
 
         yield 'response_status_error' => [

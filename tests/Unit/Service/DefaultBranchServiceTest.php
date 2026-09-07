@@ -716,9 +716,9 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
 
     private function mockBranch(?string $country = null): Branch
     {
-        $branch = $this->createMock(Branch::class);
+        $branch = self::createStub(Branch::class);
         if ($country !== null) {
-            $branch->expects(self::any())->method('getCountry')->willReturn($country);
+            $branch->method('getCountry')->willReturn($country);
         }
 
         return $branch;
@@ -736,7 +736,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
             ->will(self::withConsecutive($arguments, $responses));
 
         $branchFactory
-            ->expects(self::any())->method('wrapIterator')
+            ->method('wrapIterator')
             ->willReturnCallback(static function (?string $carrier, ?string $service, ?array $countries, Traversable $iterator) {
                 return new DefaultBranchIterator($carrier, $service, $countries !== null ? array_values($countries) : null, $iterator);
             });
@@ -813,10 +813,10 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
     ): DefaultBranchService {
         return new DefaultBranchService(
             $client,
-            $branchFactory ?? $this->createMock(BranchFactory::class),
-            $branchResolver ?? $this->createMock(BranchResolver::class),
-            $carrierProvider ?? $this->createMock(CarrierProvider::class),
-            $serviceProvider ?? $this->createMock(ServiceProvider::class),
+            $branchFactory ?? self::createStub(BranchFactory::class),
+            $branchResolver ?? self::createStub(BranchResolver::class),
+            $carrierProvider ?? self::createStub(CarrierProvider::class),
+            $serviceProvider ?? self::createStub(ServiceProvider::class),
         );
     }
 }

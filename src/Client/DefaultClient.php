@@ -104,7 +104,7 @@ final class DefaultClient implements Client
      */
     private function validateResponse(int $statusCode, array $response, bool $shouldHaveStatus): void
     {
-        $this->validator->validateStatus($statusCode, $response);
+        $this->validator->validateStatus((int) ($response['status'] ?? $statusCode), $response);
 
         $this->validator->validateResponseStatus($response, null, $shouldHaveStatus);
     }
