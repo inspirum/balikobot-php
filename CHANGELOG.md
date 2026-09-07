@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.15.0...master)
 ### Added
+- Added **EXPEDICO** carrier with all its service types
+- Added **CP_DE** and **CP_BE** service type
+- Added **DBSCHENKER_SYSTEM_HOME** service type
+- Added **DHLFREIGHTEC_PPI** and **DHLFREIGHTEC_SPI** service types
 - Added support for new options from documentation **v2.02117** (2026-07-20)
   - Added **mu_sub_type** attribute
   - Added **mu_sub_count** attribute
@@ -21,6 +25,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **rec_tin** attribute
 - Added support for new options from documentation **v2.0216** (2026-05-27)
   - Added **country_reference_key** attribute
+### Changed
+- Changed **CESKAPOSTA** and **BALIKOVKA** carriers to use their own service list instead of the **CP** alias
 
 
 ## [v7.15.0 (2026-05-23)](https://github.com/inspirum/balikobot-php/compare/v7.14.0...v7.15.0)

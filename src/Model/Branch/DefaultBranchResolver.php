@@ -80,10 +80,10 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::ULOZENKA_DEPO_SK,
             ],
             Carrier::PPL => [
-                // Service::PPL_CONNECT,
-                // Service::PPL_PRIVATE,
+                Service::PPL_CONNECT,
+                Service::PPL_PRIVATE,
                 Service::PPL_PRIVATE_SMART_CZ,
-                // Service::PPL_PRIVATE_SMART_EU,
+                Service::PPL_PRIVATE_SMART_EU,
                 Service::PPL_PRIVATE_SMART_TO_BOX,
             ],
             Carrier::SAMEDAY => [
@@ -110,6 +110,9 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::ONEBYALLEGRO => [
                 Service::ONEBYALLEGRO_BOX_STANDARD,
                 Service::ONEBYALLEGRO_POINT_STANDARD,
+            ],
+            Carrier::SPRING => [
+                Service::SPRING_PUDO,
             ],
         ];
 
@@ -153,6 +156,9 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::ONEBYALLEGRO => [
                 Service::ONEBYALLEGRO_BOX_STANDARD,
                 Service::ONEBYALLEGRO_POINT_STANDARD,
+            ],
+            Carrier::SPRING => [
+                Service::SPRING_PUDO,
             ],
         ];
 

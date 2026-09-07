@@ -17,19 +17,11 @@ final class Carrier extends BaseEnum
 
     /**
      * Česká pošta
-     *
-     * Alias for CP
-     *
-     * @see self::CP
      */
     public const CESKAPOSTA = 'ceskaposta';
 
     /**
      * Česká pošta - Balikovna
-     *
-     * Alias for CP
-     *
-     * @see self::CP
      */
     public const BALIKOVKA = 'balikovna';
 
@@ -225,6 +217,11 @@ final class Carrier extends BaseEnum
      * One by Allegro
      */
     public const ONEBYALLEGRO = 'onebyallegro';
+
+    /**
+     * Expedico
+     */
+    public const EXPEDICO = 'expedico';
 
     /**
      * @return list<string>

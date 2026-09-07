@@ -132,6 +132,11 @@ final class Service extends BaseEnum
     public const CP_CE = 'CE';
 
     /**
+     * DE Doporučená zásilka
+     */
+    public const CP_DE = 'DE';
+
+    /**
      * Obyčejná listovní zásilka mezinárodní
      */
     public const CP_OLZ = 'OLZ';
@@ -2147,6 +2152,16 @@ final class Service extends BaseEnum
     public const DHLFREIGHTEC_ERI = 'ERI';
 
     /**
+     * DHLFREIGHTEC Premium Pallet International
+     */
+    public const DHLFREIGHTEC_PPI = 'PPI';
+
+    /**
+     * DHLFREIGHTEC Standard Pallet International
+     */
+    public const DHLFREIGHTEC_SPI = 'SPI';
+
+    /**
      * KURIER Garantované doručení
      *
      * @deprecated Terminated
@@ -2230,6 +2245,11 @@ final class Service extends BaseEnum
      * DB Schenker Part Load
      */
     public const DBSCHENKER_PART_LOAD = '72';
+
+    /**
+     * DB Schenker System Home
+     */
+    public const DBSCHENKER_SYSTEM_HOME = '45';
 
     /**
      * DB Schenker Parcel
@@ -2505,6 +2525,386 @@ final class Service extends BaseEnum
     public const ONEBYALLEGRO_POINT_STANDARD = '6';
 
     /**
+     * Expedico PL DPD
+     */
+    public const EXPEDICO_PL_DPD = '92';
+
+    /**
+     * Expedico IT GLS
+     */
+    public const EXPEDICO_IT_GLS = '124';
+
+    /**
+     * Expedico Greece Taxydromiki
+     */
+    public const EXPEDICO_GREECE_TAXYDROMIKI = '125';
+
+    /**
+     * Expedico IT CityPost
+     */
+    public const EXPEDICO_IT_CITY_POST = '126';
+
+    /**
+     * Expedico HR Overseas
+     */
+    public const EXPEDICO_HR_OVERSEAS = '127';
+
+    /**
+     * Expedico HU 24hFutar
+     */
+    public const EXPEDICO_HU_24H_FUTAR = '128';
+
+    /**
+     * Expedico HU DPD
+     */
+    public const EXPEDICO_HU_DPD = '129';
+
+    /**
+     * Expedico HU Express One
+     */
+    public const EXPEDICO_HU_EXPRESS_ONE = '130';
+
+    /**
+     * Expedico BG Speedy
+     */
+    public const EXPEDICO_BG_SPEEDY = '131';
+
+    /**
+     * Expedico PL Inpost
+     */
+    public const EXPEDICO_PL_INPOST = '132';
+
+    /**
+     * Expedico Lithuania DPD
+     */
+    public const EXPEDICO_LITHUANIA_DPD = '133';
+
+    /**
+     * Expedico Latvia DPD
+     */
+    public const EXPEDICO_LATVIA_DPD = '134';
+
+    /**
+     * Expedico Estonia DPD
+     */
+    public const EXPEDICO_ESTONIA_DPD = '135';
+
+    /**
+     * Expedico CZ Wedo
+     */
+    public const EXPEDICO_CZ_WEDO = '136';
+
+    /**
+     * Expedico CZ Wedo Pickup Points
+     */
+    public const EXPEDICO_CZ_WEDO_PICKUP_POINTS = '137';
+
+    /**
+     * Expedico SK SPS
+     */
+    public const EXPEDICO_SK_SPS = '138';
+
+    /**
+     * Expedico SI GLS
+     */
+    public const EXPEDICO_SI_GLS = '139';
+
+    /**
+     * Expedico LT Itella
+     */
+    public const EXPEDICO_LT_ITELLA = '140';
+
+    /**
+     * Expedico LV Itella
+     */
+    public const EXPEDICO_LV_ITELLA = '141';
+
+    /**
+     * Expedico EE Itella
+     */
+    public const EXPEDICO_EE_ITELLA = '142';
+
+    /**
+     * Expedico CZ Post
+     */
+    public const EXPEDICO_CZ_POST = '143';
+
+    /**
+     * Expedico BG Express One
+     */
+    public const EXPEDICO_BG_EXPRESS_ONE = '144';
+
+    /**
+     * Expedico CZ Balikovna Pickup Points
+     */
+    public const EXPEDICO_CZ_BALIKOVNA_PICKUP_POINTS = '145';
+
+    /**
+     * Expedico HU Post
+     */
+    public const EXPEDICO_HU_POST = '146';
+
+    /**
+     * Expedico BG Speedy Pickup Points
+     */
+    public const EXPEDICO_BG_SPEEDY_PICKUP_POINTS = '147';
+
+    /**
+     * Expedico CZ BSI Packeta
+     */
+    public const EXPEDICO_CZ_BSI_PACKETA = '148';
+
+    /**
+     * Expedico SK SPS Pickup Points
+     */
+    public const EXPEDICO_SK_SPS_PICKUP_POINTS = '149';
+
+    /**
+     * Expedico SK BSI Packeta
+     */
+    public const EXPEDICO_SK_BSI_PACKETA = '150';
+
+    /**
+     * Expedico CZ BSI Packeta Blended
+     */
+    public const EXPEDICO_CZ_BSI_PACKETA_BLENDED = '151';
+
+    /**
+     * Expedico SK BSI Packeta Blended
+     */
+    public const EXPEDICO_SK_BSI_PACKETA_BLENDED = '152';
+
+    /**
+     * Expedico PL Inpost Pickup Points
+     */
+    public const EXPEDICO_PL_INPOST_PICKUP_POINTS = '153';
+
+    /**
+     * Expedico LT Post
+     */
+    public const EXPEDICO_LT_POST = '154';
+
+    /**
+     * Expedico LV Post
+     */
+    public const EXPEDICO_LV_POST = '155';
+
+    /**
+     * Expedico LT DPD Pickup Points
+     */
+    public const EXPEDICO_LT_DPD_PICKUP_POINTS = '156';
+
+    /**
+     * Expedico LV DPD Pickup Points
+     */
+    public const EXPEDICO_LV_DPD_PICKUP_POINTS = '157';
+
+    /**
+     * Expedico EE DPD Pickup Points
+     */
+    public const EXPEDICO_EE_DPD_PICKUP_POINTS = '158';
+
+    /**
+     * Expedico PL Post
+     */
+    public const EXPEDICO_PL_POST = '159';
+
+    /**
+     * Expedico CZ DPD
+     */
+    public const EXPEDICO_CZ_DPD = '160';
+
+    /**
+     * Expedico BG Econt
+     */
+    public const EXPEDICO_BG_ECONT = '161';
+
+    /**
+     * Expedico FH PKT Returns
+     */
+    public const EXPEDICO_FH_PKT_RETURNS = '162';
+
+    /**
+     * Expedico GR BoxNow
+     */
+    public const EXPEDICO_GR_BOX_NOW = '163';
+
+    /**
+     * Expedico HR BoxNow
+     */
+    public const EXPEDICO_HR_BOX_NOW = '164';
+
+    /**
+     * Expedico BG BoxNow
+     */
+    public const EXPEDICO_BG_BOX_NOW = '165';
+
+    /**
+     * Expedico CZ DPD Pickup Points
+     */
+    public const EXPEDICO_CZ_DPD_PICKUP_POINTS = '166';
+
+    /**
+     * Expedico PL Post Pickup Points
+     */
+    public const EXPEDICO_PL_POST_PICKUP_POINTS = '168';
+
+    /**
+     * Expedico HU Post Pickup Points
+     */
+    public const EXPEDICO_HU_POST_PICKUP_POINTS = '170';
+
+    /**
+     * Expedico BG Econt Pickup Points
+     */
+    public const EXPEDICO_BG_ECONT_PICKUP_POINTS = '171';
+
+    /**
+     * Expedico RO Cargus
+     */
+    public const EXPEDICO_RO_CARGUS = '172';
+
+    /**
+     * Expedico RO Cargus Pickup Points
+     */
+    public const EXPEDICO_RO_CARGUS_PICKUP_POINTS = '173';
+
+    /**
+     * Expedico GR Elta
+     */
+    public const EXPEDICO_GR_ELTA = '174';
+
+    /**
+     * Expedico GR ACS
+     */
+    public const EXPEDICO_GR_ACS = '175';
+
+    /**
+     * Expedico SK Post
+     */
+    public const EXPEDICO_SK_POST = '176';
+
+    /**
+     * Expedico CY Taxydromiki
+     */
+    public const EXPEDICO_CY_TAXYDROMIKI = '177';
+
+    /**
+     * Expedico ES Correos
+     */
+    public const EXPEDICO_ES_CORREOS = '178';
+
+    /**
+     * Expedico TR Aras
+     */
+    public const EXPEDICO_TR_ARAS = '179';
+
+    /**
+     * Expedico RO Fan
+     */
+    public const EXPEDICO_RO_FAN = '180';
+
+    /**
+     * Expedico BG Post
+     */
+    public const EXPEDICO_BG_POST = '181';
+
+    /**
+     * Expedico SI Expressone
+     */
+    public const EXPEDICO_SI_EXPRESSONE = '182';
+
+    /**
+     * Expedico CZ PPL
+     */
+    public const EXPEDICO_CZ_PPL = '183';
+
+    /**
+     * Expedico DE DHL
+     */
+    public const EXPEDICO_DE_DHL = '184';
+
+    /**
+     * Expedico AT DHL
+     */
+    public const EXPEDICO_AT_DHL = '185';
+
+    /**
+     * Expedico Expedico Return
+     */
+    public const EXPEDICO_RETURN = '186';
+
+    /**
+     * Expedico EE Post
+     */
+    public const EXPEDICO_EE_POST = '188';
+
+    /**
+     * Expedico CZ PPL Pickup Points
+     */
+    public const EXPEDICO_CZ_PPL_PICKUP_POINTS = '189';
+
+    /**
+     * Expedico DE DHL Pickup Points
+     */
+    public const EXPEDICO_DE_DHL_PICKUP_POINTS = '190';
+
+    /**
+     * Expedico RO Fan Pickup Points
+     */
+    public const EXPEDICO_RO_FAN_PICKUP_POINTS = '192';
+
+    /**
+     * Expedico GR EasyMail
+     */
+    public const EXPEDICO_GR_EASY_MAIL = '193';
+
+    /**
+     * Expedico LT Post Pickup Points
+     */
+    public const EXPEDICO_LT_POST_PICKUP_POINTS = '194';
+
+    /**
+     * Expedico LV Post Pickup Points
+     */
+    public const EXPEDICO_LV_POST_PICKUP_POINTS = '195';
+
+    /**
+     * Expedico EE Post Pickup Points
+     */
+    public const EXPEDICO_EE_POST_PICKUP_POINTS = '196';
+
+    /**
+     * Expedico UA NovaPosta
+     */
+    public const EXPEDICO_UA_NOVA_POSTA = '197';
+
+    /**
+     * Expedico HR Post
+     */
+    public const EXPEDICO_HR_POST = '198';
+
+    /**
+     * Expedico GR ACS Pickup Points
+     */
+    public const EXPEDICO_GR_ACS_PICKUP_POINTS = '199';
+
+    /**
+     * Expedico CZ OneDelivery
+     */
+    public const EXPEDICO_CZ_ONE_DELIVERY = '200';
+
+    /**
+     * Expedico CZ OneDelivery Pickup
+     */
+    public const EXPEDICO_CZ_ONE_DELIVERY_PICKUP = '201';
+
+    /**
+     * Expedico FR DHL
+     */
+    public const EXPEDICO_FR_DHL = '202';
+
+    /**
      * @return list<string>|null
      */
     public static function getForCarrier(string $carrier): ?array
@@ -2519,8 +2919,8 @@ final class Service extends BaseEnum
     {
         return [
             Carrier::CP => self::cp(),
-            Carrier::CESKAPOSTA => self::cp(),
-            Carrier::BALIKOVKA => self::cp(),
+            Carrier::CESKAPOSTA => self::ceskaposta(),
+            Carrier::BALIKOVKA => self::balikovna(),
             Carrier::DPD => self::dpd(),
             Carrier::DHL => self::dhl(),
             Carrier::GEIS => self::geis(),
@@ -2555,6 +2955,7 @@ final class Service extends BaseEnum
             Carrier::SDS => self::sds(),
             Carrier::INPOST => self::inpost(),
             Carrier::ONEBYALLEGRO => self::onebyallegro(),
+            Carrier::EXPEDICO => self::expedico(),
         ];
     }
 
@@ -2575,10 +2976,10 @@ final class Service extends BaseEnum
             self::CP_BB,
             // self::CP_BN,
             self::CP_NB,
-            self::CP_DT,
+            // self::CP_DT,
             // self::CP_DS,
             // self::CP_EE,
-            // self::CP_BE,
+            self::CP_BE,
             self::CP_RZP,
             self::CP_VZP,
             self::CP_EM,
@@ -2588,6 +2989,48 @@ final class Service extends BaseEnum
             self::CP_CVE,
             self::CP_CE,
             self::CP_OLZ,
+            self::CP_DE,
+        ];
+    }
+
+    /** @return list<string> */
+    private static function ceskaposta(): array
+    {
+        return [
+            self::CP_RR,
+            self::CP_SR,
+            self::CP_RRP,
+            self::CP_SRP,
+            // self::CP_NP,
+            // self::CP_NV,
+            self::CP_VL,
+            self::CP_BA,
+            self::CP_BB,
+            // self::CP_BN,
+            // self::CP_DT,
+            // self::CP_DS,
+            // self::CP_EE,
+            self::CP_BE,
+            self::CP_RZP,
+            self::CP_VZP,
+            self::CP_EM,
+            self::CP_CSP,
+            self::CP_CSE,
+            self::CP_CVP,
+            self::CP_CVE,
+            self::CP_CE,
+            self::CP_OLZ,
+        ];
+    }
+
+    /** @return list<string> */
+    private static function balikovna(): array
+    {
+        return [
+            self::CP_NB,
+            self::CP_DE,
+            self::CP_DR,
+            self::CP_DV,
         ];
     }
 
@@ -3084,7 +3527,7 @@ final class Service extends BaseEnum
             self::DACHSER_FIX_12,
             self::DACHSER_FLEX,
             self::DACHSER_ONSITE,
-            self::DACHSER_CLASSIC,
+            // self::DACHSER_CLASSIC,
             self::DACHSER_ONSITE_FIX,
         ];
     }
@@ -3141,6 +3584,8 @@ final class Service extends BaseEnum
             self::DHLFREIGHTEC_ERI,
             self::DHLFREIGHTEC_ELD,
             self::DHLFREIGHTEC_ELI,
+            self::DHLFREIGHTEC_PPI,
+            self::DHLFREIGHTEC_SPI,
         ];
     }
 
@@ -3156,6 +3601,7 @@ final class Service extends BaseEnum
             self::DBSCHENKER_SYSTEM_PREMIUM_13,
             self::DBSCHENKER_SYSTEM_FIX_10,
             self::DBSCHENKER_SYSTEM_FIX_13,
+            self::DBSCHENKER_SYSTEM_HOME,
             self::DBSCHENKER_FULL_LOAD,
             self::DBSCHENKER_PART_LOAD,
             self::DBSCHENKER_LPA,
@@ -3263,6 +3709,89 @@ final class Service extends BaseEnum
             self::ONEBYALLEGRO_COURIER_STANDARD,
             self::ONEBYALLEGRO_BOX_STANDARD,
             self::ONEBYALLEGRO_POINT_STANDARD,
+        ];
+    }
+
+    /** @return list<string> */
+    private static function expedico(): array
+    {
+        return [
+            self::EXPEDICO_PL_DPD,
+            self::EXPEDICO_IT_GLS,
+            self::EXPEDICO_GREECE_TAXYDROMIKI,
+            self::EXPEDICO_IT_CITY_POST,
+            self::EXPEDICO_HR_OVERSEAS,
+            self::EXPEDICO_HU_24H_FUTAR,
+            self::EXPEDICO_HU_DPD,
+            self::EXPEDICO_HU_EXPRESS_ONE,
+            self::EXPEDICO_BG_SPEEDY,
+            self::EXPEDICO_PL_INPOST,
+            self::EXPEDICO_LITHUANIA_DPD,
+            self::EXPEDICO_LATVIA_DPD,
+            self::EXPEDICO_ESTONIA_DPD,
+            self::EXPEDICO_CZ_WEDO,
+            self::EXPEDICO_CZ_WEDO_PICKUP_POINTS,
+            self::EXPEDICO_SK_SPS,
+            self::EXPEDICO_SI_GLS,
+            self::EXPEDICO_LT_ITELLA,
+            self::EXPEDICO_LV_ITELLA,
+            self::EXPEDICO_EE_ITELLA,
+            self::EXPEDICO_CZ_POST,
+            self::EXPEDICO_BG_EXPRESS_ONE,
+            self::EXPEDICO_CZ_BALIKOVNA_PICKUP_POINTS,
+            self::EXPEDICO_HU_POST,
+            self::EXPEDICO_BG_SPEEDY_PICKUP_POINTS,
+            self::EXPEDICO_CZ_BSI_PACKETA,
+            self::EXPEDICO_SK_SPS_PICKUP_POINTS,
+            self::EXPEDICO_SK_BSI_PACKETA,
+            self::EXPEDICO_CZ_BSI_PACKETA_BLENDED,
+            self::EXPEDICO_SK_BSI_PACKETA_BLENDED,
+            self::EXPEDICO_PL_INPOST_PICKUP_POINTS,
+            self::EXPEDICO_LT_POST,
+            self::EXPEDICO_LV_POST,
+            self::EXPEDICO_LT_DPD_PICKUP_POINTS,
+            self::EXPEDICO_LV_DPD_PICKUP_POINTS,
+            self::EXPEDICO_EE_DPD_PICKUP_POINTS,
+            self::EXPEDICO_PL_POST,
+            self::EXPEDICO_CZ_DPD,
+            self::EXPEDICO_BG_ECONT,
+            self::EXPEDICO_FH_PKT_RETURNS,
+            self::EXPEDICO_GR_BOX_NOW,
+            self::EXPEDICO_HR_BOX_NOW,
+            self::EXPEDICO_BG_BOX_NOW,
+            self::EXPEDICO_CZ_DPD_PICKUP_POINTS,
+            self::EXPEDICO_PL_POST_PICKUP_POINTS,
+            self::EXPEDICO_HU_POST_PICKUP_POINTS,
+            self::EXPEDICO_BG_ECONT_PICKUP_POINTS,
+            self::EXPEDICO_RO_CARGUS,
+            self::EXPEDICO_RO_CARGUS_PICKUP_POINTS,
+            self::EXPEDICO_GR_ELTA,
+            self::EXPEDICO_GR_ACS,
+            self::EXPEDICO_SK_POST,
+            self::EXPEDICO_CY_TAXYDROMIKI,
+            self::EXPEDICO_ES_CORREOS,
+            self::EXPEDICO_TR_ARAS,
+            self::EXPEDICO_RO_FAN,
+            self::EXPEDICO_BG_POST,
+            self::EXPEDICO_SI_EXPRESSONE,
+            self::EXPEDICO_CZ_PPL,
+            self::EXPEDICO_DE_DHL,
+            self::EXPEDICO_AT_DHL,
+            self::EXPEDICO_RETURN,
+            self::EXPEDICO_EE_POST,
+            self::EXPEDICO_CZ_PPL_PICKUP_POINTS,
+            self::EXPEDICO_DE_DHL_PICKUP_POINTS,
+            self::EXPEDICO_RO_FAN_PICKUP_POINTS,
+            self::EXPEDICO_GR_EASY_MAIL,
+            self::EXPEDICO_LT_POST_PICKUP_POINTS,
+            self::EXPEDICO_LV_POST_PICKUP_POINTS,
+            self::EXPEDICO_EE_POST_PICKUP_POINTS,
+            self::EXPEDICO_UA_NOVA_POSTA,
+            self::EXPEDICO_HR_POST,
+            self::EXPEDICO_GR_ACS_PICKUP_POINTS,
+            self::EXPEDICO_CZ_ONE_DELIVERY,
+            self::EXPEDICO_CZ_ONE_DELIVERY_PICKUP,
+            self::EXPEDICO_FR_DHL,
         ];
     }
 }

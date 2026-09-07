@@ -45,7 +45,7 @@ final class DefaultBranchResolverTest extends BaseTestCase
                 $this->expectNotToPerformAssertions();
             }
         } catch (Exception $exception) {
-            if ($exception->getStatusCode() === 503) {
+            if ($exception->getStatusCode() === 500 || $exception->getStatusCode() === 503) {
                 self::markTestIncomplete(sprintf('%s/%s is unavailable', strtoupper($carrier), $service));
             }
 
