@@ -6,7 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.15.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.16.0...master)
+
+
+## [v7.16.0 (2026-09-08)](https://github.com/inspirum/balikobot-php/compare/v7.15.0...v7.16.0)
 ### Added
 - Added **EXPEDICO** carrier with all its service types
 - Added **CP_DE** and **CP_BE** service type
