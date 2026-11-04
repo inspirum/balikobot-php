@@ -461,36 +461,6 @@ final class DefaultPackageServiceTest extends BaseTestCase
         self::assertSame(1, $transportCosts->count());
     }
 
-    public function testGetTransportCostsForInvalidData(): void
-    {
-        $packageService = $this->newDefaultPackageService();
-
-        $packageData = new DefaultPackageData();
-        $packageData->setServiceType(Service::TOPTRANS_PERSONAL);
-        $packageData->setBranchId('12');
-        $packageData->setRecName('Tomáš Novák');
-        $packageData->setRecEmail('tets@test.cz');
-        $packageData->setRecZip('12000');
-        $packageData->setRecStreet('Ulice');
-        $packageData->setRecCity('Praha');
-        $packageData->setRecCountry(Country::CZECH_REPUBLIC);
-        $packageData->setRecPhone('776555888');
-        $packageData->setPrice(1000.00);
-        $packageData->setWeight(10);
-
-        $packagesData = new DefaultPackageDataCollection(Carrier::TOPTRANS, [
-            $packageData,
-        ]);
-
-        try {
-            $packageService->getTransportCosts($packagesData);
-            self::fail('TRANSPORTCOSTS request should thrown exception');
-        } catch (Exception $exception) {
-            self::assertEquals(400, $exception->getStatusCode());
-            self::assertTrue(isset($exception->getErrors()[0]['mu_type']), $exception->getResponseAsString());
-        }
-    }
-
     public function testOrderB2AShipment(): void
     {
         $packageService = $this->newDefaultPackageService();

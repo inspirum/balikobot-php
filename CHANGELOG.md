@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.16.0...master)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.16.0...main)
 ### Added
 - Added support for new options from documentation **v2.021115** (2026-10-27)
   - Added **pickup_manipulation_cart** attribute
@@ -33,6 +33,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Changed supported service types to exclude removed **PPL_BUSINESS_PALETTE**, **PPL_PRIVATE_PALETTE**, **DHLDE_PAKET_TAGGLEICH**, **DHLDE_PAKET_CONNECT**, **DSV_ROAD** and **DSV_B2C**
 - Changed `DefaultTransportCostCollection` to extend `BaseCarrierCollection` and reject items of other carriers
 - Changed `TrackService::trackPackage(ById)` and `TrackService::trackPackageLastStatus(ById)` methods to throw `BadRequestException` instead of `OutOfBoundsException` when the response does not contain the requested carrier ID
+- Switched CI to the shared [inspirum/.github](https://github.com/inspirum/.github) workflow
+- Renamed the default branch from `master` to `main`
+### Removed
+- Removed local issue and pull request templates, code of conduct and contributing guide in favour of the shared [inspirum/.github](https://github.com/inspirum/.github) defaults
 ### Fixed
 - Fixed `.gitattributes` export-ignore paths so `phpcs.xml` and `phpstan.neon` are not shipped in the package
 - Fixed `DefaultCarrier::getMethodsForVersion` failing for a version without methods, it now returns an empty collection
