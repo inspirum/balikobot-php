@@ -61,9 +61,20 @@ final class DefaultPackageDataCollectionTest extends BaseTestCase
 
         self::assertNull($package->getEID());
 
-        $packages->offsetSet(1, $package);
+        $packages->offsetSet(0, $package);
 
-        self::assertNotNull($packages->offsetGet(1)->getEID());
+        self::assertNotNull($packages->offsetGet(0)->getEID());
+        self::assertNull($package->getEID());
+    }
+
+    public function testAppendEid(): void
+    {
+        $packages = new DefaultPackageDataCollection(Carrier::CP);
+        $package = new DefaultPackageData(['test' => 1]);
+
+        $packages[] = $package;
+
+        self::assertNotNull($packages->offsetGet(0)->getEID());
         self::assertNull($package->getEID());
     }
 

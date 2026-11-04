@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.16.0...main)
 ### Added
+- Added support for [**inspirum/arrayable**](https://github.com/inspirum/arrayable-php) `^2.0`
 - Added support for new options from documentation **v2.021115** (2026-10-27)
   - Added **pickup_manipulation_cart** attribute
   - Added **delivery_manipulation_cart** attribute
