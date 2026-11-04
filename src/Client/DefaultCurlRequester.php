@@ -6,9 +6,9 @@ namespace Inspirum\Balikobot\Client;
 
 use GuzzleHttp\Psr7\Response;
 use Inspirum\Balikobot\Exception\BadRequestException;
+use Inspirum\Balikobot\Exception\TransportException;
 use JsonException;
 use Psr\Http\Message\ResponseInterface;
-use RuntimeException;
 use function base64_encode;
 use function count;
 use function curl_errno;
@@ -80,7 +80,7 @@ final class DefaultCurlRequester implements Requester
 
         // check for errors.
         if ($response === false) {
-            throw new RuntimeException(curl_error($ch), curl_errno($ch));
+            throw new TransportException(sprintf('cURL error %d: %s', curl_errno($ch), curl_error($ch)));
         }
 
         return new Response((int) $statusCode, [], (string) $response);

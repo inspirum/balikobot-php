@@ -6,14 +6,15 @@ namespace Inspirum\Balikobot\Tests\Unit\Client;
 
 use Inspirum\Balikobot\Client\DefaultCurlRequester;
 use Inspirum\Balikobot\Exception\BadRequestException;
+use Inspirum\Balikobot\Exception\TransportException;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
-use RuntimeException;
 
 final class CurlRequesterTest extends BaseTestCase
 {
     public function testThrowsErrorOnRequestError(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(TransportException::class);
+        $this->expectExceptionMessageMatches('/^cURL error \d+: /');
 
         $requester = new DefaultCurlRequester('test', 'test');
 
