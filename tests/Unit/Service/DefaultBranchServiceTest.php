@@ -695,6 +695,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
                 [
                     'country' => $country,
                     'city' => $city,
+                    'radius' => 0.0,
                 ],
             ], $response),
             branchFactory: $this->mockBranchFactory([
@@ -704,7 +705,7 @@ final class DefaultBranchServiceTest extends BaseServiceTestCase
             ]),
         );
 
-        $actualResult = $branchService->getBranchesForLocation($carrier, $country, $city);
+        $actualResult = $branchService->getBranchesForLocation($carrier, $country, $city, radius: 0.0);
 
         $expectedResult = new ArrayIterator($items);
 

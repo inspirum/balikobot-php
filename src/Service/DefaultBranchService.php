@@ -202,6 +202,7 @@ final class DefaultBranchService implements BranchService
                     'radius' => $radius,
                     'type' => $type,
                 ],
+                static fn (mixed $value): bool => $value !== null,
             ),
         );
 
