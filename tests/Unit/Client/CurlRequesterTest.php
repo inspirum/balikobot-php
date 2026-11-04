@@ -8,6 +8,7 @@ use Inspirum\Balikobot\Client\DefaultCurlRequester;
 use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Exception\TransportException;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use function sprintf;
 
 final class CurlRequesterTest extends BaseTestCase
 {
@@ -19,6 +20,20 @@ final class CurlRequesterTest extends BaseTestCase
         $requester = new DefaultCurlRequester('test', 'test');
 
         $requester->request('dummy', ['test' => true]);
+    }
+
+    public function testErrorCodeIsCurlErrorNumber(): void
+    {
+        $requester = new DefaultCurlRequester('test', 'test');
+
+        try {
+            $requester->request('dummy', ['test' => true]);
+            self::fail('TransportException was not thrown');
+        } catch (TransportException $exception) {
+            self::assertGreaterThan(0, $exception->getCode());
+            self::assertStringStartsWith(sprintf('cURL error %d: ', $exception->getCode()), $exception->getMessage());
+            self::assertSame(0, $exception->getStatusCode());
+        }
     }
 
     public function testThrowsErrorOnInvalidRequestData(): void

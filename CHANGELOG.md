@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **neutralize_tin** attribute
 - Added connect timeout (10 s) and request timeout (300 s) to `DefaultCurlRequester`, configurable in its constructor
 - Added `BaseCarrierCollection` and `WithCarrier` interface, `BasePerCarrierCollection` now extends it
-- Added `TransportException` thrown by `DefaultCurlRequester` on cURL errors (extends `RuntimeException` as before, now also implements `Exception`)
+- Added `TransportException` thrown by `DefaultCurlRequester` on cURL errors (extends `RuntimeException` as before, now also implements `Exception`), with the cURL error number as its code
 - Added **ALZA** carrier with all its service types
 - Added **GLS_BOX** service type
 - Added new **DSV** service types

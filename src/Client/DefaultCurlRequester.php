@@ -80,7 +80,7 @@ final class DefaultCurlRequester implements Requester
 
         // check for errors.
         if ($response === false) {
-            throw new TransportException(sprintf('cURL error %d: %s', curl_errno($ch), curl_error($ch)));
+            throw new TransportException(sprintf('cURL error %d: %s', curl_errno($ch), curl_error($ch)), curl_errno($ch));
         }
 
         return new Response((int) $statusCode, [], (string) $response);
