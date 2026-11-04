@@ -15,7 +15,7 @@ final class DefaultAttributeFactory implements AttributeFactory
         return new DefaultAttribute(
             trim($data['name']),
             $data['data_type'],
-            (string) $data['max_length'],
+            isset($data['max_length']) ? (string) $data['max_length'] : null,
         );
     }
 
