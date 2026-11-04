@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Client;
 
 use GuzzleHttp\Psr7\Response;
+use Inspirum\Balikobot\Exception\BadRequestException;
+use JsonException;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 use function base64_encode;
@@ -28,6 +30,7 @@ use const CURLOPT_SSL_VERIFYHOST;
 use const CURLOPT_SSL_VERIFYPEER;
 use const CURLOPT_TIMEOUT;
 use const CURLOPT_URL;
+use const JSON_THROW_ON_ERROR;
 
 final class DefaultCurlRequester implements Requester
 {
@@ -62,7 +65,7 @@ final class DefaultCurlRequester implements Requester
         // set data
         if (count($data) > 0) {
             curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, (string) json_encode($data));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $this->encode($data));
         }
 
         // set auth
@@ -81,5 +84,19 @@ final class DefaultCurlRequester implements Requester
         }
 
         return new Response((int) $statusCode, [], (string) $response);
+    }
+
+    /**
+     * @param array<mixed,mixed> $data
+     *
+     * @throws \Inspirum\Balikobot\Exception\BadRequestException
+     */
+    private function encode(array $data): string
+    {
+        try {
+            return json_encode($data, JSON_THROW_ON_ERROR);
+        } catch (JsonException $exception) {
+            throw new BadRequestException([], 400, $exception, 'Cannot encode request data');
+        }
     }
 }
