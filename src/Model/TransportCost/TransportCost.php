@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\TransportCost;
 
 use Inspirum\Arrayable\Model;
+use Inspirum\Balikobot\Model\WithCarrier;
 
 /**
  * @extends \Inspirum\Arrayable\Model<string,mixed>
  */
-interface TransportCost extends Model
+interface TransportCost extends Model, WithCarrier
 {
     public function getBatchId(): string;
 

@@ -8,6 +8,7 @@ use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Model\TransportCost\DefaultTransportCost;
 use Inspirum\Balikobot\Model\TransportCost\DefaultTransportCostCollection;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
+use InvalidArgumentException;
 use RuntimeException;
 
 final class DefaultTransportCostCollectionTest extends BaseTestCase
@@ -55,6 +56,16 @@ final class DefaultTransportCostCollectionTest extends BaseTestCase
         self::assertSame(1800.0, $collection->getTotalCost());
         self::assertSame('CZK', $collection->getCurrencyCode());
         self::assertSame($expectedArray, $collection->__toArray());
+    }
+
+    public function testCarrierMismatch(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Item carrier mismatch ("ppl" instead "cp")');
+
+        new DefaultTransportCostCollection(Carrier::CP, [
+            new DefaultTransportCost('9636699909', Carrier::PPL, 800, 'CZK', []),
+        ]);
     }
 
     public function testEmptyCollection(): void

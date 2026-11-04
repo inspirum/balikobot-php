@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **neutralize_state** attribute
   - Added **neutralize_tin** attribute
 - Added connect timeout (10 s) and request timeout (300 s) to `DefaultCurlRequester`, configurable in its constructor
+- Added `BaseCarrierCollection` and `WithCarrier` interface, `BasePerCarrierCollection` now extends it
 - Added **ALZA** carrier with all its service types
 - Added **GLS_BOX** service type
 - Added new **DSV** service types
@@ -29,6 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Changed full-branches support for **ALZA** carrier and **GLS_BOX** service type
 - Changed supported **ZASILKOVNA** service types to match current API
 - Changed supported service types to exclude removed **PPL_BUSINESS_PALETTE**, **PPL_PRIVATE_PALETTE**, **DHLDE_PAKET_TAGGLEICH**, **DHLDE_PAKET_CONNECT**, **DSV_ROAD** and **DSV_B2C**
+- Changed `DefaultTransportCostCollection` to extend `BaseCarrierCollection` and reject items of other carriers
 ### Fixed
 - Fixed `.gitattributes` export-ignore paths so `phpcs.xml` and `phpstan.neon` are not shipped in the package
 - Fixed `DefaultCarrier::getMethodsForVersion` failing for a version without methods, it now returns an empty collection

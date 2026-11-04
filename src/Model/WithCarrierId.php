@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model;
 
-interface WithCarrierId
+interface WithCarrierId extends WithCarrier
 {
-    public function getCarrier(): string;
-
     public function getCarrierId(): string;
 }

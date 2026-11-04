@@ -4,43 +4,17 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model;
 
-use Inspirum\Arrayable\BaseListCollection;
-use InvalidArgumentException;
-use RuntimeException;
 use function array_map;
-use function sprintf;
 
 /**
  * @template TItemKey of array-key
  * @template TItemValue
  * @template TValue of \Inspirum\Arrayable\Arrayable<TItemKey,TItemValue>&\Inspirum\Balikobot\Model\WithCarrierId
- * @extends \Inspirum\Arrayable\BaseListCollection<TItemKey,TItemValue,TValue>
+ * @extends \Inspirum\Balikobot\Model\BaseCarrierCollection<TItemKey,TItemValue,TValue>
  * @implements \Inspirum\Balikobot\Model\PerCarrierCollection<TValue>
  */
-abstract class BasePerCarrierCollection extends BaseListCollection implements PerCarrierCollection
+abstract class BasePerCarrierCollection extends BaseCarrierCollection implements PerCarrierCollection
 {
-    /**
-     * @param list<TValue> $items
-     */
-    public function __construct(
-        private ?string $carrier = null,
-        array $items = [],
-    ) {
-        parent::__construct();
-
-        foreach ($items as $key => $value) {
-            $this->offsetSet($key, $value);
-        }
-    }
-
-    /**
-     * @throws \RuntimeException
-     */
-    public function getCarrier(): string
-    {
-        return $this->carrier ?? throw new RuntimeException('Collection is empty');
-    }
-
     /**
      * @param TValue $item
      *
@@ -49,27 +23,6 @@ abstract class BasePerCarrierCollection extends BaseListCollection implements Pe
     public function add(WithCarrierId $item): void
     {
         $this->offsetAdd($item);
-    }
-
-    /**
-     * @param non-negative-int $key
-     * @param TValue $value
-     */
-    public function offsetSet(mixed $key, mixed $value): void
-    {
-        $this->validateCarrier($value);
-
-        parent::offsetSet($key, $value);
-    }
-
-    /**
-     * @param TValue $value
-     */
-    public function offsetAdd(mixed $value): void
-    {
-        $this->validateCarrier($value);
-
-        parent::offsetAdd($value);
     }
 
     /**
@@ -100,27 +53,5 @@ abstract class BasePerCarrierCollection extends BaseListCollection implements Pe
     public function getCarrierIds(): array
     {
         return array_map(static fn (WithCarrierId $item) => $item->getCarrierId(), $this->getItems());
-    }
-
-    /**
-     * @throws \InvalidArgumentException
-     */
-    private function validateCarrier(WithCarrierId $item): void
-    {
-        if ($this->carrier === null) {
-            $this->carrier = $item->getCarrier();
-
-            return;
-        }
-
-        if ($this->carrier !== $item->getCarrier()) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    'Item carrier mismatch ("%s" instead "%s")',
-                    $item->getCarrier(),
-                    $this->carrier,
-                ),
-            );
-        }
     }
 }

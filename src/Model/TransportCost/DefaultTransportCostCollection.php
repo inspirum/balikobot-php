@@ -4,30 +4,15 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\TransportCost;
 
-use Inspirum\Arrayable\BaseListCollection;
+use Inspirum\Balikobot\Model\BaseCarrierCollection;
 use RuntimeException;
 use function array_map;
 
 /**
- * @extends \Inspirum\Arrayable\BaseListCollection<string,mixed,\Inspirum\Balikobot\Model\TransportCost\TransportCost>
+ * @extends \Inspirum\Balikobot\Model\BaseCarrierCollection<string,mixed,\Inspirum\Balikobot\Model\TransportCost\TransportCost>
  */
-final class DefaultTransportCostCollection extends BaseListCollection implements TransportCostCollection
+final class DefaultTransportCostCollection extends BaseCarrierCollection implements TransportCostCollection
 {
-    /**
-     * @param list<\Inspirum\Balikobot\Model\TransportCost\TransportCost> $items
-     */
-    public function __construct(
-        private readonly ?string $carrier,
-        array $items = [],
-    ) {
-        parent::__construct($items);
-    }
-
-    public function getCarrier(): string
-    {
-        return $this->carrier ?? throw new RuntimeException('Collection is empty');
-    }
-
     /** @inheritDoc */
     public function getCosts(): array
     {
