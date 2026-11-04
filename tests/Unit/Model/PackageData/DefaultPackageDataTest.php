@@ -242,6 +242,8 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setPONumber('123456');
         $package->setPickupManipulationLift(true);
         $package->setDeliveryManipulationLift(true);
+        $package->setPickupManipulationCart(true);
+        $package->setDeliveryManipulationCart(false);
         $package->setDirectSignature(true);
         $package->setConsignPassword(true);
         $package->setTaxSubject(true);
@@ -456,6 +458,8 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::P_O_NUMBER => '123456',
                 Attribute::PICKUP_MANIPULATION_LIFT => true,
                 Attribute::DELIVERY_MANIPULATION_LIFT => true,
+                Attribute::PICKUP_MANIPULATION_CART => true,
+                Attribute::DELIVERY_MANIPULATION_CART => false,
                 Attribute::DIRECT_SIGNATURE => true,
                 Attribute::CONSIGN_PASSWORD => true,
                 Attribute::TAX_SUBJECT => true,

@@ -1075,6 +1075,16 @@ final class Attribute extends BaseEnum
     public const NEUTRALIZE_TIN = 'neutralize_tin';
 
     /**
+     * Use a cart for loading at pickup
+     */
+    public const PICKUP_MANIPULATION_CART = 'pickup_manipulation_cart';
+
+    /**
+     * Use a cart for unloading at delivery
+     */
+    public const DELIVERY_MANIPULATION_CART = 'delivery_manipulation_cart';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

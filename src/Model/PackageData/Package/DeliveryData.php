@@ -277,6 +277,16 @@ trait DeliveryData
         $this->offsetSet(Attribute::DELIVERY_MANIPULATION_LIFT, $value);
     }
 
+    public function setPickupManipulationCart(bool $value): void
+    {
+        $this->offsetSet(Attribute::PICKUP_MANIPULATION_CART, $value);
+    }
+
+    public function setDeliveryManipulationCart(bool $value): void
+    {
+        $this->offsetSet(Attribute::DELIVERY_MANIPULATION_CART, $value);
+    }
+
     public function setDirectSignature(bool $value): void
     {
         $this->offsetSet(Attribute::DIRECT_SIGNATURE, $value);

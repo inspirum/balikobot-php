@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.16.0...master)
 ### Added
+- Added support for new options from documentation **v2.021115** (2026-10-27)
+  - Added **pickup_manipulation_cart** attribute
+  - Added **delivery_manipulation_cart** attribute
 - Added support for new options from documentation **v2.021113** (2026-10-01)
   - Added **declaration_statement** attribute
   - Added **special_instructions** attribute
