@@ -18,8 +18,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **neutralize_company** attribute
   - Added **neutralize_state** attribute
   - Added **neutralize_tin** attribute
+- Added **ALZA** carrier with all its service types
+- Added **GLS_BOX** service type
+- Added new **DSV** service types
+- Added **EXPEDICO_SK_SPS_PPL**, **EXPEDICO_HU_POST_PPL** and **EXPEDICO_PL_DHL** service types
+- Added new **ZASILKOVNA** service types
 ### Changed
 - Changed documentation links to the new [API documentation](https://api-doc.balikobot.cz)
+- Changed full-branches support for **ALZA** carrier and **GLS_BOX** service type
+- Changed supported **ZASILKOVNA** service types to match current API
+- Changed supported service types to exclude removed **PPL_BUSINESS_PALETTE**, **PPL_PRIVATE_PALETTE**, **DHLDE_PAKET_TAGGLEICH**, **DHLDE_PAKET_CONNECT**, **DSV_ROAD** and **DSV_B2C**
 ### Fixed
 - Fixed `.gitattributes` export-ignore paths so `phpcs.xml` and `phpstan.neon` are not shipped in the package
 

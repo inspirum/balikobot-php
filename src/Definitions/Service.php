@@ -337,6 +337,11 @@ final class Service extends BaseEnum
     public const GLS_GUARANTEED24_SHOP = '6';
 
     /**
+     * GLS D2B GLS Box
+     */
+    public const GLS_BOX = '7';
+
+    /**
      * Small Colli 24-CZ
      */
     public const INTIME_SMALL_CZ = '1';
@@ -723,6 +728,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_CZ_COURIER_HD = '106';
 
     /**
+     * CZ Zásilkovna domů HD 7145
+     */
+    public const ZASILKOVNA_CZ_COURIER_7145_HD = '7145';
+
+    /**
      * Expresní doručení Praha
      */
     public const ZASILKOVNA_CZ_EXPRESS_PRAHA_HD = '18928';
@@ -746,6 +756,11 @@ final class Service extends BaseEnum
      * "CZ Zásilkovna večerní doručení Brno HD
      */
     public const ZASILKOVNA_CZ_EVENING_BRNO_HD = '26637';
+
+    /**
+     * CZ Zásilkovna večerní doručení Praha HD stará
+     */
+    public const ZASILKOVNA_CZ_EVENING_PRAHA_OLD_HD = '257';
 
     /**
      * DE Německá pošta DHL HD
@@ -918,6 +933,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_GR_ACS_HD = '17465';
 
     /**
+     * GR ACS HD
+     */
+    public const ZASILKOVNA_GR_ACS_7770_HD = '7770';
+
+    /**
      * GR ACS PP
      */
     public const ZASILKOVNA_GR_ACS_PP = '17467';
@@ -983,6 +1003,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_HU_EXPRESS_ONE_HD = '3828';
 
     /**
+     * HU Express One HD
+     */
+    public const ZASILKOVNA_HU_EXPRESS_ONE_151_HD = '151';
+
+    /**
      * Maďarsko DPD
      */
     public const ZASILKOVNA_HU_DPD_HD = '805';
@@ -1011,6 +1036,16 @@ final class Service extends BaseEnum
      * HU Fáma Futár HD
      */
     public const ZASILKOVNA_HU_FAMA_FUTAR_HD = '10061';
+
+    /**
+     * HU EDS
+     */
+    public const ZASILKOVNA_HU_EDS_HD = '13160';
+
+    /**
+     * HU Sprinter HD
+     */
+    public const ZASILKOVNA_HU_SPRINTER_HD = '14903';
 
     /*
      * HU FoxPost BOX
@@ -1193,6 +1228,11 @@ final class Service extends BaseEnum
     public const ZASILKOVNA_PT_MRW_HD = '4655';
 
     /**
+     * PT MRW HD MONO
+     */
+    public const ZASILKOVNA_PT_MRW_MONO_HD = '14067';
+
+    /**
      * PT MRW PP
      */
     public const ZASILKOVNA_PT_MRW_PP = '4656';
@@ -1231,6 +1271,21 @@ final class Service extends BaseEnum
      * Rumunsko FAN box
      */
     public const ZASILKOVNA_RO_FAN_BOX = '32428';
+
+    /**
+     * RO FAN Courier PP mono
+     */
+    public const ZASILKOVNA_RO_FAN_COURIER_MONO_PP = '22079';
+
+    /**
+     * RO Romanian Post HD
+     */
+    public const ZASILKOVNA_RO_POST_HD = '39233';
+
+    /**
+     * RO Romanian Post PP
+     */
+    public const ZASILKOVNA_RO_POST_PP = '39234';
 
     /**
      * Ruská pošta
@@ -2117,6 +2172,66 @@ final class Service extends BaseEnum
     public const DSV_B2C = 'b2c';
 
     /**
+     * DSV System FIX
+     */
+    public const DSV_SYSTEM_FIX = '35';
+
+    /**
+     * DSV System FIX TBA
+     */
+    public const DSV_SYSTEM_FIX_TBA = '39';
+
+    /**
+     * DSV System
+     */
+    public const DSV_SYSTEM = '43';
+
+    /**
+     * DSV System Priority
+     */
+    public const DSV_SYSTEM_PRIORITY = '44';
+
+    /**
+     * DSV System Home
+     */
+    public const DSV_SYSTEM_HOME = '45';
+
+    /**
+     * DSV System Priority 10
+     */
+    public const DSV_SYSTEM_PRIORITY_10 = '55';
+
+    /**
+     * DSV System Priority 12
+     */
+    public const DSV_SYSTEM_PRIORITY_12 = '56';
+
+    /**
+     * DSV System FIX 10
+     */
+    public const DSV_SYSTEM_FIX_10 = '57';
+
+    /**
+     * DSV System FIX 12
+     */
+    public const DSV_SYSTEM_FIX_12 = '58';
+
+    /**
+     * DSV Full Load
+     */
+    public const DSV_FULL_LOAD = '71';
+
+    /**
+     * DSV Part Load
+     */
+    public const DSV_PART_LOAD = '72';
+
+    /**
+     * DSV Parcel
+     */
+    public const DSV_PARCEL = 'LPA';
+
+    /**
      * DHLFREIGHTEC EuroConnect Domestic B2B
      */
     public const DHLFREIGHTEC_ECD_B2B = 'ECD_B2B';
@@ -2905,6 +3020,31 @@ final class Service extends BaseEnum
     public const EXPEDICO_FR_DHL = '202';
 
     /**
+     * Expedico SK SPS PPL
+     */
+    public const EXPEDICO_SK_SPS_PPL = '203';
+
+    /**
+     * Expedico HU Post PPL
+     */
+    public const EXPEDICO_HU_POST_PPL = '204';
+
+    /**
+     * Expedico PL DHL
+     */
+    public const EXPEDICO_PL_DHL = '205';
+
+    /**
+     * Alza Box2Box
+     */
+    public const ALZA_BOX_TO_BOX = '1';
+
+    /**
+     * Alza Warehouse2Box
+     */
+    public const ALZA_WAREHOUSE_TO_BOX = '2';
+
+    /**
      * @return list<string>|null
      */
     public static function getForCarrier(string $carrier): ?array
@@ -2956,6 +3096,7 @@ final class Service extends BaseEnum
             Carrier::INPOST => self::inpost(),
             Carrier::ONEBYALLEGRO => self::onebyallegro(),
             Carrier::EXPEDICO => self::expedico(),
+            Carrier::ALZA => self::alza(),
         ];
     }
 
@@ -3091,6 +3232,7 @@ final class Service extends BaseEnum
             self::GLS_GUARANTEED24,
             self::GLS_GUARANTEED24_EXPRESS,
             self::GLS_GUARANTEED24_SHOP,
+            self::GLS_BOX,
         ];
     }
 
@@ -3168,8 +3310,8 @@ final class Service extends BaseEnum
             self::PPL_BUSINESS,
             // self::PPL_PRIVATE_EVENING,
             self::PPL_BUSINESS_EU,
-            self::PPL_BUSINESS_PALETTE,
-            self::PPL_PRIVATE_PALETTE,
+            // self::PPL_BUSINESS_PALETTE,
+            // self::PPL_PRIVATE_PALETTE,
             self::PPL_PARCEL_RETURN_CZ,
             self::PPL_PRIVATE_SMART_CZ,
             self::PPL_PRIVATE_SMART_EU,
@@ -3256,21 +3398,23 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_GB_FEDEX_HD_CONNECT_PLUS,
             self::ZASILKOVNA_GB_FEDEX_HD_PRIORITY,
             self::ZASILKOVNA_CY_BOXNOW_BOX,
-            // self::ZASILKOVNA_CZ_POST_HD,
+            self::ZASILKOVNA_CZ_POST_HD,
             self::ZASILKOVNA_CZ_EXPRESS_PRAHA_HD,
             // self::ZASILKOVNA_CZ_EXPRESS_BRNO_HD,
             self::ZASILKOVNA_CZ_EXPRESS_OSTRAVA_HD,
             self::ZASILKOVNA_CZ_COURIER_HD,
+            self::ZASILKOVNA_CZ_COURIER_7145_HD,
             self::ZASILKOVNA_CZ_CAR_TRUNK,
             self::ZASILKOVNA_CZ_EVENING_BRNO_HD,
+            self::ZASILKOVNA_CZ_EVENING_PRAHA_OLD_HD,
             // self::ZASILKOVNA_DE_POST_HD,
             self::ZASILKOVNA_DE_HERMES_PP,
             self::ZASILKOVNA_DE_HERMES_HD,
             self::ZASILKOVNA_DE_HOME_DELIVERY_HD,
             self::ZASILKOVNA_DK_POST_NORD_HD,
             self::ZASILKOVNA_DK_POST_NORD_PP,
-            // self::ZASILKOVNA_DK_DAO_HD,
-            // self::ZASILKOVNA_DK_DAO_PP,
+            self::ZASILKOVNA_DK_DAO_HD,
+            self::ZASILKOVNA_DK_DAO_PP,
             self::ZASILKOVNA_EE_OMNIVA_HD,
             self::ZASILKOVNA_EE_OMNIVA_PP,
             self::ZASILKOVNA_EE_OMNIVA_BOX,
@@ -3281,14 +3425,14 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_ES_CORREOS_HD,
             self::ZASILKOVNA_ES_MRW_HD,
             self::ZASILKOVNA_ES_MRW_PP,
-            // self::ZASILKOVNA_ES_ENVIALIA_HD,
+            self::ZASILKOVNA_ES_ENVIALIA_HD,
             self::ZASILKOVNA_FI_POST_NORD_HP,
             self::ZASILKOVNA_FI_POST_NORD_PP,
             self::ZASILKOVNA_FI_MATKAHUOLTO_HD,
             self::ZASILKOVNA_FI_MATKAHUOLTO_PP,
             self::ZASILKOVNA_FI_MATKAHUOLTO_BOX,
-            // self::ZASILKOVNA_FR_COLIS_PRIVE_HD,
-            // self::ZASILKOVNA_FR_MONDIAL_PP,
+            self::ZASILKOVNA_FR_COLIS_PRIVE_HD,
+            self::ZASILKOVNA_FR_MONDIAL_PP,
             self::ZASILKOVNA_FR_COLISSIMO_PP,
             self::ZASILKOVNA_FR_COLISSIMO_HD,
             self::ZASILKOVNA_FR_MONDIAL_RELAY_PP,
@@ -3298,8 +3442,9 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_GB_ROYAL_MAIL_48_HD,
             self::ZASILKOVNA_GR_TAXYDROMIKI,
             self::ZASILKOVNA_GR_ACS_HD,
+            self::ZASILKOVNA_GR_ACS_7770_HD,
             self::ZASILKOVNA_GR_ACS_PP,
-            // self::ZASILKOVNA_GR_SPEEDY_HD,
+            self::ZASILKOVNA_GR_SPEEDY_HD,
             self::ZASILKOVNA_GR_SPEEDEX_HD,
             self::ZASILKOVNA_GR_BOXNOW_BOX,
             self::ZASILKOVNA_GR_ELTA_COURIER_HD,
@@ -3311,13 +3456,16 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_HR_POST_HD,
             self::ZASILKOVNA_HR_BOXNOW_BOX,
             self::ZASILKOVNA_HU_EXPRESS_ONE_HD,
-            // self::ZASILKOVNA_HU_DPD_HD,
+            self::ZASILKOVNA_HU_EXPRESS_ONE_151_HD,
+            self::ZASILKOVNA_HU_DPD_HD,
             self::ZASILKOVNA_HU_COURIER_HD,
             self::ZASILKOVNA_HU_POST_HD,
             self::ZASILKOVNA_HU_POST_PP,
             self::ZASILKOVNA_HU_POST_BOX,
             self::ZASILKOVNA_HU_FOXPOST_BOX,
-            // self::ZASILKOVNA_HU_FAMA_FUTAR_HD,
+            self::ZASILKOVNA_HU_FAMA_FUTAR_HD,
+            self::ZASILKOVNA_HU_EDS_HD,
+            self::ZASILKOVNA_HU_SPRINTER_HD,
             self::ZASILKOVNA_CH_POST_PRIORITY_HD,
             self::ZASILKOVNA_CH_POST_HD,
             self::ZASILKOVNA_CH_POST_DIRECT_HD,
@@ -3326,13 +3474,13 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_IE_ANPOST_HD,
             self::ZASILKOVNA_IE_FEDEX_HD_CONNECT_PLUS,
             self::ZASILKOVNA_IE_FEDEX_HD_PRIORITY,
-            // self::ZASILKOVNA_IL_FEDEX_PRIORITY_HD,
-            // self::ZASILKOVNA_IL_FEDEX_ECONOMY_HD,
+            self::ZASILKOVNA_IL_FEDEX_PRIORITY_HD,
+            self::ZASILKOVNA_IL_FEDEX_ECONOMY_HD,
             self::ZASILKOVNA_IT_BARTOLINI_HD,
             self::ZASILKOVNA_IT_BARTOLINI_PP,
             self::ZASILKOVNA_IT_POST_PP,
             self::ZASILKOVNA_IT_BARTOLINI_BOX,
-            // self::ZASILKOVNA_IT_GLS_HD,
+            self::ZASILKOVNA_IT_GLS_HD,
             self::ZASILKOVNA_IT_HR_PARCEL_HD,
             self::ZASILKOVNA_IT_POST_HD,
             self::ZASILKOVNA_LT_OMNIVA_BOX,
@@ -3353,7 +3501,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_NL_DHL_HD,
             self::ZASILKOVNA_NL_POST_HD,
             self::ZASILKOVNA_NL_DHL_PP,
-            // self::ZASILKOVNA_PL_POST_24_HD,
+            self::ZASILKOVNA_PL_POST_24_HD,
             self::ZASILKOVNA_PL_POST_48_HD,
             self::ZASILKOVNA_PL_DPD_HD,
             self::ZASILKOVNA_PL_COURIER_HD,
@@ -3361,17 +3509,21 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_PL_POST_PP,
             self::ZASILKOVNA_PL_INPOST_HD,
             self::ZASILKOVNA_PT_MRW_HD,
+            self::ZASILKOVNA_PT_MRW_MONO_HD,
             self::ZASILKOVNA_PT_MRW_PP,
             self::ZASILKOVNA_RO_COURIER_HD,
             self::ZASILKOVNA_RO_URGENT_CARGUS_HD,
             self::ZASILKOVNA_RO_SAMEDAY_BOX,
-            // self::ZASILKOVNA_RO_DPD_HD,
+            self::ZASILKOVNA_RO_DPD_HD,
             self::ZASILKOVNA_RO_SAMEDAY_HD,
             self::ZASILKOVNA_RO_FAN_COURIER_HD,
             self::ZASILKOVNA_RO_FAN_BOX,
-            // self::ZASILKOVNA_RU_POST_PP,
-            // self::ZASILKOVNA_RU_POST_RECOMMENDED_PP,
-            // self::ZASILKOVNA_RU_EMS_HD,
+            self::ZASILKOVNA_RO_FAN_COURIER_MONO_PP,
+            self::ZASILKOVNA_RO_POST_HD,
+            self::ZASILKOVNA_RO_POST_PP,
+            self::ZASILKOVNA_RU_POST_PP,
+            self::ZASILKOVNA_RU_POST_RECOMMENDED_PP,
+            self::ZASILKOVNA_RU_EMS_HD,
             self::ZASILKOVNA_SE_POST_NORD_PP,
             self::ZASILKOVNA_SE_POST_NORD_HD,
             // self::ZASILKOVNA_SI_DPD_HD,
@@ -3383,7 +3535,7 @@ final class Service extends BaseEnum
             self::ZASILKOVNA_SI_EXPRESS_ONE_PP,
             self::ZASILKOVNA_SK_EXPRESS_BRATISLAVA_HD,
             self::ZASILKOVNA_SK_COURIER_HD,
-            // self::ZASILKOVNA_SK_POST_HD,
+            self::ZASILKOVNA_SK_POST_HD,
             self::ZASILKOVNA_UA_NOVA_POSHTA_PP,
             self::ZASILKOVNA_UA_ROSAN_HD,
             self::ZASILKOVNA_US_FEDEX_ECONOMY_HD,
@@ -3468,10 +3620,10 @@ final class Service extends BaseEnum
     {
         return [
             self::DHLDE_PAKET,
-            self::DHLDE_PAKET_TAGGLEICH,
+            // self::DHLDE_PAKET_TAGGLEICH,
             self::DHLDE_PAKET_INTERNATIONAL,
             self::DHLDE_EUROPAKET,
-            self::DHLDE_PAKET_CONNECT,
+            // self::DHLDE_PAKET_CONNECT,
             self::DHLDE_WARENPOST_DOMESTIC,
             self::DHLDE_WARENPOST_INTERNATIONAL,
         ];
@@ -3568,8 +3720,20 @@ final class Service extends BaseEnum
     private static function dsv(): array
     {
         return [
-            self::DSV_ROAD,
-            self::DSV_B2C,
+            // self::DSV_ROAD,
+            // self::DSV_B2C,
+            self::DSV_SYSTEM_FIX,
+            self::DSV_SYSTEM_FIX_TBA,
+            self::DSV_SYSTEM,
+            self::DSV_SYSTEM_PRIORITY,
+            self::DSV_SYSTEM_HOME,
+            self::DSV_SYSTEM_PRIORITY_10,
+            self::DSV_SYSTEM_PRIORITY_12,
+            self::DSV_SYSTEM_FIX_10,
+            self::DSV_SYSTEM_FIX_12,
+            self::DSV_FULL_LOAD,
+            self::DSV_PART_LOAD,
+            self::DSV_PARCEL,
         ];
     }
 
@@ -3792,6 +3956,18 @@ final class Service extends BaseEnum
             self::EXPEDICO_CZ_ONE_DELIVERY,
             self::EXPEDICO_CZ_ONE_DELIVERY_PICKUP,
             self::EXPEDICO_FR_DHL,
+            self::EXPEDICO_SK_SPS_PPL,
+            self::EXPEDICO_HU_POST_PPL,
+            self::EXPEDICO_PL_DHL,
+        ];
+    }
+
+    /** @return list<string> */
+    private static function alza(): array
+    {
+        return [
+            self::ALZA_BOX_TO_BOX,
+            self::ALZA_WAREHOUSE_TO_BOX,
         ];
     }
 }

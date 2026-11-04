@@ -52,6 +52,7 @@ final class DefaultBranchResolver implements BranchResolver
             Carrier::GLS => [
                 Service::GLS_SHOP,
                 Service::GLS_GUARANTEED24_SHOP,
+                Service::GLS_BOX,
             ],
             Carrier::INTIME => [
                 Service::INTIME_POSTOMAT_CZ,
@@ -115,6 +116,7 @@ final class DefaultBranchResolver implements BranchResolver
                 Service::SPRING_PUDO,
             ],
             Carrier::EXPEDICO => null,
+            Carrier::ALZA => null,
         ];
 
         return $this->hasSupport($supported, $carrier, $service);

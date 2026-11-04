@@ -224,6 +224,11 @@ final class Carrier extends BaseEnum
     public const EXPEDICO = 'expedico';
 
     /**
+     * Alza
+     */
+    public const ALZA = 'alza';
+
+    /**
      * @return list<string>
      */
     public static function getAll(): array
