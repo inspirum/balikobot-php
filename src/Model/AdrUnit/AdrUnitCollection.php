@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\AdrUnit;
 
-use Inspirum\Arrayable\Collection;
+use Inspirum\Arrayable\ListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\Collection<string,mixed,int,\Inspirum\Balikobot\Model\AdrUnit\AdrUnit>
+ * @extends \Inspirum\Arrayable\ListCollection<string,mixed,\Inspirum\Balikobot\Model\AdrUnit\AdrUnit>
  */
-interface AdrUnitCollection extends Collection
+interface AdrUnitCollection extends ListCollection
 {
     public function getCarrier(): string;
 
     /**
-     * @return array<int,\Inspirum\Balikobot\Model\AdrUnit\AdrUnit>
+     * @return list<\Inspirum\Balikobot\Model\AdrUnit\AdrUnit>
      */
     public function getUnits(): array;
 }

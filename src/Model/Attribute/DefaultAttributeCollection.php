@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Attribute;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\Attribute\Attribute>
+ * @extends \Inspirum\Arrayable\BaseListCollection<string,mixed,\Inspirum\Balikobot\Model\Attribute\Attribute>
  */
-final class DefaultAttributeCollection extends BaseCollection implements AttributeCollection
+final class DefaultAttributeCollection extends BaseListCollection implements AttributeCollection
 {
     /**
-     * @param array<int,\Inspirum\Balikobot\Model\Attribute\Attribute> $items
+     * @param list<\Inspirum\Balikobot\Model\Attribute\Attribute> $items
      */
     public function __construct(
         private readonly string $carrier,
@@ -29,6 +29,6 @@ final class DefaultAttributeCollection extends BaseCollection implements Attribu
     /** @inheritDoc */
     public function getAttributes(): array
     {
-        return $this->items;
+        return $this->getItems();
     }
 }

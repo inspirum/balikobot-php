@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Service;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,string,int,\Inspirum\Balikobot\Model\Service\ServiceOption>
+ * @extends \Inspirum\Arrayable\BaseListCollection<string,string,\Inspirum\Balikobot\Model\Service\ServiceOption>
  */
-final class DefaultServiceOptionCollection extends BaseCollection implements ServiceOptionCollection
+final class DefaultServiceOptionCollection extends BaseListCollection implements ServiceOptionCollection
 {
     /** @inheritDoc */
     public function getOptions(): array

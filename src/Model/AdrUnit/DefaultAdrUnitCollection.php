@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\AdrUnit;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\AdrUnit\AdrUnit>
+ * @extends \Inspirum\Arrayable\BaseListCollection<string,mixed,\Inspirum\Balikobot\Model\AdrUnit\AdrUnit>
  */
-final class DefaultAdrUnitCollection extends BaseCollection implements AdrUnitCollection
+final class DefaultAdrUnitCollection extends BaseListCollection implements AdrUnitCollection
 {
     /**
-     * @param array<int,\Inspirum\Balikobot\Model\AdrUnit\AdrUnit> $items
+     * @param list<\Inspirum\Balikobot\Model\AdrUnit\AdrUnit> $items
      */
     public function __construct(
         private readonly string $carrier,

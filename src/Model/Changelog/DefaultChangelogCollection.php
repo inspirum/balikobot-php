@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Changelog;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\Changelog\Changelog>
+ * @extends \Inspirum\Arrayable\BaseListCollection<string,mixed,\Inspirum\Balikobot\Model\Changelog\Changelog>
  */
-final class DefaultChangelogCollection extends BaseCollection implements ChangelogCollection
+final class DefaultChangelogCollection extends BaseListCollection implements ChangelogCollection
 {
     public function getLatestVersion(): string
     {

@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Changed `TrackService::trackPackage(ById)` and `TrackService::trackPackageLastStatus(ById)` methods to throw `BadRequestException` instead of `OutOfBoundsException` when the response does not contain the requested carrier ID
 - Switched CI to the shared [inspirum/.github](https://github.com/inspirum/.github) workflow
 - Renamed the default branch from `master` to `main`
+- Changed all collections to extend `ListCollection` (default implementations `BaseListCollection`), so their items and `__toArray()` are always lists
 ### Removed
 - Removed local issue and pull request templates, code of conduct and contributing guide in favour of the shared [inspirum/.github](https://github.com/inspirum/.github) defaults
 ### Fixed

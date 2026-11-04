@@ -29,7 +29,7 @@ final class DefaultCountryFactory implements CountryFactory
     public function createCollection(array $data): CountryCollection
     {
         return new DefaultCountryCollection(
-            array_map(fn (array $country): Country => $this->create($country), $data['countries'] ?? []),
+            array_values(array_map(fn (array $country): Country => $this->create($country), $data['countries'] ?? [])),
         );
     }
 

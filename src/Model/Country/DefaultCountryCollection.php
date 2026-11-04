@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Country;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\Country\Country>
+ * @extends \Inspirum\Arrayable\BaseListCollection<string,mixed,\Inspirum\Balikobot\Model\Country\Country>
  */
-final class DefaultCountryCollection extends BaseCollection implements CountryCollection
+final class DefaultCountryCollection extends BaseListCollection implements CountryCollection
 {
     /** @inheritDoc */
     public function getCountries(): array

@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\ManipulationUnit;
 
-use Inspirum\Arrayable\Collection;
+use Inspirum\Arrayable\ListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\Collection<string,mixed,int,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
+ * @extends \Inspirum\Arrayable\ListCollection<string,mixed,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
  */
-interface ManipulationUnitCollection extends Collection
+interface ManipulationUnitCollection extends ListCollection
 {
     public function getCarrier(): string;
 
     /**
-     * @return array<int,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
+     * @return list<\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
      */
     public function getUnits(): array;
 }

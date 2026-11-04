@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\Service;
 
-use Inspirum\Arrayable\Collection;
+use Inspirum\Arrayable\ListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\Collection<string,string,int,\Inspirum\Balikobot\Model\Service\ServiceOption>
+ * @extends \Inspirum\Arrayable\ListCollection<string,string,\Inspirum\Balikobot\Model\Service\ServiceOption>
  */
-interface ServiceOptionCollection extends Collection
+interface ServiceOptionCollection extends ListCollection
 {
     /**
-     * @return array<int,\Inspirum\Balikobot\Model\Service\ServiceOption>
+     * @return list<\Inspirum\Balikobot\Model\Service\ServiceOption>
      */
     public function getOptions(): array;
 }

@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\TransportCost;
 
-use Inspirum\Arrayable\Collection;
+use Inspirum\Arrayable\ListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\Collection<string,mixed,int,\Inspirum\Balikobot\Model\TransportCost\TransportCost>
+ * @extends \Inspirum\Arrayable\ListCollection<string,mixed,\Inspirum\Balikobot\Model\TransportCost\TransportCost>
  */
-interface TransportCostCollection extends Collection
+interface TransportCostCollection extends ListCollection
 {
     public function getCarrier(): string;
 
     /**
-     * @return array<int,\Inspirum\Balikobot\Model\TransportCost\TransportCost>
+     * @return list<\Inspirum\Balikobot\Model\TransportCost\TransportCost>
      */
     public function getCosts(): array;
 

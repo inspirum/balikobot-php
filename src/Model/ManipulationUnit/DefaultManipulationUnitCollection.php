@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\ManipulationUnit;
 
-use Inspirum\Arrayable\BaseCollection;
+use Inspirum\Arrayable\BaseListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\BaseCollection<string,mixed,int,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
+ * @extends \Inspirum\Arrayable\BaseListCollection<string,mixed,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit>
  */
-final class DefaultManipulationUnitCollection extends BaseCollection implements ManipulationUnitCollection
+final class DefaultManipulationUnitCollection extends BaseListCollection implements ManipulationUnitCollection
 {
     /**
-     * @param array<int,\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit> $items
+     * @param list<\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit> $items
      */
     public function __construct(
         private readonly string $carrier,

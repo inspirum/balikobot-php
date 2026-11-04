@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Inspirum\Balikobot\Model\PackageData;
 
-use Inspirum\Arrayable\Collection;
+use Inspirum\Arrayable\ListCollection;
 
 /**
- * @extends \Inspirum\Arrayable\Collection<string,mixed,int,\Inspirum\Balikobot\Model\PackageData\PackageData>
+ * @extends \Inspirum\Arrayable\ListCollection<string,mixed,\Inspirum\Balikobot\Model\PackageData\PackageData>
  */
-interface PackageDataCollection extends Collection
+interface PackageDataCollection extends ListCollection
 {
     public function getCarrier(): string;
 
     /**
-     * @return array<\Inspirum\Balikobot\Model\PackageData\PackageData>
+     * @return list<\Inspirum\Balikobot\Model\PackageData\PackageData>
      */
     public function getPackages(): array;
 }
