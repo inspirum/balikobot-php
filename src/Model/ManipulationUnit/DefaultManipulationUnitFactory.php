@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\ManipulationUnit;
 
 use function array_map;
-use function array_values;
 
 final class DefaultManipulationUnitFactory implements ManipulationUnitFactory
 {
@@ -20,7 +19,7 @@ final class DefaultManipulationUnitFactory implements ManipulationUnitFactory
     {
         return new DefaultManipulationUnitCollection(
             $carrier,
-            array_values(array_map(fn (array $unit): ManipulationUnit => $this->create($unit), $data['units'] ?? [])),
+            array_map(fn (array $unit): ManipulationUnit => $this->create($unit), $data['units'] ?? []),
         );
     }
 }

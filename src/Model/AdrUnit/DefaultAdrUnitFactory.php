@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\AdrUnit;
 
 use function array_map;
-use function array_values;
 
 final class DefaultAdrUnitFactory implements AdrUnitFactory
 {
@@ -29,7 +28,7 @@ final class DefaultAdrUnitFactory implements AdrUnitFactory
     {
         return new DefaultAdrUnitCollection(
             $carrier,
-            array_values(array_map(fn (array $unit): AdrUnit => $this->create($carrier, $unit), $data['units'] ?? [])),
+            array_map(fn (array $unit): AdrUnit => $this->create($carrier, $unit), $data['units'] ?? []),
         );
     }
 }

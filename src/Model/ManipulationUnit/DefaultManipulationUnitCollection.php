@@ -12,7 +12,7 @@ use Inspirum\Arrayable\BaseListCollection;
 final class DefaultManipulationUnitCollection extends BaseListCollection implements ManipulationUnitCollection
 {
     /**
-     * @param list<\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit> $items
+     * @param array<\Inspirum\Balikobot\Model\ManipulationUnit\ManipulationUnit> $items
      */
     public function __construct(
         private readonly string $carrier,

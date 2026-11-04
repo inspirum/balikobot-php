@@ -12,7 +12,7 @@ use Inspirum\Arrayable\BaseListCollection;
 final class DefaultAttributeCollection extends BaseListCollection implements AttributeCollection
 {
     /**
-     * @param list<\Inspirum\Balikobot\Model\Attribute\Attribute> $items
+     * @param array<\Inspirum\Balikobot\Model\Attribute\Attribute> $items
      */
     public function __construct(
         private readonly string $carrier,

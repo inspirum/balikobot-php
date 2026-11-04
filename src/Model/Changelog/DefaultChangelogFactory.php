@@ -6,7 +6,6 @@ namespace Inspirum\Balikobot\Model\Changelog;
 
 use DateTimeImmutable;
 use function array_map;
-use function array_values;
 
 final class DefaultChangelogFactory implements ChangelogFactory
 {
@@ -24,7 +23,7 @@ final class DefaultChangelogFactory implements ChangelogFactory
     public function createCollection(array $data): ChangelogCollection
     {
         return new DefaultChangelogCollection(
-            array_values(array_map(fn (array $version): Changelog => $this->create($version), $data['versions'])),
+            array_map(fn (array $version): Changelog => $this->create($version), $data['versions']),
         );
     }
 
@@ -45,7 +44,7 @@ final class DefaultChangelogFactory implements ChangelogFactory
     private function createStatusCollection(array $data): ChangelogStatusCollection
     {
         return new DefaultChangelogStatusCollection(
-            array_values(array_map(fn (array $change): ChangelogStatus => $this->createStatus($change), $data['changes'])),
+            array_map(fn (array $change): ChangelogStatus => $this->createStatus($change), $data['changes']),
         );
     }
 }

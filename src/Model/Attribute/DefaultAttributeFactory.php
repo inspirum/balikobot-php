@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Inspirum\Balikobot\Model\Attribute;
 
 use function array_map;
-use function array_values;
 use function trim;
 
 final class DefaultAttributeFactory implements AttributeFactory
@@ -25,7 +24,7 @@ final class DefaultAttributeFactory implements AttributeFactory
     {
         return new DefaultAttributeCollection(
             $carrier,
-            array_values(array_map(fn (array $attribute): Attribute => $this->create($attribute), $data['attributes'] ?? [])),
+            array_map(fn (array $attribute): Attribute => $this->create($attribute), $data['attributes'] ?? []),
         );
     }
 }

@@ -12,7 +12,7 @@ use Inspirum\Arrayable\BaseListCollection;
 final class DefaultAdrUnitCollection extends BaseListCollection implements AdrUnitCollection
 {
     /**
-     * @param list<\Inspirum\Balikobot\Model\AdrUnit\AdrUnit> $items
+     * @param array<\Inspirum\Balikobot\Model\AdrUnit\AdrUnit> $items
      */
     public function __construct(
         private readonly string $carrier,
