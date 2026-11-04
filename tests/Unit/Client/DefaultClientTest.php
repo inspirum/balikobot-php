@@ -251,6 +251,34 @@ final class DefaultClientTest extends BaseTestCase
             'gzip' => true,
         ];
 
+        yield 'numeric_string_status' => [
+            'statusCode' => 200,
+            'response' => [
+                'status' => '200',
+                'test' => 1596,
+            ],
+            'shouldHaveStatus' => true,
+            'result' => true,
+        ];
+
+        yield 'invalid_status' => [
+            'statusCode' => 200,
+            'response' => [
+                'status' => 'abc',
+            ],
+            'shouldHaveStatus' => true,
+            'result' => new BadRequestException([], 400, message: 'Invalid response status'),
+        ];
+
+        yield 'invalid_status_type' => [
+            'statusCode' => 200,
+            'response' => [
+                'status' => [200],
+            ],
+            'shouldHaveStatus' => false,
+            'result' => new BadRequestException([], 400, message: 'Invalid response status'),
+        ];
+
         yield 'parse_error' => [
             'statusCode' => 404,
             'response' => 's\x/\*',

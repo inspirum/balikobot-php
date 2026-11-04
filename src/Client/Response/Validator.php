@@ -8,6 +8,9 @@ use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Exception\UnauthorizedException;
 use function array_is_list;
 use function count;
+use function ctype_digit;
+use function is_int;
+use function is_string;
 
 final class Validator
 {
@@ -43,12 +46,33 @@ final class Validator
         array $responseItem,
         ?array $response = null,
         bool $shouldHaveStatus = true,
+        int $defaultStatusCode = 500,
     ): void {
         if ($shouldHaveStatus === false && isset($responseItem['status']) === false) {
             return;
         }
 
-        $this->validateStatus((int) ($responseItem['status'] ?? 500), $response ?? $responseItem);
+        $response ??= $responseItem;
+
+        $this->validateStatus($this->resolveStatusCode($responseItem['status'] ?? $defaultStatusCode, $response), $response);
+    }
+
+    /**
+     * @param array<mixed,mixed> $response
+     *
+     * @throws \Inspirum\Balikobot\Exception\BadRequestException
+     */
+    private function resolveStatusCode(mixed $status, array $response): int
+    {
+        if (is_string($status) && ctype_digit($status)) {
+            return (int) $status;
+        }
+
+        if (is_int($status)) {
+            return $status;
+        }
+
+        throw new BadRequestException($response, message: 'Invalid response status');
     }
 
     /**
