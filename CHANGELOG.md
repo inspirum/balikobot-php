@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **neutralize_tin** attribute
 ### Changed
 - Changed documentation links to the new [API documentation](https://api-doc.balikobot.cz)
+### Fixed
+- Fixed `.gitattributes` export-ignore paths so `phpcs.xml` and `phpstan.neon` are not shipped in the package
 
 
 ## [v7.16.0 (2026-09-08)](https://github.com/inspirum/balikobot-php/compare/v7.15.0...v7.16.0)
