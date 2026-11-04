@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fixed `.gitattributes` export-ignore paths so `phpcs.xml` and `phpstan.neon` are not shipped in the package
 - Fixed `DefaultCarrier::getMethodsForVersion` failing for a version without methods, it now returns an empty collection
 - Fixed `DefaultAttributeFactory` turning missing `max_length` into an empty string instead of `null`
+- Fixed `DefaultTransportCostFactory` ignoring the status of each package and failing on responses without the `packages` key
 
 
 ## [v7.16.0 (2026-09-08)](https://github.com/inspirum/balikobot-php/compare/v7.15.0...v7.16.0)

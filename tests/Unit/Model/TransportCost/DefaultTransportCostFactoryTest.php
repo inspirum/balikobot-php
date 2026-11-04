@@ -165,7 +165,7 @@ final class DefaultTransportCostFactoryTest extends BaseTestCase
                             'cost' => 1200,
                         ],
                     ],
-                    'status' => '404',
+                    'status' => '200',
                 ],
                 [
                     'costs_total' => 800,
@@ -180,6 +180,67 @@ final class DefaultTransportCostFactoryTest extends BaseTestCase
                 ],
             ],
             'result' => new BadRequestException([], 400),
+        ];
+
+        yield 'package_status_error' => [
+            'carrier' => Carrier::TOPTRANS,
+            'packages' => [
+                [
+                    'eid' => '8316699909',
+                ],
+                [
+                    'eid' => '9636699909',
+                ],
+            ],
+            'data' => [
+                [
+                    'eid' => '8316699909',
+                    'costs_total' => 1200,
+                    'currency' => 'CZK',
+                    'costs_breakdown' => [
+                        [
+                            'name' => 'Base price',
+                            'cost' => 1200,
+                        ],
+                    ],
+                    'status' => '404',
+                ],
+                [
+                    'costs_total' => 800,
+                    'currency' => 'CZK',
+                    'costs_breakdown' => [
+                        [
+                            'name' => 'Base price',
+                            'cost' => 800,
+                        ],
+                    ],
+                    'status' => '200',
+                ],
+            ],
+            'result' => new BadRequestException([], 404),
+        ];
+
+        yield 'without_packages_key' => [
+            'carrier' => Carrier::TOPTRANS,
+            'packages' => null,
+            'data' => [
+                [
+                    'eid' => '8316699909',
+                    'costs_total' => 1200,
+                    'currency' => 'CZK',
+                    'status' => '200',
+                ],
+                'status' => 200,
+            ],
+            'result' => new DefaultTransportCostCollection(Carrier::TOPTRANS, [
+                new DefaultTransportCost(
+                    '8316699909',
+                    Carrier::TOPTRANS,
+                    1200,
+                    'CZK',
+                    [],
+                ),
+            ]),
         ];
     }
 
