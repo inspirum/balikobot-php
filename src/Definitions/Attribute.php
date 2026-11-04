@@ -1045,6 +1045,36 @@ final class Attribute extends BaseEnum
     public const MU_SUB_COUNT = 'mu_sub_count';
 
     /**
+     * Declaration statement printed on the commercial invoice
+     */
+    public const DECLARATION_STATEMENT = 'declaration_statement';
+
+    /**
+     * Special instructions printed on the commercial invoice
+     */
+    public const SPECIAL_INSTRUCTIONS = 'special_instructions';
+
+    /**
+     * Reason for export stated on the commercial invoice
+     */
+    public const DECLARATION_REASON_FOR_EXPORT = 'declaration_reason_for_export';
+
+    /**
+     * Company name of the importer of record for customs clearance
+     */
+    public const NEUTRALIZE_COMPANY = 'neutralize_company';
+
+    /**
+     * State code of the importer of record for customs clearance
+     */
+    public const NEUTRALIZE_STATE = 'neutralize_state';
+
+    /**
+     * Tax identification number details of the importer of record for customs clearance
+     */
+    public const NEUTRALIZE_TIN = 'neutralize_tin';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

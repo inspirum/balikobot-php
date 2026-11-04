@@ -237,6 +237,21 @@ trait DeliveryData
         $this->offsetSet(Attribute::DECLARATION_TRANSPORT_CHARGES, $value);
     }
 
+    public function setDeclarationStatement(string $value): void
+    {
+        $this->offsetSet(Attribute::DECLARATION_STATEMENT, $value);
+    }
+
+    public function setDeclarationReasonForExport(string $value): void
+    {
+        $this->offsetSet(Attribute::DECLARATION_REASON_FOR_EXPORT, $value);
+    }
+
+    public function setSpecialInstructions(string $value): void
+    {
+        $this->offsetSet(Attribute::SPECIAL_INSTRUCTIONS, $value);
+    }
+
     public function setIsAlcohol(bool $value): void
     {
         $this->offsetSet(Attribute::IS_ALCOHOL, (int) $value);

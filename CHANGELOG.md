@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.16.0...master)
+### Added
+- Added support for new options from documentation **v2.021113** (2026-10-01)
+  - Added **declaration_statement** attribute
+  - Added **special_instructions** attribute
+  - Added **declaration_reason_for_export** attribute
+  - Added **neutralize_company** attribute
+  - Added **neutralize_state** attribute
+  - Added **neutralize_tin** attribute
 
 
 ## [v7.16.0 (2026-09-08)](https://github.com/inspirum/balikobot-php/compare/v7.15.0...v7.16.0)

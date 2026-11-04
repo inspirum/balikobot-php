@@ -180,6 +180,9 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setDeclarationInsuranceCharges(10);
         $package->setDeclarationOtherCharges(99.9);
         $package->setDeclarationTransportCharges(5.3);
+        $package->setDeclarationStatement('Statement');
+        $package->setDeclarationReasonForExport('SOLD');
+        $package->setSpecialInstructions('Instructions');
         $package->setIsAlcohol(true);
         $package->setContentIssueDate(new DateTimeImmutable('2019-11-11 18:10:59'));
         $package->setContentInvoiceNumber('1234567890');
@@ -199,14 +202,20 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setNeutralize(true);
         $package->setNeutralizeName('NeutralizeName');
         $package->setNeutralizeFirm('NeutralizeFirm');
+        $package->setNeutralizeCompany('NeutralizeCompany');
         $package->setNeutralizeStreet('NeutralizeStreet');
         $package->setNeutralizeCity('NeutralizeCity');
         $package->setNeutralizeZip('19900');
         $package->setNeutralizeCountry('HU');
         $package->setNeutralizeRegion('HU1');
+        $package->setNeutralizeState('HU2');
         $package->setNeutralizeEmail('email3@email.com');
         $package->setNeutralizePhone('777666222');
         $package->setNeutralizeAccountNumber('456789/0985');
+        $package->setNeutralizeTin([
+            'tin_number' => '987654321',
+            'tin_type' => 'BUSINESS_NATIONAL',
+        ]);
         $package->setBankName('CS');
         $package->setBankAccountHolder('BankHolderName');
         $package->setBankAccountName('BankAccountName');
@@ -385,6 +394,9 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::DECLARATION_INSURANCE_CHARGES => 10.0,
                 Attribute::DECLARATION_OTHER_CHARGES => 99.9,
                 Attribute::DECLARATION_TRANSPORT_CHARGES => 5.3,
+                Attribute::DECLARATION_STATEMENT => 'Statement',
+                Attribute::DECLARATION_REASON_FOR_EXPORT => 'SOLD',
+                Attribute::SPECIAL_INSTRUCTIONS => 'Instructions',
                 Attribute::IS_ALCOHOL => 1,
                 Attribute::CONTENT_ISSUE_DATE => '2019-11-11',
                 Attribute::CONTENT_INVOICE_NUMBER => '1234567890',
@@ -403,6 +415,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::NEUTRALIZE => 1,
                 Attribute::NEUTRALIZE_NAME => 'NeutralizeName',
                 Attribute::NEUTRALIZE_FIRM => 'NeutralizeFirm',
+                Attribute::NEUTRALIZE_COMPANY => 'NeutralizeCompany',
                 Attribute::NEUTRALIZE_STREET => 'NeutralizeStreet',
                 Attribute::NEUTRALIZE_CITY => 'NeutralizeCity',
                 Attribute::NEUTRALIZE_ZIP => '19900',
@@ -410,7 +423,12 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::NEUTRALIZE_EMAIL => 'email3@email.com',
                 Attribute::NEUTRALIZE_PHONE => '777666222',
                 Attribute::NEUTRALIZE_REGION => 'HU1',
+                Attribute::NEUTRALIZE_STATE => 'HU2',
                 Attribute::NEUTRALIZE_ACCOUNT_NUMBER => '456789/0985',
+                Attribute::NEUTRALIZE_TIN => [
+                    'tin_number' => '987654321',
+                    'tin_type' => 'BUSINESS_NATIONAL',
+                ],
                 Attribute::DCL_PDF => 'base64:dcl',
                 Attribute::BANK_NAME => 'CS',
                 Attribute::BANK_ACCOUNT_HOLDER => 'BankHolderName',

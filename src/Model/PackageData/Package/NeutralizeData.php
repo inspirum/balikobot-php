@@ -23,6 +23,11 @@ trait NeutralizeData
         $this->offsetSet(Attribute::NEUTRALIZE_FIRM, $value);
     }
 
+    public function setNeutralizeCompany(string $value): void
+    {
+        $this->offsetSet(Attribute::NEUTRALIZE_COMPANY, $value);
+    }
+
     public function setNeutralizeStreet(string $value): void
     {
         $this->offsetSet(Attribute::NEUTRALIZE_STREET, $value);
@@ -48,6 +53,11 @@ trait NeutralizeData
         $this->offsetSet(Attribute::NEUTRALIZE_REGION, $value);
     }
 
+    public function setNeutralizeState(string $value): void
+    {
+        $this->offsetSet(Attribute::NEUTRALIZE_STATE, $value);
+    }
+
     public function setNeutralizePhone(string $value): void
     {
         $this->offsetSet(Attribute::NEUTRALIZE_PHONE, $value);
@@ -61,5 +71,13 @@ trait NeutralizeData
     public function setNeutralizeAccountNumber(string $value): void
     {
         $this->offsetSet(Attribute::NEUTRALIZE_ACCOUNT_NUMBER, $value);
+    }
+
+    /**
+     * @param array<string,mixed> $value
+     */
+    public function setNeutralizeTin(array $value): void
+    {
+        $this->offsetSet(Attribute::NEUTRALIZE_TIN, $value);
     }
 }
