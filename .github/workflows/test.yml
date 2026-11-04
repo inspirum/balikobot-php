@@ -1,0 +1,12 @@
+name: Test
+
+on:
+  - push
+  - pull_request
+  - workflow_dispatch
+
+jobs:
+  php:
+    uses: inspirum/.github/.github/workflows/php.yml@main
+    with:
+      coverage-php: '8.1'
