@@ -18,6 +18,7 @@ use function curl_setopt;
 use function json_encode;
 use function sprintf;
 use const CURLINFO_HTTP_CODE;
+use const CURLOPT_CONNECTTIMEOUT;
 use const CURLOPT_HEADER;
 use const CURLOPT_HTTPHEADER;
 use const CURLOPT_POST;
@@ -25,6 +26,7 @@ use const CURLOPT_POSTFIELDS;
 use const CURLOPT_RETURNTRANSFER;
 use const CURLOPT_SSL_VERIFYHOST;
 use const CURLOPT_SSL_VERIFYPEER;
+use const CURLOPT_TIMEOUT;
 use const CURLOPT_URL;
 
 final class DefaultCurlRequester implements Requester
@@ -33,6 +35,8 @@ final class DefaultCurlRequester implements Requester
         private readonly string $apiUser,
         private readonly string $apiKey,
         private readonly bool $sslVerify = true,
+        private readonly int $connectTimeout = 10,
+        private readonly int $timeout = 300,
     ) {
     }
 
@@ -46,6 +50,8 @@ final class DefaultCurlRequester implements Requester
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
 
         // disable SSL verification
         if ($this->sslVerify === false) {

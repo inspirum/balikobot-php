@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Added **neutralize_company** attribute
   - Added **neutralize_state** attribute
   - Added **neutralize_tin** attribute
+- Added connect timeout (10 s) and request timeout (300 s) to `DefaultCurlRequester`, configurable in its constructor
 - Added **ALZA** carrier with all its service types
 - Added **GLS_BOX** service type
 - Added new **DSV** service types
