@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Switched CI to the shared [inspirum/.github](https://github.com/inspirum/.github) workflow
 - Renamed the default branch from `master` to `main`
 - Changed [**inspirum/arrayable**](https://github.com/inspirum/arrayable-php) requirement to `^2.0`
+- Changed `composer test` to read the PHPStan level only from `phpstan.neon`
 - Changed all collections to extend `ListCollection` (default implementations `BaseListCollection`), so their items and `__toArray()` are always lists
 ### Removed
 - Removed local issue and pull request templates, code of conduct and contributing guide in favour of the shared [inspirum/.github](https://github.com/inspirum/.github) defaults
