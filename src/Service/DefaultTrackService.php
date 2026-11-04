@@ -7,6 +7,7 @@ namespace Inspirum\Balikobot\Service;
 use Inspirum\Balikobot\Client\Client;
 use Inspirum\Balikobot\Definitions\Method;
 use Inspirum\Balikobot\Definitions\Version;
+use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Package\Package;
 use Inspirum\Balikobot\Model\Package\PackageCollection;
 use Inspirum\Balikobot\Model\Status\Status;
@@ -14,7 +15,7 @@ use Inspirum\Balikobot\Model\Status\StatusCollection;
 use Inspirum\Balikobot\Model\Status\StatusFactory;
 use Inspirum\Balikobot\Model\Status\Statuses;
 use Inspirum\Balikobot\Model\Status\StatusesCollection;
-use OutOfBoundsException;
+use function sprintf;
 
 final class DefaultTrackService implements TrackService
 {
@@ -31,7 +32,7 @@ final class DefaultTrackService implements TrackService
 
     public function trackPackageById(string $carrier, string $carrierId): Statuses
     {
-        return $this->trackPackagesByIds($carrier, [$carrierId])->getForCarrierId($carrierId) ?? throw new OutOfBoundsException();
+        return $this->trackPackagesByIds($carrier, [$carrierId])->getForCarrierId($carrierId) ?? throw $this->missingCarrierId($carrierId);
     }
 
     public function trackPackages(PackageCollection $packages): StatusesCollection
@@ -60,7 +61,7 @@ final class DefaultTrackService implements TrackService
 
     public function trackPackageLastStatusById(string $carrier, string $carrierId): Status
     {
-        return $this->trackPackagesLastStatusesByIds($carrier, [$carrierId])->getForCarrierId($carrierId) ?? throw new OutOfBoundsException();
+        return $this->trackPackagesLastStatusesByIds($carrier, [$carrierId])->getForCarrierId($carrierId) ?? throw $this->missingCarrierId($carrierId);
     }
 
     public function trackPackagesLastStatuses(PackageCollection $packages): StatusCollection
@@ -80,5 +81,10 @@ final class DefaultTrackService implements TrackService
         );
 
         return $this->statusFactory->createLastStatusCollection($carrier, $carrierIds, $response);
+    }
+
+    private function missingCarrierId(string $carrierId): BadRequestException
+    {
+        return new BadRequestException([], 404, message: sprintf('Response does not contain carrier ID "%s"', $carrierId));
     }
 }

@@ -8,6 +8,7 @@ use Inspirum\Balikobot\Client\Client;
 use Inspirum\Balikobot\Definitions\Carrier;
 use Inspirum\Balikobot\Definitions\Method;
 use Inspirum\Balikobot\Definitions\Version;
+use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Model\Package\DefaultPackage;
 use Inspirum\Balikobot\Model\Package\DefaultPackageCollection;
 use Inspirum\Balikobot\Model\Package\Package;
@@ -147,6 +148,44 @@ final class DefaultTrackServiceTest extends BaseServiceTestCase
         ));
 
         self::assertSame($expectedResult, $actualResult);
+    }
+
+    public function testTrackPackageMissingInResponse(): void
+    {
+        $this->expectException(BadRequestException::class);
+        $this->expectExceptionMessage('Response does not contain carrier ID "3"');
+
+        $carrier = Carrier::CP;
+        $carrierId = '3';
+        $response = $this->mockClientResponse();
+        $expectedResultCollection = self::createStub(StatusesCollection::class);
+        $expectedResultCollection->method('getForCarrierId')->willReturn(null);
+
+        $trackService = $this->newDefaultTrackService(
+            client: $this->mockClient([Version::V2V2, $carrier, Method::TRACK, ['carrier_ids' => [$carrierId]], null, false], $response),
+            statusFactory: $this->mockStatusFactory($carrier, [$carrierId], $response, $expectedResultCollection),
+        );
+
+        $trackService->trackPackageById($carrier, $carrierId);
+    }
+
+    public function testTrackPackageLastStatusMissingInResponse(): void
+    {
+        $this->expectException(BadRequestException::class);
+        $this->expectExceptionMessage('Response does not contain carrier ID "2"');
+
+        $carrier = Carrier::CP;
+        $carrierId = '2';
+        $response = $this->mockClientResponse();
+        $expectedResultCollection = self::createStub(StatusCollection::class);
+        $expectedResultCollection->method('getForCarrierId')->willReturn(null);
+
+        $trackService = $this->newDefaultTrackService(
+            client: $this->mockClient([Version::V2V1, $carrier, Method::TRACK_STATUS, ['carrier_ids' => [$carrierId]], null, false], $response),
+            statusFactory: $this->mockStatusFactory($carrier, [$carrierId], $response, $expectedResultCollection),
+        );
+
+        $trackService->trackPackageLastStatusById($carrier, $carrierId);
     }
 
     /**
