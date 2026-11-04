@@ -8,7 +8,7 @@
 [![Total Downloads][ico-packagist-download]][link-packagist-download]
 [![Software License][ico-license]][link-licence]
 
-Offers implementation of Balikobot API [v2][link-api-v2-upgrade] described in the official [documentation][link-api-v2] until **v2.02118** *(2026-08-12)*.
+Offers implementation of Balikobot API v2 described in the official [documentation][link-api-v2] until [**v2.021116**][link-api-v2-changelog] *(2026-10-29)*.
 
 More details are available in [changelog][link-changelog].
 
@@ -332,9 +332,8 @@ The MIT License (MIT). Please see [License File][link-licence] for more informat
 [link-workflow]:            https://github.com/inspirum/balikobot-php/actions
 [link-scrutinizer]:         https://scrutinizer-ci.com/g/inspirum/balikobot-php/code-structure
 [link-code-quality]:        https://scrutinizer-ci.com/g/inspirum/balikobot-php
-[link-api]:                 https://balikobot.docs.apiary.io/#introduction/prehled-zmen
-[link-api-v2]:              https://balikobotv2eng.docs.apiary.io/#introduction/summary-of-changes
-[link-api-v2-upgrade]:      https://balikobotv2eng.docs.apiary.io/#introduction/difference-api-v2-vs-api-v1
+[link-api-v2]:              https://api-doc.balikobot.cz
+[link-api-v2-changelog]:    https://heurekagroup.atlassian.net/wiki/spaces/BBAPIV2/pages/8279326780
 [link-packagist-stable]:    https://packagist.org/packages/inspirum/balikobot
 [link-packagist-download]:  https://packagist.org/packages/inspirum/balikobot/stats
 [link-phpstan]:             https://github.com/phpstan/phpstan

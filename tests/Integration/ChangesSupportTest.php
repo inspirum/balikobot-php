@@ -28,14 +28,14 @@ final class ChangesSupportTest extends BaseTestCase
 
         $changelog = $infoService->getChangelog();
 
-        $expected = (float) '2.02118';
-        $actual = (float) $changelog->getLatestVersion();
+        $expected = '2.021116';
+        $actual = $changelog->getLatestVersion();
 
-        if ($actual > $expected) {
-            self::markTestIncomplete(sprintf('Package not supporting latest changes [%.5f > %.5f]', $actual, $expected));
-        } else {
-            self::assertLessThanOrEqual($expected, $actual);
+        if ($actual !== $expected) {
+            self::markTestIncomplete(sprintf('Package not supporting latest changes [%s !== %s]', $actual, $expected));
         }
+
+        $this->expectNotToPerformAssertions();
     }
 
     public function testAllAddAttributesSupport(): void
