@@ -270,6 +270,33 @@ final class DefaultClientTest extends BaseTestCase
             'result' => new BadRequestException([], 400, message: 'Invalid response status'),
         ];
 
+        yield 'decimal_string_status' => [
+            'statusCode' => 200,
+            'response' => [
+                'status' => '200.5',
+            ],
+            'shouldHaveStatus' => true,
+            'result' => new BadRequestException([], 400, message: 'Invalid response status'),
+        ];
+
+        yield 'exponent_string_status' => [
+            'statusCode' => 200,
+            'response' => [
+                'status' => '2e2',
+            ],
+            'shouldHaveStatus' => true,
+            'result' => new BadRequestException([], 400, message: 'Invalid response status'),
+        ];
+
+        yield 'trailing_newline_string_status' => [
+            'statusCode' => 200,
+            'response' => [
+                'status' => "200\n",
+            ],
+            'shouldHaveStatus' => true,
+            'result' => new BadRequestException([], 400, message: 'Invalid response status'),
+        ];
+
         yield 'invalid_status_type' => [
             'statusCode' => 200,
             'response' => [
