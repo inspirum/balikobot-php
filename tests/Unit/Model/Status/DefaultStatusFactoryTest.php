@@ -38,7 +38,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
 
         $collection = $factory->createCollection($carrier, $carrierIds, $data);
 
-        self::assertEquals($result, $collection);
+        self::assertStrictEquals($result, $collection);
     }
 
     /**
@@ -332,7 +332,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
 
         $collection = $factory->createLastStatusCollection($carrier, $carrierIds, $data);
 
-        self::assertEquals($result, $collection);
+        self::assertStrictEquals($result, $collection);
     }
 
     /**
@@ -469,7 +469,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
 
         $status = $factory->create($carrier, $carrierId, $data);
 
-        self::assertEquals($result, $status);
+        self::assertStrictEquals($result, $status);
     }
 
     /**
@@ -554,7 +554,7 @@ final class DefaultStatusFactoryTest extends BaseTestCase
 
         $status = $factory->createLastStatus($carrier, $data);
 
-        self::assertEquals($result, $status);
+        self::assertStrictEquals($result, $status);
     }
 
     /**

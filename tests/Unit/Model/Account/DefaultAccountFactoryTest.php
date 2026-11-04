@@ -32,7 +32,7 @@ final class DefaultAccountFactoryTest extends BaseTestCase
 
         $collection = $factory->create($data);
 
-        self::assertEquals($result, $collection);
+        self::assertStrictEquals($result, $collection);
     }
 
     /**

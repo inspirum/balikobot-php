@@ -37,7 +37,7 @@ final class DefaultPackageDataCollectionTest extends BaseTestCase
         ];
 
         self::assertSame($carrier, $collection->getCarrier());
-        self::assertEquals($items, $collection->getPackages());
+        self::assertStrictEquals($items, $collection->getPackages());
         self::assertSame($expectedArray, $collection->__toArray());
     }
 
@@ -108,15 +108,15 @@ final class DefaultPackageDataCollectionTest extends BaseTestCase
 
         $packages->add($package);
 
-        self::assertEquals(
+        self::assertSame(
             [
                 0 => [
-                    'eid' => '0001',
                     'test' => 1,
+                    'eid' => '0001',
                 ],
                 1 => [
-                    'eid' => '0001',
                     'test' => 2,
+                    'eid' => '0001',
                 ],
             ],
             $packages->__toArray(),

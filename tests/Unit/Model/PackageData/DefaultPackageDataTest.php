@@ -264,7 +264,7 @@ final class DefaultPackageDataTest extends BaseTestCase
 
         $unsupportedAttributes = array_diff(Attribute::getAll(), array_keys($package->getData()));
 
-        self::assertEquals(
+        self::assertSame(
             [
                 Attribute::EID => 'eid',
                 Attribute::ORDER_NUMBER => 1,
@@ -281,7 +281,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::VS => '67890',
                 Attribute::REC_NAME => 'Name',
                 Attribute::REC_FIRM => 'Firm',
-                Attribute::REC_RESIDENTIAL => true,
+                Attribute::REC_RESIDENTIAL => 1,
                 Attribute::REC_TIN => [
                     'tin_number' => '123456789',
                     'tin_type' => 'BUSINESS_UNION',
@@ -330,9 +330,9 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::WRAP_BACK_NOTE => 'WNote',
                 Attribute::APP_DISP => 1,
                 Attribute::DELIVERY_DATE => '2018-10-10',
-                Attribute::DATE_DELIVERY => '2018-10-11',
                 Attribute::DELIVERY_TIME_FROM => '10:00',
                 Attribute::DELIVERY_TIME_TO => '12:00',
+                Attribute::DATE_DELIVERY => '2018-10-11',
                 Attribute::RETURN_TRACK => 1,
                 Attribute::BANK_ACCOUNT_NUMBER => '56789/0900',
                 Attribute::CONTENT => 'content',
@@ -405,6 +405,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::CONTENT_EAD => 'create',
                 Attribute::CONTENT_MRN => '1234',
                 Attribute::EAD_PDF => 'base64:ead',
+                Attribute::DCL_PDF => 'base64:dcl',
                 Attribute::SEN_NAME => 'SenName',
                 Attribute::SEN_FIRM => 'SenFirm',
                 Attribute::SEN_STREET => 'SenStreet',
@@ -422,16 +423,15 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::NEUTRALIZE_CITY => 'NeutralizeCity',
                 Attribute::NEUTRALIZE_ZIP => '19900',
                 Attribute::NEUTRALIZE_COUNTRY => 'HU',
-                Attribute::NEUTRALIZE_EMAIL => 'email3@email.com',
-                Attribute::NEUTRALIZE_PHONE => '777666222',
                 Attribute::NEUTRALIZE_REGION => 'HU1',
                 Attribute::NEUTRALIZE_STATE => 'HU2',
+                Attribute::NEUTRALIZE_EMAIL => 'email3@email.com',
+                Attribute::NEUTRALIZE_PHONE => '777666222',
                 Attribute::NEUTRALIZE_ACCOUNT_NUMBER => '456789/0985',
                 Attribute::NEUTRALIZE_TIN => [
                     'tin_number' => '987654321',
                     'tin_type' => 'BUSINESS_NATIONAL',
                 ],
-                Attribute::DCL_PDF => 'base64:dcl',
                 Attribute::BANK_NAME => 'CS',
                 Attribute::BANK_ACCOUNT_HOLDER => 'BankHolderName',
                 Attribute::BANK_ACCOUNT_NAME => 'BankAccountName',

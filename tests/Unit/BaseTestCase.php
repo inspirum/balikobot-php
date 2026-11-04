@@ -11,10 +11,19 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use function is_array;
 use function json_encode;
+use function var_export;
 
 abstract class BaseTestCase extends TestCase
 {
     use Extension;
+
+    /**
+     * Assert that two values are equal including types of all nested scalars and object properties
+     */
+    protected static function assertStrictEquals(mixed $expected, mixed $actual): void
+    {
+        self::assertSame(var_export($expected, true), var_export($actual, true));
+    }
 
     /**
      * Get partial mocked API requester instance with overridden call method.

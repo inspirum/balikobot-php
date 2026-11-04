@@ -15,7 +15,6 @@ use Inspirum\Balikobot\Model\Branch\DefaultBranchIterator;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
-use Traversable;
 use function iterator_to_array;
 
 final class DefaultBranchFactoryTest extends BaseTestCase
@@ -36,9 +35,8 @@ final class DefaultBranchFactoryTest extends BaseTestCase
 
         $iterator = $factory->createIterator($carrier, $service, $countries, $data);
 
-        self::assertEquals($result, $iterator);
-        if ($result instanceof Traversable) {
-            self::assertEquals(iterator_to_array($result), iterator_to_array($iterator));
+        if ($result instanceof BranchIterator) {
+            self::assertIterator($result, $iterator);
         }
     }
 
@@ -116,8 +114,7 @@ final class DefaultBranchFactoryTest extends BaseTestCase
 
         $iterator = $factory->wrapIterator($carrier, $service, $countries, $result->getInnerIterator());
 
-        self::assertEquals($result, $iterator);
-        self::assertEquals(iterator_to_array($result), iterator_to_array($iterator));
+        self::assertIterator($result, $iterator);
     }
 
     /**
@@ -556,6 +553,14 @@ final class DefaultBranchFactoryTest extends BaseTestCase
         ]);
 
         self::assertSame('167', $branch->getBranchId());
+    }
+
+    private static function assertIterator(BranchIterator $expected, BranchIterator $actual): void
+    {
+        self::assertSame($expected->getCarrier(), $actual->getCarrier());
+        self::assertSame($expected->getService(), $actual->getService());
+        self::assertSame($expected->getCountries(), $actual->getCountries());
+        self::assertStrictEquals(iterator_to_array($expected), iterator_to_array($actual));
     }
 
     private function newDefaultBranchFactory(): BranchFactory

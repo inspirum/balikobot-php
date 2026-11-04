@@ -30,7 +30,7 @@ final class DefaultAttributeFactoryTest extends BaseTestCase
 
         $collection = $factory->createCollection($carrier, $data);
 
-        self::assertEquals($result, $collection);
+        self::assertStrictEquals($result, $collection);
     }
 
     /**

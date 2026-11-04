@@ -26,7 +26,7 @@ final class DefaultLabelFactoryTest extends BaseTestCase
 
         $item = $factory->create($data);
 
-        self::assertEquals($result, $item);
+        self::assertStrictEquals($result, $item);
     }
 
     /**

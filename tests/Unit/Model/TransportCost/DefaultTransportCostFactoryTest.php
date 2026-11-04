@@ -34,7 +34,7 @@ final class DefaultTransportCostFactoryTest extends BaseTestCase
 
         $collection = $factory->createCollection($carrier, $packages, $data);
 
-        self::assertEquals($result, $collection);
+        self::assertStrictEquals($result, $collection);
     }
 
     /**

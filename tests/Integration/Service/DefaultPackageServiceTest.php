@@ -42,7 +42,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $package = $packageService->addPackages($packages);
 
         self::assertCount(1, $package->getPackageIds());
-        self::assertEquals(Carrier::ZASILKOVNA, $package->getCarrier());
+        self::assertSame(Carrier::ZASILKOVNA, $package->getCarrier());
     }
 
     public function testAddPackagesForInvalidData(): void
@@ -69,7 +69,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             $packageService->addPackages($packages);
             self::fail('ADD request should thrown exception');
         } catch (Exception $exception) {
-            self::assertEquals(400, $exception->getStatusCode());
+            self::assertSame(400, $exception->getStatusCode());
             self::assertTrue(isset($exception->getErrors()[0]['branch_id']));
         }
     }
@@ -147,7 +147,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
 
         $orderedShipment = $packageService->orderShipment($packages);
 
-        self::assertEquals(Carrier::CP, $orderedShipment->getCarrier());
+        self::assertSame(Carrier::CP, $orderedShipment->getCarrier());
         self::assertNotEmpty($orderedShipment->getOrderId());
     }
 
@@ -199,7 +199,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
 
         $orderedShipmentData = $packageService->getOrder($orderedShipment->getCarrier(), $orderedShipment->getOrderId());
 
-        self::assertEquals($orderedShipment, $orderedShipmentData);
+        self::assertStrictEquals($orderedShipment, $orderedShipmentData);
     }
 
     public function testGetOrderForInvalidData(): void
@@ -307,8 +307,8 @@ final class DefaultPackageServiceTest extends BaseTestCase
         $packageDataInfoByPackageId = $packageService->getPackageInfoByCarrierId($package->getCarrier(), $package->getCarrierId());
         $packageDataInfoByCarrierId = $packageService->getPackageInfoByPackageId($package->getCarrier(), $package->getPackageId());
 
-        self::assertEquals($packageDataInfo, $packageDataInfoByPackageId);
-        self::assertEquals($packageDataInfo, $packageDataInfoByCarrierId);
+        self::assertStrictEquals($packageDataInfo, $packageDataInfoByPackageId);
+        self::assertStrictEquals($packageDataInfo, $packageDataInfoByCarrierId);
     }
 
     public function testGetPackageInfoForInvalidData(): void
@@ -379,7 +379,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             $packageService->checkPackages($packages);
             self::fail('CHECK request should thrown exception');
         } catch (Exception $exception) {
-            self::assertEquals(400, $exception->getStatusCode());
+            self::assertSame(400, $exception->getStatusCode());
             self::assertTrue(isset($exception->getErrors()[0]['branch_id']));
         }
     }
@@ -458,7 +458,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
 
         $transportCosts = $packageService->getTransportCosts($packagesData);
 
-        self::assertEquals(1, $transportCosts->count());
+        self::assertSame(1, $transportCosts->count());
     }
 
     public function testGetTransportCostsForInvalidData(): void
@@ -533,7 +533,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             $packageService->orderB2AShipment($packagesData);
             self::fail('B2A request should thrown exception');
         } catch (Exception $exception) {
-            self::assertEquals(400, $exception->getStatusCode());
+            self::assertSame(400, $exception->getStatusCode());
             self::assertTrue(isset($exception->getErrors()[0]['rec_city']));
         }
     }
@@ -584,7 +584,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             );
             self::fail('ORDERPICKUP request should thrown exception');
         } catch (Exception $exception) {
-            self::assertEquals(400, $exception->getStatusCode());
+            self::assertSame(400, $exception->getStatusCode());
         }
     }
 
@@ -653,7 +653,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             $packageService->orderB2CShipment($packagesData);
             self::fail('B2C request should thrown exception');
         } catch (Exception $exception) {
-            self::assertEquals(400, $exception->getStatusCode());
+            self::assertSame(400, $exception->getStatusCode());
             self::assertTrue(isset($exception->getErrors()[0]['sen_name']), $exception->getResponseAsString());
         }
     }
@@ -702,7 +702,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             $packageService->checkB2APackages($packagesData);
             self::fail('CHECKB2A request should thrown exception');
         } catch (Exception $exception) {
-            self::assertEquals(400, $exception->getStatusCode());
+            self::assertSame(400, $exception->getStatusCode());
             self::assertTrue(isset($exception->getErrors()[0]['rec_city']), $exception->getResponseAsString());
         }
     }
@@ -772,7 +772,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             $packageService->checkB2CPackages($packagesData);
             self::fail('CHECKB2C request should thrown exception');
         } catch (Exception $exception) {
-            self::assertEquals(400, $exception->getStatusCode());
+            self::assertSame(400, $exception->getStatusCode());
             self::assertTrue(isset($exception->getErrors()[0]['sen_street']), $exception->getResponseAsString());
         }
     }

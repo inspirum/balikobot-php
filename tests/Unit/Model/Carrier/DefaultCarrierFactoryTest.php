@@ -33,7 +33,7 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
 
         $collection = $factory->createCollection($data);
 
-        self::assertEquals($result, $collection);
+        self::assertStrictEquals($result, $collection);
     }
 
     /**
@@ -94,7 +94,7 @@ final class DefaultCarrierFactoryTest extends BaseTestCase
 
         $collection = $factory->create($carrier, $data);
 
-        self::assertEquals($result, $collection);
+        self::assertStrictEquals($result, $collection);
     }
 
     /**

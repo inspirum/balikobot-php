@@ -30,7 +30,7 @@ final class DefaultProofOfDeliveryFactoryTest extends BaseTestCase
 
         $item = $factory->create($carrierIds, $data);
 
-        self::assertEquals($result, $item);
+        self::assertStrictEquals($result, $item);
     }
 
     /**

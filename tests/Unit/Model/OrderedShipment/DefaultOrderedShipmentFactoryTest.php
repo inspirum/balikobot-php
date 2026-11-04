@@ -30,7 +30,7 @@ final class DefaultOrderedShipmentFactoryTest extends BaseTestCase
 
         $item = $factory->create($carrier, $packageIds, $data);
 
-        self::assertEquals($result, $item);
+        self::assertStrictEquals($result, $item);
     }
 
     /**

@@ -57,7 +57,7 @@ final class DefaultBranchServiceTest extends BaseTestCase
             );
             self::fail('BRANCHLOCATOR request should thrown exception');
         } catch (Exception $exception) {
-            self::assertEquals(413, $exception->getStatusCode());
+            self::assertSame(413, $exception->getStatusCode());
         }
     }
 }

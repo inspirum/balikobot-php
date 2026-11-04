@@ -289,6 +289,8 @@ final class DefaultClientTest extends BaseTestCase
 
         try {
             $client->call(Version::V1V1, Carrier::CP, Method::ADD);
+
+            self::fail('Exception was not thrown');
         } catch (Exception $exception) {
             self::assertInstanceOf($result::class, $exception);
             self::assertSame($result->getStatusCode(), $exception->getStatusCode());
@@ -296,10 +298,10 @@ final class DefaultClientTest extends BaseTestCase
                 self::assertSame($result->getMessage(), $exception->getMessage());
             }
 
-            self::assertEquals($response, $exception->getResponse());
-            self::assertEquals(json_encode($response), $exception->getResponseAsString());
+            self::assertSame($response, $exception->getResponse());
+            self::assertSame(json_encode($response), $exception->getResponseAsString());
             if ($errors !== null) {
-                self::assertEquals($errors, $exception->getErrors());
+                self::assertSame($errors, $exception->getErrors());
             }
         }
     }

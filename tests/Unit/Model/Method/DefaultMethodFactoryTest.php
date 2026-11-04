@@ -29,7 +29,7 @@ final class DefaultMethodFactoryTest extends BaseTestCase
 
         $collection = $factory->createCollection($data);
 
-        self::assertEquals($result, $collection);
+        self::assertStrictEquals($result, $collection);
     }
 
     /**

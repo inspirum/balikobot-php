@@ -22,6 +22,6 @@ final class DefaultCurlRequesterTest extends BaseTestCase
         $requesterWithoutSSL = $this->newDefaultCurlRequester(true);
         $secondVersion = json_decode($requesterWithoutSSL->request($url)->getBody()->getContents(), true)['version'];
 
-        self::assertEquals($firstVersion, $secondVersion);
+        self::assertSame($firstVersion, $secondVersion);
     }
 }

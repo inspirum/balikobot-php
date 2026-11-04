@@ -15,7 +15,6 @@ use Inspirum\Balikobot\Model\ZipCode\ZipCodeIterator;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
-use Traversable;
 use function iterator_to_array;
 
 final class DefaultZipCodeFactoryTest extends BaseTestCase
@@ -35,9 +34,10 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
 
         $iterator = $factory->createIterator($carrier, $service, $country, $data);
 
-        self::assertEquals($result, $iterator);
-        if ($result instanceof Traversable) {
-            self::assertEquals(iterator_to_array($result), iterator_to_array($iterator));
+        if ($result instanceof ZipCodeIterator) {
+            self::assertSame($result->getCarrier(), $iterator->getCarrier());
+            self::assertSame($result->getService(), $iterator->getService());
+            self::assertStrictEquals(iterator_to_array($result), iterator_to_array($iterator));
         }
     }
 
@@ -203,7 +203,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
                     new DefaultZipCode(
                         'ppl',
                         '1',
-                        '',
+                        null,
                         null,
                         'ABU DHABI',
                         null,
@@ -213,7 +213,7 @@ final class DefaultZipCodeFactoryTest extends BaseTestCase
                     new DefaultZipCode(
                         'ppl',
                         '1',
-                        '',
+                        null,
                         null,
                         'AJMAN CITY',
                         null,

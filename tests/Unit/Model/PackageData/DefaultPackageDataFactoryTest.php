@@ -28,7 +28,7 @@ final class DefaultPackageDataFactoryTest extends BaseTestCase
 
         $model = $factory->create($data);
 
-        self::assertEquals($result, $model);
+        self::assertStrictEquals($result, $model);
     }
 
     /**
