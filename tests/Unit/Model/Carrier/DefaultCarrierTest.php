@@ -56,6 +56,7 @@ final class DefaultCarrierTest extends BaseTestCase
         self::assertSame('Zásilkovna', $model->getName());
         self::assertSame($methods, $model->getMethods());
         self::assertSame($methods[Version::V2V1], $model->getMethodsForVersion(Version::V2V1));
+        self::assertSame([], $model->getMethodsForVersion(Version::V1V1)->getMethods());
         self::assertSame($expectedArray, $model->__toArray());
     }
 }

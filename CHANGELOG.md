@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Changed supported service types to exclude removed **PPL_BUSINESS_PALETTE**, **PPL_PRIVATE_PALETTE**, **DHLDE_PAKET_TAGGLEICH**, **DHLDE_PAKET_CONNECT**, **DSV_ROAD** and **DSV_B2C**
 ### Fixed
 - Fixed `.gitattributes` export-ignore paths so `phpcs.xml` and `phpstan.neon` are not shipped in the package
+- Fixed `DefaultCarrier::getMethodsForVersion` failing for a version without methods, it now returns an empty collection
 - Fixed `DefaultAttributeFactory` turning missing `max_length` into an empty string instead of `null`
 
 
