@@ -8,9 +8,9 @@ use Inspirum\Balikobot\Exception\BadRequestException;
 use Inspirum\Balikobot\Exception\UnauthorizedException;
 use function array_is_list;
 use function count;
-use function ctype_digit;
 use function is_int;
 use function is_string;
+use function preg_match;
 
 final class Validator
 {
@@ -64,7 +64,7 @@ final class Validator
      */
     private function resolveStatusCode(mixed $status, array $response): int
     {
-        if (is_string($status) && ctype_digit($status)) {
+        if (is_string($status) && preg_match('/^\d+$/D', $status) === 1) {
             return (int) $status;
         }
 
