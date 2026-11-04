@@ -279,6 +279,20 @@ final class DefaultClientTest extends BaseTestCase
             'result' => new BadRequestException([], 400, message: 'Invalid response status'),
         ];
 
+        yield 'null_response' => [
+            'statusCode' => 200,
+            'response' => 'null',
+            'shouldHaveStatus' => false,
+            'result' => new BadRequestException([], 400, message: 'Cannot parse response data'),
+        ];
+
+        yield 'scalar_response_error' => [
+            'statusCode' => 404,
+            'response' => '"Not found"',
+            'shouldHaveStatus' => false,
+            'result' => new BadRequestException([], 404),
+        ];
+
         yield 'parse_error' => [
             'statusCode' => 404,
             'response' => 's\x/\*',

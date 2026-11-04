@@ -10,6 +10,7 @@ use Inspirum\Balikobot\Exception\BadRequestException;
 use JsonException;
 use Psr\Http\Message\StreamInterface;
 use Throwable;
+use function is_array;
 use function json_decode;
 use function sprintf;
 use function str_replace;
@@ -70,14 +71,30 @@ final class DefaultClient implements Client
     private function parseContents(string $content, bool $throwOnError): array
     {
         try {
-            return json_decode($content, true, flags: JSON_THROW_ON_ERROR);
+            $data = json_decode($content, true, flags: JSON_THROW_ON_ERROR);
         } catch (JsonException $exception) {
-            if ($throwOnError) {
-                throw new BadRequestException([], 400, $exception, 'Cannot parse response data');
-            }
-
-            return [];
+            return $this->handleParseError($throwOnError, $exception);
         }
+
+        if (is_array($data) === false) {
+            return $this->handleParseError($throwOnError);
+        }
+
+        return $data;
+    }
+
+    /**
+     * @return array{}
+     *
+     * @throws \Inspirum\Balikobot\Exception\Exception
+     */
+    private function handleParseError(bool $throwOnError, ?JsonException $exception = null): array
+    {
+        if ($throwOnError) {
+            throw new BadRequestException([], 400, $exception, 'Cannot parse response data');
+        }
+
+        return [];
     }
 
     private function getContents(StreamInterface $stream, bool $gzip): string
