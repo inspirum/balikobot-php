@@ -40,6 +40,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fixed JSON responses that are not an array (e.g. `null`) causing a `TypeError` instead of `BadRequestException`
 - Fixed request data that cannot be JSON-encoded being sent as an empty body, it now throws `BadRequestException`
 - Fixed `getBranchesForLocation` dropping zero `radius` and `maxResults`
+- Fixed `BadRequestException` losing errors after a gap in package indexes and failing on incomplete error items or numeric keys
 
 
 ## [v7.16.0 (2026-09-08)](https://github.com/inspirum/balikobot-php/compare/v7.15.0...v7.16.0)

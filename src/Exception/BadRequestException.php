@@ -7,7 +7,9 @@ namespace Inspirum\Balikobot\Exception;
 use Inspirum\Balikobot\Definitions\Response;
 use Throwable;
 use function is_array;
+use function is_int;
 use function is_numeric;
+use function is_string;
 
 final class BadRequestException extends BaseException
 {
@@ -34,22 +36,21 @@ final class BadRequestException extends BaseException
      */
     private function setErrors(array $response): void
     {
-        $i = 0;
-
         $packages = $this->resolveErrorsData($response);
 
         // add errors from all packages
-        while (isset($packages[$i])) {
-            if (is_array($packages[$i])) {
-                $this->setErrorsForPackage($i, $packages[$i]);
-            } elseif (is_numeric($packages[$i]) && $packages[$i] >= 400) {
-                $this->setError($i, 'status', $this->getErrorMessage('status', (int) $packages[$i]));
+        foreach ($packages as $i => $package) {
+            if (is_int($i) === false) {
+                continue;
+            }
+
+            if (is_array($package)) {
+                $this->setErrorsForPackage($i, $package);
+            } elseif (is_numeric($package) && $package >= 400) {
+                $this->setError($i, 'status', $this->getErrorMessage('status', (int) $package));
             } else {
                 $this->setError($i, 'status', 'Nespecifikovaná chyba.');
             }
-
-            // try next package
-            $i++;
         }
     }
 
@@ -62,11 +63,11 @@ final class BadRequestException extends BaseException
      */
     private function resolveErrorsData(array $response): array
     {
-        if (isset($response['packages'])) {
+        if (isset($response['packages']) && is_array($response['packages'])) {
             return $response['packages'];
         }
 
-        if (isset($response['errors'])) {
+        if (isset($response['errors']) && is_array($response['errors'])) {
             return $response['errors'];
         }
 
@@ -81,7 +82,7 @@ final class BadRequestException extends BaseException
     private function setErrorsForPackage(int $number, array $response): void
     {
         // response does not have full errors
-        if (isset($response['errors']) === false) {
+        if (isset($response['errors']) === false || is_array($response['errors']) === false) {
             // try to resolve errors from codes
             $this->setErrorsFromResponseCodes($number, $response);
 
@@ -90,14 +91,25 @@ final class BadRequestException extends BaseException
 
         // set errors for given package
         foreach ($response['errors'] as $error) {
-            $this->setError($number, $error['attribute'], $error['message']);
+            $this->setErrorFromResponse($number, $error);
         }
+    }
+
+    /**
+     * Set error from response error item
+     */
+    private function setErrorFromResponse(int $number, mixed $error): void
+    {
+        $attribute = is_array($error) && is_string($error['attribute'] ?? null) ? $error['attribute'] : 'status';
+        $message = is_array($error) && is_string($error['message'] ?? null) ? $error['message'] : 'Nespecifikovaná chyba.';
+
+        $this->setError($number, $attribute, $message);
     }
 
     /**
      * Set errors from codes
      *
-     * @param array<string,int|string> $response
+     * @param array<mixed> $response
      */
     private function setErrorsFromResponseCodes(int $number, array $response): void
     {
@@ -108,7 +120,7 @@ final class BadRequestException extends BaseException
             }
 
             // set errors from given package from response codes
-            $this->setError($number, $key, $this->getErrorMessage($key, (int) $code));
+            $this->setError($number, (string) $key, $this->getErrorMessage((string) $key, (int) $code));
         }
     }
 

@@ -555,6 +555,82 @@ final class DefaultClientTest extends BaseTestCase
                 ],
             ],
         ];
+
+        yield 'errors_with_gap' => [
+            'statusCode' => 200,
+            'response' => [
+                'status' => 400,
+                'packages' => [
+                    0 => [
+                        'eid' => 413,
+                    ],
+                    2 => [
+                        'eid' => 413,
+                    ],
+                ],
+            ],
+            'result' => new BadRequestException([], 400, message: ''),
+            'errors' => [
+                0 => [
+                    'eid' => 'Eshop ID je delší než je maximální povolená délka.',
+                ],
+                2 => [
+                    'eid' => 'Eshop ID je delší než je maximální povolená délka.',
+                ],
+            ],
+        ];
+
+        yield 'errors_with_numeric_keys' => [
+            'statusCode' => 200,
+            'response' => [
+                'status' => 400,
+                'packages' => [
+                    0 => [
+                        406,
+                    ],
+                ],
+            ],
+            'result' => new BadRequestException([], 400, message: ''),
+            'errors' => [
+                0 => [
+                    0 => 'Nedorazila žádná data ke zpracování.',
+                ],
+            ],
+        ];
+
+        yield 'response_errors_incomplete' => [
+            'statusCode' => 200,
+            'response' => [
+                'status' => 400,
+                'packages' => [
+                    0 => [
+                        'errors' => [
+                            [
+                                'type' => '406',
+                                'message' => 'Nedorazilo eshop ID.',
+                            ],
+                        ],
+                    ],
+                    1 => [
+                        'errors' => [
+                            [
+                                'type' => '406',
+                                'attribute' => 'eid',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'result' => new BadRequestException([], 400, message: ''),
+            'errors' => [
+                0 => [
+                    'status' => 'Nedorazilo eshop ID.',
+                ],
+                1 => [
+                    'eid' => 'Nespecifikovaná chyba.',
+                ],
+            ],
+        ];
     }
 
     /**
