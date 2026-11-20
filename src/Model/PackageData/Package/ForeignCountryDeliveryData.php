@@ -28,6 +28,11 @@ trait ForeignCountryDeliveryData
         $this->offsetSet(Attribute::INVOICE_TYPE, $type);
     }
 
+    public function setInvoiceOrderGroup(string $group): void
+    {
+        $this->offsetSet(Attribute::INVOICE_ORDER_GROUP, $group);
+    }
+
     public function setTermsOfTrade(string $terms): void
     {
         $this->offsetSet(Attribute::TERMS_OF_TRADE, $terms);

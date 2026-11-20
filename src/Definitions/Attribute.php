@@ -1090,6 +1090,11 @@ final class Attribute extends BaseEnum
     public const RESTRICTED_ARTICLES = 'restricted_articles';
 
     /**
+     * Invoice order group
+     */
+    public const INVOICE_ORDER_GROUP = 'invoice_order_group';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';

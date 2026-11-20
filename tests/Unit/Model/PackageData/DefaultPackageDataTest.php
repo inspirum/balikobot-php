@@ -231,6 +231,7 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setShipperAccountNumber('765432/0300');
         $package->setNoteInvoice('note1');
         $package->setInvoiceType('PRO_FORMA_INVOICE');
+        $package->setInvoiceOrderGroup('A');
         $package->setReturnBarcode(true);
         $package->setEORI('1234');
         $package->setGBEORI('5678');
@@ -448,6 +449,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::SHIPPER_ACCOUNT_NUMBER => '765432/0300',
                 Attribute::NOTE_INVOICE => 'note1',
                 Attribute::INVOICE_TYPE => 'PRO_FORMA_INVOICE',
+                Attribute::INVOICE_ORDER_GROUP => 'A',
                 Attribute::RETURN_BARCODE => 1,
                 Attribute::EORI => '1234',
                 Attribute::GB_EORI => '5678',
