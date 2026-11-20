@@ -9,4 +9,4 @@ jobs:
   php:
     uses: inspirum/.github/.github/workflows/php.yml@main
     with:
-      coverage-php: '8.1'
+      coverage-php: '8.5'

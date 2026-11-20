@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added **EXPEDICO_NL_DHL** and **EXPEDICO_NL_DHL_PICKUP_POINTS** service types
 ### Changed
 - Changed integration tests for branch locator and B2A shipment to be marked incomplete instead of failing when the API returns a server error
+- Changed CI to collect coverage and run integration tests only on PHP 8.5
 
 
 ## [v7.17.0 (2026-11-04)](https://github.com/inspirum/balikobot-php/compare/v7.16.0...v7.17.0)
