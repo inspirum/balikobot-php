@@ -8,6 +8,7 @@ use Inspirum\Balikobot\Client\DefaultClient;
 use Inspirum\Balikobot\Client\DefaultCurlRequester;
 use Inspirum\Balikobot\Client\Requester;
 use Inspirum\Balikobot\Client\Response\Validator;
+use Inspirum\Balikobot\Exception\Exception;
 use Inspirum\Balikobot\Model\Account\DefaultAccountFactory;
 use Inspirum\Balikobot\Model\AdrUnit\DefaultAdrUnitFactory;
 use Inspirum\Balikobot\Model\Attribute\DefaultAttributeFactory;
@@ -37,6 +38,7 @@ use Inspirum\Balikobot\Service\DefaultSettingService;
 use Inspirum\Balikobot\Service\DefaultTrackService;
 use Inspirum\Balikobot\Tests\Unit\BaseTestCase as BaseUnitTestCase;
 use function getenv;
+use function sprintf;
 
 abstract class BaseTestCase extends BaseUnitTestCase
 {
@@ -105,6 +107,26 @@ abstract class BaseTestCase extends BaseUnitTestCase
             $this->newDefaultClient(),
             new DefaultStatusFactory($this->newValidator()),
         );
+    }
+
+    /**
+     * @param callable(): T $call
+     *
+     * @return T
+     *
+     * @template T
+     */
+    protected function ignoringServerErrors(callable $call): mixed
+    {
+        try {
+            return $call();
+        } catch (Exception $exception) {
+            if ($exception->getStatusCode() < 500) {
+                throw $exception;
+            }
+
+            self::markTestIncomplete(sprintf('API is unavailable [%d]: %s', $exception->getStatusCode(), $exception->getMessage()));
+        }
     }
 
     private function newDefaultClient(): DefaultClient

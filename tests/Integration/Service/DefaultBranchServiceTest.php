@@ -31,7 +31,7 @@ final class DefaultBranchServiceTest extends BaseTestCase
     {
         $branchService = $this->newDefaultBranchService();
 
-        $branches = $branchService->getBranchesForLocation(
+        $branches = $this->ignoringServerErrors(static fn () => $branchService->getBranchesForLocation(
             Carrier::PBH,
             Country::GERMANY,
             'Berlin',
@@ -39,7 +39,7 @@ final class DefaultBranchServiceTest extends BaseTestCase
             'Hardenbergplatz 8',
             4,
             40.3,
-        );
+        ));
 
         $branches->next();
         self::assertTrue($branches->valid());

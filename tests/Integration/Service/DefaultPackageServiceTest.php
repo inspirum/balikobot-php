@@ -480,7 +480,7 @@ final class DefaultPackageServiceTest extends BaseTestCase
             $packageData,
         ]);
 
-        $orderPackages = $packageService->orderB2AShipment($packagesData);
+        $orderPackages = $this->ignoringServerErrors(static fn () => $packageService->orderB2AShipment($packagesData));
         self::assertCount(1, $orderPackages->getPackageIds());
     }
 
