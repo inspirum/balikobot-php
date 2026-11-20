@@ -6,7 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.17.0...main)
+## [Unreleased](https://github.com/inspirum/balikobot-php/compare/v7.18.0...main)
+
+
+## [v7.18.0 (2026-11-20)](https://github.com/inspirum/balikobot-php/compare/v7.17.0...v7.18.0)
 ### Added
 - Added support for new options from documentation **v2.021118** (2026-11-10)
   - Added **restricted_articles** attribute
