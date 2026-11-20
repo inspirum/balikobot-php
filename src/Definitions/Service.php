@@ -3035,6 +3035,16 @@ final class Service extends BaseEnum
     public const EXPEDICO_PL_DHL = '205';
 
     /**
+     * Expedico NL DHL
+     */
+    public const EXPEDICO_NL_DHL = '206';
+
+    /**
+     * Expedico NL DHL Pickup Points
+     */
+    public const EXPEDICO_NL_DHL_PICKUP_POINTS = '207';
+
+    /**
      * Alza Box2Box
      */
     public const ALZA_BOX_TO_BOX = '1';
@@ -3965,6 +3975,8 @@ final class Service extends BaseEnum
             self::EXPEDICO_SK_SPS_PPL,
             self::EXPEDICO_HU_POST_PPL,
             self::EXPEDICO_PL_DHL,
+            self::EXPEDICO_NL_DHL,
+            self::EXPEDICO_NL_DHL_PICKUP_POINTS,
         ];
     }
 
