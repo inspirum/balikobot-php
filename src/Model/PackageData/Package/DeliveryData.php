@@ -252,6 +252,11 @@ trait DeliveryData
         $this->offsetSet(Attribute::SPECIAL_INSTRUCTIONS, $value);
     }
 
+    public function setRestrictedArticles(string $value): void
+    {
+        $this->offsetSet(Attribute::RESTRICTED_ARTICLES, $value);
+    }
+
     public function setIsAlcohol(bool $value): void
     {
         $this->offsetSet(Attribute::IS_ALCOHOL, (int) $value);

@@ -183,6 +183,7 @@ final class DefaultPackageDataTest extends BaseTestCase
         $package->setDeclarationStatement('Statement');
         $package->setDeclarationReasonForExport('SOLD');
         $package->setSpecialInstructions('Instructions');
+        $package->setRestrictedArticles('perishables');
         $package->setIsAlcohol(true);
         $package->setContentIssueDate(new DateTimeImmutable('2019-11-11 18:10:59'));
         $package->setContentInvoiceNumber('1234567890');
@@ -399,6 +400,7 @@ final class DefaultPackageDataTest extends BaseTestCase
                 Attribute::DECLARATION_STATEMENT => 'Statement',
                 Attribute::DECLARATION_REASON_FOR_EXPORT => 'SOLD',
                 Attribute::SPECIAL_INSTRUCTIONS => 'Instructions',
+                Attribute::RESTRICTED_ARTICLES => 'perishables',
                 Attribute::IS_ALCOHOL => 1,
                 Attribute::CONTENT_ISSUE_DATE => '2019-11-11',
                 Attribute::CONTENT_INVOICE_NUMBER => '1234567890',

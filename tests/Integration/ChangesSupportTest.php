@@ -28,7 +28,7 @@ final class ChangesSupportTest extends BaseTestCase
 
         $changelog = $infoService->getChangelog();
 
-        $expected = '2.021116';
+        $expected = '2.021118';
         $actual = $changelog->getLatestVersion();
 
         if ($actual !== $expected) {

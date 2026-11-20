@@ -1085,6 +1085,11 @@ final class Attribute extends BaseEnum
     public const DELIVERY_MANIPULATION_CART = 'delivery_manipulation_cart';
 
     /**
+     * Type of restricted goods the shipment contains
+     */
+    public const RESTRICTED_ARTICLES = 'restricted_articles';
+
+    /**
      * @deprecated
      */
     public const REC_CONTACT = 'rec_contact';
