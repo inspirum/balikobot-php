@@ -3045,6 +3045,11 @@ final class Service extends BaseEnum
     public const ALZA_WAREHOUSE_TO_BOX = '2';
 
     /**
+     * Allegro Smart
+     */
+    public const SHIPWITHALLEGRO_SMART = '1';
+
+    /**
      * @return list<string>|null
      */
     public static function getForCarrier(string $carrier): ?array
@@ -3097,6 +3102,7 @@ final class Service extends BaseEnum
             Carrier::ONEBYALLEGRO => self::onebyallegro(),
             Carrier::EXPEDICO => self::expedico(),
             Carrier::ALZA => self::alza(),
+            Carrier::SHIPWITHALLEGRO => self::shipwithallegro(),
         ];
     }
 
@@ -3968,6 +3974,14 @@ final class Service extends BaseEnum
         return [
             self::ALZA_BOX_TO_BOX,
             self::ALZA_WAREHOUSE_TO_BOX,
+        ];
+    }
+
+    /** @return list<string> */
+    private static function shipwithallegro(): array
+    {
+        return [
+            self::SHIPWITHALLEGRO_SMART,
         ];
     }
 }
